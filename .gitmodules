@@ -1,3 +1,6 @@
 [submodule "topics/kitty/src/kitty/base16-kitty"]
 	path = topics/kitty/src/kitty/base16-kitty
 	url = https://github.com/kdrag0n/base16-kitty.git
+[submodule "topics/kitty/src/kitty/kitty_grab"]
+	path = topics/kitty/src/kitty/kitty_grab
+	url = https://github.com/aorith/kitty_grab
