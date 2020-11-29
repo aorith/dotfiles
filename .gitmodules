@@ -4,3 +4,6 @@
 [submodule "topics/kitty/src/kitty/kitty_grab"]
 	path = topics/kitty/src/kitty/kitty_grab
 	url = https://github.com/aorith/kitty_grab
+[submodule "topics/kitty/src/kitty/kitty-themes"]
+	path = topics/kitty/src/kitty/kitty-themes
+	url = https://github.com/dexpota/kitty-themes
