@@ -7,3 +7,6 @@
 [submodule "topics/kitty/src/kitty/kitty-themes"]
 	path = topics/kitty/src/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
+[submodule "topics/alacritty/src/alacritty/alacritty-theme"]
+	path = topics/alacritty/src/alacritty/alacritty-theme
+	url = https://github.com/eendroroy/alacritty-theme
