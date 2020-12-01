@@ -1,11 +1,11 @@
 [submodule "topics/kitty/src/kitty/base16-kitty"]
-	path = topics/kitty/src/kitty/base16-kitty
+	path = topics/kitty/src/kitty/themes/base16-kitty
 	url = https://github.com/kdrag0n/base16-kitty.git
 [submodule "topics/kitty/src/kitty/kitty_grab"]
-	path = topics/kitty/src/kitty/kitty_grab
+	path = topics/kitty/src/kitty/kittens/kitty_grab
 	url = https://github.com/aorith/kitty_grab
 [submodule "topics/kitty/src/kitty/kitty-themes"]
-	path = topics/kitty/src/kitty/kitty-themes
+	path = topics/kitty/src/kitty/themes/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
 [submodule "topics/alacritty/src/alacritty/alacritty-theme"]
 	path = topics/alacritty/src/alacritty/alacritty-theme
