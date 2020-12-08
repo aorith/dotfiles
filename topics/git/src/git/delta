@@ -1,0 +1,10 @@
+[core]
+    pager = delta
+
+[delta]
+    features = line-numbers decorations
+
+[delta "line-numbers"]
+    line-numbers-minus-style = 1
+    line-numbers-plus-style = 2
+

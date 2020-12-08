@@ -8,5 +8,5 @@
 	path = topics/kitty/src/kitty/themes/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
 [submodule "topics/alacritty/src/alacritty/alacritty-theme"]
-	path = topics/alacritty/src/alacritty/alacritty-theme
+	path = topics/alacritty/src/alacritty/themes/alacritty-theme
 	url = https://github.com/eendroroy/alacritty-theme
