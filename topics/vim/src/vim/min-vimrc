@@ -1,0 +1,45 @@
+" vim: ft=vim
+
+set nocompatible
+
+set nonumber
+set nolist
+set backspace=indent,eol,start
+set laststatus=2
+set showtabline=0
+set foldcolumn=0
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set noerrorbells
+set noswapfile
+set nobackup
+set noundofile
+set wildmenu
+set clipboard+=unnamed,unnamedplus
+
+map <F1> <nop>
+map! <F1> <nop>
+
+set statusline=
+set statusline+=\ %#error#%m%* " modified flag
+set statusline+=\ %#error#%r%* " readonly flag
+set statusline+=\ %f " F=fullpath of current file;  f=relative path
+
+" right side
+set statusline+=%=
+
+set statusline+=\ [%l:%c] " line:column  (%L for total lines)
+set statusline+=\[%3p%%] " percent of the document
+set statusline+=\[ASCII:%3b] " ASCII under cursor
+
+let &t_ut='' " disable background color erase
+colorscheme desert
+highlight Visual ctermfg=254 cterm=NONE
+highlight Normal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+let s:fg = '#ae9f8f'
+let s:bg = '#282828'
+let &t_ti = &t_ti . "\033]10;" . s:fg . "\007\033]11;" . s:bg . "\007"
+let &t_te = &t_te . "\033]110\007\033]111\007"
+

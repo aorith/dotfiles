@@ -1,0 +1,6 @@
+# vim: ft=bash
+
+if [[ -n "$IN_KITTY" ]]; then
+    alias kdiff='kitty +kitten diff'
+fi
+

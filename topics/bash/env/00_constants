@@ -1,0 +1,47 @@
+# vim: ft=bash
+
+export EDITOR='vim'
+export TERMINAL='alacritty'
+
+export LESS='-XQRMAFie'
+export LESSHISTFILE='-'
+export PAGER="less"
+export MANPAGER="$PAGER"
+export SYSTEMD_LESS="$LESS"
+
+export LESS_TERMCAP_mb=$'\E[01;31m'    # begins blinking
+export LESS_TERMCAP_md=$'\E[01;34m'    # begins bold
+export LESS_TERMCAP_me=$'\E[0m'        # ends mode
+export LESS_TERMCAP_so=$'\E[00;47;30m' # begins standout-mode
+export LESS_TERMCAP_se=$'\E[0m'        # ends standout-mode
+export LESS_TERMCAP_us=$'\E[01;33m'    # begins underline
+export LESS_TERMCAP_ue=$'\E[0m'        # ends underline
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+
+export LANG='en_US.UTF-8'
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Macos only
+if [[ "$_OS" == 'Darwin' ]]; then
+    for manpath in $(cat /private/etc/manpaths /private/etc/manpaths.d/* 2>/dev/null); do
+        add_to_manpath "$manpath"
+    done
+    unset manpath
+fi
+
+# Linux only
+if [[ "$_OS" == 'Linux' ]]; then
+    export BROWSER='firefox'
+    export READER='zathura'
+    export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+    export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
+    export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
+    export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+fi

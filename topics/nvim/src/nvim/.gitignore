@@ -1,0 +1,6 @@
+.netrwhist
+plugged/*
+undodir/*
+swap/*
+backup/*
+autoload/plug.vim

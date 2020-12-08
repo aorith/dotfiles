@@ -1,0 +1,34 @@
+# vim: ft=bash
+[ -z "$PS1" ] && return
+
+# bash completion
+for completion in /etc/bash_completion \
+    /usr/share/bash-completion/bash_completion \
+    /usr/local/etc/profile.d/bash_completion.sh \
+    /usr/local/share/bash-completion/bash_completion
+do
+    [[ -r "$completion" ]] && . "$completion"
+done
+unset completion
+
+shopt -s nullglob
+
+# source local alias/functions ...
+[ -r "${HOME}"/.bash_local ] && . "${HOME}"/.bash_local
+
+# SOURCE ENV FILES IN ORDER
+env_files="$(for env_file in "${DOTFILES}"/topics/*/env/* "${PRIVATE_DOTFILES}"/topics/*/env/*; do
+    echo "$env_file"
+done | awk -F'/' '{print $NF,$0}' | sort -n | awk '{print $2}')"
+for env_file in $env_files; do
+    . "$env_file"
+done
+unset env_file env_files
+
+shopt -u nullglob
+
+source "${DOTFILES}/topics/bash/etc/colors.bash"
+source "${DOTFILES}/topics/bash/etc/prompt.bash"
+
+trap '__before_command' DEBUG
+PROMPT_COMMAND='__prompt_command'

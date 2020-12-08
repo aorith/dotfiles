@@ -1,0 +1,83 @@
+# vim: ft=bash
+
+# ssh wrapper
+ssh() {
+    local EXEC _user _hostname
+    EXEC="$(which ssh)"
+    _user="$($EXEC -G "$@" | head -1 | awk '{print $2}')"
+    _hostname="$($EXEC -G "$@" | head -3 | grep -E ^hostname | awk '{print $2}')"
+    echo -e "\033]0;${_user}@${_hostname}\007"
+    TERM="$SSH_TERM" "$EXEC" "$@"
+    echo -e "\033]0;$(whoami)@$(hostname)\007"
+}
+
+# tests if $1 > $2
+_greater_than() {
+    [ ${1%.*} -eq ${2%.*} ] && [ ${1#*.} \> ${2#*.} ] || [ ${1%.*} -gt ${2%.*} ]
+}
+
+# tmux
+tmux() {
+	local EXE
+	EXE="$(which tmux)"
+	#EXE="$HOME/opt/bin/tmux"
+    if [[ $# -ne 0 ]]; then $EXE -2 -u "$@"
+    elif ! $EXE -2 attach; then $EXE -2 -u; fi
+}
+
+# le pasas una fecha y la muestra en varios husos horarios
+udate() {
+    local EXE actual fecha MYTZ
+    actual="$(date +"%Y-%m-%d %H:%M:%S")"
+    read -rp "Fecha a convertir (Default: $actual): " fecha
+    fecha="${fecha:-$actual}"
+    read -rp "TZ: (Default: Europe/Madrid): " MYTZ
+    MYTZ="${MYTZ:-Europe/Madrid}"
+    EXE="$(which date)"
+    if command -v gdate >/dev/null 2>&1; then EXE="$(which gdate)"; fi
+    {
+        export TZ="${MYTZ}"; echo -n "UNIX: "; $EXE +%s --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+        export TZ="${MYTZ}"; echo -n "${TZ}: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+		echo '- - - - - - -'
+        export TZ="UTC"; echo -n "${TZ}/GMT: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+        export TZ="Europe/Madrid"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+        export TZ="Europe/London"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+        export TZ="America/New_York"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+        export TZ="America/Los_Angeles"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+        export TZ="Asia/Hong_Kong"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+        export TZ="Asia/Tokyo"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
+    } | column -t | BAT_STYLE="grid" bat
+    unset TZ
+}
+
+# le pasas timestamp en unix y te lo muestra en varios husos horarios 
+unixdate() {
+    local EXE timestamp
+    timestamp="${1:-}"
+    [[ -z $timestamp ]] && read -rp "Unix timestamp: " timestamp
+    MYTZ="${MYTZ:-Europe/Madrid}"
+    EXE="$(which date)"
+    if command -v gdate >/dev/null 2>&1; then EXE="$(which gdate)"; fi
+    {
+        export TZ="UTC"; echo -n "${TZ}/GMT: "; $EXE --date=@$timestamp
+        export TZ="Europe/Madrid"; echo -n "$TZ: "; $EXE --date=@$timestamp
+    } | column -t | BAT_STYLE="grid" bat
+    unset TZ
+}
+
+# ls octal permissions
+lso() {
+    ls -l "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'
+}
+
+# generate random password
+randompassword() {
+    echo "$(date +%s; uname -a; ps -e; uptime) $PPID $? $_ $$ $COLUMNS" | sha256sum | base64 | head -c 18
+    echo
+}
+
+# pinta conteo de threads
+threadscounter() {
+    ps -o uid,ppid,command -eT |sort -k3 |uniq -c |sort -n |tail
+}
+

@@ -1,0 +1,33 @@
+# vim: ft=bash
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# enable color support of ls and also add handy aliases
+export CLICOLOR=1
+if [[ "$_OS" == 'Darwin' ]] && ! ls --color=auto -1 /dev/null >/dev/null 2>&1; then
+	export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+else
+	export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:"
+    alias ls='ls --color=always'
+    alias diff='diff --color=auto'
+    alias htop='sudo TERM=xterm-256color htop'
+fi
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias cd..='cd ..'
+alias ..='cd ..'
+
+alias scan='sudo nmap -sC -sV'
+alias scan_ports='sudo nmap -p 1-65535'
+
+# Linux only
+if [[ "$_OS" == 'Linux' ]]; then
+    alias bitcoin-cli='bitcoin-cli -datadir=/media/datos/Bitcoin/'
+    alias nyx='docker exec -it torproxy /bin/sh -c nyx'
+fi
