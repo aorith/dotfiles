@@ -13,7 +13,7 @@ log_header "Start"
 # Boostrap only one topic
 if [[ $# -gt 0 ]]; then
 
-    install_topic() {
+    bootstrap_topic() {
         ! test -d "topics/$1" && return
 
         if test -x topics/$1/install.sh; then
@@ -40,10 +40,10 @@ if [[ $# -gt 0 ]]; then
     }
     
     log_header "Bootstrapping $1 only."; echo
-    install_topic $1
+    bootstrap_topic $1
     if test -d "$PRIV_DOTFILES"; then
         cd "$PRIV_DOTFILES" || exit 1
-        install_topic $1
+        bootstrap_topic $1
     fi
     log_header "End"
     cd "$DOTFILES" || exit 1
