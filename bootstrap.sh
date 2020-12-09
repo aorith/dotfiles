@@ -41,8 +41,10 @@ if [[ $# -gt 0 ]]; then
     
     log_header "Bootstrapping $1 only."; echo
     install_topic $1
-    cd "$PRIV_DOTFILES" || exit 1
-    install_topic $1
+    if test -d "$PRIV_DOTFILES"; then
+        cd "$PRIV_DOTFILES" || exit 1
+        install_topic $1
+    fi
     log_header "End"
     cd "$DOTFILES" || exit 1
     exit 0
@@ -73,30 +75,32 @@ for init_script in topics/*/init.sh; do
     popd >/dev/null || exit 1
 done
 
-log_header "Bootstrap of private dotfiles"
-cd "$PRIV_DOTFILES" || exit 1
-for install_script in topics/*/install.sh; do
-    log_info "Installing topic: $(basename $(dirname "${install_script}"))"
-    pushd "$(dirname "$install_script")" >/dev/null || exit 1
-    if ! ./install.sh; then
-        log_error "Execution of \"$install_script\" failed."
+if test -d "$PRIV_DOTFILES"; then
+    log_header "Bootstrap of private dotfiles"
+    cd "$PRIV_DOTFILES" || exit 1
+    for install_script in topics/*/install.sh; do
+        log_info "Installing topic: $(basename $(dirname "${install_script}"))"
+        pushd "$(dirname "$install_script")" >/dev/null || exit 1
+        if ! ./install.sh; then
+            log_error "Execution of \"$install_script\" failed."
+            popd >/dev/null || exit 1
+            exit 1
+        fi
         popd >/dev/null || exit 1
-        exit 1
-    fi
-    popd >/dev/null || exit 1
-done
-unset install_script
-for init_script in topics/*/init.sh; do
-    log_info "Working on topic: $(basename $(dirname "${init_script}"))"
-    pushd "$(dirname "$init_script")" >/dev/null || exit 1
-    if ! ./init.sh; then
-        log_error "Execution of \"$init_script\" failed."
+    done
+    unset install_script
+    for init_script in topics/*/init.sh; do
+        log_info "Working on topic: $(basename $(dirname "${init_script}"))"
+        pushd "$(dirname "$init_script")" >/dev/null || exit 1
+        if ! ./init.sh; then
+            log_error "Execution of \"$init_script\" failed."
+            popd >/dev/null || exit 1
+            exit 1
+        fi
         popd >/dev/null || exit 1
-        exit 1
-    fi
-    popd >/dev/null || exit 1
-done
-unset init_script
+    done
+    unset init_script
+fi
 
 cd "$DOTFILES" || exit 1
 
