@@ -36,6 +36,7 @@ formulae_packages=(
     "bc"
     "kakoune"
     "python@3.8"
+    "shellcheck"
 )
 
 formulae_source_packages=(
