@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 # macos only
-[[ "$_OS" != "Darwin" ]] && exit 0
+[[ "$_OS" != "Darwin" ]] && return
 
 add_to_path "/usr/local/bin"
 add_to_path "/usr/local/sbin"
