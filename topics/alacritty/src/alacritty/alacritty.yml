@@ -51,7 +51,7 @@ key_bindings:
   - {key: K,     mods: Command,       chars: "\x02k"}  # switch pane
   - {key: L,     mods: Command,       chars: "\x02l"}  # switch pane
   - {key: H,     mods: Command|Shift, chars: "\x02/"}  # move pane
-  - {key: J,     mods: Command|Shift, chars: "\x02("}  # move pane
+  - {key: J,     mods: Command|Shift, chars: "\x02¿"}  # move pane
   - {key: K,     mods: Command|Shift, chars: "\x02)"}  # move pane
   - {key: L,     mods: Command|Shift, chars: "\x02="}  # move pane
   - {key: T,     mods: Command,       chars: "\x02c"}  # new pane
@@ -69,7 +69,7 @@ key_bindings:
   - {key: G,     mods: Command,       chars: "\x02\x5b"}  # enter copy mode
   - {key: R,     mods: Command,       chars: "\x02\x2c"}  # rename pane
   - {key: R,     mods: Command|Shift, chars: "\x02\x24"}  # rename session
-  - {key: Comma, mods: Command,       chars: "\x02\x28"}  # cycle sessions
+  - {key: Comma, mods: Command,       chars: "\x02("}  # cycle sessions
   - {key: N,     mods: Command,       chars: "\x02\x6e"}  # cycle panes
   - {key: S,     mods: Command,       chars: "\x02\x13"}  # toggle synchronize panes
   - {key: F,     mods: Command,       chars: "\x02\x7a"}  # toggle zoom (maximize pane)
