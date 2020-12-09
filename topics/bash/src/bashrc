@@ -1,6 +1,13 @@
 # vim: ft=bash
 [ -z "$PS1" ] && return
 
+# Bash version check
+if ((BASH_VERSINFO[0] < 5))
+then
+    echo "Bash is not up-to-date - minimum version required is 5"
+    echo "Current version is: ${BASH_VERSINFO[0]}"
+fi
+
 # bash completion
 for completion in /etc/bash_completion \
     /usr/share/bash-completion/bash_completion \

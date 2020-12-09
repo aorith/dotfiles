@@ -1,17 +1,9 @@
 # vim: ft=bash
 
-# Bash version check
-if ((BASH_VERSINFO[0] < 5))
-then 
-    echo "Bash is not up-to-date - minimum version required is 5"
-    echo "Current version is: ${BASH_VERSINFO[0]}"
-fi
-
 # DOTFILES
 export DOTFILES="${HOME}/githome/dotfiles"
-PRIVATE_DOTFILES="${HOME}/Syncthing/SYNC_STUFF/private_dotfiles"
-[[ ! -d "$PRIVATE_DOTFILES" ]] && PRIVATE_DOTFILES=''
-export PRIVATE_DOTFILES
+[[ -d "${HOME}/Syncthing/SYNC_STUFF/private_dotfiles" ]] && \
+    export PRIVATE_DOTFILES="${HOME}/Syncthing/SYNC_STUFF/private_dotfiles"
 
 # OS
 export _OS="$(uname -s)"
