@@ -80,7 +80,7 @@ for package in "${cask_packages[@]}"; do
     brew install --cask $package
 done
 unset package formulae_packages formulae_source_packages cask_packages
-my_brew_update
+brew cleanup
 
 if ! grep -q '/usr/local/bin/bash' /etc/shells; then
   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
