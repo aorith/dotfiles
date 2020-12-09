@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# macos only
+[[ "$(uname -s)" != "Darwin" ]] && exit 0
+
 ### bootstrap
 version="3.8.6"
 # pyenv install --list  # check python versions
