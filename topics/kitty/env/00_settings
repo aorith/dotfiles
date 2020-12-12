@@ -1,7 +1,5 @@
 # vim: ft=bash
 
-[[ "$(basename -- "$(ps -o comm= -p $PPID)")" == "kitty" ]] && export IN_KITTY=1
-
 if [[ -n "$IN_KITTY" ]]; then
     # remote hosts do not have xterm-kitty terminfo
     export SSH_TERM="xterm-256color"
