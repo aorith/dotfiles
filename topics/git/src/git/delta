@@ -1,8 +1,6 @@
-[core]
-    pager = delta
-
 [delta]
     features = line-numbers decorations
+    syntax-theme = none
 
 [delta "line-numbers"]
     line-numbers-minus-style = 1

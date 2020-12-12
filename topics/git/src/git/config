@@ -3,7 +3,7 @@
     email = aomanu@gmail.com
 
 [core]
-    pager = less -XQRMAFie
+    pager = less -+e
 
 [diff]
     colorMoved = default

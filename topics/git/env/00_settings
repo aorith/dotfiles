@@ -1,0 +1,5 @@
+# vim: ft=bash
+
+if [[ -n $IN_KITTY ]] || [[ -n $IN_TMUX ]]; then
+    export GIT_PAGER=delta
+fi
