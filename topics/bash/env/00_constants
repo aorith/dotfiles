@@ -1,9 +1,10 @@
 # vim: ft=bash
 
 export EDITOR='vim'
+export VISUAL='vim'
 export TERMINAL='alacritty'
 
-export LESS='-XQRMAFie'
+export LESS='-XRMFie'
 export LESSHISTFILE='-'
 export PAGER="less"
 export MANPAGER="$PAGER"
