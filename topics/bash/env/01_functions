@@ -7,6 +7,7 @@ ssh() {
     _user="$($EXEC -G "$@" | head -1 | awk '{print $2}')"
     _hostname="$($EXEC -G "$@" | head -3 | grep -E ^hostname | awk '{print $2}')"
     echo -e "\033]0;${_user}@${_hostname}\007"
+    [[ -z "$SSH_TERM" ]] && SSH_TERM="xterm-256color"
     TERM="$SSH_TERM" "$EXEC" "$@"
     echo -e "\033]0;$(whoami)@$(hostname)\007"
 }
