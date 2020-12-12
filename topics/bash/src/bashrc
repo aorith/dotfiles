@@ -18,6 +18,7 @@ do
 done
 unset completion
 
+# set nullglob early
 shopt -s nullglob
 
 # source local alias/functions ...
@@ -31,8 +32,6 @@ for env_file in $env_files; do
     . "$env_file"
 done
 unset env_file env_files
-
-shopt -u nullglob
 
 source "${DOTFILES}/topics/bash/etc/colors.bash"
 source "${DOTFILES}/topics/bash/etc/prompt.bash"
