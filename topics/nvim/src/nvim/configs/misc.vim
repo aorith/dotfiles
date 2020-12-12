@@ -1,24 +1,17 @@
-" highlight non ascii characters
-highlight NonAscii guibg=Red ctermbg=2
-
-" highlight extra whitespace
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-
 augroup aorith_autocmds
     autocmd!
-    " Last position without centered cursor
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-    " highlight non ascii characters
-    autocmd BufRead * syntax match NonAscii "[^\x00-\x7F]" containedin=all
     " highlight extra whitespace
-    autocmd BufRead * syntax match ExtraWhitespace /\s\+$/ containedin=all
+    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=54 guibg=#ff0000
+    autocmd ColorScheme * match ExtraWhitespace /\s\+$/
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()
     " Last position without centered cursor
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     " For large files
-    autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax sync clear | endif
-    " yank highlight
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-augroup END
+    "autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax sync clear | endif
+augroup end
 
 " highlight current line
 set cursorline
@@ -28,9 +21,3 @@ endif
 
 " use % to jump from if to endif for example
 runtime macros/matchit.vim
-
-" Plugins need to be added to runtimepath before helptags can be generated.
-packloadall
-" Load all of the helptags now, after plugins have been loaded.
-" All messages and errors will be ignored.
-silent! helptags ALL

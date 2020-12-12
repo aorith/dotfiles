@@ -1,7 +1,15 @@
 " See :h nvim-defaults
 
-set scrolloff=8
-set sidescrolloff=8
+"set Vim-specific sequences for RGB colors
+if &term !~? 'screen\|tmux'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+let &t_ut='' " disable background color erase
+
+set scrolloff=3
+set showtabline=2
 set showmatch
 set number
 set hidden
@@ -71,8 +79,6 @@ endfunction
 
 function! SetTermguicolors()
     if has('termguicolors')
-        let &t_8f = "\<esc>[38;2;%lu;%lu;%lum" " Needed in tmux
-        let &t_8b = "\<esc>[48;2;%lu;%lu;%lum" " same
         set termguicolors
     endif
 endfunction
