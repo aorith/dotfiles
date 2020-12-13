@@ -147,6 +147,7 @@ if !isdirectory($HOME . '/.local/share/vim/backup')
 	call mkdir($HOME . '/.local/share/vim/backup', 'p', 0700)
 endif
 
+set viminfo+=n~/.local/share/vim/viminfo
 set undodir=~/.local/share/vim/undodir//
 set undolevels=1000 undoreload=10000
 set backupdir=~/.local/share/vim/backup//

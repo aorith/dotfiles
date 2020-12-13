@@ -2,6 +2,9 @@
 
 set nocompatible
 
+let skip_defaults_vim=1
+set viminfo=""
+
 set nonumber
 set nolist
 set backspace=indent,eol,start
