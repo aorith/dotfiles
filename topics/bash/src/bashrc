@@ -18,7 +18,6 @@ do
 done
 unset completion
 
-# set nullglob early
 shopt -s nullglob
 
 # Nix
@@ -39,6 +38,9 @@ unset env_file env_files
 
 source "${DOTFILES}/topics/bash/etc/colors.bash"
 source "${DOTFILES}/topics/bash/etc/prompt.bash"
+
+# disable it: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=666933
+shopt -u nullglob
 
 trap '__before_command' DEBUG
 PROMPT_COMMAND='__prompt_command'
