@@ -6,6 +6,7 @@
 create_link "${PWD}/src/alacritty" "$HOME/.config/alacritty"
 
 if ! infocmp alacritty &>/dev/null; then
+    [[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }
     current_user=$(whoami)
     sudo tic -xe alacritty,alacritty-direct etc/alacritty.info
     [[ -d "/root" ]] && sudo cp -r ~/.terminfo /root/
