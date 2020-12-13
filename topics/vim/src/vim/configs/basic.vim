@@ -21,7 +21,6 @@ let &t_ut='' " disable background color erase
 
 set backspace=eol,indent,start
 set showcmd
-set ruler
 set display+=lastline
 set showtabline=2
 set scrolloff=4
