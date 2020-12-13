@@ -3,7 +3,7 @@
 ### bootstrap
 create_link "${PWD}/src/tmux" "$HOME/.config/tmux"
 
-[[ -n "$SSH_CLIEN" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }
+[[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }
 current_user=$(whoami)
 # Ncurses terminfo
 #curl -o /tmp/terminfo.gz -sL 'https://invisible-island.net/datafiles/current/terminfo.src.gz' && gunzip -f /tmp/terminfo.gz
