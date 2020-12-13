@@ -21,6 +21,10 @@ unset completion
 # set nullglob early
 shopt -s nullglob
 
+# Nix
+test -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" && \
+    . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+
 # source local alias/functions ...
 [ -r "${HOME}"/.bash_local ] && . "${HOME}"/.bash_local
 
