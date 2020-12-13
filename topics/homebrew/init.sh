@@ -37,6 +37,10 @@ formulae_packages=(
     "kakoune"
     "python@3.8"
     "shellcheck"
+    "neofetch"
+    "lesspipe"
+    "watch"
+    "gawk"
 )
 
 formulae_source_packages=(
@@ -66,6 +70,7 @@ cask_packages=(
     "virtualbox-extension-pack"
     "visual-studio-code"
     "vlc"
+    "mpv"
 )
 
 brew update
