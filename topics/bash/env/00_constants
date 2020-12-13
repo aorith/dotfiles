@@ -10,6 +10,12 @@ export PAGER="less"
 export MANPAGER="$PAGER"
 export SYSTEMD_LESS="$LESS"
 
+if [[ -x "/usr/bin/lesspipe" ]]; then
+    eval $(/usr/bin/lesspipe)
+elif [[ -r "/usr/local/bin/lesspipe.sh" ]]; then
+    export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+fi
+
 export LESS_TERMCAP_mb=$'\E[01;31m'    # begins blinking
 export LESS_TERMCAP_md=$'\E[01;34m'    # begins bold
 export LESS_TERMCAP_me=$'\E[0m'        # ends mode
