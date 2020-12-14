@@ -41,7 +41,7 @@ set backup
 set undofile
 set laststatus=2
 set title
-set titlestring=VIM(%t)
+let &titlestring= hostname() . "(%t)"
 set titleold=
 set foldmethod=syntax
 set foldlevelstart=999 " no fold by default

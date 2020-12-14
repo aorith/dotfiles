@@ -23,6 +23,9 @@ set foldlevel=99
 set foldlevelstart=99
 set ffs=unix,dos,mac
 
+set title
+let &titlestring= hostname() . "(%t)"
+
 set completeopt+=menuone,noselect
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
