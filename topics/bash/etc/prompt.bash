@@ -72,8 +72,7 @@ __load_avg() {
     _LOADAVG="$_LOADAVG "
 }
 
-_OSTYPE="$(uname -s)"
-if [[ "$_OSTYPE" = "Darwin" ]]; then
+if [[ "$_OS" = "Darwin" ]]; then
     _AVGEXEC="sysctl -n vm.loadavg"
 else
     _AVGEXEC="cat /proc/loadavg"
@@ -103,7 +102,7 @@ __stop_timer() {
     elif ((ms > 0)); then _timer_val="${ms}.$((delta_us / 100))ms"
     else _timer_val="${delta_us}us"
     fi
-    
+
     _TIMER_VAL="${my_dim}${my_wht}~${_timer_val}${my_rst} "
     unset _TIMER
     unset timer_now
