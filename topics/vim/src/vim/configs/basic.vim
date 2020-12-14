@@ -19,11 +19,21 @@ endif
 
 let &t_ut='' " disable background color erase
 
+if has('autocmd')
+  filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
 set backspace=eol,indent,start
 set showcmd
 set display+=lastline
 set showtabline=2
 set scrolloff=4
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
 set showmatch
 set number
 "set numberwidth=1 " Dynamically resize the 'number' column
@@ -89,6 +99,7 @@ set ttyfast
 if exists('+signcolumn')
     set signcolumn=yes
 endif
+set ttimeout
 set ttimeoutlen=100 " Quickly detect normal escape sequences
 
 " wrapping
@@ -176,5 +187,8 @@ function! SetVimFGBG(fg, bg)
         " will pass '\033]11;#003300\007' to the terminal
         let &t_ti = &t_ti . "\033]10;" . a:fg . "\007\033]11;" . a:bg ."\007"
         let &t_te = &t_te . "\033]110\007\033]111\007"
+
+        " I need to enable syntax again on vim 8.2
+        syntax enable
     endif
 endfunction

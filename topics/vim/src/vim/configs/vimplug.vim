@@ -48,7 +48,7 @@ let g:ale_exclude_highlights = ['line too long']
 Plug 'dense-analysis/ale'
 set omnifunc=ale#completion#OmniFunc
 
-if has('nvim') || v:version >= 802
+if v:version >= 802
   " language pack
   Plug 'sheerun/vim-polyglot'
   " git diffs on current line
