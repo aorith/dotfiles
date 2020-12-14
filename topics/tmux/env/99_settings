@@ -5,10 +5,4 @@ if [[ -n $IN_TMUX ]]; then
         # remote hosts usually don't have tmux-256color terminfo
         export SSH_TERM="xterm-256color"
     fi
-
-    if [[ "$_OS" == "Darwin" ]]; then
-        export TMUX_CLIPBOARD="pbcopy"
-    else
-        export TMUX_CLIPBOARD="xclip"
-    fi
 fi

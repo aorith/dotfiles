@@ -37,6 +37,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # Macos only
 if [[ "$_OS" == 'Darwin' ]]; then
+    export CLIPBOARD_COPY="pbcopy"
+    export CLIPBOARD_PASTE="pbpaste"
+
     for manpath in $(cat /private/etc/manpaths /private/etc/manpaths.d/* 2>/dev/null); do
         add_to_manpath "$manpath"
     done
@@ -45,6 +48,9 @@ fi
 
 # Linux only
 if [[ "$_OS" == 'Linux' ]]; then
+    export CLIPBOARD_COPY="xclip"
+    export CLIPBOARD_PASTE="xclip -out -selection clipboard"
+
     export BROWSER='firefox'
     export READER='zathura'
     export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
