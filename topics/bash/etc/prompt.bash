@@ -1,6 +1,11 @@
 # vim: ft=bash
 
-# FOR PROMPT
+if [[ "$_OS" = "Darwin" ]]; then
+    _AVGEXEC="sysctl -n vm.loadavg"
+else
+    _AVGEXEC="cat /proc/loadavg"
+fi
+
 __git_tag() {
     local dir commit tag
     dir="$1"
@@ -71,12 +76,6 @@ __load_avg() {
     esac
     _LOADAVG="$_LOADAVG "
 }
-
-if [[ "$_OS" = "Darwin" ]]; then
-    _AVGEXEC="sysctl -n vm.loadavg"
-else
-    _AVGEXEC="cat /proc/loadavg"
-fi
 
 __before_command() {
     [[ -n $_TIMER_IS_SET ]] && return 0

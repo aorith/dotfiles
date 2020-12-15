@@ -1,13 +1,6 @@
 # vim: ft=bash
 [ -z "$PS1" ] && return
 
-# Bash version check
-if ((BASH_VERSINFO[0] < 5))
-then
-    echo "Bash is not up-to-date - minimum version required is 5"
-    echo "Current version is: ${BASH_VERSINFO[0]}"
-fi
-
 # bash completion
 for completion in /etc/bash_completion \
     /usr/share/bash-completion/bash_completion \
@@ -42,5 +35,13 @@ source "${DOTFILES}/topics/bash/etc/prompt.bash"
 # disable it: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=666933
 shopt -u nullglob
 
-trap '__before_command' DEBUG
+# Bash version check
+if ((BASH_VERSINFO[0] < 5))
+then
+    echo "Bash is not up-to-date - minimum version required is 5"
+    echo "Current version is: ${BASH_VERSINFO[0]}"
+else
+    trap '__before_command' DEBUG
+fi
+
 PROMPT_COMMAND='__prompt_command'
