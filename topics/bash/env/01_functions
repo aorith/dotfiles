@@ -1,15 +1,25 @@
 # vim: ft=bash
 
+# copy terminfo
+ssh-copy-terminfo() {
+	local EXEC
+    EXEC="$(which ssh)"
+    [[ $# -eq 0 ]] && { echo "Missing [user@]hostname"; return 1; }
+    infocmp $TERM &>/dev/null || { echo "Either infocmp is not installed or missing $TERM terminfo"; return 1; }
+    echo "Copying $TERM terminfo to $*"
+    infocmp | $EXEC "$*" "tic -"
+}
+
 # ssh wrapper
 ssh() {
     local EXEC _user _hostname
     EXEC="$(which ssh)"
     _user="$($EXEC -G "$@" | head -1 | awk '{print $2}')"
     _hostname="$($EXEC -G "$@" | head -3 | grep -E ^hostname | awk '{print $2}')"
-    echo -e "\033]0;${_user}@${_hostname}\007"
+    echo -ne "\033]0;${_user}@${_hostname}\007"
     [[ -z "$SSH_TERM" ]] && SSH_TERM="xterm-256color"
     TERM="$SSH_TERM" "$EXEC" "$@"
-    echo -e "\033]0;$(whoami)@$(hostname)\007"
+    echo -ne "\033]0;$(whoami)@$(hostname)\007"
 }
 
 # tests if $1 > $2
@@ -51,7 +61,7 @@ udate() {
     unset TZ
 }
 
-# le pasas timestamp en unix y te lo muestra en varios husos horarios 
+# le pasas timestamp en unix y te lo muestra en varios husos horarios
 unixdate() {
     local EXE timestamp
     timestamp="${1:-}"
