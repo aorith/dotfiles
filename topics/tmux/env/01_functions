@@ -1,0 +1,11 @@
+# vim: ft=bash
+
+# tmux
+tmux() {
+	local EXE
+	EXE="$(which tmux)"
+	#EXE="$HOME/opt/bin/tmux"
+    if [[ $# -ne 0 ]]; then $EXE -u "$@"
+    elif ! $EXE -u attach; then $EXE -u; fi
+}
+

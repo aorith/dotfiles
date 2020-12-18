@@ -27,15 +27,6 @@ _greater_than() {
     [ ${1%.*} -eq ${2%.*} ] && [ ${1#*.} \> ${2#*.} ] || [ ${1%.*} -gt ${2%.*} ]
 }
 
-# tmux
-tmux() {
-	local EXE
-	EXE="$(which tmux)"
-	#EXE="$HOME/opt/bin/tmux"
-    if [[ $# -ne 0 ]]; then $EXE -2 -u "$@"
-    elif ! $EXE -2 attach; then $EXE -2 -u; fi
-}
-
 # le pasas una fecha y la muestra en varios husos horarios
 udate() {
     local EXE actual fecha MYTZ
