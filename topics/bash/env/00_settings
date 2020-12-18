@@ -5,6 +5,7 @@ shopt -s histappend
 shopt -s cmdhist # Save multi-line commands as one command
 
 complete -cf sudo
+bind 'set enable-bracketed-paste on'
 
 if ((BASH_VERSINFO[0] >= 5)); then
     # History
