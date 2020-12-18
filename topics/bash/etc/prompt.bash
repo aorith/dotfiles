@@ -59,7 +59,7 @@ __jobs_ps1() {
 __load_avg() {
     # loadavg
     local i=1 line
-    [[ "$_OSTYPE" = "Darwin" ]] && i=0
+    [[ "$_OS" = "Darwin" ]] && i=0
     for line in $($_AVGEXEC); do
         _loadval[$i]=$line
         i=$(( i + 1 ))
@@ -129,7 +129,7 @@ __prompt_command () {
     # load average
     #__load_avg
 
-    [[ ! -w $PWD ]] && local _WRITEABLE="${my_red}[ro]${my_rst} "
+    #[[ ! -w $PWD ]] && local _WRITEABLE="${my_red}[ro]${my_rst} "
 
     local _TIME
     _TIME="${my_dim}${my_wht}\t${my_rst} "
