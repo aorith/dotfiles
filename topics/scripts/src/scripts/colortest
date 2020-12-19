@@ -10,5 +10,6 @@ for FG in $(seq 0 15); do
     echo;
 done
 echo
-echo -e 'Normal, \x1b[1mbold\x1b[22m, \x1b[3mitalic\x1b[23m, \x1b[1;3mbold italic\x1b[22;23m'
+echo -n "colors: "; tput colors
+echo -e 'Normal, \x1b[1mbold\x1b[22m, \x1b[3mitalic\x1b[23m, \x1b[1;3mbold italic\x1b[22;23m,' "$(tput rev)Reverse$(tput sgr0), $(tput smul)Underline$(tput sgr0)"
 
