@@ -41,6 +41,8 @@ formulae_packages=(
     "lesspipe"
     "watch"
     "gawk"
+    "vim"
+    "ansible"
 )
 
 formulae_source_packages=(
@@ -50,7 +52,6 @@ formulae_source_packages=(
 cask_packages=(
     "alacritty"
     "kitty"
-    "macvim"
     "apache-directory-studio"
     "beyond-compare"
     "firefox"
