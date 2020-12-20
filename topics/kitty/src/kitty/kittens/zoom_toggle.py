@@ -3,7 +3,7 @@ def main(args):
 
 
 def handle_result(args, answer, target_window_id, boss):
-    zoom_txt = "[F]"
+    zoom_txt = "\x1b[38:2:252:252:2m[F]"
     tab = boss.active_tab
     if tab is not None:
         title = tab.title
