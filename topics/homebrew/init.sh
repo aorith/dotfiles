@@ -43,6 +43,8 @@ formulae_packages=(
     "gawk"
     "vim"
     "ansible"
+    "fzf"
+    "gron"
 )
 
 formulae_source_packages=(
