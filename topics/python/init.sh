@@ -4,6 +4,7 @@
 [[ "$(uname -s)" != "Darwin" ]] && exit 0
 
 ### bootstrap
+symlink_env
 version="3.8.6"
 # pyenv install --list  # check python versions
 # pyenv install 3.8.6  # install 3.8

@@ -49,4 +49,12 @@ create_link() {
     _backup "${2}"
     _link "${1}" "${2}"
 }
+
+symlink_env() {
+    local topic
+    topic="$(basename $PWD)"
+    for env_file in env/*; do
+        ln -sf "${PWD}/$env_file" "${ENV_FILES_FOLDER}/$(basename ${env_file})_${topic}"
+    done
+}
 set +a

@@ -1,7 +1,4 @@
 # vim: ft=bash
 
-# macos only
-[[ "$_OS" != "Darwin" ]] && return
-
 add_to_path "${PYENV_ROOT}/bin"
 eval "$(pyenv init -)"

@@ -1,8 +1,5 @@
 # vim: ft=bash
 
-# macos only
-[[ "$_OS" != "Darwin" ]] && return
-
 add_to_path "/usr/local/bin"
 add_to_path "/usr/local/sbin"
 add_to_path "/usr/local/opt/coreutils/libexec/gnubin"

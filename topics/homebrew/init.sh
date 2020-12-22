@@ -4,6 +4,8 @@
 [[ "$(uname -s)" != "Darwin" ]] && exit 0
 
 ### bootstrap
+symlink_env
+
 formulae_packages=(
     "bash"
     "bash-completion@2"
@@ -76,20 +78,20 @@ cask_packages=(
     "mpv"
 )
 
-brew update
-brew tap homebrew/cask-fonts
-brew tap homebrew-ffmpeg/ffmpeg
+/usr/local/bin/brew update
+/usr/local/bin/brew tap homebrew/cask-fonts
+/usr/local/bin/brew tap homebrew-ffmpeg/ffmpeg
 for package in "${formulae_source_packages[@]}"; do
-    brew install --formulae --build-from-source $package
+    /usr/local/bin/brew install --formulae --build-from-source $package
 done
 for package in "${formulae_packages[@]}"; do
-    brew install --formulae $package
+    /usr/local/bin/brew install --formulae $package
 done
 for package in "${cask_packages[@]}"; do
-    brew install --cask $package
+    /usr/local/bin/brew install --cask $package
 done
 unset package formulae_packages formulae_source_packages cask_packages
-brew cleanup
+/usr/local/bin/brew cleanup
 
 if ! grep -q '/usr/local/bin/bash' /etc/shells; then
   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;

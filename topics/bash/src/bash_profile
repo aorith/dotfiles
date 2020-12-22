@@ -5,6 +5,9 @@ export DOTFILES="${HOME}/githome/dotfiles"
 [[ -d "${HOME}/Syncthing/SYNC_STUFF/private_dotfiles" ]] && \
     export PRIVATE_DOTFILES="${HOME}/Syncthing/SYNC_STUFF/private_dotfiles"
 
+# ENV FILES FOLDER
+export ENV_FILES_FOLDER="$HOME/.config/env_files_folder"
+
 # OS
 export _OS="$(uname -s)"
 

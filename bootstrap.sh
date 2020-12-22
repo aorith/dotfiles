@@ -4,6 +4,7 @@ shopt -s nullglob
 
 PRIV_DOTFILES="$HOME/Syncthing/SYNC_STUFF/private_dotfiles"
 DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ENV_FILES_FOLDER="$HOME/.config/env_files_folder"
 cd "$DOTFILES" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh

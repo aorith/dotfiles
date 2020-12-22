@@ -21,13 +21,10 @@ test -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" && \
 [ -r "${HOME}"/.bash_local ] && . "${HOME}"/.bash_local
 
 # SOURCE ENV FILES IN ORDER
-env_files="$(for env_file in "${DOTFILES}"/topics/*/env/* "${PRIVATE_DOTFILES}"/topics/*/env/*; do
-    echo "$env_file"
-done | awk -F'/' '{print $NF,$0}' | sort -n | awk '{print $2}')"
-for env_file in $env_files; do
+for env_file in "${ENV_FILES_FOLDER}"/*; do
     . "$env_file"
 done
-unset env_file env_files
+unset env_file
 
 source "${DOTFILES}/topics/bash/etc/colors.bash"
 source "${DOTFILES}/topics/bash/etc/prompt.bash"

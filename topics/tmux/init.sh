@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ### bootstrap
+symlink_env
 create_link "${PWD}/src/tmux" "$HOME/.config/tmux"
 
 [[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }

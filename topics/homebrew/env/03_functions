@@ -1,11 +1,8 @@
 # vim: ft=bash
 
-# macos only
-if [[ "$_OS" == "Darwin" ]]; then
-    my_brew_update() {
-        brew update && \
-            brew upgrade && \
-            brew upgrade --cask && \
-            brew cleanup --prune=0
-    }
-fi
+my_brew_update() {
+    brew update && \
+        brew upgrade && \
+        brew upgrade --cask && \
+        brew cleanup --prune=0
+}
