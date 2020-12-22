@@ -130,6 +130,7 @@ __prompt_command () {
     #__load_avg
 
     #[[ ! -w $PWD ]] && local _WRITEABLE="${my_red}[ro]${my_rst} "
+    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="${my_red}@ssh${my_rst}"
 
     local _TIME
     _TIME="${my_dim}${my_wht}\t${my_rst} "
@@ -137,7 +138,7 @@ __prompt_command () {
     PS1="\[\033]0;\h:\W\007\]\
 ${my_ylw}\u${my_rst}\
 @\
-${my_bld}${my_pur}\h${my_rst}\
+${my_bld}${my_pur}\h${my_rst}${_ON_SSH}\
  ${my_bld}${my_blu}\w${my_rst} \
 ${_BRANCH}${_WRITEABLE}${_TIME}${_TIMER_VAL}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
  \n$ "
