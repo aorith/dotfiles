@@ -1,12 +1,12 @@
 alt_send_esc: false
-# background_opacity: 0.95
+#background_opacity: 0.97
 
 window:
-  decorations: buttonless
+  decorations: full
   padding:
     x: 4
-    y: 4
-    dynamic_padding: true
+    y: 2
+    dynamic_padding: false
 
 scrolling:
   history: 5000
@@ -14,22 +14,29 @@ scrolling:
 font:
   normal:
     family: "Hack"
+    style: Regular
+  bold:
+    family: "Hack"
+    style: Bold
+  italic:
+    family: "Hack"
+    style: Italic
+  offset:
+    x: 0
+    y: 0
 
   size: 14
-  use_thin_strokes: true
+  use_thin_strokes: false
   draw_bold_text_with_bright_colors: false
 
 mouse:
   hide_when_typing: true
 
 selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: true
 
 cursor:
   style: Block
-  blinking: Always
-  blink_interval: 750
 
 debug:
   log_level: None
