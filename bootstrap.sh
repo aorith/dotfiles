@@ -11,6 +11,9 @@ cd "$DOTFILES" || exit 1
 
 log_header "Start"
 
+# Create ENV_FILES_FOLDER
+[[ ! -d "$ENV_FILES_FOLDER" ]] && mkdir -p "$ENV_FILES_FOLDER"
+
 # Boostrap only one topic
 if [[ $# -gt 0 ]]; then
 
