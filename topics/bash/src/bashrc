@@ -20,11 +20,8 @@ test -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" && \
 # source local alias/functions ...
 [ -r "${HOME}"/.bash_local ] && . "${HOME}"/.bash_local
 
-# SOURCE ENV FILES IN ORDER
-for env_file in "${ENV_FILES_FOLDER}"/*; do
-    . "$env_file"
-done
-unset env_file
+# source .bash.env file
+source "${HOME}/.config/env_files_folder/.bash.env"
 
 source "${DOTFILES}/topics/bash/etc/colors.bash"
 source "${DOTFILES}/topics/bash/etc/prompt.bash"

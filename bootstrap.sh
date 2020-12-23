@@ -11,9 +11,6 @@ cd "$DOTFILES" || exit 1
 
 log_header "Start"
 
-# Create ENV_FILES_FOLDER
-[[ ! -d "$ENV_FILES_FOLDER" ]] && mkdir -p "$ENV_FILES_FOLDER"
-
 # Boostrap only one topic
 if [[ $# -gt 0 ]]; then
 
@@ -40,9 +37,19 @@ if [[ $# -gt 0 ]]; then
             fi
             popd >/dev/null || exit 1
         fi
+        if test -x topics/$1/postinstall.sh; then
+            log_info "Postinstall for topic: $1"
+            pushd "topics/$1" >/dev/null || exit 1
+            if ! ./postinstall.sh; then
+                log_error "Execution of \"$1/postinstall.sh\" failed."
+                popd >/dev/null || exit 1
+                exit 1
+            fi
+            popd >/dev/null || exit 1
+        fi
 
     }
-    
+
     log_header "Bootstrapping $1 only."; echo
     bootstrap_topic $1
     if test -d "$PRIV_DOTFILES"; then
@@ -78,6 +85,20 @@ for init_script in topics/*/init.sh; do
     fi
     popd >/dev/null || exit 1
 done
+unset init_script
+
+log_header "Postinstall scripts"
+for postinstall_script in topics/*/postinstall.sh; do
+    log_info "Postinstall for topic: $(basename $(dirname "${postinstall_script}"))"
+    pushd "$(dirname "$postinstall_script")" >/dev/null || exit 1
+    if ! ./postinstall.sh; then
+        log_error "Execution of \"$postinstall_script\" failed."
+        popd >/dev/null || exit 1
+        exit 1
+    fi
+    popd >/dev/null || exit 1
+done
+unset postinstall_script
 
 if test -d "$PRIV_DOTFILES"; then
     log_header "Bootstrap of private dotfiles"
@@ -104,6 +125,17 @@ if test -d "$PRIV_DOTFILES"; then
         popd >/dev/null || exit 1
     done
     unset init_script
+    for postinstall_script in topics/*/postinstall.sh; do
+        log_info "Postinstall for topic: $(basename $(dirname "${postinstall_script}"))"
+        pushd "$(dirname "$postinstall_script")" >/dev/null || exit 1
+        if ! ./postinstall.sh; then
+            log_error "Execution of \"$postinstall_script\" failed."
+            popd >/dev/null || exit 1
+            exit 1
+        fi
+        popd >/dev/null || exit 1
+    done
+    unset postinstall_script
 fi
 
 cd "$DOTFILES" || exit 1
