@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# vim: ft=bash
 
 # macos only
 [[ "$(uname -s)" != "Darwin" ]] && exit 0
@@ -9,6 +9,7 @@ symlink_env
 formulae_packages=(
     "bash"
     "bash-completion@2"
+    "zsh"
     "coreutils"
     "findutils"
     "moreutils"
