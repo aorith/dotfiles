@@ -87,19 +87,6 @@ for init_script in topics/*/init.sh; do
 done
 unset init_script
 
-log_header "Postinstall scripts"
-for postinstall_script in topics/*/postinstall.sh; do
-    log_info "Postinstall for topic: $(basename $(dirname "${postinstall_script}"))"
-    pushd "$(dirname "$postinstall_script")" >/dev/null || exit 1
-    if ! ./postinstall.sh; then
-        log_error "Execution of \"$postinstall_script\" failed."
-        popd >/dev/null || exit 1
-        exit 1
-    fi
-    popd >/dev/null || exit 1
-done
-unset postinstall_script
-
 if test -d "$PRIV_DOTFILES"; then
     log_header "Bootstrap of private dotfiles"
     cd "$PRIV_DOTFILES" || exit 1
@@ -139,6 +126,18 @@ if test -d "$PRIV_DOTFILES"; then
 fi
 
 cd "$DOTFILES" || exit 1
+log_header "Postinstall scripts"
+for postinstall_script in topics/*/postinstall.sh; do
+    log_info "Postinstall for topic: $(basename $(dirname "${postinstall_script}"))"
+    pushd "$(dirname "$postinstall_script")" >/dev/null || exit 1
+    if ! ./postinstall.sh; then
+        log_error "Execution of \"$postinstall_script\" failed."
+        popd >/dev/null || exit 1
+        exit 1
+    fi
+    popd >/dev/null || exit 1
+done
+unset postinstall_script
 
 log_header "Updating git submodules"
 git submodule update --remote --jobs=4
