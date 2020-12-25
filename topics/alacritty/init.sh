@@ -1,9 +1,10 @@
-#!/usr/bin/env bash
-
-# macos only
+# vim: ft=bash
 
 ### bootstrap
 create_link "${PWD}/src/alacritty" "$HOME/.config/alacritty"
+
+# macos only
+[[ "$(uname -s)" != "Darwin" ]] && exit 0
 
 if ! infocmp alacritty &>/dev/null; then
     [[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }

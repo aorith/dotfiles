@@ -52,9 +52,17 @@ create_link() {
 
 symlink_env() {
     local topic
+    local shells
+    shells="bash zsh"
     topic="$(basename $PWD)"
-    for env_file in env/*; do
-        ln -sf "${PWD}/$env_file" "${ENV_FILES_FOLDER}/$(basename ${env_file})_${topic}"
+    shopt -s nullglob
+    for shell in $shells; do
+        mkdir -p "${ENV_FILES_FOLDER}/${shell}"
+        for env_file in env/${shell}/*; do
+            ln -sf "${PWD}/$env_file" "${ENV_FILES_FOLDER}/${shell}/$(basename ${env_file})_${topic}"
+        done
+        unset shell
     done
+    shopt -u nullglob
 }
 set +a

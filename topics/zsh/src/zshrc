@@ -1,0 +1,6 @@
+# vim: ft=zsh
+echo "Loading zshrc ..."
+
+# source zsh.env file
+source "${HOME}/.config/env_files_folder/zsh.env"
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# vim: ft=bash
 
 # macos only
 [[ "$(uname -s)" != "Darwin" ]] && exit 0

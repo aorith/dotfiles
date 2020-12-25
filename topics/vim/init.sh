@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# vim: ft=bash
 
 ### bootstrap
 create_link "${PWD}/src/vim" "$HOME/.vim"

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# vim: ft=bash
 
 ### bootstrap
 symlink_env
