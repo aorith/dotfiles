@@ -1,0 +1,7 @@
+# vim: ft=bash
+
+if [[ -n "$IN_KITTY" ]]; then
+    # remote hosts do not have xterm-kitty terminfo
+    export SSH_TERM="xterm-256color"
+fi
+

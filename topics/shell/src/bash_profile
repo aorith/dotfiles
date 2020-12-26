@@ -1,0 +1,4 @@
+# vim: ft=bash
+
+[[ -r ~/.profile ]] && . ~/.profile
+[[ -r ~/.bashrc ]] && . ~/.bashrc

@@ -1,0 +1,18 @@
+# vim: ft=zsh
+
+emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/functions"'
+emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/constants"'
+source "${DOTFILES}/topics/shell/etc/zsh/settings.zsh"
+source "${DOTFILES}/topics/shell/etc/zsh/aliases.zsh"
+# source auto-generated zsh.env file
+source "${DOTFILES}/topics/shell/etc/zsh/zsh.env"
+# source auto-generated shell.env file
+emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/shell.env"'
+emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/aliases"'
+source "${DOTFILES}/topics/shell/etc/zsh/prompt.zsh"
+
+# completions
+fpath=(${DOTFILES}/topics/shell/etc/zsh/plugins/zsh-completions/src $fpath)
+
+# syntax highlighting
+source ${DOTFILES}/topics/shell/etc/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

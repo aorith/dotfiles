@@ -1,12 +1,12 @@
 # vim: ft=bash
 
 export EDITOR='vim'
-export VISUAL='vim'
+export VISUAL=$EDITOR
 export TERMINAL='alacritty'
 
 export LESS='-XRMFie'
 export LESSHISTFILE='-'
-export PAGER="less"
+export PAGER='less'
 export MANPAGER="$PAGER"
 export SYSTEMD_LESS="$LESS"
 
@@ -41,9 +41,19 @@ if [[ "$_OS" == 'Darwin' ]]; then
     export CLIPBOARD_COPY="pbcopy"
     export CLIPBOARD_PASTE="pbpaste"
 
-    for manpath in $(cat /private/etc/manpaths /private/etc/manpaths.d/* 2>/dev/null); do
-        add_to_manpath "$manpath"
-    done
+    if type manpath >/dev/null 2>&1; then
+        oldIFS="$IFS"
+        IFS=:
+        for man_path in $(manpath); do
+            add_to_manpath "$man_path"
+        done
+        IFS="$oldIFS"
+        unset man_path
+    fi
+
+    for man_path in $(cat /private/etc/manpaths) $(cat /private/etc/manpaths.d/*); do
+        add_to_manpath "$man_path"
+    done 2>/dev/null
     unset manpath
 fi
 
@@ -59,3 +69,4 @@ if [[ "$_OS" == 'Linux' ]]; then
     export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
     export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 fi
+

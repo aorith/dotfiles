@@ -1,6 +1,0 @@
-# vim: ft=zsh
-
-echo "Loading zprofile ..."
-
-export EDITOR=vim
-export VISUAL=$EDITOR

@@ -1,0 +1,5 @@
+# vim: ft=zsh
+
+if [[ -n "$IN_KITTY" ]]; then
+    kitty + complete setup zsh | source /dev/stdin
+fi

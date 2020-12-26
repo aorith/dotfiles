@@ -1,0 +1,15 @@
+# vim: ft=bash
+
+# DOTFILES
+export DOTFILES="${HOME}/githome/dotfiles"
+[[ -d "${HOME}/Syncthing/SYNC_STUFF/private_dotfiles" ]] && \
+    export PRIVATE_DOTFILES="${HOME}/Syncthing/SYNC_STUFF/private_dotfiles"
+
+# OS
+export _OS="$(uname -s)"
+
+# MacOs "path_helper" fix ...
+if [[ "$_OS" == "Darwin" ]]; then
+    PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+fi
+

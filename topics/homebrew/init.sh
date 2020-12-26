@@ -4,8 +4,6 @@
 [[ "$(uname -s)" != "Darwin" ]] && exit 0
 
 ### bootstrap
-symlink_env
-
 formulae_packages=(
     "bash"
     "bash-completion@2"

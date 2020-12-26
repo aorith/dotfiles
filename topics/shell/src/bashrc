@@ -11,23 +11,24 @@ do
 done
 unset completion
 
-shopt -s nullglob
-
 # Nix
 test -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" && \
     . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 
+source "${DOTFILES}/topics/shell/etc/shell/functions"
+source "${DOTFILES}/topics/shell/etc/shell/constants"
+source "${DOTFILES}/topics/shell/etc/bash/settings.bash"
+# source the auto-generated bash.env
+source "${DOTFILES}/topics/shell/etc/bash/bash.env"
+# source the auto-generated shell.env
+source "${DOTFILES}/topics/shell/etc/shell/shell.env"
+
+source "${DOTFILES}/topics/shell/etc/shell/aliases"
+source "${DOTFILES}/topics/shell/etc/bash/colors.bash"
+source "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
+
 # source local alias/functions ...
 [ -r "${HOME}"/.bash_local ] && . "${HOME}"/.bash_local
-
-# source bash.env file
-source "${HOME}/.config/env_files_folder/bash.env"
-
-source "${DOTFILES}/topics/bash/etc/colors.bash"
-source "${DOTFILES}/topics/bash/etc/prompt.bash"
-
-# disable it: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=666933
-shopt -u nullglob
 
 # Bash version check
 if ((BASH_VERSINFO[0] < 5))
