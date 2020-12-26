@@ -139,6 +139,7 @@ done
 unset postinstall_script
 
 log_header "Updating git submodules"
-git submodule update --remote --jobs=4
+git submodule sync
+git submodule update --init --recursive
 
 log_header "End"
