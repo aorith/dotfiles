@@ -2,8 +2,8 @@
 
 shopt -s nullglob
 
-PRIV_DOTFILES="$HOME/Syncthing/SYNC_STUFF/private_dotfiles"
-DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+export PRIV_DOTFILES="$HOME/Syncthing/SYNC_STUFF/private_dotfiles"
+export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "$DOTFILES" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
