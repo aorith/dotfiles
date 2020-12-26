@@ -11,6 +11,9 @@ emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/shell.env"'
 emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/aliases"'
 source "${DOTFILES}/topics/shell/etc/zsh/prompt.zsh"
 
+# local shell alias & functions ...
+[ -r "${HOME}/.shell_local" ] && emulate sh -c 'source "${HOME}/.shell_local"'
+
 # completions
 fpath=(${DOTFILES}/topics/shell/etc/zsh/plugins/zsh-completions/src $fpath)
 

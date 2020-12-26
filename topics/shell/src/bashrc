@@ -28,7 +28,7 @@ source "${DOTFILES}/topics/shell/etc/bash/colors.bash"
 source "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
 
 # source local alias/functions ...
-[ -r "${HOME}"/.bash_local ] && . "${HOME}"/.bash_local
+[ -r "${HOME}/.shell_local" ] && source "${HOME}/.shell_local"
 
 # Bash version check
 if ((BASH_VERSINFO[0] < 5))
