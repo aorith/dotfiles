@@ -77,8 +77,8 @@ add-zsh-hook -Uz precmd _my_precmd
 add-zsh-hook -Uz precmd _my_git_precmd
 
 function PCMD() {
-    [[ -n "$SSH_CLIENT" ]] && _on_ssh="@%F{229}ssh%f" || _on_ssh=""
-    echo "%F{208}%n%f@%F{202}%B%m%f%b$_on_ssh %F{109}%~%f %F{241}$_cmd_time%f$_BRANCH%(1j.%F{144}[Jobs:%j]%f .)%(?..%F{196}%B%?%f%b ) \n%F{239}%* %F{69}\u276F%f%b "
+    [[ -n "$SSH_CLIENT" ]] && _on_ssh="%F{229}%Bssh%f%b@" || _on_ssh=""
+    echo "$_on_ssh%F{208}%n%f@%F{202}%B%m%f%b %F{109}%~%f %F{241}$_cmd_time%f$_BRANCH%(1j.%F{144}[Jobs:%j]%f .)%(?..%F{196}%B%?%f%b ) \n%F{239}%* %F{69}\u276F%f%b "
 }
 
 PROMPT='$(PCMD)'
