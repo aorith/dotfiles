@@ -16,6 +16,3 @@
 [submodule "topics/shell/etc/zsh/plugins/zsh-syntax-highlighting"]
 	path = topics/shell/etc/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "topics/shell/etc/zsh/plugins/powerlevel10k"]
-	path = topics/shell/etc/zsh/plugins/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k
