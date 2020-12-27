@@ -1,0 +1,6 @@
+# vim: ft=zsh
+# zshenv entry point - all definitions go into
+# $ZDOTDIR/.zshenv
+
+export ZDOTDIR=~/.config/zsh
+. "${ZDOTDIR}/.zshenv"

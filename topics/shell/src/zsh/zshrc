@@ -2,6 +2,10 @@
 
 emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/functions"'
 emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/constants"'
+
+# zsh-completions
+fpath=(${DOTFILES}/topics/shell/etc/zsh/plugins/zsh-completions/src $fpath)
+
 source "${DOTFILES}/topics/shell/etc/zsh/settings.zsh"
 source "${DOTFILES}/topics/shell/etc/zsh/aliases.zsh"
 # source auto-generated zsh.env file
@@ -14,8 +18,6 @@ source "${DOTFILES}/topics/shell/etc/zsh/prompt.zsh"
 # local shell alias & functions ...
 [ -r "${HOME}/.shell_local" ] && emulate sh -c 'source "${HOME}/.shell_local"'
 
-# completions
-fpath=(${DOTFILES}/topics/shell/etc/zsh/plugins/zsh-completions/src $fpath)
-
 # syntax highlighting
 source ${DOTFILES}/topics/shell/etc/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
