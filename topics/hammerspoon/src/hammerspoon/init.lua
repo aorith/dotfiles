@@ -1,0 +1,2 @@
+require('bindings')
+require('menubar')
