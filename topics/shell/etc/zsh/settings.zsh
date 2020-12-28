@@ -24,3 +24,6 @@ setopt INTERACTIVE_COMMENTS
 
 # Complate aliases
 setopt COMPLETE_ALIASES
+
+# word split similar to bash (for i in $words; ...)
+setopt SH_WORD_SPLIT
