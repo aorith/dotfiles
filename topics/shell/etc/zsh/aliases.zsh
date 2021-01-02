@@ -1,3 +1,3 @@
 # vim: ft=zsh
 
-alias history='history -iD'
+alias history='history -iD 1'
