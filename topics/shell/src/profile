@@ -13,3 +13,5 @@ if [[ "$_OS" == "Darwin" ]]; then
     PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 fi
 
+# default umask
+umask 022
