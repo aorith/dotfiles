@@ -3,6 +3,7 @@
 autoload -Uz add-zsh-hook
 autoload -Uz compinit && compinit -i
 zstyle ':completion:*' menu select
+zstyle ':completion:*' special-dirs true  # allow completion on ../
 zmodload zsh/complist
 autoload bashcompinit
 bashcompinit
