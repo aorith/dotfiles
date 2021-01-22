@@ -46,6 +46,8 @@ formulae_packages=(
     "ansible"
     "fzf"
     "gron"
+    "cmake"
+    "java"
 )
 
 formulae_source_packages=(
@@ -75,6 +77,8 @@ cask_packages=(
     "visual-studio-code"
     "vlc"
     "mpv"
+    "emacs"
+    "openwebstart"
 )
 
 /usr/local/bin/brew update
