@@ -1,5 +1,17 @@
 # vim: ft=zsh
 
+# Extended output for the time builtin.
+TIMEFMT='
+ time report for `%J`
+
+   total   %*E
+   user    %U
+   system  %S
+   cpu     %P
+   mem-avg %KKB
+   mem-max %MKB
+'
+
 emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/functions"'
 emulate sh -c 'source "${DOTFILES}/topics/shell/etc/shell/constants"'
 
