@@ -1,3 +1,5 @@
+" vim: ft=vim
+
 augroup aorith_autocmds
     autocmd!
     " highlight extra whitespace

@@ -22,6 +22,10 @@ set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
 set ffs=unix,dos,mac
+set shortmess+=c   " Shut off completion messages
+set ignorecase smartcase gdefault
+set mouse=a
+set textwidth=0
 
 set title
 let &titlestring= hostname() . "(%t)"
@@ -29,17 +33,20 @@ let &titlestring= hostname() . "(%t)"
 set completeopt+=menuone,noselect
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
-set shortmess+=c   " Shut off completion messages
-
 if exists('+signcolumn')
     set signcolumn=yes
 endif
 
-setglobal textwidth=0
-
-set mouse=a
-
-set ignorecase smartcase gdefault
+" list chars
+set nolist
+if has('multi_byte')
+    set listchars=eol:¬,tab:▸\ ,trail:·,extends:→,precedes:←,space:·
+    if v:version >= 700
+        set listchars+=nbsp:‗
+    endif
+else
+    set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<
+endif
 
 " Search results centered please
 nnoremap <silent> n nzz

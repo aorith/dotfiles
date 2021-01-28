@@ -24,8 +24,14 @@ function! TabStopStatus()
 	return str
 endfunction
 
+set noshowmode
+
 set statusline=
-set statusline+=\ %#error#%m%* " modified flag
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=%#error#%m%* " modified flag
 set statusline+=\ %#error#%r%* " readonly flag
 set statusline+=\%y " filetype
 set statusline+=[%{strlen(&fenc)?&fenc:'none'},%{&ff}] "file encoding / filetype

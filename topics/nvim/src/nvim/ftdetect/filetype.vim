@@ -1,6 +1,12 @@
-" varnish
-au BufNewFile,BufRead *.vhost setfiletype vcl
-au BufNewFile,BufRead *.vcl setfiletype vcl
+" yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" known_hosts
-au BufNewFile,BufRead known_hosts setfiletype sshknownhosts
+"markdown
+" no ocultes los backticks (a causa de indentLine)
+autocmd FileType markdown let g:indentLine_setConceal = 0
+
+" python
+" select lines + gq
+" full document with gggqG
+autocmd FileType python setlocal formatprg=autopep8\ -
+
