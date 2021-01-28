@@ -48,6 +48,8 @@ formulae_packages=(
     "gron"
     "cmake"
     "java"
+    "telnet"
+    "autopep8"
 )
 
 formulae_source_packages=(
