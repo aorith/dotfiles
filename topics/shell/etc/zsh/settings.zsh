@@ -1,5 +1,6 @@
 # vim: ft=zsh
 
+bindkey -e
 autoload -Uz add-zsh-hook
 autoload -Uz compinit && compinit -i
 zstyle ':completion:*' menu select
