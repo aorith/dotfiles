@@ -10,7 +10,7 @@ window:
     y: 2
 
 scrolling:
-  history: 5000
+  history: 0
 
 font:
   size: 14
@@ -31,10 +31,11 @@ selection:
   save_to_clipboard: true
 
 cursor:
-  style: Block
+  style:
+    shape: Block
 
 debug:
-  log_level: OFF
+  log_level: Off
   print_events: false
   ref_test: false
 
@@ -74,7 +75,8 @@ key_bindings:
   - {key: Comma, mods: Command,       chars: "\x02("}  # cycle sessions
   - {key: N,     mods: Command,       chars: "\x02\x6e"}  # cycle panes
   - {key: S,     mods: Command,       chars: "\x02\x13"}  # toggle synchronize panes
-  - {key: F,     mods: Command,       chars: "\x02\x7a"}  # toggle zoom (maximize pane)
+  - {key: Z,     mods: Command,       chars: "\x02\x7a"}  # toggle zoom (maximize pane)
+  - {key: F,     mods: Command,       chars: "\x02f"}  # search
   - {key: V,     mods: Control|Shift, chars: "\x02\x76"}  # open buffer in vim
   - {key: S,     mods: Control|Shift, chars: "\x02\x73"}  # open buffer in sublime
   - {key: N,     mods: Command|Shift, action: SpawnNewInstance}
@@ -82,6 +84,8 @@ key_bindings:
   - {key: F1,    mods: Command|Shift, command: { program: "/bin/bash", args: ["-lc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
   - {key: F6,    mods: Command,       command: { program: "/bin/bash", args: ["-lc", "tmux display-popup -w70% -h70% -KE -R $HOME/.config/alacritty/bin/switch-theme.sh"]}}
   - {key: F6,    mods: Command|Shift, command: { program: "/bin/bash", args: ["-lc", "$HOME/.config/alacritty/bin/switch-theme.sh reset"]}}
+    # unmap some bindings
+  - {key: B,     mods: Command, action: ReceiveChar}
 
 import:
   - ~/.config/alacritty/env.yml
