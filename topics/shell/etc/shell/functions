@@ -36,17 +36,6 @@ ssh-copy-terminfo() {
     infocmp | $EXEC "$*" "tic -"
 }
 
-# ssh wrapper
-ssh() {
-    local _user _hostname
-    _user="$(command ssh -G "$@" | head -1 | awk '{print $2}')"
-    _hostname="$(command ssh -G "$@" | head -3 | grep -E ^hostname | awk '{print $2}')"
-    echo -ne "\033]0;${_user}@${_hostname}\007"
-    [[ -z "$SSH_TERM" ]] && SSH_TERM="xterm-256color"
-    command env TERM="$SSH_TERM" ssh "$@"
-    echo -ne "\033]0;$(whoami)@$(hostname)\007"
-}
-
 # tests if $1 > $2
 _greater_than() {
     [ ${1%.*} -eq ${2%.*} ] && [ ${1#*.} \> ${2#*.} ] || [ ${1%.*} -gt ${2%.*} ]
