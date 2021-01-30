@@ -76,7 +76,7 @@ key_bindings:
   - {key: S,     mods: Command,       chars: "\x02\x13"}  # toggle synchronize panes
   - {key: F,     mods: Command,       chars: "\x02\x7a"}  # toggle zoom (maximize pane)
   - {key: V,     mods: Control|Shift, chars: "\x02\x76"}  # open buffer in vim
-  - {key: S,     mods: Control|Shift, chars: "\x02\x73"}  # open buffer in vim
+  - {key: S,     mods: Control|Shift, chars: "\x02\x73"}  # open buffer in sublime
   - {key: N,     mods: Command|Shift, action: SpawnNewInstance}
   - {key: F1,    mods: Command,       command: { program: "/bin/bash", args: ["-lc", "tmux new-window -n HELP glow -p $PRIVATE_DOTFILES/misc/help.md"]}}
   - {key: F1,    mods: Command|Shift, command: { program: "/bin/bash", args: ["-lc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
