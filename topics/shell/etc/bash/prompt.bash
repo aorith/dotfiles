@@ -81,8 +81,8 @@ __stop_timer() {
 
 __prompt_command () {
     __last_exit=$?
+    local LANG=C _WRITEABLE _ERRPROMPT
     [ $__last_exit -ne 0 ] && _ERRPROMPT="${my_red}${my_bld}${__last_exit}${my_rst} "
-    local LANG=C _WRITEABLE
 
     history -a
 
