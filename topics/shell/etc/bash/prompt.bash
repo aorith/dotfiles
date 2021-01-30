@@ -105,7 +105,7 @@ ${my_bld}\[\033[38;2;252;71;8m\]\h${my_rst}\
  \[\033[38;2;117;160;159m\]\w${my_rst} \
 ${_BRANCH}${_WRITEABLE}${_TIMER_VAL}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
  \n\[\033[38;2;61;61;61m\]\t${my_rst} \[\033[38;2;77;110;255m\]"\
-$'\[\xe2\x9d\xaf\]\[\033[0m\] '
+$'\xe2\x9d\xaf\[\033[0m\] '
     export PS1
 
     unset _TIMER_IS_SET
