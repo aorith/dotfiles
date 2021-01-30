@@ -40,6 +40,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 if [[ "$_OS" == 'Darwin' ]]; then
     export CLIPBOARD_COPY="pbcopy"
     export CLIPBOARD_PASTE="pbpaste"
+    export SUBL_CMD='/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
 
     if type manpath >/dev/null 2>&1; then
         oldIFS="$IFS"
@@ -61,6 +62,7 @@ fi
 if [[ "$_OS" == 'Linux' ]]; then
     export CLIPBOARD_COPY="xclip"
     export CLIPBOARD_PASTE="xclip -out -selection clipboard"
+    export SUBL_CMD='subl'
 
     export BROWSER='firefox'
     export READER='zathura'
