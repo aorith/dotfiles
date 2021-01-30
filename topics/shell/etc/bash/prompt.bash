@@ -74,7 +74,7 @@ __stop_timer() {
     else _timer_val="${delta_us}us"
     fi
 
-    _TIMER_VAL="\033[38;2;79;79;79m~${_timer_val}${my_rst} "
+    _TIMER_VAL="\[\033[38;2;79;79;79m\]~${_timer_val}${my_rst} "
     unset _TIMER
     unset timer_now
 }
@@ -96,16 +96,16 @@ __prompt_command () {
     __jobs_ps1
 
     [ ! -w $PWD ] && _WRITEABLE="${my_red}[ro]${my_rst} "
-    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="${my_bld}\033[38;2;255;255;160mssh@${my_rst}"
+    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="${my_bld}\[\033[38;2;255;255;160m\]ssh@${my_rst}"
 
     PS1="\[\033]0;\h:\W\007\]\
-${_ON_SSH}\033[38;2;226;104;9m\u${my_rst}\
+${_ON_SSH}\[\033[38;2;226;104;9m\]\u${my_rst}\
 @\
-${my_bld}\033[38;2;252;71;8m\h${my_rst}\
- \033[38;2;117;160;159m\w${my_rst} \
+${my_bld}\[\033[38;2;252;71;8m\]\h${my_rst}\
+ \[\033[38;2;117;160;159m\]\w${my_rst} \
 ${_BRANCH}${_WRITEABLE}${_TIMER_VAL}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
- \n\033[38;2;61;61;61m\t${my_rst} \033[38;2;77;110;255m"\
-$'\xe2\x9d\xaf\033[0m '
+ \n\[\033[38;2;61;61;61m\]\t${my_rst} \[\033[38;2;77;110;255m\]"\
+$'\[\xe2\x9d\xaf\]\[\033[0m\] '
     export PS1
 
     unset _TIMER_IS_SET
