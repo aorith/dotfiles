@@ -1,33 +1,28 @@
 alt_send_esc: false
 #background_opacity: 0.97
 
+env:
+  TERM: xterm-256color
+
 window:
-  decorations: full
   padding:
     x: 4
     y: 2
-    dynamic_padding: false
 
 scrolling:
   history: 5000
 
 font:
+  size: 14
   normal:
-    family: "Hack"
+    #family: "Hack"
     style: Regular
   bold:
-    family: "Hack"
+    #family: "Hack"
     style: Bold
   italic:
-    family: "Hack"
+    #family: "Hack"
     style: Italic
-  offset:
-    x: 0
-    y: 0
-
-  size: 14
-  use_thin_strokes: false
-  draw_bold_text_with_bright_colors: false
 
 mouse:
   hide_when_typing: true
@@ -87,7 +82,8 @@ key_bindings:
   - {key: F1,    mods: Command|Shift, command: { program: "/bin/bash", args: ["-lc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
 
 import:
-  - ~/.config/alacritty/themes/apprentice.yaml
+  - ~/.config/alacritty/env.yml
+  - ~/.config/alacritty/theme.yml
 
 colors:
   cursor:
