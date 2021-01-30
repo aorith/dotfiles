@@ -1,35 +1,28 @@
 # vim: ft=bash
 
-if [[ "$_OS" = "Darwin" ]]; then
-    _AVGEXEC="sysctl -n vm.loadavg"
-else
-    _AVGEXEC="cat /proc/loadavg"
-fi
-
 __git_tag() {
-    local dir commit tag
-    dir="$1"
-    if [ -e "$dir/.git/refs/heads/master" ]; then
-        if [ -e "$dir/.git/refs/tags" ]; then
-            commit="$(cat "$dir/.git/refs/heads/master")"
-            tag="$(grep -rl "$commit" "$dir/.git/refs/tags")"
-            [[ -z "$tag" ]] && return 0
-            echo " (tag ${tag##*/})"
+    local __dir __tag
+    __dir="$1"
+    if [ -e "$__dir/.git/refs/heads/master" ]; then
+        if [ -e "$__dir/.git/refs/tags" ]; then
+            __commit="$(cat "$__dir/.git/refs/heads/master")"
+            __tag="$(grep -rl "$__commit" "$__dir/.git/refs/tags")"
+            [[ -z "$__tag" ]] && return 0
+            echo " (tag ${__tag##*/})"
         fi
     fi
 }
 
 __git_ps1() {
-    local head
-    local dir="$(pwd -P)"
-
+    local __dir __head
+    __dir="$(pwd -P)"
     _BRANCH=""
-    while [ -n "$dir" ]; do
-        if [ -e "$dir/.git/HEAD" ]; then
-            read -r head < "$dir/.git/HEAD"
-            case "$head" in
+    while [ -n "$__dir" ]; do
+        if [ -e "$__dir/.git/HEAD" ]; then
+            read -r __head < "$__dir/.git/HEAD"
+            case "$__head" in
                 ref:*)
-                    _BRANCH="${my_bld}${my_grn}(${head##*/})${my_pur}$(__git_tag "$dir")${my_rst} "
+                    _BRANCH="${my_bld}${my_grn}(${__head##*/})${my_pur}$(__git_tag "$__dir")${my_rst} "
                     return 0
                     ;;
                 "")
@@ -37,12 +30,12 @@ __git_ps1() {
                     return 0
                     ;;
                 *)
-                    _BRANCH="${my_dim}${my_bld}${my_ylw}(Detached: ${head:0:7})${my_pur}$(__git_tag "$dir")${my_rst} "
+                    _BRANCH="${my_dim}${my_bld}${my_ylw}(Detached: ${__head:0:7})${my_pur}$(__git_tag "$__dir")${my_rst} "
                     return 0
                     ;;
             esac
         fi
-        dir="${dir%/*}"
+        __dir="${__dir%/*}"
     done
 }
 
@@ -54,27 +47,6 @@ __jobs_ps1() {
 
     _rjobs=( $(jobs -rp) )
     _JOBS="${my_ylw}(Jobs: ${#_rjobs[@]}/${#_jobs[@]})${my_rst} "
-}
-
-__load_avg() {
-    # loadavg
-    local i=1 line
-    [[ "$_OS" = "Darwin" ]] && i=0
-    for line in $($_AVGEXEC); do
-        _loadval[$i]=$line
-        i=$(( i + 1 ))
-    done
-
-    _currload=0
-    if _greater_than "${_loadval[1]}" "${_loadval[2]}"; then _currload=$(( _currload + 1 )); fi
-    if _greater_than "${_loadval[1]}" "${_loadval[3]}"; then _currload=$(( _currload + 1 )); fi
-    case $_currload in
-        0) _LOADAVG="${my_grn}${_loadval[1]}↓${my_rst}" ;;
-        1) _LOADAVG="${my_ylw}${_loadval[1]}↔${my_rst}" ;;
-        2) _LOADAVG="${my_red}${_loadval[1]}↑${my_rst}" ;;
-        *) _LOADAVG=" error " ;;
-    esac
-    _LOADAVG="$_LOADAVG "
 }
 
 __before_command() {
@@ -102,23 +74,20 @@ __stop_timer() {
     else _timer_val="${delta_us}us"
     fi
 
-    _TIMER_VAL="${my_dim}${my_wht}~${_timer_val}${my_rst} "
+    _TIMER_VAL="\033[38;2;79;79;79m~${_timer_val}${my_rst} "
     unset _TIMER
     unset timer_now
 }
 
 __prompt_command () {
-    EXIT="$?"
-    local LANG=C _ERRPROMPT
+    __last_exit=$?
+    [ $__last_exit -ne 0 ] && _ERRPROMPT="${my_red}${my_bld}${__last_exit}${my_rst} "
+    local LANG=C _WRITEABLE
 
     history -a
 
     # timer
     __stop_timer
-
-    if [ $EXIT -ne 0 ]; then
-        _ERRPROMPT="${my_red}${my_bld}${EXIT}${my_rst} "
-    fi
 
     # mostramos rama si es un repo git
     __git_ps1
@@ -126,22 +95,17 @@ __prompt_command () {
     # mostramos jobs en background
     __jobs_ps1
 
-    # load average
-    #__load_avg
-
-    #[[ ! -w $PWD ]] && local _WRITEABLE="${my_red}[ro]${my_rst} "
-    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="${my_red}@ssh${my_rst}"
-
-    local _TIME
-    _TIME="${my_dim}${my_wht}\t${my_rst} "
+    [ ! -w $PWD ] && _WRITEABLE="${my_red}[ro]${my_rst} "
+    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="${my_bld}\033[38;2;255;255;160mssh@${my_rst}"
 
     PS1="\[\033]0;\h:\W\007\]\
-${my_ylw}\u${my_rst}\
+${_ON_SSH}\033[38;2;226;104;9m\u${my_rst}\
 @\
-${my_bld}${my_pur}\h${my_rst}${_ON_SSH}\
- ${my_bld}${my_blu}\w${my_rst} \
-${_BRANCH}${_WRITEABLE}${_TIME}${_TIMER_VAL}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
- \n$ "
+${my_bld}\033[38;2;252;71;8m\h${my_rst}\
+ \033[38;2;117;160;159m\w${my_rst} \
+${_BRANCH}${_WRITEABLE}${_TIMER_VAL}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
+ \n\033[38;2;61;61;61m\t${my_rst} \033[38;2;77;110;255m"\
+$'\xe2\x9d\xaf\033[0m '
     export PS1
 
     unset _TIMER_IS_SET
