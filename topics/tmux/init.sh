@@ -2,6 +2,7 @@
 
 ### bootstrap
 create_link "${PWD}/src/tmux" "$HOME/.config/tmux"
+create_link "${PWD}/src/bin/tmux_capture_pane" "$HOME/.scripts/tmux_capture_pane"
 
 [[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }
 current_user=$(whoami)
