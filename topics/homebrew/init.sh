@@ -50,6 +50,7 @@ formulae_packages=(
     "java"
     "telnet"
     "autopep8"
+    "golang"
 )
 
 formulae_source_packages=(
