@@ -2,8 +2,7 @@
 
 shopt -s nullglob
 
-export PRIV_DOTFILES="$HOME/Syncthing/SYNC_STUFF/private_dotfiles"
-export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+. ./topics/shell/src/profile
 cd "$DOTFILES" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
@@ -51,8 +50,8 @@ if [[ $# -gt 0 ]]; then
 
     log_header "Bootstrapping $1 only."; echo
     bootstrap_topic $1
-    if test -d "$PRIV_DOTFILES"; then
-        cd "$PRIV_DOTFILES" || exit 1
+    if test -d "$PRIVATE_DOTFILES"; then
+        cd "$PRIVATE_DOTFILES" || exit 1
         bootstrap_topic $1
     fi
     log_header "End"
@@ -86,9 +85,9 @@ for init_script in topics/*/init.sh; do
 done
 unset init_script
 
-if test -d "$PRIV_DOTFILES"; then
+if test -d "$PRIVATE_DOTFILES"; then
     log_header "Bootstrap of private dotfiles"
-    cd "$PRIV_DOTFILES" || exit 1
+    cd "$PRIVATE_DOTFILES" || exit 1
     for install_script in topics/*/install.sh; do
         log_info "Installing topic: $(basename $(dirname "${install_script}"))"
         pushd "$(dirname "$install_script")" >/dev/null || exit 1

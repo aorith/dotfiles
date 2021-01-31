@@ -1,9 +1,10 @@
 # vim: ft=bash
 
-# DOTFILES
-export DOTFILES="${HOME}/githome/dotfiles"
-[[ -d "${HOME}/Syncthing/SYNC_STUFF/private_dotfiles" ]] && \
-    export PRIVATE_DOTFILES="${HOME}/Syncthing/SYNC_STUFF/private_dotfiles"
+# GITHOME & DOTFILES
+export GITHOME="${HOME}/githome"
+export DOTFILES="${GITHOME}/dotfiles"
+export PRIVATE_GITHOME="${HOME}/Syncthing/SYNC_STUFF/githome"
+export PRIVATE_DOTFILES="${PRIVATE_GITHOME}/private_dotfiles"
 
 # OS
 export _OS="$(uname -s)"
