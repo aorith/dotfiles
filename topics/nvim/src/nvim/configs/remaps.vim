@@ -89,3 +89,15 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 nmap <silent> <leader>e :Lexplore<CR>
+
+" Run neorun.sh on current folder
+function! NeoRun(arguments) abort
+    botright new
+    resize 15
+    exec 'term ./neorun.sh ' . a:arguments
+    startinsert
+endfunction
+
+command! -nargs=0 NeoRun call NeoRun(printf(expand('%')))
+nnoremap <leader>nr :NeoRun<CR>
+

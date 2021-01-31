@@ -1,5 +1,10 @@
 " See :h nvim-defaults
 
+if has('vim_starting')
+  set encoding=utf-8
+endif
+scriptencoding utf-8
+
 "set Vim-specific sequences for RGB colors
 if &term !~? 'screen\|tmux'
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -26,6 +31,7 @@ set shortmess+=c   " Shut off completion messages
 set ignorecase smartcase gdefault
 set mouse=a
 set textwidth=0
+set noautoread
 
 set title
 let &titlestring= hostname() . "(%t)"
