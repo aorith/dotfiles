@@ -29,7 +29,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export GOPATH="${HOME}/go:${PRIVATE_GITHOME}/go"
-add_to_path "${HOME}/go/bin"
+export GOBIN="${HOME}/go/bin"
+add_to_path "${GOBIN}"
 
 export LANG='en_US.UTF-8'
 export LC_COLLATE=C
