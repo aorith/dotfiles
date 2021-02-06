@@ -32,7 +32,9 @@ export GOPATH="${HOME}/go:${PRIVATE_GITHOME}/go"
 export GOBIN="${HOME}/go/bin"
 add_to_path "${GOBIN}"
 
-export LANG='en_US.UTF-8'
+export LANG='C.UTF-8'
+export LANGUAGE='en_US.UTF-8'
+export LC_CTYPE=C
 export LC_COLLATE=C
 
 # colored GCC warnings and errors
