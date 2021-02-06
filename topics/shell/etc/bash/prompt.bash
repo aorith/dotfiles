@@ -22,7 +22,7 @@ __git_ps1() {
             read -r __head < "$__dir/.git/HEAD"
             case "$__head" in
                 ref:*)
-                    _BRANCH="${my_bld}${my_grn}(${__head##*/})${my_pur}$(__git_tag "$__dir")${my_rst} "
+                    _BRANCH="\[\033[38;2;45;195;148m\](${__head##*/})${my_pur}$(__git_tag "$__dir")${my_rst} "
                     return 0
                     ;;
                 "")
@@ -30,7 +30,7 @@ __git_ps1() {
                     return 0
                     ;;
                 *)
-                    _BRANCH="${my_dim}${my_bld}${my_ylw}(Detached: ${__head:0:7})${my_pur}$(__git_tag "$__dir")${my_rst} "
+                    _BRANCH="\[\033[38;2;165;195;45m\](Detached: ${__head:0:7})${my_pur}$(__git_tag "$__dir")${my_rst} "
                     return 0
                     ;;
             esac
@@ -81,13 +81,13 @@ __stop_timer() {
 
 __prompt_command () {
     __last_exit=$?
-    local LANG=C _WRITEABLE _ERRPROMPT
+    local LANG=C _WDCOLOR _ERRPROMPT
     [ $__last_exit -ne 0 ] && _ERRPROMPT="${my_red}${my_bld}${__last_exit}${my_rst} "
 
     history -a
 
     # timer
-    __stop_timer
+    #__stop_timer
 
     # mostramos rama si es un repo git
     __git_ps1
@@ -95,20 +95,17 @@ __prompt_command () {
     # mostramos jobs en background
     __jobs_ps1
 
-    [ ! -w $PWD ] && _WRITEABLE="${my_red}[ro]${my_rst} "
+    [ -w $PWD ] && _WDCOLOR='\[\033[38;2;117;160;159m\]' || _WDCOLOR="${my_red}"
     [[ -n "$SSH_CLIENT" ]] && _ON_SSH="${my_bld}\[\033[38;2;255;255;160m\]ssh@${my_rst}"
 
-    PS1="\[\033]0;\h:\W\007\]\
-${_ON_SSH}\[\033[38;2;226;104;9m\]\u${my_rst}\
-@\
-${my_bld}\[\033[38;2;252;71;8m\]\h${my_rst}\
- \[\033[38;2;117;160;159m\]\w${my_rst} \
-${_BRANCH}${_WRITEABLE}${_TIMER_VAL}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
- \n\[\033[38;2;61;61;61m\]\t${my_rst} \[\033[38;2;77;110;255m\]"\
+    PS1="${_ON_SSH}\[\033[38;2;226;104;9m\]\u${my_rst}@\
+${my_bld}\[\033[38;2;252;71;8m\]\h${my_rst} ${_WDCOLOR}\W${my_rst} \
+${_BRANCH}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
+\[\033[38;2;77;110;255m\]"\
 $'\xe2\x9d\xaf\[\033[0m\] '
     export PS1
 
-    unset _TIMER_IS_SET
+    #unset _TIMER_IS_SET
 }
 
 export PS4='+ ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]}() [$?] → '
