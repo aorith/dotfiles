@@ -84,8 +84,6 @@ __prompt_command () {
     local LANG=C _WDCOLOR _ERRPROMPT
     [ $__last_exit -ne 0 ] && _ERRPROMPT="${my_red}${my_bld}${__last_exit}${my_rst} "
 
-    history -a
-
     # timer
     #__stop_timer
 
@@ -99,7 +97,7 @@ __prompt_command () {
     [[ -n "$SSH_CLIENT" ]] && _ON_SSH="${my_bld}\[\033[38;2;255;255;160m\]ssh@${my_rst}"
 
     PS1="${_ON_SSH}\[\033[38;2;226;104;9m\]\u${my_rst}@\
-${my_bld}\[\033[38;2;252;71;8m\]\h${my_rst} ${_WDCOLOR}\W${my_rst} \
+${my_bld}\[\033[38;2;252;71;8m\]\h${my_rst} ${_WDCOLOR}\w${my_rst} \
 ${_BRANCH}${_LOADAVG}${_JOBS}${_ERRPROMPT}${my_rst}\
 \[\033[38;2;77;110;255m\]"\
 $'\xe2\x9d\xaf\[\033[0m\] '
