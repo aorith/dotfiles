@@ -82,7 +82,7 @@ set backupdir=~/.local/share/nvim/backup//
 set directory=~/.local/share/nvim/swap//
 
 set swapfile
-set nobackup
+set backup
 set undofile
 
 function! ToggleBackground()
