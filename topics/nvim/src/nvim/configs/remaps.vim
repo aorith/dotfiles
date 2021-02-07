@@ -101,3 +101,9 @@ endfunction
 command! -nargs=0 NeoRun call NeoRun(printf(expand('%')))
 nnoremap <leader>nr :NeoRun<CR>
 
+" Paste toggle
+set pastetoggle=<F2>
+
+" List toggle (:h map-modes)
+map <F3> <Esc><Esc>:set list!<CR>
+map! <F3> <Esc><Esc>:set list!<CR>
