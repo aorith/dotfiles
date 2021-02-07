@@ -5,23 +5,24 @@ env:
   TERM: xterm-256color
 
 window:
+  dynamic_padding: true
   padding:
-    x: 4
-    y: 2
+    x: 3
+    y: 3
 
 scrolling:
   history: 0
 
 font:
-  size: 14
+  size: 12.0
   normal:
-    #family: "Hack"
+    family: "JetBrains Mono"
     style: Regular
   bold:
-    #family: "Hack"
+    family: "JetBrains Mono"
     style: Bold
   italic:
-    #family: "Hack"
+    family: "JetBrains Mono"
     style: Italic
 
 mouse:
