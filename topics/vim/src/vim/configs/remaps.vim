@@ -90,3 +90,10 @@ let g:netrw_browse_split = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 40
 nmap <silent> <leader>e :Lexplore<CR>
+
+" Pastetoggle
+set pastetoggle=<F2>
+
+" List toggle (:h map-modes)
+map <silent> <F3> <Esc><Esc>:set list!<CR>
+map! <silent> <F3> <Esc><Esc>:set list!<CR>
