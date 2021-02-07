@@ -1,10 +1,8 @@
 " varnish & nginx
 function! VhostFTDetect() abort
     if expand('%:p') =~? 'varnish'
-        set background=dark
         setfiletype vcl
     else
-        set background=light
         setfiletype nginx
     endif
 endfunction

@@ -12,11 +12,11 @@ source ~/.config/nvim/configs/plugins/git.vim
 source ~/.config/nvim/configs/plugins/fzf.vim
 source ~/.config/nvim/configs/plugins/polyglot.vim
 source ~/.config/nvim/configs/plugins/mucomplete.vim
-source ~/.config/nvim/configs/plugins/ale.vim
+"source ~/.config/nvim/configs/plugins/ale.vim
 
-" Black for python (code formatter) format all the buffer with :call Black()
 if hostname() !~? 'admin.*'
-    Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
+    source ~/.config/nvim/configs/plugins/black.vim
+    source ~/.config/nvim/configs/plugins/vim-go.vim
 endif
 
 call plug#end()
