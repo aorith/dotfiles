@@ -99,7 +99,7 @@ __prompt_command () {
     PS1="${_ON_SSH}\[\${my_orgE}\]\u\[${my_rst}\]@\
 \[${my_bld}${my_org2E}\]\h\[${my_rst}\] ${_WDCOLOR}\w\[${my_rst}\] \
 ${_BRANCH}${_LOADAVG}${_JOBS}${_ERRPROMPT}\[${my_rst}\]\
-\[${my_blu2E}\]"$'\u276F\[\033[0m\] '
+\[${my_blu2E}\]"$'\xe2\x9d\xaf\[\033[0m\] '
     export PS1
 
     #unset _TIMER_IS_SET
