@@ -1,26 +1,36 @@
 # vim: ft=bash
-my_blk='\[\033[30m\]'     # Black - Foreground
-my_red='\[\033[31m\]'     # Red
-my_grn='\[\033[32m\]'     # Green
-my_ylw='\[\033[33m\]'     # Yellow
-my_blu='\[\033[34m\]'     # Blue
-my_pur='\[\033[35m\]'     # Purple
-my_cyn='\[\033[36m\]'     # Cyan
-my_wht='\[\033[37m\]'     # White
-my_bakblk='\[\033[40m\]'  # Black - Background
-my_bakred='\[\033[41m\]'  # Red
-my_bakgrn='\[\033[42m\]'  # Green
-my_bakylw='\[\033[43m\]'  # Yellow
-my_bakblu='\[\033[44m\]'  # Blue
-my_bakpur='\[\033[45m\]'  # Purple
-my_bakcyn='\[\033[46m\]'  # Cyan
-my_bakwht='\[\033[47m\]'  # White
-my_bld='\[\033[1m\]'      # Bold
-my_dim='\[\033[2m\]'      # Dim
-my_ita='\[\033[3m\]'      # Italic
-my_und='\[\033[4m\]'      # Underline
-my_blink='\[\033[5m\]'    # Blinking
-my_rvrs='\[\033[7m\]'     # Reverse
-my_invis='\[\033[8m\]'    # Invisible
-my_rst='\[\033[0m\]'      # Text Reset
+
+# Foreground
+my_blk="$(tput setaf 0)"     # Black
+my_red="$(tput setaf 1)"     # Red
+my_grn="$(tput setaf 2)"     # Green
+my_ylw="$(tput setaf 3)"     # Yellow
+my_blu="$(tput setaf 4)"     # Blue
+my_pur="$(tput setaf 5)"     # Purple
+my_cyn="$(tput setaf 6)"     # Cyan
+my_wht="$(tput setaf 7)"     # White
+my_gry="$(tput setaf 8)"    # Grey
+my_red2="$(tput setaf 9)"    # Red 2
+my_grn2="$(tput setaf 10)"   # Green 2
+my_ylw2="$(tput setaf 11)"   # Yellow 2
+my_blu2="$(tput setaf 12)"   # Blue 2
+my_pur2="$(tput setaf 13)"   # Purple 2
+my_cyn2="$(tput setaf 14)"   # Cyan 2
+my_wht2="$(tput setaf 15)"   # White 2
+my_blk2="$(tput setaf 16)"   # Black 2
+
+my_gryE="$(tput setaf 237)"  # Gray extra
+my_ylwE="$(tput setaf 185)"  # Yellow extra
+my_grnE="$(tput setaf 78)"   # Green extra
+my_orgE="$(tput setaf 208)"  # Orange extra
+my_org2E="$(tput setaf 202)" # Orange extra
+my_bluE="$(tput setaf 24)"   # Blue extra
+my_blu2E="$(tput setaf 33)"   # Blue extra
+my_cynE="$(tput setaf 110)"  # Cyan extra
+
+# Special
+my_bld="$(tput bold)"      # Bold
+my_und="$(tput smul)"      # Underline
+my_rvs="$(tput rev)"       # Reverse
+my_rst="$(tput sgr0)"      # Text Reset
 
