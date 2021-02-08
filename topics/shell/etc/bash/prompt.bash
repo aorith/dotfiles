@@ -8,7 +8,7 @@ __git_tag() {
             __commit="$(cat "$__dir/.git/refs/heads/master")"
             __tag="$(grep -rl "$__commit" "$__dir/.git/refs/tags")"
             [[ -z "$__tag" ]] && return 0
-            echo " (tag ${__tag##*/})"
+            printf ":${__tag##*/}"
         fi
     fi
 }
@@ -22,7 +22,7 @@ __git_ps1() {
             read -r __head < "$__dir/.git/HEAD"
             case "$__head" in
                 ref:*)
-                    _BRANCH="\[${my_grnE}\](${__head##*/})\[${my_pur}\]$(__git_tag "$__dir")\[${my_rst}\] "
+                    _BRANCH="\[${my_pylw}\]:${__head##*/}\[${my_pur}\]$(__git_tag "$__dir")\[${my_rst}\]"
                     return 0
                     ;;
                 "")
@@ -30,7 +30,7 @@ __git_ps1() {
                     return 0
                     ;;
                 *)
-                    _BRANCH="\[${my_pur2}\](Detached: ${__head:0:7})\[${my_pur}\]$(__git_tag "$__dir")\[${my_rst}\] "
+                    _BRANCH="\[${my_pylw}\]:detached:${__head:0:7})\[${my_pur}\]$(__git_tag "$__dir")\[${my_rst}\]"
                     return 0
                     ;;
             esac
@@ -46,7 +46,7 @@ __jobs_ps1() {
     [[ -z "${_jobs[*]}" ]] && return 0
 
     _rjobs=( $(jobs -rp) )
-    _JOBS="\[${my_ylwE}\](Jobs: ${#_rjobs[@]}/${#_jobs[@]})\[${my_rst}\] "
+    _JOBS="\[${my_pgry}\]:${#_rjobs[@]}/${#_jobs[@]}\[${my_rst}\]"
 }
 
 __before_command() {
@@ -82,7 +82,7 @@ __stop_timer() {
 __prompt_command () {
     __last_exit=$?
     local LANG=C _WDCOLOR _ERRPROMPT
-    [ $__last_exit -ne 0 ] && _ERRPROMPT="\[${my_red}${my_bld}\]${__last_exit}\[${my_rst}\] "
+    [ $__last_exit -ne 0 ] && _ERRPROMPT="\[${my_pred}\]:${__last_exit}\[${my_rst}\]"
 
     # timer
     #__stop_timer
@@ -93,13 +93,10 @@ __prompt_command () {
     # mostramos jobs en background
     __jobs_ps1
 
-    [ -w $PWD ] && _WDCOLOR="\[\${my_cynE}\]" || _WDCOLOR="\[${my_red}\]"
-    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="\[${my_bld}${my_ylw2}\]ssh\[${my_rst}\]@"
+    [ -w $PWD ] && _WDCOLOR="\[${my_pcyn}\]:" || _WDCOLOR="\[${my_red}\]:"
+    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="\[${my_ylw2}\]ssh@\[${my_rst}\]"
 
-    PS1="${_ON_SSH}\[\${my_orgE}\]\u\[${my_rst}\]@\
-\[${my_bld}${my_org2E}\]\h\[${my_rst}\] ${_WDCOLOR}\w\[${my_rst}\] \
-${_BRANCH}${_LOADAVG}${_JOBS}${_ERRPROMPT}\[${my_rst}\]\
-\[${my_blu2E}\]"$'\xe2\x9d\xaf\[\033[0m\] '
+    PS1="${_ON_SSH}\[${my_pgrn}\]\u@\h\[${my_rst}\]${_BRANCH}${_WDCOLOR}\w\[${my_rst}\]${_LOADAVG}${_JOBS}${_ERRPROMPT}\[${my_rst}\]\[${my_pblu}\]"$' \xe2\x9d\xaf\[\033[0m\] '
     export PS1
 
     #unset _TIMER_IS_SET

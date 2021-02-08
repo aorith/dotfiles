@@ -19,14 +19,13 @@ my_cyn2="$(tput setaf 14)"   # Cyan 2
 my_wht2="$(tput setaf 15)"   # White 2
 my_blk2="$(tput setaf 16)"   # Black 2
 
-my_gryE="$(tput setaf 237)"  # Gray extra
-my_ylwE="$(tput setaf 185)"  # Yellow extra
-my_grnE="$(tput setaf 78)"   # Green extra
-my_orgE="$(tput setaf 208)"  # Orange extra
-my_org2E="$(tput setaf 202)" # Orange extra
-my_bluE="$(tput setaf 24)"   # Blue extra
-my_blu2E="$(tput setaf 33)"   # Blue extra
-my_cynE="$(tput setaf 110)"  # Cyan extra
+# Prompt
+my_pblu='\033[38;2;30;135;255m'
+my_pcyn='\033[38;2;0;152;199m'
+my_pgrn='\033[38;2;79;158;22m'
+my_pylw='\033[38;2;204;187;31m'
+my_pgry='\033[38;2;132;98;97m'
+my_pred='\033[38;2;222;39;22m'
 
 # Special
 my_bld="$(tput bold)"      # Bold

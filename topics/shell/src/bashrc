@@ -36,7 +36,8 @@ then
     echo "Bash is not up-to-date - minimum version required is 5"
     echo "Current version is: ${BASH_VERSINFO[0]}"
 else
-    trap '__before_command' DEBUG
+    #trap '__before_command' DEBUG
+    true
 fi
 
 PROMPT_COMMAND='__prompt_command'
