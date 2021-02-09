@@ -94,7 +94,7 @@ __prompt_command () {
     __jobs_ps1
 
     [ -w $PWD ] && _WDCOLOR="\[${my_pcyn}\]:" || _WDCOLOR="\[${my_red}\]:"
-    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="\[${my_ylw2}\]ssh@\[${my_rst}\]"
+    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="\[${my_ylw2}\]ssh@"
 
     PS1="\[${my_pgrn}\]${_ON_SSH}\u@\h\[${my_rst}\]${_BRANCH}${_WDCOLOR}\w\[${my_rst}\]${_LOADAVG}${_JOBS}${_ERRPROMPT}\[${my_rst}\]\[${my_gry}\]:\[${my_rst}\] "
     export PS1
