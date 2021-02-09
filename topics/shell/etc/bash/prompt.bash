@@ -81,7 +81,7 @@ __stop_timer() {
 
 __prompt_command () {
     __last_exit=$?
-    local LANG=C _WDCOLOR _ERRPROMPT
+    local LANG=C _WDCOLOR _ERRPROMPT _ON_SSH _BOLD
     [ $__last_exit -ne 0 ] && _ERRPROMPT="\[${my_pred}\]:${__last_exit}\[${my_rst}\]"
 
     # timer
@@ -94,9 +94,9 @@ __prompt_command () {
     __jobs_ps1
 
     [ -w $PWD ] && _WDCOLOR="\[${my_pcyn}\]:" || _WDCOLOR="\[${my_red}\]:"
-    [[ -n "$SSH_CLIENT" ]] && _ON_SSH="\[${my_ylw2}\]ssh@"
+    [[ -n "$SSH_CLIENT" ]] && { _ON_SSH="\[${my_ylw2}\]ssh@\[${my_red2}\]"; _BOLD="\[${my_bld}\]"; }
 
-    PS1="\[${my_pgrn}\]${_ON_SSH}\u@\h\[${my_rst}\]${_BRANCH}${_WDCOLOR}\w\[${my_rst}\]${_LOADAVG}${_JOBS}${_ERRPROMPT}\[${my_rst}\]\[${my_gry}\]:\[${my_rst}\] "
+    PS1="\[${my_pgrn}\]${_ON_SSH}\u@${_BOLD}\h\[${my_rst}\]${_BRANCH}${_WDCOLOR}\w\[${my_rst}\]${_LOADAVG}${_JOBS}${_ERRPROMPT}\[${my_rst}\]\[${my_gry}\]:\[${my_rst}\] "
     export PS1
 
     #unset _TIMER_IS_SET
