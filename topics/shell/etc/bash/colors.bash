@@ -20,7 +20,6 @@ my_wht2="$(tput setaf 15)"   # White 2
 my_blk2="$(tput setaf 16)"   # Black 2
 
 # Prompt
-my_pblu='\033[38;2;30;135;255m'
 my_pcyn='\033[38;2;0;152;199m'
 my_pgrn='\033[38;2;79;158;22m'
 my_pylw='\033[38;2;204;187;31m'
