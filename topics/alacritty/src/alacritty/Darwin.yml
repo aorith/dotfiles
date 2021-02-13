@@ -1,3 +1,4 @@
+alt_send_esc: false
 window:
   decorations: buttonless
 font:
@@ -5,3 +6,34 @@ font:
 
 key_bindings:
   - {key: F12,                        action: ToggleSimpleFullscreen}
+  - {key: W,     mods: Command,       chars: "\x1bw"}  # close pane/window
+  - {key: T,     mods: Command,       chars: "\x1bt"}  # new pane
+  - {key: T,     mods: Command|Shift, chars: "\x1bT"}  # new session
+  - {key: H,     mods: Command,       chars: "\x1bh"}  # switch pane
+  - {key: J,     mods: Command,       chars: "\x1bj"}  # switch pane
+  - {key: K,     mods: Command,       chars: "\x1bk"}  # switch pane
+  - {key: L,     mods: Command,       chars: "\x1bl"}  # switch pane
+  - {key: H,     mods: Command|Shift, chars: "\x1bH"}  # move pane
+  - {key: J,     mods: Command|Shift, chars: "\x1bJ"}  # move pane
+  - {key: K,     mods: Command|Shift, chars: "\x1bK"}  # move pane
+  - {key: L,     mods: Command|Shift, chars: "\x1bL"}  # move pane
+  - {key: Return,mods: Command|Shift, chars: "\x1b\r"} # switch layout
+  - {key: D,     mods: Command,       chars: "\x1bd"}  # new horiz pane
+  - {key: D,     mods: Command|Shift, chars: "\x1bD"}  # new vert pane
+  - {key: S,     mods: Command,       chars: "\x1bs"}  # toggle synchronize panes
+  - {key: Key1,  mods: Command,       chars: "\x1b1"}  # switch to pane 1
+  - {key: Key2,  mods: Command,       chars: "\x1b2"}
+  - {key: Key3,  mods: Command,       chars: "\x1b3"}
+  - {key: Key4,  mods: Command,       chars: "\x1b4"}
+  - {key: Key5,  mods: Command,       chars: "\x1b5"}
+  - {key: Key6,  mods: Command,       chars: "\x1b6"}
+  - {key: Key7,  mods: Command,       chars: "\x1b7"}
+  - {key: Key8,  mods: Command,       chars: "\x1b8"}
+  - {key: Key9,  mods: Command,       chars: "\x1b9"}
+  - {key: G,     mods: Command,       chars: "\x1bg"}  # enter copy mode
+  - {key: R,     mods: Command,       chars: "\x1br"}  # rename pane
+  - {key: R,     mods: Command|Shift, chars: "\x1bR"}  # rename session
+  - {key: Comma, mods: Command,       chars: "\x1b,"}  # cycle sessions
+  - {key: N,     mods: Command,       chars: "\x1bn"}  # cycle panes
+  - {key: Z,     mods: Command,       chars: "\x1bz"}  # toggle zoom (maximize pane)
+  - {key: F,     mods: Command,       chars: "\x1bf"}  # search
