@@ -16,3 +16,13 @@ fi
 
 # default umask
 umask 022
+
+# Locale
+if locale -a 2>/dev/null | grep -qw 'C.UTF-8'; then
+    export LANG='C.UTF-8'
+else
+    export LANG=C
+fi
+export LANGUAGE='en_US.UTF-8'
+[[ "$_OS" == "Darwin" ]] && LC_CTYPE=UTF-8 || export LC_CTYPE=C
+export LC_COLLATE=C
