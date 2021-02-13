@@ -2,6 +2,7 @@
 
 ### bootstrap
 create_link "${PWD}/src/alacritty" "$HOME/.config/alacritty"
+create_link "${PWD}/src/alacritty/$(uname -s).yml" "${PWD}/src/alacritty/env.yml"
 
 # macos only
 [[ "$(uname -s)" != "Darwin" ]] && exit 0
