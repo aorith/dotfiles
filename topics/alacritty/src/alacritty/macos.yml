@@ -2,3 +2,6 @@ window:
   decorations: buttonless
 font:
   use_thin_strokes: true
+
+key_bindings:
+  - {key: F12,                        action: ToggleSimpleFullscreen}

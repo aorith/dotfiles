@@ -44,7 +44,6 @@ mouse_bindings:
   - {mouse: Left, action: Copy}
 
 key_bindings:
-  - {key: F12,                        action: ToggleSimpleFullscreen}
   - {key: V,     mods: Command,       action: Paste}
   - {key: C,     mods: Command,       action: Copy}
   - {key: D,     mods: Command,       chars: "\x02\""}  # new horiz pane
