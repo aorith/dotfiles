@@ -1,6 +1,7 @@
 # vim: ft=bash
 
 ### bootstrap
+create_link "${PWD}/src/inputrc" "$HOME/.inputrc"
 create_link "${PWD}/src/bashrc" "$HOME/.bashrc"
 create_link "${PWD}/src/profile" "$HOME/.profile"
 create_link "${PWD}/src/bash_profile" "$HOME/.bash_profile"
