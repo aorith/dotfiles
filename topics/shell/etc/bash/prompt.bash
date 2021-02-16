@@ -8,7 +8,7 @@ __git_tag() {
             __commit="$(cat "$__dir/.git/refs/heads/master")"
             __tag="$(grep -rl "$__commit" "$__dir/.git/refs/tags")"
             [[ -z "$__tag" ]] && return 0
-            printf ":${__tag##*/}"
+            printf "${__tag##*/}"
         fi
     fi
 }
@@ -22,7 +22,7 @@ __git_ps1() {
             read -r __head < "$__dir/.git/HEAD"
             case "$__head" in
                 ref:*)
-                    _BRANCH="\[${my_pylw}\]:${__head##*/}\[${my_pur}\]$(__git_tag "$__dir")\[${my_rst}\]"
+                    _BRANCH="\[${my_pylw}\]:${__head##*/}:$(__git_tag "$__dir")\[${my_rst}\]"
                     return 0
                     ;;
                 "")
@@ -30,7 +30,7 @@ __git_ps1() {
                     return 0
                     ;;
                 *)
-                    _BRANCH="\[${my_pylw}\]:detached:${__head:0:7})\[${my_pur}\]$(__git_tag "$__dir")\[${my_rst}\]"
+                    _BRANCH="\[${my_pylw}\]:detached:${__head:0:7}:$(__git_tag "$__dir")\[${my_rst}\]"
                     return 0
                     ;;
             esac
