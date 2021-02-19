@@ -59,7 +59,7 @@ fi
 
 # Linux only
 if [[ "$_OS" == 'Linux' ]]; then
-    export CLIPBOARD_COPY="xclip"
+    export CLIPBOARD_COPY="xclip -i -selection clipboard"
     export CLIPBOARD_PASTE="xclip -out -selection clipboard"
     export SUBL_CMD='subl'
 
