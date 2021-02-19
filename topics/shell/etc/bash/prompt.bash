@@ -96,7 +96,7 @@ __prompt_command () {
     [ -w $PWD ] && _WDCOLOR="\[${my_pcyn}\]:" || _WDCOLOR="\[${my_porg}\]:"
     [[ -n "$SSH_CLIENT" ]] && { _ON_SSH="\[${my_ylw2}\]ssh@\[${my_red2}\]"; _BOLD="\[${my_bld}\]"; }
 
-    PS1="\[${my_pgrn}\]${_ON_SSH}\u@${_BOLD}\h\[${my_rst}\]${_BRANCH}${_WDCOLOR}\w\[${my_rst}\]${_JOBS}${_ERRPROMPT}\[${my_rst}\] $ "
+    PS1="\[\033]0;\u@\h:\w\007\]\[${my_pgrn}\]${_ON_SSH}\u@${_BOLD}\h\[${my_rst}\]${_BRANCH}${_WDCOLOR}\w\[${my_rst}\]${_JOBS}${_ERRPROMPT}\[${my_rst}\] \\$ "
     export PS1
 
     #unset _TIMER_IS_SET
