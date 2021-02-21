@@ -49,6 +49,8 @@ block = "backlight"
 block = "battery"
 interval = 10
 format = "{percentage}% {time}"
+warning = 20
+critical = 7
 allow_missing = true
 hide_missing = true
 
