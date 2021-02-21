@@ -2,6 +2,7 @@
 
 #### Basic config {{{
 set $mod Mod4
+set $locker ~/.config/i3/scripts/lock.sh
 #font -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
 font pango:DejaVu Sans Mono 10
 focus_follows_mouse no
@@ -155,9 +156,9 @@ set $mode_system (s)Shutdown, (r)Reboot, (l)Lock, (q)Quit, (d)Suspend, (x)Reload
 mode "$mode_system" {
     bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym l exec --no-startup-id i3lock, mode "default"
+    bindsym l exec --no-startup-id $locker, mode "default"
     bindsym q exec --no-startup-id i3-msg exit, mode "default"
-    bindsym d exec --no-startup-id i3lock && systemctl suspend, mode "default"
+    bindsym d exec --no-startup-id $locker && systemctl suspend, mode "default"
     bindsym x exec --no-startup-id i3-msg reload, mode "default"
     bindsym Shift+x exec --no-startup-id i3-msg restart, mode "default"
 
@@ -188,7 +189,7 @@ bar {
 ########################################################################## }}}
 #### Startup programs {{{
 exec --no-startup-id ~/.config/i3/scripts/auto-monitor-setup.sh
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $locker --nofork
 exec --no-startup-id blueman-applet
 exec --no-startup-id xterm -geometry 100x25+0+0 -bg '#171717' \
     -fs 12 -name 'XTermScratchpad' -e 'tmux -u new-session -d; tmux -u new-session -A -s "scratchpad"'
