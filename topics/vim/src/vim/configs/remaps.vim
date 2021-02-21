@@ -10,9 +10,9 @@ nnoremap <leader>l :wincmd l<CR>
 " Mostrar undotree
 nnoremap <leader>u :UndotreeToggle<CR>:wincmd h<CR>
 
-" Copiar al clipboard del sistema
-nnoremap <leader>y "*yy
-vnoremap <leader>y "*y
+" Copy to system clipboard using osc52
+nnoremap <leader>y V:OSCYank<CR>
+vnoremap <leader>y :OSCYank<CR>
 
 " FZF
 " Buscar ficheros en el directorio actual con Ctrl+F
