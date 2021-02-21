@@ -29,6 +29,8 @@ rofi.color-urgent: #000000, #b3e774, #000000, #b3e774, #000000
 *XTerm*selectToClipboard: true
 *XTerm*highlightSelection: true
 *XTerm*trimSelection: true
+! Requirement for OSC52:
+*XTerm*allowWindowOps: true
 ! }}}
 ! Font settings {{{
 !*XTerm*scaleHeight: 1.01
