@@ -188,12 +188,14 @@ bar {
 }
 ########################################################################## }}}
 #### Startup programs {{{
+exec --no-startup-id xterm -geometry 100x25+0+0 -bg '#171717' \
+    -fs 12 -name 'XTermScratchpad' -e \
+    'tmux -u new-session -d; tmux -u new-session -A -s "scratchpad"'
 exec --no-startup-id ~/.config/i3/scripts/auto-monitor-setup.sh
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $locker --nofork
 exec --no-startup-id blueman-applet
-exec --no-startup-id xterm -geometry 100x25+0+0 -bg '#171717' \
-    -fs 12 -name 'XTermScratchpad' -e 'tmux -u new-session -d; tmux -u new-session -A -s "scratchpad"'
 exec --no-startup-id pasystray
 exec --no-startup-id flameshot
-exec --no-startup-id xterm -e 'tmux -u attach'
+exec --no-startup-id dunst -print
+exec --no-startup-id "sleep 1; xterm -e 'tmux -u attach'"
 ########################################################################## }}}
