@@ -3,7 +3,6 @@
 import sys
 import subprocess
 import tempfile
-import pty
 
 args = sys.argv[1:]
 
