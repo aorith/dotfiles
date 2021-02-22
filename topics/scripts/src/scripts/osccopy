@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+# Normal:
+# printf "\033]52;c;Y29weXBhc3RhIQ==\x07"
+
+# Tmux:
+# printf "\033Ptmux;\033\033]52;c;Y29weXBhc3RhIQ==\x07\033\\"
+
+import os
+import sys
+from base64 import b64encode
+
+LIMIT = 100000
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+
+if not sys.stdin.isatty():
+    data = sys.stdin.read().rstrip("\n\r")
+else:
+    eprint(
+        f"""Usage:
+    echo \"text to copy\" | {sys.argv[0]}
+    cat file.txt | {sys.argv[0]}"""
+    )
+    sys.exit(1)
+
+
+data_bytes = data.encode()
+data_len = len(data_bytes)
+if data_len > LIMIT:
+    eprint(
+        f"WARNING: Limit reached, data has {data_len} bytes and the LIMIT is {LIMIT}"
+    )
+    sys.exit(1)
+
+term = os.environ.get("TERM")
+start_osc52 = "\033]52;c;"
+end_osc52 = "\x07"
+if term.startswith("tmux") or term.startswith("screen"):
+    start_osc52 = "\033Ptmux;\033\033]52;c;"
+    end_osc52 = "\x07\033\\"
+
+data_b64 = b64encode(data_bytes).decode()
+print(start_osc52 + data_b64 + end_osc52, end="")
+eprint(f"Copied {data_len} bytes to the clipboard.")
