@@ -21,9 +21,11 @@ if not sys.stdin.isatty():
     data = sys.stdin.read().rstrip("\n\r")
 else:
     eprint(
-        f"""Usage:
-    echo \"text to copy\" | {sys.argv[0]}
-    cat file.txt | {sys.argv[0]}"""
+        """Usage:
+    echo \"text to copy\" | {}
+    cat file.txt | {}""".format(
+            sys.argv[0], sys.argv[0]
+        )
     )
     sys.exit(1)
 
@@ -32,7 +34,9 @@ data_bytes = data.encode()
 data_len = len(data_bytes)
 if data_len > LIMIT:
     eprint(
-        f"WARNING: Limit reached, data has {data_len} bytes and the LIMIT is {LIMIT}"
+        "WARNING: Limit reached, data has {} bytes and the LIMIT is {}".format(
+            data_len, LIMIT
+        )
     )
     sys.exit(1)
 
@@ -45,4 +49,4 @@ if term.startswith("tmux") or term.startswith("screen"):
 
 data_b64 = b64encode(data_bytes).decode()
 print(start_osc52 + data_b64 + end_osc52, end="")
-eprint(f"Copied {data_len} bytes to the clipboard.")
+eprint("Copied {} bytes to the clipboard.".format(data_len))
