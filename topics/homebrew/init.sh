@@ -51,6 +51,7 @@ formulae_packages=(
     "telnet"
     "autopep8"
     "golang"
+    "flock"
 )
 
 formulae_source_packages=(
