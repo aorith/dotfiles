@@ -20,3 +20,6 @@ else
         *) ;;
     esac
 fi
+
+# try to fix modkey getting stuck
+xdotool keyup Super_L
