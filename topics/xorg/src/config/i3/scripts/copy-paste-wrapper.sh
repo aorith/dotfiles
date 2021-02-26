@@ -22,4 +22,4 @@ else
 fi
 
 # try to fix modkey getting stuck
-xdotool keyup Super_L
+xdotool keyup super
