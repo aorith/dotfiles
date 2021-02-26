@@ -7,16 +7,16 @@ current_window_cmd="$(ps -o cmd= -p $active_window_pid)"
 # ${a,,} => lowercase
 if [[ ${current_window_cmd,,} =~ (xterm|alacritty|zutty|rxvt|kitty) ]]; then
     case $1 in
-        copy) xdotool key --clearmodifiers Control_L+Shift_L+c & ;;
-        paste) xdotool key --clearmodifiers Shift_L+Insert & ;;
+        copy) xdotool key --clearmodifiers Control_L+Shift_L+c ;;
+        paste) xdotool key --clearmodifiers Shift_L+Insert ;;
         cut) ;;
         *) ;;
     esac
 else
     case $1 in
-        copy) xdotool key  --clearmodifiers Control_L+c & ;;
-        paste) xdotool key --clearmodifiers Control_L+v & ;;
-        cut) xdotool key --clearmodifiers Control_L+x & ;;
+        copy) xdotool key  --clearmodifiers Control_L+c ;;
+        paste) xdotool key --clearmodifiers Control_L+v ;;
+        cut) xdotool key --clearmodifiers Control_L+x ;;
         *) ;;
     esac
 fi
