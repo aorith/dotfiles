@@ -15,28 +15,6 @@ format_up_to_date = "0"
 critical_updates_regex = "(linux |linux-lts|linux-zen)"
 
 [[block]]
-block = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
-display_type = "memory"
-icons = true
-clickable = true
-interval = 5
-warning_mem = 80
-warning_swap = 80
-critical_mem = 95
-critical_swap = 95
-
-[[block]]
-block = "cpu"
-interval = 10
-
-[[block]]
-block = "load"
-interval = 10
-format = "{1m}"
-
-[[block]]
 block = "hueshift"
 hue_shifter = "redshift"
 step = 50
@@ -53,13 +31,6 @@ warning = 20
 critical = 7
 allow_missing = true
 hide_missing = true
-
-[[block]]
-block = "networkmanager"
-on_click = "xterm -name 'floating' -e nmtui"
-device_format = "{icon} {ap}"
-ap_format = "{strength}"
-interface_name_include = []
 
 [[block]]
 block = "time"
