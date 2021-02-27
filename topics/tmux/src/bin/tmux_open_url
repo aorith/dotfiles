@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+open_url() {
+    if type xdg-open &>/dev/null; then
+        xdg-open "$@"
+    elif type open &>/dev/null; then
+        open "$@"
+    elif [[ -n $BROWSER ]]; then
+        "$BROWSER" "$@"
+    fi
+}
+
+tmux_capture_pane urlbuffer01
+
+urls="$(tmux show-buffer -b urlbuffer01 |grep -oE '(https?|ftp|file):/?//[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]' | grep -v '^$' | sort -u | nl -w3 -s ' ')"
+
+[ -n "$urls" ] || { tmux display-message "No URLs found."; exit 0; }
+
+chosen=$(fzf-tmux -p  <<< "$urls" | awk '{print $2}')
+[ -n "$chosen" ] || exit 0
+
+open_url "$chosen" &>/dev/null &
+tmux display-message "Opening $chosen..."
