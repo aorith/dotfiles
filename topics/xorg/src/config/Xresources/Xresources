@@ -66,7 +66,7 @@ rofi.color-urgent: #000000, #b3e774, #000000, #b3e774, #000000
 ! Disable alt+enter fullscreen
 *XTerm*fullscreen: never
 
-*XTerm*translations: #override \n\
+*XTerm.VT100.translations: #override \n\
   Ctrl <Key> minus: smaller-vt-font() \n\
   Ctrl <Key> plus: larger-vt-font() \n\
   Ctrl <Key> 0: set-vt-font(d) \n\
