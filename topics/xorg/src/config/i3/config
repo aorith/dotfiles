@@ -136,16 +136,17 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 # }}}
 # Monitor Menu {{{
-set $mode_display (a)Auto, (b)DP1 & VGA1, (d)DP1, (v)VGA1, (l)LVDS1, (S-d)DP1 off, (S-v)VGA1 off, (S-l) LVDS1 off
+set $mode_display (a)Auto // (d)DP1, (v)VGA1, (l)LVDS1 // (S-d)DP1 off, (S-v)VGA1 off, (S-l) LVDS1 off
 mode "$mode_display" {
-    bindsym a exec --no-startup-id ~/.config/i3/scripts/auto-monitor-setup.sh, mode "default"
-    bindsym b exec --no-startup-id xrandr --output DP1 --primary --mode 2560x1440 --output VGA1 --auto --right-of DP1, mode "default"
-    bindsym d exec --no-startup-id xrandr --output DP1 --primary --mode 2560x1440, mode "default"
-    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --primary, mode "default"
-    bindsym l exec --no-startup-id xrandr --output LVDS1 --auto --primary, mode "default"
-    bindsym Shift+d exec --no-startup-id xrandr --output DP1 --auto --off, mode "default"
-    bindsym Shift+v exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
-    bindsym Shift+l exec --no-startup-id xrandr --output LVDS1 --auto --off, mode "default"
+    bindsym a exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh auto, mode "default"
+
+    bindsym d exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh on DP1, mode "default"
+    bindsym v exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh on VGA1, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh on LVDS1, mode "default"
+
+    bindsym Shift+d exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh off DP1, mode "default"
+    bindsym Shift+v exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh off VGA1, mode "default"
+    bindsym Shift+l exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh off LVDS1, mode "default"
 
     # back to normal
     bindsym Return mode "default"
@@ -193,7 +194,7 @@ bar {
 exec --no-startup-id xterm -geometry 100x25+0+0 -bg '#171717' \
     -fs 12 -name 'XTermScratchpad' -e \
     'tmux -u new-session -d; tmux -u new-session -A -s "scratchpad"'
-exec --no-startup-id ~/.config/i3/scripts/auto-monitor-setup.sh
+exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $locker --nofork
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
