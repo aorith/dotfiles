@@ -38,4 +38,5 @@ key_bindings:
   - {key: Z,     mods: Command,       chars: "\x1bz"}  # toggle zoom (maximize pane)
   - {key: F,     mods: Command,       chars: "\x1bf"}  # search
   - {key: P,     mods: Command,       chars: "\x1bp"}  # tmux select
-  - {key: U,     mods: Command,       chars: "\x1bu"}  # tmux server for
+  - {key: U,     mods: Command,       chars: "\x1bu"}  # tmux open url
+  - {key: I,     mods: Command,       chars: "\x1bi"}  # tmux server for
