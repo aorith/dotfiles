@@ -27,7 +27,8 @@ _link() {
     local _source _link_name _sudo
     _source="$1"
     _link_name="$2"
-    _canon_link_name="$(readlink -f "${_link_name}")"
+    [[ "$(uname -s)" == "Darwin" ]] && _canon_link_name="$(readlink -- "${_link_name}")" \
+        || _canon_link_name="$(readlink -f "${_link_name}")"
     name="${_link_name/$HOME/\~}"
 
     # necesito sudo?
