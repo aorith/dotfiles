@@ -29,6 +29,7 @@ rofi.color-urgent: #000000, #b3e774, #000000, #b3e774, #000000
 *XTerm*selectToClipboard: true
 *XTerm*highlightSelection: true
 *XTerm*trimSelection: true
+*XTerm*charClass: 33:48, 37:48, 42:48, 45-47:48, 63-64:48, 126:48
 ! Requirement for OSC52:
 *XTerm*allowWindowOps: true
 ! }}}
