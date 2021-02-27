@@ -12,7 +12,7 @@ source ~/.config/nvim/configs/plugins/git.vim
 source ~/.config/nvim/configs/plugins/fzf.vim
 source ~/.config/nvim/configs/plugins/polyglot.vim
 source ~/.config/nvim/configs/plugins/mucomplete.vim
-"source ~/.config/nvim/configs/plugins/ale.vim
+source ~/.config/nvim/configs/plugins/ale.vim
 
 if hostname() !~? 'admin.*'
     source ~/.config/nvim/configs/plugins/black.vim
