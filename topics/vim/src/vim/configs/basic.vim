@@ -11,13 +11,9 @@ elseif &term =~? 'xterm\|screen\|tmux\|alacritty'
     let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 endif
 
-"set Vim-specific sequences for RGB colors
-if &term !~? 'screen\|tmux'
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+if &term =~? 'screen\|tmux'
+    let &t_ut='' " disable background color erase
 endif
-
-let &t_ut='' " disable background color erase
 
 if has('autocmd')
   filetype plugin indent on
@@ -149,13 +145,13 @@ map! <F1> <nop>
 
 " directories
 if !isdirectory($HOME . '/.local/share/vim/swap')
-	call mkdir($HOME . '/.local/share/vim/swap', 'p', 0700)
+  call mkdir($HOME . '/.local/share/vim/swap', 'p', 0700)
 endif
 if !isdirectory($HOME . '/.local/share/vim/undodir')
-	call mkdir($HOME . '/.local/share/vim/undodir', 'p', 0700)
+  call mkdir($HOME . '/.local/share/vim/undodir', 'p', 0700)
 endif
 if !isdirectory($HOME . '/.local/share/vim/backup')
-	call mkdir($HOME . '/.local/share/vim/backup', 'p', 0700)
+  call mkdir($HOME . '/.local/share/vim/backup', 'p', 0700)
 endif
 
 set viminfo+=n~/.local/share/vim/viminfo

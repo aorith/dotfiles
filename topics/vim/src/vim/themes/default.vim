@@ -21,9 +21,9 @@ function! MyHighlights() abort
         highlight Error ctermbg=1 ctermfg=8 cterm=bold
 
         highlight Normal cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=NONE
-        let s:fg = '#bfb0a0'
-        let s:bg = '#171717'
-        call SetVimFGBG("#bfb0a0", "#171717")
+        "let s:fg = '#bfb0a0'
+        "let s:bg = '#171717'
+        "call SetVimFGBG("#bfb0a0", "#171717")
     endif
 endfunction
 
