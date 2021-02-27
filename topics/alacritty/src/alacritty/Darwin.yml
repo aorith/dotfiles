@@ -39,4 +39,4 @@ key_bindings:
   - {key: F,     mods: Command,       chars: "\x1bf"}  # search
   - {key: P,     mods: Command,       chars: "\x1bp"}  # tmux select
   - {key: U,     mods: Command,       chars: "\x1bu"}  # tmux open url
-  - {key: I,     mods: Command,       chars: "\x1bi"}  # tmux server for
+  - {key: I,     mods: Command,       chars: "\x02i"}  # tmux server for
