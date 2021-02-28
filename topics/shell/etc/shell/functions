@@ -65,12 +65,12 @@ udate() {
         export TZ="Asia/Hong_Kong"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
         export TZ="Asia/Tokyo"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
     } | column -t | BAT_STYLE="grid" bat
-    unset TZ
+    unset TZ BAT_STYLE
 }
 
 # le pasas timestamp en unix y te lo muestra en varios husos horarios
 unixdate() {
-    local EXE timestamp
+    local EXE timestamp MYTZ
     timestamp="${1:-}"
     [[ -z $timestamp ]] && { echo -n "Unix timestamp: "; read -r timestamp; }
     MYTZ="${MYTZ:-Europe/Madrid}"

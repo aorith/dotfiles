@@ -1,4 +1,10 @@
 # vim: ft=bash
 
 [[ -r ~/.profile ]] && . ~/.profile
+
+# bash only
+source "${DOTFILES}/topics/shell/etc/bash/colors.bash"
+source "${DOTFILES}/topics/shell/etc/bash/settings.bash"
+###########
+
 [[ -r ~/.bashrc ]] && . ~/.bashrc

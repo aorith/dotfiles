@@ -5,7 +5,6 @@ shopt -s histappend
 shopt -s cmdhist # Save multi-line commands as one command
 
 complete -cf sudo
-bind 'set enable-bracketed-paste on'
 
 if ((BASH_VERSINFO[0] >= 5)); then
     # History
@@ -25,4 +24,4 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
 # Prompt
 export PROMPT_DIRTRIM=2
-
+export PS4='+ ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]}() [$?] → '

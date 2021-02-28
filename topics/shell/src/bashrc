@@ -1,5 +1,5 @@
 # vim: ft=bash
-[ -z "$PS1" ] && return
+[[ -n "$PS1" ]] || return
 
 # bash completion
 for completion in /etc/bash_completion \
@@ -15,29 +15,12 @@ unset completion
 test -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" && \
     . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 
-source "${DOTFILES}/topics/shell/etc/shell/functions"
-source "${DOTFILES}/topics/shell/etc/shell/constants"
-source "${DOTFILES}/topics/shell/etc/bash/settings.bash"
 # source the auto-generated bash.env
 source "${DOTFILES}/topics/shell/etc/bash/bash.env"
 # source the auto-generated shell.env
 source "${DOTFILES}/topics/shell/etc/shell/shell.env"
 
-source "${DOTFILES}/topics/shell/etc/shell/aliases"
-source "${DOTFILES}/topics/shell/etc/bash/colors.bash"
 source "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
 
 # source local alias/functions ...
-[ -r "${HOME}/.shell_local" ] && source "${HOME}/.shell_local"
-
-# Bash version check
-if ((BASH_VERSINFO[0] < 5))
-then
-    echo "Bash is not up-to-date - minimum version required is 5"
-    echo "Current version is: ${BASH_VERSINFO[0]}"
-else
-    #trap '__before_command' DEBUG
-    true
-fi
-
-PROMPT_COMMAND='__prompt_command'
+[[ -r "${HOME}/.shell_local" ]] && source "${HOME}/.shell_local" || true

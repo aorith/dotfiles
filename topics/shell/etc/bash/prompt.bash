@@ -1,106 +1,89 @@
 # vim: ft=bash
 
-__git_tag() {
-    local __dir __tag
-    __dir="$1"
-    if [ -e "$__dir/.git/refs/heads/master" ]; then
-        if [ -e "$__dir/.git/refs/tags" ]; then
-            __commit="$(cat "$__dir/.git/refs/heads/master")"
-            __tag="$(grep -rl "$__commit" "$__dir/.git/refs/tags")"
-            [[ -z "$__tag" ]] && return 0
-            printf ":${__tag##*/}"
-        fi
-    fi
+__ps1_git_tag_f() {
+    local t # tag
+    t="$(git describe --tags --abbrev=0 2>/dev/null)"
+    [[ -z "${t}" ]] || printf ":${t}"
 }
 
-__git_ps1() {
-    local __dir __head
-    __dir="$(pwd -P)"
-    _BRANCH=""
-    while [ -n "$__dir" ]; do
-        if [ -e "$__dir/.git/HEAD" ]; then
-            read -r __head < "$__dir/.git/HEAD"
-            case "$__head" in
+__ps1_git_branch_f() {
+    local d h # dir, head
+    d="$(pwd -P)"
+    _ps1_git_branch=''
+    while [[ -n "${d}" ]]; do
+        if [[ -e "${d}/.git/HEAD" ]]; then
+            read -r h < "${d}/.git/HEAD"
+            case "${h}" in
                 ref:*)
-                    _BRANCH="\[${my_pylw}\]:${__head##*/}$(__git_tag "$__dir")\[${my_rst}\]"
+                    _ps1_git_branch="${my_ylw}:${h##*/}$(__ps1_git_tag_f)${my_rst}"
                     return 0
                     ;;
                 "")
-                    _BRANCH=""
+                    _ps1_git_branch=''
                     return 0
                     ;;
                 *)
-                    _BRANCH="\[${my_pylw}\]:detached:${__head:0:7}$(__git_tag "$__dir")\[${my_rst}\]"
+                    _ps1_git_branch="${my_ylw}:D:${h:0:7}$(__ps1_git_tag_f)${my_rst}"
                     return 0
                     ;;
             esac
+            break
         fi
-        __dir="${__dir%/*}"
+        d="${d%/*}"
     done
 }
 
-__jobs_ps1() {
-    local _jobs _rjobs
-    _JOBS=""
-    _jobs=( $(jobs -p) )
-    [[ -z "${_jobs[*]}" ]] && return 0
-
-    _rjobs=( $(jobs -rp) )
-    _JOBS="\[${my_pgry}\]:${#_rjobs[@]}/${#_jobs[@]}\[${my_rst}\]"
-}
-
-__before_command() {
-    [[ -n $_TIMER_IS_SET ]] && return 0
-    _TIMER_IS_SET="yes"
-    _TIMER="$(printf "%s" "${EPOCHREALTIME/.}")"
-}
-
-__stop_timer() {
-    local delta_us us ms s m h _timer_val timer_now
-    timer_now=$(printf "%s" "${EPOCHREALTIME/.}")
-
-    delta_us=$(( (timer_now - _TIMER) ))
-    us=$((delta_us % 1000))
-    ms=$(((delta_us / 1000) % 1000))
-    s=$(((delta_us / 1000000) % 60))
-    m=$(((delta_us / 60000000) % 60))
-    h=$((delta_us / 3600000000))
-    if ((h > 0)); then _timer_val="${h}h${m}m"
-    elif ((m > 0)); then _timer_val="${m}m${s}s"
-    elif ((s >= 10)); then _timer_val="${s}.$((ms / 100))s"
-    elif ((s > 0)); then _timer_val="${s}.$(printf %03d $ms)s"
-    elif ((ms >= 100)); then _timer_val="${ms}ms"
-    elif ((ms > 0)); then _timer_val="${ms}.$((delta_us / 100))ms"
-    else _timer_val="${delta_us}us"
-    fi
-
-    _TIMER_VAL="\[${my_gry}\]~${_timer_val}\[${my_rst}\] "
-    unset _TIMER
-    unset timer_now
+__ps1_jobs_f() {
+    local j rj # jobs, running_jobs
+    _ps1_jobs=''
+    j=( $(jobs -p) )
+    [[ -n "${j[*]}" ]] || return 0
+    rj=( $(jobs -rp) )
+    _ps1_jobs="${my_gry}:${#rj[@]}/${#j[@]}${my_rst}"
 }
 
 __prompt_command () {
-    __last_exit=$?
-    local LANG=C _WDCOLOR _ERRPROMPT _ON_SSH _BOLD
-    [ $__last_exit -ne 0 ] && _ERRPROMPT="\[${my_pred}\]:${__last_exit}\[${my_rst}\]"
+    local le=$? LANG=C # last exit
+    local wdc ep onssh ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
+    (( $le > 0 )) && ep="${my_red}:${le}${my_rst}" || unset ep
 
-    # timer
-    #__stop_timer
+    ms=$(( ($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000 ))
+
+    # different foreground color for the time
+    # depending on the execution time.
+    case $((
+        ms <= 20   ? 1 :
+        ms <= 100  ? 2 :
+        ms <= 250  ? 3 :
+        ms <= 500  ? 4 :
+        ms <= 999  ? 5 : 6)) in
+        (1)   tc="${my_grn}" ;;
+        (2)   tc="${my_ylw}" ;;
+        (3)   tc="${my_cyn}" ;;
+        (4)   tc="${my_blu}" ;;
+        (5)   tc="${my_pur}" ;;
+        # when more then 1000 ms have elapsed,
+        # display seconds, (ms/1000), instead.
+        (6|*) tc="${my_bld}${my_red}" ms=$((ms/1000)) ;;
+    esac
+
+    # format time, 3 characters pad with zero
+    # (ms = 42 -> 042)
+    ms="$(printf '%03d' $ms)"
 
     # mostramos rama si es un repo git
-    __git_ps1
+    __ps1_git_branch_f
 
     # mostramos jobs en background
-    __jobs_ps1
+    __ps1_jobs_f
 
-    [ -w $PWD ] && _WDCOLOR="\[${my_pcyn}\]:" || _WDCOLOR="\[${my_porg}\]:"
-    [[ -n "$SSH_CLIENT" ]] && { _ON_SSH="\[${my_ylw2}\]ssh@\[${my_red2}\]"; _BOLD="\[${my_bld}\]"; }
+    [[ -w "${PWD}" ]] && wdc="${my_cyn}" || wdc="${my_red2}"
+    [[ -z "$SSH_CLIENT" ]] || onssh="${my_grn}\h:${my_rst}"
 
-    PS1="\[\033]0;\u@\h:\w\007\]\[${my_pgrn}\]${_ON_SSH}\u@${_BOLD}\h\[${my_rst}\]${_WDCOLOR}\w${_BRANCH}\[${my_rst}\]${_JOBS}${_ERRPROMPT}\[${my_rst}\] \\$ "
-    export PS1
+    PS1="\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${my_blu}❯${my_rst} "
 
-    #unset _TIMER_IS_SET
+    unset _ps1_start_timer
 }
 
-export PS4='+ ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]}() [$?] → '
-
+trap ': "${_ps1_start_timer:=$($EXEC_DATE +%s%N)}"' DEBUG
+PROMPT_COMMAND='__prompt_command'
