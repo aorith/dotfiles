@@ -45,12 +45,10 @@ __ps1_jobs_f() {
 __prompt_command () {
     local le=$? LANG=C # last exit
     local wdc ep onssh ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
-    (( $le > 0 )) && ep="${my_red}:${le}${my_rst}" || unset ep
+    (( $le > 0 )) && ep="${my_red}:${le}${my_rst}"
 
     ms=$(( ($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000 ))
 
-    # different foreground color for the time
-    # depending on the execution time.
     case $((
         ms <= 20   ? 1 :
         ms <= 100  ? 2 :
@@ -67,14 +65,12 @@ __prompt_command () {
         (6|*) tc="${my_red}" ms=$((ms/1000)) ;;
     esac
 
-    # format time, 3 characters pad with zero
-    # (ms = 42 -> 042)
     ms="$(printf '%03d' $ms)"
 
-    # mostramos rama si es un repo git
+    # git branch/tag
     __ps1_git_branch_f
 
-    # mostramos jobs en background
+    # background jobs
     __ps1_jobs_f
 
     [[ -w "${PWD}" ]] && wdc="${my_cyn}" || wdc="${my_red2}"
