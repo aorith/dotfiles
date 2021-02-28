@@ -1,13 +1,8 @@
 # vim: ft=bash
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # enable color support of ls and also add handy aliases
 export CLICOLOR=1
-if [[ "$_OS" == 'Darwin' ]] && ! ls --color=auto -1 /dev/null >/dev/null 2>&1; then
+if [[ "$_OS" == 'Darwin' ]] && [[ ! -e "/usr/local/opt/coreutils/libexec/gnubin/ls" ]]; then
 	export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 else
     if type dircolors &>/dev/null; then
@@ -23,6 +18,11 @@ else
     alias diff='diff --color=auto'
     alias htop='sudo TERM=xterm-256color htop'
 fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
