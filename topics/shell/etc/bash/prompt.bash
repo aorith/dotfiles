@@ -54,14 +54,12 @@ __prompt_command () {
         ms <= 100  ? 2 :
         ms <= 250  ? 3 :
         ms <= 500  ? 4 :
-        ms <= 999  ? 5 : 6)) in
+        ms < 1000  ? 5 : 6)) in
         (1)   tc="${my_grn}" ;;
         (2)   tc="${my_ylw}" ;;
         (3)   tc="${my_cyn}" ;;
         (4)   tc="${my_blu}" ;;
         (5)   tc="${my_pur}" ;;
-        # when more then 1000 ms have elapsed,
-        # display seconds, (ms/1000), instead.
         (6|*) tc="${my_red}" ms=$((ms/1000)) ;;
     esac
 
