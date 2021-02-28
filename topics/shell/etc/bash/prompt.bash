@@ -64,7 +64,7 @@ __prompt_command () {
         (5)   tc="${my_pur}" ;;
         # when more then 1000 ms have elapsed,
         # display seconds, (ms/1000), instead.
-        (6|*) tc="${my_bld}${my_red}" ms=$((ms/1000)) ;;
+        (6|*) tc="${my_red}" ms=$((ms/1000)) ;;
     esac
 
     # format time, 3 characters pad with zero
