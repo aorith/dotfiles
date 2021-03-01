@@ -59,6 +59,14 @@ bindsym $mod+Tab workspace back_and_forth
 # Sticky toggle
 bindsym $mod+i sticky toggle
 
+# focus parent/child
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# marks to swap containers
+bindsym $mod+m unmark toswap; mark toswap
+bindsym $mod+Shift+m swap container with mark toswap
+
 # change focus
 bindsym $mod+h exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh left left
 bindsym $mod+j exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh down bottom
