@@ -45,15 +45,15 @@ __ps1_jobs_f() {
 __prompt_command () {
     local le=$? LANG=C # last exit
     local wdc ep onssh ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
-    (( $le > 0 )) && ep="${my_red}:${le}${my_rst}"
+    (( $le == 0 )) || ep="${my_red}:${le}${my_rst}"
 
     ms=$(( ($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000 ))
 
     case $((
-        ms <= 20   ? 1 :
-        ms <= 100  ? 2 :
-        ms <= 250  ? 3 :
-        ms <= 500  ? 4 :
+        ms < 21    ? 1 :
+        ms < 101   ? 2 :
+        ms < 251   ? 3 :
+        ms < 501   ? 4 :
         ms < 1000  ? 5 : 6)) in
         (1)   tc="${my_grn}" ;;
         (2)   tc="${my_ylw}" ;;
