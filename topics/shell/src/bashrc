@@ -15,6 +15,7 @@ unset completion
 test -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" && \
     . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 
+source "${DOTFILES}/topics/shell/etc/shell/aliases"
 # source the auto-generated bash.env
 source "${DOTFILES}/topics/shell/etc/bash/bash.env"
 # source the auto-generated shell.env

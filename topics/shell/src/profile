@@ -29,6 +29,7 @@ export LANGUAGE='en_US.UTF-8'
 export LC_TIME=C
 export LC_COLLATE=C
 
+set -a
 source "${DOTFILES}/topics/shell/etc/shell/functions"
+set +a
 source "${DOTFILES}/topics/shell/etc/shell/constants"
-source "${DOTFILES}/topics/shell/etc/shell/aliases"
