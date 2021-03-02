@@ -27,7 +27,7 @@ bindsym --release $mod+c exec --no-startup-id ~/.config/i3/scripts/copy-paste-wr
 bindsym --release $mod+v exec --no-startup-id ~/.config/i3/scripts/copy-paste-wrapper.sh paste
 bindsym --release $mod+x exec --no-startup-id ~/.config/i3/scripts/copy-paste-wrapper.sh cut
 
-bindsym $mod+masculine [instance="XTermScratchpad"] scratchpad show; move position center
+bindsym $mod+masculine exec --no-startup-id ~/.config/i3/scripts/scratchpad-term.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -43,7 +43,8 @@ bindsym Print exec --no-startup-id flameshot gui
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec xterm -e tmux -u
+bindsym $mod+Shift+Return exec xterm -e tmux -u attach
 
 # kill focused window
 bindsym $mod+q kill
@@ -199,9 +200,6 @@ bar {
 }
 ########################################################################## }}}
 #### Startup programs {{{
-exec --no-startup-id xterm -geometry 100x25+0+0 -bg '#171717' \
-    -fs 12 -name 'XTermScratchpad' -e \
-    'tmux -u new-session -d; tmux -u new-session -A -s "scratchpad"'
 exec --no-startup-id ~/.config/i3/scripts/i3-monitor-setup.sh
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $locker --nofork
 exec --no-startup-id blueman-applet
@@ -209,5 +207,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id flameshot
 exec --no-startup-id dunst -print
-exec --no-startup-id "sleep 1; xterm -e 'tmux -u attach'"
 ########################################################################## }}}
