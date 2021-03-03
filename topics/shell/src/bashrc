@@ -7,12 +7,12 @@ for completion in /etc/bash_completion \
     /usr/local/etc/profile.d/bash_completion.sh \
     /usr/local/share/bash-completion/bash_completion
 do
-    [[ -r "$completion" ]] && . "$completion"
+    [[ ! -r "$completion" ]] || . "$completion"
 done
 unset completion
 
 # Nix
-test -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" && \
+[[ ! -x "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]] || \
     . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 
 source "${DOTFILES}/topics/shell/etc/shell/aliases"
@@ -20,8 +20,7 @@ source "${DOTFILES}/topics/shell/etc/shell/aliases"
 source "${DOTFILES}/topics/shell/etc/bash/bash.env"
 # source the auto-generated shell.env
 source "${DOTFILES}/topics/shell/etc/shell/shell.env"
-
-source "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
-
 # source local alias/functions ...
-[[ -r "${HOME}/.shell_local" ]] && source "${HOME}/.shell_local" || true
+[[ ! -r "${HOME}/.shell_local" ]] || source "${HOME}/.shell_local"
+# source bash prompt
+source "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
