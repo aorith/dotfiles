@@ -4,20 +4,17 @@
 set $mod Mod4
 set $locker ~/.config/i3/scripts/lock.sh
 #font -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
-font pango:DejaVu Sans Mono 10
+font pango:Fixedsys Excelsior 12
 focus_follows_mouse no
 default_border pixel 2
 default_floating_border normal 2
 ########################################################################## }}}
-#### i3-gaps {{{
-gaps inner 4
-gaps outer 4
-smart_gaps on
-########################################################################## }}}
 #### Window Rules {{{
 for_window [class="(i?)floating"] floating enable, border normal 2
+for_window [class="Sxiv"] floating enable, border normal 2
+for_window [class="mpv"] floating enable, border normal 2
 for_window [instance="(i?)floating"] floating enable, border normal 2
-for_window [instance="XTermScratchpad"] move scratchpad, floating enable, border normal 1
+for_window [instance="scratchpad.tmux"] move scratchpad, floating enable, border normal 1
 for_window [instance="pavucontrol"] floating enable, border normal 2
 ########################################################################## }}}
 #### KeyBindings {{{
@@ -43,8 +40,8 @@ bindsym Print exec --no-startup-id flameshot gui
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm -e tmux -u
-bindsym $mod+Shift+Return exec xterm -e tmux -u attach
+bindsym $mod+Return exec xterm -name 'tmux' -e 'tmux -u attach || tmux -u new-session'
+bindsym $mod+Shift+Return exec xterm
 
 # kill focused window
 bindsym $mod+q kill
@@ -54,8 +51,10 @@ bindsym $mod+space exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Shift+space exec --no-startup-id rofi -show run
 bindsym Mod1+Tab exec --no-startup-id rofi -show window -window-thumbnail
 
-# Toggle move to last workspace
-bindsym $mod+Tab workspace back_and_forth
+# Next tab
+bindsym $mod+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus.py tab next
+# Prev tab
+bindsym $mod+Shift+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus.py tab prev
 
 # Sticky toggle
 bindsym $mod+i sticky toggle
@@ -69,10 +68,15 @@ bindsym $mod+m unmark toswap; mark toswap
 bindsym $mod+Shift+m swap container with mark toswap
 
 # change focus
-bindsym $mod+h exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh left left
-bindsym $mod+j exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh down bottom
-bindsym $mod+k exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh up top
-bindsym $mod+l exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh right right
+#bindsym $mod+h exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh left left
+#bindsym $mod+j exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh down bottom
+#bindsym $mod+k exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh up top
+#bindsym $mod+l exec --no-startup-id ~/.config/i3/scripts/i3-tmux-focus-switch.sh right right
+
+bindsym $mod+h exec --no-startup-id ~/.config/i3/scripts/i3-focus.py focus left
+bindsym $mod+j exec --no-startup-id ~/.config/i3/scripts/i3-focus.py focus down
+bindsym $mod+k exec --no-startup-id ~/.config/i3/scripts/i3-focus.py focus up
+bindsym $mod+l exec --no-startup-id ~/.config/i3/scripts/i3-focus.py focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -184,19 +188,21 @@ bindsym $mod+shift+q mode "$mode_system"
 #### Status Bar {{{
 bar {
     #font fixed
-    font pango:DejaVu Sans Mono, FontAwesome 10
+    font pango:Fixedsys Excelsior 12
+    #font pango:DejaVu Sans Mono, FontAwesome 10
     workspace_min_width 25
     position top
-    status_command i3status-rs ~/.config/i3/i3status-rust/config.toml
-    colors {
-        separator #666666
-        background #222222
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
+    status_command py3status -c ~/.config/i3/py3status.conf
+    #status_command i3status-rs ~/.config/i3/i3status-rust/config.toml
+#    colors {
+#        separator #666666
+#        background #222222
+#        statusline #dddddd
+#        focused_workspace #0088CC #0088CC #ffffff
+#        active_workspace #333333 #333333 #ffffff
+#        inactive_workspace #333333 #333333 #888888
+#        urgent_workspace #2f343a #900000 #ffffff
+#    }
 }
 ########################################################################## }}}
 #### Startup programs {{{
