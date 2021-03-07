@@ -52,7 +52,7 @@ if [[ "$_OS" == 'Darwin' ]]; then
         unset man_path
     fi
 
-    for man_path in $(cat /private/etc/manpaths) $(cat /private/etc/manpaths.d/*); do
+    for man_path in $(cat /private/etc/manpaths); do
         add_to_manpath "$man_path"
     done 2>/dev/null
     unset manpath
