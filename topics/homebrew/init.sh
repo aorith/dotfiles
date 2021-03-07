@@ -83,6 +83,7 @@ cask_packages=(
     "mpv"
     "emacs"
     "openwebstart"
+    "font-noto-color-emoji"
 )
 
 /usr/local/bin/brew update
