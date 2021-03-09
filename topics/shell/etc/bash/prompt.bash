@@ -2,7 +2,7 @@
 
 __ps1_git_tag_f() {
     local t # tag
-    t="$(git describe --tags --abbrev=0 2>/dev/null)"
+    t="$(timeout 1.5 git describe --tags --abbrev=0 2>/dev/null)"
     [[ -z "${t}" ]] || printf ":${t}"
 }
 
