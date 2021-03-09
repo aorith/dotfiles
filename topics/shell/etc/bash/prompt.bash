@@ -15,7 +15,7 @@ __ps1_git_branch_f() {
             read -r h < "${d}/.git/HEAD"
             case "${h}" in
                 ref:*)
-                    _ps1_git_branch="${my_ylw}:${h##*/}$(__ps1_git_tag_f)${my_rst}"
+                    _ps1_git_branch="${my_ylw}:${h##*/}${my_rst}"
                     return 0
                     ;;
                 "")
