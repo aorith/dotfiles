@@ -2,8 +2,13 @@
 
 __ps1_git_tag_f() {
     local t # tag
-    t="$(timeout 1.5 git describe --tags --abbrev=0 2>/dev/null)"
-    [[ -z "${t}" ]] || printf ":${t}"
+    t="$(timeout 0.5 git describe --tags --abbrev=0 2>/dev/null)"
+    if [[ $? -eq 124 ]]
+    then
+        t='git-timeout'
+        ps -u "$USER" -o cmd | grep -q '[g]it describe' || { git describe --tags --abbrev=0 &>/dev/null & }
+    fi
+    printf "${my_pur}:${t}"
 }
 
 __ps1_git_branch_f() {
