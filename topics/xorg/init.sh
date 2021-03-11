@@ -17,6 +17,7 @@ case $HOSTNAME in
         create_link "${PWD}/src/config/Xresources" "$HOME/.config/Xresources"
         create_link "${PWD}/src/config/i3" "$HOME/.config/i3"
         create_link "${PWD}/src/config/gsimplecal" "$HOME/.config/gsimplecal"
+        create_link "${PWD}/src/config/dunst" "$HOME/.config/dunst"
         create_link "${PWD}/src/config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
         _create_user_dirs
         create_link "${PWD}/src/xinitrc" "$HOME/.xinitrc"
