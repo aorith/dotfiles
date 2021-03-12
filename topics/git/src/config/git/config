@@ -15,7 +15,7 @@
     mydiff = diff --word-diff=color
     myuserrank = shortlog --summary --numbered --no-merges
     mytree = log --graph --decorate --pretty=oneline --abbrev-commit
-    mylog = log --decorate --pretty=oneline
+    mylog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     mywhoami = !git config user.name && git config user.email
 
 [pull]
