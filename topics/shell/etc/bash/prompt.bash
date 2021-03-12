@@ -84,5 +84,5 @@ __prompt_command () {
     unset _ps1_start_timer
 }
 
-trap ': "${_ps1_start_timer:=$($EXEC_DATE +%s%N)}"' DEBUG
+trap '_ps1_start_timer=$($EXEC_DATE +%s%N)' DEBUG
 PROMPT_COMMAND='__prompt_command'

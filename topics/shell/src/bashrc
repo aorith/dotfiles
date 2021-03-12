@@ -1,5 +1,5 @@
 # vim: ft=bash
-[[ -n "$PS1" ]] || return
+[[ -n "$PS1" ]] && [[ -n "$DOTFILES" ]] || return 0
 
 # bash completion
 for completion in /etc/bash_completion \
@@ -7,20 +7,20 @@ for completion in /etc/bash_completion \
     /usr/local/etc/profile.d/bash_completion.sh \
     /usr/local/share/bash-completion/bash_completion
 do
-    [[ ! -r "$completion" ]] || . "$completion"
+    . "$completion" 2>/dev/null
 done
 unset completion
 
 # Nix
-[[ ! -x "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]] || \
-    . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+#[[ ! -x "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]] || \
+#    . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 
-source "${DOTFILES}/topics/shell/etc/shell/aliases"
+. "${DOTFILES}/topics/shell/etc/shell/aliases"
 # source the auto-generated bash.env
-source "${DOTFILES}/topics/shell/etc/bash/bash.env"
+. "${DOTFILES}/topics/shell/etc/bash/bash.env"
 # source the auto-generated shell.env
-source "${DOTFILES}/topics/shell/etc/shell/shell.env"
+. "${DOTFILES}/topics/shell/etc/shell/shell.env"
 # source local alias/functions ...
-[[ ! -r "${HOME}/.shell_local" ]] || source "${HOME}/.shell_local"
+[[ ! -e "${HOME}/.shell_local" ]] || . "${HOME}/.shell_local"
 # source bash prompt
-source "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
+. "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
