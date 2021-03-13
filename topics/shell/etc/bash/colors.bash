@@ -11,7 +11,7 @@ set -a
 : "${my_pur:=\[$(tput setaf 5)\]}"     # Purple
 : "${my_cyn:=\[$(tput setaf 6)\]}"     # Cyan
 : "${my_wht:=\[$(tput setaf 7)\]}"     # White
-: "${my_gry:=\[$(tput setaf 8)\]}"    # Grey
+: "${my_gry:=\[$(tput setaf 8)\]}"     # Grey
 : "${my_red2:=\[$(tput setaf 9)\]}"    # Red 2
 : "${my_grn2:=\[$(tput setaf 10)\]}"   # Green 2
 : "${my_ylw2:=\[$(tput setaf 11)\]}"   # Yellow 2
