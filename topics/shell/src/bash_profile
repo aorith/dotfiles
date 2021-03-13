@@ -1,6 +1,6 @@
 # vim: ft=bash
 
-. ~/.profile
+. "${HOME}/.profile"
 . "${DOTFILES}/topics/shell/etc/bash/colors.bash"
 . "${DOTFILES}/topics/shell/etc/bash/settings.bash"
-. ~/.bashrc
+. "${HOME}/.bashrc"

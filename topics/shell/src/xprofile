@@ -1,0 +1,3 @@
+# vim: ft=bash
+[[ -z "$_PROFILE_LOADED" ]] || return
+. "${HOME}/.profile"

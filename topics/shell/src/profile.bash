@@ -21,6 +21,7 @@ else
 fi
 export LANGUAGE='en_US.UTF-8'
 export LC_COLLATE=C
+export LC_TIME=C
 
 if [[ "$_OS" == "Darwin" ]]; then
     # Override CTYPE on MacOs
@@ -33,3 +34,5 @@ set -a
 . "${DOTFILES}/topics/shell/etc/shell/functions"
 set +a
 . "${DOTFILES}/topics/shell/etc/shell/constants"
+
+export _PROFILE_LOADED=1
