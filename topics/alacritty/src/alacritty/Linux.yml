@@ -1,4 +1,10 @@
 alt_send_esc: true
 
+shell:
+  program: /usr/bin/env
+  args:
+    - bash
+    - --login
+
 window:
   decorations: full
