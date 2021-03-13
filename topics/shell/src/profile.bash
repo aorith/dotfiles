@@ -21,7 +21,7 @@ else
 fi
 export LANGUAGE='en_US.UTF-8'
 export LC_COLLATE=C
-export LC_TIME=C
+[[ -z "$SSH_CLIENT" ]] && export LC_TIME="es_ES.UTF-8" || export LC_TIME=C
 
 if [[ "$_OS" == "Darwin" ]]; then
     # Override CTYPE on MacOs
