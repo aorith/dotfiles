@@ -26,17 +26,6 @@ add_to_manpath() {
     export MANPATH
 }
 
-# ssh wrapper
-ssh() {
-    local hn sc # hostname, status code
-    hn="$(command ssh -G "$@" | head -4 | grep -E ^hostname | awk '{print $2}')"
-    echo -ne "\033]0;SSH@${hn}\007"
-    command ssh "$@"
-    sc=$?
-    echo -ne "\033]0;$(whoami)@$(hostname)\007"
-    return $sc
-}
-
 # copy terminfo
 ssh-copy-terminfo() {
 	local EXEC
