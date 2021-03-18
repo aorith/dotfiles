@@ -49,7 +49,7 @@ key_bindings:
   - {key: N,     mods: Command|Shift, action: SpawnNewInstance}
   - {key: F1,    mods: Command,       command: { program: "/bin/bash", args: ["-lc", "tmux new-window -n HELP glow -p $PRIVATE_DOTFILES/misc/help.md"]}}
   - {key: F1,    mods: Command|Shift, command: { program: "/bin/bash", args: ["-lc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
-  - {key: F6,    mods: Command,       command: { program: "/bin/bash", args: ["-lc", "tmux display-popup -w70% -h70% -KE -R $HOME/.config/alacritty/bin/switch-theme.sh"]}}
+  - {key: F6,    mods: Command,       command: { program: "/bin/bash", args: ["-lc", "tmux display-popup -w70% -h70% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
   - {key: F6,    mods: Command|Shift, command: { program: "/bin/bash", args: ["-lc", "$HOME/.config/alacritty/bin/switch-theme.sh reset"]}}
     # unmap some bindings
   - {key: B,     mods: Command, action: ReceiveChar}
