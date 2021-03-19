@@ -2,7 +2,8 @@
 
 shopt -s nullglob
 
-. ./topics/shell/src/profile
+cd "$(dirname "$0")" || exit 1
+. ./topics/shell/src/profile.bash
 cd "$DOTFILES" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
