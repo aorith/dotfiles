@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 LIST_DATA='[#{session_name}] (#{window_name}) #{pane_title} @#{pane_current_command}'
 FZF_COMMAND='fzf-tmux -p --delimiter=· --with-nth 4 --layout=reverse --border=sharp'

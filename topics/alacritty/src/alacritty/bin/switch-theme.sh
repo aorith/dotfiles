@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PATH="/usr/local/bin:/bin:/usr/bin"
+
 THEMEP="${HOME}/.config/alacritty/themes/alacritty-theme/themes"
 CONFIG="${HOME}/.config/alacritty/alacritty.yml"
 
