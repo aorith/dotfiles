@@ -84,6 +84,7 @@ cask_packages=(
     "emacs"
     "openwebstart"
     "font-noto-color-emoji"
+    "tigervnc-viewer"
 )
 
 /usr/local/bin/brew update
