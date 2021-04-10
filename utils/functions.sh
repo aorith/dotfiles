@@ -39,7 +39,7 @@ _link() {
         && link_success "$name" && return 0
 
     [[ -L $_link_name ]] && ${_sudo} rm "$_link_name"
-    if ${_sudo} ln -s "$_source" "$_link_name"; then
+    if ${_sudo} ln -Ts "$_source" "$_link_name"; then
         link_arrow "$name"
         return 0
     else
