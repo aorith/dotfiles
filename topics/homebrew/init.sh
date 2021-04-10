@@ -52,6 +52,7 @@ formulae_packages=(
     "autopep8"
     "golang"
     "flock"
+    "gpg"
 )
 
 formulae_source_packages=(
