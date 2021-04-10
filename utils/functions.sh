@@ -23,6 +23,7 @@ _backup() {
 }
 
 _link() {
+    add_to_path "/usr/local/opt/coreutils/libexec/gnubin"
     # _link <SOURCE_FILE> <LINK_NAME>
     local _source _link_name _sudo
     _source="$1"
