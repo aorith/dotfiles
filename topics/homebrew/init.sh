@@ -53,6 +53,7 @@ formulae_packages=(
     "golang"
     "flock"
     "gpg"
+    "git-flow"
 )
 
 formulae_source_packages=(
