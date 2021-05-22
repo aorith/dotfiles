@@ -5,6 +5,10 @@ if has('vim_starting')
 endif
 scriptencoding utf-8
 
+if has('termguicolors')
+    set termguicolors
+endif
+
 "set Vim-specific sequences for RGB colors
 if &term =~? 'screen\|tmux'
     let &t_ut='' " disable background color erase
@@ -87,12 +91,6 @@ function! ToggleBackground()
         set background=dark
     else
         set background=light
-    endif
-endfunction
-
-function! SetTermguicolors()
-    if has('termguicolors')
-        set termguicolors
     endif
 endfunction
 

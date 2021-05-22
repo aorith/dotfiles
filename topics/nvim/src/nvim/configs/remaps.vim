@@ -88,7 +88,19 @@ let g:netrw_liststyle = 1
 let g:netrw_browse_split = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 40
-nmap <silent> <leader>e :Lexplore<CR>
+"nmap <silent> <leader>e :Lexplore<CR>
+
+" NvimTree
+nmap <silent> <leader>e :NvimTreeToggle<CR>
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_lsp_diagnostics = 1 "0 by default, will show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
+let g:nvim_tree_tab_open = 1 "0 by default, will open the tree when entering a new tab and the tree was previously open
 
 " Run neorun.sh on current folder
 function! NeoRun(arguments) abort
