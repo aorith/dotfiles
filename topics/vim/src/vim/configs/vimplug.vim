@@ -51,8 +51,8 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
 " window
 let g:ale_list_window_size = 5
-let g:ale_open_list = 1
-let g:ale_keep_list_window_open = 1
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
 Plug 'dense-analysis/ale'
 set omnifunc=ale#completion#OmniFunc
 
