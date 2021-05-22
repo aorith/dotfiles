@@ -99,3 +99,7 @@ threadscounter() {
     ps -o uid,ppid,command -eT |sort -k3 |uniq -c |sort -n |tail
 }
 
+biggest_files() {
+    1>&2 echo "Running: 'find . -type f -exec du -ah {} \; | sort -h' ..."
+    find . -type f -exec du -ah {} \; | sort -h 2>/dev/null
+}
