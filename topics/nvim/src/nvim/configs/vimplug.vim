@@ -5,35 +5,58 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" ---------------------- PLUG BEGIN ---------------------- "
 call plug#begin('~/.config/nvim/plugged')
-source ~/.config/nvim/configs/plugins/themes.vim
-source ~/.config/nvim/configs/plugins/undotree.vim
-source ~/.config/nvim/configs/plugins/git.vim
-source ~/.config/nvim/configs/plugins/fzf.vim
-source ~/.config/nvim/configs/plugins/polyglot.vim
-source ~/.config/nvim/configs/plugins/mucomplete.vim
-
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" -------------------------------------------------------- "
+" Themes
+Plug 'romainl/Apprentice'
+Plug 'lifepillar/vim-gruvbox8'
+Plug 'Shadorain/shadotheme'
+Plug 'marko-cerovac/material.nvim'
+Plug 'folke/tokyonight.nvim'
+Plug 'savq/melange'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
-" Nvim Treesitter
+" Undotree
+Plug 'mbbill/undotree'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+Plug 'rhysd/git-messenger.vim'
+
+" FZF
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
+
+" Polyglot
+Plug 'sheerun/vim-polyglot'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'folke/trouble.nvim'
+" adds :LspInstall <language>
+Plug 'kabouzeid/nvim-lspinstall'
+" Signature (x, y, z ...) as you type
+Plug 'ray-x/lsp_signature.nvim'
+
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Completion
+Plug 'hrsh7th/nvim-compe'
 
-" Trouble
-Plug 'folke/trouble.nvim'
-
+" Black for python (code formatter) format all the buffer with :Black
 if hostname() !~? 'admin.*'
-    source ~/.config/nvim/configs/plugins/black.vim
+  Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
+  command! -nargs=0 Black call Black()
 endif
-
+" -------------------------------------------------------- "
 call plug#end()
+" ---------------------- PLUG END ------------------------ "
 
-" Nvim Treesitter
+" Extra configs
+source ~/.config/nvim/configs/plugins/LSP.vim
 source ~/.config/nvim/configs/plugins/treesitter.vim
-
-" Trouble
-lua << EOF
-  require("trouble").setup {
-  }
-EOF

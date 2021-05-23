@@ -37,9 +37,6 @@ set noautoread
 set title
 let &titlestring= hostname() . "(%t)"
 
-set completeopt+=menuone,noselect
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
 if exists('+signcolumn')
     set signcolumn=yes
 endif

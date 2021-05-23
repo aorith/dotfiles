@@ -14,9 +14,11 @@ augroup aorith_autocmds
     " For large files
     "autocmd BufWinEnter * silent! if line2byte(line("$") + 1) > 1000000 | syntax sync clear | endif
 augroup end
+" Clean the highlighted whitespace
+nnoremap <leader><space> :call clearmatches()<CR>
 
 " highlight current line
-set cursorline
+set nocursorline
 if exists('+cursorlineopt')
     set cursorlineopt=number
 endif
