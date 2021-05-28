@@ -12,6 +12,7 @@ Plug 'lokaltog/vim-monotone'
 Plug 'romainl/Apprentice'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'lifepillar/vim-wwdc16-theme'
+Plug 'arcticicestudio/nord-vim'
 
 " undotree
 Plug 'mbbill/undotree'
