@@ -20,7 +20,7 @@ __ps1_git_branch_f() {
             read -r h < "${d}/.git/HEAD"
             case "${h}" in
                 ref:*)
-                    _ps1_git_branch="${my_ylw}:${h##*/}${my_rst}"
+                    _ps1_git_branch="${my_grn2}:${h##*/}${my_rst}"
                     return 0
                     ;;
                 "")
@@ -28,7 +28,7 @@ __ps1_git_branch_f() {
                     return 0
                     ;;
                 *)
-                    _ps1_git_branch="${my_ylw}:D:${h:0:7}$(__ps1_git_tag_f)${my_rst}"
+                    _ps1_git_branch="${my_grn2}:D:${h:0:7}$(__ps1_git_tag_f)${my_rst}"
                     return 0
                     ;;
             esac
