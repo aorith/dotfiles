@@ -54,6 +54,7 @@ formulae_packages=(
     "flock"
     "gpg"
     "git-flow"
+    "tig"
 )
 
 formulae_source_packages=(
