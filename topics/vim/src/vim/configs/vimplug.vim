@@ -13,6 +13,8 @@ Plug 'romainl/Apprentice'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'lifepillar/vim-wwdc16-theme'
 Plug 'arcticicestudio/nord-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'srcery-colors/srcery-vim'
 
 " undotree
 Plug 'mbbill/undotree'
