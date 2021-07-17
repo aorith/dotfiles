@@ -1,6 +1,6 @@
 alt_send_esc: false
 window:
-  decorations: full
+  decorations: buttonless
 font:
   use_thin_strokes: true
 

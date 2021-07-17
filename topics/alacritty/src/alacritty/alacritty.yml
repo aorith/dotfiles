@@ -17,13 +17,6 @@ font:
   size: 12.0
   normal:
     family: "Hack Nerd Font"
-    style: Regular
-  bold:
-    family: "Hack Nerd Font"
-    style: Bold
-  italic:
-    family: "Hack Nerd Font"
-    style: Italic
 
 mouse:
   hide_when_typing: true
@@ -55,6 +48,7 @@ import:
   - ~/.config/alacritty/env.yml
   - ~/.config/alacritty/theme.yml
 
+draw_bold_text_with_bright_colors: true
 colors:
   cursor:
     custom_cursor_color: true
