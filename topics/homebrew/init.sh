@@ -71,7 +71,7 @@ cask_packages=(
     "font-fira-code"
     "font-hack"
     "font-jetbrains-mono"
-    "font-source-code-pro"
+    "font-sauce-code-pro-nerd-font"
     "hammerspoon"
     "iterm2"
     "joplin"
