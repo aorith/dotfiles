@@ -1,6 +1,6 @@
 # vim: ft=bash
 
-[[ -d /nix ]] && [[ "$(uname -s)" == "Linux" ]] || exit 0
+[[ -d /nix ]] && [[ "$(uname -s)" == "Linux" ]] || return 0
 
 if [ -e /home/aorith/.nix-profile/etc/profile.d/nix.sh ]; then . /home/aorith/.nix-profile/etc/profile.d/nix.sh; fi
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
