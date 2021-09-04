@@ -142,4 +142,8 @@ log_header "Updating git submodules"
 git submodule sync
 git submodule update --init --recursive
 
+sed -i \
+    's,url = https://github.com/aorith/dotfiles,url = git@github.com:aorith/dotfiles.git,g' \
+    "${DOTFILES}/.git/config"
+
 log_header "End"
