@@ -6,6 +6,7 @@ fi
 
 ### bootstrap
 mkdir -p "${HOME}/.config/systemd/user"
+mkdir -p "${HOME}/Syncthing"
 create_link "${PWD}/src/syncthing.service" "$HOME/.config/systemd/user/syncthing.service"
 systemctl --user daemon-reload
 if ! systemctl --user status syncthing.service >/dev/null 2>&1; then
