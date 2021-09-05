@@ -36,12 +36,14 @@ _link() {
     [[ -w "$(dirname -- "$_link_name")" ]] && _sudo='' || _sudo='sudo'
 
     # ya esta linkado?
-    [[ -L $_link_name ]] && [[ "${_canon_link_name}" == "${_source}" ]] \
-        && link_success "$name" && return 0
+    if [[ -L $_link_name ]] && [[ "${_canon_link_name}" == "${_source}" ]]; then
+        [[ -n "$_sudo" ]] && link_success_sudo "$name" || link_success "$name"
+        return 0
+    fi
 
     [[ -L $_link_name ]] && ${_sudo} rm "$_link_name"
     if ${_sudo} ln -Ts "$_source" "$_link_name"; then
-        link_arrow "$name"
+        [[ -n "$_sudo" ]] && link_arrow "$name" || link_arrow_sudo "$name"
         return 0
     else
         link_error "$name"
