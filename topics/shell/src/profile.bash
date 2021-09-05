@@ -21,7 +21,11 @@ else
 fi
 export LANGUAGE='en_US.UTF-8'
 export LC_COLLATE=C
-[[ -z "$SSH_CLIENT" ]] && export LC_TIME="es_ES.UTF-8" || export LC_TIME=C
+if [[ -z "$SSH_CLIENT" ]] && [[ ! -f /etc/pacman.conf ]]; then
+    export LC_TIME="es_ES.UTF-8"
+else
+    export LC_TIME=C
+fi
 
 if [[ "$_OS" == "Darwin" ]]; then
     # Override CTYPE on MacOs
