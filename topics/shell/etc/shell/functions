@@ -27,7 +27,7 @@ add_to_manpath() {
 }
 
 # copy terminfo
-ssh-copy-terminfo() {
+ssh_copy_terminfo() {
 	local EXEC
     EXEC='command ssh'
     [[ $# -eq 0 ]] && { echo "Missing [user@]hostname"; return 1; }
