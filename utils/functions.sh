@@ -33,7 +33,10 @@ _link() {
     name="${_link_name/$HOME/\~}"
 
     # necesito sudo?
-    [[ -w "$(dirname -- "$_link_name")" ]] && _sudo='' || _sudo='sudo'
+    _sudo=''
+    if [[ ! -w "$(dirname -- "$_link_name")" ]]; then
+        _sudo='sudo'
+    fi
 
     # ya esta linkado?
     if [[ -L $_link_name ]] && [[ "${_canon_link_name}" == "${_source}" ]]; then
@@ -43,7 +46,7 @@ _link() {
 
     [[ -L $_link_name ]] && ${_sudo} rm "$_link_name"
     if ${_sudo} ln -Ts "$_source" "$_link_name"; then
-        [[ -n "$_sudo" ]] && link_arrow "$name" || link_arrow_sudo "$name"
+        [[ -n "$_sudo" ]] && link_arrow_sudo "$name" || link_arrow "$name"
         return 0
     else
         link_error "$name"
