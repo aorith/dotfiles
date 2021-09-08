@@ -2,7 +2,7 @@
 
 # Conditions
 if [[ "$(uname -s)" != "Linux" ]] || [[ ! -d /etc/X11 ]]; then
-    exit 0
+    exit $_SKIP
 fi
 
 ###
@@ -33,8 +33,7 @@ case $HOSTNAME in
             fi
         fi
         ;;
-    *) ;;
+    *) exit $_SKIP ;;
 esac
 ###
-unset _create_user_dirs
 exit 0

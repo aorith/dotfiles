@@ -3,140 +3,67 @@
 shopt -s nullglob
 
 cd "$(dirname "$0")" || exit 1
-. ./topics/shell/src/profile.bash
+. ./topics/shell/src/bash/profile
 cd "$DOTFILES" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
+export _SKIP=247 # valid exit codes: 0-255
+
+check_result() {
+    [[ $1 -ne $_SKIP ]] || { log_skip "$2"; return 0; }
+    log_error "Execution of \"$3\" failed."
+    popd >/dev/null || exit 1
+    exit 1
+}
+
+_bootstrap() {
+    local folders folder _script title topic _topic_glob
+    folders="$1"
+    _script="$2"
+    title="$3"
+    _topic_glob="${4:-*}"
+    log_header "$title"
+    for folder in $folders; do
+        pushd "$folder" >/dev/null || exit 1
+        # Check if topic exists
+        if [[ $(ls topics/${_topic_glob}/ 2>/dev/null | wc -l) -eq 0 ]]; then
+            log_info "No topic matching \"${_topic_glob}\" in \"$folder/topics\""
+            popd >/dev/null || exit 1
+            continue
+        fi
+        for script in topics/${_topic_glob}/${_script}; do
+            if [[ -f "${script}" ]]; then
+                topic="$(basename $(dirname "${script}"))"
+                log_topic "${topic}"
+                pushd "$(dirname "$script")" >/dev/null || exit 1
+                "./${_script}" || check_result $? "$topic" "$script"
+                popd >/dev/null || exit 1
+            fi
+        done
+        popd >/dev/null || exit 1
+    done
+}
 
 log_header "Start"
 
-# Boostrap only one topic
-if [[ $# -gt 0 ]]; then
-
-    bootstrap_topic() {
-        ! test -d "topics/$1" && return
-
-        if test -x topics/$1/install.sh; then
-            log_info "Installing topic: $1"
-            pushd "topics/$1" >/dev/null || exit 1
-            if ! ./install.sh; then
-                log_error "Execution of \"$1/install.sh\" failed."
-                popd >/dev/null || exit 1
-                exit 1
-            fi
-            popd >/dev/null || exit 1
-        fi
-        if test -x topics/$1/init.sh; then
-            log_info "Working on topic: $1"
-            pushd "topics/$1" >/dev/null || exit 1
-            if ! ./init.sh; then
-                log_error "Execution of \"$1/init.sh\" failed."
-                popd >/dev/null || exit 1
-                exit 1
-            fi
-            popd >/dev/null || exit 1
-        fi
-        if test -x topics/$1/postinstall.sh; then
-            log_info "Postinstall for topic: $1"
-            pushd "topics/$1" >/dev/null || exit 1
-            if ! ./postinstall.sh; then
-                log_error "Execution of \"$1/postinstall.sh\" failed."
-                popd >/dev/null || exit 1
-                exit 1
-            fi
-            popd >/dev/null || exit 1
-        fi
-
-    }
-
-    log_header "Bootstrapping $1 only."; echo
-    bootstrap_topic $1
-    if test -d "$PRIVATE_DOTFILES"; then
-        cd "$PRIVATE_DOTFILES" || exit 1
-        bootstrap_topic $1
-    fi
-    log_header "End"
-    cd "$DOTFILES" || exit 1
+if [[ $# -eq 1 ]]; then
+    # Bootstrap only topics that match the glob in $1
+    _bootstrap "$DOTFILES"          "install.sh"     "Install requirements"            "$1"
+    _bootstrap "$DOTFILES"          "init.sh"        "Bootstrap of dotfiles"           "$1"
+    _bootstrap "$PRIVATE_DOTFILES"  "install.sh"     "Install requirements (private)"  "$1"
+    _bootstrap "$PRIVATE_DOTFILES"  "init.sh"        "Bootstrap of dotfiles (private)" "$1"
+    _bootstrap "$DOTFILES"          "postinstall.sh" "Postinstall"                     "$1"
+    _bootstrap "$PRIVATE_DOTFILES"  "postinstall.sh" "Postinstall (private)"           "$1"
     exit 0
+else
+    # Bootstrap all topics
+    _bootstrap "$DOTFILES"          "install.sh"     "Install requirements"            "*"
+    _bootstrap "$DOTFILES"          "init.sh"        "Bootstrap of dotfiles"           "*"
+    _bootstrap "$PRIVATE_DOTFILES"  "install.sh"     "Install requirements (private)"  "*"
+    _bootstrap "$PRIVATE_DOTFILES"  "init.sh"        "Bootstrap of dotfiles (private)" "*"
+    _bootstrap "$DOTFILES"          "postinstall.sh" "Postinstall"                     "*"
+    _bootstrap "$PRIVATE_DOTFILES"  "postinstall.sh" "Postinstall (private)"           "*"
 fi
-
-log_header "Install requirements"
-for install_script in topics/*/install.sh; do
-    log_info "Installing topic: $(basename $(dirname "${install_script}"))"
-    pushd "$(dirname "$install_script")" >/dev/null || exit 1
-    if ! ./install.sh; then
-        log_error "Execution of \"$install_script\" failed."
-        popd >/dev/null || exit 1
-        exit 1
-    fi
-    popd >/dev/null || exit 1
-done
-unset install_script
-
-log_header "Bootstrap of dotfiles"
-for init_script in topics/*/init.sh; do
-    log_info "Working on topic: $(basename $(dirname "${init_script}"))"
-    pushd "$(dirname "$init_script")" >/dev/null || exit 1
-    if ! ./init.sh; then
-        log_error "Execution of \"$init_script\" failed."
-        popd >/dev/null || exit 1
-        exit 1
-    fi
-    popd >/dev/null || exit 1
-done
-unset init_script
-
-if test -d "$PRIVATE_DOTFILES"; then
-    log_header "Bootstrap of private dotfiles"
-    cd "$PRIVATE_DOTFILES" || exit 1
-    for install_script in topics/*/install.sh; do
-        log_info "Installing topic: $(basename $(dirname "${install_script}"))"
-        pushd "$(dirname "$install_script")" >/dev/null || exit 1
-        if ! ./install.sh; then
-            log_error "Execution of \"$install_script\" failed."
-            popd >/dev/null || exit 1
-            exit 1
-        fi
-        popd >/dev/null || exit 1
-    done
-    unset install_script
-    for init_script in topics/*/init.sh; do
-        log_info "Working on topic: $(basename $(dirname "${init_script}"))"
-        pushd "$(dirname "$init_script")" >/dev/null || exit 1
-        if ! ./init.sh; then
-            log_error "Execution of \"$init_script\" failed."
-            popd >/dev/null || exit 1
-            exit 1
-        fi
-        popd >/dev/null || exit 1
-    done
-    unset init_script
-    for postinstall_script in topics/*/postinstall.sh; do
-        log_info "Postinstall for topic: $(basename $(dirname "${postinstall_script}"))"
-        pushd "$(dirname "$postinstall_script")" >/dev/null || exit 1
-        if ! ./postinstall.sh; then
-            log_error "Execution of \"$postinstall_script\" failed."
-            popd >/dev/null || exit 1
-            exit 1
-        fi
-        popd >/dev/null || exit 1
-    done
-    unset postinstall_script
-fi
-
-cd "$DOTFILES" || exit 1
-log_header "Postinstall scripts"
-for postinstall_script in topics/*/postinstall.sh; do
-    log_info "Postinstall for topic: $(basename $(dirname "${postinstall_script}"))"
-    pushd "$(dirname "$postinstall_script")" >/dev/null || exit 1
-    if ! ./postinstall.sh; then
-        log_error "Execution of \"$postinstall_script\" failed."
-        popd >/dev/null || exit 1
-        exit 1
-    fi
-    popd >/dev/null || exit 1
-done
-unset postinstall_script
 
 log_header "Updating git submodules"
 git submodule sync

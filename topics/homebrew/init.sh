@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 # macos only
-[[ "$(uname -s)" != "Darwin" ]] && exit 0
+[[ "$(uname -s)" == "Darwin" ]] || exit $_SKIP
 
 ### bootstrap
 formulae_packages=(

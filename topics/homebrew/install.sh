@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 # macos only
-[[ "$(uname -s)" != "Darwin" ]] && exit 0
+[[ "$(uname -s)" == "Darwin" ]] || exit $_SKIP
 
 if ! command -v brew >/dev/null; then
     log_info "Installing homebrew"

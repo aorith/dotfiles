@@ -1,8 +1,13 @@
 # vim: ft=bash
 
+# Exceptions
 if [[ -d /nix ]] || [[ "$_OS" != "Linux" ]] || [[ ! -d /etc/systemd ]] ; then
-    exit 0
+    exit $_SKIP
 fi
+case $HOSTNAME in
+    admin-*) exit $_SKIP
+    *) ;;
+esac
 
 ### bootstrap
 mkdir -p "${HOME}/.config/systemd/user"
