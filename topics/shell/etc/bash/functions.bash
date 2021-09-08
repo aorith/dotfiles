@@ -199,7 +199,9 @@ check_cert_matches_key() {
 
 check_cert_for_domain() {
     [[ -n "$1" ]] || { echo "Usage: ${FUNCNAME[0]} <domain>"; return 1; }
+    echo -e "$(tput setaf 3)$ echo -n | openssl s_client -servername ${1} -connect ${1}:443 2>/dev/null$(tput sgr0)"
     echo -n | openssl s_client -servername ${1} -connect ${1}:443 2>/dev/null
+    echo -e "$(tput setaf 3)$ echo -n | openssl s_client -servername ${1} -connect ${1}:443 2>/dev/null | openssl x509 -noout -dates$(tput sgr0)"
     echo -n | openssl s_client -servername ${1} -connect ${1}:443 2>/dev/null | openssl x509 -noout -dates
 }
 
