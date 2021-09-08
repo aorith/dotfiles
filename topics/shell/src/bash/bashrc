@@ -1,0 +1,21 @@
+# vim: ft=bash
+
+[[ -n "$PS1" ]] && [[ -n "$DOTFILES" ]] || return 0
+
+# bash completion
+for completion in /etc/bash_completion \
+    /usr/share/bash-completion/bash_completion \
+    /usr/local/etc/profile.d/bash_completion.sh \
+    /usr/local/share/bash-completion/bash_completion
+do
+    . "$completion" 2>/dev/null
+done
+unset completion
+
+. "${DOTFILES}/topics/shell/etc/bash/aliases.bash"
+# source the auto-generated bash.env
+. "${DOTFILES}/topics/shell/etc/bash/bash.env"
+# source bash prompt
+. "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
+# source local alias/functions ...
+[[ ! -e "${HOME}/.shell_local" ]] || . "${HOME}/.shell_local"

@@ -2,10 +2,11 @@
 
 shopt -s nullglob
 
-for shell in bash zsh shell; do
+for shell in "bash"; do
     global_env_file="${DOTFILES}/topics/shell/etc/${shell}/${shell}.env"
-    echo "# vim: ft=${shell/shell/bash}" > "${global_env_file}"
+    echo -e "# vim: ft=${shell}\n# Sourced from: bashrc" > "${global_env_file}"
 
+    # topic/<topic_name>/env/<OS>/<shell>/*
     env_files="$(for env_file in \
         "${DOTFILES}"/topics/*/env/all/${shell}/* \
         "${DOTFILES}"/topics/*/env/$(uname -s)/${shell}/* \
@@ -13,7 +14,8 @@ for shell in bash zsh shell; do
         "${PRIVATE_DOTFILES}"/topics/*/env/$(uname -s)/${shell}/*
     do
         echo "$env_file"
-    done | awk -F '/' '{print $NF,$0}' | sort -n | awk '{print $2}')"
+        # awk: sort by "basename" and print the full path
+    done | awk -F '/' '{print $NF,$0}' | sort -n | awk '{print $2}')" #01_functions /path/to/01_functions
 
     for env_file in $env_files
     do

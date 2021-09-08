@@ -1,7 +1,0 @@
-# vim: ft=zsh
-
-[[ -r ~/.profile ]] && source ~/.profile
-
-# Force rehash of completion
-zstyle ':completion:*' rehash true
-

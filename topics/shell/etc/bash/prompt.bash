@@ -1,4 +1,5 @@
 # vim: ft=bash
+# Sourced from: bashrc
 
 __ps1_git_tag_f() {
     local t # tag

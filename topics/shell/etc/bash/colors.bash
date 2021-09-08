@@ -1,4 +1,5 @@
 # vim: ft=bash
+# Sourced from: bash_profile
 
 set -a
 
