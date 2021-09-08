@@ -23,14 +23,6 @@ case $HOSTNAME in
                 create_link "${f}" "${HOME}/.config/$(basename "$f")"
             done
             unset f
-
-            # Exceptions that should not be applied on NixOS
-            if [[ ! $(uname -a) =~ NixOS ]]; then
-                sudo localectl --no-convert set-x11-keymap es
-                sudo mkdir -p "/etc/X11/xorg.conf.d"
-                # create_link "${PWD}/etc/X11/xorg.conf.d/20-intel.conf" "/etc/X11/xorg.conf.d/20-intel.conf"
-                create_link "${PWD}/etc/modprobe.d/i915.conf" "/etc/modprobe.d/i915.conf"
-            fi
         fi
         ;;
     *) exit $_SKIP ;;

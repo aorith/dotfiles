@@ -6,7 +6,7 @@ create_link "${PWD}/src/alacritty" "$HOME/.config/alacritty"
 create_link "${PWD}/src/alacritty/$(uname -s).yml" "${PWD}/src/alacritty/env.yml"
 
 # macos only
-[[ "$(uname -s)" != "Darwin" ]] && exit 0
+[[ "$(uname -s)" == "Darwin" ]] || exit $_SKIP
 
 if ! infocmp alacritty &>/dev/null; then
     [[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }
