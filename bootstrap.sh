@@ -24,6 +24,7 @@ _bootstrap() {
     _topic_glob="${4:-*}"
     log_header "$title"
     for folder in $folders; do
+        [[ -d "$folder" ]] || { log_skip "$folder"; continue; }
         pushd "$folder" >/dev/null || exit 1
         # Check if topic exists
         if [[ $(ls topics/${_topic_glob}/ 2>/dev/null | wc -l) -eq 0 ]]; then
