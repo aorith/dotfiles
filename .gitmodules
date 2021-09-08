@@ -10,9 +10,3 @@
 [submodule "topics/alacritty/src/alacritty/alacritty-theme"]
 	path = topics/alacritty/src/alacritty/themes/alacritty-theme
 	url = https://github.com/eendroroy/alacritty-theme
-[submodule "topics/shell/etc/zsh/plugins/zsh-completions"]
-	path = topics/shell/etc/zsh/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
-[submodule "topics/shell/etc/zsh/plugins/zsh-syntax-highlighting"]
-	path = topics/shell/etc/zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
