@@ -5,11 +5,11 @@ export EDITOR='vim'
 export VISUAL=$EDITOR
 export TERMINAL='alacritty'
 
-export LESS='-XRMFie'
+#export LESS='-XRMie' # F option breaks i3 "show errors"
 export LESSHISTFILE='-'
 export PAGER='less'
 export MANPAGER="$PAGER"
-export SYSTEMD_LESS="$LESS"
+#export SYSTEMD_LESS="$LESS"
 
 if [[ -x "/usr/bin/lesspipe" ]]; then
     eval $(/usr/bin/lesspipe)
@@ -17,13 +17,13 @@ elif [[ -r "/usr/local/bin/lesspipe.sh" ]]; then
     export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 fi
 
-export LESS_TERMCAP_mb=$'\033[01;31m'    # begins blinking
-export LESS_TERMCAP_md=$'\033[01;34m'    # begins bold
-export LESS_TERMCAP_me=$'\033[0m'        # ends mode
-export LESS_TERMCAP_so=$'\033[30;43m'    # begins standout-mode
-export LESS_TERMCAP_se=$'\033[0m'        # ends standout-mode
-export LESS_TERMCAP_us=$'\033[35m'        # begins underline
-export LESS_TERMCAP_ue=$'\033[0m'        # ends underline
+export LESS_TERMCAP_mb=$'\033[01;31m'      # begins blinking
+export LESS_TERMCAP_md=$'\033[01;38;5;74m' # begins bold
+export LESS_TERMCAP_me=$'\033[0m'          # ends mode
+export LESS_TERMCAP_so=$'\033[30;43m'      # begins standout-mode
+export LESS_TERMCAP_se=$'\033[0m'          # ends standout-mode
+export LESS_TERMCAP_us=$'\033[1;32m'       # begins underline
+export LESS_TERMCAP_ue=$'\033[0m'          # ends underline
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
