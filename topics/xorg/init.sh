@@ -23,6 +23,8 @@ case $HOSTNAME in
                 create_link "${f}" "${HOME}/.config/$(basename "$f")"
             done
             unset f
+
+            create_link "${PWD}/src/xsession" "${HOME}/.xsession"
         fi
         ;;
     *) exit $_SKIP ;;
