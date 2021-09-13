@@ -9,6 +9,8 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # Disable GTK3 apps to contact org.a11y.Bus.
 export NO_AT_BRIDGE=1
 
+export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in wm's (dwm)
+
 . ~/.bash_profile
 
 #systemctl --user import-environment

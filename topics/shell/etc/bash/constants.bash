@@ -69,9 +69,7 @@ if [[ "$_OS" == 'Linux' ]]; then
 
     export BROWSER='firefox'
     export READER='zathura'
-    export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
-    #export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
-    export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
+    export INPUTRC="${HOME}/.inputrc"
     export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 fi
 
