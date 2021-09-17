@@ -144,15 +144,15 @@ map <F1> <nop>
 map! <F1> <nop>
 
 " directories
-if !isdirectory($HOME . '/.local/share/vim/swap')
-  call mkdir($HOME . '/.local/share/vim/swap', 'p', 0700)
-endif
-if !isdirectory($HOME . '/.local/share/vim/undodir')
-  call mkdir($HOME . '/.local/share/vim/undodir', 'p', 0700)
-endif
-if !isdirectory($HOME . '/.local/share/vim/backup')
-  call mkdir($HOME . '/.local/share/vim/backup', 'p', 0700)
-endif
+"if !isdirectory($HOME . '/.local/share/vim/swap')
+"  call mkdir($HOME . '/.local/share/vim/swap', 'p', 0700)
+"endif
+"if !isdirectory($HOME . '/.local/share/vim/undodir')
+"  call mkdir($HOME . '/.local/share/vim/undodir', 'p', 0700)
+"endif
+"if !isdirectory($HOME . '/.local/share/vim/backup')
+"  call mkdir($HOME . '/.local/share/vim/backup', 'p', 0700)
+"endif
 
 set viminfo+=n~/.local/share/vim/viminfo
 set undodir=~/.local/share/vim/undodir//
