@@ -118,6 +118,9 @@ map('n', '<space>m', '<cmd>lua vim.lsp.buf.rename()<CR>')
 map('n', '<space>r', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', '<space>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 
+-- Black
+cmd "let g:black#settings = { 'line_length': 100 }"
+
 ---------------- OPTIONS  ---------------------------------------------------------
 
 local maxwidth = 84
@@ -156,6 +159,15 @@ opt.termguicolors = true            -- True color support
 opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 opt.wrap = false                    -- Disable line wrap
 opt.pastetoggle = '<F2>'            -- Paste mode
+opt.updatetime = 100                -- NOTE: this affects swapfile, see :h updatetime
+opt.swapfile = false                -- Don't use a swapfile
+opt.undofile = true                 -- Turn on undofile/dir
+-- directory configuration
+cmd 'set viminfo+=n~/.local/share/nvim/viminfo'
+cmd 'set undodir=~/.local/share/nvim/undodir//'
+cmd 'set undolevels=1000 undoreload=10000'
+cmd 'set backupdir=~/.local/share/nvim/backup//'
+cmd 'set directory=~/.local/share/nvim/swap//'
 
 --Remap space as leader key
 api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
@@ -194,9 +206,12 @@ map('n', '<leader>b', ':Buffers<CR>')
 -- Go to next buffer
 map('n', '<leader><TAB>', ':bnext<CR>')
 
--- List toggle
+-- List toggle (without the 'map' helper function)
 api.nvim_set_keymap('', '<F3>', '<Esc><Esc>:set list!<CR>',
   { noremap = true, silent = true })
+
+-- Format python code with :Black
+cmd 'command Black :call Black()<CR>'
 
 ---------------- THEMES -----------------------------------------------------------
 
@@ -236,30 +251,23 @@ require'lualine'.setup {
     lualine_b = {'branch'},
     lualine_c = {
       {is_readonly, color = {fg = '#a61212', bg = '#fafafa'}},
-      'filename',
-      'filetype'
+      'filename'
     },
-    lualine_x = {{ascii_under_cursor}, 'encoding', 'fileformat'},
+    lualine_x = {{ascii_under_cursor}, 'filetype', 'encoding', 'fileformat'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
+  --inactive_sections = {},
+  --tabline = {},
+  --extensions = {}
 }
 
+--[[
+-- Github theme
 require("github-theme").setup({
-  themeStyle = "dark",
-  -- functionStyle = "bold",
-  -- sidebars = {"qf", "vista_kind", "terminal", "packer"},
-
-  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-  -- colors = {hint = "orange", error = "#ff0000"}
+  theme_style = "dark",
 })
+--]]
+
+-- Gruvbox
+cmd 'colorscheme gruvbox'
