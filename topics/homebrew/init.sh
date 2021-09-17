@@ -51,7 +51,6 @@ formulae_packages=(
     "telnet"
     "autopep8"
     "golang"
-    "flock"
     "gpg"
     "git-flow"
     "tig"
@@ -93,16 +92,28 @@ cask_packages=(
 /usr/local/bin/brew update
 /usr/local/bin/brew tap homebrew/cask-fonts
 /usr/local/bin/brew tap homebrew-ffmpeg/ffmpeg
+
+# Compiled Formulaes
+current_formulaes="$(brew list --formulae -1)"
 for package in "${formulae_source_packages[@]}"; do
-    /usr/local/bin/brew install --formulae --build-from-source $package
+    /usr/local/bin/brew install --formulae --build-from-source "$package"
 done
+
+# Formulaes
 for package in "${formulae_packages[@]}"; do
-    /usr/local/bin/brew install --formulae $package
+    if ! grep -qw "$package" <<< "$current_formulaes"; then
+        /usr/local/bin/brew install --formulae "$package"
+    fi
 done
+
+# Casks
+current_casks="$(brew list --cask -1)"
 for package in "${cask_packages[@]}"; do
-    /usr/local/bin/brew install --cask $package
+    if ! grep -qw "$package" <<< "$current_casks"; then
+        /usr/local/bin/brew install --cask "$package"
+    fi
 done
-unset package formulae_packages formulae_source_packages cask_packages
+unset package formulae_packages formulae_source_packages cask_packages current_formulaes current_casks
 /usr/local/bin/brew cleanup
 
 if ! grep -q '/usr/local/bin/bash' /etc/shells; then
