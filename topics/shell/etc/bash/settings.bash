@@ -19,7 +19,7 @@ fi
 
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/.bash_history"
 export HISTCONTROL="erasedups:ignoreboth"
-export HISTSIZE=50000
+export HISTSIZE=10000
 export HISTTIMEFORMAT="$(echo -e '\033[0;34m%h/%d %H:%M:%S\033[0m ')"
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
