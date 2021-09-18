@@ -10,3 +10,6 @@
 [submodule "topics/alacritty/src/alacritty/alacritty-theme"]
 	path = topics/alacritty/src/alacritty/themes/alacritty-theme
 	url = https://github.com/eendroroy/alacritty-theme
+[submodule "topics/alacritty/src/alacritty/themes/tempus-themes-alacritty"]
+	path = topics/alacritty/src/alacritty/themes/tempus-themes-alacritty
+	url = https://gitlab.com/protesilaos/tempus-themes-alacritty
