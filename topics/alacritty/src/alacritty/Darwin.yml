@@ -37,6 +37,7 @@ key_bindings:
   - {key: N,     mods: Command,       chars: "\x1bn"}  # cycle panes
   - {key: Z,     mods: Command,       chars: "\x1bz"}  # toggle zoom (maximize pane)
   - {key: F,     mods: Command,       chars: "\x1bf"}  # search
-  - {key: P,     mods: Command,       chars: "\x1bp"}  # tmux select
   - {key: U,     mods: Command,       chars: "\x1bu"}  # tmux open url
   - {key: I,     mods: Command,       chars: "\x02i"}  # tmux server for
+# - {key: P,     mods: Command,       chars: "\x1bp"}  # tmux select
+  - {key: P,     mods: Command,       chars: "\x02m"}  # tmux & bitwarden
