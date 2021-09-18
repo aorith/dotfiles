@@ -88,6 +88,7 @@ cask_packages=(
     "openwebstart"
     "font-noto-color-emoji"
     "tigervnc-viewer"
+    "flameshot"
 )
 
 /usr/local/bin/brew update
