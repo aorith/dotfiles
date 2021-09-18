@@ -3,9 +3,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " change cursor
-if has('nvim') && !has('nvim-0.2')
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-elseif &term =~? 'xterm\|screen\|tmux\|alacritty'
+if &term =~? 'xterm\|screen\|tmux\|alacritty'
     let &t_SI.="\e[5 q" "SI = INSERT mode
     let &t_SR.="\e[4 q" "SR = REPLACE mode
     let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
