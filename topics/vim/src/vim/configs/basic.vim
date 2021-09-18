@@ -13,12 +13,8 @@ if &term =~? 'screen\|tmux'
     let &t_ut='' " disable background color erase
 endif
 
-if has('autocmd')
-  filetype plugin indent on
-endif
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-endif
+filetype plugin indent on
+syntax enable
 
 set backspace=eol,indent,start
 set showcmd
@@ -40,7 +36,7 @@ set expandtab
 set autoindent
 set smartindent
 set cindent cinkeys-=0# " dont mess with comment indentation
-set swapfile
+set noswapfile
 set backup
 set undofile
 set laststatus=2
@@ -137,10 +133,6 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
-" I can open the help with :help, kthx
-map <F1> <nop>
-map! <F1> <nop>
-
 " directories
 "if !isdirectory($HOME . '/.local/share/vim/swap')
 "  call mkdir($HOME . '/.local/share/vim/swap', 'p', 0700)
@@ -157,14 +149,6 @@ set undodir=~/.local/share/vim/undodir//
 set undolevels=1000 undoreload=10000
 set backupdir=~/.local/share/vim/backup//
 set directory=~/.local/share/vim/swap//
-
-function! ToggleBackground()
-    if &background ==# 'light'
-        set background=dark
-    else
-        set background=light
-    endif
-endfunction
 
 function! SetTermguicolors()
     if has('termguicolors')

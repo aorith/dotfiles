@@ -273,6 +273,4 @@ require("github-theme").setup({
 --cmd 'colorscheme gruvbox'
 
 -- Tempus
-cmd 'let g:tempus_enforce_background_color=1'
-cmd 'colorscheme tempus_day'
-
+require 'tempus'

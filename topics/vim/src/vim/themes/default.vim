@@ -27,11 +27,9 @@ function! MyHighlights() abort
     endif
 endfunction
 
-augroup MyColors
-    autocmd!
-    autocmd ColorScheme * call MyHighlights()
-augroup end
+"augroup MyColors
+"    autocmd!
+"    autocmd ColorScheme * call MyHighlights()
+"augroup end
 
-set background=dark
 colorscheme default
-
