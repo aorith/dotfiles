@@ -26,6 +26,7 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'; -- For Lualine
   use 'projekt0n/github-nvim-theme';
   use 'gruvbox-community/gruvbox'; -- no lua
+  use 'protesilaos/tempus-themes-vim'; -- no lua
 
   use 'a-vrma/black-nvim'; -- Black
   use 'dstein64/vim-startuptime' -- Show startup details with ':StartupTime'

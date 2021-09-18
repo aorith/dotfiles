@@ -5,4 +5,4 @@ source ~/.vim/configs/other_langs.vim
 source ~/.vim/configs/statusline.vim
 source ~/.vim/configs/remaps.vim
 source ~/.vim/configs/misc.vim
-source ~/.vim/themes/apprentice.vim
+source ~/.vim/themes/tempus.vim

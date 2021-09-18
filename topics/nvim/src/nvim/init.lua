@@ -238,7 +238,7 @@ end
 require'lualine'.setup {
   options = {
     icons_enabled = false,
-    theme = 'gruvbox',
+    theme = 'auto',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
@@ -270,4 +270,9 @@ require("github-theme").setup({
 --]]
 
 -- Gruvbox
-cmd 'colorscheme gruvbox'
+--cmd 'colorscheme gruvbox'
+
+-- Tempus
+cmd 'colorscheme tempus_day'
+cmd 'let g:tempus_enforce_background_color=1'
+
