@@ -82,7 +82,7 @@ __prompt_command () {
     [[ -z "$IN_NIX_SHELL" ]] || onnixshell="${my_red2}(${name})${my_rst} "
 
     #PS1="\n\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${onnixshell}${my_blu}❯${my_rst} "
-    PS1="\n\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${onnixshell}${my_blu}\$${my_rst} "
+    PS1="\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${onnixshell}\n${my_blu}\$${my_rst} "
 
     unset _ps1_start_timer
 }
