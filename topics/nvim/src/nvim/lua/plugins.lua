@@ -7,7 +7,10 @@ return require('packer').startup(function()
     requires = {
       'hrsh7th/vim-vsnip',
       'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-vsnip',
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-path',
     }
   }
 
