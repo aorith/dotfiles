@@ -80,7 +80,7 @@ __prompt_command () {
     __ps1_jobs_f
 
     [[ -w "${PWD}" ]] && wdc="${my_cyn}" || wdc="${my_red2}"
-    [[ -z "$SSH_CLIENT" ]] || onssh="${my_ylw2}\h:${my_rst}"
+    [[ -z "$SSH_CLIENT" ]] || onssh="${my_ylw2}${my_bld}\h:${my_rst}"
     [[ -z "$IN_NIX_SHELL" ]] || onnixshell="${my_red2}(${name})${my_rst} "
 
     #PS1="\n\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${onnixshell}${my_blu}❯${my_rst} "
