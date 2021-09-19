@@ -1,8 +1,26 @@
 alt_send_esc: false
+
 window:
   decorations: buttonless
+
 font:
   use_thin_strokes: true
+  size: 12
+  normal:
+    family: "Source Code Pro"
+    style: Regular
+
+  bold:
+    family: "Source Code Pro"
+    style: Semibold
+
+  italic:
+    family: "Source Code Pro"
+    style: Italic
+
+  bold_italic:
+    family: "Source Code Pro"
+    style: Semibold Italic
 
 key_bindings:
   - {key: F12,                        action: ToggleSimpleFullscreen}

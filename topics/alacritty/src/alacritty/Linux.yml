@@ -1,10 +1,29 @@
 alt_send_esc: true
 
+window:
+  decorations: full
+
+font:
+  size: 12
+  normal:
+    family: "Source Code Pro"
+    style: Regular
+
+  bold:
+    family: "Source Code Pro"
+    style: Semibold
+
+  italic:
+    family: "Source Code Pro"
+    style: Italic
+
+  bold_italic:
+    family: "Source Code Pro"
+    style: Semibold Italic
+
 shell:
   program: /usr/bin/env
   args:
     - bash
     - --login
 
-window:
-  decorations: full

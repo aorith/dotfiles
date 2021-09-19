@@ -10,24 +10,6 @@ window:
 scrolling:
   history: 1000
 
-font:
-  size: 12
-  normal:
-    family: "Source Code Pro"
-    style: Regular
-
-  bold:
-    family: "Source Code Pro"
-    style: Bold
-
-  italic:
-    family: "Source Code Pro"
-    style: Italic
-
-  bold_italic:
-    family: "Source Code Pro"
-    style: Bold Italic
-
 mouse:
   hide_when_typing: true
 
@@ -59,9 +41,9 @@ import:
   - ~/.config/alacritty/theme.yml
 
 draw_bold_text_with_bright_colors: true
-colors:
-  cursor:
-    custom_cursor_color: false
-    text: '0x1a1a1a'
-    cursor: '0xa0ffa0'
+#colors:
+#  cursor:
+#    custom_cursor_color: true
+#    text: '0x1a1a1a'
+#    cursor: '0xa0ffa0'
 
