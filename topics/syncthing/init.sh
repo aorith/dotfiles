@@ -5,7 +5,7 @@ if [[ -d /nix ]] || [[ "$_OS" != "Linux" ]] || [[ ! -d /etc/systemd ]] ; then
     exit $_SKIP
 fi
 case $HOSTNAME in
-    admin-*) exit $_SKIP
+    admin-*) exit $_SKIP ;;
     *) ;;
 esac
 
