@@ -1,7 +1,8 @@
 # vim: ft=bash
-# Sourced from: bash_profile
+# Sourced from: bash_profile - EDIT: sourced only in prompt
 
-set -a
+# Unset to export globally
+#set -a
 
 # Foreground
 : "${my_blk:=\[$(tput setaf 0)\]}"     # Black
@@ -28,4 +29,5 @@ set -a
 : "${my_rvs:=\[$(tput rev)\]}"       # Reverse
 : "${my_rst:=\[$(tput sgr0)\]}"      # Text Reset
 
-set +a
+# Unset to if exporting globally
+#set +a

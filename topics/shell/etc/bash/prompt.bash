@@ -1,6 +1,8 @@
 # vim: ft=bash
 # Sourced from: bashrc
 
+. "${DOTFILES}/topics/shell/etc/bash/colors.bash"
+
 __ps1_git_tag_f() {
     local t # tag
     t="$(timeout 0.5 git describe --tags --abbrev=0 2>/dev/null)"
