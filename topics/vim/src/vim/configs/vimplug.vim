@@ -13,7 +13,7 @@ Plug 'romainl/Apprentice'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'lifepillar/vim-wwdc16-theme'
 Plug 'arcticicestudio/nord-vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'srcery-colors/srcery-vim'
 Plug 'protesilaos/tempus-themes-vim'
 

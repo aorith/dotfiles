@@ -30,6 +30,9 @@ return require('packer').startup(function()
   use 'projekt0n/github-nvim-theme';
   use 'gruvbox-community/gruvbox'; -- no lua
   use 'protesilaos/tempus-themes-vim'; -- no lua
+  use 'romainl/Apprentice'; -- no lua
+  use 'lifepillar/vim-solarized8'; -- no lua
+  use 'arcticicestudio/nord-vim';
 
   use 'a-vrma/black-nvim'; -- Black
   use 'dstein64/vim-startuptime' -- Show startup details with ':StartupTime'

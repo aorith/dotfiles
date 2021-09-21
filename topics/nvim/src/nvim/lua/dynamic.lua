@@ -36,7 +36,7 @@ else
 end
 
 -- Function and mapping to toggle the theme
-function ToggleTotusTheme()
+function ToggleMyTheme()
   if (os.getenv("USER")) == "root" then
     vim.cmd ('echo "Root is not allowed."')
     return
@@ -44,20 +44,24 @@ function ToggleTotusTheme()
   local filepath = os.getenv("HOME") .. "/.local/share/vim/darkmode"
   local stat = vim.loop.fs_stat(filepath)
   if (stat and stat.type) then
+    vim.cmd ('set bg=light')
     vim.cmd ('colorscheme ' .. my_light_theme)
     os.remove(filepath)
   else
+    vim.cmd ('set bg=dark')
     vim.cmd ('colorscheme ' .. my_dark_theme)
     os.execute('touch ~/.local/share/vim/darkmode')
   end
 end
 
-vim.api.nvim_set_keymap('', '<F1>', '<Esc><Esc>:lua ToggleTotusTheme()<CR>',
+vim.api.nvim_set_keymap('', '<F1>', '<Esc><Esc>:lua ToggleMyTheme()<CR>',
   { noremap = true, silent = true })
 
 -- Initial configuration
 if file_exists(os.getenv("HOME") .. "/.local/share/vim/darkmode") then
+  vim.cmd ('set bg=dark')
   vim.cmd ('colorscheme ' .. my_dark_theme)
 else
+  vim.cmd ('set bg=light')
   vim.cmd ('colorscheme ' .. my_light_theme)
 end

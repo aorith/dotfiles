@@ -205,3 +205,10 @@ check_cert_for_domain() {
     echo -n | openssl s_client -servername ${1} -connect ${1}:443 2>/dev/null | openssl x509 -noout -dates
 }
 
+change_vim_theme() {
+    local dtheme ltheme
+    read -rp 'Dark theme [ENTER to SKIP]: ' dtheme
+    read -rp 'Light theme [ENTER to SKIP]: ' ltheme
+    [[ -z "$dtheme" ]] || echo "$dtheme" > ~/.local/share/vim/dark_theme
+    [[ -z "$ltheme" ]] || echo "$ltheme" > ~/.local/share/vim/light_theme
+}
