@@ -3,7 +3,7 @@
 " and in ~/.local/share/vim/dark_theme
 
 " Defaults
-let my_dark_theme = "tempus_winter"
+let my_dark_theme = "tempus_autumn"
 let my_light_theme = "tempus_day"
 
 " Default parameters

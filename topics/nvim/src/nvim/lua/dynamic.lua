@@ -5,7 +5,7 @@
 vim.cmd 'let g:tempus_enforce_background_color=1'
 
 -- Defaults
-my_light_theme = "tempus_day"
+my_light_theme = "tempus_autumn"
 my_dark_theme = "tempus_winter"
 
 local function file_exists(fname)
