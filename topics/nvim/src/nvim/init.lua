@@ -274,5 +274,5 @@ require("github-theme").setup({
 -- Gruvbox
 --cmd 'colorscheme gruvbox'
 
--- Tempus
-require 'tempus'
+-- Dynamic theme
+require 'dynamic'

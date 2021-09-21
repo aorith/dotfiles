@@ -1,33 +1,39 @@
 " Change the theme with <F1>
-" Theme definitions are stored in ~/.theme/dark_vim_theme
-" and in ~/.theme/light_vim_theme
+" Theme definitions are stored in ~/.local/share/vim/light_theme
+" and in ~/.local/share/vim/dark_theme
+
+" Defaults
+let my_dark_theme = "tempus_winter"
+let my_light_theme = "tempus_day"
 
 " Get current values for dark and light theme
 " light
-let my_themepath = $HOME . '/.theme/light_vim_theme'
+let my_themepath = $HOME . '/.local/share/vim/light_theme'
 if filereadable(my_themepath)
   for line in readfile(my_themepath)
     let my_light_theme = line
     break
   endfor
 else
-  let my_light_theme = "tempus_day"
   silent execute "!echo " . my_light_theme . " > " . my_themepath
 endif
 " dark
-let my_themepath = $HOME . '/.theme/dark_vim_theme'
+let my_themepath = $HOME . '/.local/share/vim/dark_theme'
 if filereadable(my_themepath)
   for line in readfile(my_themepath)
     let my_dark_theme = line
     break
   endfor
 else
-  let my_dark_theme = "tempus_winter"
   silent execute "!echo " . my_dark_theme . " > " . my_themepath
 endif
 unlet my_themepath
 
 function! ToggleBackground()
+  if $USER == "root"
+    echo "Not available as root."
+    return
+  endif
   if filereadable($HOME . '/.local/share/vim/darkmode')
     call system('rm -f ~/.local/share/vim/darkmode')
     execute "colorscheme " . g:my_light_theme
