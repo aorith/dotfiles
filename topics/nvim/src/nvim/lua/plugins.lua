@@ -24,6 +24,8 @@ return require('packer').startup(function()
 
   use 'rhysd/git-messenger.vim';
 
+  use 'lukas-reineke/indent-blankline.nvim';
+
   -- Themes
   use 'hoob3rt/lualine.nvim'; -- Status line
   use 'kyazdani42/nvim-web-devicons'; -- For Lualine

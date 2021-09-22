@@ -123,6 +123,12 @@ map('n', '<space>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 -- Black
 cmd "let g:black#settings = { 'line_length': 100 }"
 
+-- Indents lukas-reineke/indent-blankline.nvim
+require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = false,
+}
+
 ---------------- OPTIONS  ---------------------------------------------------------
 
 local maxwidth = 84
@@ -143,7 +149,7 @@ opt.ignorecase = true               -- Ignore case
 opt.joinspaces = false              -- No double spaces with join
 opt.list = false                    -- Show some invisible characters
 opt.listchars = {
-  space = '·', tab = '▸ ', eol = '¬',
+  space = '·', tab = '▸ ', eol = '↴',
   extends = '→', precedes = '←'
 }
 opt.number = true                   -- Show line numbers
