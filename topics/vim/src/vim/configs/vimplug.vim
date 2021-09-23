@@ -16,6 +16,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'srcery-colors/srcery-vim'
 Plug 'protesilaos/tempus-themes-vim'
+Plug 'jnurmine/Zenburn'
 
 " undotree
 Plug 'mbbill/undotree'

@@ -206,9 +206,11 @@ check_cert_for_domain() {
 }
 
 change_vim_theme() {
-    local dtheme ltheme
-    read -rp 'Dark theme [ENTER to SKIP]: ' dtheme
-    read -rp 'Light theme [ENTER to SKIP]: ' ltheme
+    local dtheme ltheme cdtheme cltheme
+    [[ -f ~/.local/share/vim/dark_theme ]] && cdtheme="$(head -1 ~/.local/share/vim/dark_theme)" || cdtheme="none"
+    [[ -f ~/.local/share/vim/light_theme ]] && cltheme="$(head -1 ~/.local/share/vim/light_theme)" || cltheme="none"
+    read -rp "Dark theme ($cdtheme) [ENTER to SKIP]: " dtheme
+    read -rp "Light theme ($cltheme) [ENTER to SKIP]: " ltheme
     [[ -z "$dtheme" ]] || echo "$dtheme" > ~/.local/share/vim/dark_theme
     [[ -z "$ltheme" ]] || echo "$ltheme" > ~/.local/share/vim/light_theme
 }

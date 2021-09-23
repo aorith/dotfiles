@@ -35,6 +35,7 @@ return require('packer').startup(function()
   use 'romainl/Apprentice'; -- no lua
   use 'lifepillar/vim-solarized8'; -- no lua
   use 'arcticicestudio/nord-vim';
+  use 'jnurmine/Zenburn'; -- no lua
 
   use 'a-vrma/black-nvim'; -- Black
   use 'dstein64/vim-startuptime' -- Show startup details with ':StartupTime'
