@@ -6,21 +6,25 @@ window:
 font:
   use_thin_strokes: true
   size: 12
+  offset:
+    x: 0
+    y: 0
+
   normal:
-    family: "Source Code Pro"
-    style: Regular
+    family: "Iosevka Fixed"
+    style: "Light Extended"
 
   bold:
-    family: "Source Code Pro"
-    style: Semibold
+    family: "Iosevka Fixed"
+    style: "Semibold Extended"
 
   italic:
-    family: "Source Code Pro"
-    style: Italic
+    family: "Iosevka Fixed"
+    style: "Italic Extended"
 
   bold_italic:
-    family: "Source Code Pro"
-    style: Semibold Italic
+    family: "Iosevka Fixed"
+    style: "Semibold Italic Extended"
 
 key_bindings:
   - {key: F12,                        action: ToggleSimpleFullscreen}
