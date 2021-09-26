@@ -54,15 +54,19 @@ function ToggleMyTheme()
   local filepath = os.getenv("HOME") .. "/.local/share/vim/darkmode"
   local stat = vim.loop.fs_stat(filepath)
   if (stat and stat.type) then
-    vim.cmd ('set bg=light')
+    vim.cmd [[
+      set bg=light
+      syntax enable
+    ]]
     vim.cmd ('colorscheme ' .. my_light_theme)
     os.remove(filepath)
-    vim.o.syntax = 'on'
   else
-    vim.cmd ('set bg=dark')
+    vim.cmd [[
+      set bg=dark
+      syntax enable
+    ]]
     vim.cmd ('colorscheme ' .. my_dark_theme)
     os.execute('touch ~/.local/share/vim/darkmode')
-    vim.o.syntax = 'on'
   end
 end
 

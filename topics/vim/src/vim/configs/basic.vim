@@ -30,12 +30,9 @@ set number
 set hidden
 set hlsearch
 set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set autoindent
 set smartindent
-set cindent cinkeys-=0# " dont mess with comment indentation
 set noswapfile
 set backup
 set undofile
