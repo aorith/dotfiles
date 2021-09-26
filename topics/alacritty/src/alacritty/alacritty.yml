@@ -41,9 +41,9 @@ import:
   - ~/.config/alacritty/theme.yml
 
 draw_bold_text_with_bright_colors: false
-#colors:
-#  cursor:
-#    custom_cursor_color: true
+colors:
+  cursor:
+    custom_cursor_color: true
 #    text: '0x1a1a1a'
 #    cursor: '0xa0ffa0'
 
