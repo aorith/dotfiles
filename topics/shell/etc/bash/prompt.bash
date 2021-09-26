@@ -51,9 +51,9 @@ __ps1_jobs_f() {
 }
 
 __prompt_command () {
-    local le=$? LANG=C # last exit
+    local LANG=C
     local wdc ep onssh ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
-    (( $le == 0 )) || ep="${my_red} ${le}${my_rst}"
+    (( $1 == 0 )) || ep="${my_red} ${1}${my_rst}"
 
     ms=$(( ($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000 ))
 
@@ -91,4 +91,4 @@ __prompt_command () {
 }
 
 trap ': "${_ps1_start_timer:=$($EXEC_DATE +%s%N)}"' DEBUG
-PROMPT_COMMAND='__prompt_command'
+PROMPT_COMMAND='__prompt_command $?'
