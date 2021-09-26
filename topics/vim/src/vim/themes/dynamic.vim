@@ -47,10 +47,12 @@ function! ToggleBackground()
     call system('rm -f ~/.local/share/vim/darkmode')
     set bg=light
     execute "colorscheme " . g:my_light_theme
+    syntax on
   else
     call system('touch ~/.local/share/vim/darkmode')
     set bg=dark
     execute "colorscheme " . g:my_dark_theme
+    syntax on
   endif
 endfunction
 map <F1> :call ToggleBackground()<CR>

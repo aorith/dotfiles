@@ -2,7 +2,17 @@
 -- Theme definitions are stored in ~/.local/share/vim/light_theme
 -- and in ~/.local/share/vim/dark_theme
 
-vim.cmd 'let g:tempus_enforce_background_color=1'
+-- Defaults for all the themes
+vim.g.solarized_italics = 0
+
+vim.g.nord_contrast = true
+vim.g.nord_borders = true
+vim.g.nord_disable_background = false
+vim.g.nord_italic = false
+
+vim.cmd [[
+let g:tempus_enforce_background_color=1
+]]
 
 -- Defaults
 my_light_theme = "tempus_autumn"
@@ -47,10 +57,12 @@ function ToggleMyTheme()
     vim.cmd ('set bg=light')
     vim.cmd ('colorscheme ' .. my_light_theme)
     os.remove(filepath)
+    vim.o.syntax = 'on'
   else
     vim.cmd ('set bg=dark')
     vim.cmd ('colorscheme ' .. my_dark_theme)
     os.execute('touch ~/.local/share/vim/darkmode')
+    vim.o.syntax = 'on'
   end
 end
 

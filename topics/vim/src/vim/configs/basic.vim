@@ -150,23 +150,27 @@ set undolevels=1000 undoreload=10000
 set backupdir=~/.local/share/vim/backup//
 set directory=~/.local/share/vim/swap//
 
-function! SetTermguicolors()
-    if has('termguicolors')
-        set termguicolors
-    endif
-endfunction
+" I can open it with :help - it's remaped later in themes/dynamic.vim
+map <F1> <nop>
+map! <F1> <nop>
 
-function! SetVimFGBG(fg, bg)
-    if &term !~? 'screen\|tmux'
-        " this DOES NOT work on tmux since all panes and even the status bar
-        " would apply the colors/reset, also for reference:
-        " Escape sequences within tmux must be doubled
-        " For ex: 'echo -en '\033Ptmux;\033\033]11;#003300\007\033\\''
-        " will pass '\033]11;#003300\007' to the terminal
-        let &t_ti = &t_ti . "\033]10;" . a:fg . "\007\033]11;" . a:bg ."\007"
-        let &t_te = &t_te . "\033]110\007\033]111\007"
+"function! SetTermguicolors()
+"    if has('termguicolors')
+"        set termguicolors
+"    endif
+"endfunction
 
-        " I need to enable syntax again on vim 8.2
-        syntax enable
-    endif
-endfunction
+"function! SetVimFGBG(fg, bg)
+"    if &term !~? 'screen\|tmux'
+"        " this DOES NOT work on tmux since all panes and even the status bar
+"        " would apply the colors/reset, also for reference:
+"        " Escape sequences within tmux must be doubled
+"        " For ex: 'echo -en '\033Ptmux;\033\033]11;#003300\007\033\\''
+"        " will pass '\033]11;#003300\007' to the terminal
+"        let &t_ti = &t_ti . "\033]10;" . a:fg . "\007\033]11;" . a:bg ."\007"
+"        let &t_te = &t_te . "\033]110\007\033]111\007"
+"
+"        " I need to enable syntax again on vim 8.2
+"        syntax enable
+"    endif
+"endfunction

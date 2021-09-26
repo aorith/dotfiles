@@ -134,7 +134,7 @@ require("indent_blankline").setup {
 local maxwidth = 84
 
 cmd 'colorscheme desert'            -- Fallback colorscheme
-cmd 'auto BufEnter * let &titlestring = hostname() . "/" . "%t"' -- Titlestring TODO
+-- cmd 'auto BufEnter * let &titlestring = hostname() . "/" . "%t"' -- Titlestring TODO
 opt.colorcolumn = tostring(maxwidth)-- Line length marker
 opt.textwidth = maxwidth               -- Maximum width of text
 opt.cursorline = true               -- Highlight cursor line
@@ -182,10 +182,6 @@ api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 g.mapleader = ' '
 g.maplocalleader = ' '
 
--- Make :Q and :W behave just like :q and :w
-cmd 'command! W w'
-cmd 'command! Q q'
-
 ---------------- MAPS  ------------------------------------------------------------
 
 map('n', '<leader>y', 'V:OSCYank<CR>')
@@ -221,6 +217,32 @@ api.nvim_set_keymap('', '<F3>', '<Esc><Esc>:set list!<CR>',
 -- Format python code with :Black
 cmd 'command Black :call Black()<CR>'
 
+-- I can open help with :help - it's mapped later if using dynamic.lua
+-- Also make W and Q behave like w and q
+cmd [[
+map <F1> <nop>
+map! <F1> <nop>
+command! W w
+command! Q q
+]]
+
+-- Auto commands (highlight whitespace, centered cursor ...)
+cmd [[
+augroup aorith_autocmds
+    autocmd!
+    " highlight extra whitespace
+    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=54 guibg=#ff0000
+    autocmd ColorScheme * match ExtraWhitespace /\s\+$/
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()
+    " Last position without centered cursor
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    " For large files
+    "autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax sync clear | endif
+augroup end
+]]
 ---------------- THEMES -----------------------------------------------------------
 
 local function paste_mode()

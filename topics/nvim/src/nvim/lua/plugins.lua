@@ -26,6 +26,8 @@ return require('packer').startup(function()
 
   use 'lukas-reineke/indent-blankline.nvim';
 
+  use 'sheerun/vim-polyglot'; -- syntax for multiple langs
+
   -- Themes
   use 'hoob3rt/lualine.nvim'; -- Status line
   use 'kyazdani42/nvim-web-devicons'; -- For Lualine
@@ -34,7 +36,8 @@ return require('packer').startup(function()
   use 'protesilaos/tempus-themes-vim'; -- no lua
   use 'romainl/Apprentice'; -- no lua
   use 'lifepillar/vim-solarized8'; -- no lua
-  use 'arcticicestudio/nord-vim';
+  -- use 'arcticicestudio/nord-vim'; -- no support for TreeSitter
+  use 'shaunsingh/nord.nvim';
   use 'jnurmine/Zenburn'; -- no lua
 
   use 'a-vrma/black-nvim'; -- Black
