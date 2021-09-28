@@ -1,4 +1,5 @@
-" vim: ft=vim
+set nocompatible
+let skip_defaults_vim=1
 source ~/.vim/configs/vimplug.vim
 source ~/.vim/configs/basic.vim
 source ~/.vim/configs/statusline.vim

@@ -1,5 +1,6 @@
 " varnish & nginx
 function! VhostFTDetect() abort
+    " if the directory path contains 'varnish'
     if expand('%:p') =~? 'varnish'
         setfiletype vcl
     else
@@ -11,6 +12,3 @@ autocmd BufNewFile,BufRead *.vcl setfiletype vcl
 
 " known_hosts
 autocmd BufNewFile,BufRead known_hosts setfiletype sshknownhosts
-
-" no ocultes los backticks (a causa de indentLine)
-autocmd FileType markdown let g:indentLine_setConceal = 0
