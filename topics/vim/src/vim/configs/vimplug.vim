@@ -7,43 +7,21 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" colors
-Plug 'lokaltog/vim-monotone'
-Plug 'romainl/Apprentice'
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'lifepillar/vim-wwdc16-theme'
-Plug 'arcticicestudio/nord-vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'srcery-colors/srcery-vim'
-Plug 'protesilaos/tempus-themes-vim'
-Plug 'jnurmine/Zenburn'
-
-" undotree
-Plug 'mbbill/undotree'
-
-" fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" vim fugitive (note: required by fzf)
-Plug 'tpope/vim-fugitive'
-
 " display git changes on sidebar
 let g:signify_sign_change = '~'
 let g:signify_priority = 9
-if has('nvim') || has('patch-8.0.902')
-  Plug 'mhinz/vim-signify'
-else
-  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-endif
+Plug 'mhinz/vim-signify'
+
+" language syntax pack
+Plug 'sheerun/vim-polyglot'
+
+" colors
+Plug 'romainl/Apprentice'
+Plug 'protesilaos/tempus-themes-vim'
 
 " tab completion
 let g:mucomplete#enable_auto_at_startup = 1
 Plug 'lifepillar/vim-mucomplete'
-
-" Black for python (code formatter) format all the buffer with :Black
-if hostname() !~? 'admin.*'
-    Plug 'psf/black'
-endif
 
 " ALE
 let g:ale_completion_enabled = 1 " disable for deoplete
@@ -60,12 +38,5 @@ let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 Plug 'dense-analysis/ale'
 set omnifunc=ale#completion#OmniFunc
-
-if v:version >= 802
-  " language pack
-  Plug 'sheerun/vim-polyglot'
-  " git diffs on current line
-  Plug 'rhysd/git-messenger.vim'
-endif
 
 call plug#end()
