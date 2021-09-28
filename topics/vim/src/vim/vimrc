@@ -1,7 +1,6 @@
 " vim: ft=vim
 source ~/.vim/configs/vimplug.vim
 source ~/.vim/configs/basic.vim
-source ~/.vim/configs/other_langs.vim
 source ~/.vim/configs/statusline.vim
 source ~/.vim/configs/remaps.vim
 source ~/.vim/configs/misc.vim
