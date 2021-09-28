@@ -1,6 +1,6 @@
 -- Change the themes with <F1>
--- Theme definitions are stored in ~/.local/share/vim/light_theme
--- and in ~/.local/share/vim/dark_theme
+-- Theme definitions are stored in ~/.local/share/nvim/light_theme
+-- and in ~/.local/share/nvim/dark_theme
 
 -- Defaults for all the themes
 vim.g.solarized_italics = 0
@@ -25,7 +25,7 @@ end
 
 -- Get current values for light and dark theme
 -- light
-local themepath = os.getenv("HOME") .. "/.local/share/vim/light_theme"
+local themepath = os.getenv("HOME") .. "/.local/share/nvim/light_theme"
 if file_exists(themepath) then
   local themefile = io.open(themepath, "r")
   my_light_theme = themefile:read()
@@ -35,7 +35,7 @@ else
   themefile:close()
 end
 -- dark
-local themepath = os.getenv("HOME") .. "/.local/share/vim/dark_theme"
+local themepath = os.getenv("HOME") .. "/.local/share/nvim/dark_theme"
 if file_exists(themepath) then
   local themefile = io.open(themepath, "r")
   my_dark_theme = themefile:read()
@@ -51,7 +51,7 @@ function ToggleMyTheme()
     vim.cmd ('echo "Root is not allowed."')
     return
   end
-  local filepath = os.getenv("HOME") .. "/.local/share/vim/darkmode"
+  local filepath = os.getenv("HOME") .. "/.local/share/nvim/darkmode"
   local stat = vim.loop.fs_stat(filepath)
   if (stat and stat.type) then
     vim.cmd [[
@@ -66,7 +66,7 @@ function ToggleMyTheme()
       syntax enable
     ]]
     vim.cmd ('colorscheme ' .. my_dark_theme)
-    os.execute('touch ~/.local/share/vim/darkmode')
+    os.execute('touch ~/.local/share/nvim/darkmode')
   end
 end
 
@@ -74,7 +74,7 @@ vim.api.nvim_set_keymap('', '<F1>', '<Esc><Esc>:lua ToggleMyTheme()<CR>',
   { noremap = true, silent = true })
 
 -- Initial configuration
-if file_exists(os.getenv("HOME") .. "/.local/share/vim/darkmode") then
+if file_exists(os.getenv("HOME") .. "/.local/share/nvim/darkmode") then
   vim.cmd ('set bg=dark')
   vim.cmd ('colorscheme ' .. my_dark_theme)
 else

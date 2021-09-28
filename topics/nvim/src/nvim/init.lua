@@ -307,4 +307,4 @@ require("github-theme").setup({
 --cmd 'colorscheme gruvbox'
 
 -- Dynamic theme
-require 'dynamic'
+require 'dynamic_theme'
