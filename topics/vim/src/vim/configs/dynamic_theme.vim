@@ -6,11 +6,14 @@
 function! MyHighlights() abort
     highlight Normal guibg=NONE ctermbg=NONE
     highlight NonText guibg=NONE ctermbg=NONE
+    highlight LineNr guibg=NONE ctermbg=NONE
+    highlight SignColumn guibg=NONE ctermbg=NONE
+    highlight TabLineFill guibg=NONE ctermbg=NONE
 endfunction
-"augroup MyColors
-"    autocmd!
-"    autocmd ColorScheme * call MyHighlights()
-"augroup END
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
 
 " Defaults
 set termguicolors
