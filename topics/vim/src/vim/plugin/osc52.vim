@@ -8,7 +8,7 @@ let g:loaded_osc52 = 1
 " Send a string to the terminal's clipboard using OSC52.
 function! YankOSC52(str)
   let length = strlen(a:str)
-  let limit = 4194304 # 4 MiB
+  let limit = 4194304 " 4 MiB
 
   if length > limit
     echohl WarningMsg
