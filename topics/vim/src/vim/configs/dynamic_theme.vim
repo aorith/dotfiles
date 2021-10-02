@@ -2,17 +2,20 @@
 " Theme definitions are stored in ~/.local/share/vim/light_theme
 " and in ~/.local/share/vim/dark_theme
 
-" Defaults
-let my_dark_theme = "tempus_autumn"
-let my_light_theme = "tempus_day"
+" Theme Overrides
+function! MyHighlights() abort
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight NonText guibg=NONE ctermbg=NONE
+endfunction
+"augroup MyColors
+"    autocmd!
+"    autocmd ColorScheme * call MyHighlights()
+"augroup END
 
-" Default parameters
-" This is only necessary if you use 'set termguicolors' in tmux.
-"if &term =~? 'screen\|tmux'
-"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"endif
-"set termguicolors
+" Defaults
+set termguicolors
+let my_dark_theme = "apprentice"
+let my_light_theme = "tempus_day"
 let g:tempus_enforce_background_color=1
 
 " Get current values for dark and light theme

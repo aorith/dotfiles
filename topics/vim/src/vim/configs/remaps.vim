@@ -39,9 +39,6 @@ nnoremap <leader>d :DiffOrig v<CR>
 " lo mismo pero horizontal
 nnoremap <leader>D :DiffOrig h<CR>
 
-" show current commit from selected or actual line(s)
-map <silent><Leader>g :call setbufvar(winbufnr(popup_atcursor(systemlist("cd " . shellescape(fnamemodify(resolve(expand('%:p')), ":h")) . " && git log --no-merges -n 1 -L " . shellescape(line("v") . "," . line(".") . ":" . resolve(expand("%:p")))), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
-
 " Make :Q and :W work like :q and :w
 command! W w
 command! Q q
@@ -60,3 +57,10 @@ set pastetoggle=<F2>
 " List toggle (:h map-modes)
 map <silent> <F3> <Esc><Esc>:set list!<CR>
 map! <silent> <F3> <Esc><Esc>:set list!<CR>
+
+" autoload/mygit.vim ---------------------------------
+" Show in a terminal the commit that introduced current(selected) line
+" pass a number for the history: eg '5<Leader>g'
+noremap <Leader>g :call mygit#show_commit(v:count)<CR>
+" Show git blame for the line (or selection) in a popup
+noremap <Leader>gb :call mygit#blame_popup()<CR>
