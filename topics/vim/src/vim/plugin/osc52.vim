@@ -8,8 +8,7 @@ let g:loaded_osc52 = 1
 " Send a string to the terminal's clipboard using OSC52.
 function! YankOSC52(str)
   let length = strlen(a:str)
-  let limit = 100000
-  let osc52_key = 'default'
+  let limit = 4194304 # 4 MiB
 
   if length > limit
     echohl WarningMsg
@@ -18,9 +17,8 @@ function! YankOSC52(str)
     return
   endif
 
-  if !empty($TMUX)
-    let osc52_key = 'tmux'
-  elseif match($TERM, 'screen') > -1
+  let osc52_key = 'default'
+  if match($TERM, 'screen') > -1
     let osc52_key = 'tmux'
   elseif match($TERM, 'tmux') > -1
     let osc52_key = 'tmux'
