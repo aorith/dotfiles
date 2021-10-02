@@ -52,8 +52,8 @@ __ps1_jobs_f() {
 
 __prompt_command () {
     local LANG=C
-    local wdc ep onssh ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
-    (( $1 == 0 )) || ep="${my_red} ${1}${my_rst}"
+    local wdc ep OnSSH ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
+    (( $1 == 0 )) || ep="${my_bld}${my_red}(${1})${my_rst} "
 
     ms=$(( ($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000 ))
 
@@ -80,12 +80,12 @@ __prompt_command () {
     __ps1_jobs_f
 
     [[ -w "${PWD}" ]] && wdc="${my_cyn}" || wdc="${my_red2}"
-    [[ -z "$SSH_CLIENT" ]] || onssh="${my_ylw2}${my_bld}\h ${my_rst}"
-    [[ -z "$IN_NIX_SHELL" ]] || onnixshell="${my_red2}(${name})${my_rst} "
+    [[ -z "$SSH_CLIENT" ]] || OnSSH="${my_ylw2}${my_bld}\h ${my_rst}"
+    [[ -z "$IN_NIX_SHELL" ]] || OnNixShell="${my_red2}(${name})${my_rst} "
 
-    #PS1="\n\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${onnixshell}${my_blu}❯${my_rst} "
-    #PS1="\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${onnixshell}\n${my_blu}\$${my_rst} "
-    PS1="\[\033]0;\u@\h \W\007\]${tc}${ms}${my_rst} ${onssh}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${onnixshell}\n${my_blu}\$${my_rst} "
+    #PS1="\n\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${OnNixShell}${my_blu}❯${my_rst} "
+    #PS1="\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${OnNixShell}\n${my_blu}\$${my_rst} "
+    PS1="\[\033]0;\u@\h \W\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs} ${OnNixShell}\n${ep}${my_blu}\$${my_rst} "
 
     unset _ps1_start_timer
 }
