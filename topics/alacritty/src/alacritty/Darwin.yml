@@ -4,27 +4,27 @@ window:
   decorations: buttonless
 
 font:
-  use_thin_strokes: true
+  use_thin_strokes: false
   size: 12
   offset:
     x: 0
     y: 0
 
   normal:
-    family: "Iosevka Fixed"
-    style: "Light Extended"
+    family: "SauceCodePro Nerd Font"
+    style: "Regular"
 
   bold:
-    family: "Iosevka Fixed"
-    style: "Semibold Extended"
+    family: "SauceCodePro Nerd Font"
+    style: "Semibold"
 
   italic:
-    family: "Iosevka Fixed"
-    style: "Italic Extended"
+    family: "SauceCodePro Nerd Font"
+    style: "Italic"
 
   bold_italic:
-    family: "Iosevka Fixed"
-    style: "Semibold Italic Extended"
+    family: "SauceCodePro Nerd Font"
+    style: "Semibold Italic"
 
 key_bindings:
   - {key: F12,                        action: ToggleSimpleFullscreen}
