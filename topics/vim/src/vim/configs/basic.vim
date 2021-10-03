@@ -38,31 +38,21 @@ set history=100
 set report=0 " always report number of lines changed after :command
 set splitright splitbelow
 set formatoptions=cqjl
+set formatoptions-=or
 set completeopt=menuone,noinsert,noselect,popup
 set shortmess+=Ic
 set mouse=a ttymouse=xterm2
 set colorcolumn=80
+set listchars=eol:¬,tab:▸\ ,nbsp:‗,trail:·,extends:→,precedes:←
 
 " performance
 "syntax sync minlines=2000
 "syntax sync maxlines=5000
 "set synmaxcol=400
 
-" list chars
-if has('multi_byte')
-    set listchars=eol:¬,tab:▸\ ,trail:·,extends:→,precedes:←
-    if v:version >= 700
-        set listchars+=nbsp:‗
-    endif
-else
-    set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<
-endif
-
 set lazyredraw display=lastline
 set ttyfast
-if exists('+signcolumn')
-    set signcolumn=yes
-endif
+set signcolumn=yes
 set ttimeout
 set ttimeoutlen=100 " Quickly detect normal escape sequences
 
