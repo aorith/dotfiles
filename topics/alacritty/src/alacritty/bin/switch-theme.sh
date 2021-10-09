@@ -4,9 +4,9 @@ BASET="${HOME}/.config/alacritty/themes"
 CONFIG="${HOME}/.config/alacritty/alacritty.yml"
 
 if [[ "$1" == "reset" ]]; then
-    ln -sf ~/.config/alacritty/themes/apprentice.yaml ~/.config/alacritty/theme.yml && \
+    ln -sf ~/.config/alacritty/themes/mine/apprentice.yaml ~/.config/alacritty/theme.yml && \
         cp "${CONFIG}" "/tmp/.alacritty.yml" && \
-        echo >> "${CONFIG}" && \
+        printf '\n\n' >> "${CONFIG}" && \
         mv "/tmp/.alacritty.yml" "${CONFIG}"
 else
     cd "$BASET" || exit 1
