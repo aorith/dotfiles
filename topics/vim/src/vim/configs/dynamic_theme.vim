@@ -4,11 +4,13 @@
 
 " Theme Overrides
 function! MyHighlights() abort
+  if filereadable($HOME . '/.local/share/vim/transparent_bg')
     highlight Normal guibg=NONE ctermbg=NONE
     highlight NonText guibg=NONE ctermbg=NONE
     highlight LineNr guibg=NONE ctermbg=NONE
     highlight SignColumn guibg=NONE ctermbg=NONE
     highlight TabLineFill guibg=NONE ctermbg=NONE
+  endif
 endfunction
 augroup MyColors
     autocmd!
