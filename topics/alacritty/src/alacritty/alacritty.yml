@@ -1,4 +1,4 @@
-background_opacity: 0.97
+#background_opacity: 0.99
 env:
   TERM: alacritty
 
@@ -10,9 +10,6 @@ window:
 
 scrolling:
   history: 1000
-
-mouse:
-  hide_when_typing: true
 
 selection:
   save_to_clipboard: true
