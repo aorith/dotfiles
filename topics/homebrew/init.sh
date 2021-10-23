@@ -69,7 +69,7 @@ cask_packages=(
     "firefox"
     "font-dejavu"
     "font-fira-code"
-    "font-hack"
+    "font-hack-nerd-font"
     "font-jetbrains-mono"
     "font-sauce-code-pro-nerd-font"
     "hammerspoon"
