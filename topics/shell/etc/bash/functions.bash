@@ -4,32 +4,32 @@
 # add_to_path function
 add_to_path() {
     local x
-	[[ $# -ne 1 ]] && return 1
-	for x in $1; do
-		case ":${PATH}:" in
-			*":${x}:"*) ;; # already there
-			*) PATH="$x:$PATH";;
-		esac
-	done
+    [[ $# -ne 1 ]] && return 1
+    for x in $1; do
+        case ":${PATH}:" in
+            *":${x}:"*) ;; # already there
+            *) PATH="$x:$PATH";;
+        esac
+    done
     export PATH
 }
 
 # add_to_manpath function
 add_to_manpath() {
     local x
-	[[ $# -ne 1 ]] && return 1
-	for x in $1; do
-		case ":${MANPATH}:" in
-			*":${x}:"*) ;; # already there
-			*) MANPATH="$x:$MANPATH";;
-		esac
-	done
+    [[ $# -ne 1 ]] && return 1
+    for x in $1; do
+        case ":${MANPATH}:" in
+            *":${x}:"*) ;; # already there
+            *) MANPATH="$x:$MANPATH";;
+        esac
+    done
     export MANPATH
 }
 
 # copy terminfo
 ssh_copy_terminfo() {
-	local EXEC
+    local EXEC
     EXEC='command ssh'
     [[ $# -eq 0 ]] && { echo "Missing [user@]hostname"; return 1; }
     infocmp $TERM &>/dev/null || { echo "Either infocmp is not installed or missing $TERM terminfo"; return 1; }
@@ -57,7 +57,7 @@ udate() {
     {
         export TZ="${MYTZ}"; echo -n "UNIX: "; $EXE +%s --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
         export TZ="${MYTZ}"; echo -n "${TZ}: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
-		echo '- - - - - - -'
+        echo '- - - - - - -'
         export TZ="UTC"; echo -n "${TZ}/GMT: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
         export TZ="Europe/Madrid"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
         export TZ="Europe/London"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
@@ -66,12 +66,13 @@ udate() {
         export TZ="Asia/Hong_Kong"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
         export TZ="Asia/Tokyo"; echo -n "$TZ: "; $EXE --date=@$(export TZ="$MYTZ"; $EXE "+%s" --date="$fecha");
     } | column -t | BAT_STYLE="grid" bat
-    unset TZ BAT_STYLE
+unset TZ BAT_STYLE
 }
 
 # le pasas timestamp en unix y te lo muestra en varios husos horarios
 unixdate() {
-    local EXE timestamp MYTZ
+    local EXE timestamp MYTZ oldTZ
+    oldTZ="$TZ"
     timestamp="${1:-}"
     [[ -z $timestamp ]] && { echo -n "Unix timestamp: "; read -r timestamp; }
     MYTZ="${MYTZ:-Europe/Madrid}"
@@ -81,7 +82,7 @@ unixdate() {
         export TZ="UTC"; echo -n "${TZ}/GMT: "; $EXE --date=@$timestamp
         export TZ="Europe/Madrid"; echo -n "$TZ: "; $EXE --date=@$timestamp
     } | column -t | BAT_STYLE="grid" bat
-    unset TZ
+    [[ -n "$oldTZ" ]] && export TZ="$oldTZ" || unset TZ
 }
 
 # ls octal permissions
@@ -91,8 +92,11 @@ lso() {
 
 # generate random password
 randompassword() {
-    echo "$(date +%s; uname -a; ps -e; uptime) $PPID $? $_ $$ $COLUMNS" | sha256sum | base64 | head -c 18
-    echo
+    local seed1 seed2 size
+    size=${1:-18}
+    seed1="$(tr -dc 'A-Z-a-z-0-9-_.' < /dev/urandom | head -c "$((size*2))")"
+    seed2="$(openssl rand -base64 "$((size*2))" | tr -dc 'A-Z-a-z-0-9-_.')"
+    printf '%s\n\n' "$(fold -w1 <<< "${seed1}${seed2}${RANDOM}" | shuf | tr -d '\n' | head -c "$size")"
 }
 
 # pinta conteo de threads
