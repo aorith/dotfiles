@@ -1,30 +1,34 @@
 alt_send_esc: false
 
 window:
-  decorations: buttonless
+  decorations: full
 
 font:
-  use_thin_strokes: false
-  size: 12
+  use_thin_strokes: true
+  size: 20.0
   offset:
     x: 0
     y: 0
 
+  glyph_offset:
+    x: 0
+    y: 0
+
   normal:
-    family: "SauceCodePro Nerd Font"
-    style: "Regular"
+    family: "Hack Nerd Font Mono"
+#   style: "Regular"
 
-  bold:
-    family: "SauceCodePro Nerd Font"
-    style: "Semibold"
+# bold:
+#   family: "Inconsolata"
+#   style: "Bold"
 
-  italic:
-    family: "SauceCodePro Nerd Font"
-    style: "Italic"
+# italic:
+#   family: "Inconsolata"
+#   style: "Italic"
 
-  bold_italic:
-    family: "SauceCodePro Nerd Font"
-    style: "Semibold Italic"
+# bold_italic:
+#   family: "Inconsolata"
+#   style: "Bold Italic"
 
 key_bindings:
   - {key: F12,                        action: ToggleSimpleFullscreen}
@@ -61,5 +65,4 @@ key_bindings:
   - {key: F,     mods: Command,       chars: "\x1bf"}  # search
   - {key: U,     mods: Command,       chars: "\x1bu"}  # tmux open url
   - {key: I,     mods: Command,       chars: "\x02i"}  # tmux server for
-# - {key: P,     mods: Command,       chars: "\x1bp"}  # tmux select
   - {key: P,     mods: Command,       chars: "\x02m"}  # tmux & bitwarden
