@@ -12,5 +12,5 @@ export HISTTIMEFORMAT="$(echo -e '\033[0;34m%h/%d %H:%M:%S\033[0m ')"
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
 # Prompt
-export PROMPT_DIRTRIM=6
+export PROMPT_DIRTRIM=4
 export PS4='+ ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]}() [$?] → '
