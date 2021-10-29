@@ -18,7 +18,7 @@ Plug 'sheerun/vim-polyglot'
 " colors
 Plug 'romainl/Apprentice'
 Plug 'protesilaos/tempus-themes-vim'
-Plug 'habamax/vim-bronzage'
+Plug 'lifepillar/vim-solarized8'
 
 " tab completion
 let g:mucomplete#enable_auto_at_startup = 1
