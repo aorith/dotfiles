@@ -5,6 +5,8 @@ scriptencoding utf-8
 syntax enable
 filetype plugin indent on
 
+set icon
+set nofixendofline
 set virtualedit=block
 set backspace=eol,indent,start
 set showcmd cmdheight=2
@@ -21,7 +23,7 @@ set hlsearch incsearch ignorecase smartcase
 set noerrorbells
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set autoindent smartindent
-set wrap linebreak breakindent
+set wrap wrapscan linebreak breakindent
 set noswapfile backup undofile
 set laststatus=2
 set title
@@ -37,8 +39,7 @@ set autoread " read file again if modified on disk and no unsaved changes
 set history=100
 set report=0 " always report number of lines changed after :command
 set splitright splitbelow
-set formatoptions=cqjl
-set formatoptions-=or
+set formatoptions=cqjlmM1
 set completeopt=menuone,noinsert,noselect,popup
 set shortmess+=Ic
 set mouse=a ttymouse=xterm2
@@ -50,7 +51,7 @@ set listchars=eol:¬,tab:▸\ ,nbsp:‗,trail:·,extends:→,precedes:←
 "syntax sync maxlines=5000
 "set synmaxcol=400
 
-set lazyredraw display=lastline
+set display=lastline
 set ttyfast
 set signcolumn=yes
 set ttimeout
@@ -60,9 +61,11 @@ set ttimeoutlen=100 " Quickly detect normal escape sequences
 "set clipboard=unnamed,unnamedplus
 
 " Decent wildmenu
+set path+=**
 set wildmenu
-set wildmode=list:longest
-set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
+set wildmode=full
+set wildignore=*.pyc,*.hg,*.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db
+set wildignore+=*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
 set viminfo+=n~/.local/share/vim/viminfo
 set undodir=~/.local/share/vim/undodir//
