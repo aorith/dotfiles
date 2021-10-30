@@ -2,6 +2,9 @@
 let mapleader = "\<Space>"
 nnoremap <Space> <Nop>
 
+" Disable current search highlighting with Ctrl-L
+nnoremap <C-L> :nohl<CR><C-L>
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
