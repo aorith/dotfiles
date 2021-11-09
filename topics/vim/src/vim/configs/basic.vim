@@ -51,6 +51,10 @@ set formatoptions=cqjlmM1
 set shortmess+=Ic
 set mouse=a ttymouse=xterm2
 set colorcolumn=80
+set cursorline
+if exists('+cursorlineopt')
+  set cursorlineopt=number
+endif
 set listchars=eol:¬,tab:▸\ ,nbsp:‗,trail:·,extends:→,precedes:←
 
 " performance
@@ -79,3 +83,5 @@ set undolevels=1000 undoreload=10000
 set backupdir=~/.local/share/vim/backup//
 set directory=~/.local/share/vim/swap//
 
+" Highligh extra whitespace
+match ErrorMsg '\s\+$'

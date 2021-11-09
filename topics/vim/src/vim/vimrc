@@ -6,7 +6,5 @@ end
 source ~/.vim/configs/vimplug.vim
 source ~/.vim/configs/basic.vim
 "source ~/.vim/configs/statusline.vim
-source ~/.vim/configs/remaps.vim
-source ~/.vim/configs/misc.vim
 source ~/.vim/configs/dynamic_theme.vim
 set secure
