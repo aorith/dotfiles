@@ -24,7 +24,7 @@ function! TabStopStatus()
 endfunction
 
 set statusline=
-set statusline+=%#Pmenu#%{&paste?'\ \ PASTE\ ':''}
+set statusline+=%#error#%{&paste?'\ \ PASTE\ ':''}
 set statusline+=%#error#%m%* " modified flag
 set statusline+=\ %#error#%r%* " readonly flag
 set statusline+=\%y " filetype

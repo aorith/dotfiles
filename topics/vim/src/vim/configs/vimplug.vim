@@ -1,46 +1,37 @@
-" vim-plug
+" --- OPTIONS BEFORE ----------------------------------------------------------
+source ~/.vim/configs/plugin_options.vim
+" --- END----------------------------------------------------------------------
+
+" Download vim-plug when missing
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" --- START -------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
-
-" display git changes on sidebar
-let g:signify_sign_change = '~'
-let g:signify_priority = 9
-Plug 'mhinz/vim-signify'
-
-" language syntax pack
 Plug 'sheerun/vim-polyglot'
-
-" colors
-Plug 'romainl/Apprentice'
-Plug 'protesilaos/tempus-themes-vim'
-Plug 'lifepillar/vim-solarized8'
-
-" tab completion
-let g:mucomplete#enable_auto_at_startup = 1
-Plug 'lifepillar/vim-mucomplete'
-
-" ALE
-let g:ale_enabled = 1
-let g:ale_completion_enabled = 1 " disable for deoplete
-let g:ale_completion_autoimport = 1
-let g:ale_set_highlights = 1
-let g:ale_exclude_highlights = ['line too long']
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_delay = 400
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 1
-let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
-" window
-let g:ale_list_window_size = 5
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
+Plug 'mhinz/vim-signify'
 Plug 'dense-analysis/ale'
-set omnifunc=ale#completion#OmniFunc
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
+if empty($SSH_CLIENT)
+    Plug 'aorith/znotes.vim'
+end
+
+Plug 'romainl/Apprentice'
+"Plug 'protesilaos/tempus-themes-vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'gruvbox-community/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
+" --- END ---------------------------------------------------------------------
+
+" --- OPTIONS AFTER -----------------------------------------------------------
+set omnifunc=ale#completion#OmniFunc
+" --- END ---------------------------------------------------------------------

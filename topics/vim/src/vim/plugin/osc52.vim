@@ -1,5 +1,3 @@
-" vim: ft=vim
-
 if exists('g:loaded_osc52')
   finish
 endif

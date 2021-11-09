@@ -3,12 +3,14 @@
 " full document with gggqG
 setlocal formatprg=autopep8\ -
 setlocal sts=4 sw=4 expandtab
+let b:ale_linters = ['pylint']
+let b:ale_fixers = ['autopep8']
 
 if !exists("g:my_black_function_loaded")
   function! s:Black()
     if &filetype == "python"
       if &mod == 0
-        execute ":!python3 -m black --line-length 80 " . resolve(expand('%:p'))
+        execute ":!black " . resolve(expand('%:p'))
       else
         echohl ErrorMsg
         echomsg "Sorry, buffer has been modified. Save it first."
@@ -25,7 +27,7 @@ if !exists("g:my_black_function_loaded")
     if &filetype == "python"
       if &mod == 0
         " the character '#' is replaced by the filename
-        :vnew | setlocal ft=diff buftype=nofile bufhidden=hide colorcolumn=0 noswapfile | r !python3 -m black --line-length 80 --quiet --diff #
+        :vnew | setlocal ft=diff buftype=nofile bufhidden=hide colorcolumn=0 noswapfile | r !black --quiet --diff #
       else
         echohl ErrorMsg
         echomsg "Sorry, buffer has been modified. Save it first."

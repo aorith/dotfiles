@@ -2,26 +2,12 @@
 " Theme definitions are stored in ~/.local/share/vim/light_theme
 " and in ~/.local/share/vim/dark_theme
 
-" Theme Overrides
-function! MyHighlights() abort
-  if filereadable($HOME . '/.local/share/vim/transparent_bg')
-    highlight Normal guibg=NONE ctermbg=NONE
-    highlight NonText guibg=NONE ctermbg=NONE
-    highlight LineNr guibg=NONE ctermbg=NONE
-    highlight SignColumn guibg=NONE ctermbg=NONE
-    highlight TabLineFill guibg=NONE ctermbg=NONE
-  endif
-endfunction
-augroup MyColors
-    autocmd!
-    autocmd ColorScheme * call MyHighlights()
-augroup END
-
 " Defaults
 set termguicolors
 let my_dark_theme = "apprentice"
-let my_light_theme = "tempus_day"
-let g:tempus_enforce_background_color=1
+let my_light_theme = "gruvbox"
+let g:gruvbox_undercurl = 1
+let g:gruvbox_invert_selection = 0
 
 " Get current values for dark and light theme
 " light
@@ -77,3 +63,14 @@ else
   set bg=light
   execute "silent! colorscheme " . my_light_theme
 endif
+
+" Theme overrides
+if filereadable($HOME . '/.local/share/vim/transparent_bg')
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NonText guibg=NONE ctermbg=NONE
+  highlight LineNr guibg=NONE ctermbg=NONE
+  highlight SignColumn guibg=NONE ctermbg=NONE
+  highlight TabLineFill guibg=NONE ctermbg=NONE
+endif
+highlight SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
+highlight SpellRare ctermbg=234 ctermfg=darkred cterm=NONE

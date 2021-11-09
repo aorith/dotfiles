@@ -1,6 +1,11 @@
+if empty($SSH_CLIENT)
+  "let &runtimepath.=',' . expand("$HOME") . '/githome/znotes.vim'
+  "let &runtimepath.=',' . expand("$HOME") . '/githome/znotes.vim/after'
+end
+
 source ~/.vim/configs/vimplug.vim
 source ~/.vim/configs/basic.vim
-source ~/.vim/configs/statusline.vim
+"source ~/.vim/configs/statusline.vim
 source ~/.vim/configs/remaps.vim
 source ~/.vim/configs/misc.vim
 source ~/.vim/configs/dynamic_theme.vim

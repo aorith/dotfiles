@@ -16,7 +16,3 @@ set cursorline
 if exists('+cursorlineopt')
     set cursorlineopt=number
 endif
-
-" use % to jump from if to endif for example
-runtime macros/matchit.vim
-

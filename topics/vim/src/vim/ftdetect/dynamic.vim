@@ -7,8 +7,11 @@ function! VhostFTDetect() abort
         setfiletype nginx
     endif
 endfunction
-autocmd BufNewFile,BufRead *.vhost call VhostFTDetect()
-autocmd BufNewFile,BufRead *.vcl setfiletype vcl
 
-" known_hosts
-autocmd BufNewFile,BufRead known_hosts setfiletype sshknownhosts
+augroup myauto_syntax
+    autocmd!
+    autocmd BufNewFile,BufRead *.vhost call VhostFTDetect()
+    autocmd BufNewFile,BufRead *.vcl setfiletype vcl
+    autocmd BufNewFile,BufRead known_hosts setfiletype sshknownhosts
+augroup END
+
