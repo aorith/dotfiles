@@ -5,6 +5,11 @@ export EDITOR='vim'
 export VISUAL=$EDITOR
 export TERMINAL='alacritty'
 
+# Znotes
+export ZNOTES_ZET_DIR="$HOME/Syncthing/SYNC_STUFF/Notes/Zettelkasten/"
+export ZNOTES_TODO_DIR="$HOME/Syncthing/SYNC_STUFF/Notes/TODO/"
+export ZNOTES_TODO_DONE_DIR="$HOME/Syncthing/SYNC_STUFF/Notes/.TODO_DONE/"
+
 #export LESS='-XRMie' # F option breaks i3 "show errors"
 export LESSHISTFILE='-'
 export PAGER='less'
@@ -43,8 +48,13 @@ export GOBIN="${HOME}/go/bin"
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Macos only
+# FZF
+export FZF_DEFAULT_COMMAND='fd --type f --follow --exclude .git'
+export FZF_DEFAULT_OPTS='--layout=reverse --info=inline'
+
+# OS specific
 if [[ "$_OS" == 'Darwin' ]]; then
+    # Macos only
     export CLIPBOARD_COPY="pbcopy"
     export CLIPBOARD_PASTE="pbpaste"
     export SUBL_CMD='/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
@@ -64,10 +74,8 @@ if [[ "$_OS" == 'Darwin' ]]; then
         add_to_manpath "$man_path"
     done 2>/dev/null
     unset manpath
-fi
-
-# Linux only
-if [[ "$_OS" == 'Linux' ]]; then
+elif [[ "$_OS" == 'Linux' ]]; then
+    # Linux only
     export CLIPBOARD_COPY="xclip -i -selection clipboard"
     export CLIPBOARD_PASTE="xclip -out -selection clipboard"
     export SUBL_CMD='subl'
