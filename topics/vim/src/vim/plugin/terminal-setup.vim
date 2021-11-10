@@ -1,3 +1,7 @@
+if v:version <= 800
+  finish
+end
+
 " change cursor
 let &t_SI.="\e[6 q" "SI = INSERT mode
 let &t_SR.="\e[3 q" "SR = REPLACE mode
@@ -12,8 +16,8 @@ endif
 
 " Bracketed paste mode
 if &t_BE == ''
-    let &t_BE = "\e[?2004h"
-    let &t_BD = "\e[?2004l"
-    let &t_PS = "\e[200~"
-    let &t_PE = "\e[201~"
+  let &t_BE = "\e[?2004h"
+  let &t_BD = "\e[?2004l"
+  let &t_PS = "\e[200~"
+  let &t_PE = "\e[201~"
 endif
