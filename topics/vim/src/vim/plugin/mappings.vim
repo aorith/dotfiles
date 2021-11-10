@@ -1,5 +1,7 @@
-map <F1> <nop>
-map! <F1> <nop>
+if !exists('*MyThemeToggle') " if this function does not exist...
+  map <F1> <Nop>
+  map! <F1> <Nop>
+end
 
 " Disable current search highlighting with Ctrl-L
 nnoremap <silent> <C-L> :nohl<CR><C-L>

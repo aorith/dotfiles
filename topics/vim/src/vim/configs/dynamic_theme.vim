@@ -2,6 +2,11 @@
 " Theme definitions are stored in ~/.local/share/vim/light_theme
 " and in ~/.local/share/vim/dark_theme
 
+if exists('g:loaded_my_theme')
+  finish
+end
+let g:loaded_my_theme = '1'
+
 " Defaults
 set termguicolors
 let my_dark_theme = "apprentice"
@@ -32,7 +37,7 @@ else
 endif
 unlet my_themepath
 
-function! MyThemeToggle()
+function MyThemeToggle()
   if $USER == "root"
     echoerr "  Not available as root."
     return
@@ -55,7 +60,6 @@ map <silent> <F1> :call MyThemeToggle()<CR>
 map! <silent> <F1> :call MyThemeToggle()<CR>
 
 " Initial config when vim opens
-let g:tempus_enforce_background_color=1
 if filereadable($HOME . '/.local/share/vim/darkmode')
   set bg=dark
   execute "silent! colorscheme " . my_dark_theme
