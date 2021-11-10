@@ -11,7 +11,7 @@ set smarttab
 set nrformats-=octal
 set laststatus=2
 set ruler
-set rulerformat=%60(%=%#ModeMsg#%(\ %M\ %)%#Mode#%y\ (%l:%c%V\ hex:%B\ %p%%)\ B:%n%)
+set rulerformat=%60(%=%#ModeMsg#%(%m%)%#Mode#\ %y\ (%l:%c\ 0x%B\ %p%%)\ B:%n%)
 set display+=lastline
 set encoding=utf-8
 set shell=/usr/bin/env\ bash
