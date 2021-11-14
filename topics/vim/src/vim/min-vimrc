@@ -21,21 +21,10 @@ set nobackup
 set noundofile
 set wildmenu
 set clipboard+=unnamed,unnamedplus
+set ruler
 
 map <F1> <nop>
 map! <F1> <nop>
-
-set statusline=
-set statusline+=\ %#error#%m%* " modified flag
-set statusline+=\ %#error#%r%* " readonly flag
-set statusline+=\ %f " F=fullpath of current file;  f=relative path
-
-" right side
-set statusline+=%=
-
-set statusline+=\ [%l:%c] " line:column  (%L for total lines)
-set statusline+=\[%3p%%] " percent of the document
-set statusline+=\[ASCII:%3b] " ASCII under cursor
 
 let &t_ut='' " disable background color erase
 colorscheme desert

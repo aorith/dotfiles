@@ -3,11 +3,11 @@
 " full document with gggqG
 setlocal formatprg=autopep8\ -
 setlocal sts=4 sw=4 expandtab
-let b:ale_linters = ['pylint']
-let b:ale_fixers = ['autopep8']
+let b:ale_linters = ['pylint', 'pylsp']
+let b:ale_fixers = ['black']
 
 if !exists("g:my_black_function_loaded")
-  function! s:Black()
+  function s:Black()
     if &filetype == "python"
       if &mod == 0
         execute ":!black " . resolve(expand('%:p'))
@@ -23,7 +23,7 @@ if !exists("g:my_black_function_loaded")
     endif
   endfunction
 
-  function! s:BlackDiff()
+  function s:BlackDiff()
     if &filetype == "python"
       if &mod == 0
         " the character '#' is replaced by the filename

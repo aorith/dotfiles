@@ -56,8 +56,9 @@ function MyThemeToggle()
     echomsg g:my_dark_theme
   endif
 endfunction
-map <silent> <F1> :call MyThemeToggle()<CR>
-map! <silent> <F1> :call MyThemeToggle()<CR>
+map <F1> <Nop>
+map! <silent> <F1> <Nop>
+nnoremap <silent> <F1> :call MyThemeToggle()<CR>
 
 " Initial config when vim opens
 if filereadable($HOME . '/.local/share/vim/darkmode')

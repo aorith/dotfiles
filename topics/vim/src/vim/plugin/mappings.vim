@@ -3,8 +3,8 @@ if !exists('*MyThemeToggle') " if this function does not exist...
   map! <F1> <Nop>
 end
 
-" Disable current search highlighting with Ctrl-L
-nnoremap <silent> <C-L> :nohl<CR><C-L>
+" Disable current search highlighting with Ctrl-l
+nnoremap <silent> <C-l> :nohl<CR>
 
 " Alternate between previous file with Backspace
 nnoremap <silent> <BS> :e#<CR>
@@ -31,6 +31,7 @@ let g:netrw_liststyle = 1
 let g:netrw_altv = 1
 let g:netrw_browse_split = 0
 let g:netrw_winsize = 40
+let g:netrw_browsex_viewer = '-'
 function NetrwToggler()
     if &filetype == "netrw"
       silent execute ":bd"
@@ -54,8 +55,24 @@ map! <silent> <F3> <Esc><Esc>:set list!<CR>
 " Show git blame for the line (or selection) in a popup
 "noremap <Leader>gb :call mygit#blame_popup()<CR>
 
+" --- PLUGINS -----------------------------------------------------------------
+
+" ALE
+nnoremap <leader>ld :ALEGoToDefinition<CR>
+nnoremap <leader>ll :ALEHover<CR>
+nnoremap <leader>lr :ALEFindReferences<CR>
+
+" VIM-FUGITIVE
+noremap <leader>gb :Git blame<CR>
+
+" VIM-SIGNIFY
+nnoremap <leader>gd :SignifyDiff<CR>:wincmd h<CR>
+
 " FZF
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>fgf :GFiles<CR>
 nnoremap <silent> <leader>fb :Buffers<CR>
 nnoremap <silent> <leader>fl :Lines<CR>
+
+" VIM-WIKI
+nnoremap <leader><space> :VimwikiToggleListItem<CR>

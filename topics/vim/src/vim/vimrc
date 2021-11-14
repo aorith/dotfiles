@@ -1,10 +1,125 @@
+" {{{ Bootstrap Vim-Plug ------------------------------------------------------
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+" }}} -------------------------------------------------------------------------
+
+" {{{ Options before plugins --------------------------------------------------
+
+" POLYGLOT
+let g:polyglot_disabled = ['sensible', 'markdown']
+
+" ALE
+let g:ale_enabled = 1
+let g:ale_completion_enabled = 1 " disable for deoplete
+let g:ale_completion_autoimport = 1
+let g:ale_set_balloons = 1
+let g:ale_hover_to_preview = 1
+let g:ale_hover_to_floating_preview = 1
+let g:ale_exclude_highlights = ['line too long']
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_delay = 400
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_enter = 1
+let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
+let g:ale_list_window_size = 5
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+
+" FZF
+let g:fzf_layout = { 'window': { 'width': 0.90, 'height': 0.90 } }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" PANDOC
+let g:pandoc#formatting#mode = 'h'
+let g:pandoc#formatting#textwidth = 72
+let g:pandoc#syntax#conceal#use = 1
+let g:pandoc#syntax#conceal#urls = 1
+let g:pandoc#syntax#codeblocks#embeds#use = 1
+let g:pandoc#syntax#conceal#blacklist = ['atx', 'codeblock_start', 'codeblock_delim' ]
+let g:pandoc#syntax#codeblocks#embeds#langs = [
+      \'bash',
+      \'lua',
+      \'makefile=make',
+      \'python',
+      \'sh',
+      \'vcl',
+      \'yaml',
+      \]
+
+" SIGNIFY
+let g:signify_sign_change = '~'
+let g:signify_priority = 9
+
+" VIM-WIKI
+let g:myvimwiki_dir = expand('~/Syncthing/SYNC_STUFF/Wiki')
+let g:vimwiki_list = [{'path': g:myvimwiki_dir,
+                      \ 'syntax': 'markdown',
+                      \ 'auto_export': 0,
+                      \ 'links_space_char': '_',
+                      \ 'automatic_nested_syntaxes': 1,
+                      \ 'auto_diary_index': 1,
+                      \ 'auto_generate_links': 1,
+                      \'ext': '.md',
+                      \}]
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_global_ext = 0
+let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_autowriteall = 1
+let g:vimwiki_url_maxsave = 5
+let g:vimwiki_auto_header = 1
+let g:vimwiki_filetypes = ['markdown']
+
+" }}} -------------------------------------------------------------------------
+
+" {{{ Plugins -----------------------------------------------------------------
+call plug#begin('~/.local/share/vim/plugged')
+
+Plug 'sheerun/vim-polyglot'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'dense-analysis/ale'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+if empty($SSH_CLIENT)
+  Plug 'vim-pandoc/vim-pandoc'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
+  Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+end
+
+Plug 'romainl/Apprentice'
+Plug 'lifepillar/vim-solarized8'
+Plug 'gruvbox-community/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+call plug#end()
+" }}} -------------------------------------------------------------------------
+
+" {{{ Options after plugins ---------------------------------------------------
+set omnifunc=ale#completion#OmniFunc
+" }}} -------------------------------------------------------------------------
+
 if empty($SSH_CLIENT)
   "let &runtimepath.=',' . expand("$HOME") . '/githome/znotes.vim'
   "let &runtimepath.=',' . expand("$HOME") . '/githome/znotes.vim/after'
 end
 
-source ~/.vim/configs/vimplug.vim
-source ~/.vim/configs/basic.vim
-"source ~/.vim/configs/statusline.vim
-source ~/.vim/configs/dynamic_theme.vim
 set secure

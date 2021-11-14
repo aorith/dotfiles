@@ -4,10 +4,8 @@ if has("syntax")
 endif
 
 " Sensible options
-set autoindent
 set backspace=indent,eol,start
 set complete-=i
-set smarttab
 set nrformats-=octal
 set laststatus=2
 set ruler
@@ -23,18 +21,18 @@ endif
 
 " Leader
 let mapleader = " "
-nnoremap <Space> <Nop>
+let localmapleader = ","
 
 set icon
 set virtualedit=block
 set showcmd cmdheight=2 showmode
 set scrolloff=4 sidescrolloff=5
-set number
+set number relativenumber
 set hidden
 set hlsearch incsearch ignorecase smartcase
 set noerrorbells
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4
-set smartindent copyindent preserveindent
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
+set smartindent
 set wrap wrapscan linebreak breakindent showbreak=↳\ 
 set textwidth=100
 set swapfile backup undofile
