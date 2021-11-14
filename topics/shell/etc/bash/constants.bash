@@ -5,11 +5,6 @@ export EDITOR='vim'
 export VISUAL=$EDITOR
 export TERMINAL='alacritty'
 
-# Znotes
-export ZNOTES_ZET_DIR="$HOME/Syncthing/SYNC_STUFF/Notes/Zettelkasten/"
-export ZNOTES_TODO_DIR="$HOME/Syncthing/SYNC_STUFF/Notes/TODO/"
-export ZNOTES_TODO_DONE_DIR="$HOME/Syncthing/SYNC_STUFF/Notes/.TODO_DONE/"
-
 #export LESS='-XRMie' # F option breaks i3 "show errors"
 export LESSHISTFILE='-'
 export PAGER='less'
