@@ -27,7 +27,7 @@ set icon
 set virtualedit=block
 set showcmd cmdheight=2 showmode
 set scrolloff=4 sidescrolloff=5
-set number relativenumber
+set number
 set hidden
 set hlsearch incsearch ignorecase smartcase
 set noerrorbells
@@ -38,7 +38,7 @@ set textwidth=100
 set swapfile backup undofile
 set title
 let &titlestring = "vim(%t)"
-set foldenable foldlevel=99 foldcolumn=1 foldmethod=indent
+set foldenable foldlevel=6 foldcolumn=1 foldmethod=indent
 set updatetime=100
 set fileformats=unix,dos,mac
 set nostartofline nofixendofline
