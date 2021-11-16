@@ -1,3 +1,9 @@
+if v:version <= 800 || &compatible
+  finish
+end
+
+let &runtimepath.=',' . expand("$HOME") . '/.vim/aorith'
+
 " {{{ Bootstrap Vim-Plug ------------------------------------------------------
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -116,10 +122,5 @@ call plug#end()
 " {{{ Options after plugins ---------------------------------------------------
 set omnifunc=ale#completion#OmniFunc
 " }}} -------------------------------------------------------------------------
-
-if empty($SSH_CLIENT)
-  "let &runtimepath.=',' . expand("$HOME") . '/githome/znotes.vim'
-  "let &runtimepath.=',' . expand("$HOME") . '/githome/znotes.vim/after'
-end
 
 set secure

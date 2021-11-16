@@ -1,4 +1,4 @@
-if v:version <= 800
+if v:version <= 800 || &compatible
   finish
 end
 

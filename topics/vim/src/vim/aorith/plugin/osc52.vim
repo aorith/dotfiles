@@ -1,3 +1,6 @@
+if v:version <= 800 || &compatible
+  finish
+end
 if exists('g:loaded_osc52')
   finish
 endif
