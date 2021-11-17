@@ -5,7 +5,6 @@ endif
 
 " Sensible options
 set backspace=indent,eol,start
-set complete-=i
 set nrformats-=octal
 set laststatus=2
 set ruler
@@ -23,7 +22,6 @@ endif
 let mapleader = " "
 let localmapleader = ","
 
-set icon
 set virtualedit=block
 set showcmd cmdheight=2 showmode
 set scrolloff=4 sidescrolloff=5
@@ -36,10 +34,10 @@ set smartindent
 set wrap wrapscan linebreak breakindent showbreak=↳\ 
 set textwidth=100
 set swapfile backup undofile
-set title
+set title icon
 let &titlestring = "vim(%t)"
 set foldenable foldlevel=6 foldcolumn=1 foldmethod=indent
-set updatetime=100
+set updatetime=400 " swap & CursorHold
 set fileformats=unix,dos,mac
 set nostartofline nofixendofline
 set history=100
@@ -50,10 +48,11 @@ set shortmess+=Ic
 set mouse=a ttymouse=xterm2
 set colorcolumn=80
 set cursorline
-if exists('+cursorlineopt')
-  set cursorlineopt=number
-endif
+"if exists('+cursorlineopt')
+"  set cursorlineopt=number
+"endif
 set listchars=eol:¬,tab:▸\ ,nbsp:‗,trail:·,extends:→,precedes:←
+set fillchars=vert:┃,fold:·
 
 " performance
 "syntax sync minlines=2000
@@ -62,11 +61,15 @@ set listchars=eol:¬,tab:▸\ ,nbsp:‗,trail:·,extends:→,precedes:←
 
 set ttyfast
 set signcolumn=yes
-set ttimeout
-set ttimeoutlen=400 " Quickly detect normal escape sequences
+" timeoutlen works on <leader> mappings
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 " clipboard to system
 "set clipboard=unnamed,unnamedplus
+
+" Completion
+set complete=.,w,b,k,kspell
+set completeopt=menuone,noselect,noinsert
 
 " Decent wildmenu
 set path+=**

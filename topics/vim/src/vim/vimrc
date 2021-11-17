@@ -2,8 +2,6 @@ if v:version <= 800 || &compatible
   finish
 end
 
-let &runtimepath.=',' . expand("$HOME") . '/.vim/aorith'
-
 " {{{ Bootstrap Vim-Plug ------------------------------------------------------
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -73,7 +71,7 @@ let g:signify_sign_change = '~'
 let g:signify_priority = 9
 
 " VIM-WIKI
-let g:myvimwiki_dir = expand('~/Syncthing/SYNC_STUFF/Wiki')
+let g:myvimwiki_dir = expand($MY_WIKI_DIR)
 let g:vimwiki_list = [{'path': g:myvimwiki_dir,
                       \ 'syntax': 'markdown',
                       \ 'auto_export': 0,
@@ -92,6 +90,11 @@ let g:vimwiki_url_maxsave = 5
 let g:vimwiki_auto_header = 1
 let g:vimwiki_filetypes = ['markdown']
 
+" MUCOMPLETE
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 250
+let g:mucomplete#reopen_immediately = 0
+
 " }}} -------------------------------------------------------------------------
 
 " {{{ Plugins -----------------------------------------------------------------
@@ -106,8 +109,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 if empty($SSH_CLIENT)
-  Plug 'vim-pandoc/vim-pandoc'
-  Plug 'vim-pandoc/vim-pandoc-syntax'
+  "Plug 'vim-pandoc/vim-pandoc'
+  "Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 end
 
@@ -121,6 +124,15 @@ call plug#end()
 
 " {{{ Options after plugins ---------------------------------------------------
 set omnifunc=ale#completion#OmniFunc
+" }}} -------------------------------------------------------------------------
+
+" {{{ Sources -----------------------------------------------------------------
+source ~/.vim/aorith/basic.vim
+source ~/.vim/aorith/mappings.vim
+source ~/.vim/aorith/terminal-setup.vim
+source ~/.vim/aorith/osc52.vim
+source ~/.vim/aorith/autocmds.vim
+source ~/.vim/aorith/dynamic_theme.vim
 " }}} -------------------------------------------------------------------------
 
 set secure

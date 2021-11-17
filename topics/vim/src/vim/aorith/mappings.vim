@@ -9,10 +9,11 @@ nnoremap <silent> <C-l> :nohl<CR>
 " Alternate between previous file with Backspace
 nnoremap <silent> <BS> :e#<CR>
 
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
+" Use C-W + hjkl instead
+"nnoremap <leader>h :wincmd h<CR>
+"nnoremap <leader>j :wincmd j<CR>
+"nnoremap <leader>k :wincmd k<CR>
+"nnoremap <leader>l :wincmd l<CR>
 
 " Copy to system clipboard using osc52
 nnoremap <leader>y V:OSCYank<CR>
