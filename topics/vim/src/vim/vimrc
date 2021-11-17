@@ -1,6 +1,9 @@
+if v:progname !~# 'nvim\|vim'
+  set noloadplugins
+endif
 if v:version <= 800 || &compatible
   finish
-end
+endif
 
 " {{{ Bootstrap Vim-Plug ------------------------------------------------------
 if empty(glob('~/.vim/autoload/plug.vim'))

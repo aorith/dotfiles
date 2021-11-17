@@ -53,6 +53,7 @@ set cursorline
 "endif
 set listchars=eol:¬,tab:▸\ ,nbsp:‗,trail:·,extends:→,precedes:←
 set fillchars=vert:┃,fold:·
+set spellcapcheck= " dont check for Capitals
 
 " performance
 "syntax sync minlines=2000
@@ -74,7 +75,7 @@ set completeopt=menuone,noselect,noinsert
 " Decent wildmenu
 set path+=**
 set wildmenu
-set wildmode=longest,list,full
+set wildmode=longest:full,full
 set wildignore=*.pyc,*.hg,*.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db
 set wildignore+=*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
