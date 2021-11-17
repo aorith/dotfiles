@@ -4,6 +4,8 @@
 export EDITOR='vim'
 export VISUAL=$EDITOR
 export TERMINAL='alacritty'
+export MY_NOTES_DIR="${HOME}/Syncthing/SYNC_STUFF/Notes"
+export MY_WIKI_DIR="${MY_NOTES_DIR}/Wiki"
 
 #export LESS='-XRMie' # F option breaks i3 "show errors"
 export LESSHISTFILE='-'
