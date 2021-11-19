@@ -1,8 +1,3 @@
-filetype plugin indent on
-if has("syntax")
-  syntax enable
-endif
-
 " Sensible options
 set backspace=indent,eol,start
 set nrformats-=octal

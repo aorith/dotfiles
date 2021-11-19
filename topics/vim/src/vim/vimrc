@@ -1,7 +1,13 @@
+filetype plugin indent on
+if has("syntax")
+  syntax enable
+endif
+
 if v:progname !~# 'nvim\|vim'
   set noloadplugins
 endif
-if v:version <= 800 || &compatible
+
+if v:version <= 800 || &compatible || $USER is# 'root'
   finish
 endif
 

@@ -3,6 +3,10 @@ if !exists('*MyThemeToggle') " if this function does not exist...
   map! <F1> <Nop>
 end
 
+" Search results in the middle
+nnoremap n nzz
+nnoremap N Nzz
+
 " Disable current search highlighting with Ctrl-l
 nnoremap <silent> <C-l> :nohl<CR>
 
