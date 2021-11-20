@@ -1,20 +1,19 @@
 # vim: ft=bash
 
 change_vim_theme() {
-    local dtheme ltheme cdtheme cltheme editor Dirs ColorDirs Colors Tr PS3
+    local dtheme ltheme cdtheme cltheme editor Colors Tr PS3
     read -rn 1 -p '(v)im or (n)vim?: ' editor; echo
     case $editor in
         n)
             editor="nvim"
-            Dirs="${HOME}/.local/share/nvim/site/pack/packer/start"
-            ColorDirs="${HOME}/.config/nvim/colors"
+            nvim --cmd "set t_ti= t_te=" "+call MySaveColorSchemes()" "+:q!"
             ;;
         *)
             editor="vim"
-            Dirs="${HOME}/.vim/plugged"
-            ColorDirs="${HOME}/.vim/colors"
+            vim --cmd "set t_ti= t_te=" "+call MySaveColorSchemes()" "+:q!"
             ;;
     esac
+    clear
     read -rn 1 -p '(t)ransparent or (o)paque background?: ' Tr; echo
     case $Tr in
         t) Tr="t" ;;
@@ -23,20 +22,12 @@ change_vim_theme() {
     [[ -f ~/.local/share/${editor}/dark_theme ]] && cdtheme="$(head -1 ~/.local/share/${editor}/dark_theme)" || cdtheme="none"
     [[ -f ~/.local/share/${editor}/light_theme ]] && cltheme="$(head -1 ~/.local/share/${editor}/light_theme)" || cltheme="none"
 
-    # Get directories that contain colorschemes
-    for d in $Dirs; do
-        for dc in $(find $d -type d -name "colors"); do
-            ColorDirs="$dc $ColorDirs"
-        done
-    done
-    unset d dc
-    # Get the colorschemes fro those directories
-    for d in $ColorDirs; do
-        for cs in $(find $d -type f -name "*.vim" -exec basename {} \;); do
-            Colors="${cs%%.*} $Colors"
-        done
-    done
-    unset d cs
+    while read -r; do
+        [[ -n $REPLY ]] || continue
+        Color="${REPLY##*/}"
+        Colors="${Color/.vim/} $Colors"
+    done < /tmp/.vim-themes.txt
+    unset Color
 
     PS3="Dark theme ($cdtheme) : "
     select dtheme in $Colors; do

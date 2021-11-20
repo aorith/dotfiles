@@ -1,5 +1,5 @@
 " Helper function to get the relative path using python 'os.path'
-function myvimwiki#getRelativePath(curr_path, target_fp)
+function aorith#myvimwiki#getRelativePath(curr_path, target_fp)
   " if 'curr_path' is '/home/user/Docs'
   " and 'target_fp' is '/home/user/Docs/test/file.txt'
   " returns 'test/file.txt'
@@ -11,7 +11,7 @@ function myvimwiki#getRelativePath(curr_path, target_fp)
 endfunction
 
 " Create a link to selected file
-function myvimwiki#fzfLinkHandler(file)
+function aorith#myvimwiki#fzfLinkHandler(file)
   call inputsave()
   let l:filename = split(a:file, '/')[-1]
   let l:name = input('Save resource (' . l:filename . ') as: ')
@@ -29,7 +29,7 @@ function myvimwiki#fzfLinkHandler(file)
 
   let l:curr_path = expand('%:p:h')
   let l:target_fp = g:myvimwiki_dir . '/resources/' . l:name
-  let l:rel_path = myvimwiki#getRelativePath(l:curr_path, l:target_fp)
+  let l:rel_path = aorith#myvimwiki#getRelativePath(l:curr_path, l:target_fp)
 
   if a:file =~? '.\+\.\(png\|jpg\|jpeg\|svg\|gif\|webp\|bmp\)'
     let l:img_str = '!'
@@ -42,9 +42,9 @@ function myvimwiki#fzfLinkHandler(file)
   execute ':cd ' . g:myvimwiki_oldpath
 endfunction
 
-function myvimwiki#FZFLink()
+function aorith#myvimwiki#FZFLink()
   let g:myvimwiki_oldpath = getcwd()
-  command! -nargs=1 ZNotesFZFOutHandler :call myvimwiki#fzfLinkHandler(<f-args>)
+  command! -nargs=1 ZNotesFZFOutHandler :call aorith#myvimwiki#fzfLinkHandler(<f-args>)
   execute ':cd $HOME'
   call fzf#run(fzf#wrap({'dir': $HOME, 'sink': 'ZNotesFZFOutHandler', 'options': ['--preview=bat --style header,grid --color always {}']}))
   execute ':cd ' . g:myvimwiki_oldpath

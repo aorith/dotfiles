@@ -1,13 +1,20 @@
 filetype plugin indent on
 if has("syntax")
   syntax enable
+  set synmaxcol=200
 endif
 
-if v:progname !~# 'nvim\|vim'
+if v:progname !~# 'vim\|nvim'
   set noloadplugins
 endif
 
-if v:version <= 800 || &compatible || $USER is# 'root'
+if exists('$SUDO_USER')
+  set noundofile noswapfile nobackup
+  set viminfo= viminfofile=NONE
+  finish
+endif
+
+if v:version <= 800 || &compatible
   finish
 endif
 
@@ -126,7 +133,7 @@ end
 Plug 'romainl/Apprentice'
 Plug 'lifepillar/vim-solarized8'
 Plug 'gruvbox-community/gruvbox'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 " }}} -------------------------------------------------------------------------
@@ -138,8 +145,8 @@ set omnifunc=ale#completion#OmniFunc
 " {{{ Sources -----------------------------------------------------------------
 source ~/.vim/aorith/basic.vim
 source ~/.vim/aorith/mappings.vim
+source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal-setup.vim
-source ~/.vim/aorith/osc52.vim
 source ~/.vim/aorith/autocmds.vim
 source ~/.vim/aorith/dynamic_theme.vim
 " }}} -------------------------------------------------------------------------

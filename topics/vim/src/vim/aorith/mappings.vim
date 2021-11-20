@@ -3,25 +3,34 @@ if !exists('*MyThemeToggle') " if this function does not exist...
   map! <F1> <Nop>
 end
 
+" I don't want to enter Ex mode
+nnoremap Q <Nop>
+
 " Search results in the middle
 nnoremap n nzz
 nnoremap N Nzz
 
 " Disable current search highlighting with Ctrl-l
-nnoremap <silent> <C-l> :nohl<CR>
+nnoremap <silent> <leader>/ :nohl<CR>
 
 " Alternate between previous file with Backspace
 nnoremap <silent> <BS> :e#<CR>
 
-" Use C-W + hjkl instead
-"nnoremap <leader>h :wincmd h<CR>
-"nnoremap <leader>j :wincmd j<CR>
-"nnoremap <leader>k :wincmd k<CR>
-"nnoremap <leader>l :wincmd l<CR>
+" Navigate windows
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+" same but Visual/select mode
+xnoremap <C-h> <C-W>h
+xnoremap <C-j> <C-W>j
+xnoremap <C-k> <C-W>k
+xnoremap <C-l> <C-W>l
 
-" Copy to system clipboard using osc52
-nnoremap <leader>y V:OSCYank<CR>
-vnoremap <leader>y :OSCYank<CR>
+" Copy to system clipboard using osc52 (current line)
+nnoremap <silent> <leader>y :.w !osccopy<CR>
+" (selection)
+xnoremap <silent> <leader>y :w !osccopy<CR>
 
 " bnext = next buffer
 nnoremap <leader><TAB> :bnext<CR>
@@ -30,7 +39,7 @@ nnoremap <leader><TAB> :bnext<CR>
 command! W w
 command! Q q
 
-" netrw
+" --- NetRW {{{ ---
 let g:netrw_banner = 1
 let g:netrw_liststyle = 1
 let g:netrw_altv = 1
@@ -45,22 +54,18 @@ function NetrwToggler()
     endif
 endfunction
 noremap <silent> <leader>e <Esc><Esc>:call NetrwToggler()<CR>
+" --- }}} ---
 
+" --- {{{ F-Keys toggles ---
 " Pastetoggle
 set pastetoggle=<F2>
 
 " List toggle (:h map-modes)
 map <silent> <F3> <Esc><Esc>:set list!<CR>
 map! <silent> <F3> <Esc><Esc>:set list!<CR>
+" --- }}} ---
 
-" autoload/mygit.vim ---------------------------------
-" Show in a terminal the commit that introduced current(selected) line
-" pass a number for the history: eg '5<Leader>g'
-"noremap <Leader>g :call mygit#show_commit(v:count)<CR>
-" Show git blame for the line (or selection) in a popup
-"noremap <Leader>gb :call mygit#blame_popup()<CR>
-
-" --- PLUGINS -----------------------------------------------------------------
+" --- PLUGINS {{{ ---
 
 " ALE
 nnoremap <leader>ld :ALEGoToDefinition<CR>
@@ -75,9 +80,12 @@ nnoremap <leader>gd :SignifyDiff<CR>:wincmd h<CR>
 
 " FZF
 nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>fg :Rg<CR>
 nnoremap <silent> <leader>fgf :GFiles<CR>
 nnoremap <silent> <leader>fb :Buffers<CR>
 nnoremap <silent> <leader>fl :Lines<CR>
 
 " VIM-WIKI
 nnoremap <leader><space> :VimwikiToggleListItem<CR>
+
+" --- }}} ---

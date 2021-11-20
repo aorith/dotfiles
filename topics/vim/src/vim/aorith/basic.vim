@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " Sensible options
 set backspace=indent,eol,start
 set nrformats-=octal
@@ -25,20 +27,23 @@ set hidden
 set hlsearch incsearch ignorecase smartcase
 set noerrorbells
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
-set smartindent
+set cindent autoindent nosmartindent
+set cinkeys-=0# " dont indent '#'
+set indentkeys-=0#
 set wrap wrapscan linebreak breakindent showbreak=↳\ 
 set textwidth=100
 set swapfile backup undofile
 set title icon
 let &titlestring = "vim(%t)"
-set foldenable foldlevel=6 foldcolumn=1 foldmethod=indent
+set foldenable foldlevel=6 foldmethod=indent
 set updatetime=400 " swap & CursorHold
 set fileformats=unix,dos,mac
 set nostartofline nofixendofline
 set history=100
 set report=0 " always report number of lines changed after :command
 set splitright splitbelow
-set formatoptions=cqjlmM1
+set formatoptions+=j
+set formatoptions+=n
 set shortmess+=Ic
 set mouse=a ttymouse=xterm2
 set colorcolumn=80

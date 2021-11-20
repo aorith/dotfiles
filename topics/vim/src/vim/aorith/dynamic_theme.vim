@@ -7,12 +7,32 @@ if exists('g:loaded_my_theme')
 end
 let g:loaded_my_theme = '1'
 
+" Helper for 'change_vim_theme'
+function MySaveColorSchemes()
+  execute ':e /tmp/.vim-themes.txt'
+  execute ':normal ggdG'
+  let l:files = globpath(&rtp, 'colors/*.vim', 0, 1)
+  for file in l:files
+    if file =~ $HOME
+      put=file
+    endif
+  endfor
+  execute ':wq!'
+endfunction
+
 " Defaults
 set termguicolors
 let my_dark_theme = "apprentice"
 let my_light_theme = "gruvbox"
 let g:gruvbox_undercurl = 1
 let g:gruvbox_invert_selection = 0
+
+if filereadable($HOME . '/.local/share/vim/transparent_bg')
+  let g:PaperColor_Theme_Options = {
+        \ 'theme': { 'default': {
+          \ 'transparent_background': 1 } }
+        \ }
+endif
 
 " Get current values for dark and light theme
 " light
