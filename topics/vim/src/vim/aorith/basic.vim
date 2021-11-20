@@ -42,8 +42,7 @@ set nostartofline nofixendofline
 set history=100
 set report=0 " always report number of lines changed after :command
 set splitright splitbelow
-set formatoptions+=j
-set formatoptions+=n
+set formatoptions=jnwl
 set shortmess+=Ic
 set mouse=a ttymouse=xterm2
 set colorcolumn=80
