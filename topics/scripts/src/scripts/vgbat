@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# vimgrep bat
+
+# Use it with rg and fzf, for example:
+# rg --line-number --color ansi . "$HOME" | fzf --ansi -d '/' -n -1 --with-nth=-1 --preview 'vgbat {} --style=full'
+# the selected match has this format:
+# '<path_to_file>:<line_number>:<matched_text>
+
+file="$(cut -d':' -f1 <<< "$1")"
+line="$(cut -d':' -f2 <<< "$1")"
+shift
+bat "$@" --highlight-line "$line" -f "$file"
