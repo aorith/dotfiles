@@ -5,3 +5,8 @@ augroup aorith_autocmds
     " For large files
     "autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax sync clear | endif
 augroup end
+
+augroup pandoc_syntax
+    autocmd!
+    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END

@@ -1,3 +1,5 @@
+setlocal filetype=vimwiki.markdown.pandoc
+
 augroup VimWikiReloadHtml
   autocmd!
   autocmd BufWritePost * silent! :!touch $MY_WIKI_DIR/.reload

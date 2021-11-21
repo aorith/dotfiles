@@ -27,6 +27,9 @@ endif
 
 " {{{ Options before plugins --------------------------------------------------
 
+" POLYGLOT
+let g:polyglot_disabled = ['markdown']
+
 " ALE
 let g:ale_enabled = 1
 let g:ale_completion_enabled = 1 " disable for deoplete
@@ -122,6 +125,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 if empty($SSH_CLIENT)
+  Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 end
 
