@@ -17,32 +17,35 @@ check_result() {
 }
 
 _bootstrap() {
-    local folders folder _script title topic _topic_glob
-    folders="$1"
-    _script="$2"
-    title="$3"
+    local _topic_glob
     _topic_glob="${4:-*}"
-    log_header "$title"
-    for folder in $folders; do
+
+    log_header "$3"
+    for folder in $1; do
         [[ -d "$folder" ]] || { log_skip "$folder"; continue; }
         pushd "$folder" >/dev/null || exit 1
-        # Check if topic exists
-        if [[ $(ls topics/${_topic_glob}/ 2>/dev/null | wc -l) -eq 0 ]]; then
+
+        # Check if topic exists, compgen -G returns 1 if no matches
+        if ! compgen -G "topics/${_topic_glob}" &>/dev/null; then
             log_info "No topic matching \"${_topic_glob}\" in \"$folder/topics\""
             popd >/dev/null || exit 1
             continue
         fi
-        for script in topics/${_topic_glob}/${_script}; do
-            if [[ -f "${script}" ]]; then
-                topic="$(basename $(dirname "${script}"))"
-                log_topic "${topic}"
+
+        for script in topics/${_topic_glob}/${2}; do
+            if [[ -x "$script" ]]; then
+                topic="$(basename "$(dirname "$script")")"
+                log_topic "$topic"
                 pushd "$(dirname "$script")" >/dev/null || exit 1
-                "./${_script}" || check_result $? "$topic" "$script"
+                "./${2}" || check_result $? "$topic" "$script"
                 popd >/dev/null || exit 1
+            else
+                [[ ! -f "$script" ]] || log_skip "$script (no exec permissions)"
             fi
         done
         popd >/dev/null || exit 1
     done
+    unset folder topic script
 }
 
 log_header "Start"
