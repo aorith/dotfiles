@@ -55,6 +55,10 @@ formulae_packages=(
     "git-flow"
     "tig"
     "bitwarden-cli"
+    "pylint"
+    "black"
+    "ipython"
+    "fd"
 )
 
 formulae_source_packages=(
