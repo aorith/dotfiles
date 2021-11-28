@@ -1,7 +1,8 @@
-setlocal spell
+setlocal nospell
 setlocal spelllang=en,es
 setlocal foldlevel=2
 setlocal conceallevel=1
+setlocal formatoptions=jnl " or vim-polyglot will override this
 
 " https://vi.stackexchange.com/questions/365/is-it-possible-to-use-two-different-color-backgrounds-in-a-single-vim-buffer
 function! ColorCodeBlocks() abort
@@ -38,3 +39,12 @@ endfunction
 
 highlight codeBlockBackground ctermbg=black
 call ColorCodeBlocks()
+
+if expand('%:p') =~# expand($MY_NOTES_DIR)
+  " Alternates between markdown links '[name](path)' ...
+  " note that `let @/ = ''` clears the last search
+  nnoremap <silent> <TAB> $/[.\+\](<CR>:let @/ = ''<CR>0f[
+
+  " Opens markdown link under cursor with 'gF'
+  nnoremap <silent> <CR> :call aorith#markdown#navigateLink()<CR>
+endif

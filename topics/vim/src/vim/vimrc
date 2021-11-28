@@ -1,7 +1,7 @@
 filetype plugin indent on
 if has("syntax")
   syntax enable
-  set synmaxcol=200
+  set synmaxcol=300
 endif
 
 if v:progname !~# 'vim\|nvim'
@@ -28,7 +28,34 @@ endif
 " {{{ Options before plugins --------------------------------------------------
 
 " POLYGLOT
-let g:polyglot_disabled = ['markdown']
+"let g:polyglot_disabled = ['markdown']
+
+" VIM-MARKDOWN (from polyglot)
+let g:vim_markdown_conceal_code_blocks = 0
+
+" PANDOC
+let g:pandoc#syntax#conceal#use = 1
+let g:pandoc#syntax#conceal#urls = 1
+let g:pandoc#syntax#codeblocks#embeds#use = 0
+let g:pandoc#syntax#conceal#blacklist = ['atx', 'codeblock_start', 'codeblock_delim']
+
+" VIM-WIKI
+let g:myvimwiki_dir = expand($MY_WIKI_DIR)
+let g:vimwiki_list = [{'path': g:myvimwiki_dir,
+                      \ 'syntax': 'markdown',
+                      \ 'auto_export': 0,
+                      \ 'links_space_char': '_',
+                      \ 'automatic_nested_syntaxes': 1,
+                      \ 'auto_diary_index': 1,
+                      \ 'auto_generate_links': 1,
+                      \'ext': '.md',
+                      \}]
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_global_ext = 0
+let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_autowriteall = 1
+let g:vimwiki_url_maxsave = 5
+let g:vimwiki_auto_header = 1
 
 " ALE
 let g:ale_enabled = 1
@@ -65,46 +92,9 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" PANDOC
-let g:pandoc#formatting#mode = 'h'
-let g:pandoc#formatting#textwidth = 72
-let g:pandoc#syntax#conceal#use = 1
-let g:pandoc#syntax#conceal#urls = 1
-let g:pandoc#syntax#codeblocks#embeds#use = 1
-let g:pandoc#syntax#conceal#blacklist = ['atx', 'codeblock_start', 'codeblock_delim' ]
-let g:pandoc#syntax#codeblocks#embeds#langs = [
-      \'bash',
-      \'lua',
-      \'makefile=make',
-      \'python',
-      \'sh',
-      \'vcl',
-      \'yaml',
-      \]
-
 " SIGNIFY
 let g:signify_sign_change = '~'
 let g:signify_priority = 9
-
-" VIM-WIKI
-let g:myvimwiki_dir = expand($MY_WIKI_DIR)
-let g:vimwiki_list = [{'path': g:myvimwiki_dir,
-                      \ 'syntax': 'markdown',
-                      \ 'auto_export': 0,
-                      \ 'links_space_char': '_',
-                      \ 'automatic_nested_syntaxes': 1,
-                      \ 'auto_diary_index': 1,
-                      \ 'auto_generate_links': 1,
-                      \'ext': '.md',
-                      \}]
-let g:vimwiki_hl_headers = 1
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_global_ext = 0
-let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_autowriteall = 1
-let g:vimwiki_url_maxsave = 5
-let g:vimwiki_auto_header = 1
-let g:vimwiki_filetypes = ['markdown']
 
 " MUCOMPLETE
 let g:mucomplete#enable_auto_at_startup = 1
@@ -126,13 +116,15 @@ Plug 'junegunn/fzf.vim'
 
 if empty($SSH_CLIENT)
   Plug 'vim-pandoc/vim-pandoc-syntax'
-  Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+  "Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 end
 
 Plug 'romainl/Apprentice'
 Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'gruvbox-community/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 " }}} -------------------------------------------------------------------------
@@ -147,7 +139,8 @@ source ~/.vim/aorith/mappings.vim
 source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal-setup.vim
 source ~/.vim/aorith/autocmds.vim
-source ~/.vim/aorith/dynamic_theme.vim
+"source ~/.vim/aorith/dynamic_theme.vim
+source ~/.vim/aorith/themes/gruvbox8.vim
 " }}} -------------------------------------------------------------------------
 
 set secure

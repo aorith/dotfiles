@@ -24,14 +24,18 @@ endfunction
 set termguicolors
 let my_dark_theme = "apprentice"
 let my_light_theme = "gruvbox"
-let g:gruvbox_undercurl = 1
+let g:gruvbox_undercurl = 0
 let g:gruvbox_invert_selection = 0
+let g:gruvbox_italicize_strings = 0
+"let g:gruvbox_guisp_fallback = 'fg'
+
 
 if filereadable($HOME . '/.local/share/vim/transparent_bg')
   let g:PaperColor_Theme_Options = {
         \ 'theme': { 'default': {
           \ 'transparent_background': 1 } }
         \ }
+  let g:everforest_transparent_background = 1
 endif
 
 " Get current values for dark and light theme

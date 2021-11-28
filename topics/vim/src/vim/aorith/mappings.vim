@@ -85,7 +85,4 @@ nnoremap <silent> <leader>fgf :GFiles<CR>
 nnoremap <silent> <leader>fb :Buffers<CR>
 nnoremap <silent> <leader>fl :Lines<CR>
 
-" VIM-WIKI
-nnoremap <leader><space> :VimwikiToggleListItem<CR>
-
 " --- }}} ---
