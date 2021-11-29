@@ -10,7 +10,10 @@ endif
 
 if exists('$SUDO_USER')
   set noundofile noswapfile nobackup
-  set viminfo= viminfofile=NONE
+  set viminfo=
+  if v:version > 800
+    set viminfofile=NONE
+  endif
   finish
 endif
 
