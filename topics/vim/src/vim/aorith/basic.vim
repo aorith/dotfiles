@@ -1,24 +1,11 @@
-scriptencoding utf-8
-
-" Sensible options
-set backspace=indent,eol,start
-set nrformats-=octal
-set laststatus=2
-set ruler
-set rulerformat=%60(%=%#ModeMsg#%(%m%)%#Mode#\ %y\ (%l:%c\ 0x%B\ %p%%)\ B:%n%)
-set display+=lastline
-set encoding=utf-8
-set shell=/usr/bin/env\ bash
-set autoread " read file again if modified on disk and no unsaved changes
-set tabpagemax=50
-if !exists('g:loaded_matchit')
-  runtime! macros/matchit.vim
-endif
-
 " Leader
 let mapleader = " "
 let localmapleader = ","
 
+set rulerformat=%60(%=%#ModeMsg#%(%m%)%#Mode#\ %y\ (%l:%c\ 0x%B\ %p%%)\ B:%n%)
+set shell=/usr/bin/env\ bash
+set autoread " read file again if modified on disk and no unsaved changes
+set backupcopy=yes " https://github.com/srid/emanote/issues/180
 set virtualedit=block
 set showcmd cmdheight=2 showmode
 set scrolloff=4 sidescrolloff=5

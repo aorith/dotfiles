@@ -1,8 +1,4 @@
-filetype plugin indent on
-if has("syntax")
-  syntax enable
-  set synmaxcol=300
-endif
+source ~/.vim/aorith/sensible.vim
 
 if v:progname !~# 'vim\|nvim'
   set noloadplugins
