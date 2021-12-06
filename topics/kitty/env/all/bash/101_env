@@ -3,4 +3,5 @@
 if [[ -n "$IN_KITTY" ]]; then
     # bash completions
     source <(kitty + complete setup bash)
+    kitty @ env PATH=$PATH DOTFILES=$DOTFILES GITHOME=$GITHOME PRIVATE_DOTFILES=$PRIVATE_DOTFILES &
 fi
