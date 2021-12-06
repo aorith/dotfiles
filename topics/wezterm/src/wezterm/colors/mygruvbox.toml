@@ -1,0 +1,15 @@
+# mygruvbox
+
+[colors]
+background = "#282828"
+foreground = "#ebdbb2"
+cursor_bg = "#c9c434"
+cursor_border = "#e6d4a3"
+cursor_fg = "#000000"
+selection_fg = "#000000"
+selection_bg = "#c2b144"
+
+visual_bell = "#550000"
+
+ansi = ["#1d2021","#cc241d","#98971a","#d79921","#458588","#b16286","#689d6a","#a89984"]
+brights = ["#928374","#fb4934","#b8bb26","#fabd2f","#83a598","#d3869b","#8ec07c","#928374"]
