@@ -1,5 +1,7 @@
 " Leader
 let mapleader = " "
+" this avoids a sending a space when timeoutlen expires in normal mode
+nnoremap <Space> <Nop>
 let localmapleader = ","
 
 set rulerformat=%60(%=%#ModeMsg#%(%m%)%#Mode#\ %y\ (%l:%c\ 0x%B\ %p%%)\ B:%n%)
@@ -31,7 +33,7 @@ set report=0 " always report number of lines changed after :command
 set splitright splitbelow
 set formatoptions=jnl
 set shortmess+=Ic
-set mouse=a ttymouse=xterm2
+set mouse=a
 set colorcolumn=80
 set cursorline
 if exists('+cursorlineopt')
