@@ -6,7 +6,7 @@ require 'myevents'
 
 return {
   term = "xterm-256color",
-  front_end = "Software",
+  --front_end = "Software",
   scrollback_lines = 400000,
   color_scheme = "mygruvbox",
   audible_bell = "Disabled",
@@ -18,7 +18,7 @@ return {
     --target = "CursorColor",
   },
   inactive_pane_hsb = {
-    saturation = 0.8,
+    saturation = 0.9,
     brightness = 0.9,
   },
 
@@ -69,10 +69,12 @@ return {
 
   --{{{ keyboard config
   use_ime = false,
+  -- están alreves? left y right... el comportamiento bueno es con 'true' es el que deja escribir '~' y tal, sin embargo tengo que poner right en false y left en true ...
+  -- UPDATE: resulta que en el teclado MXKeys están al revés pero en el teclado de macos no.
   send_composed_key_when_left_alt_is_pressed = true,
-  send_composed_key_when_right_alt_is_pressed = false, -- están alreves? left y right... el comportamiento bueno es con 'true' es el que deja escribir '~' y tal, sin embargo tengo que poner right en false y left en true ...
+  send_composed_key_when_right_alt_is_pressed = true,
   enable_csi_u_key_encoding = false, -- (rompe cierta compatiblidad con xterm) new keyboard protocol http://www.leonard.org/hacks/fixterms/
-  use_dead_keys = false,
+  use_dead_keys = true,
   --}}}
 
   --{{{ padding
@@ -111,7 +113,8 @@ return {
     {key="7", mods="SUPER", action={ActivateTab=6}},
     {key="8", mods="SUPER", action={ActivateTab=7}},
     {key="9", mods="SUPER", action={ActivateTab=8}},
-    {key="t", mods="SUPER", action={SpawnTab="CurrentPaneDomain"}},
+    -- instead of SpawnTab, this always opens the tab at home
+    {key="t", mods="SUPER", action={SpawnCommandInNewTab={cwd = wezterm.home_dir}}},
     -- panes
     {key="w", mods="SUPER", action={CloseCurrentPane={confirm=false}}},
     {key="d", mods="SUPER", action={SplitHorizontal={domain="CurrentPaneDomain"}}},
@@ -148,5 +151,21 @@ return {
   mouse_bindings = {
     {event={Drag={streak=1, button="Left"}}, mods="SUPER", action="Nop"},
     {event={Drag={streak=1, button="Left"}}, mods="CTRL|SHIFT", action="Nop"},
+    -- selections the way I want
+    {event={Down={streak=1, button="Left"}}, mods="SHIFT", action={SelectTextAtMouseCursor="Cell"}},
+    {event={Down={streak=2, button="Left"}}, mods="SHIFT", action={SelectTextAtMouseCursor="Word"}},
+    {event={Down={streak=3, button="Left"}}, mods="SHIFT", action={SelectTextAtMouseCursor="Line"}},
+    {event={Up={streak=1, button="Left"}}, mods="SHIFT", action={CompleteSelectionOrOpenLinkAtMouseCursor="PrimarySelection"}},
+    {event={Up={streak=2, button="Left"}}, mods="SHIFT", action={CompleteSelection="PrimarySelection"}},
+    {event={Up={streak=3, button="Left"}}, mods="SHIFT", action={CompleteSelection="PrimarySelection"}},
+    {event={Drag={streak=1, button="Left"}}, mods="SHIFT", action={ExtendSelectionToMouseCursor="Cell"}},
+    {event={Drag={streak=2, button="Left"}}, mods="SHIFT", action={ExtendSelectionToMouseCursor="Word"}},
+    {event={Drag={streak=3, button="Left"}}, mods="SHIFT", action={ExtendSelectionToMouseCursor="Line"}},
+    -- right button
+    {event={Drag={streak=1, button="Right"}}, mods="", action={ExtendSelectionToMouseCursor={}}},
+    {event={Drag={streak=1, button="Right"}}, mods="SHIFT", action={ExtendSelectionToMouseCursor={}}},
+    -- here first we extend the selection then complete it using 'Multiple' action, otherwise the clipboard won't have the content
+    {event={Up={streak=1, button="Right"}}, mods="", action={Multiple={{ExtendSelectionToMouseCursor={}},{CompleteSelection="PrimarySelection"}}}},
+    {event={Up={streak=1, button="Right"}}, mods="SHIFT", action={Multiple={{ExtendSelectionToMouseCursor={}},{CompleteSelection="PrimarySelection"}}}},
   }
 }

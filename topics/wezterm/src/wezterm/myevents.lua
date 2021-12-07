@@ -73,24 +73,19 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   if fixed_title ~= nil and #fixed_title > 0 then
     title = fixed_title
   end
-
+  local zoom_txt = ""
   if tab.active_pane.is_zoomed then
-    return {
-      {Attribute={Intensity="Bold"}},
-      {Foreground={Color="#975909"}},
-      {Text=" Z"},
-      {Foreground={Color="#000000"}},
-      {Text=" " .. tab.tab_index + 1 .. ":"},
-      {Attribute={Intensity="Normal"}},
-      {Text=title .. " "},
-    }
-  else
-    return {
-      {Attribute={Intensity="Bold"}},
-      {Text=" " .. tab.tab_index + 1 .. ":"},
-      {Attribute={Intensity="Normal"}},
-      {Text=title .. " "},
-    }
+    zoom_txt = "Z "
   end
+
+  return {
+    {Attribute={Intensity="Bold"}},
+    {Foreground={Color="#975909"}},
+    {Text=" " .. zoom_txt},
+    {Foreground={Color="#000000"}},
+    {Text=tab.tab_index + 1 .. ":"},
+    {Attribute={Intensity="Normal"}},
+    {Text=title .. " "},
+  }
 end)
 --}}}
