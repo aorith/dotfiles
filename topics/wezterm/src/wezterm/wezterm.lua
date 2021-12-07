@@ -147,7 +147,7 @@ return {
   },
   --}}}
 
-  -- mouse bindings
+  --{{{ mouse bindings
   mouse_bindings = {
     {event={Drag={streak=1, button="Left"}}, mods="SUPER", action="Nop"},
     {event={Drag={streak=1, button="Left"}}, mods="CTRL|SHIFT", action="Nop"},
@@ -168,4 +168,5 @@ return {
     {event={Up={streak=1, button="Right"}}, mods="", action={Multiple={{ExtendSelectionToMouseCursor={}},{CompleteSelection="PrimarySelection"}}}},
     {event={Up={streak=1, button="Right"}}, mods="SHIFT", action={Multiple={{ExtendSelectionToMouseCursor={}},{CompleteSelection="PrimarySelection"}}}},
   }
+  --}}}
 }
