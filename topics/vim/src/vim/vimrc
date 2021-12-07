@@ -1,6 +1,6 @@
 source ~/.vim/aorith/sensible.vim
 
-if v:progname !~# 'vim\|nvim'
+if v:progname !~? 'gvim\|vim\|nvim'
   set noloadplugins
 endif
 
