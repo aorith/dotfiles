@@ -7,7 +7,7 @@ cursor_bg = "#c9c434"
 cursor_border = "#e6d4a3"
 cursor_fg = "#000000"
 selection_fg = "#000000"
-selection_bg = "#c2b144"
+selection_bg = "#9e631b"
 
 visual_bell = "#550000"
 

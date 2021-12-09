@@ -10,6 +10,7 @@ return {
   scrollback_lines = 400000,
   color_scheme = "mygruvbox",
   audible_bell = "Disabled",
+  use_fancy_tab_bar = true,
   visual_bell = {
     fade_in_function = "EaseIn",
     fade_out_function = "EaseInOut",
@@ -19,7 +20,7 @@ return {
   },
   inactive_pane_hsb = {
     saturation = 0.9,
-    brightness = 0.9,
+    brightness = 0.85,
   },
 
   --{{{ font
@@ -79,10 +80,8 @@ return {
 
   --{{{ padding
   window_padding = {
-    left = 4,
-    right = 4,
-    top = 4,
-    bottom = 4,
+    left = 4, right = 4,
+    top = 4, bottom = 4,
   },
   --}}}
 
@@ -119,11 +118,11 @@ return {
     {key="w", mods="SUPER", action={CloseCurrentPane={confirm=false}}},
     {key="d", mods="SUPER", action={SplitHorizontal={domain="CurrentPaneDomain"}}},
     {key="d", mods="SUPER|SHIFT", action={SplitVertical={domain="CurrentPaneDomain"}}},
-    {key = "z", mods="SUPER", action="TogglePaneZoomState" },
-    {key = "h", mods="SUPER", action={ActivatePaneDirection="Left"}},
-    {key = "l", mods="SUPER", action={ActivatePaneDirection="Right"}},
-    {key = "k", mods="SUPER", action={ActivatePaneDirection="Up"}},
-    {key = "j", mods="SUPER", action={ActivatePaneDirection="Down"}},
+    {key="z", mods="SUPER", action="TogglePaneZoomState"},
+    {key="h", mods="SUPER", action={ActivatePaneDirection="Left"}},
+    {key="l", mods="SUPER", action={ActivatePaneDirection="Right"}},
+    {key="k", mods="SUPER", action={ActivatePaneDirection="Up"}},
+    {key="j", mods="SUPER", action={ActivatePaneDirection="Down"}},
     -- other
     {key="f", mods="SUPER", action={Search={CaseInSensitiveString=""}}},
     {key="f", mods="SUPER|SHIFT", action={Search={Regex=""}}},
@@ -134,11 +133,12 @@ return {
     {key="DownArrow", mods="SHIFT", action={ScrollByLine=10}},
     {key="PageUp", mods="SHIFT", action={ScrollByPage=-1}},
     {key="PageDown", mods="SHIFT", action={ScrollByPage=1}},
-    {key="l", mods="CTRL", action=wezterm.action{ClearScrollback="ScrollbackAndViewport"}},
+    {key="l", mods="CTRL", action={Multiple={{ClearScrollback="ScrollbackAndViewport"},{SendKey={key="l", mods="CTRL"}}}}},
+    {key="l", mods="CTRL|SHIFT", action={SendKey={key="l", mods="CTRL|SHIFT"}}}, -- for vim, instead of C-l
     -- remap keys not working on macos
     {key="+", mods="ALT", action={SendKey={key="]"}}},
     {key="ç", mods="ALT", action={SendKey={key="}"}}},
-    {key=" ", mods="ALT", action={SendKey={key=" "}}}, -- ALTGR+Space didn't work properly
+    {key=" ", mods="ALT", action={SendKey={key=" "}}}, -- ALT+Space has a bad behaviour in vim without this
     -- custom events and commands
     {key="v", mods="CTRL|SHIFT", action={EmitEvent="trigger-vim-with-scrollback"}},
     {key="s", mods="CTRL|SHIFT", action={EmitEvent="trigger-subl-with-scrollback"}},
@@ -151,6 +151,8 @@ return {
   mouse_bindings = {
     {event={Drag={streak=1, button="Left"}}, mods="SUPER", action="Nop"},
     {event={Drag={streak=1, button="Left"}}, mods="CTRL|SHIFT", action="Nop"},
+    -- dont open links on UP without SHIFT
+    {event={Up={streak=1, button="Left"}}, mods="", action={CompleteSelection="PrimarySelection"}},
     -- selections the way I want
     {event={Down={streak=1, button="Left"}}, mods="SHIFT", action={SelectTextAtMouseCursor="Cell"}},
     {event={Down={streak=2, button="Left"}}, mods="SHIFT", action={SelectTextAtMouseCursor="Word"}},
