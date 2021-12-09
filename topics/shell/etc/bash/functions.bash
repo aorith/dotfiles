@@ -163,6 +163,9 @@ check_cert_matches_key() {
     if cat "$key" | grep 'BEGIN ' | grep -q ' RSA '; then
         format="rsa"
     fi
+    if openssl rsa -noout -text -in "$key" 2>/dev/null | head -1 | grep -q RSA; then
+        format="rsa"
+    fi
 
     # TODO: more formats
     if [[ "$format" == "rsa" ]]; then
