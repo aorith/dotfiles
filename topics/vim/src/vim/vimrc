@@ -141,5 +141,3 @@ source ~/.vim/aorith/autocmds.vim
 "source ~/.vim/aorith/dynamic_theme.vim
 source ~/.vim/aorith/themes/gruvbox8.vim
 " }}} -------------------------------------------------------------------------
-
-set secure

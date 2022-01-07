@@ -13,10 +13,10 @@ set showcmd cmdheight=2 showmode
 set scrolloff=4 sidescrolloff=5
 set number
 set hidden
-set hlsearch incsearch ignorecase smartcase
+set hlsearch incsearch ignorecase smartcase infercase
 set noerrorbells
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
-set cindent autoindent nosmartindent
+set cindent noautoindent nosmartindent
 set cinkeys-=0# " dont indent '#'
 set indentkeys-=0#
 set wrap wrapscan linebreak breakindent showbreak=↳\ 
@@ -43,7 +43,7 @@ set listchars=eol:¬,tab:▸\ ,nbsp:‗,trail:·,extends:→,precedes:←
 set fillchars=vert:┃,fold:·
 set spellcapcheck= " dont check for Capitals
 
-set ttyfast
+set ttyfast lazyredraw
 set signcolumn=yes
 " timeoutlen works on <leader> mappings
 set timeout timeoutlen=1000 ttimeoutlen=100

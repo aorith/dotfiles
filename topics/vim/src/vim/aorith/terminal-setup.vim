@@ -3,9 +3,12 @@ if v:version <= 800 || &compatible
 end
 
 " change cursor
-"let &t_SI.="\e[6 q" "SI = INSERT mode
-"let &t_SR.="\e[3 q" "SR = REPLACE mode
-"let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+let &t_SI.="\e[6 q" "SI = INSERT mode
+let &t_SR.="\e[3 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+
+" xterm2 mode mouse
+set ttymouse=xterm2
 
 if &term =~# 'screen\|tmux\|kitty'
   let &t_ut='' " disable background color erase

@@ -3,7 +3,8 @@
 " full document with gggqG
 setlocal formatprg=autopep8\ -
 setlocal sts=4 sw=4 expandtab
-let b:ale_linters = ['pylint', 'pylsp']
+" let b:ale_linters = ['mypy', 'pylint', 'pylsp']
+"let b:ale_linters = ['mypy', 'pylsp']
 let b:ale_fixers = ['black']
 
 if !exists("g:my_black_function_loaded")
