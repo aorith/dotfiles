@@ -38,24 +38,6 @@ let g:pandoc#syntax#conceal#urls = 1
 let g:pandoc#syntax#codeblocks#embeds#use = 0
 let g:pandoc#syntax#conceal#blacklist = ['atx', 'codeblock_start', 'codeblock_delim']
 
-" VIM-WIKI
-let g:myvimwiki_dir = expand($MY_WIKI_DIR)
-let g:vimwiki_list = [{'path': g:myvimwiki_dir,
-                      \ 'syntax': 'markdown',
-                      \ 'auto_export': 0,
-                      \ 'links_space_char': '_',
-                      \ 'automatic_nested_syntaxes': 1,
-                      \ 'auto_diary_index': 1,
-                      \ 'auto_generate_links': 1,
-                      \'ext': '.md',
-                      \}]
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_global_ext = 0
-let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_autowriteall = 1
-let g:vimwiki_url_maxsave = 5
-let g:vimwiki_auto_header = 1
-
 " ALE
 let g:ale_enabled = 1
 let g:ale_completion_enabled = 1 " disable for deoplete
@@ -115,7 +97,6 @@ Plug 'junegunn/fzf.vim'
 
 if empty($SSH_CLIENT)
   Plug 'vim-pandoc/vim-pandoc-syntax'
-  "Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 end
 
 Plug 'romainl/Apprentice'
