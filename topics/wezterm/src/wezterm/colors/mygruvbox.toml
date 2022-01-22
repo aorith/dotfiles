@@ -1,13 +1,16 @@
-# mygruvbox
-
 [colors]
-background = "#282828"
 foreground = "#ebdbb2"
+background = "#282828"
+
 cursor_bg = "#c9c434"
 cursor_border = "#e6d4a3"
 cursor_fg = "#000000"
+compose_cursor = "orange"
+
 selection_fg = "#000000"
 selection_bg = "#9e631b"
+
+scrollback_thumb = "#444444"
 
 visual_bell = "#550000"
 

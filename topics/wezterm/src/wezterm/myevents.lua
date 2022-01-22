@@ -1,9 +1,16 @@
--- vim:ft=lua foldmethod=marker foldmarker=-{{{,-}}} foldlevel=0
+-- vim:ft=lua foldmethod=marker foldmarker=--(,--) foldlevel=0
+
 local wezterm = require 'wezterm';
 local io = require 'io';
 local os = require 'os';
 
---{{{ open in vim
+--( workspace
+wezterm.on("update-right-status", function(window, pane)
+  window:set_right_status(window:active_workspace() .. '  ')
+end)
+--)
+
+--( open in vim
 wezterm.on("trigger-vim-with-scrollback", function(window, pane)
   local pane_dim = pane:get_dimensions();
   local rows = pane_dim.scrollback_rows;
@@ -24,9 +31,9 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
   wezterm.sleep_ms(2000);
   os.remove(name);
 end)
---}}}
+--)
 
---{{{ open in sublime
+--( open in sublime
 wezterm.on("trigger-subl-with-scrollback", function(window, pane)
   local pane_dim = pane:get_dimensions();
   local rows = pane_dim.scrollback_rows;
@@ -43,9 +50,9 @@ wezterm.on("trigger-subl-with-scrollback", function(window, pane)
   wezterm.sleep_ms(2000);
   os.remove(name);
 end)
---}}}
+--(
 
---{{{ tcdn-server-for
+--( tcdn-server-for
 wezterm.on("tcdn-server-for", function(window, pane)
   local scrollback = pane:get_lines_as_text();
 
@@ -64,28 +71,5 @@ wezterm.on("tcdn-server-for", function(window, pane)
   wezterm.sleep_ms(2000);
   os.remove(name);
 end)
---}}}
+--)
 
---{{{ Tab format
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local title = tab.active_pane.title
-  local fixed_title = tab.active_pane.user_vars.panetitle
-  if fixed_title ~= nil and #fixed_title > 0 then
-    title = fixed_title
-  end
-  local zoom_txt = ""
-  if tab.active_pane.is_zoomed then
-    zoom_txt = "Z "
-  end
-
-  return {
-    {Attribute={Intensity="Bold"}},
-    {Foreground={Color="#975909"}},
-    {Text=" " .. zoom_txt},
-    {Foreground={Color="#000000"}},
-    {Text=tab.tab_index + 1 .. ":"},
-    {Attribute={Intensity="Normal"}},
-    {Text=title .. " "},
-  }
-end)
---}}}
