@@ -92,18 +92,17 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 if empty($SSH_CLIENT)
   Plug 'vim-pandoc/vim-pandoc-syntax'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 end
 
 Plug 'romainl/Apprentice'
 Plug 'lifepillar/vim-solarized8'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'gruvbox-community/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -120,5 +119,5 @@ source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal-setup.vim
 source ~/.vim/aorith/autocmds.vim
 "source ~/.vim/aorith/dynamic_theme.vim
-source ~/.vim/aorith/themes/gruvbox8.vim
+source ~/.vim/aorith/themes/solarized8.vim
 " }}} -------------------------------------------------------------------------
