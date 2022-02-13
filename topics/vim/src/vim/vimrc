@@ -104,6 +104,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 call plug#end()
 " }}} -------------------------------------------------------------------------
@@ -119,5 +120,5 @@ source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal-setup.vim
 source ~/.vim/aorith/autocmds.vim
 "source ~/.vim/aorith/dynamic_theme.vim
-source ~/.vim/aorith/themes/solarized8.vim
+source ~/.vim/aorith/themes/gruvbox8.vim
 " }}} -------------------------------------------------------------------------
