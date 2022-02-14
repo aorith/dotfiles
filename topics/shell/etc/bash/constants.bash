@@ -28,7 +28,7 @@ export LESS_TERMCAP_se=$'\033[0m'                   # ends standout-mode
 export LESS_TERMCAP_ue=$'\033[0m'                   # ends underline
 
 man() {
-    env LESS_TERMCAP_us=$'\033[01;37m' \
+    env LESS_TERMCAP_us=$'\033[31m' \
         LESS_TERMCAP_md=$'\033[1;33m' \
         man "$@"
 }
