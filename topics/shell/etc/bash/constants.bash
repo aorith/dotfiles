@@ -19,17 +19,17 @@ elif [[ -r "/usr/local/bin/lesspipe.sh" ]]; then
     export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 fi
 
-#export LESS_TERMCAP_mb=$'\033[01;31m'            # begins blinking
-#export LESS_TERMCAP_md=$(tput setaf 4; tput bold) # begins bold (headers, titles ...)
-export LESS_TERMCAP_me=$'\033[0m'                # ends mode
-export LESS_TERMCAP_so=$(tput rev)                # begins standout-mode (highligh and statusbar)
-export LESS_TERMCAP_se=$'\033[0m'                # ends standout-mode
-#export LESS_TERMCAP_us=$(tput setaf 1)            # begins underline (key words)
-export LESS_TERMCAP_ue=$'\033[0m'                # ends underline
+#export LESS_TERMCAP_mb=$'\033[01;31m'              # begins blinking
+#export LESS_TERMCAP_md=$(tput setaf 4; tput bold)  # begins bold (headers, titles ...)
+export LESS_TERMCAP_me=$'\033[0m'                   # ends mode
+export LESS_TERMCAP_so=$'\033[01;44;37m'               # begins standout-mode (highligh and statusbar)
+export LESS_TERMCAP_se=$'\033[0m'                   # ends standout-mode
+#export LESS_TERMCAP_us=$(tput setaf 1)             # begins underline (key words)
+export LESS_TERMCAP_ue=$'\033[0m'                   # ends underline
 
 man() {
-    env LESS_TERMCAP_us=$(tput setaf 1) \
-        LESS_TERMCAP_md=$(tput setaf 4; tput bold) \
+    env LESS_TERMCAP_us=$'\033[01;37m' \
+        LESS_TERMCAP_md=$'\033[1;33m' \
         man "$@"
 }
 
