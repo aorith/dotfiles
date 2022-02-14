@@ -4,6 +4,8 @@
 # Unset to export globally
 #set -a
 
+[[ -n $TERM ]] || return
+
 # Foreground
 : "${my_blk:=\[$(tput setaf 0)\]}"     # Black
 : "${my_red:=\[$(tput setaf 1)\]}"     # Red
