@@ -5,7 +5,7 @@ window:
 
 font:
   use_thin_strokes: true
-  size: 20.0
+  size: 16
   offset:
     x: 0
     y: 0
@@ -15,20 +15,20 @@ font:
     y: 0
 
   normal:
-    family: "Hack Nerd Font Mono"
-#   style: "Regular"
+    family: "JetBrains Mono"
+    style: "ExtraLight"
 
-# bold:
-#   family: "Inconsolata"
-#   style: "Bold"
+  bold:
+    family: "JetBrains Mono"
+    style: "Bold"
 
-# italic:
-#   family: "Inconsolata"
-#   style: "Italic"
+  italic:
+    family: "JetBrains Mono"
+    style: "Italic"
 
-# bold_italic:
-#   family: "Inconsolata"
-#   style: "Bold Italic"
+  bold_italic:
+    family: "JetBrains Mono"
+    style: "Bold Italic"
 
 key_bindings:
   - {key: F12,                        action: ToggleSimpleFullscreen}
