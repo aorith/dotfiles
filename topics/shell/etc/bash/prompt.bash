@@ -11,7 +11,7 @@ __ps1_git_tag_f() {
         t='git-timeout'
         ps -u "$USER" -o cmd | grep -q '[g]it describe' || { git describe --tags --abbrev=0 &>/dev/null & }
     fi
-    printf "${my_pur} ${t}"
+    printf '%s %s' "${my_pur}" "${t}"
 }
 
 __ps1_git_branch_f() {
@@ -85,7 +85,7 @@ __prompt_command () {
 
     #PS1="\n\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${OnNixShell}${my_blu}❯${my_rst} "
     #PS1="\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${OnNixShell}\n${my_blu}\$${my_rst} "
-    PS1="\n\[\033]0;\u@\h \W\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\$${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
 
     unset _ps1_start_timer
 }
