@@ -13,5 +13,5 @@ ssh() {
     local EXE
     EXE='command ssh'
     if [[ -n "$SSH_CLIENT" ]]; then $EXE "$@"
-    else env TERM="xterm-256color" $EXE "$@"; fi
+    else TERM="xterm-256color" $EXE "$@"; fi
 }
