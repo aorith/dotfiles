@@ -6,7 +6,8 @@
 # the selected match has this format:
 # '<path_to_file>:<line_number>:<matched_text>
 
+command -v bat &>/dev/null && EXEC='bat' || EXEC='batcat'
 file="$(cut -d':' -f1 <<< "$1")"
 line="$(cut -d':' -f2 <<< "$1")"
 shift
-bat "$@" --highlight-line "$line" -f "$file"
+"$EXEC" "$@" --highlight-line "$line" -f "$file"
