@@ -9,6 +9,12 @@ cd "$DOTFILES" || exit 1
 . ./utils/messages.sh
 export _SKIP=247 # valid exit codes: 0-255
 
+# check for basic commands
+deps="awk curl wget bc fzf find sed git bat glow"
+for dep in $deps; do
+    command -v "$dep" &>/dev/null || { printf '%s not found.\n' "$dep"; exit 1; }
+done
+
 check_result() {
     [[ $1 -ne $_SKIP ]] || { log_skip "$2"; return 0; }
     log_error "Execution of \"$3\" failed."

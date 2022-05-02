@@ -1,0 +1,6 @@
+# vim: ft=bash
+
+add_to_path "${PYENV_ROOT}/bin"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+

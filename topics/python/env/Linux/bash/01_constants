@@ -1,0 +1,3 @@
+# vim: ft=bash
+
+export PYENV_ROOT="$HOME/.pyenv"

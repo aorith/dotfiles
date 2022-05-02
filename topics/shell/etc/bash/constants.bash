@@ -7,7 +7,7 @@ export TERMINAL='alacritty'
 export MY_NOTES_DIR="${HOME}/Syncthing/SYNC_STUFF/Notes"
 export MY_WIKI_DIR="${MY_NOTES_DIR}/Wiki"
 
-#export LESS='-XRMie' # F option breaks i3 "show errors"
+export LESS='-XRMie' # F option breaks i3 "show errors"
 export LESSHISTFILE='-'
 export PAGER='less'
 export MANPAGER="$PAGER"
@@ -40,7 +40,6 @@ export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export GOPATH="${HOME}/go:${PRIVATE_GITHOME}/go"
 export GOBIN="${HOME}/go/bin"
 [[ ! -d "${GOBIN}" ]] || add_to_path "${GOBIN}"
-[[ ! -d "${HOME}/.local/bin" ]] || add_to_path "${HOME}/.local/bin"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -73,14 +72,10 @@ if [[ "$_OS" == 'Darwin' ]]; then
     unset manpath
 elif [[ "$_OS" == 'Linux' ]]; then
     # Linux only
-    export CLIPBOARD_COPY="xclip -i -selection clipboard"
+    export CLIPBOARD_COPY="xclip -i -selection primary -f | xclip -i -selection clipboard"
     export CLIPBOARD_PASTE="xclip -out -selection clipboard"
     export SUBL_CMD='subl'
     export EXEC_DATE='date'
-
-    export BROWSER='firefox'
-    export READER='zathura'
     export INPUTRC="${HOME}/.inputrc"
     export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 fi
-

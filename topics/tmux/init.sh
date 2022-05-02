@@ -3,7 +3,7 @@
 ### bootstrap
 create_link "${PWD}/src/tmux" "$HOME/.config/tmux"
 for f in "${PWD}"/src/bin/*; do
-    create_link "${f}" "${HOME}/.scripts/$(basename -- "${f}")"
+    link_script_to_home_bin "${f}"
 done
 
 #[[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }

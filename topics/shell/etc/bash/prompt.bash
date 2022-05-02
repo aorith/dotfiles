@@ -55,23 +55,23 @@ __prompt_command () {
     local wdc ep OnSSH ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
     (( $1 == 0 )) || ep=" ${my_red}${1}${my_rst}"
 
-    ms=$(( ($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000 ))
-
-    case $((
-        ms < 21    ? 1 :
-        ms < 101   ? 2 :
-        ms < 251   ? 3 :
-        ms < 501   ? 4 :
-        ms < 1000  ? 5 : 6)) in
-        (1)   tc="${my_grn}" ;;
-        (2)   tc="${my_ylw}" ;;
-        (3)   tc="${my_cyn}" ;;
-        (4)   tc="${my_blu}" ;;
-        (5)   tc="${my_pur}" ;;
-        (6|*) tc="${my_red}" ms=$((ms/1000)) ;;
-    esac
-
-    ms="$(printf '%03d' $ms)"
+    #ms=$(( ($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000 ))
+    #
+    #case $((
+    #    ms < 21    ? 1 :
+    #    ms < 101   ? 2 :
+    #    ms < 251   ? 3 :
+    #    ms < 501   ? 4 :
+    #    ms < 1000  ? 5 : 6)) in
+    #    (1)   tc="${my_grn}" ;;
+    #    (2)   tc="${my_ylw}" ;;
+    #    (3)   tc="${my_cyn}" ;;
+    #    (4)   tc="${my_blu}" ;;
+    #    (5)   tc="${my_pur}" ;;
+    #    (6|*) tc="${my_red}" ms=$((ms/1000)) ;;
+    #esac
+    #
+    #ms="$(printf '%03d' $ms)"
 
     # git branch/tag
     __ps1_git_branch_f
@@ -83,12 +83,11 @@ __prompt_command () {
     [[ -z "$SSH_CLIENT" ]] || OnSSH="${my_ylw2}${my_bld}\h${my_rst} "
     [[ -z "$IN_NIX_SHELL" ]] || OnNixShell=" ${my_red2}(${name})${my_rst}"
 
-    #PS1="\n\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${OnNixShell}${my_blu}❯${my_rst} "
-    #PS1="\[\033]0;\u@\h:\w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${ep} ${OnNixShell}\n${my_blu}\$${my_rst} "
-    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
+    #PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
 
     unset _ps1_start_timer
 }
 
-trap ': "${_ps1_start_timer:=$($EXEC_DATE +%s%N)}"' DEBUG
+#trap ': "${_ps1_start_timer:=$($EXEC_DATE +%s%N)}"' DEBUG
 PROMPT_COMMAND='__prompt_command $?'

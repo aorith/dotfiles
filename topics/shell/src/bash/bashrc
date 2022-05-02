@@ -1,5 +1,12 @@
 # vim: ft=bash
 
+if ! type add_to_path &>/dev/null; then
+    [[ -n "$DOTFILES" ]] || . ~/.profile
+    set -a
+    . "${DOTFILES}/topics/shell/etc/bash/functions.bash"
+    set +a
+fi
+
 [[ -n "$PS1" ]] && [[ -n "$DOTFILES" ]] || return 0
 
 # bash completion
