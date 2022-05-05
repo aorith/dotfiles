@@ -80,11 +80,12 @@ __prompt_command () {
     __ps1_jobs_f
 
     [[ -w "${PWD}" ]] && wdc="${my_cyn}" || wdc="${my_red2}"
-    [[ -z "$SSH_CLIENT" ]] || OnSSH="${my_ylw2}${my_bld}\h${my_rst} "
-    [[ -z "$IN_NIX_SHELL" ]] || OnNixShell=" ${my_red2}(${name})${my_rst}"
+    [[ -n "$SSH_CLIENT" ]] && OnSSH="${my_ylw2}${my_bld}\h${my_rst} " || unset OnSSH
+    [[ -n "$IN_NIX_SHELL" ]] && OnNixShell=" ${my_red2}(${name})${my_rst}" || unset OnNixShell
+    [[ -n "$VIRTUAL_ENV" ]] && OnVENV="(venv) " || unset OnVENV
 
     #PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
-    PS1="\[\033]0;\u@\h \w\007\]${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${OnVENV}${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
 
     unset _ps1_start_timer
 }
