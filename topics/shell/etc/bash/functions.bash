@@ -20,21 +20,6 @@ add_to_manpath() {
     export MANPATH
 }
 
-link_script_to_home_bin() {
-    [[ -n $1 ]] || return 1
-    [[ $1 =~ ^/.+ ]] || return 1 # (full path only)
-    filename=$(basename -- "$1") || return 1
-    destination="${HOME}/bin/${filename}"
-    if [[ -e "$destination" ]]; then
-        if ! diff "$1" "$destination" &>/dev/null; then
-            printf 'WARN: could not copy %s to ~/bin, another script has the same name.\n' "$filename"
-        fi
-    else
-        [[ -L "$destination" ]] && rm "$destination" # broken link
-        ln -s "$1" "$destination"
-    fi
-}
-
 # tests if $1 > $2
 _greater_than() {
     [ ${1%.*} -eq ${2%.*} ] && [ ${1#*.} \> ${2#*.} ] || [ ${1%.*} -gt ${2%.*} ]
