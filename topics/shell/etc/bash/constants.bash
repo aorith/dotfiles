@@ -37,8 +37,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
-export GOPATH="${HOME}/go:${PRIVATE_GITHOME}/go"
-export GOBIN="${HOME}/go/bin"
+export GOPATH="${HOME}/.local/go:${PRIVATE_GITHOME}/go"
+export GOBIN="${HOME}/.local/go/bin"
 [[ ! -d "${GOBIN}" ]] || add_to_path "${GOBIN}"
 
 # colored GCC warnings and errors
