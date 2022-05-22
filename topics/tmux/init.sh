@@ -3,6 +3,11 @@
 ### bootstrap
 source "$DOTFILES"/topics/scripts/init.sh "source-only"
 
+if [[ ! -e ~/.local/share/tpm ]]; then
+    mkdir -p ~/.local/share
+    git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.local/share/tpm
+fi
+
 create_link "${PWD}/src/tmux" "$HOME/.config/tmux"
 for f in "${PWD}"/src/bin/*; do
     _link_script "${f}"

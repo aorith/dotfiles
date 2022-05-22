@@ -75,5 +75,5 @@ key_bindings:
   - {key: Z,     mods: Command,       chars: "\x1bz"}  # toggle zoom (maximize pane)
   - {key: F,     mods: Command,       chars: "\x1bf"}  # search
   - {key: U,     mods: Command,       chars: "\x1bu"}  # tmux open url
-  - {key: I,     mods: Command,       chars: "\x02i"}  # tmux server for
-  - {key: P,     mods: Command,       chars: "\x02m"}  # tmux & bitwarden
+  - {key: I,     mods: Command,       chars: "\x1bi"}  # tmux server for
+  - {key: P,     mods: Command,       chars: "\x1bm"}  # tmux & bitwarden
