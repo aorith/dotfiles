@@ -1,9 +1,11 @@
 # vim: ft=bash
 
 ### bootstrap
+source "$DOTFILES"/topics/scripts/init.sh "source-only"
+
 create_link "${PWD}/src/tmux" "$HOME/.config/tmux"
 for f in "${PWD}"/src/bin/*; do
-    link_script_to_home_bin "${f}"
+    _link_script "${f}"
 done
 
 #[[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }
