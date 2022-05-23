@@ -1,6 +1,7 @@
 -- Toggle Alacritty
 hs.hotkey.bind({"cmd"}, "º", function()
     local name = "alacritty"
+    --local name = "wezterm"
     local app = hs.application.find(name)
     if app then
         if app:isFrontmost() then

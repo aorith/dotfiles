@@ -22,10 +22,13 @@ local menu = nil
 
 local reloadMenu = function() menuBar1:setMenu(menu) end
 
+-- enable on startup
+hs.caffeinate.toggle('displayIdle')
+
 menu = {
   {
     title = "Caffeinate",
-    checked = false,
+    checked = true,
     fn = function(modifiers, menuItem)
       local enabled = hs.caffeinate.toggle('displayIdle')
       if enabled then
