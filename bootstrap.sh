@@ -75,13 +75,4 @@ else
     _bootstrap "$PRIVATE_DOTFILES"  "postinstall.sh" "Postinstall (private)"           "*"
 fi
 
-log_header "Updating git submodules"
-git submodule sync
-git submodule update --init --recursive
-
-case $HOSTNAME in
-    admin-*) ;;
-    *) sed -i 's,url = https://github.com/aorith/dotfiles,url = git@github.com:aorith/dotfiles.git,g' "${DOTFILES}/.git/config" ;;
-esac
-
 log_header "End"
