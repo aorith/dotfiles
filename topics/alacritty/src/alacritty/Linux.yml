@@ -4,22 +4,9 @@ window:
   decorations: full
 
 font:
-  size: 12
+  size: 17
   normal:
-    family: "Monospace"
-    style: Regular
-
-  bold:
-    family: "Monospace"
-    style: Semibold
-
-  italic:
-    family: "Monospace"
-    style: Italic
-
-  bold_italic:
-    family: "Monospace"
-    style: Semibold Italic
+    family: "Iosevka Fixed"
 
 shell:
   program: /usr/bin/env
@@ -33,7 +20,7 @@ key_bindings:
   - {key: Space,  mods: Shift|Control, action:  None}
   - {key: F1,     mods: Alt,           command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux new-window -n HELP glow -p $PRIVATE_DOTFILES/misc/help.md"]}}
   - {key: F1,     mods: Alt|Shift,     command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
-  - {key: Y,      mods: Alt,           command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux display-popup -w40% -h40% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
-  - {key: Y,      mods: Alt|Shift,     command: { program: "/usr/bin/env", args: ["bash", "-lc", "$HOME/.config/alacritty/bin/switch-theme.sh reset"]}}
+  - {key: F6,      mods: Alt,           command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux display-popup -w40% -h40% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
+  - {key: F6,      mods: Alt|Shift,     command: { program: "/usr/bin/env", args: ["bash", "-lc", "$HOME/.config/alacritty/bin/switch-theme.sh reset"]}}
     # unmap some bindings
   - {key: B,      mods: Alt,           action:  ReceiveChar}

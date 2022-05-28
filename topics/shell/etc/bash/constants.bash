@@ -41,6 +41,7 @@ export GOPATH="${HOME}/.local/go:${PRIVATE_GITHOME}/go"
 export GOBIN="${HOME}/.local/go/bin"
 [[ ! -d "${GOBIN}" ]] || add_to_path "${GOBIN}"
 [[ ! -d "$HOME/.cargo/bin" ]] || add_to_path "$HOME/.cargo/bin"
+add_to_path "$HOME/.local/bin"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
