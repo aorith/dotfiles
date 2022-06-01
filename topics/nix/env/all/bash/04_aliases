@@ -1,0 +1,4 @@
+alias nixx-search='nix-env -qa'
+alias nixx-install='nix-env -iA'
+alias nixx-installed='nix-env --query --installed'
+alias nixx-uninstall='nix-env --uninstall'

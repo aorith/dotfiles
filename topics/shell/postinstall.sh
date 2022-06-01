@@ -2,7 +2,7 @@
 
 shopt -s nullglob
 
-for shell in "bash"; do
+for shell in bash; do
     global_env_file="${DOTFILES}/topics/shell/etc/${shell}/${shell}.env"
     echo -e "# vim: ft=${shell}\n# Sourced from: bashrc" > "${global_env_file}"
 
