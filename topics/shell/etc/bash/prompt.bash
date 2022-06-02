@@ -85,7 +85,7 @@ __prompt_command () {
     [[ -n "$VIRTUAL_ENV" ]] && OnVENV="(venv) " || unset OnVENV
 
     #PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
-    PS1="\[\033]0;\u@\h \w\007\]${OnVENV}${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${OnVENV}${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} \n${my_blu}\$${my_rst} "
 
     unset _ps1_start_timer
 }
