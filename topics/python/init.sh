@@ -10,10 +10,10 @@ case $(hostname) in
     moria*)
         brew install --formulae "pyenv"
         ;;
-    trantor)
+    debian)
         _debian_deps
         ;;
-    *) return ;;
+    *) exit "$_SKIP" ;;
 esac
 
 [[ -n "$PYENV_ROOT" ]] || exit 1
