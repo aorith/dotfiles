@@ -10,7 +10,7 @@ case $(hostname) in
     moria*)
         brew install --formulae "pyenv"
         ;;
-    debian)
+    trantor)
         _debian_deps
         ;;
     *) exit "$_SKIP" ;;
@@ -27,7 +27,7 @@ if [[ ! -e "$PYENV_ROOT"/plugins/pyenv-virtualenv ]]; then
 fi
 
 ### bootstrap
-version="3.9.13"
+version="3.10.4"
 # pyenv install --list  # check python versions
 # pyenv install 3.8.6  # install 3.8
 # pyenv global 3.8.6  # make it global
