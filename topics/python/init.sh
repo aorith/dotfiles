@@ -10,7 +10,7 @@ case $(hostname) in
     moria*)
         brew install --formulae "pyenv"
         ;;
-    trantor)
+    debian)
         _debian_deps
         ;;
     *) exit "$_SKIP" ;;
