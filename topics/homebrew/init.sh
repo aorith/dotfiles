@@ -59,6 +59,7 @@ formulae_packages=(
     "black"
     "ipython"
     "fd"
+    "util-linux"
 )
 
 formulae_source_packages=(
