@@ -21,11 +21,9 @@ if not sys.stdin.isatty():
     data = sys.stdin.read().rstrip("\n\r")
 else:
     eprint(
-        """Usage:
-    echo \"text to copy\" | {}
-    cat file.txt | {}""".format(
-            sys.argv[0], sys.argv[0]
-        )
+        f"""Usage:
+        echo \"text to copy\" | {sys.argv[0]}
+        cat file.txt | {sys.argv[0]}"""
     )
     sys.exit(1)
 
@@ -34,19 +32,25 @@ data_bytes = data.encode()
 data_len = len(data_bytes)
 if data_len > LIMIT:
     eprint(
-        "WARNING: Limit reached, data has {} bytes and the LIMIT is {}".format(
-            data_len, LIMIT
-        )
+        f"WARNING: Limit reached, data has {data_len} bytes and the LIMIT is {LIMIT}"
     )
     sys.exit(1)
 
 term = os.environ.get("TERM")
 start_osc52 = "\033]52;c;"
 end_osc52 = "\x07"
-if term.startswith("tmux") or term.startswith("screen"):
+if (
+    term.startswith("tmux")
+    or term.startswith("screen")
+    or os.environ.get("IN_TMUX", "0") == "1"
+):
     start_osc52 = "\033Ptmux;\033\033]52;c;"
     end_osc52 = "\x07\033\\"
 
+# Apparently I need to use the normal escape sequences now even if I'm using tmux...
+start_osc52 = "\033]52;c;"
+end_osc52 = "\x07"
+
 data_b64 = b64encode(data_bytes).decode()
 print(start_osc52 + data_b64 + end_osc52, end="")
-eprint("Copied {} bytes to the clipboard.".format(data_len))
+eprint(f"Copied {data_len} bytes to the clipboard.")
