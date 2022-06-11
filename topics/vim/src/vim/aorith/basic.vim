@@ -24,14 +24,14 @@ set textwidth=80
 set swapfile backup undofile
 set title icon
 let &titlestring = "vim(%t)"
-set foldenable foldlevel=6 foldmethod=indent
+set foldenable foldlevel=999 foldmethod=indent
 set updatetime=400 " swap & CursorHold
 set fileformats=unix,dos,mac
 set nostartofline nofixendofline
 set history=100
 set report=0 " always report number of lines changed after :command
 set splitright splitbelow
-set formatoptions=jnl
+set formatoptions=jnlq
 set shortmess+=Ic
 set mouse=a
 set colorcolumn=80
