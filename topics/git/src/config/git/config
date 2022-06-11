@@ -6,7 +6,7 @@
     email = aomanu@gmail.com
 
 [core]
-    pager = less -+e
+    pager = less -+e-M
 
 [diff]
     colorMoved = default
