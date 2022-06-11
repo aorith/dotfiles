@@ -15,7 +15,8 @@ for completion in /etc/bash_completion \
     /usr/local/etc/profile.d/bash_completion.sh \
     /usr/local/share/bash-completion/bash_completion
 do
-    . "$completion" 2>/dev/null
+    [[ ! -e "$completion" ]] || \
+        . "$completion" 2>/dev/null
 done
 unset completion
 
