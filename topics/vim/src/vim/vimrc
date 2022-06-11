@@ -93,9 +93,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'fgsch/vim-varnish'
+Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 
 if empty($SSH_CLIENT)
-  Plug 'vim-pandoc/vim-pandoc-syntax'
+  "Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 end
@@ -105,6 +106,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'igemnace/highlight.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 call plug#end()
@@ -121,5 +123,5 @@ source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal-setup.vim
 source ~/.vim/aorith/autocmds.vim
 "source ~/.vim/aorith/dynamic_theme.vim
-source ~/.vim/aorith/themes/gruvbox8.vim
+source ~/.vim/aorith/themes/tempus.vim
 " }}} -------------------------------------------------------------------------

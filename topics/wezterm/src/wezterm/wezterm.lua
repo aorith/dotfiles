@@ -9,8 +9,8 @@ local cfg = {
   term = "xterm-256color",
   --front_end = "Software",
 
-  --color_scheme = "mygruvbox",
-  color_scheme = "Paraiso Dark",
+  color_scheme = "mygruvbox",
+  --color_scheme = "Paraiso Dark",
 
   scrollback_lines = 400000,
   audible_bell = "Disabled",
@@ -32,17 +32,13 @@ local cfg = {
     fade_out_duration_ms = 50,
     --target = "CursorColor",
   },
+  colors = { visual_bell = "#550000" },
+
   inactive_pane_hsb = {
     saturation = 0.9,
     brightness = 0.85,
   },
-  --font = wezterm.font("JetBrains Mono", {stretch="Normal"}),
-  font = wezterm.font_with_fallback(
-    {
-      {family="Iosevka Fixed", stretch="Normal"},
-      {family="Noto Color Emoji", stretch="Normal"},
-    }
-  ),
+  font = wezterm.font("Iosevka", {stretch="Normal"}),
   font_size = 15.0,
   adjust_window_size_when_changing_font_size = false,
   harfbuzz_features = {"calt=0", "clig=0", "liga=0"}, -- disable ligadures
@@ -71,6 +67,7 @@ cfg.use_dead_keys = true;
 --( Keymaps
 cfg.disable_default_key_bindings = true;
 cfg.leader = {mods="SUPER", key="Enter"};
+--cfg.debug_key_events = true;
 local mykeys = {
   -- leader
   {mods="LEADER", key="r", action="ReloadConfiguration"},
@@ -90,6 +87,7 @@ local mykeys = {
   -- font size
   {key="+", mods="SUPER", action="IncreaseFontSize"},
   {key="-", mods="SUPER", action="DecreaseFontSize"},
+  {key="raw:44", mods="SUPER", action="DecreaseFontSize"}, -- "-" is not working atm
   {key="0", mods="SUPER", action="ResetFontSize"},
   -- instead of SpawnTab, this always opens the tab at home
   {key="t", mods="SUPER", action={SpawnCommandInNewTab={cwd = wezterm.home_dir}}},
@@ -104,7 +102,7 @@ local mykeys = {
   {key="j", mods="SUPER", action={ActivatePaneDirection="Down"}},
   -- other
   {key="f", mods="SUPER", action={Search={CaseInSensitiveString=""}}},
-  {key="f", mods="SUPER|SHIFT", action={Search={Regex=""}}},
+  {key="F", mods="SUPER|SHIFT", action={Search={Regex=""}}},
   {key="F9", mods="ALT", action="ShowTabNavigator"},
   {key="F11", mods="SUPER", action="ToggleFullScreen"},
   -- scrolling

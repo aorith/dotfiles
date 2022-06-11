@@ -1,8 +1,8 @@
 setlocal nospell
 setlocal spelllang=en,es
-setlocal foldlevel=2
+" setlocal foldlevel=2
 setlocal conceallevel=1
-setlocal formatoptions=jnl " or vim-polyglot will override this
+setlocal formatoptions=jnlq " or vim-polyglot will override this
 setlocal synmaxcol=0 " remove syntax coloring limit
 
 " https://vi.stackexchange.com/questions/365/is-it-possible-to-use-two-different-color-backgrounds-in-a-single-vim-buffer

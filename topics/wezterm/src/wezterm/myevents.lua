@@ -50,7 +50,7 @@ wezterm.on("trigger-subl-with-scrollback", function(window, pane)
   wezterm.sleep_ms(2000);
   os.remove(name);
 end)
---(
+--)
 
 --( tcdn-server-for
 wezterm.on("tcdn-server-for", function(window, pane)
