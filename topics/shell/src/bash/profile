@@ -13,6 +13,11 @@ export _OS="$(uname -s)"
 umask 022
 
 if [[ "$_OS" == "Darwin" ]]; then
+    export LANG='en_US.UTF-8'
+    export LANGUAGE='en_US.UTF-8'
+    export LC_COLLATE=C
+    #export LC_TIME="es_ES.UTF-8"
+    export LC_CTYPE=UTF-8
     # MacOs "path_helper" fix ...
     PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 fi
