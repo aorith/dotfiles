@@ -71,7 +71,7 @@ if [[ "$_OS" == 'Darwin' ]]; then
     for man_path in $(cat /private/etc/manpaths); do
         add_to_manpath "$man_path"
     done 2>/dev/null
-    unset manpath
+    unset manpath oldIFS
 elif [[ "$_OS" == 'Linux' ]]; then
     # Linux only
     export CLIPBOARD_COPY="xclip -i -selection primary -f | xclip -i -selection clipboard"
