@@ -33,9 +33,10 @@ man() {
         man "$@"
 }
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.local/cache"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.local/cache"
+export XDG_BIN_HOME="${HOME}/.local/bin"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export GOPATH="${HOME}/.local/go:${PRIVATE_GITHOME}/go"
 export GOBIN="${HOME}/.local/go/bin"
