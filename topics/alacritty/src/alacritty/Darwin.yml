@@ -15,20 +15,7 @@ font:
     y: 0
 
   normal:
-    family: "JetBrains Mono"
-    style: "ExtraLight"
-
-  bold:
-    family: "JetBrains Mono"
-    style: "Bold"
-
-  italic:
-    family: "JetBrains Mono"
-    style: "Italic"
-
-  bold_italic:
-    family: "JetBrains Mono"
-    style: "Bold Italic"
+    family: "Iosevka Fixed"
 
 key_bindings:
   - {key: V,     mods: Command,       action: Paste}
