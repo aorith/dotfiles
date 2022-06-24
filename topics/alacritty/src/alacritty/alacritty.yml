@@ -23,9 +23,11 @@ selection:
   save_to_clipboard: true
 
 cursor:
+  blink_interval: 500
   style:
     blinking: Never
     shape: Block
+
 
 mouse:
   hide_when_typing: true
