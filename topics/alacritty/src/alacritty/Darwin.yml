@@ -1,7 +1,7 @@
 alt_send_esc: false
 
 window:
-  decorations: full
+  decorations: none
 
 font:
   use_thin_strokes: true

@@ -16,7 +16,7 @@ scrolling:
 
 bell:
   animation: EaseOutExpo
-  duration: 120
+  duration: 100
   color: '#990000'
 
 selection:
@@ -27,7 +27,6 @@ cursor:
   style:
     blinking: Never
     shape: Block
-
 
 mouse:
   hide_when_typing: true
@@ -42,4 +41,3 @@ colors:
     custom_cursor_color: true
     text: '0x000000'
     cursor: '0xC9C434'
-
