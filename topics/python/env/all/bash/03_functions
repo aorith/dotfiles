@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 py-env() {
-    local base_path chosen
+    local base_path chosen _ans
     base_path="${HOME}/.local/venvs"
     mkdir -p "$base_path"
 
@@ -18,9 +18,17 @@ py-env() {
         chosen="$1"
     fi
 
+    if [[ ! -d "${base_path}/${chosen}" ]]; then
+        read -r -n 1 -p "The venv '$chosen' does not exist, create it now?: (y/N): " _ans
+        if [[ "$_ans" =~ ^(y|Y) ]]; then
+            { echo; echo "Creating venv '$chosen'..."; python3 -m venv "${base_path}/${chosen}"; }
+        else
+            return 0
+        fi
+    fi
+
     source "${base_path}/${chosen}/bin/activate" \
         || { echo "Could not activate venv '$chosen' ..."; return 1; }
     which python
     python --version
-    return 0
 }
