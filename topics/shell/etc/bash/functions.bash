@@ -20,11 +20,6 @@ add_to_manpath() {
     export MANPATH
 }
 
-# tests if $1 > $2
-_greater_than() {
-    [ ${1%.*} -eq ${2%.*} ] && [ ${1#*.} \> ${2#*.} ] || [ ${1%.*} -gt ${2%.*} ]
-}
-
 # Easy CD into dotfiles, must be a function
 dotfiles() {
     [[ -n "$1" ]] || { echo "Changing dir to $DOTFILES"; cd "$DOTFILES" || return 1; return 0; }
