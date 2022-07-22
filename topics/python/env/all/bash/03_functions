@@ -1,0 +1,26 @@
+# vim: ft=bash
+
+py-env() {
+    local base_path chosen
+    base_path="${HOME}/.local/venvs"
+    mkdir -p "$base_path"
+
+    # Creamos el entorno virtual "main" si no existe
+    [[ -d "${base_path}/main" ]] \
+        || { echo "Creating venv 'main'..."; python3 -m venv "${base_path}/main"; }
+
+    if [[ -z "$1" ]]; then
+        select opt in $(find "$base_path" -maxdepth 1 -mindepth 1 -type d -exec basename -- {} \;); do
+            chosen="$opt"
+            break
+        done
+    else
+        chosen="$1"
+    fi
+
+    source "${base_path}/${chosen}/bin/activate" \
+        || { echo "Could not activate venv '$chosen' ..."; return 1; }
+    which python
+    python --version
+    return 0
+}
