@@ -9,9 +9,6 @@ if [[ ! -e ~/.local/share/tpm ]]; then
 fi
 
 create_link "${PWD}/src/tmux" "$HOME/.config/tmux"
-for f in "${PWD}"/src/bin/*; do
-    _link_script "${f}"
-done
 
 #[[ -n "$SSH_CLIENT" ]] && { log_warn "Not bootstrapping terminfo over ssh"; exit 0; }
 #current_user=$(whoami)
