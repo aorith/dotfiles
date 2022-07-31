@@ -3,6 +3,14 @@
 
 . "${DOTFILES}/topics/shell/etc/bash/colors.bash"
 
+__container_check() {
+    if [[ ! -f /run/.containerenv ]]; then
+        return
+    fi
+    source /run/.containerenv
+    printf '%b%s%b ' "${my_ylw}" "$name" "${my_rst}"
+}
+
 __ps1_git_tag_f() {
     local t # tag
     t="$(timeout 0.5 git describe --tags --abbrev=0 2>/dev/null)"
@@ -78,6 +86,8 @@ __prompt_command () {
 
     # background jobs
     __ps1_jobs_f
+    
+    OnContainer=$(__container_check)
 
     [[ -w "${PWD}" ]] && wdc="${my_cyn}" || wdc="${my_red2}"
     [[ -n "$SSH_CLIENT" ]] && OnSSH="${my_ylw2}${my_bld}\h${my_rst} " || unset OnSSH
@@ -85,7 +95,7 @@ __prompt_command () {
     [[ -n "$VIRTUAL_ENV" ]] && OnVENV="(venv) " || unset OnVENV
 
     #PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
-    PS1="\[\033]0;\u@\h \w\007\]${OnVENV}${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} \n${my_blu}\$${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${OnVENV}${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} \n${OnContainer}${my_blu}\$${my_rst} "
 
     unset _ps1_start_timer
 }
