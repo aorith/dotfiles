@@ -24,7 +24,7 @@ formulae_packages=(
     "ripgrep"
     "curl"
     "wget"
-    "homebrew-ffmpeg/ffmpeg/ffmpeg --with-webp --with-openssl@1.1 --with-openh264 --with-fdk-aac --with-xvid --with-opencore-amr"
+    #"homebrew-ffmpeg/ffmpeg/ffmpeg --with-webp --with-openssl@1.1 --with-openh264 --with-fdk-aac --with-xvid --with-opencore-amr"
     "navi"
     "less"
     "git-delta"
@@ -58,10 +58,11 @@ formulae_packages=(
     "ipython"
     "fd"
     "util-linux"
+    "tmux"
 )
 
 formulae_source_packages=(
-    "tmux --HEAD"
+    #"tmux --HEAD"
 )
 
 cask_packages=(
