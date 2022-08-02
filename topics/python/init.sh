@@ -1,6 +1,6 @@
 # vim: ft=bash
 
-[[ -d "$PYENV_ROOT" ]] || { echo "Missing 'PYENV_ROOT' variable."; exit 1; }
+[[ -n "$PYENV_ROOT" ]] || { echo "Missing 'PYENV_ROOT' variable."; exit 1; }
 
 _debian_deps() {
     sudo apt update; sudo apt install make build-essential libssl-dev zlib1g-dev \
