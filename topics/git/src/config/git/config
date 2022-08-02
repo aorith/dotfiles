@@ -12,6 +12,12 @@
     colorMoved = default
     colorMovedWS = allow-indentation-change
 
+[difftool]
+    prompt = false
+
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
 [alias]
     myls = log --topo-order --stat
     myld = log --topo-order --stat --patch --full-diff
@@ -20,6 +26,7 @@
     mytree = log --graph --decorate --pretty=oneline --abbrev-commit
     mylog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     mywhoami = !git config user.name && git config user.email
+    vimdiff = difftool -t nvimdiff
 
 [pull]
     rebase = false
@@ -27,3 +34,4 @@
 [include]
   #path = delta
   path = local.config
+
