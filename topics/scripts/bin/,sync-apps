@@ -38,11 +38,15 @@ _app_backup() {
 
     case "${1:-}" in
         syncthing) 
-            sync_orig=".config/syncthing"
+            if [[ "${_OS:-}" == "Darwin" ]]; then
+                sync_orig="${HOME}/Library/Application Support/Syncthing"
+            else
+                sync_orig=".config/syncthing"
+            fi
             tar_target="/tmp/st-config.tar.gz"
             cd ~
             [[ -d "$sync_orig" ]] || Err "Config directory not found: '$sync_orig'"
-            tar -czf "$tar_target" .config/syncthing/
+            tar -czf "$tar_target" "$sync_orig"
             ;;
         *) Err "App not found: '${1:-}'" ;;
     esac
@@ -56,7 +60,11 @@ _app_restore() {
     case "${1:-}" in
         syncthing)
             backup_file="${sync_target}/st-config.tar.gz.enc"
-            rm_before_restore_dir="${HOME}/.config/syncthing"
+            if [[ "${_OS:-}" == "Darwin" ]]; then
+                rm_before_restore_dir="${HOME}/Library/Application Support/Syncthing"
+            else
+                rm_before_restore_dir="${HOME}/.config/syncthing"
+            fi
             restore_root_dir="${HOME}/"
             [[ -f "$backup_file" ]] || Err "Backup file: '$backup_file' not found."
             if ps -ef | grep -q '/s[y]ncthing'; then # careful with '-o pipefail' here
