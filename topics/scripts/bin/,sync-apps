@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+set -eu -o pipefail
+
+OPENSSL_ITER=100000
+
+Err() { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
+Usage() {
+    cat <<EOF
+
+  Usage: $(basename -- "$0") <backup/restore> <app>
+   Apps: syncthing
+
+EOF
+    exit 1
+}
+
+[[ $(id -u) -ne 0 ]] || Err "Don't run as root"
+[[ $# -eq 2 ]] || Usage
+
+if [[ -n "${_CONTAINER_NAME:-}" ]]; then
+    if type -P hostnamectl >/dev/null 2>&1; then
+        _hostname=$(hostnamectl hostname)
+    else
+        _hostname="${HOSTNAME##*.}" # fbox.trantor => trantor
+    fi
+else
+    _hostname=$(hostname -s)
+fi
+sync_target="${HOME}/Syncthing/AppConfigs/${_hostname}" 
+mkdir -p "$sync_target"
+
+_app_backup() {
+    read -rsp 'Password: ' password
+    echo
+    read -rsp 'Retype password: ' password2
+    echo
+    [[ "$password" == "$password2" ]] || Err 'Passwords do not match.'
+
+    case "${1:-}" in
+        syncthing) 
+            sync_orig=".config/syncthing"
+            tar_target="/tmp/st-config.tar.gz"
+            cd ~
+            [[ -d "$sync_orig" ]] || Err "Config directory not found: '$sync_orig'"
+            tar -czf "$tar_target" .config/syncthing/
+            ;;
+        *) Err "App not found: '${1:-}'" ;;
+    esac
+
+    openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter ${OPENSSL_ITER} -salt -in "$tar_target" -out "${tar_target}.enc" -k "${password}"
+    shred -n 5 -u -z "$tar_target"
+    mv "${tar_target}.enc" "${sync_target}/"
+}
+
+_app_restore() {
+    case "${1:-}" in
+        syncthing)
+            backup_file="${sync_target}/st-config.tar.gz.enc"
+            rm_before_restore_dir="${HOME}/.config/syncthing"
+            restore_root_dir="${HOME}/"
+            [[ -f "$backup_file" ]] || Err "Backup file: '$backup_file' not found."
+            if ps -ef | grep -q '/s[y]ncthing'; then # careful with '-o pipefail' here
+                Err 'Stop syncthing first.'
+            fi
+            ;;
+        *) Err "App not found: '${1:-}'" ;;
+    esac
+
+    rm -f /tmp/decrypted.tar.gz || true
+    openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter ${OPENSSL_ITER} -d -in "$backup_file" -out /tmp/decrypted.tar.gz
+    [[ -f /tmp/decrypted.tar.gz ]] || Err 'Failed to decrypt.'
+    [[ -z "${rm_before_restore_dir:-}" ]] || rm -vrf "$rm_before_restore_dir"
+    tar -xzf /tmp/decrypted.tar.gz -C "$restore_root_dir"
+    shred -n 5 -u -z /tmp/decrypted.tar.gz
+}
+
+case "${1:-}" in
+    backup) shift; _app_backup "$@" ;;
+    restore) shift; _app_restore "$@" ;;
+    *) Err "Invalid option: '${1:-}'. Valid options: backup/restore" ;;
+esac
+
