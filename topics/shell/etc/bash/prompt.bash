@@ -4,11 +4,8 @@
 . "${DOTFILES}/topics/shell/etc/bash/colors.bash"
 
 __container_check() {
-    if [[ ! -f /run/.containerenv ]]; then
-        return
-    fi
-    source /run/.containerenv
-    printf '%b%s%b ' "${my_ylw}" "$name" "${my_rst}"
+    [[ -n "$_CONTAINER_NAME" ]] || return
+    printf '%b%s%b ' "${my_pur2}" "[$_CONTAINER_NAME]" "${my_rst}"
 }
 
 __ps1_git_tag_f() {
