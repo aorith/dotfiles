@@ -109,6 +109,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'igemnace/highlight.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 call plug#end()
 " }}} -------------------------------------------------------------------------
@@ -124,5 +125,5 @@ source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal_setup.vim
 source ~/.vim/aorith/autocmds.vim
 "source ~/.vim/aorith/dynamic_theme.vim
-source ~/.vim/aorith/themes/onehalf.vim
+source ~/.vim/aorith/themes/catppuccin.vim
 " }}} -------------------------------------------------------------------------
