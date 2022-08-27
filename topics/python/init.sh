@@ -12,6 +12,7 @@ _clone_update_pyenv() {
     if [[ ! -e "$PYENV_ROOT" ]]; then
         mkdir -p "$(dirname -- "$PYENV_ROOT")"
         git clone --depth 1 https://github.com/pyenv/pyenv.git "$PYENV_ROOT" >/dev/null && \
+            cd "$PYENV_ROOT" && src/configure && make -C src && \
             log_success "Cloned pyenv"
     else
         cd "$PYENV_ROOT" && git pull >/dev/null && log_success "Updated pyenv"
@@ -25,11 +26,17 @@ case $HOSTNAME in
     debian)
         _debian_deps
         ;;
-    *) exit "$_SKIP" ;;
+    *) 
+        if [[ -n "$_CONTAINER_NAME" ]]; then
+            _clone_update_pyenv
+        else
+            exit "$_SKIP"
+        fi
+        ;;
 esac
 
 ### bootstrap
-version="3.10.4"
+version="3.10.6"
 # pyenv install --list  # check python versions
 # pyenv install 3.8.6  # install 3.8
 # pyenv global 3.8.6  # make it global

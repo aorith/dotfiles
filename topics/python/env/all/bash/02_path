@@ -1,10 +1,17 @@
 # vim: ft=bash
 
+_load_pyenv() {
+    add_to_path "${PYENV_ROOT}/bin"
+    eval "$(pyenv init -)"
+    #eval "$(pyenv virtualenv-init -)"
+}
+
 case $HOSTNAME in
-	moria)
-		add_to_path "${PYENV_ROOT}/bin"
-		eval "$(pyenv init -)"
-		eval "$(pyenv virtualenv-init -)"
+	moria*)
+        _load_pyenv
 		;;
-	*) ;;
+	*) [[ -z "$_CONTAINER_NAME" ]] || _load_pyenv
+        ;;
 esac
+
+unset _load_pyenv
