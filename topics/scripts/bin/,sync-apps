@@ -54,6 +54,7 @@ _app_backup() {
     openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter ${OPENSSL_ITER} -salt -in "$tar_target" -out "${tar_target}.enc" -k "${password}"
     shred -n 5 -u -z "$tar_target"
     mv "${tar_target}.enc" "${sync_target}/"
+    echo "Done, saved to: ${sync_target}/$(basename -- "${tar_target}").enc"
 }
 
 _app_restore() {
@@ -80,6 +81,7 @@ _app_restore() {
     [[ -z "${rm_before_restore_dir:-}" ]] || rm -vrf "$rm_before_restore_dir"
     tar -xzf /tmp/decrypted.tar.gz -C "$restore_root_dir"
     shred -n 5 -u -z /tmp/decrypted.tar.gz
+    echo "Done"
 }
 
 case "${1:-}" in
