@@ -15,7 +15,7 @@ font:
     y: 0
 
   normal:
-    family: "Iosevka Fixed"
+    family: "JetBrains Mono"
 
 key_bindings:
   - {key: V,     mods: Command,       action: Paste}
