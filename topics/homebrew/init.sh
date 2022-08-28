@@ -83,6 +83,7 @@ cask_packages=(
     "rectangle"
     "sublime-text"
     "tigervnc-viewer"
+    "tunnelblick"
     "visual-studio-code"
     "vlc"
 )
