@@ -73,6 +73,7 @@ cask_packages=(
     "font-jetbrains-mono"
     "font-noto-color-emoji"
     "font-sauce-code-pro-nerd-font"
+    "gimp"
     "hammerspoon"
     "iterm2"
     "joplin"
