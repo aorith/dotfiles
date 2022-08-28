@@ -22,10 +22,9 @@ key_bindings:
   - {key: C,     mods: Command,       action: Copy}
   - {key: N,     mods: Command|Shift, action: SpawnNewInstance}
   - {key: Space, mods: Shift|Control, action: None}
-  - {key: F1,    mods: Command,       command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux new-window -n HELP glow -p $PRIVATE_DOTFILES/misc/help.md"]}}
-  - {key: F1,    mods: Command|Shift, command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
-  - {key: F6,    mods: Command,       command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux display-popup -w40% -h40% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
-  - {key: F6,    mods: Command|Shift, command: { program: "/usr/bin/env", args: ["bash", "-lc", "$HOME/.config/alacritty/bin/switch-theme.sh reset"]}}
+# - {key: F1,    mods: Command,       command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux new-window -n HELP glow -p $PRIVATE_DOTFILES/misc/help.md"]}}
+# - {key: F1,    mods: Command|Shift, command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
+  - {key: T,     mods: Control,       command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux display-popup -w65% -h65% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
     # unmap some bindings
   - {key: B,     mods: Command, action: ReceiveChar}
 

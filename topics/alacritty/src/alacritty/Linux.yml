@@ -18,9 +18,6 @@ key_bindings:
   - {key: Insert, mods: Shift,         action:  Paste}
   - {key: N,      mods: Alt|Shift,     action:  SpawnNewInstance}
   - {key: Space,  mods: Shift|Control, action:  None}
-  - {key: F1,     mods: Alt,           command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux new-window -n HELP glow -p $PRIVATE_DOTFILES/misc/help.md"]}}
-  - {key: F1,     mods: Alt|Shift,     command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
-  - {key: F6,     mods: Alt,           command: { program: "/usr/bin/env", args: ["bash", "-lc", "tmux display-popup -w40% -h40% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
-  - {key: F6,     mods: Alt|Shift,     command: { program: "/usr/bin/env", args: ["bash", "-lc", "$HOME/.config/alacritty/bin/switch-theme.sh reset"]}}
+  - {key: T,      mods: Control,       command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux display-popup -w40% -h40% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
     # unmap some bindings
   - {key: B,      mods: Alt,           action:  ReceiveChar}
