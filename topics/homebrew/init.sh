@@ -65,6 +65,7 @@ formulae_source_packages=(
 cask_packages=(
     "alacritty"
     "apache-directory-studio"
+    "docker"
     "firefox"
     "flameshot"
     "font-dejavu"
