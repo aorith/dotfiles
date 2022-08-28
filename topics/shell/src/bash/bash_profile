@@ -2,8 +2,8 @@
 
 # Uncomment to profile bash, also disable PS4 in 'settings.bash'
 # usually bash_completion is the culprit
-#[[ -x /usr/local/opt/coreutils/libexec/gnubin/date ]] && \
-#    _exec_date="/usr/local/opt/coreutils/libexec/gnubin/date" || _exec_date="date"
+#[[ -x /opt/homebrew/opt/coreutils/libexec/gnubin/date ]] && \
+#    _exec_date="/opt/homebrew/opt/coreutils/libexec/gnubin/date" || _exec_date="date"
 #PS4='+ $("$_exec_date" "+%s.%N")\011 '
 #exec 3>&2 2>/tmp/bashstart.$$.log
 #set -x

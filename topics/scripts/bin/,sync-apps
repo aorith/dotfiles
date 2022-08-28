@@ -39,7 +39,7 @@ _app_backup() {
     case "${1:-}" in
         syncthing) 
             if [[ "${_OS:-}" == "Darwin" ]]; then
-                sync_orig="${HOME}/Library/Application Support/Syncthing"
+                sync_orig="Library/Application Support/Syncthing"
             else
                 sync_orig=".config/syncthing"
             fi
