@@ -11,7 +11,6 @@ formulae_packages=(
     "bash-completion@2"
     "bat"
     "bc"
-    "bitwarden-cli"
     "black"
     "cmake"
     "coreutils"
@@ -65,6 +64,7 @@ formulae_source_packages=(
 cask_packages=(
     "alacritty"
     "apache-directory-studio"
+    "bitwarden"
     "docker"
     "firefox"
     "flameshot"
