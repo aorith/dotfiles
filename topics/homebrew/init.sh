@@ -12,6 +12,7 @@ formulae_packages=(
     "bat"
     "bc"
     "black"
+    "cairo" # required for pycairo
     "cmake"
     "coreutils"
     "curl"
@@ -38,10 +39,12 @@ formulae_packages=(
     "lesspipe"
     "moreutils"
     "mtr"
+    "mysql-client" # required for python package mysql-client
     "neofetch"
     "neovim"
     "nmap"
     "p7zip"
+    "pango" # required for python package cffi
     "pylint"
     "ripgrep"
     "shellcheck"
