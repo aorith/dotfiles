@@ -19,12 +19,10 @@ if [[ "$_OS" == "Darwin" ]]; then
     #export LC_TIME="es_ES.UTF-8"
     export LC_CTYPE=UTF-8
     # MacOs "path_helper" fix ...
-    #PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 fi
 
 set -a
 . "${DOTFILES}/topics/shell/etc/bash/functions.bash"
 set +a
 . "${DOTFILES}/topics/shell/etc/bash/constants.bash"
-
-export _PROFILE_LOADED=1
