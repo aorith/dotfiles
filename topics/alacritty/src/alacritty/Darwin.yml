@@ -27,6 +27,7 @@ key_bindings:
   - {key: T,     mods: Control,       command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux display-popup -w65% -h65% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
     # unmap some bindings
   - {key: B,     mods: Command, action: ReceiveChar}
+  - {key: Space, mods: Alt,     chars:  "\x20"} # Fix Option+Space inserting non-breaking space (0xA0) " "
 
   - {key: F12,                        action: ToggleSimpleFullscreen}
   - {key: W,     mods: Command,       chars: "\x1bw"}  # close pane/window
