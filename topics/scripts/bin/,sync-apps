@@ -18,11 +18,7 @@ EOF
 [[ $# -eq 2 ]] || Usage
 
 if [[ -n "${_CONTAINER_NAME:-}" ]]; then
-    if type -P hostnamectl >/dev/null 2>&1; then
-        _hostname=$(hostnamectl hostname)
-    else
-        _hostname="${HOSTNAME##*.}" # fbox.trantor => trantor
-    fi
+    _hostname="${HOSTNAME##*.}" # fbox.trantor => trantor
 else
     _hostname=$(hostname -s)
 fi
