@@ -68,6 +68,7 @@ cask_packages=(
     "alacritty"
     "apache-directory-studio"
     "bitwarden"
+    "cyberduck" # ftp client
     "docker"
     "firefox"
     "flameshot"
