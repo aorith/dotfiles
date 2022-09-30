@@ -19,6 +19,7 @@ formulae_packages=(
     "diffutils"
     "fd"
     "findutils"
+    "flake8"
     "fzf"
     "gawk"
     "git"
