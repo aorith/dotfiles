@@ -47,6 +47,7 @@ formulae_packages=(
     "p7zip"
     "pango" # required for python package cffi
     "pylint"
+    "pyright"
     "ripgrep"
     "shellcheck"
     "telnet"
