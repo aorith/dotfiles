@@ -77,7 +77,7 @@ cask_packages=(
     "font-dejavu"
     "font-fira-code"
     "font-hack-nerd-font"
-    "font-jetbrains-mono"
+    "font-jetbrains-mono-nerd-font"
     "font-noto-color-emoji"
     "font-sauce-code-pro-nerd-font"
     "gimp"
