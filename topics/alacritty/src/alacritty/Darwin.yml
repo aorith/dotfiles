@@ -5,16 +5,9 @@ window:
 
 font:
   size: 16
-  offset:
-    x: 0
-    y: 0
-
-  glyph_offset:
-    x: 0
-    y: 0
 
   normal:
-    family: "JetBrains Mono"
+    family: "JetBrainsMono Nerd Font Mono"
 
 key_bindings:
   - {key: V,     mods: Command,       action: Paste}
