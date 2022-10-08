@@ -93,7 +93,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'fgsch/vim-varnish'
-Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 
 if empty($SSH_CLIENT)
   "Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -102,11 +101,7 @@ if empty($SSH_CLIENT)
 end
 
 Plug 'romainl/Apprentice'
-Plug 'lifepillar/vim-solarized8'
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'gruvbox-community/gruvbox'
-Plug 'arcticicestudio/nord-vim'
-Plug 'igemnace/highlight.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
@@ -125,5 +120,5 @@ source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal_setup.vim
 source ~/.vim/aorith/autocmds.vim
 "source ~/.vim/aorith/dynamic_theme.vim
-source ~/.vim/aorith/themes/catppuccin.vim
+source ~/.vim/aorith/themes/apprentice.vim
 " }}} -------------------------------------------------------------------------
