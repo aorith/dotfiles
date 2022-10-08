@@ -11,7 +11,6 @@ formulae_packages=(
     "bash-completion@2"
     "bat"
     "bc"
-    "black"
     "cairo" # required for pycairo
     "cmake"
     "coreutils"
