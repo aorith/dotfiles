@@ -19,7 +19,7 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 set cindent noautoindent nosmartindent
 set cinkeys-=0# " dont indent '#'
 set indentkeys-=0#
-set wrap wrapscan linebreak breakindent showbreak=↳\ 
+set nowrap wrapscan linebreak breakindent showbreak=↳\ 
 set textwidth=80
 set swapfile backup undofile
 set title icon
