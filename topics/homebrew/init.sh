@@ -39,6 +39,7 @@ formulae_packages=(
     "lesspipe"
     "moreutils"
     "mtr"
+    "mypy"
     "mysql-client" # required for python package mysql-client
     "neofetch"
     "neovim"
@@ -46,7 +47,6 @@ formulae_packages=(
     "p7zip"
     "pango" # required for python package cffi
     "pylint"
-    "pyright"
     "ripgrep"
     "shellcheck"
     "telnet"
