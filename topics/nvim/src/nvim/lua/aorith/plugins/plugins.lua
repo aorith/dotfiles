@@ -6,6 +6,7 @@ require('packer').startup(function(use)
     use 'fgsch/vim-varnish'
     use 'sheerun/vim-polyglot'
     use 'ojroques/nvim-osc52'
+    use 'psf/black'
 
     use({
         "nvim-telescope/telescope.nvim",
