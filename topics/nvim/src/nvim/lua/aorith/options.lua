@@ -29,6 +29,11 @@ vim.opt.shortmess = 'atToOFc'           -- Prompt message options
 vim.opt.cursorline = true               -- Highlight cursor line
 vim.opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 vim.opt.signcolumn = 'yes'              -- Show sign column
+vim.cmd [[
+    set cinkeys-=0# " dont indent '#'
+    set indentkeys-=0#
+]]
+vim.opt.updatetime = 400                -- For CursorHold and swapfile
 
 vim.opt.ignorecase = true               -- Ignore case
 vim.opt.smartcase = true                -- Do not ignore case with capitals
@@ -39,6 +44,10 @@ vim.opt.sidescrolloff = 8               -- Columns of context
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.opt.swapfile = true
+vim.opt.backup = true
+vim.opt.undofile = true
+
 -- directory configuration
 vim.cmd [[
 set viminfo+=n~/.local/share/nvim/viminfo
@@ -47,10 +56,6 @@ set undolevels=1000 undoreload=10000
 set backupdir=~/.local/share/nvim/backup//
 set directory=~/.local/share/nvim/swap//
 ]]
-
--- theme
-vim.opt.background = "dark"
-vim.cmd("colorscheme gruvbox-material")
 
 -- others
 vim.cmd [[
