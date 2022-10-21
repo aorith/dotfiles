@@ -1,7 +1,7 @@
 alt_send_esc: false
 
 window:
-  decorations: none
+  decorations: buttonless
 
 font:
   size: 16
