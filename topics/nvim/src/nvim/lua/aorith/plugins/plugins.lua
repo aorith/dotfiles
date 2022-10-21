@@ -31,6 +31,13 @@ require('packer').startup(function(use)
     }
 
     use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+    }
+
+    use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons' }
     }
@@ -49,6 +56,8 @@ require('packer').startup(function(use)
 end)
 
 -- Configuration
+require("nvim-tree").setup()
+
 require('telescope').load_extension('fzf')
 
 require('lualine').setup {
