@@ -29,7 +29,7 @@ vim.opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 vim.opt.shortmess = 'atToOFc'           -- Prompt message options
 vim.opt.cursorline = true               -- Highlight cursor line
 vim.opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
-vim.opt.signcolumn = 'yes'              -- Show sign column
+vim.opt.signcolumn = 'yes:2'            -- Show sign column - max N signs
 vim.cmd [[
     set cinkeys-=0# " dont indent '#'
     set indentkeys-=0#
