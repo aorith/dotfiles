@@ -34,6 +34,7 @@ vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.formatoptions = "jnlq"
 vim.opt.shortmess = "atToOFc" -- Prompt message options
 vim.opt.cursorline = true -- Highlight cursor line
+vim.opt.cursorlineopt = 'number'
 vim.opt.wildmode = { "list", "longest" } -- Command-line completion mode
 vim.opt.signcolumn = "yes:2" -- Show sign column - max N signs
 vim.cmd([[
