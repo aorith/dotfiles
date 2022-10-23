@@ -1,13 +1,6 @@
-vim.opt.laststatus = 3
-vim.opt.fillchars:append({
-    horiz = "━",
-    horizup = "┻",
-    horizdown = "┳",
-    vert = "┃",
-    vertleft = "┨",
-    vertright = "┣",
-    verthoriz = "╋",
-})
-require("kanagawa").setup({ globalStatus = true, ... })
+require("kanagawa").setup()
+-- require("tokyonight").setup()
 
+vim.cmd("set termguicolors")
+vim.cmd("set background=dark")
 vim.cmd("colorscheme kanagawa")

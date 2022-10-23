@@ -55,6 +55,16 @@ vim.opt.swapfile = true
 vim.opt.backup = true
 vim.opt.undofile = true
 
+vim.opt.fillchars:append({
+    horiz = "━",
+    horizup = "┻",
+    horizdown = "┳",
+    vert = "┃",
+    vertleft = "┨",
+    vertright = "┣",
+    verthoriz = "╋",
+})
+
 -- directory configuration
 vim.cmd([[
 set viminfo+=n~/.local/share/nvim/viminfo
