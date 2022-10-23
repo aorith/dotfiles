@@ -2,15 +2,15 @@
 require("bufferline").setup({
     options = {
         mode = "buffers",
+        separator_style = "slant",
         numbers = "ordinal",
         diagnostics = true,
         offsets = {
-            { filetype = "neo-tree", text = "File Explorer", text_align = "center" },
+            { filetype = "neo-tree", text = "", separator = false },
         },
     },
 })
 
--- Lsp server name .
 local char_under_cursor = {
     function()
         return "0x%B"
@@ -19,7 +19,10 @@ local char_under_cursor = {
 
 require("lualine").setup({
     options = {
+        theme = "kanagawa",
         globalstatus = true,
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
     },
     sections = {
         lualine_y = { "progress", "location" },
