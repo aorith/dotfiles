@@ -28,6 +28,7 @@ vim.opt.showbreak = "↳ "
 vim.opt.wrapscan = true
 vim.opt.timeoutlen = 250
 vim.opt.cmdheight = 1
+vim.opt.splitright = true
 vim.opt.mouse = "a"
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.formatoptions = "jnlq"
