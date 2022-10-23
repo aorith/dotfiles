@@ -1,0 +1,6 @@
+require("aorith.plugins.config.themes")
+require("aorith.plugins.config.lualine")
+require("aorith.plugins.config.lsp")
+require("aorith.plugins.config.cmp")
+require("aorith.plugins.config.treesitter")
+require("aorith.plugins.config.whichkey")

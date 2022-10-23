@@ -17,8 +17,8 @@ vim.diagnostic.config({
 })
 
 -- LSP Server configs
-local lspconfig = require "lspconfig"
-local util = require "lspconfig.util"
+local lspconfig = require("lspconfig")
+local util = require("lspconfig.util")
 
 local servers = {
     sumneko_lua = {
@@ -26,11 +26,11 @@ local servers = {
             Lua = {
                 runtime = {
                     -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
+                    version = "LuaJIT",
                 },
                 diagnostics = {
                     -- Get the language server to recognize the `vim` global
-                    globals = { 'vim' },
+                    globals = { "vim" },
                 },
                 workspace = {
                     -- Make the server aware of Neovim runtime files
@@ -47,12 +47,12 @@ local servers = {
         cmd = { "pylsp" },
         root_dir = function(fname)
             local root_files = {
-                'pyproject.toml',
-                'setup.py',
-                'setup.cfg',
-                'requirements.txt',
-                'Pipfile',
-                '.git/config',
+                "pyproject.toml",
+                "setup.py",
+                "setup.cfg",
+                "requirements.txt",
+                "Pipfile",
+                ".git/config",
             }
             return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
         end,
@@ -62,7 +62,7 @@ local servers = {
                 plugins = {
                     pylint = {
                         enabled = true,
-                        args = { '--ignore=E501,C0116', '-' },
+                        args = { "--ignore=E501,C0116", "-" },
                     },
                     flake8 = {
                         enabled = true,
@@ -71,33 +71,29 @@ local servers = {
                     pylsp_mypy = { enabled = true },
                     pycodestyle = {
                         enabled = true,
-                        ignore = { 'E231', 'E203' },
-                        maxLineLength = 120
+                        ignore = { "E231", "E203" },
+                        maxLineLength = 120,
                     },
                     pyflakes = { enabled = false },
-                }
-            }
-        }
+                },
+            },
+        },
     },
 }
 
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 client_capabilities.textDocument.completion.completionItem.snippetSupport = true
 client_capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = { 'documentation', 'detail', 'additionalTextEdits' },
+    properties = { "documentation", "detail", "additionalTextEdits" },
 }
 -- for nvim_cmp
-client_capabilities = require('cmp_nvim_lsp').default_capabilities(client_capabilities)
+client_capabilities = require("cmp_nvim_lsp").default_capabilities(client_capabilities)
 
 for server, config in pairs(servers) do
-    if type(config) == 'function' then
+    if type(config) == "function" then
         config = config()
     end
     config.on_attach = on_attach
-    config.capabilities = vim.tbl_deep_extend(
-        'keep',
-        config.capabilities or {},
-        client_capabilities
-    )
+    config.capabilities = vim.tbl_deep_extend("keep", config.capabilities or {}, client_capabilities)
     lspconfig[server].setup(config)
 end

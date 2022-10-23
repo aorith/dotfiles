@@ -1,140 +1,175 @@
-require('packer').startup(function(use)
+require("packer").startup(function(use)
     -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+    use("wbthomason/packer.nvim")
 
-    use 'mhinz/vim-signify'
-    use 'fgsch/vim-varnish'
-    use 'sheerun/vim-polyglot'
-    use 'ojroques/nvim-osc52'
-    use 'psf/black'
+    use("mhinz/vim-signify")
+    use("fgsch/vim-varnish")
+    use("sheerun/vim-polyglot")
+    use("ojroques/nvim-osc52")
+    use("psf/black")
 
     use({
         "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } }
+        requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
     })
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-    use 'neovim/nvim-lspconfig'
-    use 'nvim-treesitter/nvim-treesitter'
+    use("neovim/nvim-lspconfig")
+    use("nvim-treesitter/nvim-treesitter")
 
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-cmdline")
+    use("hrsh7th/cmp-nvim-lua")
+    use("hrsh7th/cmp-vsnip")
+    use("hrsh7th/vim-vsnip")
 
-    use {
+    use({
         "folke/which-key.nvim",
         config = function()
-            require("which-key").setup {}
-        end
-    }
+            require("which-key").setup({})
+        end,
+    })
 
-    use {
-        'nvim-tree/nvim-tree.lua',
+    use({
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         requires = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            {
+                -- only needed if you want to use the commands with "_with_window_picker" suffix
+                "s1n7ax/nvim-window-picker",
+                tag = "v1.*",
+            },
         },
-    }
+    })
 
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' }
-    }
+    use({
+        use("nvim-lualine/lualine.nvim"),
+        requires = { "kyazdani42/nvim-web-devicons" },
+    })
+    use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "kyazdani42/nvim-web-devicons" })
 
     -- autoinstall language servers
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
+    use({
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+        "jayp0521/mason-null-ls.nvim",
+    })
 
     -- themes
-    use { 'jacoborus/tender.vim', opt = true }
-    use { 'folke/tokyonight.nvim', opt = false }
-    use { 'joshdick/onedark.vim', opt = true }
-    use { 'rebelot/kanagawa.nvim', opt = false }
-    use { 'sainnhe/gruvbox-material', opt = false }
-    use { "ellisonleao/gruvbox.nvim", opt = false }
-
+    use({ "jacoborus/tender.vim", opt = true })
+    use({ "folke/tokyonight.nvim", opt = false })
+    use({ "joshdick/onedark.vim", opt = true })
+    use({ "rebelot/kanagawa.nvim", opt = false })
+    use({ "sainnhe/gruvbox-material", opt = false })
+    use({ "ellisonleao/gruvbox.nvim", opt = false })
 end)
 
--- Theme
-require("gruvbox").setup({
-    undercurl = true,
-    underline = true,
-    bold = true,
-    italic = true,
-    strikethrough = true,
-    invert_selection = false,
-    invert_signs = false,
-    invert_tabline = false,
-    invert_intend_guides = false,
-    inverse = true, -- invert background for search, diffs, statuslines and errors
-    contrast = "", -- can be "hard", "soft" or empty string
-    palette_overrides = {},
-    overrides = {},
-    dim_inactive = false,
-    transparent_mode = false,
-})
-
-
-require("tokyonight").setup({
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-    light_style = "day", -- The theme is used when the background is set to light
-    transparent = false, -- Enable this to disable setting the background color
-    terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-    styles = {
-        -- Style to be applied to different syntax groups
-        -- Value is any valid attr-list value for `:help nvim_set_hl`
-        comments = { italic = true },
-        keywords = { italic = true },
-        functions = {},
-        variables = {},
-        -- Background styles. Can be "dark", "transparent" or "normal"
-        sidebars = "dark", -- style for sidebars, see below
-        floats = "dark", -- style for floating windows
-    },
-    sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-    day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-    hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-    dim_inactive = false, -- dims inactive windows
-    lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
-
-    --- You can override specific color groups to use other groups or a hex color
-    --- function will be called with a ColorScheme table
-    ---@param colors ColorScheme
-    on_colors = function(colors) end,
-
-    --- You can override specific highlights to use other groups or a hex color
-    --- function will be called with a Highlights and ColorScheme table
-    ---@param highlights Highlights
-    ---@param colors ColorScheme
-    on_highlights = function(highlights, colors) end,
-})
-
-vim.o.background = "dark"
-vim.cmd("colorscheme tokyonight")
-
 -- Configuration
-require("nvim-tree").setup()
-
-require('telescope').load_extension('fzf')
-
-require('lualine').setup {
-    sections = {
-        lualine_z = { 'location', '%B' }
+local actions = require("telescope.actions")
+require("telescope").load_extension("fzf")
+require("telescope").setup({
+    defaults = {
+        prompt_prefix = " ",
+        selection_caret = "❯ ",
+        path_display = { "truncate" },
+        sorting_strategy = "ascending",
+        layout_config = {
+            horizontal = {
+                prompt_position = "top",
+                preview_width = 0.55,
+                results_width = 0.8,
+            },
+            vertical = {
+                mirror = false,
+            },
+            width = 0.87,
+            height = 0.87,
+            preview_cutoff = 120,
+        },
+        mappings = {
+            i = {
+                ["<C-n>"] = actions.cycle_history_next,
+                ["<C-p>"] = actions.cycle_history_prev,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+            },
+        },
     },
-}
+})
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "pylsp" }
+    ensure_installed = { "sumneko_lua", "pylsp" },
+})
+require("mason-null-ls").setup({
+    ensure_installed = { "stylua", "jq" },
+})
+require("mason-null-ls").setup_handlers({
+    function(source_name)
+        -- all sources with no handler get passed here
+    end,
+    stylua = function()
+        require("null-ls").register(require("null-ls").builtins.formatting.stylua)
+    end,
+    jq = function()
+        require("null-ls").register(require("null-ls").builtins.formatting.jq)
+    end,
+})
+require("null-ls").setup({
+    root_dir = require("null-ls.utils").root_pattern(".stylua.toml", ".null-ls-root", "Makefile", ".git"),
 })
 
-require("aorith.plugins.config.lsp")
-require("aorith.plugins.config.cmp")
-require("aorith.plugins.config.treesitter")
-require("aorith.plugins.config.whichkey")
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+require("neo-tree").setup({
+    close_if_last_window = false,
+    enable_diagnostics = true,
+    source_selector = {
+        winbar = true,
+        statusline = false,
+        content_layout = "center",
+    },
+    default_component_configs = {
+        indent = {
+            padding = 0,
+        },
+    },
+    window = {
+        position = "left",
+        width = 40,
+    },
+    filesystem = {
+        follow_current_file = true,
+        hijack_netrw_behavior = "open_current",
+        use_libuv_file_watcher = true,
+    },
+    buffers = {
+        follow_current_file = true,
+    },
+})
+
+require("window-picker").setup({
+    use_winbar = "smart",
+    autoselect_one = true,
+    include_current = false,
+    filter_rules = {
+        -- filter using buffer options
+        bo = {
+            -- if the file type is one of following, the window will be ignored
+            filetype = { "neo-tree", "neo-tree-popup", "notify", "quickfix" },
+
+            -- if the buffer type is one of following, the window will be ignored
+            buftype = { "terminal" },
+        },
+    },
+    other_win_hl_color = "#e35e4f",
+})
+
+-- rest of the configuration
+require("aorith.plugins.config")

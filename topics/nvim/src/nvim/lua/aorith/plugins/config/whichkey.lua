@@ -1,7 +1,7 @@
 local wk = require("which-key")
 
 wk.register({
-    e = { "<cmd>NvimTreeToggle<CR>", "FileExplorer" },
+    e = { "<cmd>Neotree toggle<CR>", "FileExplorer" },
     f = {
         name = "TELESCOPE",
         f = { "<cmd>Telescope find_files<CR>", "Find Files" },
@@ -28,7 +28,6 @@ wk.register({
             t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Get type definition" },
         },
     },
-},
-    {
-        prefix = "<leader>"
-    })
+}, {
+    prefix = "<leader>",
+})
