@@ -14,3 +14,4 @@ local inoremap = bind("i")
 
 nnoremap("<leader><TAB>", "<cmd>bnext<CR>")
 vnoremap("<leader>y", require("osc52").copy_visual)
+nnoremap("<leader>/", "<cmd>nohl<CR>")

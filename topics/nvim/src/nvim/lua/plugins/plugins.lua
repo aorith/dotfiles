@@ -2,11 +2,15 @@ require("packer").startup(function(use)
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
 
-    use("mhinz/vim-signify")
     use("fgsch/vim-varnish")
     use("sheerun/vim-polyglot")
     use("ojroques/nvim-osc52")
     use("psf/black")
+
+    use({
+        "lewis6991/gitsigns.nvim",
+        tag = "v0.5",
+    })
 
     use({
         "nvim-telescope/telescope.nvim",
@@ -63,11 +67,8 @@ require("packer").startup(function(use)
     })
 
     -- themes
-    use({ "jacoborus/tender.vim", opt = true })
     use({ "folke/tokyonight.nvim", opt = false })
-    use({ "joshdick/onedark.vim", opt = true })
     use({ "rebelot/kanagawa.nvim", opt = false })
-    use({ "sainnhe/gruvbox-material", opt = false })
     use({ "ellisonleao/gruvbox.nvim", opt = false })
 end)
 
@@ -104,6 +105,23 @@ require("telescope").setup({
     },
 })
 
+require("gitsigns").setup({
+    signs = {
+        add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+        change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+        delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    },
+    current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+        delay = 1000,
+        ignore_whitespace = true,
+    },
+})
+
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = { "sumneko_lua", "pylsp" },
@@ -127,4 +145,4 @@ require("null-ls").setup({
 })
 
 -- rest of the configuration
-require("aorith.plugins.config")
+require("plugins.config")

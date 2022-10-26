@@ -2,6 +2,11 @@ local wk = require("which-key")
 
 wk.register({
     e = { "<cmd>Neotree toggle<CR>", "FileExplorer" },
+    g = {
+        name = "GIT",
+        b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame lines" },
+        w = { "<cmd>Gitsigns toggle_word_diff<CR>", "Word diff" },
+    },
     f = {
         name = "TELESCOPE",
         f = { "<cmd>Telescope find_files<CR>", "Find Files" },
@@ -16,7 +21,7 @@ wk.register({
         l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show line diagnostics" },
         e = { "<cmd>Telescope diagnostics<CR>", "Find Diagnostics" },
         c = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Show code actions" },
-        f = { "<cmd>lua vim.lsp.buf.format { async = true }<CR>", "Format" },
+        f = { "<cmd>lua vim.lsp.buf.format { async = false }<CR>", "Format" },
         r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
         j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic" },
         k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic" },

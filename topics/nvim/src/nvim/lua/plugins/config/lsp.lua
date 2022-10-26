@@ -89,11 +89,30 @@ client_capabilities.textDocument.completion.completionItem.resolveSupport = {
 -- for nvim_cmp
 client_capabilities = require("cmp_nvim_lsp").default_capabilities(client_capabilities)
 
+-- Lsp Highlights
+local function lsp_highlight_document(client, bufnr)
+    if client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_exec(
+            [[
+            augroup lsp_document_highlight
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+            ]],
+            false
+        )
+    end
+end
+
 for server, config in pairs(servers) do
     if type(config) == "function" then
         config = config()
     end
-    config.on_attach = on_attach
     config.capabilities = vim.tbl_deep_extend("keep", config.capabilities or {}, client_capabilities)
+    config.on_attach = lsp_highlight_document
     lspconfig[server].setup(config)
 end
+
+-- To check current capabilities
+vim.cmd("command! CheckLspServerCapabilities :lua =vim.lsp.get_active_clients()[1].server_capabilities")
