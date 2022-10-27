@@ -1,63 +1,66 @@
+local opt = vim.opt
+local g = vim.g
+
 -- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
+-- leader
+g.mapleader = " "
+g.maplocalleader = " "
 
 vim.cmd([[
 filetype plugin indent on
 syntax enable
 ]])
 
-vim.opt.guicursor = ""
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.cindent = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-vim.opt.shiftround = true -- Round indent
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.wrap = false
-vim.opt.linebreak = true
-vim.opt.breakindent = false
-vim.opt.showbreak = "↳ "
-vim.opt.wrapscan = true
-vim.opt.timeoutlen = 250
-vim.opt.cmdheight = 1
-vim.opt.splitright = true
-vim.opt.mouse = "a"
-vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
-vim.opt.formatoptions = "jnlq"
-vim.opt.shortmess = "atToOFc" -- Prompt message options
-vim.opt.cursorline = true -- Highlight cursor line
-vim.opt.cursorlineopt = 'number'
-vim.opt.wildmode = { "list", "longest" } -- Command-line completion mode
-vim.opt.signcolumn = "yes:2" -- Show sign column - max N signs
+opt.termguicolors = true
+opt.number = true
+opt.relativenumber = true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.cindent = true
+opt.autoindent = true
+opt.smartindent = true
+opt.smarttab = true
+opt.hlsearch = true
+opt.incsearch = true
+opt.wrap = false
+opt.linebreak = true
+opt.breakindent = false
+opt.showbreak = "↳ "
+opt.wrapscan = true
+opt.timeoutlen = 250
+opt.cmdheight = 1
+opt.splitright = true
+opt.mouse = "a"
+opt.completeopt = { "menuone", "noinsert", "noselect" }
+opt.formatoptions = "jnlq"
+opt.shortmess = "atToOFc" -- Prompt message options
+opt.cursorline = true -- Highlight cursor line
+opt.cursorlineopt = "number"
+opt.wildmode = { "list", "longest" } -- Command-line completion mode
+opt.signcolumn = "yes:2" -- Show sign column - max N signs
 vim.cmd([[
     set cinkeys-=0# " dont indent '#'
     set indentkeys-=0#
 ]])
-vim.opt.updatetime = 400 -- For CursorHold and swapfile
-vim.opt.report = 0 -- Always report the number of lines changed after :command
+opt.updatetime = 400 -- For CursorHold and swapfile
+opt.report = 0 -- Always report the number of lines changed after :command
 
-vim.opt.ignorecase = true -- Ignore case
-vim.opt.smartcase = true -- Do not ignore case with capitals
+opt.ignorecase = true -- Ignore case
+opt.smartcase = true -- Do not ignore case with capitals
 
-vim.opt.scrolloff = 4 -- Lines of context
-vim.opt.sidescrolloff = 8 -- Columns of context
+opt.scrolloff = 4 -- Lines of context
+opt.sidescrolloff = 8 -- Columns of context
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+opt.swapfile = true
+opt.backup = true
+opt.undofile = true
 
-vim.opt.swapfile = true
-vim.opt.backup = true
-vim.opt.undofile = true
-
-vim.opt.fillchars:append({
+opt.fillchars:append({
     horiz = "━",
     horizup = "┻",
     horizdown = "┳",

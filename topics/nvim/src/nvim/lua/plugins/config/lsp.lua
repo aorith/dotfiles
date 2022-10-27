@@ -21,6 +21,10 @@ local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
 local servers = {
+    bashls = {},
+    gopls = {},
+    jsonls = {},
+    yamlls = {},
     sumneko_lua = {
         settings = {
             Lua = {

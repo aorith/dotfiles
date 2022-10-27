@@ -1,4 +1,5 @@
 local wk = require("which-key")
+wk.setup({})
 
 wk.register({
     e = { "<cmd>Neotree toggle<CR>", "FileExplorer" },
@@ -27,8 +28,9 @@ wk.register({
         k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic" },
         d = {
             name = "DEFINITIONS",
-            d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
-            c = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
+            d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+            c = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+            i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
             r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Find references" },
             t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Get type definition" },
         },
