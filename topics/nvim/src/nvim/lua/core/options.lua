@@ -15,15 +15,16 @@ syntax enable
 ]])
 
 opt.termguicolors = true
+opt.encoding = "utf-8"
 opt.number = true
 opt.relativenumber = true
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
-opt.cindent = true
-opt.autoindent = true
 opt.smartindent = true
+opt.autoindent = true
+opt.cindent = true
 opt.smarttab = true
 opt.hlsearch = true
 opt.incsearch = true
@@ -56,19 +57,21 @@ opt.smartcase = true -- Do not ignore case with capitals
 opt.scrolloff = 4 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
 
+opt.fillchars:append({
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┨",
+  vertright = "┣",
+  verthoriz = "╋",
+})
+
+opt.showmode = false -- don't show mode - it's shown in the statusline
+
 opt.swapfile = true
 opt.backup = true
 opt.undofile = true
-
-opt.fillchars:append({
-    horiz = "━",
-    horizup = "┻",
-    horizdown = "┳",
-    vert = "┃",
-    vertleft = "┨",
-    vertright = "┣",
-    verthoriz = "╋",
-})
 
 -- directory configuration
 vim.cmd([[
