@@ -2,6 +2,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 require("neo-tree").setup({
   close_if_last_window = false,
   enable_diagnostics = true,
+  enable_git_status = true,
   source_selector = {
     winbar = true,
     statusline = false,
@@ -11,10 +12,19 @@ require("neo-tree").setup({
     indent = {
       padding = 0,
     },
+    name = {
+      trailing_slash = true,
+      use_git_status_colors = false,
+    },
+    git_status = {
+      symbols = {
+        modified = "~", -- or ""
+      },
+    },
   },
   window = {
     position = "left",
-    width = 40,
+    width = 35,
   },
   filesystem = {
     follow_current_file = true,
