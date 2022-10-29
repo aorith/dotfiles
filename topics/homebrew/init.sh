@@ -49,6 +49,8 @@ formulae_packages=(
     "pylint"
     "ripgrep"
     "shellcheck"
+    "shfmt"
+    "stylua"
     "telnet"
     "tig"
     "tmux"
