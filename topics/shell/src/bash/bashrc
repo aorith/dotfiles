@@ -9,16 +9,25 @@ fi
 
 [[ -n "$PS1" ]] && [[ -n "$DOTFILES" ]] || return 0
 
+_source_bash_completion() {
+    [[ -e "$1" ]] || return
+    . "$1" 2>/dev/null
+}
 # bash completion
 for completion in /etc/bash_completion \
     /usr/share/bash-completion/bash_completion \
     /usr/local/etc/profile.d/bash_completion.sh \
     /usr/local/share/bash-completion/bash_completion
 do
-    [[ ! -e "$completion" ]] || \
-        . "$completion" 2>/dev/null
+    _source_bash_completion "$completion"
 done
+if [[ -d /opt/homebrew/etc/bash_completion.d ]]; then
+    for completion in /opt/homebrew/etc/bash_completion.d/*; do
+        _source_bash_completion "$completion"
+    done
+fi
 unset completion
+unset _source_bash_completion
 
 . "${DOTFILES}/topics/shell/etc/bash/aliases.bash"
 # source the auto-generated bash.env
