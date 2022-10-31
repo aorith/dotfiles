@@ -3,6 +3,6 @@
 my_brew_update() {
     brew update && \
         brew upgrade && \
-        brew upgrade --cask && \
+        brew upgrade --cask --greedy && \
         brew cleanup --prune=0
 }
