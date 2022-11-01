@@ -1,17 +1,21 @@
 -- disable virtual_text (inline) diagnostics and use floating window
--- format the message such that it shows source, message and
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   float = {
-    border = "double",
+    border = "single",
     format = function(diagnostic)
-      return string.format(
-        "%s (%s) [%s]",
-        diagnostic.message,
-        diagnostic.source,
-        diagnostic.code or diagnostic.user_data.lsp.code
-      )
+      -- custom format message
+      if diagnostic == nil then
+        return "No diagnostics."
+      end
+      local code = ""
+      if diagnostic.code ~= nil then
+        code = diagnostic.code
+      elseif diagnostic.user_data ~= nil then
+        code = (diagnostic.user_data.lsp or { code = "" }).code or ""
+      end
+      return string.format("%s (%s) [%s]", diagnostic.message, diagnostic.source, code)
     end,
   },
 })
