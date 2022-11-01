@@ -1,6 +1,6 @@
 -- disable virtual_text (inline) diagnostics and use floating window
 vim.diagnostic.config({
-  virtual_text = true,
+  virtual_text = false,
   signs = true,
   float = {
     border = "single",
