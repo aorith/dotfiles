@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 local config = {
   window_decorations = "RESIZE", -- RESIZE: don't show titlebar but allow resize
   cursor_blink_rate = 0, -- disable blinking
-  color_scheme = "kanagawabones",
+  --color_scheme = "kanagawabones",
   colors = {
     cursor_bg = "#52ad70",
     cursor_fg = "black",
@@ -27,6 +27,7 @@ config.hyperlink_rules = {
 
 config.keys = {
   { key = "n", mods = "CTRL|SHIFT", action = wezterm.action.SpawnWindow },
+  { key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
 
   -- fix ALT+Space writing 0xA0
   { key = "Space", mods = "ALT", action = wezterm.action.SendString(" ") },
