@@ -27,7 +27,6 @@ config.hyperlink_rules = {
 
 config.keys = {
   { key = "n", mods = "CTRL|SHIFT", action = wezterm.action.SpawnWindow },
-  { key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
 
   -- fix ALT+Space writing 0xA0
   { key = "Space", mods = "ALT", action = wezterm.action.SendString(" ") },
@@ -39,13 +38,13 @@ config.keys = {
 
   -- copy & paste
   { key = "v", mods = "SHIFT|CTRL", action = wezterm.action.PasteFrom("PrimarySelection") },
-  { key = "v", mods = "CMD", action = wezterm.action.PasteFrom("PrimarySelection") },
-  { key = "Insert", mods = "SHIFT", action = wezterm.action.PasteFrom("PrimarySelection") },
-  { key = "c", mods = "CMD", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
+  { key = "phys:Insert", mods = "SHIFT", action = wezterm.action.PasteFrom("PrimarySelection") },
 }
 
 -- TODO: implement this with wezterm mux
 local macos_tmux_keys = {
+  { key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
+
   { key = "w", mods = "CMD", action = wezterm.action.SendString("\x1bw") }, -- close pane/window
   { key = "t", mods = "CMD", action = wezterm.action.SendString("\x1bt") }, -- new pane
   { key = "T", mods = "CMD|SHIFT", action = wezterm.action.SendString("\x1bT") }, -- new session
@@ -80,6 +79,13 @@ local macos_tmux_keys = {
   { key = "u", mods = "CMD", action = wezterm.action.SendString("\x1bu") }, -- tmux open url
   { key = "i", mods = "CMD", action = wezterm.action.SendString("\x1bi") }, -- tmux server for
   { key = "p", mods = "CMD", action = wezterm.action.SendString("\x1bm") }, -- tmux & bitwarden
+  -- font size
+  { key = "+", mods = "CMD", action = wezterm.action.IncreaseFontSize },
+  { key = "-", mods = "CMD", action = wezterm.action.DecreaseFontSize },
+  { key = "0", mods = "CMD", action = wezterm.action.ResetFontSize },
+  -- copy & paste
+  { key = "v", mods = "CMD", action = wezterm.action.PasteFrom("PrimarySelection") },
+  { key = "c", mods = "CMD", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
 }
 
 if string.match(wezterm.target_triple, "darwin") then
