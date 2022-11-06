@@ -1,5 +1,9 @@
 # vim: ft=bash
 
+# MyPy
+create_link "${PWD}/src/mypy" "$HOME/.config/mypy"
+
+# PyENV
 [[ -n "$PYENV_ROOT" ]] || { echo "Missing 'PYENV_ROOT' variable."; exit 1; }
 
 _debian_deps() {
@@ -26,7 +30,7 @@ case $HOSTNAME in
     debian)
         _debian_deps
         ;;
-    *) 
+    *)
         if [[ -n "$_CONTAINER_NAME" ]]; then
             _clone_update_pyenv
         else

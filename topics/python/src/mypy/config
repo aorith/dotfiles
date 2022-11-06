@@ -1,0 +1,4 @@
+[mypy]
+show_error_context = True
+pretty = True
+cache_dir = $HOME/.local/share/mypy_cache
