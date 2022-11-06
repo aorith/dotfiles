@@ -35,6 +35,7 @@ return packer_bootstrap,
       use("wbthomason/packer.nvim")
 
       use("tpope/vim-surround") -- add, delete, change surroundings, ie: ysw" (surround word with ")
+      use("tpope/vim-fugitive")
       use("ojroques/nvim-osc52")
       use("fgsch/vim-varnish")
       use("psf/black")
@@ -58,6 +59,7 @@ return packer_bootstrap,
           require("nvim-treesitter.install").update({ with_sync = true })
         end,
       })
+      use({ "nvim-treesitter/nvim-treesitter-textobjects", after = { "nvim-treesitter" } }) -- Additional textobjects for treesitter
 
       use("hrsh7th/nvim-cmp")
       use("hrsh7th/cmp-nvim-lsp")

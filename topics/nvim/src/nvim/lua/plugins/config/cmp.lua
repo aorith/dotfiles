@@ -14,6 +14,13 @@ cmp.setup({
       mode = "symbol_text",
       maxwidth = 55,
       ellipsis_char = "...",
+      menu = {
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+      },
     }),
   },
   snippet = {

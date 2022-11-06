@@ -1,6 +1,9 @@
 local opt = vim.opt
 local g = vim.g
 
+-- TODO: neovim 0.9: https://github.com/neovim/neovim/commit/04fbb1de4488852c3ba332898b17180500f8984e
+-- :h diff  & enable linematch
+
 -- disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
@@ -30,7 +33,7 @@ opt.hlsearch = true
 opt.incsearch = true
 opt.wrap = false
 opt.linebreak = true
-opt.breakindent = false
+opt.breakindent = true
 opt.showbreak = "↳ "
 opt.wrapscan = true
 opt.timeoutlen = 250
@@ -43,7 +46,7 @@ opt.shortmess = "atToOFc" -- Prompt message options
 opt.cursorline = true -- Highlight cursor line
 opt.cursorlineopt = "number"
 opt.wildmode = { "list", "longest" } -- Command-line completion mode
-opt.signcolumn = "yes:2" -- Show sign column - max N signs
+opt.signcolumn = "yes:3" -- Show sign column - max N signs
 vim.cmd([[
     set cinkeys-=0# " dont indent '#'
     set indentkeys-=0#
@@ -82,6 +85,16 @@ set backupdir=~/.local/share/nvim/backup//
 set directory=~/.local/share/nvim/swap//
 ]])
 
+-- highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
+
 -- others
 vim.cmd([[
 " highligh extra whitespaces
@@ -94,9 +107,7 @@ augroup aorith_autocmds
     "autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax sync clear | endif
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO\|FIXME', -1)
 augroup end
-]])
 
-vim.cmd([[
 map <F1> <nop>
 map! <F1> <nop>
 command! W w
