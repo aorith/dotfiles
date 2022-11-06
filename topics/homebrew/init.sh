@@ -76,7 +76,7 @@ cask_packages=(
     "firefox"
     "flameshot"
     "font-dejavu"
-    "font-fira-code"
+    "font-fira-code-nerd-font"
     "font-hack-nerd-font"
     "font-jetbrains-mono-nerd-font"
     "font-noto-color-emoji"
