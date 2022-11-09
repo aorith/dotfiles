@@ -1,7 +1,12 @@
 local M = {}
 
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-M.capabilities = cmp_nvim_lsp.default_capabilities()
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+M.capabilities = vim.tbl_deep_extend("force", M.capabilities, cmp_nvim_lsp.default_capabilities())
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 M.setup = function()
@@ -77,6 +82,9 @@ M.on_attach = function(client, bufnr)
 	if client.server_capabilities.documentHighlightProvider then
 		lsp_highlight_document(bufnr)
 	end
+
+	local opts = { noremap = true, silent = true }
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 end
 
 return M

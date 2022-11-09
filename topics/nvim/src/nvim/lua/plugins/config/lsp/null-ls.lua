@@ -33,7 +33,7 @@ if exe_exists("shellcheck") then
 	table.insert(null_ls_sources, null_ls.builtins.code_actions.shellcheck)
 end
 if exe_exists("mypy") then
-	table.insert(null_ls_sources, diagnostics.mypy)
+	table.insert(null_ls_sources, diagnostics.mypy.with({ extra_args = { "--ignore-missing-imports" } }))
 end
 if exe_exists("black") then
 	table.insert(null_ls_sources, formatting.black)
