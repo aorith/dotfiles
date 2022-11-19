@@ -109,6 +109,8 @@ packer.startup(function(use)
 	use({ "folke/tokyonight.nvim", opt = false })
 	use({ "rebelot/kanagawa.nvim", opt = false })
 	use({ "ellisonleao/gruvbox.nvim", opt = false })
+	use({ "navarasu/onedark.nvim", opt = false })
+	use({ "sainnhe/everforest", opt = false })
 
 	if packer_bootstrap then
 		require("packer").sync()

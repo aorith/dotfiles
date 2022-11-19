@@ -4,10 +4,6 @@ local g = vim.g
 -- TODO: neovim 0.9: https://github.com/neovim/neovim/commit/04fbb1de4488852c3ba332898b17180500f8984e
 -- :h diff  & enable linematch
 
--- disable netrw
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-
 -- leader
 g.mapleader = " "
 g.maplocalleader = " "
@@ -51,7 +47,7 @@ vim.cmd([[
     set cinkeys-=0# " dont indent '#'
     set indentkeys-=0#
 ]])
-opt.updatetime = 400 -- For CursorHold and swapfile
+opt.updatetime = 320 -- For CursorHold and swapfile
 opt.report = 0 -- Always report the number of lines changed after :command
 
 opt.ignorecase = true -- Ignore case
@@ -85,29 +81,10 @@ set backupdir=~/.local/share/nvim/backup//
 set directory=~/.local/share/nvim/swap//
 ]])
 
--- highlight on yank
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
-})
-
 -- others
 vim.cmd([[
 " highligh extra whitespaces
 match ErrorMsg '\s\+$'
-augroup aorith_autocmds
-    autocmd!
-    " Last position without centered cursor
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-    " For large files
-    "autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax sync clear | endif
-    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO\|FIXME', -1)
-augroup end
-
 map <F1> <nop>
 map! <F1> <nop>
 command! W w
@@ -125,3 +102,30 @@ else
 	vim.g.python_host_prog = virtual_env_dir .. "/bin/python"
 	vim.g.python3_host_prog = virtual_env_dir .. "/bin/python"
 end
+
+-- Disable builtin plugins
+g.loaded_2html_plugin = 1
+g.loaded_bugreport = 1
+g.loaded_compiler = 1
+g.loaded_ftplugin = 1
+g.loaded_getscript = 1
+g.loaded_getscriptPlugin = 1
+g.loaded_gzip = 1
+g.loaded_logipat = 1
+g.loaded_matchit = 1
+g.loaded_netrw = 1
+g.loaded_netrwFileHandlers = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
+g.loaded_optwin = 1
+g.loaded_rplugin = 1
+g.loaded_rrhelper = 1
+g.loaded_spellfile_plugin = 1
+g.loaded_synmenu = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
+g.loaded_tutor = 1
+g.loaded_vimball = 1
+g.loaded_vimballPlugin = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
