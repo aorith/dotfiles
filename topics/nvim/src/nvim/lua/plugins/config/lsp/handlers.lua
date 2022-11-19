@@ -34,14 +34,13 @@ M.setup = function()
 		underline = true,
 		severity_sort = true,
 		float = {
-			focusable = true,
+			focusable = false,
 			format = custom_diagnostic_format,
 			style = "minimal",
 			border = "rounded",
 			source = "always",
 			header = "",
 			prefix = "",
-			-- width = 40,
 		},
 	}
 
@@ -83,8 +82,15 @@ M.on_attach = function(client, bufnr)
 		lsp_highlight_document(bufnr)
 	end
 
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+	-- Show line diagnostics automatically
+	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+		group = vim.api.nvim_create_augroup("lsp_show_diagnostics_hover", {}),
+		callback = function()
+			vim.diagnostic.open_float({ scope = "cursor" }, {})
+		end,
+	})
+
+	require("core.keymaps").lsp_keymaps(bufnr)
 end
 
 return M
