@@ -6,7 +6,6 @@
 ### bootstrap
 formulae_packages=(
     "ansible"
-    "autopep8"
     "bash"
     "bash-completion@2"
     "bat"
@@ -18,7 +17,6 @@ formulae_packages=(
     "diffutils"
     "fd"
     "findutils"
-    "flake8"
     "fzf"
     "gawk"
     "git"
@@ -39,18 +37,15 @@ formulae_packages=(
     "lesspipe"
     "moreutils"
     "mtr"
-    "mypy"
     "mysql-client" # required for python package mysql-client
     "neofetch"
     "neovim"
     "nmap"
     "p7zip"
     "pango" # required for python package cffi
-    "pylint"
     "ripgrep"
     "shellcheck"
     "shfmt"
-    "stylua"
     "telnet"
     "tig"
     "tmux"
