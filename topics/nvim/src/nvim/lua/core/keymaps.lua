@@ -2,16 +2,15 @@ local _M = {}
 
 function _M.setup()
 	local km = vim.keymap
-	km.set("n", "<leader><TAB>", "<cmd>bnext<CR>")
+	km.set("n", "<leader><TAB>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 
 	-- osc52 copy
-	km.set("n", "<leader>c", require("osc52").copy_operator, { expr = true })
-	km.set("x", "<leader>y", require("osc52").copy_visual)
-	km.set("n", "<leader>y", "<leader>c_", { remap = true }) -- copy current line
+	km.set("n", "<leader>c", require("osc52").copy_operator, { expr = true, desc = "Osc52 copy operator" })
+	km.set("x", "<leader>y", require("osc52").copy_visual, { desc = "Osc52 copy visual selection" })
+	km.set("n", "<leader>y", "<leader>c_", { remap = true, desc = "Osc52 copy current line" })
 
-	km.set("n", "<leader>/", "<cmd>nohl<CR>")
-	-- avoid 'x' copying to the register
-	km.set("n", "x", '"_x')
+	km.set("n", "<leader>/", "<cmd>nohl<CR>", { desc = "Disable current highligh (nohl)" })
+	km.set("n", "x", '"_x', { desc = "Avoid 'x' copying to the register" })
 
 	-- Neotree
 	km.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "File Explorer" })

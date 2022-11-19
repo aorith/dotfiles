@@ -3,16 +3,19 @@ wk.setup({})
 
 wk.register({
 	g = {
-		name = "GIT",
+		name = "Git",
 	},
 	f = {
-		name = "TELESCOPE",
+		name = "Telescope",
 	},
 	l = {
-		name = "LSP",
+		name = "Lsp",
 		g = {
 			name = "GO TO",
 		},
+	},
+	w = {
+		name = "Workspaces",
 	},
 }, {
 	prefix = "<leader>",
