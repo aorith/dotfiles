@@ -20,8 +20,10 @@ function _M.setup()
 	km.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
 	km.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", { desc = "Find diagnostics" })
 	km.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
+	km.set("n", "<leader>fF", "<cmd>Telescope git_files<CR>", { desc = "Find git files" })
 	km.set("n", "<leader>fG", "<cmd>Telescope live_grep<CR>", { desc = "Grep all" })
 	km.set("n", "<leader>fg", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Grep buffer" })
+	km.set("n", "<leader>fo", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
 
 	-- Git
 	km.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle blame" })
@@ -43,6 +45,13 @@ function _M.lsp_keymaps(bufnr)
 	keymap("n", "<leader>lk", vim.diagnostic.goto_prev, "Prev diagnostic")
 	keymap("n", "<leader>lr", vim.lsp.buf.rename, "Rename")
 	keymap("n", "<leader>ls", vim.lsp.buf.signature_help, "Signature")
+
+	-- Workspace
+	keymap("n", "<space>wa", vim.lsp.buf.add_workspace_folder, "Add workspace")
+	keymap("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, "Remove workspace")
+	keymap("n", "<space>wl", function()
+		dumpp(vim.lsp.buf.list_workspace_folders())
+	end, "List workspaces")
 
 	-- Go to
 	keymap("n", "<leader>lgc", vim.lsp.buf.declaration, "Declaration")
