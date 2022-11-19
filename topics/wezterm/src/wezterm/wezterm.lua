@@ -37,9 +37,9 @@ config.keys = {
 	{ key = "Space", mods = "ALT", action = wezterm.action.SendString(" ") },
 
 	-- font size
-	{ key = "+", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
-	{ key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
-	{ key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
+	{ key = "+", mods = "SUPER", action = wezterm.action.IncreaseFontSize },
+	{ key = "-", mods = "SUPER", action = wezterm.action.DecreaseFontSize },
+	{ key = "0", mods = "SUPER", action = wezterm.action.ResetFontSize },
 
 	-- copy & paste
 	{ key = "v", mods = "SHIFT|CTRL", action = wezterm.action.PasteFrom("PrimarySelection") },
