@@ -83,7 +83,7 @@ M.on_attach = function(client, bufnr)
 	end
 
 	-- Show line diagnostics automatically
-	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	vim.api.nvim_create_autocmd({ "CursorHold" }, {
 		group = vim.api.nvim_create_augroup("lsp_show_diagnostics_hover", {}),
 		callback = function()
 			vim.diagnostic.open_float({ scope = "cursor" }, {})

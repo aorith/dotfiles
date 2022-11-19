@@ -19,7 +19,6 @@ local char_under_cursor = {
 
 require("lualine").setup({
   options = {
-    theme = "kanagawa",
     globalstatus = true,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },

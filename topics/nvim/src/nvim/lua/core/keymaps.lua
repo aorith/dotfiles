@@ -38,7 +38,11 @@ function _M.lsp_keymaps(bufnr)
 	keymap("n", "<leader>lf", vim.lsp.buf.format, "Format")
 	keymap("n", "<leader>lh", vim.lsp.buf.hover, "Hover")
 	keymap("n", "<leader>ll", vim.diagnostic.open_float, "Line diagnostics")
+	keymap("n", "<leader>lq", vim.diagnostic.setloclist, "Set Loc List")
+	keymap("n", "<leader>lj", vim.diagnostic.goto_next, "Next diagnostic")
+	keymap("n", "<leader>lk", vim.diagnostic.goto_prev, "Prev diagnostic")
 	keymap("n", "<leader>lr", vim.lsp.buf.rename, "Rename")
+	keymap("n", "<leader>ls", vim.lsp.buf.signature_help, "Signature")
 
 	-- Go to
 	keymap("n", "<leader>lgc", vim.lsp.buf.declaration, "Declaration")
