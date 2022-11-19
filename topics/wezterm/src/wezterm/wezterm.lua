@@ -8,7 +8,8 @@ end
 local config = {
 	window_decorations = "RESIZE", -- RESIZE: don't show titlebar but allow resize
 	cursor_blink_rate = 0, -- disable blinking
-	color_scheme = "GitHub Dark",
+	-- color_scheme = "GitHub Dark",
+	color_scheme = "OneDark (base16)",
 	colors = {
 		cursor_bg = "#52ad70",
 		cursor_fg = "black",
