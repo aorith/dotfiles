@@ -1,17 +1,17 @@
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
 })
 
 -- Don't auto commenting new lines
 vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "",
-	command = "set fo-=c fo-=r fo-=o",
+  pattern = "",
+  command = "set fo-=c fo-=r fo-=o",
 })
 
 vim.cmd([[

@@ -29,7 +29,7 @@ require("nvim-treesitter.configs").setup({
   -- List of parsers to ignore installing (for "all")
   ignore_install = {},
 
-  indent = { enable = false },
+  indent = { enable = true },
   autotag = { enable = true },
 
   highlight = {

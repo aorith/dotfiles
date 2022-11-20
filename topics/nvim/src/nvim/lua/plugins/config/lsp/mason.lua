@@ -1,7 +1,7 @@
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 
-local servers = { "sumneko_lua", "pyright", "bashls", "gopls", "jsonls", "tflint", "yamlls", "html", "cssls" }
+local servers = { "sumneko_lua", "pyright", "bashls", "gopls", "jsonls", "tflint", "yamlls", "html", "cssls", "tsserver" }
 
 local settings = {
   ui = {

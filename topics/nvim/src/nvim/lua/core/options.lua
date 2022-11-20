@@ -18,7 +18,7 @@ opt.encoding = "utf-8"
 opt.number = true
 opt.relativenumber = true
 opt.tabstop = 4
-opt.softtabstop = 4
+opt.softtabstop = -1
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.smartindent = true
@@ -57,13 +57,13 @@ opt.scrolloff = 4 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
 
 opt.fillchars:append({
-	horiz = "━",
-	horizup = "┻",
-	horizdown = "┳",
-	vert = "┃",
-	vertleft = "┨",
-	vertright = "┣",
-	verthoriz = "╋",
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┨",
+  vertright = "┣",
+  verthoriz = "╋",
 })
 
 opt.showmode = false -- don't show mode - it's shown in the statusline
@@ -94,13 +94,13 @@ command! Q q
 -- python3
 local virtual_env_dir = vim.fn.getenv("HOME") .. "/.local/venvs/nvim"
 if vim.fn.empty(vim.fn.glob(virtual_env_dir)) > 0 then
-	vim.notify(
-		"nvim virtual-env not present ('" .. virtual_env_dir .. "'), create it with 'py-env nvim' and install pynvim.",
-		vim.log.levels.WARN
-	)
+  vim.notify(
+    "nvim virtual-env not present ('" .. virtual_env_dir .. "'), create it with 'py-env nvim' and install pynvim.",
+    vim.log.levels.WARN
+  )
 else
-	vim.g.python_host_prog = virtual_env_dir .. "/bin/python"
-	vim.g.python3_host_prog = virtual_env_dir .. "/bin/python"
+  vim.g.python_host_prog = virtual_env_dir .. "/bin/python"
+  vim.g.python3_host_prog = virtual_env_dir .. "/bin/python"
 end
 
 -- Disable builtin plugins
