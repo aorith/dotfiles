@@ -15,7 +15,7 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 mason_null_ls.setup({
-  ensure_installed = { "jq", "prettier", "shellcheck", "shfmt", "black", "mypy", "flake8" },
+  ensure_installed = { "jq", "prettier", "shellcheck", "shfmt", "black", "mypy", "flake8", "isort" },
   automatic_installation = true,
 })
 
