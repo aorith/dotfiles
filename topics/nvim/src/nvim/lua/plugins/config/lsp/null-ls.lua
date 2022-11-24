@@ -13,24 +13,29 @@ end
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
+local code_actions = null_ls.builtins.code_actions
 
 mason_null_ls.setup({
-  ensure_installed = { "jq", "prettier", "shellcheck", "shfmt", "black", "mypy", "flake8", "isort" },
+  ensure_installed = { "jq", "prettier", "shellcheck", "shfmt", "black", "mypy", "flake8", "isort", "selene" },
   automatic_installation = true,
 })
 
 -- Null-Ls sources
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 local null_ls_sources = {
-  null_ls.builtins.code_actions.gitsigns,
-  null_ls.builtins.code_actions.refactoring,
-  null_ls.builtins.diagnostics.todo_comments,
-  null_ls.builtins.diagnostics.trail_space,
+  code_actions.gitsigns,
+  code_actions.refactoring,
+  diagnostics.todo_comments,
+  diagnostics.trail_space,
   null_ls.builtins.hover.printenv,
   null_ls.builtins.hover.dictionary,
 }
+if exe_exists("selene") then
+  table.insert(null_ls_sources, diagnostics.selene)
+end
 if exe_exists("shellcheck") then
-  table.insert(null_ls_sources, null_ls.builtins.code_actions.shellcheck)
+  table.insert(null_ls_sources, code_actions.shellcheck)
+  table.insert(null_ls_sources, diagnostics.shellcheck)
 end
 if exe_exists("mypy") then
   table.insert(null_ls_sources, diagnostics.mypy.with({ extra_args = { "--ignore-missing-imports" } }))
