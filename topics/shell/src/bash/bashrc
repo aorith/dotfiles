@@ -14,6 +14,8 @@ _source_bash_completion() {
     . "$1" 2>/dev/null
 }
 # bash completion
+_source_bash_completion /opt/homebrew/etc/profile.d/bash_completion.sh
+
 for completion in /etc/bash_completion \
     /usr/share/bash-completion/bash_completion \
     /usr/local/etc/profile.d/bash_completion.sh \
