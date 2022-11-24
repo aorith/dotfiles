@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 if ! type add_to_path &>/dev/null; then
-    [[ -n "$DOTFILES" ]] || . ~/.profile
+    [[ -n "$DOTFILES" ]] || . "${HOME}/.profile"
     set -a
     . "${DOTFILES}/topics/shell/etc/bash/functions.bash"
     set +a
@@ -9,27 +9,20 @@ fi
 
 [[ -n "$PS1" ]] && [[ -n "$DOTFILES" ]] || return 0
 
-_source_bash_completion() {
-    [[ -e "$1" ]] || return
-    . "$1" 2>/dev/null
-}
 # bash completion
-_source_bash_completion /opt/homebrew/etc/profile.d/bash_completion.sh
+if [[ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]]; then
+    add_to_path /opt/homebrew/bin
+    . /opt/homebrew/etc/profile.d/bash_completion.sh
+fi
 
 for completion in /etc/bash_completion \
     /usr/share/bash-completion/bash_completion \
     /usr/local/etc/profile.d/bash_completion.sh \
     /usr/local/share/bash-completion/bash_completion
 do
-    _source_bash_completion "$completion"
+    [[ ! -f "$completion" ]] || . "$completion"
 done
-if [[ -d /opt/homebrew/etc/bash_completion.d ]]; then
-    for completion in /opt/homebrew/etc/bash_completion.d/*; do
-        _source_bash_completion "$completion"
-    done
-fi
 unset completion
-unset _source_bash_completion
 
 . "${DOTFILES}/topics/shell/etc/bash/aliases.bash"
 # source the auto-generated bash.env
@@ -37,4 +30,4 @@ unset _source_bash_completion
 # source bash prompt
 . "${DOTFILES}/topics/shell/etc/bash/prompt.bash"
 # source local alias/functions ...
-[[ ! -e "${HOME}/.shell_local" ]] || . "${HOME}/.shell_local"
+[[ ! -f "${HOME}/.shell_local" ]] || . "${HOME}/.shell_local"
