@@ -30,9 +30,12 @@ local null_ls_sources = {
   null_ls.builtins.hover.printenv,
   null_ls.builtins.hover.dictionary,
 }
+--[[
 if exe_exists("selene") then
   table.insert(null_ls_sources, diagnostics.selene)
 end
+]]
+
 if exe_exists("shellcheck") then
   table.insert(null_ls_sources, code_actions.shellcheck)
   table.insert(null_ls_sources, diagnostics.shellcheck)

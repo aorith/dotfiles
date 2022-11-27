@@ -105,6 +105,9 @@ packer.startup(function(use)
   -- icons for LSP completion
   use("onsails/lspkind.nvim")
 
+  -- undotree
+  use("mbbill/undotree")
+
   -- themes
   use({ "folke/tokyonight.nvim", opt = false })
   use({ "rebelot/kanagawa.nvim", opt = false })

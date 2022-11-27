@@ -15,6 +15,9 @@ function _M.setup()
   -- Neotree
   km.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "File Explorer" })
 
+  -- Undotree
+  km.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undotree" })
+
   -- Telescope
   km.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
   km.set("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", { desc = "Find diagnostics" })
