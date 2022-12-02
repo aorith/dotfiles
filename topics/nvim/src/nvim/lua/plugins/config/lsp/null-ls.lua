@@ -62,7 +62,7 @@ if exe_exists("jq") then
   table.insert(null_ls_sources, formatting.jq)
 end
 if exe_exists("shfmt") then
-  table.insert(null_ls_sources, formatting.shfmt)
+  table.insert(null_ls_sources, formatting.shfmt.with({ extra_args = { "--indent", "4" } }))
 end
 
 null_ls.setup({
