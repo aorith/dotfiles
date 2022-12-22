@@ -35,7 +35,7 @@ packer.startup(function(use)
   use("tpope/vim-surround") -- add, delete, change surroundings, ie: ysw" (surround word with ")
   use("tpope/vim-fugitive")
   use("ojroques/nvim-osc52")
-  use("fgsch/vim-varnish")
+  use("varnishcache-friends/vim-varnish")
   use("psf/black")
 
   use({
