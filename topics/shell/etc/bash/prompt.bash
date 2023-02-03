@@ -85,7 +85,7 @@ __prompt_command() {
     if [[ -w "${PWD}" ]]; then
         wdc="${my_cyn}$(
             p=${PWD/#"$HOME"/'~'}
-            ((${#p} > 20)) && echo "${p::8}…${p:(-12)}" || echo "\w"
+            ((${#p} > 27)) && echo "${p::10} … ${p:(-16)}" || echo "\w"
         )"
     else
         wdc="${my_red2}\w"
