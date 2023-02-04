@@ -40,7 +40,7 @@ case $HOSTNAME in
 esac
 
 ### bootstrap
-version="3.10.6"
+version="3.10.8"
 # pyenv install --list  # check python versions
 # pyenv install 3.8.6  # install 3.8
 # pyenv global 3.8.6  # make it global
