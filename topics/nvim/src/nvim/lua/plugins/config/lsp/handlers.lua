@@ -78,6 +78,12 @@ local lsp_highlight_document = function(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+  -- disable formatting to null-ls takes care
+  if client.name == "sumneko_lua" then
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end
+
   if client.server_capabilities.documentHighlightProvider then
     lsp_highlight_document(bufnr)
   end
@@ -86,6 +92,12 @@ M.on_attach = function(client, bufnr)
   vim.api.nvim_create_autocmd({ "CursorHold" }, {
     group = vim.api.nvim_create_augroup("lsp_show_diagnostics_hover", {}),
     callback = function()
+      -- do not open diag if another float is present
+      for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+        if vim.api.nvim_win_get_config(winid).zindex then
+          return
+        end
+      end
       vim.diagnostic.open_float({ scope = "cursor" }, {})
     end,
   })

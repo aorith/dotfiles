@@ -1,17 +1,7 @@
 local opt = vim.opt
-local g = vim.g
 
 -- TODO: neovim 0.9: https://github.com/neovim/neovim/commit/04fbb1de4488852c3ba332898b17180500f8984e
 -- :h diff  & enable linematch
-
--- leader
-g.mapleader = " "
-g.maplocalleader = " "
-
-vim.cmd([[
-filetype plugin indent on
-syntax enable
-]])
 
 opt.termguicolors = true
 opt.encoding = "utf-8"
@@ -36,7 +26,7 @@ opt.timeoutlen = 250
 opt.cmdheight = 1
 opt.splitright = true
 opt.mouse = "a"
-opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = { "menuone", "noselect" }
 opt.formatoptions = "jnlq"
 opt.shortmess = "atToOFc" -- Prompt message options
 opt.cursorline = true -- Highlight cursor line
@@ -102,26 +92,3 @@ else
   vim.g.python_host_prog = virtual_env_dir .. "/bin/python"
   vim.g.python3_host_prog = virtual_env_dir .. "/bin/python"
 end
-
--- Disable builtin plugins
-g.loaded_2html_plugin = 1
-g.loaded_bugreport = 1
-g.loaded_compiler = 1
-g.loaded_ftplugin = 1
-g.loaded_gzip = 1
-g.loaded_netrw = 1
-g.loaded_netrwFileHandlers = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwSettings = 1
-g.loaded_optwin = 1
-g.loaded_rplugin = 1
-g.loaded_rrhelper = 1
-g.loaded_spellfile_plugin = 1
-g.loaded_synmenu = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_tutor = 1
-g.loaded_vimball = 1
-g.loaded_vimballPlugin = 1
-g.loaded_zip = 1
-g.loaded_zipPlugin = 1

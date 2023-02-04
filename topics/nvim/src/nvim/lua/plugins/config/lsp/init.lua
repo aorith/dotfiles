@@ -1,7 +1,3 @@
-require("plugins.config.lsp.handlers").setup()
-require("plugins.config.lsp.mason")
-require("plugins.config.lsp.null-ls")
-
 local _M = {}
 
 _M.custom_server_capabilities = function()

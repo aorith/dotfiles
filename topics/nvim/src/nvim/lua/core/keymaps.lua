@@ -30,6 +30,14 @@ function _M.setup()
   -- Git
   km.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle blame" })
   km.set("n", "<leader>gw", "<cmd>Gitsigns toggle_word_diff<CR>", { desc = "Toggle word diff" })
+  km.set("n", "<leader>gd", "<cmd>DiffviewFileHistory %<CR>", { desc = "Diffview current's file history" })
+  km.set("n", "<leader>gD", "<cmd>DiffviewFileHistory<CR>", { desc = "Diffview all files history" })
+
+  -- Get highlight group under cursor
+  km.set("n", "<C-e>", function()
+    local result = vim.treesitter.get_captures_at_cursor(0)
+    print(vim.inspect(result))
+  end, { desc = "highlight group under cursor" })
 end
 
 function _M.lsp_keymaps(bufnr)
@@ -39,7 +47,9 @@ function _M.lsp_keymaps(bufnr)
   end
 
   keymap("n", "<leader>lc", vim.lsp.buf.code_action, "Code actions")
-  keymap("n", "<leader>lf", vim.lsp.buf.format, "Format")
+  keymap("n", "<leader>lf", function()
+    vim.lsp.buf.format({ timeout_ms = 3000 })
+  end, "Format")
   keymap("n", "<leader>lh", vim.lsp.buf.hover, "Hover")
   keymap("n", "<leader>ll", vim.diagnostic.open_float, "Line diagnostics")
   keymap("n", "<leader>lq", vim.diagnostic.setloclist, "Set Loc List")
