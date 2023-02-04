@@ -1,23 +1,19 @@
 #background_opacity: 0.90
 env:
-  TERM: xterm-256color
+  TERM: alacritty
 
 window:
-  dimensions:
-    columns: 110
-    lines: 35
-  dynamic_padding: true
   padding:
-    x: 4
-    y: 4
+    x: 7
+    y: 7
 
 scrolling:
   history: 1000
 
 bell:
   animation: EaseOutExpo
-  duration: 100
-  color: '#990000'
+  duration: 10
+  color: '#777777'
 
 selection:
   save_to_clipboard: true
@@ -29,15 +25,15 @@ cursor:
     shape: Block
 
 mouse:
-  hide_when_typing: true
+  hide_when_typing: false
 
 import:
   - ~/.config/alacritty/env.yml
   - ~/.config/alacritty/theme.yml
 
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 colors:
   cursor:
     custom_cursor_color: true
-    text: '0x000000'
-    cursor: '0xC9C434'
+    text: '#000000'
+    cursor: '#3abf36'
