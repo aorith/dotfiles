@@ -97,7 +97,7 @@ wezterm.on("fzf-search-scrollback", function(window, pane)
   if filename == nil then
     return
   end
-  local args = { "bash", "-lic", "fzf < " .. filename }
+  local args = { "bash", "-lic", "fzf < '" .. filename .. "' | $CLIPBOARD_COPY"}
   open_in_zoomed_split(window, pane, args)
 end)
 
