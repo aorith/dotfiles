@@ -72,6 +72,8 @@ key_bindings:
   - { key: N, mods: Command, chars: "\x1bn" } # cycle panes
   - { key: Z, mods: Command, chars: "\x1bz" } # toggle zoom (maximize pane)
   - { key: F, mods: Command, chars: "\x1bf" } # search
+  - { key: F, mods: Command|Shift, chars: "\x1bF" } # fzf search
+  - { key: E, mods: Command|Shift, chars: "\x1bE" } # open in nvim
   - { key: U, mods: Command, chars: "\x1bu" } # tmux open url
   - { key: I, mods: Command, chars: "\x1bi" } # tmux server for
   - { key: P, mods: Command, chars: "\x1bm" } # tmux & bitwarden
