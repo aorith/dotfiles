@@ -7,34 +7,45 @@ local function font_with_fallback(name, params)
 end
 
 local config = {
-  status_update_interval = 900,
+  status_update_interval = 800,
 
   window_decorations = "RESIZE", -- RESIZE: don't show titlebar but allow resize
-  cursor_blink_rate = 800,
+  cursor_blink_rate = 0,
   enable_scroll_bar = true,
-  scrollback_lines = 350000,
+  scrollback_lines = 250000,
   min_scroll_bar_height = "2cell",
 
   --color_scheme = "One Light (base16)",
   --color_scheme = "OneDark (base16)",
   color_scheme = "Gruvbox dark, hard (base16)",
-  --color_scheme = "mylight",
+  --color_scheme = "Catppuccin Mocha",
+  -- color_scheme = "mylight",
 
   font_size = 19.0,
-  font = font_with_fallback("Hack Nerd Font"),
+  font = font_with_fallback("IosevkaTerm Nerd Font Mono"),
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- --> disable ligadures
 
   window_frame = {
-    font_size = 16.0,
-    font = wezterm.font("Hack Nerd Font"),
+    font_size = 19.0,
+    font = font_with_fallback("IosevkaTerm Nerd Font", { weight = "ExtraBold", stretch = "Normal" }),
     active_titlebar_bg = "#333333",
     inactive_titlebar_bg = "#333333",
   },
 
   colors = {
     scrollbar_thumb = "grey",
+    tab_bar = {
+      inactive_tab_edge = "#333333",
+    },
   },
 
+  inactive_pane_hsb = {
+    saturation = 0.8,
+    brightness = 0.8,
+  },
+  window_background_opacity = 0.95,
+
+  use_fancy_tab_bar = true,
   hide_tab_bar_if_only_one_tab = false,
   show_new_tab_button_in_tab_bar = false,
   adjust_window_size_when_changing_font_size = false,

@@ -1,5 +1,9 @@
 local wezterm = require("wezterm")
 
+local function basename(s)
+  return string.gsub(s, "(.*[/\\])(.*)", "%2")
+end
+
 local dump_scrollback_to_file = function(window, pane, full)
   local scrollback
   if full then
@@ -32,50 +36,43 @@ local open_in_zoomed_split = function(window, pane, args)
   window:perform_action("TogglePaneZoomState", pane)
 end
 
-wezterm.on("update-right-status", function(window, pane)
+wezterm.on("update-status", function(window, pane)
+  window:set_left_status(wezterm.format({
+    { Background = { Color = "#333333" } },
+    { Foreground = { Color = "orange" } },
+    { Text = " " .. window:active_workspace() .. " " },
+  }))
+
   local dim = pane:get_dimensions()
   window:set_right_status(wezterm.format({
+    { Background = { Color = "#333333" } },
     { Attribute = { Underline = "Single" } },
     { Attribute = { Italic = true } },
     { Text = pane:get_title() },
     { Foreground = { Color = "grey" } },
     { Text = " " .. dim.scrollback_rows .. "L " },
-    { Foreground = { Color = "orange" } },
-    { Text = window:active_workspace() .. " " },
   }))
 end)
 
-local function basename(s)
-  return string.gsub(s, "(.*[/\\])(.*)", "%2")
-end
+local HEADING_COLOR = { "#ffb2cc", "#a4a4a4" }
+local BG_COLOR = { "#111111", "#333333" }
+local FONT_COLOR = { "#ffffff", "#aaaaaa" }
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local background = "#333333"
-  local foreground = "#808080"
+  local active_idx = tab.is_active and 1 or 2
 
-  if tab.is_active then
-    background = "#333333"
-    foreground = "#f0f0f0"
-  elseif hover then
-    background = "#3b3052"
-    foreground = "#909090"
-  end
-
-  local index = " " .. tab.tab_index + 1 .. ": "
+  local index = " " .. tab.tab_index + 1 .. " "
+  local zoomed = tab.active_pane.is_zoomed and "🔎 " or ""
   local title = basename(tab.active_pane.foreground_process_name)
 
-  if tab.active_pane.is_zoomed then
-    title = "[Z]" .. title
-    foreground = "Yellow"
-  end
-
   return {
-    { Background = { Color = background } },
-    { Foreground = { Color = foreground } },
-    { Attribute = { Intensity = "Bold" } },
-    { Text = index },
+    { Background = { Color = BG_COLOR[active_idx] } },
+    { Foreground = { Color = HEADING_COLOR[active_idx] } },
+    { Text = index .. zoomed },
+    { Foreground = { Color = FONT_COLOR[active_idx] } },
+    { Attribute = { Intensity = "Half" } },
+    { Text = title },
     "ResetAttributes",
-    { Text = title .. " " },
   }
 end)
 
@@ -97,7 +94,7 @@ wezterm.on("fzf-search-scrollback", function(window, pane)
   if filename == nil then
     return
   end
-  local args = { "bash", "-lic", "fzf < '" .. filename .. "' | $CLIPBOARD_COPY"}
+  local args = { "bash", "-lic", "fzf < '" .. filename .. "' | $CLIPBOARD_COPY" }
   open_in_zoomed_split(window, pane, args)
 end)
 
