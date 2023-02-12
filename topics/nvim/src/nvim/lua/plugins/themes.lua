@@ -5,8 +5,7 @@ local themes = {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
   {
@@ -15,7 +14,23 @@ local themes = {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme kanagawa]])
+      vim.cmd.colorscheme("kanagawa")
+    end,
+  },
+  {
+    "mcchrish/zenbones.nvim",
+    dependencies = {
+      { "rktjmp/lush.nvim", lazy = false },
+    },
+    enabled = false,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[
+      let g:zenbones_compat = 1
+      set background=light
+      ]])
+      vim.cmd.colorscheme("zenbones")
     end,
   },
 }

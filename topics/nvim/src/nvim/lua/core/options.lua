@@ -3,6 +3,10 @@ local opt = vim.opt
 -- TODO: neovim 0.9: https://github.com/neovim/neovim/commit/04fbb1de4488852c3ba332898b17180500f8984e
 -- :h diff  & enable linematch
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 opt.termguicolors = true
 opt.encoding = "utf-8"
 opt.number = true

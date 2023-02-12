@@ -1,6 +1,6 @@
 return {
   { "nvim-lua/plenary.nvim" },
-  { "kyazdani42/nvim-web-devicons" },
+  { "nvim-tree/nvim-web-devicons" },
   { "onsails/lspkind.nvim" }, -- icons LSP completion
   { "mbbill/undotree" },
   { "tpope/vim-surround" }, -- add, delete, change surroundings, ie: ysw" (surround word with ")

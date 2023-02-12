@@ -12,8 +12,8 @@ function _M.setup()
   km.set("n", "<leader>/", "<cmd>nohl<CR>", { desc = "Disable current highligh (nohl)" })
   km.set("n", "x", '"_x', { desc = "Avoid 'x' copying to the register" })
 
-  -- Neotree
-  km.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "File Explorer" })
+  -- Explorer
+  km.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "File Explorer" })
 
   -- Undotree
   km.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undotree" })

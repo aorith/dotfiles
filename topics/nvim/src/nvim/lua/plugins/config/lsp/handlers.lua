@@ -109,9 +109,10 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentRangeFormattingProvider = false
   end
 
-  if client.server_capabilities.documentHighlightProvider then
-    lsp_highlight_document(bufnr)
-  end
+  -- highlight context under cursor
+  --if client.server_capabilities.documentHighlightProvider then
+  --  lsp_highlight_document(bufnr)
+  --end
 
   -- Show line diagnostics automatically
   vim.api.nvim_create_autocmd({ "CursorHold" }, {
