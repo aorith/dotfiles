@@ -86,7 +86,7 @@ command! Q q
 ]])
 
 -- python3
-local virtual_env_dir = vim.fn.getenv("HOME") .. "/.local/venvs/nvim"
+local virtual_env_dir = vim.env.HOME .. "/.local/venvs/nvim"
 if vim.fn.empty(vim.fn.glob(virtual_env_dir)) > 0 then
   vim.notify(
     "nvim virtual-env not present ('" .. virtual_env_dir .. "'), create it with 'py-env nvim' and install pynvim.",

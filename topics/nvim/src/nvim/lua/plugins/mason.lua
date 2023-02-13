@@ -10,6 +10,14 @@ return {
 
       local servers = require("plugins.config.lsp.servers")
       local server_names = vim.tbl_keys(servers)
+      local ensure_installed = {}
+      for _, k in pairs(server_names) do
+        if k == "sumneko_lua" then
+          table.insert(ensure_installed, "lua_ls")
+        else
+          table.insert(ensure_installed, k)
+        end
+      end
 
       mason.setup({
         ui = {
@@ -20,7 +28,7 @@ return {
       })
 
       mason_lspconfig.setup({
-        ensure_installed = server_names,
+        ensure_installed = ensure_installed,
         automatic_installation = true,
       })
 
