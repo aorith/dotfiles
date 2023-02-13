@@ -74,6 +74,7 @@ cask_packages=(
     "font-fira-code-nerd-font"
     "font-hack-nerd-font"
     "font-jetbrains-mono-nerd-font"
+    "font-monoid-nerd-font"
     "font-noto-color-emoji"
     "font-sauce-code-pro-nerd-font"
     "gimp"
