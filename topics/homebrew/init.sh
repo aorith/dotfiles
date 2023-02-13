@@ -33,6 +33,8 @@ formulae_packages=(
     "ipython"
     "java"
     "jq"
+    "koekeishiya/formulae/skhd"
+    "koekeishiya/formulae/yabai"
     "less"
     "lesspipe"
     "moreutils"
