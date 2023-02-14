@@ -10,15 +10,13 @@ font:
   builtin_box_drawing: true
 
   normal:
-    family: "Hack Nerd Font"
-
-draw_bold_text_with_bright_colors: false
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Regular
 
 key_bindings:
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
   - { key: N, mods: Command|Shift, action: SpawnNewInstance }
-  - { key: Space, mods: Shift|Control, action: None }
   # - {key: F1,    mods: Command,       command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux new-window -n HELP glow -p $PRIVATE_DOTFILES/misc/help.md"]}}
   # - {key: F1,    mods: Command|Shift, command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
   - {
@@ -38,7 +36,7 @@ key_bindings:
     # unmap some bindings
   - { key: B, mods: Command, action: ReceiveChar }
   - { key: Space, mods: Alt, chars: " " } # Fix Option+Space inserting non-breaking space (0xA0) " ", it should be (0x20)
-  - { key: Space, mods: Option, chars: " " } # Fix Option+Space inserting non-breaking space (0xA0) " ", it should be (0x20)
+  - { key: Space, mods: Command, chars: " " } # Fix Option+Space inserting non-breaking space (0xA0) " ", it should be (0x20)
 
   - { key: F12, action: ToggleSimpleFullscreen }
   - { key: W, mods: Command, chars: "\x1bw" } # close pane/window

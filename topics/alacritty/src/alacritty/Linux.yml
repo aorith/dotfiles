@@ -17,7 +17,6 @@ shell:
 key_bindings:
   - {key: Insert, mods: Shift,         action:  Paste}
   - {key: N,      mods: Alt|Shift,     action:  SpawnNewInstance}
-  - {key: Space,  mods: Shift|Control, action:  None}
   - {key: T,      mods: Control,       command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux display-popup -w40% -h40% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
     # unmap some bindings
   - {key: B,      mods: Alt,           action:  ReceiveChar}
