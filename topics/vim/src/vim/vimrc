@@ -120,5 +120,9 @@ source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal_setup.vim
 source ~/.vim/aorith/autocmds.vim
 "source ~/.vim/aorith/dynamic_theme.vim
-source ~/.vim/aorith/themes/apprentice.vim
+if v:version >= 900
+  source ~/.vim/aorith/themes/habamax.vim
+else
+  source ~/.vim/aorith/themes/catppuccin.vim
+endif
 " }}} -------------------------------------------------------------------------
