@@ -31,6 +31,6 @@ for i in $(seq 1 255); do
 done
 printf '\n\n'
 echo -n "colors: "; tput colors
-echo -e 'Normal, \x1b[1mbold\x1b[22m, \x1b[3mitalic\x1b[23m, \x1b[1;3mbold italic\x1b[22;23m,' "$(tput rev)Reverse$(tput sgr0), $(tput smul)Underline$(tput sgr0)"
+echo -e 'Normal, \x1b[1mbold\x1b[22m, \x1b[3mitalic\x1b[23m, \x1b[1;3mbold italic\x1b[22;23m,' "$(tput rev)Reverse$(tput sgr0), $(tput smul)Underline$(tput sgr0), \e[4:3mUndercurl\x1b[22m"
 echo
 
