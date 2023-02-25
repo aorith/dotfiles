@@ -1,7 +1,8 @@
 # vim: ft=bash
 # Sourced from: bashrc
 
-. "${DOTFILES}/topics/shell/etc/bash/colors.bash"
+# shellcheck source=./colors.bash
+. "${DOTFILES}"/topics/shell/etc/bash/colors.bash
 
 __container_check() {
     [[ -n "$_CONTAINER_NAME" ]] || return
@@ -45,17 +46,17 @@ __ps1_git_branch_f() {
 }
 
 __ps1_jobs_f() {
-    local j rj # jobs, running_jobs
+    local n_jobs n_running_jobs
     _ps1_jobs=''
-    j=($(jobs -p))
-    [[ -n "${j[*]}" ]] || return 0
-    rj=($(jobs -rp))
-    _ps1_jobs="${my_gry} ${#rj[@]}/${#j[@]}${my_rst}"
+    mapfile -t n_jobs < <(jobs -p)
+    (( ${#n_jobs[@]} > 0 )) || return 0
+    mapfile -t n_running_jobs < <(jobs -rp)
+    _ps1_jobs="${my_gry} ${#n_running_jobs[@]}/${#n_jobs[@]}${my_rst}"
 }
 
 __prompt_command() {
     local LANG=C
-    local wdc ep OnSSH ms tc # working directory color, error prompt, on ssh, millisecods, timecolor
+    local wdc ep OnSSH ms tc _nl # working directory color, error prompt, on ssh, millisecods, timecolor, newline
     (($1 == 0)) || ep=" ${my_red}${1}${my_rst}"
 
     ms=$((($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000))
@@ -72,7 +73,7 @@ __prompt_command() {
     5) tc="${my_pur}" ;;
     6 | *) tc="${my_red}" ms=$((ms / 1000)) ;;
     esac
-    ms="$(printf '%03d' $ms)"
+    ms="$(printf '%03d' "$ms")"
 
     # git branch/tag
     __ps1_git_branch_f
@@ -83,19 +84,17 @@ __prompt_command() {
     OnContainer=$(__container_check)
 
     if [[ -w "${PWD}" ]]; then
-        wdc="${my_cyn}$(
-            p=${PWD/#"$HOME"/'~'}
-            ((${#p} > 27)) && echo "${p::10} … ${p:(-16)}" || echo "\w"
-        )"
+        ((${#PWD} < 30)) || _nl='\n'
+        wdc="${my_cyn}\w"
     else
         wdc="${my_red2}\w"
+        _nl='\n'
     fi
     [[ -z "$SSH_CLIENT" ]] || OnSSH="${my_ylw2}${my_bld}\h${my_rst} "
     [[ -z "$IN_NIX_SHELL" ]] || OnNixShell=" ${my_red2}(${name:-unset})${my_rst}"
-    [[ -z "$VIRTUAL_ENV" ]] || OnVENV="${my_rst} (venv)"
+    [[ -z "$VIRTUAL_ENV" ]] || OnVENV=" ${my_rst}(venv)"
 
-    #PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}\w${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${my_blu}\n\$${my_rst} "
-    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${OnContainer}${my_grn2}❯${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${OnContainer}${_nl}${my_grn2}❯${my_rst} "
 
     unset _ps1_start_timer
 }

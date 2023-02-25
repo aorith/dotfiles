@@ -4,8 +4,6 @@
 export EDITOR='vim'
 export VISUAL=$EDITOR
 export TERMINAL='alacritty'
-export MY_NOTES_DIR="${HOME}/Syncthing/SYNC_STUFF/Notes"
-export MY_WIKI_DIR="${MY_NOTES_DIR}/Wiki"
 
 export LESS='-RM' # F option breaks i3 "show errors"
 export LESSHISTFILE='-'
@@ -14,7 +12,7 @@ export MANPAGER="$PAGER"
 #export SYSTEMD_LESS="$LESS"
 
 if [[ -x "/usr/bin/lesspipe" ]]; then
-    eval $(/usr/bin/lesspipe)
+    eval "$(/usr/bin/lesspipe)"
 elif [[ -r "/usr/local/bin/lesspipe.sh" ]]; then
     export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 fi
@@ -69,9 +67,11 @@ if [[ "$_OS" == 'Darwin' ]]; then
         unset man_path
     fi
 
-    for man_path in $(cat /private/etc/manpaths); do
-        add_to_manpath "$man_path"
-    done 2>/dev/null
+    if [[ -f /private/etc/manpaths ]]; then
+        while read -r man_path; do
+            add_to_manpath "$man_path"
+        done < /private/etc/manpaths
+    fi
     unset manpath oldIFS
 elif [[ "$_OS" == 'Linux' ]]; then
     # Linux only
