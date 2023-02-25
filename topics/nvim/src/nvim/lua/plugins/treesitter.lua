@@ -1,51 +1,77 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    build = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
-    end,
+    version = false, -- last release is way too old and doesn't work on Windows
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+      },
     },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        -- A list of parser names, or "all"
-        ensure_installed = {
-          "c",
-          "lua",
-          "python",
-          "bash",
-          "go",
-          "css",
-          "html",
-          "json",
-          "json5",
-          "make",
-          "nix",
-          "sql",
-          "toml",
-          "vim",
-          "yaml",
-          "dockerfile",
-          "gitignore",
+    keys = {
+      { "<c-space>", desc = "Increment selection" },
+      { "<bs>", desc = "Schrink selection", mode = "x" },
+    },
+
+    ---@type TSConfig
+    opts = {
+      highlight = { enable = true },
+      indent = { enable = true, disable = { "python" } },
+      context_commentstring = { enable = true, enable_autocmd = false },
+
+      -- Install parsers synchronously (only applied to `ensure_installed`)
+      sync_install = true,
+
+      -- Automatically install missing parsers when entering buffer
+      auto_install = true,
+
+      -- List of parsers to ignore installing (for "all")
+      ignore_install = {},
+
+      ensure_installed = {
+        "bash",
+        "c",
+        "css",
+        "dockerfile",
+        "gitignore",
+        "go",
+        "help",
+        "html",
+        "javascript",
+        "json",
+        "json5",
+        "jsonc",
+        "lua",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "nix",
+        "python",
+        "query",
+        "regex",
+        "sql",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+      },
+
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-space>",
+          node_incremental = "<C-space>",
+          scope_incremental = "<nop>",
+          node_decremental = "<bs>",
         },
+      },
+    },
 
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = {},
-        },
-
-        indent = { enable = true, disable = { "python" } },
-
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = true,
-
-        -- Automatically install missing parsers when entering buffer
-        auto_install = true,
-
-        -- List of parsers to ignore installing (for "all")
-        ignore_install = {},
-      })
+    ---@param opts TSConfig
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
     end,
   },
 }

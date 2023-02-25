@@ -1,12 +1,17 @@
 return {
-  { "nvim-lua/plenary.nvim" },
-  { "nvim-tree/nvim-web-devicons" },
-  { "onsails/lspkind.nvim" }, -- icons LSP completion
-  { "mbbill/undotree" },
-  { "tpope/vim-surround" }, -- add, delete, change surroundings, ie: ysw" (surround word with ")
-  { "tpope/vim-fugitive" },
-  { "ojroques/nvim-osc52" },
+  { "mbbill/undotree", keys = {
+    { "<leader>U", "<cmd>UndotreeToggle<cr>", desc = "Undotree" },
+  } },
+
   { "varnishcache-friends/vim-varnish" },
-  { "psf/black" },
-  { "sindrets/diffview.nvim" },
+
+  {
+    "ojroques/nvim-osc52",
+    config = function()
+      vim.keymap.set("n", "<leader>c", require("osc52").copy_operator, { expr = true, desc = "Osc52 copy operator" })
+      vim.keymap.set("x", "<leader>y", require("osc52").copy_visual, { desc = "Osc52 copy visual selection" })
+      -- this remap doesn't work inside of lazy keys table
+      vim.keymap.set("n", "<leader>y", "<leader>c_", { remap = true, desc = "Osc52 copy current line" })
+    end,
+  },
 }
