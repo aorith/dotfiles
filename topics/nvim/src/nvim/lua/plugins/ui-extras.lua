@@ -1,9 +1,17 @@
 return {
+  -- better vim.ui
+  { "stevearc/dressing.nvim" },
 
   -- Better `vim.notify()`
   {
     enabled = true,
     "rcarriga/nvim-notify",
+    opts = {
+      fps = 60,
+      render = "compact",
+      stages = "fade",
+      top_down = true,
+    },
     keys = {
       {
         "<leader>und",
@@ -12,16 +20,13 @@ return {
         end,
         desc = "Delete all Notifications",
       },
-    },
-    opts = {
-      top_down = false,
-      timeout = 3000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
+      {
+        "<leader>unh",
+        function()
+          require("telescope").extensions.notify.notify()
+        end,
+        desc = "Notifications history in telescope",
+      },
     },
     init = function()
       require("notify").setup({
@@ -30,24 +35,6 @@ return {
         end,
       })
       vim.notify = require("notify")
-    end,
-  },
-
-  -- better vim.ui
-  {
-    "stevearc/dressing.nvim",
-    lazy = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
     end,
   },
 
@@ -66,7 +53,7 @@ return {
 
   -- active indent guide and indent text objects
   {
-    enabled = true,
+    enabled = false,
     "echasnovski/mini.indentscope",
     version = "*",
     event = { "BufReadPre", "BufNewFile" },
@@ -92,7 +79,7 @@ return {
     event = "VeryLazy",
     opts = {
       cmdline = {
-        view = "cmdline_popup",
+        view = "cmdline",
       },
       lsp = {
         override = {
@@ -101,18 +88,33 @@ return {
           ["cmp.entry.get_documentation"] = true,
         },
       },
+      messages = {
+        view = "mini",
+        view_search = false, -- disable search virtualtext
+      },
       presets = {
-        bottom_search = false,
-        command_palette = true,
+        bottom_search = true,
+        command_palette = false,
+        inc_rename = false,
         long_message_to_split = true,
         lsp_doc_border = true,
       },
+      --[[- buggy
+      routes = {
+        { -- opens long messages in a split
+          filter = {
+            min_height = 6,
+          },
+          view = "split",
+        },
+      },
+      --]]
     },
     -- stylua: ignore
     keys = {
       { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
       { "<leader>unl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-      { "<leader>unh", function() require("noice").cmd("history") end, desc = "Noice History" },
+      { "<leader>unH", function() require("noice").cmd("history") end, desc = "Noice History" },
       { "<leader>una", function() require("noice").cmd("all") end, desc = "Noice All" },
     },
   },

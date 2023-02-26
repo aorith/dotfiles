@@ -127,14 +127,15 @@ return {
 
       mason_null_ls.setup({
         ensure_installed = {
+          "black",
+          "flake8",
+          "golangci-lint",
+          "isort",
           "jq",
+          "mypy",
           "prettier",
           "shellcheck",
           "shfmt",
-          "black",
-          "mypy",
-          "flake8",
-          "isort",
           "stylua",
         },
         automatic_installation = true,
@@ -189,6 +190,9 @@ return {
             extra_args = { "--config-path", vim.fn.expand("~/.config/nvim/stylua.toml") },
           })
         )
+      end
+      if exe_exists("golangci-lint") then
+        table.insert(null_ls_sources, diagnostics.golangci_lint)
       end
 
       null_ls.setup({
