@@ -57,6 +57,17 @@ opt.swapfile = true
 opt.backup = true
 opt.undofile = true
 
+-- characters used in the splits
+opt.fillchars:append({
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┨",
+  vertright = "┣",
+  verthoriz = "╋",
+})
+
 -- directory configuration
 vim.cmd([[
 set viminfo+=n~/.local/share/nvim/viminfo
