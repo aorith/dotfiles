@@ -13,7 +13,8 @@
     gpgsign = true
 
 [core]
-    pager = less -+e-M
+    #pager = less -+e-M
+    pager = less --quit-if-one-screen -M -X # X=clear
 
 [diff]
     colorMoved = default
@@ -40,5 +41,7 @@
     rebase = false
 
 [include]
-  #path = delta
+  path = delta
   path = local.config
+
+# vim: ft=gitconfig
