@@ -1,6 +1,10 @@
 return {
   -- lspconfig
-  { "williamboman/mason.nvim", cmd = "Mason", lazy = false },
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    keys = { { "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" } },
+  },
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },

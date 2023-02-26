@@ -59,34 +59,39 @@ return {
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
-      { "<leader>fF", "<cmd>Telescope git_files<CR>", desc = "Find Files (GIT)" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "<leader>fg", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Grep buffer" },
-      { "<leader>fG", "<cmd>Telescope live_grep<cr>", desc = "Grep ALL" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep ALL" },
       -- git
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
       -- search
-      { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-      { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-      { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-      { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-      { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-      { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-      { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       {
-        "<leader>uC",
+        "<leader>/",
         function()
-          require("telescope.builtin").colorscheme({ enable_preview = true })
+          require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+            winblend = 5,
+            previewer = false,
+          }))
         end,
-        desc = "Colorscheme with preview",
+        mode = "n",
+        desc = "Search current buffer",
       },
+      { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "[S]earch [D]iagnostics" },
+      { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "[S]earch [D]iagnostics" },
+      { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "[S]earch [H]elp Pages" },
+      { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "[S]earch current [W]ord" },
+      { "<leader>sg", "<cmd>Telescope live_grep<CR>", desc = "[S]earch by [G]rep" },
+      { "<leader>sG", "<cmd>Telescope git_files<CR>", desc = "[S]earch [G]it Files" },
+      -- extras
+      { "<leader>seC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+      { "<leader>seH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+      { "<leader>sek", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+      { "<leader>sea", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+      { "<leader>seo", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+      { "<leader>sem", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+      { "<leader>seM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
       {
-        "<leader>ss",
+        "<leader>ses",
         function()
           require("telescope.builtin").lsp_document_symbols({
             symbols = {
@@ -104,6 +109,13 @@ return {
           })
         end,
         desc = "Goto Symbol",
+      },
+      {
+        "<leader>uC",
+        function()
+          require("telescope.builtin").colorscheme({ enable_preview = true })
+        end,
+        desc = "Colorscheme with preview",
       },
     },
     opts = {
@@ -137,6 +149,11 @@ return {
         },
       },
     },
+
+    config = function(plugin, opts)
+      require("telescope").setup(opts)
+      pcall(require("telescope").load_extension, "fzf")
+    end,
   },
 
   -- which-key
@@ -161,6 +178,7 @@ return {
         ["<leader>g"] = { name = "+git" },
         ["<leader>gh"] = { name = "+hunks" },
         ["<leader>s"] = { name = "+search" },
+        ["<leader>se"] = { name = "+extras" },
         ["<leader>u"] = { name = "+ui" },
         ["<leader>un"] = { name = "+notifications" },
         ["<leader>w"] = { name = "+windows" },
@@ -178,7 +196,7 @@ return {
     opts = {
       signs = {
         add = { text = "+" },
-        change = { text = "│" },
+        change = { text = "~" },
         delete = { text = "_" },
         topdelete = { text = "‾" },
         changedelete = { text = "~" },

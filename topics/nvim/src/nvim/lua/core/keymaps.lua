@@ -35,7 +35,6 @@ map("n", "<leader>la", function()
 end, { desc = "Get active LSP clients" })
 
 -- Misc
-map("n", "<leader>/", "<cmd>nohl<CR>", { desc = "Disable current highligh (nohl)" })
 map("n", "x", '"_x', { desc = "Avoid 'x' copying to the register" })
 
 -- Move to window using the <ctrl> hjkl keys

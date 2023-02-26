@@ -14,4 +14,6 @@ return {
       vim.keymap.set("n", "<leader>y", "<leader>c_", { remap = true, desc = "Osc52 copy current line" })
     end,
   },
+
+  { "tpope/vim-fugitive" },
 }
