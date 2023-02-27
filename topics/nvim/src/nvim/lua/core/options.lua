@@ -25,6 +25,7 @@ opt.incsearch = true
 opt.laststatus = 0
 opt.linebreak = true
 opt.list = true
+opt.listchars:append({ tab = "▸ " })
 opt.mouse = "a"
 opt.number = true
 opt.pumblend = 0 -- Popup blend
