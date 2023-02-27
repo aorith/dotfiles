@@ -100,7 +100,7 @@ return {
     },
     opts = {
       options = {
-        always_show_bufferline = false,
+        always_show_bufferline = true,
         separator_style = "slope",
         numbers = "ordinal",
         show_close_icon = false,
