@@ -2,6 +2,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     enabled = true,
+    version = "*",
     keys = {
       {
         "<leader>e",
@@ -19,7 +20,7 @@ return {
 
     opts = {
       close_if_last_window = false,
-      enable_diagnostics = false,
+      enable_diagnostics = true,
       filesystem = {
         bind_to_cwd = false,
         follow_current_file = true,
@@ -31,7 +32,7 @@ return {
         },
       },
       window = {
-        position = "right",
+        position = "left",
         mappings = {
           ["<space>"] = "none",
         },
@@ -42,6 +43,7 @@ return {
   -- search/replace in multiple files
   {
     "windwp/nvim-spectre",
+    version = "*",
     -- stylua: ignore
     keys = {
       { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
@@ -76,7 +78,7 @@ return {
         mode = "n",
         desc = "Search current buffer",
       },
-      { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "[S]earch [D]iagnostics" },
+      { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "[S]earch [F]iles" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "[S]earch [D]iagnostics" },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "[S]earch [H]elp Pages" },
       { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "[S]earch current [W]ord" },
@@ -184,6 +186,7 @@ return {
         ["<leader>w"] = { name = "+windows" },
         ["<leader>x"] = { name = "+diagnostics/quickfix" },
         ["<leader>l"] = { name = "+lsp" },
+        ["<leader>lg"] = { name = "+goto" },
       }
       wk.register(keymaps)
     end,

@@ -1,8 +1,8 @@
 return {
   -- themes
   {
-    enabled = true,
     "folke/tokyonight.nvim",
+    enabled = false,
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
@@ -10,6 +10,16 @@ return {
         style = "moon",
       })
       require("tokyonight").load()
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    enabled = true,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 

@@ -45,7 +45,8 @@ return {
         signs = true,
         underline = true,
         update_in_insert = false,
-        virtual_text = { spacing = 4, prefix = "●" },
+        --virtual_text = { spacing = 4, prefix = "●" },
+        virtual_text = false,
         severity_sort = true,
         float = {
           focusable = false,
@@ -85,12 +86,23 @@ return {
 
       -- actual function that setups the servers
       local function setup(server)
+        local server_config = {}
+        if servers[server] ~= nil and servers[server].config ~= nil then
+          server_config = servers[server].config
+        end
+        local server_enabled = true
+        if servers[server] ~= nil then
+          if servers[server].enabled ~= nil and not servers[server].enabled then
+            server_enabled = false
+          end
+        end
+
         local server_opts = vim.tbl_deep_extend("force", {
           on_attach = on_attach,
           capabilities = vim.deepcopy(capabilities),
-        }, servers[server].config or {})
+        }, server_config)
 
-        if servers[server].enabled == nil or servers[server].enabled then
+        if server_enabled then
           require("lspconfig")[server].setup(server_opts)
         end
       end
@@ -193,6 +205,10 @@ return {
       end
       if exe_exists("golangci-lint") then
         table.insert(null_ls_sources, diagnostics.golangci_lint)
+      end
+      if exe_exists("terraform") then
+        table.insert(null_ls_sources, diagnostics.terraform_validate)
+        table.insert(null_ls_sources, formatting.terraform_fmt)
       end
 
       null_ls.setup({

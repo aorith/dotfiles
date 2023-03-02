@@ -9,6 +9,7 @@ return {
   html = { config = {} },
   cssls = { config = {} },
   tsserver = { config = {} },
+  terraformls = { ensure_installed_name = "terraformls", config = {} },
   docker_compose_language_service = {
     config = { filetypes = { "yaml", "yml" }, settings = { telemetry = { enableTelemetry = false } } },
   },

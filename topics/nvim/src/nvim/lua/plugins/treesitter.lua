@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    version = false, -- last release is way too old and doesn't work on Windows
+    version = "*",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
@@ -16,9 +16,8 @@ return {
 
     ---@type TSConfig
     opts = {
-      highlight = { enable = true, disable = { "bash" }, additional_vim_regex_highlighting = {} },
-      indent = { enable = true, disable = { "python" } },
-      context_commentstring = { enable = true, enable_autocmd = false },
+      highlight = { enable = true, disable = { "bash", "vim" }, additional_vim_regex_highlighting = {} },
+      indent = { enable = true, disable = { "python", "vim" } },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = true,
