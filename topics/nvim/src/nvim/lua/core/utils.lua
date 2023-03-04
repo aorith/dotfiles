@@ -44,16 +44,44 @@ function M.toggle(option, silent, values)
   end
 end
 
-local enabled = true
+local diag_enabled = true
 function M.toggle_diagnostics()
   local Util = require("lazy.core.util")
-  enabled = not enabled
-  if enabled then
+  diag_enabled = not diag_enabled
+  if diag_enabled then
     vim.diagnostic.enable()
     Util.info("Enabled diagnostics", { title = "Diagnostics" })
   else
     vim.diagnostic.disable()
     Util.warn("Disabled diagnostics", { title = "Diagnostics" })
+  end
+end
+
+local complete_listchars_enabled = false
+function M.toggle_complete_listchars()
+  local default = {
+    tab = "> ",
+    trail = "-",
+    nbsp = "+",
+  }
+  local full = {
+    tab = "◂-▸",
+    extends = "→",
+    precedes = "←",
+    trail = "∙",
+    eol = "¬",
+    nbsp = "‗",
+  }
+  local Util = require("lazy.core.util")
+  complete_listchars_enabled = not complete_listchars_enabled
+  if complete_listchars_enabled then
+    vim.opt.listchars = full
+    vim.cmd("IndentBlanklineDisable")
+    Util.info("Enabled full listchars", { title = "Listchars" })
+  else
+    vim.opt.listchars = default
+    vim.cmd("IndentBlanklineEnable")
+    Util.info("Reset listchars to default", { title = "Listchars" })
   end
 end
 

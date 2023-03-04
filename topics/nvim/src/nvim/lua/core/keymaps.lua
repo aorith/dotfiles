@@ -17,12 +17,13 @@ map("n", "<leader>uw", function()
   require("core.utils").toggle("wrap")
 end, { desc = "Toggle Word Wrap" })
 
-map("n", "<leader>ul", function()
+map("n", "<leader>uL", function()
   require("core.utils").toggle("relativenumber", true)
   require("core.utils").toggle("number")
 end, { desc = "Toggle Line Numbers" })
 
 map("n", "<leader>ud", require("core.utils").toggle_diagnostics, { desc = "Toggle Diagnostics" })
+map("n", "<leader>ul", require("core.utils").toggle_complete_listchars, { desc = "Toggle ListChars" })
 
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uc", function()

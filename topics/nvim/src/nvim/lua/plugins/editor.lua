@@ -1,5 +1,21 @@
 return {
   {
+    "cbochs/portal.nvim",
+    cmd = "Portal",
+    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      {
+        "<TAB>", -- TAB and C-i are the same in vim normal mode
+        function()
+          require("portal.builtin").jumplist.tunnel_forward()
+        end,
+        mode = "n",
+        desc = "Jumplist forward",
+      },
+    },
+  },
+
+  {
     "nvim-neo-tree/neo-tree.nvim",
     enabled = true,
     version = "*",
@@ -7,9 +23,17 @@ return {
       {
         "<leader>e",
         function()
-          require("neo-tree.command").execute({ toggle = true })
+          require("neo-tree.command").execute({ toggle = true, position = "float" })
         end,
-        desc = "Explorer NeoTree",
+        desc = "NeoTree",
+        remap = true,
+      },
+      {
+        "<leader>E",
+        function()
+          require("neo-tree.command").execute({ toggle = true, position = "left" })
+        end,
+        desc = "NeoTree (left)",
         remap = true,
       },
     },
@@ -35,7 +59,7 @@ return {
         },
       },
       window = {
-        position = "left",
+        position = "float",
         mappings = {
           ["<space>"] = "none",
         },
