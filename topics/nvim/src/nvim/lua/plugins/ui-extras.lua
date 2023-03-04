@@ -86,7 +86,18 @@ return {
       },
       views = {
         mini = {
-          -- format = "details", -- for debug
+          --[[ for debug
+          format = {
+            "L:{level} ",
+            "D:{date} ",
+            "E:{event}",
+            { "K:{kind}", before = { ".", hl_group = "NoiceFormatKind" } },
+            " ",
+            "T:{title} ",
+            "C:{cmdline} ",
+            "M:{message}",
+          },
+          --]]
           timeout = 3000,
           reverse = false,
           position = {
@@ -119,6 +130,14 @@ return {
             min_height = 4,
           },
           view = "cmdline_output",
+        },
+        {
+          -- ignore code actions spam
+          filter = {
+            event = "notify",
+            find = "No code actions available",
+          },
+          opts = { skip = true },
         },
         --[[
         {

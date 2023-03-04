@@ -1,5 +1,27 @@
 local M = {}
 
+local function macos_background()
+  local output = vim.fn.system("defaults read -g AppleInterfaceStyle")
+  if string.match(output, ".*Dark.*") then
+    return "dark"
+  else
+    return "light"
+  end
+end
+
+local function linux_background()
+  return "dark"
+end
+
+function M.os_background()
+  if vim.fn.has("macunix") == 1 then
+    return macos_background()
+  elseif vim.fn.has("unix") == 1 then
+    return linux_background()
+  end
+  return "dark"
+end
+
 ---@param silent boolean?
 ---@param values? {[1]:any, [2]:any}
 function M.toggle(option, silent, values)

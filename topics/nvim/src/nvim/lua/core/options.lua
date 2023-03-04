@@ -11,6 +11,8 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   vim.cmd("set diffopt+=linematch:50")
 end
 
+--opt.background = require("core.utils").os_background()
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
