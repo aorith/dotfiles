@@ -16,8 +16,8 @@ return {
 
     ---@type TSConfig
     opts = {
-      highlight = { enable = true, disable = { "bash", "vim" }, additional_vim_regex_highlighting = {} },
-      indent = { enable = true, disable = { "python", "vim" } },
+      highlight = { enable = true, disable = {}, additional_vim_regex_highlighting = {} },
+      indent = { enable = true, disable = { "python" } },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = true,

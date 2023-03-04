@@ -5,13 +5,20 @@ vim.g.maplocalleader = " "
 
 -- TODO: neovim 0.9: https://github.com/neovim/neovim/commit/04fbb1de4488852c3ba332898b17180500f8984e
 -- :h diff  & enable linematch
+if vim.fn.has("nvim-0.9.0") == 1 then
+  opt.splitkeep = "screen"
+  opt.shortmess:append({ C = true })
+  vim.cmd("set diffopt+=linematch:50")
+end
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 opt.autoindent = true
+opt.cmdheight = 0
 opt.completeopt = "menu,menuone,noselect"
+opt.confirm = true -- confirm to save changes before exiting a modified buffer
 opt.cursorline = true -- Highlight cursor line
 opt.cursorlineopt = "number"
 opt.encoding = "utf-8"
@@ -25,7 +32,6 @@ opt.incsearch = true
 opt.laststatus = 0
 opt.linebreak = true
 opt.list = true
-opt.listchars:append({ tab = "▸ " })
 opt.mouse = "a"
 opt.number = true
 opt.pumblend = 0 -- Popup blend
@@ -47,6 +53,7 @@ opt.splitright = true
 opt.tabstop = 4
 opt.termguicolors = true
 opt.timeoutlen = 300
+opt.title = true
 opt.updatetime = 200 -- For CursorHold and swapfile
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width

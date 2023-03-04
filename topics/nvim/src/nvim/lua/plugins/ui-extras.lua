@@ -4,7 +4,7 @@ return {
 
   -- Better `vim.notify()`
   {
-    enabled = true,
+    enabled = false,
     "rcarriga/nvim-notify",
     opts = {
       fps = 60,
@@ -21,7 +21,7 @@ return {
         desc = "Delete all Notifications",
       },
       {
-        "<leader>unh",
+        "<leader>unH",
         function()
           require("telescope").extensions.notify.notify()
         end,
@@ -43,45 +43,33 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      --char = "▏",
-      char = "│",
       filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "noice" },
       show_trailing_blankline_indent = false,
-      show_current_context = false,
       show_end_of_line = false,
-      show_first_indent_level = false,
+      show_current_context = false,
+      show_current_context_start = false,
     },
-  },
-
-  -- active indent guide and indent text objects
-  {
-    enabled = false,
-    "echasnovski/mini.indentscope",
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      --symbol = "▏",
-      symbol = "│",
-      options = { try_as_border = true },
-    },
-    config = function(_, opts)
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-      require("mini.indentscope").setup(opts)
-    end,
   },
 
   -- noicer ui
   {
     "folke/noice.nvim",
+    enabled = true,
     event = "VeryLazy",
     opts = {
       cmdline = {
-        view = "cmdline",
+        -- if you want to disable the cmdline, disable messages and popupmenu too
+        enabled = true,
+      },
+      messages = {
+        enabled = true, -- enabling messages enables cmdline too
+        view_search = false, -- disable search virtualtext
+      },
+      popupmenu = {
+        enabled = true,
+      },
+      notify = {
+        view = "mini",
       },
       lsp = {
         override = {
@@ -90,34 +78,68 @@ return {
           ["cmp.entry.get_documentation"] = true,
         },
       },
-      messages = {
-        view = "mini",
-        view_search = false, -- disable search virtualtext
-      },
       presets = {
-        bottom_search = true,
-        command_palette = false,
-        inc_rename = false,
-        long_message_to_split = true,
+        command_palette = true,
         lsp_doc_border = true,
+        bottom_search = false,
+        long_message_to_split = false, -- overriden in routes
       },
-      --[[- buggy
-      routes = {
-        { -- opens long messages in a split
-          filter = {
-            min_height = 6,
+      views = {
+        mini = {
+          -- format = "details", -- for debug
+          timeout = 3000,
+          reverse = false,
+          position = {
+            row = 1,
+            col = "100%",
           },
-          view = "split",
+          win_options = {
+            winblend = 35,
+          },
+          border = {
+            style = "none",
+          },
         },
       },
-      --]]
+      routes = {
+        {
+          -- shell commands to output
+          filter = { cmdline = "^:!" },
+          view = "popup",
+        },
+        {
+          -- lua commands to output
+          filter = { cmdline = "^:lua" },
+          view = "popup",
+        },
+        {
+          -- opens long messages in a split
+          filter = {
+            event = "msg_show",
+            min_height = 4,
+          },
+          view = "cmdline_output",
+        },
+        --[[
+        {
+          -- ignore search hit BOTTOM message
+          filter = {
+            event = "msg_show",
+            kind = "wmsg",
+            find = "search hit BOTTOM",
+          },
+          view = "cmdline_output",
+          --opts = { skip = true },
+        },
+        --]]
+      },
     },
     -- stylua: ignore
     keys = {
       { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-      { "<leader>unl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-      { "<leader>unH", function() require("noice").cmd("history") end, desc = "Noice History" },
-      { "<leader>una", function() require("noice").cmd("all") end, desc = "Noice All" },
+      { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+      { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
+      { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
     },
   },
 }

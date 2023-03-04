@@ -49,6 +49,9 @@ M.custom_server_capabilities = function()
       return "capabilites for: " .. item
     end,
   }, function(choice)
+    if choice == nil then
+      return
+    end
     local Popup = require("nui.popup")
     local event = require("nui.utils.autocmd").event
 
@@ -75,6 +78,10 @@ M.custom_server_capabilities = function()
     popup:on(event.BufLeave, function()
       popup:unmount()
     end)
+
+    local _ = popup:map("n", "q", function(bufnr)
+      popup:unmount()
+    end, { noremap = true })
 
     -- set content
     local lines = {}

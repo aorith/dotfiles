@@ -22,12 +22,6 @@ function M.set_keymaps(bufnr)
   map("n", "<leader>lr", vim.lsp.buf.rename, "[R]ename")
   map("n", "<leader>ls", vim.lsp.buf.signature_help, "[S]ignature")
 
-  -- Go to
-  map("n", "<leader>lgD", vim.lsp.buf.declaration, "Declaration")
-  map("n", "<leader>lgd", "<cmd>Telescope lsp_definitions<cr>", "[D]efinition")
-  map("n", "<leader>lgi", vim.lsp.buf.implementation, "[I]mplementation")
-  map("n", "<leader>lgr", "<cmd>Telescope lsp_references<cr>", "[R]eferences")
-  map("n", "<leader>lgt", "<cmd>Telescope lsp_type_definitions<cr>", "[T]ype definitions")
   -- without leader
   map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", "[G]oto [D]efinition")
   map("n", "gr", "<cmd>Telescope lsp_references<cr>", "[G]oto [R]eferences")

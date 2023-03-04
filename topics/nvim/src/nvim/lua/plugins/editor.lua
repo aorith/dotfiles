@@ -20,7 +20,7 @@ return {
 
     opts = {
       close_if_last_window = false,
-      enable_diagnostics = true,
+      enable_diagnostics = false,
       filesystem = {
         bind_to_cwd = false,
         follow_current_file = true,
@@ -29,6 +29,9 @@ return {
         name = {
           trailing_slash = true,
           use_git_status_colors = false,
+        },
+        indent = {
+          with_expanders = true,
         },
       },
       window = {
@@ -179,14 +182,13 @@ return {
         ["<leader>f"] = { name = "+file/find" },
         ["<leader>g"] = { name = "+git" },
         ["<leader>gh"] = { name = "+hunks" },
+        ["<leader>l"] = { name = "+lsp" },
+        ["<leader>n"] = { name = "+notifications" },
         ["<leader>s"] = { name = "+search" },
         ["<leader>se"] = { name = "+extras" },
         ["<leader>u"] = { name = "+ui" },
-        ["<leader>un"] = { name = "+notifications" },
         ["<leader>w"] = { name = "+windows" },
         ["<leader>x"] = { name = "+diagnostics/quickfix" },
-        ["<leader>l"] = { name = "+lsp" },
-        ["<leader>lg"] = { name = "+goto" },
       }
       wk.register(keymaps)
     end,

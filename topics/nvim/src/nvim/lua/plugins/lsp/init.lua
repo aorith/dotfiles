@@ -1,4 +1,7 @@
 return {
+  {
+    "ThePrimeagen/refactoring.nvim",
+  },
   -- lspconfig
   {
     "williamboman/mason.nvim",
