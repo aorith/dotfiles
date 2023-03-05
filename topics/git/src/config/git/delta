@@ -7,8 +7,12 @@
 [delta]
     syntax-theme = ansi
     navigate = true # use n and N to move between diff
-    line-numbers-minus-style = 1
-    line-numbers-plus-style = 2
+
+    line-numbers = true
+    relative-paths = true
+    conflictstyle = diff3
+    wrap-max-lines = 0
+    side-by-side = true
 
 [delta "lightmode"]
   light = true
