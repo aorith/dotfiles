@@ -20,6 +20,27 @@ return {
   {
     "numToStr/FTerm.nvim",
     lazy = true,
+    init = function()
+      -- Custom terminal
+      local fterm = require("FTerm")
+      local lazygit = fterm:new({
+        cmd = "lazygit",
+        auto_close = true,
+        dimensions = { height = 1, width = 1 },
+      })
+
+      vim.api.nvim_create_user_command("LazyGit", function()
+        lazygit:toggle()
+      end, { bang = true })
+    end,
+    config = function()
+      require("FTerm").setup({
+        dimensions = {
+          height = 1,
+          width = 1,
+        },
+      })
+    end,
     keys = {
       {
         "<leader>t",
@@ -27,6 +48,15 @@ return {
           require("FTerm").toggle()
         end,
         desc = "Toggle Term",
+      },
+      {
+        "<leader>gl",
+        function()
+          require("FTerm")
+          vim.cmd.LazyGit()
+        end,
+        mode = "n",
+        desc = "LazyGit",
       },
     },
   },
