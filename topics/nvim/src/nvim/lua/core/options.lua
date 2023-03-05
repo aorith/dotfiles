@@ -2,9 +2,6 @@ vim.keymap.set("n", "<Space>", "<nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- auto-background
-vim.opt.background = require("core.utils").os_background()
-
 -- TODO: neovim 0.9: https://github.com/neovim/neovim/commit/04fbb1de4488852c3ba332898b17180500f8984e
 -- :h diff  & enable linematch
 if vim.fn.has("nvim-0.9.0") == 1 then

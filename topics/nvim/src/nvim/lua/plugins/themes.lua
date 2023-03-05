@@ -1,8 +1,15 @@
+-- auto-background
+local background = require("core.utils").os_background()
+vim.opt.background = background
+
 -- Current colorscheme
-local enabled = "zenbones"
+local colorscheme_choice = "catppuccin" -- dark theme
+if background == "light" then
+  colorscheme_choice = "zenbones" -- light theme
+end
 
 local is_enabled = function(colorscheme)
-  if colorscheme == enabled then
+  if colorscheme == colorscheme_choice then
     return true
   end
   return false
@@ -11,49 +18,60 @@ end
 return {
   {
     "folke/tokyonight.nvim",
-    enabled = is_enabled("tokyonight"),
+    enabled = true,
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("tokyonight").setup({
-        style = "moon",
-      })
-      require("tokyonight").load()
+      if is_enabled("tokyonight") then
+        require("tokyonight").setup({
+          style = "moon",
+        })
+        require("tokyonight").load()
+      end
     end,
   },
 
   {
     "catppuccin/nvim",
-    enabled = is_enabled("catppuccin"),
+    enabled = true,
     name = "catppuccin",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("catppuccin")
+      if is_enabled("catppuccin") then
+        vim.cmd.colorscheme("catppuccin")
+      end
     end,
   },
 
   {
     "rebelot/kanagawa.nvim",
-    enabled = is_enabled("kanagawa"),
+    enabled = true,
     lazy = false,
     priority = 1000,
-    build = "KanagawaCompile",
-    config = function()
+    build = function()
       require("kanagawa")
-      vim.cmd.colorscheme("kanagawa")
+      vim.cmd.KanagawaCompile()
+    end,
+    config = function()
+      if is_enabled("kanagawa") then
+        require("kanagawa")
+        vim.cmd.colorscheme("kanagawa")
+      end
     end,
   },
 
   {
     "mcchrish/zenbones.nvim",
-    enabled = is_enabled("zenbones"),
+    enabled = true,
     lazy = false,
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
     config = function()
-      require("zenbones")
-      vim.cmd.colorscheme("zenbones")
+      if is_enabled("zenbones") then
+        require("zenbones")
+        vim.cmd.colorscheme("zenbones")
+      end
     end,
   },
 }
