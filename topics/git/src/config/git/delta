@@ -1,15 +1,17 @@
 [core]
-    pager = delta
+    pager = delta --features "$(tmux display -p '#{COLORSCHEME_DELTA}')"
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --features "$(tmux display -p '#{COLORSCHEME_DELTA}')"
 
 [delta]
+    syntax-theme = ansi
     navigate = true # use n and N to move between diff
-    features = line-numbers decorations
-    syntax-theme = none
-
-[delta "line-numbers"]
     line-numbers-minus-style = 1
     line-numbers-plus-style = 2
 
+[delta "lightmode"]
+  light = true
+
+[delta "darkmode"]
+  light = false

@@ -6,8 +6,8 @@ window:
   decorations: buttonless
 
 font:
-  size: 18
-  builtin_box_drawing: true
+  size: 17
+  #builtin_box_drawing: true
 
   normal:
     family: "JetBrainsMono Nerd Font Mono"
