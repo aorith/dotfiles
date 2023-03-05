@@ -105,10 +105,10 @@ return {
             col = "100%",
           },
           win_options = {
-            winblend = 35,
+            winblend = 0,
           },
           border = {
-            style = "none",
+            style = "rounded",
           },
         },
       },

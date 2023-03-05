@@ -1,28 +1,4 @@
 return {
-  -- themes
-  {
-    "folke/tokyonight.nvim",
-    enabled = false,
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      require("tokyonight").setup({
-        style = "moon",
-      })
-      require("tokyonight").load()
-    end,
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    enabled = true,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("catppuccin")
-    end,
-  },
-
   -- statusline
   {
     "nvim-lualine/lualine.nvim",
@@ -46,11 +22,13 @@ return {
           lualine_a = { "mode" },
           lualine_b = { "branch" },
           lualine_c = {
+            { "diff" },
             {
               "diagnostics",
             },
-            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+            { "filetype" },
             { "filename", path = 1, symbols = { modified = " [+] ", readonly = " [R/O] ", unnamed = "" } },
+            --[[
             {
               function()
                 return require("nvim-navic").get_location()
@@ -59,8 +37,14 @@ return {
                 return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
               end,
             },
+            --]]
           },
           lualine_x = {
+            {
+              require("noice").api.status.search.get,
+              cond = require("noice").api.status.search.has,
+              color = { fg = "#ff9e64" },
+            },
             {
               function()
                 return require("noice").api.status.command.get()
@@ -72,15 +56,13 @@ return {
             },
             {
               function()
+                -- @recording messages
                 return require("noice").api.status.mode.get()
               end,
               cond = function()
                 return package.loaded["noice"] and require("noice").api.status.mode.has()
               end,
               color = fg("Constant"),
-            },
-            {
-              "diff",
             },
           },
           lualine_y = {

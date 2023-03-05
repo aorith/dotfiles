@@ -16,4 +16,18 @@ return {
   },
 
   { "tpope/vim-fugitive" },
+
+  {
+    "numToStr/FTerm.nvim",
+    lazy = true,
+    keys = {
+      {
+        "<leader>t",
+        function()
+          require("FTerm").toggle()
+        end,
+        desc = "Toggle Term",
+      },
+    },
+  },
 }

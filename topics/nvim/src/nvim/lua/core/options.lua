@@ -2,6 +2,9 @@ vim.keymap.set("n", "<Space>", "<nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- auto-background
+vim.opt.background = require("core.utils").os_background()
+
 -- TODO: neovim 0.9: https://github.com/neovim/neovim/commit/04fbb1de4488852c3ba332898b17180500f8984e
 -- :h diff  & enable linematch
 if vim.fn.has("nvim-0.9.0") == 1 then
@@ -30,14 +33,14 @@ vim.opt.grepprg = "rg --vimgrep"
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true -- Ignore case
 vim.opt.incsearch = true
-vim.opt.laststatus = 0
+vim.opt.laststatus = 3
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.report = 0 -- Always report the number of lines changed after :command
 vim.opt.scrolloff = 4 -- Lines of context
 vim.opt.shiftwidth = 4
@@ -78,20 +81,16 @@ vim.opt.fillchars:append({
 })
 
 -- directory configuration
-vim.cmd([[
-set viminfo+=n~/.local/share/nvim/viminfo
-set undodir=~/.local/share/nvim/undodir//
-set backupdir=~/.local/share/nvim/backup//
-set directory=~/.local/share/nvim/swap//
-]])
+vim.opt.viminfo:append("n" .. vim.fn.getenv("HOME") .. "/.local/share/nvim/viminfo")
+vim.opt.undodir = vim.fn.getenv("HOME") .. "/.local/share/nvim/undodir//"
+vim.opt.backupdir = vim.fn.getenv("HOME") .. "/.local/share/nvim/backup//"
+vim.opt.directory = vim.fn.getenv("HOME") .. "/.local/share/nvim/swap//"
 
 -- others
-vim.cmd([[
-map <F1> <nop>
-map! <F1> <nop>
-command! W w
-command! Q q
-]])
+vim.keymap.set("", "<F1>", "<nop>") -- "" == map
+vim.keymap.set("!", "<F1>", "<nop>") -- "!" == map!
+vim.api.nvim_create_user_command("W", "w", { bang = true })
+vim.api.nvim_create_user_command("Q", "q", { bang = true })
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
