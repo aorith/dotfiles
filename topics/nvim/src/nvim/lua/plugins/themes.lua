@@ -1,10 +1,9 @@
 -- auto-background
-local background = require("core.utils").os_background()
-vim.opt.background = background
+vim.opt.background = require("core.utils").os_background()
 
 -- Current colorscheme
 local colorscheme_choice = "catppuccin" -- dark theme
-if background == "light" then
+if vim.opt.background == "light" then
   colorscheme_choice = "zenbones" -- light theme
 end
 

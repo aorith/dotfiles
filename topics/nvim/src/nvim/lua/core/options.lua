@@ -55,6 +55,9 @@ vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 300
 vim.opt.title = true
+-- set titlestring to current path, avoid using current buffer options available
+-- in statusline since it will cause tmux title to flicker on noice messages
+vim.opt.titlestring = "nvim(" .. string.gsub(vim.fn.getenv("PWD"), vim.fn.getenv("HOME"), "~") .. ")"
 vim.opt.updatetime = 200 -- For CursorHold and swapfile
 vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.winminwidth = 5 -- Minimum window width
