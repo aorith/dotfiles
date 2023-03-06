@@ -20,6 +20,7 @@ return {
     enabled = true,
     version = "*",
     keys = {
+      --[[
       {
         "<leader>e",
         function()
@@ -28,6 +29,7 @@ return {
         desc = "NeoTree",
         remap = true,
       },
+      --]]
       {
         "<leader>E",
         function()
@@ -83,6 +85,9 @@ return {
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
+      -- Replacement to the standard file explorer
+      { "<leader>e", "<cmd>Telescope file_browser<cr>", desc = "File Explorer" },
+
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       -- find
@@ -177,11 +182,22 @@ return {
           },
         },
       },
+      extensions = {
+        file_browser = {
+          grouped = true,
+          git_status = true,
+        },
+      },
     },
 
+    dependencies = {
+      "nvim-telescope/telescope-file-browser.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
     config = function(plugin, opts)
       require("telescope").setup(opts)
-      pcall(require("telescope").load_extension, "fzf")
+      pcall(require("telescope").load_extension("fzf"))
+      require("telescope").load_extension("file_browser")
     end,
   },
 
