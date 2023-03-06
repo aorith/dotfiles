@@ -1,5 +1,5 @@
 -- auto-background
-vim.opt.background = require("core.utils").os_background()
+--vim.opt.background = require("core.utils").os_background()
 
 -- Current colorscheme
 local colorscheme_choice = "catppuccin" -- dark theme
@@ -54,7 +54,7 @@ return {
     end,
     config = function()
       if is_enabled("kanagawa") then
-        require("kanagawa")
+        require("kanagawa").setup({ compile = true })
         vim.cmd.colorscheme("kanagawa")
       end
     end,
