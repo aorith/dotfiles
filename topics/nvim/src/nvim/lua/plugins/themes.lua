@@ -2,7 +2,7 @@
 --vim.opt.background = require("core.utils").os_background()
 
 -- Current colorscheme
-local colorscheme_choice = "catppuccin" -- dark theme
+local colorscheme_choice = "kanagawa" -- dark theme
 if vim.opt.background == "light" then
   colorscheme_choice = "zenbones" -- light theme
 end

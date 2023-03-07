@@ -66,6 +66,7 @@ return {
       settings = {
         pylsp = {
           plugins = {
+            yapf = { enabled = false }, -- Google formatter
             autopep8 = { enabled = false },
             mccabe = { enabled = true },
             pylint = {
