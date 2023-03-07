@@ -186,6 +186,7 @@ return {
         file_browser = {
           grouped = true,
           git_status = true,
+          depth = 2,
         },
       },
     },

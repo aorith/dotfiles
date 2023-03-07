@@ -1,6 +1,6 @@
 local get_active_lsp_clients = function()
   local servers = " Active LSP servers:\n"
-  for _, c in pairs(vim.lsp.buf_get_clients()) do
+  for _, c in pairs(vim.lsp.get_active_clients()) do
     servers = servers .. "\n  " .. c.name
   end
   return servers
