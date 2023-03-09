@@ -143,4 +143,11 @@ M.custom_server_capabilities = function()
   end)
 end
 
+function M.get_pyproject_path()
+  if vim.loop.fs_stat(vim.fn.getcwd() .. "/pyproject.toml") then
+    return vim.fn.getcwd() .. "/pyproject.toml"
+  end
+  return vim.fn.getenv("HOME") .. "/.config/nvim/lua/plugins/lsp/extra/pyproject.toml"
+end
+
 return M

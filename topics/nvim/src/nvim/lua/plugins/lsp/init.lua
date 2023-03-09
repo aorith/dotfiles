@@ -40,6 +40,12 @@ return {
           client.server_capabilities.rename = false
         end
 
+        -- disable hover in favor of pyright
+        if client.name == "ruff_lsp" then
+          client.server_capabilities.hoverProvider = false
+          client.server_capabilities.hover = false
+        end
+
         require("plugins.lsp.keymaps").set_keymaps(bufnr)
       end
 
@@ -130,16 +136,6 @@ return {
       local null_ls_utils = require("null-ls.utils")
       local mason_null_ls = require("mason-null-ls")
 
-      local exe_exists = function(exe_name)
-        return vim.fn.executable(exe_name) == 1
-      end
-
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-      local formatting = null_ls.builtins.formatting
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-      local diagnostics = null_ls.builtins.diagnostics
-      local code_actions = null_ls.builtins.code_actions
-
       mason_null_ls.setup({
         ensure_installed = {
           "black",
@@ -149,12 +145,23 @@ return {
           "jq",
           "mypy",
           "prettier",
+          "ruff",
           "shellcheck",
           "shfmt",
           "stylua",
         },
         automatic_installation = true,
       })
+
+      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+      local formatting = null_ls.builtins.formatting
+      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+      local diagnostics = null_ls.builtins.diagnostics
+      local code_actions = null_ls.builtins.code_actions
+
+      local exe_exists = function(exe_name)
+        return vim.fn.executable(exe_name) == 1
+      end
 
       -- Null-Ls sources
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
@@ -171,15 +178,41 @@ return {
         table.insert(null_ls_sources, code_actions.shellcheck)
         table.insert(null_ls_sources, diagnostics.shellcheck)
       end
+
+      -----------------
+      -- PYTHON -------
+      -----------------
+      if exe_exists("ruff") then
+        table.insert(
+          null_ls_sources,
+          formatting.ruff.with({ extra_args = { "--config", require("core.utils").get_pyproject_path() } })
+        )
+      end
+
       --if exe_exists("mypy") then
       -- table.insert(null_ls_sources, diagnostics.mypy.with({ extra_args = { "--ignore-missing-imports" } }))
       --end
+
+      --[[ replaced by ruff
       if exe_exists("black") then
         table.insert(null_ls_sources, formatting.black)
       end
       if exe_exists("isort") then
         table.insert(null_ls_sources, formatting.isort)
       end
+
+      if exe_exists("flake8") then
+        table.insert(
+          null_ls_sources,
+          diagnostics.flake8.with({
+            extra_args = { "--config", vim.fn.getenv("HOME") .. "/.config/nvim/lua/plugins/lsp/extra/flake8.ini" },
+          })
+        )
+      end
+      --]]
+
+      -----------------
+      -----------------
       if exe_exists("prettier") then
         table.insert(null_ls_sources, formatting.prettier)
       end

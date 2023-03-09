@@ -38,6 +38,14 @@ return {
         desc = "NeoTree (left)",
         remap = true,
       },
+      {
+        "-",
+        function()
+          require("neo-tree.command").execute({ toggle = false, position = "current", reveal = true })
+        end,
+        desc = "NeoTree (current window)",
+        remap = true,
+      },
     },
 
     init = function()
@@ -61,7 +69,6 @@ return {
         },
       },
       window = {
-        position = "float",
         mappings = {
           ["<space>"] = "none",
         },
@@ -186,7 +193,6 @@ return {
         file_browser = {
           grouped = true,
           git_status = true,
-          depth = 2,
         },
       },
     },

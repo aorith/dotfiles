@@ -1,5 +1,7 @@
 -- lspconfig_server_name = { enabled = <boolean>, ensure_installed_name = <name>, config = <config> }
 
+local pyproject_path = require("core.utils").get_pyproject_path()
+
 return {
   bashls = { config = {} },
   gopls = { config = {} },
@@ -46,6 +48,7 @@ return {
   },
 
   pyright = {
+    enabled = true,
     config = {
       settings = {
         {
@@ -60,8 +63,19 @@ return {
       },
     },
   },
-  pylsp = {
+  ruff_lsp = {
     enabled = true,
+    config = {
+      init_options = {
+        settings = {
+          -- Any extra CLI arguments for `ruff` go here.
+          args = { "--config", pyproject_path },
+        },
+      },
+    },
+  },
+  pylsp = {
+    enabled = false,
     config = {
       settings = {
         pylsp = {
