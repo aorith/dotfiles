@@ -9,7 +9,7 @@ cd "$DOTFILES" || exit 1
 export _SKIP=247 # valid exit codes: 0-255
 
 # check for basic commands
-deps="awk curl wget bc fzf find sed git bat"
+deps="awk curl wget bc find sed git"
 for dep in $deps; do
     command -v "$dep" &>/dev/null || { printf '%s not found.\n' "$dep"; exit 1; }
 done
