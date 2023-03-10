@@ -18,6 +18,9 @@ return {
     },
 
     config = function()
+      -- Log level
+      vim.lsp.set_log_level("ERROR")
+
       -- On attach
       local on_attach = function(client, bufnr)
         vim.cmd("command! CheckLspServerCapabilities :lua =require('core.utils').custom_server_capabilities()")
