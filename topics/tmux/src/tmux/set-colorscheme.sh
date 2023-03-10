@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+exit 0
 
 switch_theme_script="${HOME}/.config/alacritty/bin/switch-theme.sh"
 dark="mine/github-dark.yml"

@@ -6,7 +6,7 @@ window:
 font:
   size: 17
   normal:
-    family: "Iosevka Fixed"
+    family: "JetBrainsMono Nerd Font"
 
 shell:
   program: /usr/bin/env

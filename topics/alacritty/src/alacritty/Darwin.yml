@@ -10,7 +10,7 @@ font:
   #builtin_box_drawing: true
 
   normal:
-    family: "JetBrainsMono Nerd Font Mono"
+    family: "JetBrainsMono Nerd Font"
     style: Regular
 
 key_bindings:
