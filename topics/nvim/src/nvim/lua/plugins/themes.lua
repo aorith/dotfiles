@@ -3,8 +3,8 @@
 
 -- Current colorscheme
 local colorscheme_choice = "kanagawa" -- dark theme
-if vim.opt.background == "light" then
-  colorscheme_choice = "zenbones" -- light theme
+if require("core.utils").os_background() == "light" then
+  colorscheme_choice = "catppuccin" -- light theme
 end
 
 local is_enabled = function(colorscheme)
