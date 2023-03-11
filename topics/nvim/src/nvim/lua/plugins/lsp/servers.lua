@@ -3,6 +3,7 @@
 local pyproject_path = require("core.utils").get_pyproject_path()
 
 return {
+  nil_ls = { config = {} },
   bashls = { config = {} },
   gopls = { config = {} },
   jsonls = { config = {} },

@@ -30,7 +30,7 @@ return {
         end
 
         -- disable formatting to null-ls takes care
-        if client.name == "sumneko_lua" or client.name == "lua_ls" then
+        if client.name == "sumneko_lua" or client.name == "lua_ls" or client.name == "nil_ls" then
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
           client.server_capabilities.formatting = false
@@ -90,7 +90,10 @@ return {
         if servers[k].ensure_installed_name then
           table.insert(ensure_installed, servers[k].ensure_installed_name)
         else
-          table.insert(ensure_installed, k)
+          -- skip some
+          if k ~= "nil_ls" then
+            table.insert(ensure_installed, k)
+          end
         end
       end
 
@@ -125,7 +128,9 @@ return {
         },
       })
       require("mason-lspconfig").setup({ ensure_installed = ensure_installed })
-      require("mason-lspconfig").setup_handlers({ setup })
+      for _, server in pairs(server_names) do
+        setup(server)
+      end
     end,
   },
 
@@ -248,6 +253,9 @@ return {
       if exe_exists("terraform") then
         table.insert(null_ls_sources, diagnostics.terraform_validate)
         table.insert(null_ls_sources, formatting.terraform_fmt)
+      end
+      if exe_exists("nixfmt") then
+        table.insert(null_ls_sources, formatting.nixfmt)
       end
 
       null_ls.setup({
