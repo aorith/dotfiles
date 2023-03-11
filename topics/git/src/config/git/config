@@ -41,7 +41,7 @@
     rebase = false
 
 [include]
-  path = delta
+  #path = delta
   path = local.config
 
 # vim: ft=gitconfig
