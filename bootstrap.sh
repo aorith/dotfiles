@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
+set -u -e -o pipefail
 
 shopt -s nullglob
 
+export DOTFILES="$HOME/githome/dotfiles"
+export PRIVATE_DOTFILES="$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles"
+
+# add_to_path
+set -o allexport
+. topics/shell/etc/bash/functions.bash
+set +o allexport
+
 cd "$(dirname "$0")" || exit 1
-cd "$DOTFILES" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
 export _SKIP=247 # valid exit codes: 0-255
