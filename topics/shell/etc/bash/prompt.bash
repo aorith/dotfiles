@@ -4,11 +4,6 @@
 # shellcheck source=./colors.bash
 . "${DOTFILES}"/topics/shell/etc/bash/colors.bash
 
-__container_check() {
-    [[ -n "$CONTAINER_ID" ]] || return
-    printf ' %b%s%b ' "${my_pur2}" "[$CONTAINER_ID]" "${my_rst}"
-}
-
 __ps1_git_tag_f() {
     local t # tag
     t="$(timeout 0.5 git describe --tags --abbrev=0 2>/dev/null)"
@@ -28,7 +23,7 @@ __ps1_git_branch_f() {
             read -r h <"${d}/.git/HEAD"
             case "${h}" in
             ref:*)
-                _ps1_git_branch="${my_bld}${my_grn2} ${h##*/}${my_rst}"
+                _ps1_git_branch="${my_bld}${my_grn2}${h##*/}${my_rst} "
                 return 0
                 ;;
             "")
@@ -36,7 +31,7 @@ __ps1_git_branch_f() {
                 return 0
                 ;;
             *)
-                _ps1_git_branch="${my_bld}${my_grn2} D ${h:0:7}$(__ps1_git_tag_f)${my_rst}"
+                _ps1_git_branch="${my_bld}${my_grn2}D ${h:0:7}$(__ps1_git_tag_f)${my_rst} "
                 return 0
                 ;;
             esac
@@ -51,7 +46,7 @@ __ps1_jobs_f() {
     mapfile -t n_jobs < <(jobs -p)
     (( ${#n_jobs[@]} > 0 )) || return 0
     mapfile -t n_running_jobs < <(jobs -rp)
-    _ps1_jobs="${my_gry} ${#n_running_jobs[@]}/${#n_jobs[@]}${my_rst}"
+    _ps1_jobs="${my_gry}${#n_running_jobs[@]}/${#n_jobs[@]}${my_rst} "
 }
 
 __prompt_command() {
@@ -81,8 +76,6 @@ __prompt_command() {
     # background jobs
     __ps1_jobs_f
 
-    OnContainer=$(__container_check)
-
     if [[ -w "${PWD}" ]]; then
         ((${#PWD} < 30)) || _nl='\n'
         wdc="${my_cyn}\w"
@@ -91,10 +84,11 @@ __prompt_command() {
         _nl='\n'
     fi
     [[ -z "$SSH_CLIENT" ]] || OnSSH="${my_ylw2}${my_bld}\h${my_rst} "
-    [[ -z "$IN_NIX_SHELL" ]] || OnNixShell=" ${my_red2}(${name:-unset})${my_rst}"
-    [[ -z "$VIRTUAL_ENV" ]] || OnVENV=" ${my_rst}(venv)"
+    [[ -z "$IN_NIX_SHELL" ]] || OnNixShell="${my_red2}(${name:-unset})${my_rst} "
+    [[ -z "$VIRTUAL_ENV" ]] || OnVENV="${my_rst}(venv) "
+    [[ -z "$CONTAINER_ID" ]] || OnContainer="${my_pur2}[$CONTAINER_ID]${my_rst} "
 
-    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${OnContainer}${ep}${_nl}${my_grn2}❯${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc} ${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${OnContainer}${ep}${_nl}${my_grn2}❯${my_rst} "
 
     unset _ps1_start_timer
 }
