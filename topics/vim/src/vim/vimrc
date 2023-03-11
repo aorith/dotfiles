@@ -90,7 +90,7 @@ call plug#begin('~/.local/share/vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'fgsch/vim-varnish'
 
@@ -110,7 +110,7 @@ call plug#end()
 " }}} -------------------------------------------------------------------------
 
 " {{{ Options after plugins ---------------------------------------------------
-set omnifunc=ale#completion#OmniFunc
+"set omnifunc=ale#completion#OmniFunc
 " }}} -------------------------------------------------------------------------
 
 " {{{ Sources -----------------------------------------------------------------
