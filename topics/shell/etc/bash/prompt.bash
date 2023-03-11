@@ -5,8 +5,8 @@
 . "${DOTFILES}"/topics/shell/etc/bash/colors.bash
 
 __container_check() {
-    [[ -n "$_CONTAINER_NAME" ]] || return
-    printf '%b%s%b ' "${my_pur2}" "[$_CONTAINER_NAME]" "${my_rst}"
+    [[ -n "$CONTAINER_ID" ]] || return
+    printf ' %b%s%b ' "${my_pur2}" "[$CONTAINER_ID]" "${my_rst}"
 }
 
 __ps1_git_tag_f() {
@@ -57,7 +57,7 @@ __ps1_jobs_f() {
 __prompt_command() {
     local LANG=C
     local wdc ep OnSSH ms tc _nl # working directory color, error prompt, on ssh, millisecods, timecolor, newline
-    (($1 == 0)) || ep=" ${my_red}${1}${my_rst}"
+    (($1 == 0)) || ep="${my_red}${1}${my_rst} "
 
     ms=$((($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000))
     case $((\
@@ -94,7 +94,7 @@ __prompt_command() {
     [[ -z "$IN_NIX_SHELL" ]] || OnNixShell=" ${my_red2}(${name:-unset})${my_rst}"
     [[ -z "$VIRTUAL_ENV" ]] || OnVENV=" ${my_rst}(venv)"
 
-    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${ep} ${OnContainer}${_nl}${my_grn2}❯${my_rst} "
+    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc}${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${OnContainer}${ep}${_nl}${my_grn2}❯${my_rst} "
 
     unset _ps1_start_timer
 }
