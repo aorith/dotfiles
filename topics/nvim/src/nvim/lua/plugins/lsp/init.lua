@@ -254,8 +254,9 @@ return {
         table.insert(null_ls_sources, diagnostics.terraform_validate)
         table.insert(null_ls_sources, formatting.terraform_fmt)
       end
-      if exe_exists("nixfmt") then
-        table.insert(null_ls_sources, formatting.nixfmt)
+      -- nix formatter https://github.com/kamadorueda/alejandra
+      if exe_exists("alejandra") then
+        table.insert(null_ls_sources, formatting.alejandra)
       end
 
       null_ls.setup({

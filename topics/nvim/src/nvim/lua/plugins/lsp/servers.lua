@@ -8,7 +8,7 @@ return {
   gopls = { config = {} },
   jsonls = { config = {} },
   tflint = { config = {} },
-  yamlls = { config = {} },
+  yamlls = { config = { settings = { yaml = { keyOrdering = false } } } },
   html = { config = {} },
   cssls = { config = {} },
   tsserver = { config = {} },
