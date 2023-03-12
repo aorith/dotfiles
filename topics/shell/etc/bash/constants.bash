@@ -17,13 +17,13 @@ elif [[ -r "/usr/local/bin/lesspipe.sh" ]]; then
     export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 fi
 
-export LESS_TERMCAP_mb=$'\033[01;31m'               # begins blinking
-export LESS_TERMCAP_md=$'\033[01;31m'               # begins bold (headers, titles ...)
-export LESS_TERMCAP_me=$'\033[0m'                   # ends mode
-export LESS_TERMCAP_se=$'\033[0m'                   # ends standout-mode
-export LESS_TERMCAP_ue=$'\033[0m'                   # ends underline
-export LESS_TERMCAP_so=$'\033[01;44;37m'            # begins standout-mode (highligh and statusbar)
-export LESS_TERMCAP_us=$'\033[01;32m'               # begins underline (key words)
+export LESS_TERMCAP_mb=$'\033[01;31m'    # begins blinking
+export LESS_TERMCAP_md=$'\033[01;31m'    # begins bold (headers, titles ...)
+export LESS_TERMCAP_me=$'\033[0m'        # ends mode
+export LESS_TERMCAP_se=$'\033[0m'        # ends standout-mode
+export LESS_TERMCAP_ue=$'\033[0m'        # ends underline
+export LESS_TERMCAP_so=$'\033[01;44;37m' # begins standout-mode (highligh and statusbar)
+export LESS_TERMCAP_us=$'\033[01;32m'    # begins underline (key words)
 
 man() {
     env LESS_TERMCAP_us=$'\033[31m' \
@@ -70,13 +70,19 @@ if [[ "$_OS" == 'Darwin' ]]; then
     if [[ -f /private/etc/manpaths ]]; then
         while read -r man_path; do
             add_to_manpath "$man_path"
-        done < /private/etc/manpaths
+        done </private/etc/manpaths
     fi
     unset manpath oldIFS
 elif [[ "$_OS" == 'Linux' ]]; then
     # Linux only
-    export CLIPBOARD_COPY="xclip -i -selection primary -f | xclip -i -selection clipboard"
-    export CLIPBOARD_PASTE="xclip -out -selection clipboard"
+    if [[ -n "$WAYLAND_DISPLAY" ]]; then
+        export CLIPBOARD_COPY="wl-copy"
+        export CLIPBOARD_PASTE="wl-paste"
+        alias pbcopy='wl-copy'
+    else
+        export CLIPBOARD_COPY="xclip -i -selection primary -f | xclip -i -selection clipboard"
+        export CLIPBOARD_PASTE="xclip -out -selection clipboard"
+    fi
     export SUBL_CMD='subl'
     export EXEC_DATE='date'
     export INPUTRC="${HOME}/.inputrc"
