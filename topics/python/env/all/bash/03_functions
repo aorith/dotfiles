@@ -27,6 +27,7 @@ py-env() {
         fi
     fi
 
+    VIRTUAL_ENV_DISABLE_PROMPT=1
     source "${base_path}/${chosen}/bin/activate" \
         || { echo "Could not activate venv '$chosen' ..."; return 1; }
     which python
