@@ -1,3 +1,9 @@
+local background = require("core.utils").os_background()
+local lualine_theme = "solarized_light"
+if background == "dark" then
+  lualine_theme = "auto"
+end
+
 return {
   -- statusline
   {
@@ -14,7 +20,7 @@ return {
 
       return {
         options = {
-          theme = "auto",
+          theme = lualine_theme,
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
         },

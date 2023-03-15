@@ -1,6 +1,9 @@
 [init]
     defaultBranch = master
 
+[branch]
+    color = auto
+
 [user]
     name = Manuel Sanchez Pinar
     email = aomanu@gmail.com
@@ -13,12 +16,12 @@
     gpgsign = true
 
 [core]
-    #pager = less -+e-M
-    pager = less --quit-if-one-screen -M -X # X=clear
+    #pager = less --quit-if-one-screen -M -X # X=clear
+    pager = less -RS
 
 [diff]
-    colorMoved = default
-    colorMovedWS = allow-indentation-change
+    color = auto
+    algorithm = patience
 
 [difftool]
     prompt = false

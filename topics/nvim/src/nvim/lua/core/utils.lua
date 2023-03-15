@@ -10,7 +10,11 @@ local function macos_background()
 end
 
 local function linux_background()
-  return "dark"
+  local output = vim.fn.system("gsettings get org.gnome.desktop.interface color-scheme")
+  if string.match(output, ".*dark.*") then
+    return "dark"
+  end
+  return "light"
 end
 
 function M.os_background()

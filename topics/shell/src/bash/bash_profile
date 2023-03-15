@@ -10,7 +10,6 @@
 
 
 . "${HOME}/.profile"
-. "${DOTFILES}/topics/shell/etc/bash/containers.bash"
 #. "${DOTFILES}/topics/shell/etc/bash/colors.bash"
 . "${DOTFILES}/topics/shell/etc/bash/settings.bash"
 . "${HOME}/.bashrc"

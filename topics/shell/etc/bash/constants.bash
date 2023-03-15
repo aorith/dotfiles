@@ -1,35 +1,15 @@
 # vim: ft=bash
 # Sourced from: profile
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export VISUAL=$EDITOR
 export TERMINAL='alacritty'
 
-export LESS='-RM' # F option breaks i3 "show errors"
-export LESSHISTFILE='-'
+#export LESS='-RM' # F option breaks i3 "show errors"
+export LESSHISTFILE="$HOME/.local/state/lesshst"
 export PAGER='less'
 export MANPAGER="$PAGER"
 #export SYSTEMD_LESS="$LESS"
-
-if [[ -x "/usr/bin/lesspipe" ]]; then
-    eval "$(/usr/bin/lesspipe)"
-elif [[ -r "/usr/local/bin/lesspipe.sh" ]]; then
-    export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
-fi
-
-export LESS_TERMCAP_mb=$'\033[01;31m'    # begins blinking
-export LESS_TERMCAP_md=$'\033[01;31m'    # begins bold (headers, titles ...)
-export LESS_TERMCAP_me=$'\033[0m'        # ends mode
-export LESS_TERMCAP_se=$'\033[0m'        # ends standout-mode
-export LESS_TERMCAP_ue=$'\033[0m'        # ends underline
-export LESS_TERMCAP_so=$'\033[01;44;37m' # begins standout-mode (highligh and statusbar)
-export LESS_TERMCAP_us=$'\033[01;32m'    # begins underline (key words)
-
-man() {
-    env LESS_TERMCAP_us=$'\033[31m' \
-        LESS_TERMCAP_md=$'\033[1;33m' \
-        man "$@"
-}
 
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
