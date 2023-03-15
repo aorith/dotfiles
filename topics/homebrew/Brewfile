@@ -58,6 +58,7 @@ brew "vim"
 brew "watch"
 brew "wget"
 brew "xz"
+brew "yq"
 brew "zsh"
 
 
