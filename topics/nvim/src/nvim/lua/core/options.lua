@@ -54,7 +54,7 @@ vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 300
-vim.opt.title = true
+vim.opt.title = false
 -- set titlestring to current path, avoid using current buffer options available
 -- in statusline since it will cause tmux title to flicker on noice messages
 vim.opt.titlestring = "nvim(" .. string.gsub(vim.fn.getenv("PWD"), vim.fn.getenv("HOME"), "~") .. ")"
