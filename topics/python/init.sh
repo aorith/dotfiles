@@ -5,6 +5,8 @@ create_link "${PWD}/src/mypy" "$HOME/.config/mypy"
 
 # Skip NixOS
 [[ ! -d /etc/nixos ]] || exit "$_SKIP"
+# Skip Fedora
+[[ ! -e /etc/rpm-ostreed.conf ]] || exit "$_SKIP"
 
 # PyENV
 [[ -n "$PYENV_ROOT" ]] || { echo "Missing 'PYENV_ROOT' variable."; exit 1; }
