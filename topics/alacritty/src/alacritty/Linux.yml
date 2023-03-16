@@ -27,7 +27,7 @@ key_bindings:
             [
               "bash",
               "-ilc",
-              "tmux display-popup -w40% -h40% -E $HOME/.config/alacritty/bin/switch-theme.sh"
+              "tmux display-popup -w80% -h80% -E $HOME/.config/alacritty/bin/switch-theme.sh"
             ]
         }
     }
