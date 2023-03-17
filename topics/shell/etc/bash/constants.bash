@@ -56,7 +56,7 @@ if [[ "$_OS" == 'Darwin' ]]; then
     unset manpath oldIFS
 elif [[ "$_OS" == 'Linux' ]]; then
     # Linux only
-    if [[ -n "$WAYLAND_DISPLAY" ]]; then
+    if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         export CLIPBOARD_COPY="wl-copy"
         export CLIPBOARD_PASTE="wl-paste"
         alias pbcopy='wl-copy'
