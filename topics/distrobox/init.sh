@@ -1,5 +1,8 @@
 # vim: ft=bash
-[[ -d /etc/nixos ]] || exit "$_SKIP"
+
+if [[ ! -d /etc/nixos ]] && [[ ! -e /etc/rpm-ostreed.conf ]]; then
+    exit "$_SKIP"
+fi
 
 mkdir ~/.local/bin
 create_link "${PWD}/src/distrobox" "$HOME/.config/distrobox"
