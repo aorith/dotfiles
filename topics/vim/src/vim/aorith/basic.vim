@@ -4,6 +4,9 @@ let mapleader = " "
 nnoremap <Space> <Nop>
 let localmapleader = ","
 
+" Ensure nomodelineexpr
+set nomodelineexpr
+
 set rulerformat=%60(%=%#ModeMsg#%(%m%)%#Mode#\ %y\ (%l:%c\ 0x%B\ %p%%)\ B:%n%)
 set shell=/usr/bin/env\ bash
 set autoread " read file again if modified on disk and no unsaved changes
