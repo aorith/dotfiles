@@ -146,6 +146,7 @@ return {
 
       mason_null_ls.setup({
         ensure_installed = {
+          "ansible-lint",
           "black",
           "flake8",
           "golangci-lint",
