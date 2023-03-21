@@ -6,7 +6,7 @@ window:
 font:
   size: 14
   normal:
-    family: "JetBrainsMono Nerd Font"
+    family: "JetBrains Mono"
 
 shell:
   program: /usr/bin/env
@@ -27,8 +27,8 @@ key_bindings:
             [
               "bash",
               "-ilc",
-              "tmux display-popup -w80% -h80% -E $HOME/.config/alacritty/bin/switch-theme.sh"
-            ]
-        }
+              "tmux display-popup -w80% -h80% -E $HOME/.config/alacritty/bin/switch-theme.sh",
+            ],
+        },
     }
   - { key: B, mods: Alt, action: ReceiveChar }
