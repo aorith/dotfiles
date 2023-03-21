@@ -1,0 +1,13 @@
+if [[ -e /run/.containerenv ]]; then
+    unset -f command_not_found_handle
+
+    command_not_found_handle() {
+        if /usr/bin/distrobox-host-exec command -v "$1" >/dev/null 2>&1; then
+            /usr/bin/distrobox-host-exec "$@"
+        else
+            echo "bash: $1: command not found"
+        fi
+    }
+fi
+
+# vim: ft=sh
