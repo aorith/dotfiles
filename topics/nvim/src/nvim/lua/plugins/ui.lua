@@ -1,9 +1,3 @@
-local background = require("core.utils").os_background()
-local lualine_theme = "solarized_light"
-if background == "dark" then
-  lualine_theme = "auto"
-end
-
 return {
   -- statusline
   {
