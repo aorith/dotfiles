@@ -1,6 +1,11 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+local MODIFIER = "CTRL|ALT"
+if string.match(wezterm.target_triple, "darwin") then
+  MODIFIER = "CMD"
+end
+
 local copy_mode = {}
 local search_mode = {}
 if wezterm.gui then
@@ -34,8 +39,8 @@ local copy_mode_extra_keys = {
 local search_mode_extra_keys = {
   { key = "Enter", mods = "NONE", action = act.CopyMode("PriorMatch") },
   { key = "Enter", mods = "SHIFT", action = act.CopyMode("NextMatch") },
-  { key = "f", mods = "SUPER", action = act.CopyMode("ClearPattern") },
-  { key = "F", mods = "SUPER|SHIFT", action = act.CopyMode("CycleMatchType") },
+  { key = "f", mods = MODIFIER, action = act.CopyMode("ClearPattern") },
+  { key = "F", mods = MODIFIER .. "|SHIFT", action = act.CopyMode("CycleMatchType") },
   { key = "Backspace", mods = "ALT", action = act.CopyMode("ClearPattern") },
   {
     key = "Escape",
@@ -65,15 +70,18 @@ M.wezterm_keys = {
     { key = "Space", mods = "ALT", action = act.SendString(" ") },
 
     -- font size
-    { key = "+", mods = "SUPER", action = act.IncreaseFontSize },
-    { key = "-", mods = "SUPER", action = act.DecreaseFontSize },
-    { key = "0", mods = "SUPER", action = act.ResetFontSize },
+    { key = "+", mods = MODIFIER, action = act.IncreaseFontSize },
+    { key = "-", mods = MODIFIER, action = act.DecreaseFontSize },
+    { key = "0", mods = MODIFIER, action = act.ResetFontSize },
+    { key = "+", mods = "CTRL", action = act.IncreaseFontSize },
+    { key = "-", mods = "CTRL", action = act.DecreaseFontSize },
+    { key = "0", mods = "CTRL", action = act.ResetFontSize },
 
     -- copy & paste
     { key = "v", mods = "SHIFT|CTRL", action = act.PasteFrom("PrimarySelection") },
     { key = "phys:Insert", mods = "SHIFT", action = act.PasteFrom("PrimarySelection") },
-    { key = "v", mods = "SUPER", action = act.PasteFrom("PrimarySelection") },
-    { key = "c", mods = "SUPER", action = act.CopyTo("ClipboardAndPrimarySelection") },
+    { key = "v", mods = MODIFIER, action = act.PasteFrom("PrimarySelection") },
+    { key = "c", mods = MODIFIER, action = act.CopyTo("ClipboardAndPrimarySelection") },
 
     -- scrollback
     {
@@ -85,56 +93,56 @@ M.wezterm_keys = {
       }),
     },
 
-    { key = "q", mods = "SUPER", action = act.QuitApplication },
+    { key = "q", mods = MODIFIER, action = act.QuitApplication },
 
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
-    { key = "Enter", mods = "SUPER|SHIFT", action = act.RotatePanes("Clockwise") },
+    { key = "Enter", mods = MODIFIER .. "|SHIFT", action = act.RotatePanes("Clockwise") },
 
-    { key = "d", mods = "SUPER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "D", mods = "SUPER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = "d", mods = MODIFIER, action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = "D", mods = MODIFIER .. "|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
-    { key = "w", mods = "SUPER", action = act.CloseCurrentPane({ confirm = false }) },
-    { key = "t", mods = "SUPER", action = act.SpawnTab("CurrentPaneDomain") },
-    { key = "T", mods = "SUPER|SHIFT", action = act.SwitchToWorkspace },
+    { key = "w", mods = MODIFIER, action = act.CloseCurrentPane({ confirm = false }) },
+    { key = "t", mods = MODIFIER, action = act.SpawnTab("CurrentPaneDomain") },
+    { key = "T", mods = MODIFIER .. "|SHIFT", action = act.SwitchToWorkspace },
 
-    { key = "h", mods = "SUPER", action = act.ActivatePaneDirection("Left") },
-    { key = "j", mods = "SUPER", action = act.ActivatePaneDirection("Down") },
-    { key = "k", mods = "SUPER", action = act.ActivatePaneDirection("Up") },
-    { key = "l", mods = "SUPER", action = act.ActivatePaneDirection("Right") },
+    { key = "h", mods = MODIFIER, action = act.ActivatePaneDirection("Left") },
+    { key = "j", mods = MODIFIER, action = act.ActivatePaneDirection("Down") },
+    { key = "k", mods = MODIFIER, action = act.ActivatePaneDirection("Up") },
+    { key = "l", mods = MODIFIER, action = act.ActivatePaneDirection("Right") },
 
-    { key = "H", mods = "SUPER|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) }, -- move pane
-    { key = "J", mods = "SUPER|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) },
-    { key = "K", mods = "SUPER|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) },
-    { key = "L", mods = "SUPER|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) },
+    { key = "H", mods = MODIFIER .. "|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) }, -- move pane
+    { key = "J", mods = MODIFIER .. "|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) },
+    { key = "K", mods = MODIFIER .. "|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) },
+    { key = "L", mods = MODIFIER .. "|SHIFT", action = act.PaneSelect({ mode = "SwapWithActive" }) },
 
-    { key = "1", mods = "SUPER", action = act.ActivateTab(0) }, -- switch to pane 1
-    { key = "2", mods = "SUPER", action = act.ActivateTab(1) },
-    { key = "3", mods = "SUPER", action = act.ActivateTab(2) },
-    { key = "4", mods = "SUPER", action = act.ActivateTab(3) },
-    { key = "5", mods = "SUPER", action = act.ActivateTab(4) },
-    { key = "6", mods = "SUPER", action = act.ActivateTab(5) },
-    { key = "7", mods = "SUPER", action = act.ActivateTab(6) },
-    { key = "8", mods = "SUPER", action = act.ActivateTab(7) },
-    { key = "9", mods = "SUPER", action = act.ActivateTab(8) },
-    { key = "g", mods = "SUPER", action = act.ActivateCopyMode }, -- enter copy mode
-    { key = "r", mods = "SUPER", action = act.SendString("\x1br") }, -- rename pane  TODO
-    { key = "R", mods = "SUPER|SHIFT", action = act.SendString("\x1bR") }, -- rename session TODO
-    { key = "Comma", mods = "SUPER", action = act.SwitchWorkspaceRelative(1) },
+    { key = "1", mods = MODIFIER, action = act.ActivateTab(0) }, -- switch to pane 1
+    { key = "2", mods = MODIFIER, action = act.ActivateTab(1) },
+    { key = "3", mods = MODIFIER, action = act.ActivateTab(2) },
+    { key = "4", mods = MODIFIER, action = act.ActivateTab(3) },
+    { key = "5", mods = MODIFIER, action = act.ActivateTab(4) },
+    { key = "6", mods = MODIFIER, action = act.ActivateTab(5) },
+    { key = "7", mods = MODIFIER, action = act.ActivateTab(6) },
+    { key = "8", mods = MODIFIER, action = act.ActivateTab(7) },
+    { key = "9", mods = MODIFIER, action = act.ActivateTab(8) },
+    { key = "g", mods = MODIFIER, action = act.ActivateCopyMode }, -- enter copy mode
+    { key = "r", mods = MODIFIER, action = act.SendString("\x1br") }, -- rename pane  TODO
+    { key = "R", mods = MODIFIER .. "|SHIFT", action = act.SendString("\x1bR") }, -- rename session TODO
+    { key = "Comma", mods = MODIFIER, action = act.SwitchWorkspaceRelative(1) },
 
-    { key = "z", mods = "SUPER", action = act.TogglePaneZoomState }, -- toggle zoom (maximize pane)
+    { key = "z", mods = MODIFIER, action = act.TogglePaneZoomState }, -- toggle zoom (maximize pane)
     {
       key = "f",
-      mods = "SUPER",
+      mods = MODIFIER,
       action = act.Multiple({
         act.CopyMode("ClearPattern"),
         act.Search({ CaseInSensitiveString = "" }),
       }),
     },
-    { key = "i", mods = "SUPER", action = act.EmitEvent("tcdn-server-for") },
-    { key = "F", mods = "SUPER|SHIFT", action = act.EmitEvent("fzf-search-scrollback") },
-    { key = "E", mods = "SUPER|SHIFT", action = act.EmitEvent("nvim-open-scrollback") },
+    { key = "i", mods = MODIFIER, action = act.EmitEvent("tcdn-server-for") },
+    { key = "F", mods = MODIFIER .. "|SHIFT", action = act.EmitEvent("fzf-search-scrollback") },
+    { key = "E", mods = MODIFIER .. "|SHIFT", action = act.EmitEvent("nvim-open-scrollback") },
   },
 
   key_tables = {

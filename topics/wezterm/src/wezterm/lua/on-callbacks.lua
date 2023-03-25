@@ -58,23 +58,43 @@ local HEADING_COLOR = { "#ffb2cc", "#a4a4a4" }
 local BG_COLOR = { "#111111", "#333333" }
 local FONT_COLOR = { "#ffffff", "#aaaaaa" }
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local active_idx = tab.is_active and 1 or 2
+if string.match(wezterm.target_triple, "darwin") then
+  wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local active_idx = tab.is_active and 1 or 2
 
-  local index = " " .. tab.tab_index + 1 .. " "
-  local zoomed = tab.active_pane.is_zoomed and "🔎 " or ""
-  local title = basename(tab.active_pane.foreground_process_name)
+    local index = " " .. tab.tab_index + 1 .. " "
+    local zoomed = tab.active_pane.is_zoomed and "🔎 " or ""
+    local title = basename(tab.active_pane.foreground_process_name)
 
-  return {
-    { Background = { Color = BG_COLOR[active_idx] } },
-    { Foreground = { Color = HEADING_COLOR[active_idx] } },
-    { Text = index .. zoomed },
-    { Foreground = { Color = FONT_COLOR[active_idx] } },
-    { Attribute = { Intensity = "Half" } },
-    { Text = title },
-    "ResetAttributes",
-  }
-end)
+    return {
+      { Background = { Color = BG_COLOR[active_idx] } },
+      { Foreground = { Color = HEADING_COLOR[active_idx] } },
+      { Text = index .. zoomed },
+      { Foreground = { Color = FONT_COLOR[active_idx] } },
+      { Attribute = { Intensity = "Half" } },
+      { Text = title },
+      "ResetAttributes",
+    }
+  end)
+else
+  wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local active_idx = tab.is_active and 1 or 2
+
+    local index = " " .. tab.tab_index + 1 .. " "
+    local zoomed = tab.active_pane.is_zoomed and "🔎 " or ""
+    local title = tab.active_pane.title
+
+    return {
+      { Background = { Color = BG_COLOR[active_idx] } },
+      { Foreground = { Color = HEADING_COLOR[active_idx] } },
+      { Text = index .. zoomed },
+      { Foreground = { Color = FONT_COLOR[active_idx] } },
+      { Attribute = { Intensity = "Half" } },
+      { Text = title },
+      "ResetAttributes",
+    }
+  end)
+end
 
 wezterm.on("tcdn-server-for", function(window, pane)
   local filename = dump_scrollback_to_file(window, pane, false)
