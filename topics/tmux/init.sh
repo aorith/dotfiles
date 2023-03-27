@@ -1,8 +1,6 @@
 # vim: ft=bash
 
 ### bootstrap
-source "$DOTFILES"/topics/scripts/init.sh "source-only"
-
 if [[ ! -e ~/.local/share/tpm ]]; then
     mkdir -p ~/.local/share
     git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.local/share/tpm

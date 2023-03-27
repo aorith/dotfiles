@@ -1,3 +1,9 @@
+-- https://github.com/NixOS/nixpkgs/issues/189838
+local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
+vim.fn.mkdir(parser_install_dir, "p")
+-- Prevents reinstall of treesitter plugins every boot
+vim.opt.runtimepath:append(parser_install_dir)
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -16,11 +22,13 @@ return {
 
     ---@type TSConfig
     opts = {
+      parser_install_dir = parser_install_dir,
+
       highlight = { enable = true, disable = {}, additional_vim_regex_highlighting = {} },
       indent = { enable = true, disable = { "python" } },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
-      sync_install = true,
+      sync_install = false,
 
       -- Automatically install missing parsers when entering buffer
       auto_install = true,
@@ -28,34 +36,8 @@ return {
       -- List of parsers to ignore installing (for "all")
       ignore_install = {},
 
-      ensure_installed = {
-        "bash",
-        "c",
-        "css",
-        "dockerfile",
-        "gitignore",
-        "go",
-        "help",
-        "html",
-        "javascript",
-        "json",
-        "json5",
-        "jsonc",
-        "lua",
-        "make",
-        "markdown",
-        "markdown_inline",
-        "nix",
-        "python",
-        "query",
-        "regex",
-        "sql",
-        "toml",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-      },
+      -- A list of parser names, or "all" (the five listed parsers should always be installed)
+      ensure_installed = { "c", "lua", "vim", "help", "query" },
 
       incremental_selection = {
         enable = true,
