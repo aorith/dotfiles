@@ -1,9 +1,8 @@
 # defaults write org.alacritty AppleFontSmoothing -int 0
 
-alt_send_esc: false
-
 window:
   decorations: buttonless
+  option_as_alt: None
 
 font:
   size: 17
