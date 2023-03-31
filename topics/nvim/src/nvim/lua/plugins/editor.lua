@@ -45,18 +45,8 @@ return {
     enabled = true,
     version = "*",
     keys = {
-      --[[
       {
         "<leader>e",
-        function()
-          require("neo-tree.command").execute({ toggle = true, position = "float" })
-        end,
-        desc = "NeoTree",
-        remap = true,
-      },
-      --]]
-      {
-        "<leader>E",
         function()
           require("neo-tree.command").execute({ toggle = true, position = "left" })
         end,
@@ -117,9 +107,6 @@ return {
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
-      -- Replacement to the standard file explorer
-      { "<leader>e", "<cmd>Telescope file_browser<cr>", desc = "File Explorer" },
-
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       -- find
