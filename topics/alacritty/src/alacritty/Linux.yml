@@ -1,12 +1,10 @@
-alt_send_esc: true
-
 window:
   decorations: none
 
 font:
   size: 14
   normal:
-    family: "JetBrainsMono Nerd Font"
+    family: "Hack Nerd Font"
 
 shell:
   program: /usr/bin/env
