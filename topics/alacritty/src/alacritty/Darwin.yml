@@ -9,7 +9,7 @@ font:
   #builtin_box_drawing: true
 
   normal:
-    family: "JetBrainsMono Nerd Font"
+    family: "Hack Nerd Font"
     style: Regular
 
 key_bindings:
