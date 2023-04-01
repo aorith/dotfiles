@@ -85,10 +85,11 @@ cask "kitty"
 cask "mpv"
 cask "openwebstart"
 cask "rectangle"
+cask "spotify"
 cask "sublime-text"
 cask "tigervnc-viewer"
 cask "tunnelblick"
-cask "vscodium"
 cask "vlc"
+cask "vscodium"
 
 # vim: ft=conf
