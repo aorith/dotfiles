@@ -42,7 +42,6 @@ brew "moreutils"
 brew "mtr"
 brew "mysql-client" # required for python package mysql-client
 brew "neofetch"
-brew "neovim"
 brew "nmap"
 brew "p7zip"
 brew "pango" # required for python package cffi
