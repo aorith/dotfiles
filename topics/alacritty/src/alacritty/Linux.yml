@@ -17,7 +17,7 @@ key_bindings:
   - { key: N, mods: Alt|Shift, action: SpawnNewInstance }
   - {
       key: T,
-      mods: Control,
+      mods: Control|Shift,
       command:
         {
           program: "/usr/bin/env",

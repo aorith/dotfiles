@@ -59,11 +59,12 @@ elif [[ "$_OS" == 'Linux' ]]; then
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         export CLIPBOARD_COPY="wl-copy"
         export CLIPBOARD_PASTE="wl-paste"
-        alias pbcopy='wl-copy'
     else
-        export CLIPBOARD_COPY="xclip -i -selection primary -f | xclip -i -selection clipboard"
+        export CLIPBOARD_COPY="xclip -i -selection clipboard"
         export CLIPBOARD_PASTE="xclip -out -selection clipboard"
     fi
+    alias pbcopy="$CLIPBOARD_COPY"
+    alias pbpaste="$CLIPBOARD_PASTE"
     export SUBL_CMD='subl'
     export EXEC_DATE='date'
     export INPUTRC="${HOME}/.inputrc"

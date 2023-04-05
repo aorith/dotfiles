@@ -20,7 +20,7 @@ key_bindings:
   # - {key: F1,    mods: Command|Shift, command: { program: "/usr/bin/env", args: ["bash", "-ilc", "tmux new-window -n HELP vim $PRIVATE_DOTFILES/misc/help.md"]}}
   - {
       key: T,
-      mods: Control,
+      mods: Control|Shift,
       command:
         {
           program: "/usr/bin/env",
