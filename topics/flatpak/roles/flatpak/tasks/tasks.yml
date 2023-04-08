@@ -1,0 +1,19 @@
+---
+- name: Add Flatpak remotes
+  community.general.flatpak_remote:
+    name: "{{ item.name }}"
+    state: present
+    method: user
+    flatpakrepo_url: "{{ item.url }}"
+  loop: "{{ flatpak_remotes }}"
+
+- name: Update flatpak remote metadata
+  ansible.builtin.command: flatpak update --appstream
+
+- name: Install Flatpak packages
+  community.general.flatpak:
+    name: "{{ item.package }}"
+    state: present
+    method: user
+    remote: "{{ item.remote }}"
+  loop: "{{ flatpak_packages }}"

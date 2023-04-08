@@ -1,0 +1,7 @@
+- hosts: all
+  pre_tasks:
+    - name: Load variables for {{ ansible_hostname }}
+      ansible.builtin.include_vars:
+        file: "{{ inventory_dir }}/config.yml"
+  roles:
+    - {role: flatpak}
