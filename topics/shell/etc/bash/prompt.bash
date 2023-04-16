@@ -44,31 +44,15 @@ __ps1_jobs_f() {
     local n_jobs n_running_jobs
     _ps1_jobs=''
     mapfile -t n_jobs < <(jobs -p)
-    (( ${#n_jobs[@]} > 0 )) || return 0
+    ((${#n_jobs[@]} > 0)) || return 0
     mapfile -t n_running_jobs < <(jobs -rp)
     _ps1_jobs="${my_gry}${#n_running_jobs[@]}/${#n_jobs[@]}${my_rst} "
 }
 
 __prompt_command() {
     local LANG=C
-    local wdc ep OnSSH ms tc _nl # working directory color, error prompt, on ssh, millisecods, timecolor, newline
+    local wdc ep OnSSH _nl # working directory color, error prompt, on ssh, millisecods, timecolor, newline
     (($1 == 0)) || ep="${my_red}${1}${my_rst} "
-
-    ms=$((($(${EXEC_DATE} +%s%N) - ${_ps1_start_timer:-}) / 1000000))
-    case $((\
-    ms < 21 ? 1 : \
-    ms < 101 ? 2 : \
-    ms < 251 ? 3 : \
-    ms < 501 ? 4 : \
-    ms < 1000 ? 5 : 6)) in
-    1) tc="${my_grn}" ;;
-    2) tc="${my_ylw}" ;;
-    3) tc="${my_cyn}" ;;
-    4) tc="${my_blu}" ;;
-    5) tc="${my_pur}" ;;
-    6 | *) tc="${my_red}" ms=$((ms / 1000)) ;;
-    esac
-    ms="$(printf '%03d' "$ms")"
 
     # git branch/tag
     __ps1_git_branch_f
@@ -77,7 +61,7 @@ __prompt_command() {
     __ps1_jobs_f
 
     if [[ -w "${PWD}" ]]; then
-        ((${#PWD} < 30)) || _nl='\n'
+        ((${#PWD} < 48)) || _nl='\n'
         wdc="${my_cyn}\w"
     else
         wdc="${my_red2}\w"
@@ -88,10 +72,7 @@ __prompt_command() {
     [[ -z "$VIRTUAL_ENV" ]] || OnVENV="${my_rst}(venv) "
     [[ -z "$CONTAINER_ID" ]] || OnContainer="${my_pur2}[$CONTAINER_ID]${my_rst} "
 
-    PS1="\[\033]0;\u@\h \w\007\]${tc}${ms}${my_rst} ${OnSSH}${wdc} ${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${OnContainer}${ep}${_nl}${my_grn2}❯${my_rst} "
-
-    unset _ps1_start_timer
+    PS1="${my_blu2}♯${my_rst} \[\033]0;\u@\h \w\007\]${OnSSH}${wdc} ${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${OnContainer}${ep}${_nl}${my_blu2}❯${my_rst} "
 }
 
-trap ': "${_ps1_start_timer:=$($EXEC_DATE +%s%N)}"' DEBUG
 PROMPT_COMMAND='__prompt_command $?'
