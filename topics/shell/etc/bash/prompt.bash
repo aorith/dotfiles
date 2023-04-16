@@ -72,7 +72,7 @@ __prompt_command() {
     [[ -z "$VIRTUAL_ENV" ]] || OnVENV="${my_rst}(venv) "
     [[ -z "$CONTAINER_ID" ]] || OnContainer="${my_pur2}[$CONTAINER_ID]${my_rst} "
 
-    PS1="${my_blu2}♯${my_rst} \[\033]0;\u@\h \w\007\]${OnSSH}${wdc} ${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${OnContainer}${ep}${_nl}${my_blu2}❯${my_rst} "
+    PS1="${my_blu2}$(date +'%H:%M')${my_rst} \[\033]0;\u@\h \w\007\]${OnSSH}${wdc} ${OnVENV}${_ps1_git_branch}${my_rst}${_ps1_jobs}${OnNixShell}${OnContainer}${ep}${_nl}${my_blu2}❯${my_rst} "
 }
 
 PROMPT_COMMAND='__prompt_command $?'
