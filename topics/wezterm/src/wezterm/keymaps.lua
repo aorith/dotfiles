@@ -39,6 +39,14 @@ map(keys, "v", { "SUPER", "CTRL|SHIFT" }, act.PasteFrom("Clipboard"))
 map(keys, "Insert", "SHIFT", act.PasteFrom("Clipboard"))
 map(keys, "Insert", "CTRL|SHIFT", act.PasteFrom("PrimarySelection"))
 
+-- clear scrollback
+map(
+  keys,
+  "l",
+  "CTRL",
+  act.Multiple({ act.ClearScrollback("ScrollbackOnly"), act.SendKey({ key = "l", mods = "CTRL" }) })
+)
+
 -- activate tabs
 for i = 1, 9 do
   map(keys, "phys:" .. tostring(i), both, act.ActivateTab(i - 1))
