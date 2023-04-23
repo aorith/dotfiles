@@ -157,7 +157,7 @@ function M.apply_to_config(config)
 
   config.enable_kitty_keyboard = false
   config.use_dead_keys = false -- I usually don't need to type "áéíóú" in the terminal
-  config.use_ime = false
+  config.use_ime = true
 end
 
 return M
