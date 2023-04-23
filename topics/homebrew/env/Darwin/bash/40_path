@@ -1,5 +1,7 @@
 # vim: ft=bash
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 add_to_path "/usr/local/bin"
 add_to_path "/usr/local/sbin"
 add_to_path "/opt/homebrew/opt/coreutils/libexec/gnubin"
@@ -12,5 +14,5 @@ add_to_path "/opt/homebrew/opt/mysql-client/bin"
 add_to_path "/opt/homebrew/opt/util-linux/bin/"
 add_to_path "/opt/homebrew/opt/openssl@3/bin"
 add_to_path "/opt/homebrew/opt/gnu-tar/libexec/gnubin"
+add_to_path "${HOME}/.docker/bin"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
