@@ -23,7 +23,7 @@ config.enable_scroll_bar = true
 config.scrollback_lines = 100000
 
 -- fonts
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+--config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" } -- disable ligadures
 config.command_palette_font_size = 16.0
