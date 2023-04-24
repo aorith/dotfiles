@@ -3,7 +3,7 @@ window:
 font:
   size: 14
   normal:
-    family: "Hack Nerd Font"
+    family: "JetBrains Mono"
 shell:
   program: /usr/bin/env
   args:
