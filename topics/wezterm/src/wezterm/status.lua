@@ -2,6 +2,21 @@ local wezterm = require("wezterm")
 
 wezterm.on("update-status", function(window, pane)
   local active_keytable = window:active_key_table()
+
+  local title = pane:get_title():sub(1, 50)
+  local sb_info = " "
+  if active_keytable then
+    local dim = pane:get_dimensions()
+    sb_info = " " .. dim.scrollback_rows .. "L "
+  end
+
+  window:set_right_status(wezterm.format({
+    { Background = { Color = "#504945" } },
+    { Text = " " .. title },
+    { Attribute = { Italic = true } },
+    { Text = sb_info },
+  }))
+
   if active_keytable then
     window:set_left_status(wezterm.format({
       { Foreground = { Color = "black" } },
@@ -27,16 +42,5 @@ wezterm.on("update-status", function(window, pane)
     { Foreground = { Color = "#fe8019" } },
     { Attribute = { Intensity = "Bold" } },
     { Text = " " .. window:active_workspace() .. " " },
-  }))
-end)
-
-wezterm.on("update-right-status", function(window, pane)
-  local dim = pane:get_dimensions()
-
-  window:set_right_status(wezterm.format({
-    { Background = { Color = "#504945" } },
-    { Text = " " .. pane:get_title() },
-    { Attribute = { Italic = true } },
-    { Text = " " .. dim.scrollback_rows .. "L " },
   }))
 end)
