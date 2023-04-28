@@ -9,9 +9,9 @@ tmux() {
     elif ! $EXE -u attach; then $EXE -u; fi
 }
 
-ssh() {
-    local EXE
-    EXE='command ssh'
-    if [[ -n "$SSH_CLIENT" ]]; then $EXE "$@"
-    else TERM="xterm-256color" $EXE "$@"; fi
-}
+#ssh() {
+#    local EXE
+#    EXE='command ssh'
+#    if [[ -n "$SSH_CLIENT" ]]; then $EXE "$@"
+#    else TERM="xterm-256color" $EXE "$@"; fi
+#}
