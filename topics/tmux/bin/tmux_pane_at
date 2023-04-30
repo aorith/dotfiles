@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-[ $(tmux display-message -p "#{pane_at_${1}}") -eq 0 2>/dev/null ]

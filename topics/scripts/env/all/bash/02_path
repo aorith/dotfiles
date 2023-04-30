@@ -1,3 +1,0 @@
-# vim: ft=bash
-
-add_to_path "${DOTFILES}/topics/scripts/bin"
