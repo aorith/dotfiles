@@ -54,4 +54,4 @@ key_bindings:
   - {key: F, mods: Command|Shift, chars: "\eF"} # fzf search
   - {key: E, mods: Command, chars: "\ee"} # open in nvim
   - {key: I, mods: Command, chars: "\ei"} # tmux server for
-  - {key: L, mods: Control, chars: "\f"}
+#  - {key: L, mods: Control, chars: "\f"}
