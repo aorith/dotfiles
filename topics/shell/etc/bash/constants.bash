@@ -25,11 +25,6 @@ add_to_path "$HOME/.local/bin"
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# FZF
-if command -v fd >/dev/null 2>&1; then
-    export FZF_DEFAULT_COMMAND='fd --type f --follow --exclude .git'
-fi
-
 # OS specific
 if [[ "$_OS" == 'Darwin' ]]; then
     # Macos only
