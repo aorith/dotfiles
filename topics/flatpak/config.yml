@@ -5,7 +5,6 @@ flatpak_remotes:
 flatpak_packages:
   - {remote: "flathub", package: "chat.rocket.RocketChat"}
   - {remote: "flathub", package: "com.bitwarden.desktop"}
-  - {remote: "flathub", package: "com.calibre_ebook.calibre"}
   - {remote: "flathub", package: "com.github.tchx84.Flatseal"}
   - {remote: "flathub", package: "com.google.Chrome"}
   - {remote: "flathub", package: "com.mattjakeman.ExtensionManager"}
