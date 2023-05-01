@@ -8,16 +8,16 @@
         "revision": "f7c0fa43868612596c717008d6c79ce82e9028b2"
       },
       "homebrew/cask-fonts": {
-        "revision": "65afbc122c7e45c8a9bb16200ac7d97543ec24fa"
+        "revision": "bb29d7cf8a50b7a1003651bc5bb200d5dae29012"
       },
       "homebrew/cask-versions": {
-        "revision": "f65e12bf5c864ac04c7b68cb712502ae232ba096"
+        "revision": "8fd651fe7a2f63aa1c5f12fd71360c8af6e159de"
       },
       "homebrew/core": {
         "revision": "f99da7e0c611bd09762fdbf4b6edcc8db7ff393d"
       },
       "homebrew/services": {
-        "revision": "ee1b72710137c5897fca2b311c34b6b629d763ea"
+        "revision": "507510e783fe37293220253caff0d76f72c5daed"
       },
       "homebrew-ffmpeg/ffmpeg": {
         "revision": "0d09fc4b47e3103769b9d7e849f934110a75ae32"
@@ -2594,6 +2594,12 @@
         "version": "1.2.10.760,52970952,1110",
         "options": {
           "full_name": "spotify"
+        }
+      },
+      "syncthing": {
+        "version": "1.23.4-1",
+        "options": {
+          "full_name": "syncthing"
         }
       }
     }
