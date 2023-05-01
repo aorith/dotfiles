@@ -6,11 +6,6 @@ shopt -s nullglob
 export DOTFILES="$HOME/githome/dotfiles"
 export PRIVATE_DOTFILES="$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles"
 
-# add_to_path
-set -o allexport
-. topics/shell/etc/bash/functions.bash
-set +o allexport
-
 cd "$(dirname "$0")" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
