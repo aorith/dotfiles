@@ -10,7 +10,5 @@ shell:
     - bash
     - --login
 key_bindings:
-  - {key: Insert, mods: Shift, action: Paste}
   - {key: N, mods: Alt|Shift, action: SpawnNewInstance}
   - {key: T, mods: Control|Shift, command: {program: "/usr/bin/env", args: ["bash", "-ilc", "tmux display-popup -w80% -h80% -E $HOME/.config/alacritty/bin/switch-theme.sh"]}}
-  - {key: B, mods: Alt, action: ReceiveChar}
