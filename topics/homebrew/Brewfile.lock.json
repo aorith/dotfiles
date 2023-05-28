@@ -2,16 +2,16 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "6b01bd338af95db59f1d6db87ebf6416d7518297"
+        "revision": "ab014794c2dc14b1179de68f960479d898c5bc22"
       },
       "homebrew/cask": {
         "revision": "f7c0fa43868612596c717008d6c79ce82e9028b2"
       },
       "homebrew/cask-fonts": {
-        "revision": "bb29d7cf8a50b7a1003651bc5bb200d5dae29012"
+        "revision": "5036c3d8801a6d2c06a3b8c3f66c7e876b215b24"
       },
       "homebrew/cask-versions": {
-        "revision": "8fd651fe7a2f63aa1c5f12fd71360c8af6e159de"
+        "revision": "2d464633844d1365fda3a337a5a79a1e7cc0cc94"
       },
       "homebrew/core": {
         "revision": "f99da7e0c611bd09762fdbf4b6edcc8db7ff393d"
@@ -20,7 +20,7 @@
         "revision": "507510e783fe37293220253caff0d76f72c5daed"
       },
       "homebrew-ffmpeg/ffmpeg": {
-        "revision": "0d09fc4b47e3103769b9d7e849f934110a75ae32"
+        "revision": "88ca387a1dd19923a957965cedd6724a30a29dcc"
       }
     },
     "brew": {
@@ -2417,7 +2417,7 @@
     },
     "cask": {
       "alacritty": {
-        "version": "0.12.0",
+        "version": "0.12.1",
         "options": {
           "full_name": "alacritty"
         }
@@ -2447,7 +2447,7 @@
         }
       },
       "firefox": {
-        "version": "112.0.2",
+        "version": "113.0.2",
         "options": {
           "full_name": "firefox"
         }
@@ -2519,13 +2519,13 @@
         }
       },
       "joplin": {
-        "version": "2.9.17",
+        "version": "2.10.19",
         "options": {
           "full_name": "joplin"
         }
       },
       "keepassxc": {
-        "version": "2.7.4",
+        "version": "2.7.5",
         "options": {
           "full_name": "keepassxc"
         }
@@ -2585,13 +2585,13 @@
         }
       },
       "vscodium": {
-        "version": "1.77.3.23102",
+        "version": "1.78.2.23132",
         "options": {
           "full_name": "vscodium"
         }
       },
       "spotify": {
-        "version": "1.2.10.760,52970952,1110",
+        "version": "1.2.12.902,1924b088,216",
         "options": {
           "full_name": "spotify"
         }
@@ -2607,12 +2607,12 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.0.15",
+        "HOMEBREW_VERSION": "4.0.19",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "14.2.0.0.1.1668646533",
-        "Xcode": "14.2",
-        "macOS": "13.2.1"
+        "CLT": "14.3.0.0.1.1679647830",
+        "Xcode": "14.3",
+        "macOS": "13.3.1"
       }
     }
   }
