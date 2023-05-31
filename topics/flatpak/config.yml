@@ -10,6 +10,7 @@ flatpak_packages:
   - {remote: "flathub", package: "com.mattjakeman.ExtensionManager"}
   - {remote: "flathub", package: "com.obsproject.Studio"}
   - {remote: "flathub", package: "com.spotify.Client"}
+  - {remote: "flathub", package: "com.sublimetext.three"}
   - {remote: "flathub", package: "com.vscodium.codium"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.mariadb"}
@@ -20,6 +21,7 @@ flatpak_packages:
   - {remote: "flathub", package: "org.gimp.GIMP"}
   - {remote: "flathub", package: "org.gnome.Firmware"}
   - {remote: "flathub", package: "org.inkscape.Inkscape"}
+  - {remote: "flathub", package: "org.keepassxc.KeePassXC"}
   - {remote: "flathub", package: "org.libreoffice.LibreOffice"}
   - {remote: "flathub", package: "org.mozilla.firefox"}
   - {remote: "flathub", package: "org.remmina.Remmina"}
