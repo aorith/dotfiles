@@ -4,4 +4,4 @@
 [[ ! -f "$HOME/.gitconfig" ]] || rm "$HOME/.gitconfig"
 
 create_link "${PWD}/src/config/git" "$HOME/.config/git"
-create_link "${PWD}/src/config/gitui" "$HOME/.config/git"
+create_link "${PWD}/src/config/gitui" "$HOME/.config/gitui"

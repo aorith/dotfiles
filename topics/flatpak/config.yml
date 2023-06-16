@@ -1,4 +1,3 @@
-run_flatpak_role: true
 # flatpak remotes --show-details
 flatpak_remotes:
   - {name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}

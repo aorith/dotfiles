@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
 set -a
+add_to_path() {
+    # add_to_path <path> [last]
+    [[ -n "$1" ]] || return 1
+    case ":${PATH}:" in
+        *":${1}:"*) ;; # already there
+        *) [[ "$2" == "last" ]] && PATH="${PATH}:${1}" || PATH="${1}:${PATH}";;
+    esac
+    export PATH
+}
+
 _backup() {
     # _backup <FILE_PATH>
     [[ -z "$1" ]] && exit 1
