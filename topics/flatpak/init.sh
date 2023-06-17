@@ -1,7 +1,6 @@
 # vim: ft=bash
-[[ -d /etc/nixos ]] || exit "$_SKIP"
-type ansible-playbook >/dev/null 2>&1 || {
-    log_warn "ansible is not installed."
+[[ -z "$CONTAINER_ID" ]] || {
+    log_warn "run this outside of a container"
     exit "$_SKIP"
 }
 

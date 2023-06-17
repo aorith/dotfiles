@@ -1,7 +1,7 @@
 # flatpak remotes --show-details
 flatpak_remotes:
   - {name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
-flatpak_packages:
+flatpak_common_packages:
   - {remote: "flathub", package: "chat.rocket.RocketChat"}
   - {remote: "flathub", package: "com.bitwarden.desktop"}
   - {remote: "flathub", package: "com.github.tchx84.Flatseal"}
@@ -9,14 +9,12 @@ flatpak_packages:
   - {remote: "flathub", package: "com.mattjakeman.ExtensionManager"}
   - {remote: "flathub", package: "com.obsproject.Studio"}
   - {remote: "flathub", package: "com.spotify.Client"}
-  - {remote: "flathub", package: "com.sublimetext.three"}
   - {remote: "flathub", package: "com.vscodium.codium"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.mariadb"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.pgsql"}
   - {remote: "flathub", package: "net.cozic.joplin_desktop"}
   - {remote: "flathub", package: "org.blender.Blender"}
-  - {remote: "flathub", package: "org.flameshot.Flameshot"}
   - {remote: "flathub", package: "org.gimp.GIMP"}
   - {remote: "flathub", package: "org.gnome.Firmware"}
   - {remote: "flathub", package: "org.inkscape.Inkscape"}
@@ -25,3 +23,7 @@ flatpak_packages:
   - {remote: "flathub", package: "org.mozilla.firefox"}
   - {remote: "flathub", package: "org.remmina.Remmina"}
   - {remote: "flathub", package: "org.videolan.VLC"}
+flatpak_non_nixos_packages:
+  - {remote: "flathub", package: "com.valvesoftware.Steam"}
+  - {remote: "flathub", package: "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"}
+  - {remote: "flathub", package: "io.mpv.Mpv"}
