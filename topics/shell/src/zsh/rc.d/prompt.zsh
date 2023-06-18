@@ -161,26 +161,30 @@ function precmd () {
     elif ((ms > 0)); then _cmd_time="${ms}.$((delta_us / 100))ms "
     else _cmd_time="${delta_us}us "
     fi
+    _cmd_time="%F{241}$_cmd_time%f"
 }
 
 function prompt_cmd() {
     local -a messages
-    local _on_ssh
+    local _on_ssh _on_venv _on_container _on_nix_shell
     local _vcs_info
 
     if [[ -z ${vcs_info_msg_0_} ]]; then
         _vcs_info=""
     else
-        [[ -n "$vcs_info_msg_0_" ]] && messages+=( "%F{green}${vcs_info_msg_0_}%f" )
-        [[ -n "$vcs_info_msg_1_" ]] && messages+=( "%F{yellow}${vcs_info_msg_1_}%f" )
-        [[ -n "$vcs_info_msg_2_" ]] && messages+=( "%F{red}${vcs_info_msg_2_}%f" )
+        [[ -z "$vcs_info_msg_0_" ]] || messages+=( "%F{green}${vcs_info_msg_0_}%f" )
+        [[ -z "$vcs_info_msg_1_" ]] || messages+=( "%F{yellow}${vcs_info_msg_1_}%f" )
+        [[ -z "$vcs_info_msg_2_" ]] || messages+=( "%F{red}${vcs_info_msg_2_}%f" )
 
         # concatenate them separated with space
-        _vcs_info="${(j: :)messages}"
+        _vcs_info="${(j: :)messages}%f"
     fi
 
-    [[ -z "$SSH_CLIENT" ]] || _on_ssh="%F{229}%Bssh%f%b@"
-    echo "$_on_ssh%F{208}%n%f@%F{202}%B%m%f%b %F{109}%~%f %F{241}$_cmd_time%f$_vcs_info%(1j.%F{144}[Jobs:%j]%f .)%(?..%F{196}%B%?%f%b) \n%F{239}%T %F{69}\u276F%f%b "
+    [[ -z "$SSH_CLIENT" ]] || _on_ssh="%F{229}%Bssh%f%b@%F{208}%n%f@%F{202}%B%m%f%b "
+    [[ -z "$VIRTUAL_ENV" ]] || _on_venv="(venv) "
+    [[ -z "$CONTAINER_ID" ]] || _on_container="%F{133}[$CONTAINER_ID]%f "
+    [[ -z "$IN_NIX_SHELL" ]] || _on_nix_shell="%F{122}(nix:${name:-unset})%f "
+    echo "$_on_container$_on_venv$_on_nix_shell$_on_ssh%F{109}%~%f $_vcs_info%(1j.%F{144}[Jobs:%j]%f .)$_cmd_time%f%(?..%F{196}%B%?%f%b) \n%F{239}%T %F{69}\u276F%f%b "
 }
 
 # Autoloads

@@ -26,6 +26,10 @@ setopt NOTIFY # report status of background jobs immediately
 unsetopt RM_STAR_SILENT # notify when rm is running with *
 setopt RM_STAR_WAIT # wait for 10 seconds confirmation when running rm with *
 
+# Shared aliases and variables
+emulate sh -c 'source ~/githome/dotfiles/topics/shell/etc/common/exports.sh'
+emulate sh -c 'source ~/githome/dotfiles/topics/shell/etc/common/aliases.sh'
+
 # Emacs style bindings
 bindkey -e
 # Fix delete key
