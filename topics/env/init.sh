@@ -22,7 +22,7 @@ PATH="$(cat environment.d/path.list environment.d/"${_OS}"/path.list 2>/dev/null
 EOF
 
 # Dynamically generated
-if [[ "$_OS" == 'Linux' ]]; then
+if [[ "$_OS" == "Linux" ]]; then
     # Linux only
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         cat <<EOF >"$_ENV_PATH/50-clipboard.conf"
