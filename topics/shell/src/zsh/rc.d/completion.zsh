@@ -49,3 +49,6 @@ fi
 
 # Enable bash completions too
 autoload -Uz bashcompinit && bashcompinit
+
+# External completions
+source <(kubectl completion zsh)

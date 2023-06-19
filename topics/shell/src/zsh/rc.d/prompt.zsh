@@ -181,10 +181,9 @@ function prompt_cmd() {
     fi
 
     [[ -z "$SSH_CLIENT" ]] || _on_ssh="%F{229}%Bssh%f%b@%F{208}%n%f@%F{202}%B%m%f%b "
-    [[ -z "$VIRTUAL_ENV" ]] || _on_venv="(venv) "
     [[ -z "$CONTAINER_ID" ]] || _on_container="%F{133}[$CONTAINER_ID]%f "
     [[ -z "$IN_NIX_SHELL" ]] || _on_nix_shell="%F{122}(nix:${name:-unset})%f "
-    echo "$_on_container$_on_venv$_on_nix_shell$_on_ssh%F{109}%~%f $_vcs_info%(1j.%F{144}[Jobs:%j]%f .)$_cmd_time%f%(?..%F{196}%B%?%f%b) \n%F{239}%T %F{69}\u276F%f%b "
+    echo "$_on_container$_on_nix_shell$_on_ssh%F{109}%~%f $_vcs_info %(1j.%F{144}[Jobs:%j]%f .)$_cmd_time%f%(?..%F{196}%B%?%f%b) \n%F{239}%T %F{69}\u276F%f%b "
 }
 
 # Autoloads

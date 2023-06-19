@@ -52,5 +52,8 @@ if [[ -e "$PRIVATE_DOTFILES" ]]; then
     emulate sh -c 'source "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"'
 fi
 
+# Plugins, keep this at the end
+source $ZDOTDIR/rc.d/plugins.zsh
+
 # Force path arrays to have unique values only
 typeset -gU path cdpath fpath manpath
