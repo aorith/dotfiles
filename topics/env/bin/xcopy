@@ -1,0 +1,2 @@
+#!/bin/sh
+xclip -i -selection clipboard && xclip -i -selection primary < <(xclip -out -selection clipboard)

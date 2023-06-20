@@ -27,13 +27,13 @@ chosen="$(fzf-tmux -p --layout=reverse --header="TCDN SERVER FOR" <<<"$options")
 [[ -n "$chosen" ]] || exit 0
 
 if [[ "$chosen" == "Copy_All_IPs" ]]; then
-    awk '{print $2}' <<<"$servers" | "pbcopy2"
+    awk '{print $2}' <<<"$servers" | $CLIPBOARD_COPY
     exit 0
 elif [[ "$chosen" == "Copy_All_Servers" ]]; then
-    awk '{print $1}' <<<"$servers" | "pbcopy2"
+    awk '{print $1}' <<<"$servers" | $CLIPBOARD_COPY
     exit 0
 elif [[ "$chosen" == "Copy_All" ]]; then
-    awk '{print $2,$1}' <<<"$servers" | "pbcopy2"
+    awk '{print $2,$1}' <<<"$servers" | $CLIPBOARD_COPY
     exit 0
 fi
 
@@ -41,4 +41,4 @@ options="${chosen} $(echo "$chosen" | xargs | tr ' ' '=')"
 chosen2="$(echo "$options" | xargs | tr ' ' '\n' | tr '=' '\t' | sort | fzf-tmux -p --layout=reverse --header="TCDN SERVER FOR (copy to clipboard)")"
 [[ -n "$chosen2" ]] || exit 0
 
-printf "%s" "$chosen2" | "pbcopy2"
+printf "%s" "$chosen2" | $CLIPBOARD_COPY

@@ -17,7 +17,7 @@ for f in ./environment.d/"$_OS"/*.conf; do
 done
 
 # Paths
-cat <<EOF>"$_ENV_PATH/20-path.conf"
+cat <<EOF >"$_ENV_PATH/20-path.conf"
 PATH="$(cat environment.d/path.list environment.d/"${_OS}"/path.list 2>/dev/null | xargs | tr ' ' ':'):\$PATH"
 EOF
 
@@ -26,12 +26,12 @@ if [[ "$_OS" == "Linux" ]]; then
     # Linux only
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         cat <<EOF >"$_ENV_PATH/50-clipboard.conf"
-CLIPBOARD_COPY="wl-copy"
+CLIPBOARD_COPY="$HOME/githome/dotfiles/topics/env/bin/wl-copy"
 CLIPBOARD_PASTE="wl-paste"
 EOF
     else
         cat <<EOF >"$_ENV_PATH/50-clipboard.conf"
-CLIPBOARD_COPY="xclip -i -selection clipboard"
+CLIPBOARD_COPY="$HOME/githome/dotfiles/topics/env/bin/xcopy"
 CLIPBOARD_PASTE="xclip -out -selection clipboard"
 EOF
     fi

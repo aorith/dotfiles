@@ -1,0 +1,2 @@
+#!/bin/sh
+wl-copy && wl-copy -p < <(wl-paste --no-newline)
