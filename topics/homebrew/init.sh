@@ -3,9 +3,11 @@
 # macos only
 [[ "$(uname -s)" == "Darwin" ]] || exit $_SKIP
 
-brew update
-pushd "$(dirname -- "$0")" && { brew bundle; popd >/dev/null || true; }
-brew cleanup
+cd "$(dirname -- "$0")" || exit 1
 
-###
+brew update
+brew bundle
+brew cleanup
+brew bundle cleanup --force
+
 exit 0

@@ -55,7 +55,8 @@ _link() {
     fi
 
     [[ -L $_link_name ]] && ${_sudo} rm "$_link_name"
-    if ${_sudo} ln -Ts "$_source" "$_link_name"; then
+    [[ -d "$_lind_name" ]] && { link_error "Target is a directory: '$_link_name'."; exit 1; }
+    if ${_sudo} ln -s "$_source" "$_link_name"; then
         [[ -n "$_sudo" ]] && link_arrow_sudo "$name" || link_arrow "$name"
         return 0
     else
