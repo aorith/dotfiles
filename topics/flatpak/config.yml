@@ -15,6 +15,7 @@ flatpak_common_packages:
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.pgsql"}
   - {remote: "flathub", package: "net.cozic.joplin_desktop"}
   - {remote: "flathub", package: "org.blender.Blender"}
+  - {remote: "flathub", package: "org.geany.Geany"}
   - {remote: "flathub", package: "org.gimp.GIMP"}
   - {remote: "flathub", package: "org.gnome.Firmware"}
   - {remote: "flathub", package: "org.inkscape.Inkscape"}
