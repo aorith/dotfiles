@@ -15,11 +15,6 @@ zstyle ':completion:*'                     verbose              true
 zstyle ':completion:*:manuals'             separate-sections    true
 zstyle ':completion:*'                     special-dirs         true                                  # allow completion for ../
 zstyle ':completion:*'                     squeeze-slashes      true                                  # squeeze double // instead of completing /*/
-zstyle ':completion:*'                     group-name           ''                                    # group descriptions together
-zstyle ':completion:*:*:*:*:descriptions'  format               ' %F{green}-- %d --%f'                # show completion descriptions
-zstyle ':completion:*:*:*:*:corrections'   format               ' %F{yellow}!- %d (errors: %e) -!%f'
-zstyle ':completion:*:messages'            format               ' %F{purple} -- %d --%f'
-zstyle ':completion:*:warnings'            format               ' %F{red}-- no matches found --%f'
 
 # Make sure complist is loaded
 zmodload zsh/complist
