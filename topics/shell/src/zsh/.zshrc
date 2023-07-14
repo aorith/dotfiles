@@ -51,13 +51,26 @@ colors
 # Completion
 source $ZDOTDIR/rc.d/completion.zsh
 
-# Prompt
-source $ZDOTDIR/rc.d/prompt.zsh
-
 # Extra
 if [[ -e "$PRIVATE_DOTFILES" ]]; then
     emulate sh -c 'source "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"'
 fi
+
+# Nix (non NixOS)
+if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
+# Titles
+precmd () {
+  print -Pn "\e]0;zsh [%~]\a"
+}
+preexec () {
+  print -Pn "\e]0;$1 [%~]\a"
+}
+
+# Prompt
+eval "$(starship init zsh)"
 
 # Plugins, keep this at the end
 source $ZDOTDIR/rc.d/plugins.zsh
