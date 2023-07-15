@@ -2,6 +2,7 @@ add_newline = true
 
 format = """
 $time\
+$container\
 $username\
 $hostname\
 $directory\
@@ -11,7 +12,6 @@ $git_state\
 $git_status\
 $nix_shell\
 $python\
-$container\
 $jobs\
 $cmd_duration\
 $status\
