@@ -4,14 +4,14 @@
 setopt NO_NOMATCH # avoid the 'zsh: no matches found...'
 
 # Define completers
-zstyle ':completion:*' completer _extensions _complete
+#zstyle ':completion:*' completer _extensions _complete
 
 zstyle ':completion:*'                     use-cache            true
 zstyle ':completion:*'                     cache-path           ~/.cache/zsh_completion
 zstyle ':completion:*'                     menu                 select
 zstyle ':completion:*:default'             list-colors          ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                     list-dirs-first      true
-zstyle ':completion:*'                     verbose              true
+#zstyle ':completion:*'                     verbose              true
 zstyle ':completion:*:manuals'             separate-sections    true
 zstyle ':completion:*'                     special-dirs         true                                  # allow completion for ../
 zstyle ':completion:*'                     squeeze-slashes      true                                  # squeeze double // instead of completing /*/
