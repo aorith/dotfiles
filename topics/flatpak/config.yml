@@ -11,7 +11,7 @@ flatpak_common_packages:
   - {remote: "flathub", package: "com.spotify.Client"}
   - {remote: "flathub", package: "com.valvesoftware.Steam"}
   - {remote: "flathub", package: "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"}
-  - {remote: "flathub", package: "com.vscodium.codium"}
+  - {remote: "flathub", package: "com.visualstudio.code"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.mariadb"}
   - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.pgsql"}
