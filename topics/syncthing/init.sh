@@ -4,7 +4,7 @@
 
 log_info "Copying ignore files ..."
 
-base_folder=$(readlink ~/Syncthing)
+base_folder=$(realpath -- ~/Syncthing)
 while read -r d; do
     base_dir=$(basename -- "$d")
     [[ "$base_dir" != "_config" ]] || continue
