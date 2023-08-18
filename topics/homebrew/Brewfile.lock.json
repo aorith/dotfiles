@@ -3070,6 +3070,12 @@
         "options": {
           "full_name": "rocket-chat"
         }
+      },
+      "dbeaver-community": {
+        "version": "23.1.4",
+        "options": {
+          "full_name": "dbeaver-community"
+        }
       }
     }
   },

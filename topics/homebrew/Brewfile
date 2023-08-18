@@ -40,6 +40,7 @@ cask "alacritty"
 cask "apache-directory-studio"
 cask "bitwarden"
 cask "cyberduck" # ftp client
+cask "dbeaver-community"
 cask "docker"
 cask "firefox"
 cask "flameshot"
