@@ -4,6 +4,7 @@ flatpak_remotes:
 flatpak_common_packages:
   - {remote: "flathub", package: "chat.rocket.RocketChat"}
   - {remote: "flathub", package: "com.bitwarden.desktop"}
+  - {remote: "flathub", package: "com.discordapp.Discord"}
   - {remote: "flathub", package: "com.github.tchx84.Flatseal"}
   - {remote: "flathub", package: "com.google.Chrome"}
   - {remote: "flathub", package: "com.mattjakeman.ExtensionManager"}
