@@ -3,6 +3,7 @@ add_newline = true
 format = """
 $time\
 $container\
+${custom.container}\
 $username\
 $hostname\
 $directory\
@@ -47,3 +48,14 @@ detect_extensions = []
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
+
+[container]
+format='[$symbol]($style) '
+
+[custom.container]
+description = "Active container"
+command = 'echo $CONTAINER_ID'
+when = ''' [[ -n $CONTAINER_ID ]] '''
+style = "bold red"
+format = '[\[$output\]]($style) '
+disabled = false
