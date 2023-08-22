@@ -1,8 +1,8 @@
 # ~/.bashrc
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+if [[ -f /etc/bashrc ]]; then
+    . /etc/bashrc
 fi
 
 set -a
@@ -22,7 +22,7 @@ set -o notify # notify completed background jobs inmediately
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/.bash_history"
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTSIZE=10000
-export HISTTIMEFORMAT="$(echo -e '\033[0;34m%h/%d %H:%M:%S\033[0m ')"
+export HISTTIMEFORMAT=$(echo -e '\033[0;34m%h/%d %H:%M:%S\033[0m ')
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
 # Prompt
@@ -31,3 +31,17 @@ export PS4='+ ${BASH_SOURCE:-}:${LINENO:-}: ${FUNCNAME[0]:-}() [${?:-}] → '
 
 source ~/githome/dotfiles/topics/shell/etc/common/exports.sh
 source ~/githome/dotfiles/topics/shell/etc/common/aliases.sh
+source ~/githome/dotfiles/topics/shell/src/bash/functions.sh
+source ~/githome/dotfiles/topics/shell/src/bash/completion.sh
+
+# Extra
+if [[ -e "$PRIVATE_DOTFILES" ]]; then
+    source "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"
+fi
+
+# Nix (non NixOS)
+if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
+eval "$(starship init bash)"
