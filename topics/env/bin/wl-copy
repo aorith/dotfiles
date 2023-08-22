@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/env bash
 wl-copy && wl-copy -p < <(wl-paste --no-newline)

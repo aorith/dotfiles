@@ -22,18 +22,15 @@ PATH="$(cat environment.d/path.list environment.d/"${_OS}"/path.list 2>/dev/null
 EOF
 
 # Dynamically generated
+mkdir -p ~/.local/bin
 if [[ "$_OS" == "Linux" ]]; then
     # Linux only
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
-        cat <<EOF >"$_ENV_PATH/50-clipboard.conf"
-CLIPBOARD_COPY="$HOME/githome/dotfiles/topics/env/bin/wl-copy"
-CLIPBOARD_PASTE="wl-paste"
-EOF
+        ln -sf "$PWD/bin/wl-copy" ~/.local/bin/pbcopy
+        ln -sf "$PWD/bin/wl-paste" ~/.local/bin/pbpaste
     else
-        cat <<EOF >"$_ENV_PATH/50-clipboard.conf"
-CLIPBOARD_COPY="$HOME/githome/dotfiles/topics/env/bin/xcopy"
-CLIPBOARD_PASTE="xclip -out -selection clipboard"
-EOF
+        ln -sf "$PWD/bin/xcopy" ~/.local/bin/pbcopy
+        ln -sf "$PWD/bin/xpaste" ~/.local/bin/pbpaste
     fi
 fi
 
