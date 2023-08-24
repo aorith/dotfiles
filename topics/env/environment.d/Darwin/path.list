@@ -1,5 +1,4 @@
 $HOME/.docker/bin
-/opt/homebrew/bin
 /opt/homebrew/opt/coreutils/libexec/gnubin
 /opt/homebrew/opt/findutils/libexec/gnubin
 /opt/homebrew/opt/diffutils/bin

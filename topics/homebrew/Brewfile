@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 
 # Formulaes
 brew "bash"
+brew "bash-completion@2"
 brew "coreutils"
 brew "curl"
 brew "diffutils"
