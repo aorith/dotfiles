@@ -1,6 +1,7 @@
 #!/bin/sh
 
 alias fbox="distrobox enter fbox"
+alias archbox="distrobox enter arch"
 
 alias ls='ls --color=auto'
 alias diff='diff --color=auto'
