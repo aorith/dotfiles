@@ -26,8 +26,11 @@ endif
 
 " {{{ Options before plugins --------------------------------------------------
 
+" Silence 'SQLComplete:The dbext plugin must be loaded for dynamic SQL completion'
+let g:omni_sql_default_compl_type = 'syntax'
+
 " POLYGLOT
-"let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['markdown']
 
 " VIM-MARKDOWN (from polyglot)
 let g:vim_markdown_conceal_code_blocks = 0
@@ -93,9 +96,10 @@ Plug 'tpope/vim-fugitive'
 "Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'fgsch/vim-varnish'
+Plug 'godlygeek/tabular' " required for vim-markdown
+Plug 'preservim/vim-markdown'
 
 if empty($SSH_CLIENT)
-  "Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 end

@@ -39,7 +39,7 @@ function! s:place_signs()
 endfunction
 
 highlight codeBlockBackground ctermbg=black
-call ColorCodeBlocks()
+"call ColorCodeBlocks()
 
 if expand('%:p') =~# expand($MY_NOTES_DIR)
   " Alternates between markdown links '[name](path)' ...
