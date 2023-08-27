@@ -3126,6 +3126,12 @@
         "options": {
           "full_name": "font-ibm-plex-mono"
         }
+      },
+      "font-blex-mono-nerd-font": {
+        "version": "3.0.2",
+        "options": {
+          "full_name": "font-blex-mono-nerd-font"
+        }
       }
     }
   },

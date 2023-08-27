@@ -8,7 +8,7 @@ font:
   #builtin_box_drawing: true
 
   normal:
-    family: "Hack Nerd Font"
+    family: "BlexMono Nerd Font"
     style: Regular
 key_bindings:
   - {key: V, mods: Command, action: Paste}
