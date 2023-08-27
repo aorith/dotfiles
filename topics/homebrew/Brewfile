@@ -36,6 +36,7 @@ brew "zsh-syntax-highlighting"
 
 cask "font-jetbrains-mono-nerd-font"
 cask "font-hack-nerd-font"
+cask "font-ibm-plex-mono"
 
 cask "adobe-acrobat-reader"
 cask "alacritty"
