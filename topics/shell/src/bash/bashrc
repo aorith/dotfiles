@@ -11,11 +11,6 @@ for f in ~/.config/environment.d/*.conf; do
 done
 set +a
 
-# bash environment
-export EDITOR="vim"
-export VISUAL="vim"
-export PAGER="less"
-
 shopt -s checkjobs checkwinsize histappend cmdhist globstar autocd 2>/dev/null
 set -o notify # notify completed background jobs inmediately
 
