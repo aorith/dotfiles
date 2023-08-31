@@ -8,6 +8,8 @@ return {
     },
   },
 
+  cmd = { 'Telescope' },
+
   config = function()
     require('telescope').setup({
       extensions = {
