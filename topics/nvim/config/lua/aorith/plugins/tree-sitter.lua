@@ -1,5 +1,8 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
   version = false,
   event = { 'BufReadPost', 'BufNewFile' },
   build = ':TSUpdate',
@@ -10,8 +13,7 @@ return {
       highlight = {
         enable = true,
         -- TODO: bash treesitter highlights is messed up when it finds something like 'echo >&2 "blah"'
-        disable = { 'sh', 'bash' },
-        additional_vim_regex_highlighting = { 'sh', 'bash' },
+        disable = { 'sh', 'bash', 'dockerfile' },
       },
 
       indent = {
