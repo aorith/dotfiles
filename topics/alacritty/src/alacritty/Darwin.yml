@@ -5,8 +5,7 @@ window:
   option_as_alt: None
 font:
   size: 17
-  #builtin_box_drawing: true
-
+  builtin_box_drawing: true
   normal:
     family: "BlexMono Nerd Font"
     style: Regular
