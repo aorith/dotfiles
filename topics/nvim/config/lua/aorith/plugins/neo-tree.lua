@@ -18,7 +18,6 @@ return {
     enable_diagnostics = false,
     filesystem = {
       async_directory_scan = "always",
-      scan_mode = "deep",
       bind_to_cwd = false,
       follow_current_file = {
         enabled = true,

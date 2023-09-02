@@ -9,6 +9,7 @@ return {
   cmd = { 'TSUpdateSync' },
 
   config = function()
+    ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup({
       highlight = {
         enable = true,
@@ -39,6 +40,8 @@ return {
         'vimdoc',
         'yaml',
       },
+
+      ignore_install = {},
     })
   end,
 }

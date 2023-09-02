@@ -1,7 +1,9 @@
+local theme = 'kanagawa'
+
 return {
   {
     'bluz71/vim-nightfly-colors',
-    enabled = false,
+    enabled = theme == 'nightfly',
     name = 'nightfly',
     lazy = false,
     priority = 1000,
@@ -12,7 +14,7 @@ return {
 
   {
     'folke/tokyonight.nvim',
-    enabled = false,
+    enabled = theme == 'tokyonight',
     lazy = false,
     priority = 1000,
     opts = {},
@@ -23,7 +25,7 @@ return {
 
   {
     'rebelot/kanagawa.nvim',
-    enabled = true,
+    enabled = theme == 'kanagawa',
     cmd = { 'KanagawaCompile' },
     build = ':KanagawaCompile',
     lazy = false,
@@ -34,6 +36,16 @@ return {
       })
 
       vim.cmd('colorscheme kanagawa')
+    end,
+  },
+
+  { -- Theme inspired by Atom
+    'navarasu/onedark.nvim',
+    enabled = theme == 'onedark',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme('onedark')
     end,
   },
 }
