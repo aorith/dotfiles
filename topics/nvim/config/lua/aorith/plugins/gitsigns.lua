@@ -1,5 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
+
   config = function()
     require("gitsigns").setup({
       signs = {
@@ -10,6 +11,7 @@ return {
         changedelete = { text = "~" },
         untracked = { text = "▎" },
       },
+
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
 

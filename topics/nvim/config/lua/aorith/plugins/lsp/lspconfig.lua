@@ -1,31 +1,35 @@
 return {
-  'neovim/nvim-lspconfig',
+  "neovim/nvim-lspconfig",
 
   dependencies = {
-    { { 'folke/neodev.nvim' } },
+    { { "folke/neodev.nvim" } },
   },
 
   config = function()
-    require('neodev').setup({}) -- make sure to setup neodev BEFORE lspconfig
+    require("neodev").setup({}) -- make sure to setup neodev BEFORE lspconfig
 
-    local lspconfig = require('lspconfig')
+    local lspconfig = require("lspconfig")
     --local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
     -- Log level
-    vim.lsp.set_log_level('ERROR')
+    vim.lsp.set_log_level("ERROR")
 
     -- On attach
     local on_attach = function(client, bufnr)
+      -- setup mini.completion
+      vim.cmd("set omnifunc=v:lua.MiniCompletion.completefunc_lsp")
+
+      -- command to check server capabilities
       vim.cmd("command! CheckLspServerCapabilities :lua =require('aorith.core.utils').custom_server_capabilities()")
 
       -- disable some more capabilities
-      if client.name == 'pylsp' then
+      if client.name == "pylsp" then
         client.server_capabilities.renameProvider = false
         client.server_capabilities.rename = false
       end
 
       -- disable hover in favor of pyright
-      if client.name == 'ruff_lsp' then
+      if client.name == "ruff_lsp" then
         client.server_capabilities.hoverProvider = false
       end
     end
@@ -39,15 +43,15 @@ return {
       virtual_text = true,
       float = {
         focusable = false,
-        style = 'minimal',
-        border = 'rounded',
-        source = 'always',
-        header = '',
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
       },
     })
 
     -- List of servers and their configs
-    local servers = require('aorith.plugins.lsp.etc.servers')
+    local servers = require("aorith.plugins.lsp.etc.servers")
     local server_names = vim.tbl_keys(servers)
     local ensure_installed = {}
     for _, k in pairs(server_names) do
@@ -55,15 +59,15 @@ return {
         table.insert(ensure_installed, servers[k].ensure_installed_name)
       else
         -- skip some
-        if k ~= 'nil_ls' then
+        if k ~= "nil_ls" then
           table.insert(ensure_installed, k)
         end
       end
     end
 
     local handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
     }
     --local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -81,7 +85,7 @@ return {
         end
       end
 
-      local server_opts = vim.tbl_deep_extend('force', {
+      local server_opts = vim.tbl_deep_extend("force", {
         handlers = handlers,
         on_attach = on_attach,
         capabilities = vim.deepcopy(capabilities),

@@ -8,6 +8,7 @@ return {
   init = function()
     vim.g.barbar_auto_setup = false
   end,
+
   opts = {
     animation = false,
     icons = {
@@ -20,6 +21,8 @@ return {
     },
   },
   keys = {
+    { "<TAB>", "<cmd>BufferNext<CR>", mode = "n", desc = "Next Buffer" },
+    { "<S-TAB>", "<cmd>BufferPrevious<CR>", mode = "n", desc = "Previous Buffer" },
     { "<leader><TAB>", "<cmd>BufferNext<CR>", mode = "n", desc = "Next Buffer" },
     { "<leader><S-TAB>", "<cmd>BufferPrevious<CR>", mode = "n", desc = "Previous Buffer" },
     { "<leader>1", "<Cmd>BufferGoto 1<CR>", mode = "n", desc = "Buffer 1" },
