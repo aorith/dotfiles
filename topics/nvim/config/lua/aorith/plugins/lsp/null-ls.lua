@@ -1,9 +1,9 @@
 return {
-  "jose-elias-alvarez/null-ls.nvim",
+  'jose-elias-alvarez/null-ls.nvim',
   config = function()
-    local utils = require("aorith.core.utils")
-    local null_ls = require("null-ls")
-    local null_ls_utils = require("null-ls.utils")
+    local utils = require('aorith.core.utils')
+    local null_ls = require('null-ls')
+    local null_ls_utils = require('null-ls.utils')
 
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
     local formatting = null_ls.builtins.formatting
@@ -26,8 +26,8 @@ return {
 
       -- formatting
       formatting.shfmt.with({
-        extra_args = { "--indent", "4" },
-        filetypes = { "sh", "bash" },
+        extra_args = { '--indent', '4' },
+        filetypes = { 'sh', 'bash' },
       }),
       formatting.prettier,
       formatting.alejandra,
@@ -36,21 +36,20 @@ return {
       formatting.yamlfmt,
       formatting.stylua.with({
         extra_args = {
-          "--config-path",
-          vim.fn.getenv("XDG_CONFIG_HOME") .. "/" .. utils.nvim_appname .. "/stylua.toml",
+          '--config-path',
+          vim.fn.getenv('XDG_CONFIG_HOME') .. '/' .. utils.nvim_appname .. '/stylua.toml',
         },
       }),
       formatting.black,
-      formatting.isort,
-      --[[ TODO: https://github.com/charliermarsh/ruff/issues/1904
-  -- use this instead of black and isort when its ready
-  formatting.ruff.with({
-    command = "@ruff@/bin/ruff",
-  }),
-  --]]
+      --formatting.isort,
+      -- TODO: https://github.com/charliermarsh/ruff/issues/1904
+      -- use this instead of black and isort when its ready
+      formatting.ruff,
 
       -- diagnostics
-      diagnostics.tidy,
+      diagnostics.tidy.with({
+        extra_args = { '-config', vim.fn.getenv('XDG_CONFIG_HOME') .. '/' .. utils.nvim_appname .. '/etc/tidy.conf' },
+      }),
       diagnostics.yamllint,
       diagnostics.golangci_lint,
       diagnostics.terraform_validate,
@@ -59,7 +58,7 @@ return {
 
     null_ls.setup({
       sources = null_ls_sources,
-      diagnostics_format = "#{m} (#{s})",
+      diagnostics_format = '#{m} (#{s})',
     })
   end,
 }

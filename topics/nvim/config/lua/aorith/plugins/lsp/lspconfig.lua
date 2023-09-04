@@ -9,7 +9,7 @@ return {
     require('neodev').setup({}) -- make sure to setup neodev BEFORE lspconfig
 
     local lspconfig = require('lspconfig')
-    local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    --local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
     -- Log level
     vim.lsp.set_log_level('ERROR')
@@ -27,7 +27,6 @@ return {
       -- disable hover in favor of pyright
       if client.name == 'ruff_lsp' then
         client.server_capabilities.hoverProvider = false
-        client.server_capabilities.hover = false
       end
     end
 
@@ -66,7 +65,8 @@ return {
       ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
       ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
     }
-    local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    --local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     -- actual function that setups the servers
     local function setup(server)
