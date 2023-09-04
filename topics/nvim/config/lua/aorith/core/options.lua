@@ -19,7 +19,6 @@ vim.g.loaded_ruby_provider = 1
 
 -- Some more disables
 vim.g.loaded_gzip = 1
-vim.g.loaded_matchparen = 1
 vim.g.loaded_tar = 1
 vim.g.loaded_tarPlugin = 1
 vim.g.loaded_tutor = 1
@@ -51,6 +50,7 @@ vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.showmode = false -- don't show mode - it's shown in the statusline
 vim.opt.winminwidth = 5 -- Minimum window width
 vim.wo.signcolumn = 'yes' -- Show sign column, "yes:3" max 3 signs
+vim.opt.showmatch = true
 
 -- context
 vim.opt.scrolloff = 4 -- Lines of context
