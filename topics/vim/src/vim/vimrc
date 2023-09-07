@@ -29,35 +29,8 @@ endif
 " Silence 'SQLComplete:The dbext plugin must be loaded for dynamic SQL completion'
 let g:omni_sql_default_compl_type = 'syntax'
 
-" POLYGLOT
-let g:polyglot_disabled = ['markdown']
-
 " VIM-MARKDOWN (from polyglot)
 let g:vim_markdown_conceal_code_blocks = 0
-
-" PANDOC
-let g:pandoc#syntax#conceal#use = 1
-let g:pandoc#syntax#conceal#urls = 1
-let g:pandoc#syntax#codeblocks#embeds#use = 0
-let g:pandoc#syntax#conceal#blacklist = ['atx', 'codeblock_start', 'codeblock_delim']
-
-" ALE
-let g:ale_enabled = 1
-let g:ale_completion_enabled = 1 " disable for deoplete
-let g:ale_completion_autoimport = 1
-let g:ale_set_balloons = 1
-let g:ale_hover_to_preview = 1
-let g:ale_hover_to_floating_preview = 1
-let g:ale_exclude_highlights = ['line too long']
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_delay = 400
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 1
-let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
-let g:ale_list_window_size = 5
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
 
 " FZF
 let g:fzf_layout = { 'window': { 'width': 0.90, 'height': 0.90 } }
@@ -93,22 +66,15 @@ call plug#begin('~/.local/share/vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-"Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'fgsch/vim-varnish'
-Plug 'godlygeek/tabular' " required for vim-markdown
-Plug 'preservim/vim-markdown'
 
 if empty($SSH_CLIENT)
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 end
 
-Plug 'romainl/Apprentice'
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 call plug#end()
 " }}} -------------------------------------------------------------------------
@@ -123,10 +89,5 @@ source ~/.vim/aorith/mappings.vim
 source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal_setup.vim
 source ~/.vim/aorith/autocmds.vim
-"source ~/.vim/aorith/dynamic_theme.vim
-if v:version >= 900
-  source ~/.vim/aorith/themes/habamax.vim
-else
-  source ~/.vim/aorith/themes/catppuccin.vim
-endif
+source ~/.vim/aorith/themes/gruvbox8.vim
 " }}} -------------------------------------------------------------------------
