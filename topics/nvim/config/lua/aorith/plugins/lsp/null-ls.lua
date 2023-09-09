@@ -16,19 +16,14 @@ return {
     local null_ls_sources = {
       code_actions.gitsigns,
       code_actions.refactoring,
-      diagnostics.todo_comments,
-      diagnostics.trail_space,
       null_ls.builtins.hover.printenv,
       null_ls.builtins.hover.dictionary,
 
       -- actions
-      code_actions.shellcheck,
+      --code_actions.shellcheck,
 
       -- formatting
-      formatting.shfmt.with({
-        extra_args = { "--indent", "4" },
-        filetypes = { "sh", "bash" },
-      }),
+      --formatting.shfmt.with({extra_args = { "--indent", "4" },filetypes = { "sh", "bash" },}),
       formatting.prettier,
       formatting.alejandra,
       formatting.terraform_fmt,
@@ -55,7 +50,7 @@ return {
       diagnostics.yamllint,
       diagnostics.golangci_lint,
       diagnostics.terraform_validate,
-      diagnostics.shellcheck,
+      --diagnostics.shellcheck,
     }
 
     null_ls.setup({

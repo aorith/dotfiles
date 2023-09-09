@@ -19,19 +19,21 @@ pkgs.buildEnv {
     pkgs.alejandra
     pkgs.black
     pkgs.golangci-lint
+    pkgs.html-tidy
     pkgs.isort
     pkgs.jq
+    pkgs.nixpkgs-fmt
     pkgs.nodePackages.prettier
     pkgs.ruff
     pkgs.shellcheck
     pkgs.shfmt
     pkgs.stylua
     pkgs.terraform
-    pkgs.html-tidy
     pkgs.yamlfmt
     pkgs.yamllint
 
     # language servers
+    pkgs.emmet-ls
     pkgs.gopls
     pkgs.lua-language-server
     pkgs.marksman

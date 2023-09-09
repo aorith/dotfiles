@@ -6,41 +6,18 @@ return {
   },
 
   config = function()
-    require("neodev").setup({}) -- make sure to setup neodev BEFORE lspconfig
-
-    local lspconfig = require("lspconfig")
-    --local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    require("neodev").setup() -- make sure to setup neodev BEFORE lspconfig
 
     -- Log level
-    vim.lsp.set_log_level("ERROR")
-
-    -- On attach
-    local on_attach = function(client, bufnr)
-      -- setup mini.completion
-      vim.cmd("set omnifunc=v:lua.MiniCompletion.completefunc_lsp")
-
-      -- command to check server capabilities
-      vim.cmd("command! CheckLspServerCapabilities :lua =require('aorith.core.utils').custom_server_capabilities()")
-
-      -- disable some more capabilities
-      if client.name == "pylsp" then
-        client.server_capabilities.renameProvider = false
-        client.server_capabilities.rename = false
-      end
-
-      -- disable hover in favor of pyright
-      if client.name == "ruff_lsp" then
-        client.server_capabilities.hoverProvider = false
-      end
-    end
+    vim.lsp.set_log_level("OFF")
 
     -- Diagnostics
     vim.diagnostic.config({
       signs = true,
       underline = true,
       update_in_insert = false, -- false so diags are updated on InsertLeave
-      --virtual_text = { spacing = 4, prefix = "●" },
-      virtual_text = true,
+      virtual_text = false,
+      severity_sort = true,
       float = {
         focusable = false,
         style = "minimal",
@@ -50,54 +27,12 @@ return {
       },
     })
 
-    -- List of servers and their configs
-    local servers = require("aorith.plugins.lsp.etc.servers")
-    local server_names = vim.tbl_keys(servers)
-    local ensure_installed = {}
-    for _, k in pairs(server_names) do
-      if servers[k].ensure_installed_name then
-        table.insert(ensure_installed, servers[k].ensure_installed_name)
-      else
-        -- skip some
-        if k ~= "nil_ls" then
-          table.insert(ensure_installed, k)
-        end
-      end
-    end
+    -- common handlers
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    vim.lsp.handlers["textDocument/signatureHelp"] =
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-    local handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-    }
-    --local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-    -- actual function that setups the servers
-    local function setup(server)
-      local server_config = {}
-      if servers[server] ~= nil and servers[server].config ~= nil then
-        server_config = servers[server].config
-      end
-      local server_enabled = true
-      if servers[server] ~= nil then
-        if servers[server].enabled ~= nil and not servers[server].enabled then
-          server_enabled = false
-        end
-      end
-
-      local server_opts = vim.tbl_deep_extend("force", {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = vim.deepcopy(capabilities),
-      }, server_config)
-
-      if server_enabled then
-        lspconfig[server].setup(server_opts)
-      end
-    end
-
-    for _, server in pairs(server_names) do
-      setup(server)
-    end
+    -- Setup servers
+    require("aorith.plugins.lsp.servers.servers").setup()
   end,
 }

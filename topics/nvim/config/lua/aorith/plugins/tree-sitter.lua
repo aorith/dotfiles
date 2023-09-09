@@ -44,5 +44,7 @@ return {
 
       ignore_install = {},
     })
+
+    vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
   end,
 }

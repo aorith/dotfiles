@@ -41,9 +41,12 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- buffers
--- (handled by barbar) vim.keymap.set("n", "<leader><TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
+map("n", "<TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
+map("n", "<leader><TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
+map("n", "<S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
+map("n", "<leader><S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
 
-vim.keymap.set("n", "<leader>bb", function()
+map("n", "<leader>bb", function()
   local curbufnr = vim.api.nvim_get_current_buf()
   local bufinfo
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
@@ -65,7 +68,7 @@ map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 
 -- ui
-vim.keymap.set("n", "<leader>ub", function()
+map("n", "<leader>ub", function()
   if vim.o.background == "light" then
     vim.o.background = "dark"
   else
@@ -74,7 +77,7 @@ vim.keymap.set("n", "<leader>ub", function()
 end, { remap = true, desc = "Toggle dark/light mode" })
 
 -- toggle diagnostics
-vim.keymap.set("n", "<leader>ud", function()
+map("n", "<leader>ud", function()
   if vim.diagnostic.is_disabled() then
     vim.diagnostic.enable()
   else
@@ -84,14 +87,13 @@ vim.keymap.set("n", "<leader>ud", function()
 end, { remap = true, desc = "Toggle diagnostics" })
 
 -- toggle listchars
-vim.keymap.set("n", "<leader>ul", function()
-  vim.cmd("set list!")
-  vim.notify("List chars: " .. (vim.opt.list._value and "ENABLED" or "DISABLED"))
+map("n", "<leader>ul", function()
+  vim.cmd("set list! list?")
 end, { remap = true, desc = "Toggle list chars" })
 
 -- others
-vim.keymap.set("", "<F1>", "<nop>") -- "" == map
-vim.keymap.set("!", "<F1>", "<nop>") -- "!" == map!
+map("", "<F1>", "<nop>") -- "" == map
+map("!", "<F1>", "<nop>") -- "!" == map!
 vim.api.nvim_create_user_command("W", "w", { bang = true })
 vim.api.nvim_create_user_command("Q", "q", { bang = true })
 
@@ -103,7 +105,7 @@ vim.api.nvim_create_user_command("Q", "q", { bang = true })
 local format = function()
   vim.lsp.buf.format({
     async = false,
-    timeout_ms = 3000,
+    timeout_ms = 5000,
 
     -- excluded clients
     filter = function(client)
@@ -121,23 +123,23 @@ local format = function()
     end,
   })
 end
-vim.keymap.set("n", "<leader>lf", format, { desc = "Format Document" })
-vim.keymap.set("v", "<leader>lf", format, { desc = "Format Range" })
+map("n", "<leader>lf", format, { desc = "Format Document" })
+map("v", "<leader>lf", format, { desc = "Format Range" })
 
 -- diagnostics
-vim.keymap.set("n", "<leader>ll", vim.diagnostic.open_float, { desc = "[L]ine diagnostics" })
-vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Set Loc List" })
-vim.keymap.set("n", "<leader>lj", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-vim.keymap.set("n", "<leader>lk", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+map("n", "<leader>ll", vim.diagnostic.open_float, { desc = "[L]ine diagnostics" })
+map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Set Loc List" })
+map("n", "<leader>lj", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "<leader>lk", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 
-vim.keymap.set("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Code actions" })
-vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[H]over" })
-vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "[R]ename" })
-vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[S]ignature" })
+map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Code actions" })
+map("n", "<leader>lh", vim.lsp.buf.hover, { desc = "[H]over" })
+map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "[R]ename" })
+map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[S]ignature" })
 
 -- without leader key
-vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { desc = "[G]oto [D]efinition" })
-vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "[G]oto [R]eferences" })
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-vim.keymap.set("n", "gI", "<cmd>Telescope lsp_implementations<cr>", { desc = "[G]oto [I]mplementation" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { desc = "[G]oto [D]efinition" })
+map("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "[G]oto [R]eferences" })
+map("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
+map("n", "gI", "<cmd>Telescope lsp_implementations<cr>", { desc = "[G]oto [I]mplementation" })
+map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
