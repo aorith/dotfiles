@@ -66,5 +66,6 @@ cask "tunnelblick"
 cask "utm"
 cask "vlc"
 cask "vscodium"
+cask "wezterm"
 
 # vim: ft=conf
