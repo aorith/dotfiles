@@ -16,7 +16,8 @@ config.window_decorations = "RESIZE"
 config.adjust_window_size_when_changing_font_size = false
 
 config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
+config.tab_max_width = 40
 config.show_new_tab_button_in_tab_bar = false
 
 config.enable_scroll_bar = true
@@ -29,7 +30,5 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" } -- disable ligadures
 config.command_palette_font_size = 16.0
 
 config.color_scheme = "Gruvbox Dark (Gogh)"
-
-config.tab_max_width = 40
 
 return config

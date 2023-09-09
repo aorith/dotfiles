@@ -1,11 +1,14 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+local is_macos = string.find(wezterm.target_triple, "apple") ~= nil
+
 local leader = { key = "b", mods = "CTRL", timeout_milliseconds = 5000 }
-local wez_mod = "CTRL|SHIFT" -- 'setxkbmap -option ctrl:nocaps' capslock acts as ctrl
+-- 'setxkbmap -option ctrl:nocaps' capslock acts as ctrl
+local wez_mod = is_macos and "CMD" or "ALT"
 local both = { "LEADER", wez_mod }
 
-local keys = {}
+local normal = {}
 local copy_mode = {}
 local search_mode = {}
 
@@ -30,18 +33,18 @@ local rename = act.PromptInputLine({
 })
 
 -- bypass leader key by pressing it twice
-map(keys, leader.key, "LEADER|CTRL", act.SendKey({ key = leader.key, mods = "CTRL" }))
+map(normal, leader.key, "CTRL|LEADER", act.SendKey({ key = leader.key, mods = "CTRL" }))
 
 -- copy & paste
-map(keys, "c", { "SUPER", "CTRL|SHIFT" }, act.CopyTo("Clipboard"))
-map(keys, "Insert", "CTRL", act.CopyTo("PrimarySelection"))
-map(keys, "v", { "SUPER", "CTRL|SHIFT" }, act.PasteFrom("Clipboard"))
-map(keys, "Insert", "SHIFT", act.PasteFrom("Clipboard"))
-map(keys, "Insert", "CTRL|SHIFT", act.PasteFrom("PrimarySelection"))
+map(normal, "c", { "SUPER", "CTRL|SHIFT" }, act.CopyTo("Clipboard"))
+map(normal, "Insert", "CTRL", act.CopyTo("PrimarySelection"))
+map(normal, "v", { "SUPER", "CTRL|SHIFT" }, act.PasteFrom("Clipboard"))
+map(normal, "Insert", "SHIFT", act.PasteFrom("Clipboard"))
+map(normal, "Insert", "CTRL|SHIFT", act.PasteFrom("PrimarySelection"))
 
 -- clear scrollback
 map(
-  keys,
+  normal,
   "l",
   "CTRL",
   act.Multiple({ act.ClearScrollback("ScrollbackOnly"), act.SendKey({ key = "l", mods = "CTRL" }) })
@@ -49,47 +52,47 @@ map(
 
 -- activate tabs
 for i = 1, 9 do
-  map(keys, "phys:" .. tostring(i), both, act.ActivateTab(i - 1))
+  map(normal, "phys:" .. tostring(i), both, act.ActivateTab(i - 1))
 end
 -- splits
-map(keys, '"', { "LEADER|SHIFT", wez_mod .. "|ALT" }, act.SplitVertical)
-map(keys, "%", { "LEADER|SHIFT", wez_mod .. "|ALT" }, act.SplitHorizontal)
+map(normal, "d", { "LEADER", wez_mod }, act.SplitHorizontal)
+map(normal, "D", { "LEADER", wez_mod }, act.SplitVertical)
 
 -- move between panes
-map(keys, "h", both, act.ActivatePaneDirection("Left"))
-map(keys, "j", both, act.ActivatePaneDirection("Down"))
-map(keys, "k", both, act.ActivatePaneDirection("Up"))
-map(keys, "l", both, act.ActivatePaneDirection("Right"))
+map(normal, "h", both, act.ActivatePaneDirection("Left"))
+map(normal, "j", both, act.ActivatePaneDirection("Down"))
+map(normal, "k", both, act.ActivatePaneDirection("Up"))
+map(normal, "l", both, act.ActivatePaneDirection("Right"))
 -- rotate panes
-map(keys, "Enter", both, act.RotatePanes("Clockwise"))
+map(normal, "Enter", both, act.RotatePanes("Clockwise"))
 -- spawn
-map(keys, "t", both, act.SpawnCommandInNewTab({ cwd = os.getenv("HOME") }))
-map(keys, "n", both, act.SpawnWindow)
+map(normal, "t", both, act.SpawnCommandInNewTab({ cwd = os.getenv("HOME") }))
+map(normal, "n", both, act.SpawnWindow)
 -- rename
-map(keys, "r", both, rename)
+map(normal, "r", both, rename)
 -- close
-map(keys, "w", both, act.CloseCurrentPane({ confirm = true }))
+map(normal, "w", both, act.CloseCurrentPane({ confirm = true }))
 -- search
 map(
-  keys,
+  normal,
   "f",
   both,
   act.Multiple({ act.ActivateCopyMode, act.CopyMode("ClearPattern"), act.Search("CurrentSelectionOrEmptyString") })
 )
 -- zoom
-map(keys, "z", both, act.TogglePaneZoomState)
-map(keys, "F12", "", act.ToggleFullScreen)
+map(normal, "z", both, act.TogglePaneZoomState)
+map(normal, "F12", "", act.ToggleFullScreen)
 -- font size
-map(keys, "-", { "CTRL", "SUPER" }, act.DecreaseFontSize)
-map(keys, "+", { "CTRL", "SUPER" }, act.IncreaseFontSize)
-map(keys, "0", { "CTRL", "SUPER" }, act.ResetFontSize)
+map(normal, "-", { "CTRL", "SUPER" }, act.DecreaseFontSize)
+map(normal, "+", { "CTRL", "SUPER" }, act.IncreaseFontSize)
+map(normal, "0", { "CTRL", "SUPER" }, act.ResetFontSize)
 -- palette & debug overlay
-map(keys, "p", both, act.ActivateCommandPalette)
-map(keys, "d", both, act.ShowDebugOverlay)
+map(normal, "p", both, act.ActivateCommandPalette)
+map(normal, "o", both, act.ShowDebugOverlay)
 -- copy mode
-map(keys, "x", both, act.Multiple({ act.CopyMode("ClearPattern"), act.ActivateCopyMode }))
+map(normal, "x", both, act.Multiple({ act.CopyMode("ClearPattern"), act.ActivateCopyMode }))
 -- quickselect
-map(keys, "Space", both, act.QuickSelect)
+map(normal, "Space", both, act.QuickSelect)
 
 --- copy mode
 map(copy_mode, "h", "NONE", act.CopyMode("MoveLeft"))
@@ -148,7 +151,7 @@ function M.apply_to_config(config)
   config.disable_default_key_bindings = true
   config.key_map_preference = "Mapped"
   config.leader = leader
-  config.keys = keys
+  config.keys = normal
   config.key_tables = {
     copy_mode = copy_mode,
     search_mode = search_mode,
@@ -156,7 +159,7 @@ function M.apply_to_config(config)
   config.colors = { compose_cursor = "yellow" } -- highligh cursor when leader is active
 
   config.enable_kitty_keyboard = false
-  config.use_dead_keys = false -- I usually don't need to type "áéíóú" in the terminal
+  config.use_dead_keys = true
   config.use_ime = true
 end
 
