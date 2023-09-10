@@ -24,7 +24,6 @@ return {
 
       -- formatting
       --formatting.shfmt.with({extra_args = { "--indent", "4" },filetypes = { "sh", "bash" },}),
-      formatting.prettier,
       formatting.alejandra,
       formatting.terraform_fmt,
       formatting.jq,
@@ -44,9 +43,6 @@ return {
       }),
 
       -- diagnostics
-      diagnostics.tidy.with({
-        extra_args = { "-config", vim.fn.getenv("XDG_CONFIG_HOME") .. "/" .. utils.nvim_appname .. "/etc/tidy.conf" },
-      }),
       diagnostics.yamllint,
       diagnostics.golangci_lint,
       diagnostics.terraform_validate,
