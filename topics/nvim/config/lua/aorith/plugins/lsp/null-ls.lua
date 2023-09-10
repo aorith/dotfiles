@@ -25,8 +25,9 @@ return {
       -- formatting
       --formatting.shfmt.with({extra_args = { "--indent", "4" },filetypes = { "sh", "bash" },}),
       formatting.alejandra,
-      formatting.terraform_fmt,
       formatting.jq,
+      formatting.prettier,
+      formatting.terraform_fmt,
       formatting.yamlfmt,
       formatting.stylua.with({
         extra_args = {

@@ -3,7 +3,9 @@ local M = {}
 local lspconfig = require("lspconfig")
 
 local on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
+  if client.server_capabilities.completionProvider then
+    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
+  end
 
   -- command to check server capabilities
   vim.cmd("command! CheckLspServerCapabilities :lua =require('aorith.core.utils').custom_server_capabilities()")
@@ -113,7 +115,12 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  lspconfig.svelte.setup({
+  lspconfig.html.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+
+  lspconfig.cssls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })
