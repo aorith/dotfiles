@@ -13,10 +13,10 @@ return {
 
     -- Diagnostics
     vim.diagnostic.config({
-      signs = true,
+      signs = { priority = 9999 },
       underline = true,
       update_in_insert = false, -- false so diags are updated on InsertLeave
-      virtual_text = false,
+      virtual_text = { severity = { min = "ERROR" } },
       severity_sort = true,
       float = {
         focusable = false,

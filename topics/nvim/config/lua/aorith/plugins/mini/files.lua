@@ -1,4 +1,7 @@
--- Minifiles
+local A = vim.api
+local map = vim.keymap.set
+local my_au = A.nvim_create_augroup("AORITH", { clear = true })
+
 -- mapping to toggle hidden files
 local show_dotfiles = true
 local filter_show = function(fs_entry)
@@ -12,13 +15,6 @@ local toggle_dotfiles = function()
   local new_filter = show_dotfiles and filter_show or filter_hide
   MiniFiles.refresh({ content = { filter = new_filter } })
 end
-vim.api.nvim_create_autocmd("User", {
-  pattern = "MiniFilesBufferCreate",
-  callback = function(args)
-    local buf_id = args.data.buf_id
-    vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id, desc = "Toggle hidden files" })
-  end,
-})
 
 -- Mappings to open in split
 local map_split = function(buf_id, lhs, direction)
@@ -29,9 +25,9 @@ local map_split = function(buf_id, lhs, direction)
     if not target_window then
       return
     end
-    vim.api.nvim_win_call(target_window, function()
+    A.nvim_win_call(target_window, function()
       vim.cmd(direction .. " split")
-      new_target_window = vim.api.nvim_get_current_win()
+      new_target_window = A.nvim_get_current_win()
     end)
 
     MiniFiles.set_target_window(new_target_window)
@@ -41,16 +37,19 @@ local map_split = function(buf_id, lhs, direction)
 
   -- Adding `desc` will result into `show_help` entries
   local desc = "Split " .. direction
-  vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
+  map("n", lhs, rhs, { buffer = buf_id, desc = desc })
 end
 
-vim.api.nvim_create_autocmd("User", {
+-- extra mappings
+A.nvim_create_autocmd("User", {
+  group = my_au,
   pattern = "MiniFilesBufferCreate",
   callback = function(args)
     local buf_id = args.data.buf_id
-    -- Tweak keys to your liking
     map_split(buf_id, "gs", "belowright horizontal")
     map_split(buf_id, "gv", "belowright vertical")
+    map("n", "g.", toggle_dotfiles, { buffer = buf_id, desc = "Toggle hidden files" })
+    map("n", "<ESC>", MiniFiles.close, { buffer = buf_id, desc = "Close MiniFiles" })
   end,
 })
 

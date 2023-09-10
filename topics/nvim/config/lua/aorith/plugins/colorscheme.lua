@@ -1,4 +1,4 @@
-local theme = "tokyonight"
+local theme = "onedark"
 
 return {
   {
@@ -39,7 +39,7 @@ return {
     end,
   },
 
-  { -- Theme inspired by Atom
+  {
     "navarasu/onedark.nvim",
     enabled = theme == "onedark",
     lazy = false,

@@ -10,7 +10,7 @@ M.get_active_lsp_clients = function()
     return "No LSP servers running."
   end
 
-  local header = "# Active LSP servers\n  "
+  local header = "# Active LSP servers\n"
   local servers = ""
   for _, c in pairs(vim.lsp.get_active_clients({ bufnr = bufnr })) do
     local state = c.initialized and " (running)" or " (starting)"

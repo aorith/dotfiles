@@ -12,6 +12,7 @@ return {
     require("mini.tabline").setup()
     require("mini.trailspace").setup()
     require("mini.misc").setup()
+    require("mini.comment").setup()
 
     require("aorith.plugins.mini.files")
     require("aorith.plugins.mini.statusline")
