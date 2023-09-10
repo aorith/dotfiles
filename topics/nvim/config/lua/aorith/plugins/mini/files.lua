@@ -1,6 +1,6 @@
 local A = vim.api
 local map = vim.keymap.set
-local my_au = A.nvim_create_augroup("AORITH", { clear = true })
+local my_au = A.nvim_create_augroup("AORITH_MINIFILES", { clear = true })
 
 -- mapping to toggle hidden files
 local show_dotfiles = true

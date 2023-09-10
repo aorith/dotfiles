@@ -46,6 +46,7 @@ A.nvim_create_autocmd("BufReadPost", {
     local last_pos = A.nvim_buf_get_mark(data.buf, '"')
     if last_pos[1] > 0 and last_pos[1] <= A.nvim_buf_line_count(data.buf) then
       A.nvim_win_set_cursor(0, last_pos)
+      A.nvim_feedkeys("z.", "n", true)
     end
   end,
 })
