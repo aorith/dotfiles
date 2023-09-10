@@ -40,11 +40,13 @@ pkgs.buildEnv {
     pkgs.nil
     pkgs.nodePackages.bash-language-server
     pkgs.nodePackages.pyright
+    pkgs.nodePackages.svelte-language-server
     pkgs.nodePackages.typescript-language-server
     pkgs.nodePackages.yaml-language-server
     pkgs.ruff-lsp
     pkgs.sqls
     pkgs.terraform-ls
     pkgs.tflint
+    pkgs.vscode-langservers-extracted
   ];
 }

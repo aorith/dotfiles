@@ -50,11 +50,6 @@ M.setup = function()
     settings = { yaml = { keyOrdering = false } },
   })
 
-  lspconfig.tsserver.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
-
   lspconfig.terraformls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -113,7 +108,12 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  lspconfig.emmet_ls.setup({
+  lspconfig.tsserver.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+
+  lspconfig.svelte.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })
