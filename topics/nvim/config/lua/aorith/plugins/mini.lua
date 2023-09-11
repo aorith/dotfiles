@@ -9,7 +9,6 @@ return {
 
   config = function()
     require("mini.bufremove").setup()
-    require("mini.tabline").setup()
     require("mini.trailspace").setup()
     require("mini.misc").setup()
     require("mini.comment").setup()
