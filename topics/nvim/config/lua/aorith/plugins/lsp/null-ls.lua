@@ -23,7 +23,7 @@ return {
       --code_actions.shellcheck,
 
       -- formatting
-      --formatting.shfmt.with({extra_args = { "--indent", "4" },filetypes = { "sh", "bash" },}),
+      formatting.shfmt.with({extra_args = { "--indent", "4" },filetypes = { "sh", "bash" },}),
       formatting.alejandra,
       formatting.jq,
       formatting.prettier,
