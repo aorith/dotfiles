@@ -47,11 +47,8 @@ return {
   end,
 
   keys = {
-    { "<leader><space>", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Switch Buffer" },
     { "<leader>:", "<cmd>Telescope command_history<cr>", mode = "n", desc = "Command history" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", mode = "n", desc = "Find Files" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", mode = "n", desc = "Recent Files" },
-    { "<leader>fg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "Live Grep" },
     {
       "<leader>fG",
       function()

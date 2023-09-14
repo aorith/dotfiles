@@ -48,4 +48,14 @@ return {
       vim.cmd.colorscheme("onedark")
     end,
   },
+
+  {
+    "ellisonleao/gruvbox.nvim",
+    enabled = theme == "gruvbox",
+    lazy = false,
+    config = function()
+      vim.cmd.colorscheme("gruvbox")
+    end,
+    priority = 1000,
+  },
 }

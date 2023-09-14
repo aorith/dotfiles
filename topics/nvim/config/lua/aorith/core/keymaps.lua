@@ -139,7 +139,7 @@ map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[S]ignature" })
 
 -- without leader key
 map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { desc = "[G]oto [D]efinition" })
-map("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "[G]oto [R]eferences" })
+map("n", "gr", "<cmd>Trouble lsp_references<cr>", { desc = "[G]oto [R]eferences" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 map("n", "gI", "<cmd>Telescope lsp_implementations<cr>", { desc = "[G]oto [I]mplementation" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
