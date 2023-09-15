@@ -21,12 +21,13 @@ return {
       go = { "goimports", "gofmt" },
       lua = { "stylua" },
       nix = { "nixpkgs_fmt" },
-      python = { "ruff", "black" },
+      python = { "isort", "black" },
 
       sh = { "shfmt" },
       bash = { "shfmt" },
     },
     log_level = vim.log.levels.ERROR,
+    notify_on_error = true,
   },
 
   config = function(_, opts)
@@ -42,14 +43,6 @@ return {
   end,
 
   keys = {
-    {
-      "=",
-      function()
-        require("conform").format({ async = false, lsp_fallback = true })
-      end,
-      mode = "",
-      desc = "Format buffer",
-    },
     {
       "<leader>lf",
       function()
