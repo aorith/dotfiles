@@ -123,8 +123,9 @@ local format = function()
     end,
   })
 end
-map("n", "<leader>lf", format, { desc = "Format Document" })
-map("v", "<leader>lf", format, { desc = "Format Range" })
+-- handled by conform.nvim
+--map("n", "<leader>lf", format, { desc = "Format Document" })
+--map("v", "<leader>lf", format, { desc = "Format Range" })
 
 -- diagnostics
 map("n", "<leader>ll", vim.diagnostic.open_float, { desc = "[L]ine diagnostics" })

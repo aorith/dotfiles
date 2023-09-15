@@ -1,4 +1,4 @@
-local theme = "onedark"
+local theme = "catppuccin"
 
 return {
   {
@@ -55,6 +55,17 @@ return {
     lazy = false,
     config = function()
       vim.cmd.colorscheme("gruvbox")
+    end,
+    priority = 1000,
+  },
+
+  {
+    "catppuccin/nvim",
+    enabled = theme == "catppuccin",
+    name = "catppuccin",
+    lazy = false,
+    config = function()
+      vim.cmd.colorscheme("catppuccin")
     end,
     priority = 1000,
   },

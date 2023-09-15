@@ -50,7 +50,7 @@ opt.confirm = true -- confirm to save changes before exiting a modified buffer
 opt.diffopt:append({ "linematch:60" }) -- better diff: https://github.com/neovim/neovim/pull/14537
 opt.formatoptions = "qjl1" -- don't format comments
 opt.history = 50 -- remember 50 items in cmd history
-opt.laststatus = 3
+opt.laststatus = 2
 opt.mouse = "a"
 opt.number = true
 opt.report = 0 -- Always report the number of lines changed after :command

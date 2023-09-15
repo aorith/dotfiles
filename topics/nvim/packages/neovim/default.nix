@@ -19,6 +19,7 @@ pkgs.buildEnv {
     pkgs.alejandra
     pkgs.black
     pkgs.golangci-lint
+    pkgs.gotools
     pkgs.isort
     pkgs.jq
     pkgs.nixpkgs-fmt

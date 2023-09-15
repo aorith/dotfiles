@@ -73,6 +73,6 @@ require("mini.files").setup({
   -- Customization of explorer windows
   windows = {
     preview = true,
-    width_preview = 30,
+    width_preview = 50,
   },
 })
