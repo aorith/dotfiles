@@ -24,6 +24,7 @@ pkgs.buildEnv {
     pkgs.jq
     pkgs.nixpkgs-fmt
     pkgs.nodePackages.prettier
+    pkgs.prettierd
     pkgs.ruff
     pkgs.shellcheck
     pkgs.shfmt

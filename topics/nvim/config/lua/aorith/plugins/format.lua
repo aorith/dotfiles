@@ -1,4 +1,5 @@
 local utils = require("aorith.core.utils")
+local prettier = { "prettierd", "prettier" }
 
 return {
   "stevearc/conform.nvim",
@@ -6,17 +7,17 @@ return {
   cmd = "ConformInfo",
   opts = {
     formatters_by_ft = {
-      css = { "prettier" },
-      html = { "prettier" },
-      javascript = { "prettier" },
-      javascriptreact = { "prettier" },
-      typescript = { "prettier" },
-      typescriptreact = { "prettier" },
-      graphql = { "prettier" },
-      json = { "prettier" },
-      jsonc = { "prettier" },
-      markdown = { "prettier" },
-      yaml = { "prettier" },
+      css = { prettier },
+      html = { prettier },
+      javascript = { prettier },
+      javascriptreact = { prettier },
+      typescript = { prettier },
+      typescriptreact = { prettier },
+      graphql = { prettier },
+      json = { prettier },
+      jsonc = { prettier },
+      markdown = { prettier },
+      yaml = { prettier },
 
       go = { "goimports", "gofmt" },
       lua = { "stylua" },
@@ -46,7 +47,7 @@ return {
     {
       "<leader>lf",
       function()
-        require("conform").format({ async = false, lsp_fallback = true })
+        require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 })
       end,
       mode = { "n", "v" },
       desc = "Format buffer",
