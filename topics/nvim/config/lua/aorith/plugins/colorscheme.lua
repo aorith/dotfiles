@@ -1,71 +1,87 @@
-local theme = "catppuccin"
+local theme = "gruvbox"
 
 return {
   {
-    "bluz71/vim-nightfly-colors",
-    enabled = theme == "nightfly",
-    name = "nightfly",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd("colorscheme nightfly")
-    end,
-  },
-
-  {
     "folke/tokyonight.nvim",
-    enabled = theme == "tokyonight",
     lazy = false,
     priority = 1000,
     opts = {},
     config = function()
-      vim.cmd("colorscheme tokyonight-moon")
+      if theme == "tokyonight" then
+        vim.cmd("colorscheme tokyonight-moon")
+      end
     end,
   },
 
   {
     "rebelot/kanagawa.nvim",
-    enabled = theme == "kanagawa",
     cmd = { "KanagawaCompile" },
     build = ":KanagawaCompile",
     lazy = false,
     priority = 1000,
     config = function()
-      require("kanagawa").setup({
-        compile = true, -- enable compiling the colorscheme
-      })
+      if theme == "kanagawa" then
+        require("kanagawa").setup({
+          compile = true, -- enable compiling the colorscheme
+        })
 
-      vim.cmd("colorscheme kanagawa")
+        vim.cmd("colorscheme kanagawa")
+      end
     end,
   },
 
   {
     "navarasu/onedark.nvim",
-    enabled = theme == "onedark",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("onedark")
+      if theme == "onedark" then
+        vim.cmd.colorscheme("onedark")
+      end
     end,
-  },
-
-  {
-    "ellisonleao/gruvbox.nvim",
-    enabled = theme == "gruvbox",
-    lazy = false,
-    config = function()
-      vim.cmd.colorscheme("gruvbox")
-    end,
-    priority = 1000,
   },
 
   {
     "catppuccin/nvim",
-    enabled = theme == "catppuccin",
     name = "catppuccin",
     lazy = false,
     config = function()
-      vim.cmd.colorscheme("catppuccin")
+      if theme == "catppuccin" then
+        vim.cmd.colorscheme("catppuccin")
+      end
+    end,
+    priority = 1000,
+  },
+
+  {
+    "sainnhe/gruvbox-material",
+    lazy = false,
+    config = function()
+      if theme == "gruvbox" then
+        vim.cmd.colorscheme("gruvbox-material")
+      end
+    end,
+    priority = 1000,
+  },
+
+  {
+    "yorickpeterse/nvim-grey",
+    lazy = false,
+    config = function()
+      if theme == "grey" then
+        vim.cmd.colorscheme("grey")
+      end
+    end,
+    priority = 1000,
+  },
+
+  {
+    "ramojus/mellifluous.nvim",
+    lazy = false,
+    config = function()
+      if theme == "mellifluous" then
+        vim.cmd.colorscheme("mellifluous")
+      end
     end,
     priority = 1000,
   },

@@ -20,7 +20,7 @@ return {
 
       go = { "goimports", "gofmt" },
       lua = { "stylua" },
-      nix = { "nixpkgs_fmt" },
+      nix = { "alejandra" },
       python = { "isort", "black" },
 
       sh = { "shfmt" },
