@@ -7,6 +7,7 @@ alias ls='ls --color=auto'
 alias diff='diff --color=auto'
 alias htop='TERM=xterm-256color htop'
 alias grep='grep --color=auto'
+alias ssh='env TERM=xterm-256color ssh'
 
 alias cd..='cd ..'
 alias ..='cd ..'
