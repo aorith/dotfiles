@@ -10,6 +10,7 @@ return {
   opts = {
     linters_by_ft = {
       go = { "golangcilint" },
+      jinja = { "djlint" },
       nix = { "nix" },
       python = { "ruff" },
       yaml = { "yamllint" },

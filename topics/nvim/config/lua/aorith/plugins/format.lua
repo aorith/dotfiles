@@ -7,6 +7,8 @@ return {
   cmd = "ConformInfo",
   opts = {
     formatters_by_ft = {
+      jinja = { "djlint" },
+
       css = { prettier },
       html = { prettier },
       javascript = { prettier },
@@ -18,6 +20,7 @@ return {
       jsonc = { prettier },
       markdown = { prettier },
       yaml = { prettier },
+
 
       go = { "goimports", "gofmt" },
       lua = { "stylua" },

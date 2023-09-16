@@ -54,7 +54,7 @@ return {
         },
       },
 
-      filetype = {
+      filetype_icon = {
         "filetype",
         colored = true,
         icon_only = true,
@@ -89,8 +89,8 @@ return {
 
       sections = {
         lualine_a = { components.mode },
-        lualine_b = { components.curr_dir },
-        lualine_c = { components.filetype, components.filename, components.diagnostics },
+        lualine_b = {},
+        lualine_c = { components.filetype_icon, "%y", components.filename, components.diagnostics },
 
         lualine_x = {},
         lualine_y = { components.location },
