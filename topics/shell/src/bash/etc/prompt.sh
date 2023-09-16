@@ -50,14 +50,17 @@ __ps1_jobs_f() {
 }
 
 __prompt_command() {
-    local _wd _err _nl OnSSH OnVENV OnNixShell OnContainer
+    local _wd _err _nl _git_status OnSSH OnVENV OnNixShell OnContainer
     (($1 == 0)) || _err="${my_red}${1}${my_rst} "
 
     # git branch/tag
     __ps1_git_branch_f
 
     if [[ -n "$_ps1_git_branch" ]]; then
-        _ps1_git_branch="${_ps1_git_branch}${my_gry}($(git status --short --untracked-files=all --porcelain | awk '{print $1}' | sort | uniq -c | awk '{print $2":"$1}' | xargs)) "
+        _git_status=$(git status --short --untracked-files=all --porcelain | awk '{print $1}' | sort | uniq -c | awk '{print $2":"$1}' | xargs)
+        if [[ -n "$_git_status" ]]; then
+            _ps1_git_branch="${_ps1_git_branch}${my_gry}($_git_status) "
+        fi
     fi
 
     # background jobs
