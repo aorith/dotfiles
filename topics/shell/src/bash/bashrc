@@ -7,7 +7,7 @@ fi
 
 set -a
 for f in ~/.config/environment.d/*.conf; do
-    source "$f"
+    . "$f"
 done
 set +a
 
@@ -24,14 +24,14 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 export PROMPT_DIRTRIM=8
 export PS4='+ ${BASH_SOURCE:-}:${LINENO:-}: ${FUNCNAME[0]:-}() [${?:-}] → '
 
-source ~/githome/dotfiles/topics/shell/etc/common/exports.sh
-source ~/githome/dotfiles/topics/shell/etc/common/aliases.sh
-source ~/githome/dotfiles/topics/shell/src/bash/functions.sh
-source ~/githome/dotfiles/topics/shell/src/bash/completion.sh
+. ~/githome/dotfiles/topics/shell/etc/common/exports.sh
+. ~/githome/dotfiles/topics/shell/etc/common/aliases.sh
+. ~/githome/dotfiles/topics/shell/src/bash/functions.sh
+. ~/githome/dotfiles/topics/shell/src/bash/completion.sh
 
 # Extra
 if [[ -e "$PRIVATE_DOTFILES" ]]; then
-    source "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"
+    . "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"
 fi
 
 # Nix (non NixOS)
@@ -41,8 +41,8 @@ fi
 
 # Homebrew
 if [[ -e /opt/homebrew/bin/brew ]]; then
-    eval $(/opt/homebrew/bin/brew shellenv)
-    source /opt/homebrew/etc/profile.d/bash_completion.sh
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    . /opt/homebrew/etc/profile.d/bash_completion.sh
 fi
 
-eval "$(starship init bash)"
+. "${DOTFILES}"/topics/shell/src/bash/etc/prompt.sh

@@ -9,5 +9,3 @@ create_link "${PWD}/src/bash/bash_profile" "$HOME/.bash_profile"
 
 create_link "${PWD}/src/zsh/.zshenv" "$HOME/.zshenv"
 create_link "${PWD}/src/zsh" "$HOME/.config/zsh"
-
-create_link "${PWD}/src/starship.toml" "$HOME/.config/starship.toml"
