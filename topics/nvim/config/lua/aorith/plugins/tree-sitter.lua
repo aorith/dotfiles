@@ -13,17 +13,16 @@ return {
     require("nvim-treesitter.configs").setup({
       highlight = {
         enable = true,
-        use_languagetree = true,
-        -- TODO: bash treesitter highlights is messed up when it finds something like 'echo >&2 "blah"'
-        disable = { "sh", "bash", "dockerfile" },
+        --disable = { "sh", "bash", "dockerfile" },
+        additional_vim_regex_highlighting = false,
       },
 
       indent = {
         enable = true,
-        disable = { "python" },
       },
 
       auto_install = true,
+      ignore_install = {},
       ensure_installed = {
         "bash",
         "c",
@@ -41,8 +40,6 @@ return {
         "vimdoc",
         "yaml",
       },
-
-      ignore_install = {},
     })
 
     vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")

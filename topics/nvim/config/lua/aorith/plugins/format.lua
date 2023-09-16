@@ -22,7 +22,7 @@ return {
       go = { "goimports", "gofmt" },
       lua = { "stylua" },
       nix = { "alejandra" },
-      python = { "isort", "black" },
+      python = { "ruff", "black" },
 
       sh = { "shfmt" },
       bash = { "shfmt" },

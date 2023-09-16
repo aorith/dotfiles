@@ -1,4 +1,4 @@
-local theme = "gruvbox"
+local theme = "kanagawa"
 
 return {
   {
@@ -81,6 +81,44 @@ return {
     config = function()
       if theme == "mellifluous" then
         vim.cmd.colorscheme("mellifluous")
+      end
+    end,
+    priority = 1000,
+  },
+
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+    config = function()
+      if theme == "rosepine" then
+        require("rose-pine").setup({
+          --disable_background = true,
+          --disable_float_background = true,
+        })
+        vim.cmd.colorscheme("rose-pine")
+      end
+    end,
+    priority = 1000,
+  },
+
+  {
+    "savq/melange-nvim",
+    lazy = false,
+    config = function()
+      if theme == "melange" then
+        vim.cmd.colorscheme("melange")
+      end
+    end,
+    priority = 1000,
+  },
+
+  {
+    "projekt0n/caret.nvim",
+    lazy = false,
+    config = function()
+      if theme == "caret" then
+        vim.cmd.colorscheme("caret")
       end
     end,
     priority = 1000,
