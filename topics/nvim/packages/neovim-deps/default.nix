@@ -2,10 +2,9 @@
 pkgs.buildEnv {
   name = "nvim-env";
   paths = [
-    pkgs.neovim
+    pkgs.cmake # fzf-native
     pkgs.gcc # for tree-sitter
     pkgs.tree-sitter
-    pkgs.cmake # fzf-native
 
     # utils
     pkgs.fd
@@ -18,6 +17,7 @@ pkgs.buildEnv {
     # formatters, linters, etc
     pkgs.alejandra
     pkgs.black
+    pkgs.djlint
     pkgs.golangci-lint
     pkgs.gotools
     pkgs.isort

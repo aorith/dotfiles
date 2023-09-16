@@ -14,7 +14,7 @@ return {
     require("mini.comment").setup()
 
     require("aorith.plugins.mini.files")
-    require("aorith.plugins.mini.statusline")
+    --require("aorith.plugins.mini.statusline")
     require("aorith.plugins.mini.hipatterns")
     require("aorith.plugins.mini.clue")
     --require("aorith.plugins.mini.completion").setup()

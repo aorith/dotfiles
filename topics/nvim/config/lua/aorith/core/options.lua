@@ -104,8 +104,8 @@ opt.tabstop = 4
 
 -- timers
 opt.timeout = true
-opt.timeoutlen = 500
-opt.updatetime = 250 -- For CursorHold and swapfile
+opt.timeoutlen = 1000
+opt.updatetime = 300 -- For CursorHold and swapfile
 
 -- wrap
 opt.wrap = false
