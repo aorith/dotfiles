@@ -20,11 +20,9 @@ return {
     local lspkind = require("lspkind")
     local cmp_borders = cmp.config.window.bordered()
 
-    vim.opt.completeopt = "menu,menuone,noselect"
-
     return {
       completion = {
-        completeopt = "menu,menuone,noinsert",
+        completeopt = "menuone,noinsert,noselect",
       },
 
       window = {
