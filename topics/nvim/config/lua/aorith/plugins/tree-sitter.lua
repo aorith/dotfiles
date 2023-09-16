@@ -13,7 +13,7 @@ return {
     require("nvim-treesitter.configs").setup({
       highlight = {
         enable = true,
-        --disable = { "sh", "bash", "dockerfile" },
+        disable = { "sh", "bash", "dockerfile" },
         additional_vim_regex_highlighting = false,
       },
 
