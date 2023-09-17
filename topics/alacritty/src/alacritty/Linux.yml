@@ -3,7 +3,7 @@ window:
 font:
   size: 14
   normal:
-    family: "DejaVuSansM Nerd Font"
+    family: "BlexMono Nerd Font"
 shell:
   program: /usr/bin/env
   args:
