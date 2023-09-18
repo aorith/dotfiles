@@ -12,12 +12,6 @@ opt.modelineexpr = false
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
--- Disable some providers
-g.loaded_perl_provider = 1
-g.loaded_python3_provider = 1
-g.loaded_node_provider = 1
-g.loaded_ruby_provider = 1
-
 -- Some more disables
 g.loaded_gzip = 1
 g.loaded_tar = 1
@@ -58,7 +52,6 @@ opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.showmatch = true
 opt.showmode = false -- don't show mode - it's shown in the statusline
 opt.signcolumn = "yes" -- Show sign column, "yes:3" max 3 signs
-opt.termguicolors = true
 opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
 opt.winminwidth = 5 -- Minimum window width
 

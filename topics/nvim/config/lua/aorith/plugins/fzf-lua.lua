@@ -1,21 +1,20 @@
-return {
-  "ibhagwan/fzf-lua",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  cmd = "FzfLua",
+local map = vim.keymap.set
 
-  opts = {
-    files = {
-      --rg_opts = "--color=never --files --hidden --follow -g '!.git' -g '!.venv' -g '!venv'",
-      --fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude venv --exclude .venv",
-      rg_opts = "--color=never --files --follow -g '!.git' -g '!.venv' -g '!venv'",
-      fd_opts = "--color=never --type f --follow --exclude .git --exclude venv --exclude .venv",
-    },
+require("fzf-lua").setup({
+  files = {
+    --rg_opts = "--color=never --files --hidden --follow -g '!.git' -g '!.venv' -g '!venv'",
+    --fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude venv --exclude .venv",
+    rg_opts = "--color=never --files --follow -g '!.git' -g '!.venv' -g '!venv'",
+    fd_opts = "--color=never --type f --follow --exclude .git --exclude venv --exclude .venv",
   },
+})
 
-  keys = {
-    { "<leader><space>", "<cmd>lua require('fzf-lua').buffers()<cr>", mode = "n", desc = "Switch Buffer" },
-    { "<leader>ff", "<cmd>lua require('fzf-lua').files()<cr>", mode = "n", desc = "Find Files" },
-    { "<leader>fg", "<cmd>lua require('fzf-lua').live_grep()<cr>", mode = "n", desc = "Live Grep" },
-    { "<leader>fm", "<cmd>lua require('fzf-lua').marks()<cr>", mode = "n", desc = "Marks" },
-  },
-}
+map("n", "<leader><space>", "<cmd>lua require('fzf-lua').buffers()<cr>", { desc = "Switch Buffer" })
+map("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<cr>", { desc = "Find Files" })
+map("n", "<leader>fg", "<cmd>lua require('fzf-lua').live_grep()<cr>", { desc = "Live Grep" })
+map("n", "<leader>fm", "<cmd>lua require('fzf-lua').marks()<cr>", { desc = "Marks" })
+
+map("n", "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", { desc = "Diagnostics Document" })
+map("n", "<leader>sD", "<cmd>FzfLua diagnostics_workspace<cr>", { desc = "Diagnostics Workspace" })
+
+map("n", "<leader>uc", "<cmd>FzfLua colorschemes<cr>", { desc = "Colorschemes" })
