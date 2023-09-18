@@ -35,14 +35,20 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations.aorith = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./home-manager/home.nix];
-      extraSpecialArgs = {inherit inputs;};
+  } @ inputs: {
+    # matches configuration names using '$USER@$(uname -m -s | tr ' ' '-')'
+    homeConfigurations = {
+      "aorith@Linux-x86_64" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [./home-manager/home.nix];
+        extraSpecialArgs = {inherit inputs;};
+      };
+
+      "aorith@Darwin-arm64" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [./home-manager/home.nix];
+        extraSpecialArgs = {inherit inputs;};
+      };
     };
   };
 }
