@@ -11,7 +11,10 @@
 in {
   programs.neovim = {
     enable = true;
-    withNodeJs = true;
+    withNodeJs = false;
+    withRuby = false;
+    withPython3 = false;
+
     plugins = with pkgs.vimPlugins; [
       # dependencies
       nui-nvim
@@ -25,7 +28,6 @@ in {
       gitsigns-nvim
       lualine-nvim
       neo-tree-nvim
-      nvim-lint
       trouble-nvim
 
       nvim-treesitter-textobjects
@@ -46,6 +48,7 @@ in {
       (plugFromInput "vim-fugitive" inputs.vim-fugitive)
       (plugFromInput "mini-nvim" inputs.mini-nvim)
       (plugFromInput "conform-nvim" inputs.conform-nvim)
+      (plugFromInput "nvim-lint" inputs.nvim-lint)
       (plugFromInput "nvim-base16" inputs.nvim-base16)
     ];
   };

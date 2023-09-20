@@ -148,6 +148,22 @@
         "type": "github"
       }
     },
+    "nvim-lint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694967774,
+        "narHash": "sha256-brdJuwIA0aXFcQP1IkPoJdv8WsGnBY+kcYtzsWRKq4k=",
+        "owner": "mfussenegger",
+        "repo": "nvim-lint",
+        "rev": "3c936d9d28aa5c5d4c90780e1c3430171bdcb3c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mfussenegger",
+        "repo": "nvim-lint",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "conform-nvim": "conform-nvim",
@@ -159,6 +175,7 @@
         "nvim-cmp-buffer": "nvim-cmp-buffer",
         "nvim-cmp-lsp": "nvim-cmp-lsp",
         "nvim-cmp-path": "nvim-cmp-path",
+        "nvim-lint": "nvim-lint",
         "vim-fugitive": "vim-fugitive"
       }
     },

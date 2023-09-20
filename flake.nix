@@ -18,6 +18,9 @@
     conform-nvim.url = "github:stevearc/conform.nvim";
     conform-nvim.flake = false;
 
+    nvim-lint.url = "github:mfussenegger/nvim-lint";
+    nvim-lint.flake = false;
+
     nvim-cmp.url = "github:hrsh7th/nvim-cmp";
     nvim-cmp.flake = false;
     nvim-cmp-lsp.url = "github:hrsh7th/cmp-nvim-lsp";
@@ -40,7 +43,7 @@
     homeConfigurations = {
       "aorith@Linux-x86_64" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [./home-manager/home.nix];
+        modules = [./home-manager/home.nix ./home-manager/linux/homelab.nix];
         extraSpecialArgs = {inherit inputs;};
       };
 

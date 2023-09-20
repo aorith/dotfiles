@@ -12,7 +12,7 @@
       then "/home/aorith"
       else "/Users/aorith";
 
-    stateVersion = "23.05"; # Please read the comment before changing.
+    stateVersion = "23.05";
   };
 
   # Let Home Manager install and manage itself.

@@ -12,6 +12,13 @@ opt.modelineexpr = false
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
+-- Disable unused providers.
+g.loaded_node_provider = 0
+g.loaded_python_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
 -- Some more disables
 g.loaded_gzip = 1
 g.loaded_tar = 1

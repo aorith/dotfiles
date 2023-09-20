@@ -8,6 +8,8 @@
       gitui
       silver-searcher
       terraform
+
+      go
     ];
   };
 }
