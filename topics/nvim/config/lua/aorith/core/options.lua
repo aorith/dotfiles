@@ -29,7 +29,7 @@ g.loaded_zipPlugin = 1
 
 -- persistent undo
 opt.undofile = true
--- don't backup while overwritting the file
+-- don't backup while overwriting the file
 opt.backup = false
 opt.writebackup = false
 
@@ -58,13 +58,13 @@ opt.ruler = false
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.showmatch = true
 opt.showmode = false -- don't show mode - it's shown in the statusline
-opt.signcolumn = "yes" -- Show sign column, "yes:3" max 3 signs
+opt.signcolumn = "auto:2-3"
 opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
 opt.winminwidth = 5 -- Minimum window width
 
 -- extra ui options
 opt.pumblend = 0
-opt.pumheight = 10
+opt.pumheight = 12
 opt.winblend = 0
 
 -- context
@@ -104,7 +104,7 @@ opt.tabstop = 4
 
 -- timers
 opt.timeout = true
-opt.timeoutlen = 1000
+opt.timeoutlen = 500
 opt.updatetime = 300 -- For CursorHold and swapfile
 
 -- wrap
@@ -142,3 +142,9 @@ opt.grepprg = "rg --vimgrep"
 -- bars
 opt.laststatus = 3
 --opt.winbar = "%#MiniStatuslineInactive#%=%-m %-.48f"
+
+-- Use signs for diagnostics in the gutter
+vim.cmd("sign define DiagnosticSignError text=󰅚 texthl=DiagnosticSignError")
+vim.cmd("sign define DiagnosticSignWarn text=󰀪 texthl=DiagnosticSignWarn")
+vim.cmd("sign define DiagnosticSignInfo text=󰋽 texthl=DiagnosticSignInfo")
+vim.cmd("sign define DiagnosticSignHint text=󰌶 texthl=DiagnosticSignHint")

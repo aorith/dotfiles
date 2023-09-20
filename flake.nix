@@ -32,6 +32,9 @@
 
     nvim-base16.url = "github:RRethy/nvim-base16";
     nvim-base16.flake = false;
+
+    dracula-nvim.url = "github:Mofiqul/dracula.nvim";
+    dracula-nvim.flake = false;
   };
 
   outputs = {

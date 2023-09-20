@@ -49,10 +49,12 @@ require("cmp").setup({
   }),
 
   sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    --{ name = "luasnip" },
-    { name = "buffer", keyword_length = 3 },
+    { name = "nvim_lsp", priority = 99 },
     { name = "path" },
+    { name = "nvim_lua" },
+    { name = "luasnip" },
+    { name = "treesitter" },
+    { name = "buffer", keyword_length = 2, priority = 1 },
   }),
 
   ---@diagnostic disable-next-line: missing-fields

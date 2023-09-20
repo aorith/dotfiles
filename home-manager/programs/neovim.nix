@@ -22,6 +22,7 @@ in {
       plenary-nvim
 
       kanagawa-nvim
+      dracula-nvim
 
       dressing-nvim
       fzf-lua

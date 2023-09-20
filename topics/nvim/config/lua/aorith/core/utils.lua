@@ -69,7 +69,7 @@ M.custom_server_capabilities = function()
   vim.ui.select(vim.tbl_keys(active_client_map), {
     prompt = "Select client:",
     format_item = function(item)
-      return "capabilites for: " .. item
+      return "capabilities for: " .. item
     end,
   }, function(choice)
     if choice == nil then
