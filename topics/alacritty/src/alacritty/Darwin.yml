@@ -7,7 +7,7 @@ font:
   size: 17
   builtin_box_drawing: true
   normal:
-    family: "DejaVuSansM Nerd Font"
+    family: "Hack Nerd Font"
     style: Regular
 key_bindings:
   - {key: V, mods: Command, action: Paste}
