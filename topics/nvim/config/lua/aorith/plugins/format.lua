@@ -5,6 +5,7 @@ local map = vim.keymap.set
 local opts = {
   formatters_by_ft = {
     jinja = { "djlint" },
+    htmldjango = { "djlint" },
 
     css = { prettier },
     html = { prettier },
