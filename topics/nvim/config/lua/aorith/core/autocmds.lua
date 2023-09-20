@@ -9,23 +9,6 @@ A.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- close some filetypes with <q>
-A.nvim_create_autocmd("FileType", {
-  group = my_au,
-  pattern = {
-    "help",
-    "lspinfo",
-    "man",
-    "notify",
-    "qf",
-    "spectre_panel",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-  end,
-})
-
 -- Tweak terminal on open and go into insert mode
 A.nvim_create_autocmd("TermOpen", {
   group = my_au,
@@ -48,5 +31,31 @@ A.nvim_create_autocmd("BufReadPost", {
       A.nvim_win_set_cursor(0, last_pos)
       A.nvim_feedkeys("z.", "n", true)
     end
+  end,
+})
+
+-- close some filetypes with <q>
+A.nvim_create_autocmd("FileType", {
+  group = my_au,
+  pattern = {
+    "help",
+    "lspinfo",
+    "man",
+    "notify",
+    "qf",
+    "spectre_panel",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})
+
+-- Dont format or add comment string on newline
+A.nvim_create_autocmd("FileType", {
+  group = my_au,
+  pattern = { "*" },
+  callback = function(event)
+    vim.cmd("setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
   end,
 })
