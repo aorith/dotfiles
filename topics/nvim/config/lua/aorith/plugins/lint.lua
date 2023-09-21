@@ -1,16 +1,24 @@
 local lint = require("lint")
+local linters = require("lint").linters
 
 lint.linters_by_ft = {
   go = { "golangcilint" },
   htmldjango = { "djlint" },
   jinja = { "djlint" },
+  markdown = { "vale" },
   nix = { "nix" },
-  python = { "ruff" },
+  --python = { "ruff" }, -- ruff already lints with ruff_lsp
   yaml = { "yamllint" },
 
   lua = {},
-  markdown = {},
   sh = {},
+}
+
+linters.vale.args = {
+  "--output=JSON",
+  "--ext=.md",
+  "--no-exit",
+  "--config=" .. vim.fn.getenv("HOME") .. "/.config/vale/vale.ini",
 }
 
 -- Add typos to the above fts

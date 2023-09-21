@@ -71,6 +71,7 @@ in {
       shfmt
       stylua
       typos
+      vale
       yamlfmt
       yamllint
 
