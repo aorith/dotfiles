@@ -48,7 +48,12 @@ end
 opt.cinkeys:remove("0#") -- don't reindent on # char
 opt.completeopt = "menuone,noinsert,noselect"
 opt.confirm = true -- confirm to save changes before exiting a modified buffer
-opt.diffopt:append({ "linematch:60" }) -- better diff: https://github.com/neovim/neovim/pull/14537
+opt.diffopt:append({
+  "linematch:50", -- better diff: https://github.com/neovim/neovim/pull/14537
+  "vertical",
+  "foldcolumn:0",
+  "indent-heuristic",
+})
 opt.formatoptions = "qjl1" -- don't format comments
 opt.history = 50 -- remember 50 items in cmd history
 opt.mouse = "a"
