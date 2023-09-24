@@ -46,7 +46,7 @@
     homeConfigurations = {
       "aorith@Linux-x86_64" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [./home-manager/home.nix ./home-manager/linux/homelab.nix];
+        modules = [./home-manager/home.nix ./home-manager/linux];
         extraSpecialArgs = {inherit inputs;};
       };
 
