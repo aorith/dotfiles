@@ -7,9 +7,12 @@
       awscli
       fd
       gitui
+      jq
       rclone
       silver-searcher
       terraform
+      tmux
+      yq-go
 
       go
     ];
