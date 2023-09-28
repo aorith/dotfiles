@@ -16,19 +16,19 @@
         "type": "github"
       }
     },
-    "dracula-nvim": {
+    "github-nvim-theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1690594744,
-        "narHash": "sha256-gblqxRTphGBpEOx57/4oU/B50O0OguIm1bFtd4LXuQ4=",
-        "owner": "Mofiqul",
-        "repo": "dracula.nvim",
-        "rev": "9fe831e685a76e1a1898a694623b33247c4d036c",
+        "lastModified": 1695464741,
+        "narHash": "sha256-v+tFr2/fbEk8l5LTn5JiFxErhmgsmETskLvL1+H7zTs=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "48f95f763e1a98e508260a20e448c3ff2d91213a",
         "type": "github"
       },
       "original": {
-        "owner": "Mofiqul",
-        "repo": "dracula.nvim",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
         "type": "github"
       }
     },
@@ -81,22 +81,6 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nvim-base16": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1694483206,
-        "narHash": "sha256-ToshfJGrioqT/4uKyPJB8ntwPltvXUTvTc8Jmvyy47M=",
-        "owner": "RRethy",
-        "repo": "nvim-base16",
-        "rev": "96e308958625a84940d5e443475465abf99c7bd9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RRethy",
-        "repo": "nvim-base16",
         "type": "github"
       }
     },
@@ -183,11 +167,10 @@
     "root": {
       "inputs": {
         "conform-nvim": "conform-nvim",
-        "dracula-nvim": "dracula-nvim",
+        "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
         "mini-nvim": "mini-nvim",
         "nixpkgs": "nixpkgs",
-        "nvim-base16": "nvim-base16",
         "nvim-cmp": "nvim-cmp",
         "nvim-cmp-buffer": "nvim-cmp-buffer",
         "nvim-cmp-lsp": "nvim-cmp-lsp",

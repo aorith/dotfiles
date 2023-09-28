@@ -4,9 +4,7 @@ local my_au = A.nvim_create_augroup("AORITH", { clear = true })
 -- Highlight on yank
 A.nvim_create_autocmd("TextYankPost", {
   group = my_au,
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+  callback = function() vim.highlight.on_yank() end,
 })
 
 -- Tweak terminal on open and go into insert mode
@@ -55,7 +53,5 @@ A.nvim_create_autocmd("FileType", {
 A.nvim_create_autocmd("FileType", {
   group = my_au,
   pattern = { "*" },
-  callback = function(event)
-    vim.cmd("setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
-  end,
+  callback = function(event) vim.cmd("setlocal formatoptions-=c formatoptions-=r formatoptions-=o") end,
 })

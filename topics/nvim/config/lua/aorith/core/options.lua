@@ -40,9 +40,7 @@ opt.fileformats = "unix,dos,mac"
 -- filetype plugins
 vim.cmd("filetype plugin indent on")
 -- syntax
-if vim.fn.exists("syntax_on") ~= 1 then
-  vim.cmd("syntax enable")
-end
+if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
 
 -- misc
 opt.cinkeys:remove("0#") -- don't reindent on # char

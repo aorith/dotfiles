@@ -4,12 +4,8 @@ local my_au = A.nvim_create_augroup("AORITH_MINIFILES", { clear = true })
 
 -- mapping to toggle hidden files
 local show_dotfiles = true
-local filter_show = function(fs_entry)
-  return true
-end
-local filter_hide = function(fs_entry)
-  return not vim.startswith(fs_entry.name, ".")
-end
+local filter_show = function(fs_entry) return true end
+local filter_hide = function(fs_entry) return not vim.startswith(fs_entry.name, ".") end
 local toggle_dotfiles = function()
   show_dotfiles = not show_dotfiles
   local new_filter = show_dotfiles and filter_show or filter_hide
@@ -22,9 +18,7 @@ local map_split = function(buf_id, lhs, direction)
     -- Make new window and set it as target
     local new_target_window
     local target_window = MiniFiles.get_target_window()
-    if not target_window then
-      return
-    end
+    if not target_window then return end
     A.nvim_win_call(target_window, function()
       vim.cmd(direction .. " split")
       new_target_window = A.nvim_get_current_win()

@@ -30,31 +30,28 @@
     nvim-cmp-path.url = "github:hrsh7th/cmp-path";
     nvim-cmp-path.flake = false;
 
-    nvim-base16.url = "github:RRethy/nvim-base16";
-    nvim-base16.flake = false;
-
-    dracula-nvim.url = "github:Mofiqul/dracula.nvim";
-    dracula-nvim.flake = false;
+    github-nvim-theme.url = "github:projekt0n/github-nvim-theme";
+    github-nvim-theme.flake = false;
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: {
-    # matches configuration names using '$USER@$(uname -m -s | tr ' ' '-')'
-    homeConfigurations = {
-      "aorith@Linux-x86_64" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [./home-manager/home.nix ./home-manager/linux];
-        extraSpecialArgs = {inherit inputs;};
-      };
+  outputs =
+    { nixpkgs
+    , home-manager
+    , ...
+    } @ inputs: {
+      # matches configuration names using '$USER@$(uname -m -s | tr ' ' '-')'
+      homeConfigurations = {
+        "aorith@Linux-x86_64" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [ ./home-manager/home.nix ./home-manager/linux ];
+          extraSpecialArgs = { inherit inputs; };
+        };
 
-      "aorith@Darwin-arm64" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [./home-manager/home.nix];
-        extraSpecialArgs = {inherit inputs;};
+        "aorith@Darwin-arm64" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          modules = [ ./home-manager/home.nix ];
+          extraSpecialArgs = { inherit inputs; };
+        };
       };
     };
-  };
 }

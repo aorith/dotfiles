@@ -21,9 +21,7 @@ local components = {
   mode = {
     "mode",
     icons_enabled = false,
-    fmt = function(str)
-      return str:sub(1, 3)
-    end,
+    fmt = function(str) return str:sub(1, 3) end,
   },
 
   ls_status = {

@@ -28,7 +28,7 @@ set swapfile backup undofile
 set title icon
 let &titlestring = "vim(%t)"
 set foldenable foldlevel=999 foldmethod=indent
-set updatetime=400 " swap & CursorHold
+set updatetime=300 " swap & CursorHold
 set fileformats=unix,dos,mac
 set nostartofline nofixendofline
 set history=100

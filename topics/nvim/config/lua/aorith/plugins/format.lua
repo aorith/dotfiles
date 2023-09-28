@@ -21,7 +21,7 @@ local opts = {
 
     go = { "goimports", "gofmt" },
     lua = { "stylua" },
-    nix = { "alejandra" },
+    -- nix = { "alejandra" }, -- handled by nil
     python = { "ruff", "black" },
 
     sh = { "shfmt" },
@@ -41,9 +41,15 @@ vim.list_extend(
 
 require("conform").setup(opts)
 
-map("n", "<leader>lf", function()
-  require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 })
-end, { desc = "Format buffer" })
-map("v", "<leader>lf", function()
-  require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 })
-end, { desc = "Format buffer" })
+map(
+  "n",
+  "<leader>lf",
+  function() require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 }) end,
+  { desc = "Format buffer" }
+)
+map(
+  "v",
+  "<leader>lf",
+  function() require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 }) end,
+  { desc = "Format buffer" }
+)

@@ -23,6 +23,9 @@ require("neo-tree").setup({
   },
 })
 
-map("n", "<leader>e", function()
-  require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd(), position = "left" })
-end, { desc = "Neo-Tree" })
+map(
+  "n",
+  "<leader>e",
+  function() require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd(), position = "left" }) end,
+  { desc = "Neo-Tree" }
+)

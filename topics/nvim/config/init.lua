@@ -1,5 +1,6 @@
-require("aorith.plugins.colorscheme")
+vim.loader.enable()
 
+require("aorith.core.colorscheme")
 require("aorith.core.options")
 require("aorith.core.autocmds")
 require("aorith.core.keymaps")
@@ -17,3 +18,4 @@ require("aorith.plugins.lint")
 require("aorith.plugins.format")
 require("aorith.plugins.trouble")
 require("aorith.plugins.lsp.lspconfig")
+require("aorith.plugins.barbecue")

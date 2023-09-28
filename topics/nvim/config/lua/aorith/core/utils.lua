@@ -6,9 +6,7 @@ M.nvim_appname = vim.fn.getenv("NVIM_APPNAME") ~= vim.NIL and vim.fn.getenv("NVI
 M.get_active_lsp_clients = function()
   local bufnr = vim.api.nvim_get_current_buf()
   local active_servers = vim.lsp.get_active_clients({ bufnr = bufnr })
-  if #active_servers <= 0 then
-    return "No LSP servers running."
-  end
+  if #active_servers <= 0 then return "No LSP servers running." end
 
   local header = "# Active LSP servers\n"
   local servers = ""
@@ -43,13 +41,9 @@ M.show_in_popup = function(text, ft)
   popup:mount()
 
   -- unmount component when cursor leaves buffer
-  popup:on(event.BufLeave, function()
-    popup:unmount()
-  end)
+  popup:on(event.BufLeave, function() popup:unmount() end)
 
-  local _ = popup:map("n", "q", function()
-    popup:unmount()
-  end, { noremap = true })
+  local _ = popup:map("n", "q", function() popup:unmount() end, { noremap = true })
 
   local lines = {}
   for s in text:gmatch("[^\r\n]+") do
@@ -68,13 +62,9 @@ M.custom_server_capabilities = function()
 
   vim.ui.select(vim.tbl_keys(active_client_map), {
     prompt = "Select client:",
-    format_item = function(item)
-      return "capabilities for: " .. item
-    end,
+    format_item = function(item) return "capabilities for: " .. item end,
   }, function(choice)
-    if choice == nil then
-      return
-    end
+    if choice == nil then return end
 
     -- set content
     local raw_string = vim.inspect(vim.lsp.get_active_clients()[active_client_map[choice]].server_capabilities)

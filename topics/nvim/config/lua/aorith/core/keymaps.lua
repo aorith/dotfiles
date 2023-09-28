@@ -1,10 +1,14 @@
 local utils = require("aorith.core.utils")
+local fl = require("fzf-lua")
 local map = vim.keymap.set
 
 -- Show active LSP clients
-map("n", "<leader>la", function()
-  utils.show_in_popup(utils.get_active_lsp_clients(), "markdown")
-end, { desc = "Get active LSP clients" })
+map(
+  "n",
+  "<leader>la",
+  function() utils.show_in_popup(utils.get_active_lsp_clients(), "markdown") end,
+  { desc = "Get active LSP clients" }
+)
 
 -- Misc
 map("n", "x", '"_x', { desc = "Avoid 'x' copying to the register" })
@@ -42,9 +46,8 @@ map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- buffers
 map("n", "<TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
-map("n", "<leader><TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
 map("n", "<S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
-map("n", "<leader><S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
+map("n", "<leader><TAB>", "<cmd>b#<CR>", { silent = true, desc = "Last buffer" })
 
 map("n", "<leader>bb", function()
   local curbufnr = vim.api.nvim_get_current_buf()
@@ -52,9 +55,7 @@ map("n", "<leader>bb", function()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     if bufnr ~= curbufnr and vim.api.nvim_buf_get_option(bufnr, "modified") == false then
       bufinfo = vim.fn.getbufinfo(bufnr)[1]
-      if bufinfo.loaded == 1 and bufinfo.listed == 1 then
-        vim.cmd("bd! " .. tostring(bufnr))
-      end
+      if bufinfo.loaded == 1 and bufinfo.listed == 1 then vim.cmd("bd! " .. tostring(bufnr)) end
     end
   end
 end, { desc = "Close all other unmodified buffers" })
@@ -87,9 +88,7 @@ map("n", "<leader>ud", function()
 end, { remap = true, desc = "Toggle diagnostics" })
 
 -- toggle listchars
-map("n", "<leader>ul", function()
-  vim.cmd("set list! list?")
-end, { remap = true, desc = "Toggle list chars" })
+map("n", "<leader>ul", function() vim.cmd("set list! list?") end, { remap = true, desc = "Toggle list chars" })
 
 -- others
 map("", "<F1>", "<nop>") -- "" == map
@@ -109,15 +108,9 @@ local format = function()
 
     -- excluded clients
     filter = function(client)
-      if client.name == "sumneko_lua" or client.name == "lua_ls" or client.name == "nil_ls" then
-        return false
-      end
-      if client.name == "bashls" then
-        return false
-      end
-      if client.name == "pyright" then
-        return false
-      end
+      if client.name == "sumneko_lua" or client.name == "lua_ls" or client.name == "nil_ls" then return false end
+      if client.name == "bashls" then return false end
+      if client.name == "pyright" then return false end
 
       return true
     end,
@@ -139,8 +132,35 @@ map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "[R]ename" })
 map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[S]ignature" })
 
 -- without leader key
-map("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", { desc = "[G]oto [D]efinition" })
 map("n", "gr", "<cmd>Trouble lsp_references<cr>", { desc = "[G]oto [R]eferences" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-map("n", "gI", "<cmd>FzfLua lsp_implementations<cr>", { desc = "[G]oto [I]mplementation" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+map(
+  "n",
+  "gI",
+  function()
+    fl.lsp_implementations({
+      sync = true,
+      ignore_current_line = true,
+      jump_to_single_result = true,
+      jump_to_single_result_action = fl.file_vsplit,
+    })
+  end,
+  { desc = "[G]oto [I]mplementation" }
+)
+map(
+  "n",
+  "gd",
+  function()
+    fl.lsp_definitions({
+      sync = true,
+      ignore_current_line = true,
+      jump_to_single_result = true,
+      jump_to_single_result_action = fl.file_vsplit,
+    })
+  end,
+  { desc = "[G]oto [D]efinition" }
+)
+
+map({ "n", "v", "i" }, "<F1>", "<cmd>split | term<cr>", { desc = "Open terminal" })
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })

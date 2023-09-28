@@ -1,7 +1,5 @@
 local M = {}
 
-local lspconfig = require("lspconfig")
-
 local on_attach = function(client, bufnr)
   if client.server_capabilities.completionProvider then
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
@@ -10,6 +8,9 @@ local on_attach = function(client, bufnr)
   -- command to check server capabilities
   vim.cmd("command! CheckLspServerCapabilities :lua =require('aorith.core.utils').custom_server_capabilities()")
 
+  -- enable navic
+  if client.server_capabilities["documentSymbolProvider"] then require("nvim-navic").attach(client, bufnr) end
+
   -- disable some more capabilities
   if client.name == "pylsp" then
     client.server_capabilities.renameProvider = false
@@ -17,18 +18,20 @@ local on_attach = function(client, bufnr)
   end
 
   -- disable hover in favor of pyright
-  if client.name == "ruff_lsp" then
-    client.server_capabilities.hoverProvider = false
-  end
+  if client.name == "ruff_lsp" then client.server_capabilities.hoverProvider = false end
 end
 
 --local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 M.setup = function()
+  require("neodev").setup() -- make sure to setup neodev BEFORE lspconfig
+  local lspconfig = require("lspconfig")
+
   lspconfig.nil_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = { ["nil"] = { formatting = { command = { "nixpkgs-fmt" } } } },
   })
 
   lspconfig.bashls.setup({
@@ -66,7 +69,6 @@ M.setup = function()
   lspconfig.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "lua" },
     settings = {
       Lua = {
         runtime = {

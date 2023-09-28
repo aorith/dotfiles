@@ -30,9 +30,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "BufWritePost", "TextCh
   group = vim.api.nvim_create_augroup("Nvim-Lint", { clear = true }),
   callback = function(args)
     -- Ignore 3rd party code.
-    if args.file:match("/(node_modules|__pypackages__|site_packages)/") then
-      return
-    end
+    if args.file:match("/(node_modules|__pypackages__|site_packages)/") then return end
 
     lint.try_lint()
   end,

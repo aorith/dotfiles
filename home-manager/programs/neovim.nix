@@ -1,14 +1,15 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{ pkgs
+, inputs
+, ...
+}:
+let
   plugFromInput = pname: src:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       inherit pname src;
       version = src.shortRev;
     };
-in {
+in
+{
   programs.neovim = {
     enable = true;
     withNodeJs = false;
@@ -21,8 +22,9 @@ in {
       nvim-web-devicons
       plenary-nvim
 
-      kanagawa-nvim
+      catppuccin-nvim
       dracula-nvim
+      kanagawa-nvim
 
       dressing-nvim
       fzf-lua
@@ -33,6 +35,9 @@ in {
 
       nvim-treesitter-textobjects
       nvim-treesitter.withAllGrammars
+
+      barbecue-nvim
+      nvim-navic
 
       nvim-lspconfig
       neodev-nvim
@@ -50,7 +55,7 @@ in {
       (plugFromInput "mini-nvim" inputs.mini-nvim)
       (plugFromInput "conform-nvim" inputs.conform-nvim)
       (plugFromInput "nvim-lint" inputs.nvim-lint)
-      (plugFromInput "nvim-base16" inputs.nvim-base16)
+      (plugFromInput "github-nvim-theme" inputs.github-nvim-theme)
     ];
   };
 
