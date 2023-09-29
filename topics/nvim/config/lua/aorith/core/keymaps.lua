@@ -1,14 +1,6 @@
 local utils = require("aorith.core.utils")
 local map = vim.keymap.set
 
--- Show active LSP clients
-map(
-  "n",
-  "<leader>la",
-  function() utils.show_in_popup(utils.get_active_lsp_clients(), "markdown") end,
-  { desc = "Get active LSP clients" }
-)
-
 -- Misc
 map("n", "x", '"_x', { desc = "Avoid 'x' copying to the register" })
 map("v", "<leader>y", '"+y', { remap = true, desc = "Copy to the system clipboard" })
@@ -102,6 +94,14 @@ map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })
 --- LSP
 -- having the keymaps outside of the 'on_attach' lsp allows to use them even if
 -- no lsp server is attached, useful for null-ls and I prefer the keymap to fail than to not exist
+
+-- Show active LSP clients
+map(
+  "n",
+  "<leader>la",
+  function() utils.show_in_popup(utils.get_active_lsp_clients(), "markdown") end,
+  { desc = "Get active LSP clients" }
+)
 
 -- diagnostics
 map("n", "<leader>ll", vim.diagnostic.open_float, { desc = "[L]ine diagnostics" })

@@ -61,7 +61,7 @@ opt.ruler = false
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.showmatch = true
 opt.showmode = false -- don't show mode - it's shown in the statusline
-opt.signcolumn = "auto:1-2"
+opt.signcolumn = "yes:1"
 opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
 opt.winminwidth = 5 -- Minimum window width
 
