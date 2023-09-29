@@ -17,6 +17,28 @@ in
     withPython3 = false;
 
     plugins = with pkgs.vimPlugins; [
+      # Tree sitter
+      nvim-treesitter-textobjects
+      (nvim-treesitter.withPlugins (p: with p; [
+        # mandatory
+        c
+        lua
+        vim
+        vimdoc
+        query
+
+        # others
+        gitcommit
+        gitignore
+        json
+        go
+        markdown
+        markdown_inline
+        python
+        nix
+        norg
+      ]))
+
       # dependencies
       nui-nvim
       nvim-web-devicons
@@ -32,9 +54,6 @@ in
       lualine-nvim
       neo-tree-nvim
       trouble-nvim
-
-      nvim-treesitter-textobjects
-      nvim-treesitter.withAllGrammars
 
       barbecue-nvim
       nvim-navic
