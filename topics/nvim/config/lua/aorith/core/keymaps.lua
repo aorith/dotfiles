@@ -1,5 +1,4 @@
 local utils = require("aorith.core.utils")
-local fl = require("fzf-lua")
 local map = vim.keymap.set
 
 -- Show active LSP clients
@@ -96,29 +95,13 @@ map("!", "<F1>", "<nop>") -- "!" == map!
 vim.api.nvim_create_user_command("W", "w", { bang = true })
 vim.api.nvim_create_user_command("Q", "q", { bang = true })
 
+-- terminal
+map({ "n", "v", "i" }, "<F1>", "<cmd>split | term<cr>", { desc = "Open terminal" })
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })
+
 --- LSP
 -- having the keymaps outside of the 'on_attach' lsp allows to use them even if
 -- no lsp server is attached, useful for null-ls and I prefer the keymap to fail than to not exist
-
--- format
-local format = function()
-  vim.lsp.buf.format({
-    async = false,
-    timeout_ms = 5000,
-
-    -- excluded clients
-    filter = function(client)
-      if client.name == "sumneko_lua" or client.name == "lua_ls" or client.name == "nil_ls" then return false end
-      if client.name == "bashls" then return false end
-      if client.name == "pyright" then return false end
-
-      return true
-    end,
-  })
-end
--- handled by conform.nvim
---map("n", "<leader>lf", format, { desc = "Format Document" })
---map("v", "<leader>lf", format, { desc = "Format Range" })
 
 -- diagnostics
 map("n", "<leader>ll", vim.diagnostic.open_float, { desc = "[L]ine diagnostics" })
@@ -135,32 +118,3 @@ map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[S]ignature" })
 map("n", "gr", "<cmd>Trouble lsp_references<cr>", { desc = "[G]oto [R]eferences" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-map(
-  "n",
-  "gI",
-  function()
-    fl.lsp_implementations({
-      sync = true,
-      ignore_current_line = true,
-      jump_to_single_result = true,
-      jump_to_single_result_action = fl.file_vsplit,
-    })
-  end,
-  { desc = "[G]oto [I]mplementation" }
-)
-map(
-  "n",
-  "gd",
-  function()
-    fl.lsp_definitions({
-      sync = true,
-      ignore_current_line = true,
-      jump_to_single_result = true,
-      jump_to_single_result_action = fl.file_vsplit,
-    })
-  end,
-  { desc = "[G]oto [D]efinition" }
-)
-
-map({ "n", "v", "i" }, "<F1>", "<cmd>split | term<cr>", { desc = "Open terminal" })
-map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })

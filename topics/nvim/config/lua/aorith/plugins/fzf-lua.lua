@@ -46,3 +46,31 @@ map(
 
 -- Completion
 map({ "n", "v", "i" }, "<C-x><C-f>", function() fl.complete_path() end, { silent = true, desc = "Fuzzy complete path" })
+
+-- LSP
+map(
+  "n",
+  "gI",
+  function()
+    fl.lsp_implementations({
+      sync = true,
+      ignore_current_line = true,
+      jump_to_single_result = true,
+      jump_to_single_result_action = fl.file_vsplit,
+    })
+  end,
+  { desc = "[G]oto [I]mplementation" }
+)
+map(
+  "n",
+  "gd",
+  function()
+    fl.lsp_definitions({
+      sync = true,
+      ignore_current_line = true,
+      jump_to_single_result = true,
+      jump_to_single_result_action = fl.file_vsplit,
+    })
+  end,
+  { desc = "[G]oto [D]efinition" }
+)
