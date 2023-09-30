@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["Hack" "JetBrainsMono" "IBMPlexMono"];})
+      (nerdfonts.override {fonts = ["Hack" "JetBrainsMono" "IBMPlexMono" "Iosevka"];})
 
       # tools
       awscli
