@@ -1,15 +1,14 @@
-{ pkgs
-, inputs
-, ...
-}:
-let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   plugFromInput = pname: src:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       inherit pname src;
       version = src.shortRev;
     };
-in
-{
+in {
   programs.neovim = {
     enable = true;
     withNodeJs = false;
@@ -19,25 +18,26 @@ in
     plugins = with pkgs.vimPlugins; [
       # Tree sitter
       nvim-treesitter-textobjects
-      (nvim-treesitter.withPlugins (p: with p; [
-        # mandatory
-        c
-        lua
-        vim
-        vimdoc
-        query
+      (nvim-treesitter.withPlugins (p:
+        with p; [
+          # mandatory
+          c
+          lua
+          vim
+          vimdoc
+          query
 
-        # others
-        gitcommit
-        gitignore
-        json
-        go
-        markdown
-        markdown_inline
-        python
-        nix
-        norg
-      ]))
+          # others
+          gitcommit
+          gitignore
+          json
+          go
+          markdown
+          markdown_inline
+          python
+          nix
+          norg
+        ]))
 
       # dependencies
       nui-nvim
@@ -80,6 +80,9 @@ in
 
   home = {
     packages = with pkgs; [
+      tree-sitter
+      gcc
+
       # formatters, linters, etc
       alejandra
       black

@@ -31,7 +31,7 @@ M.setup = function()
   lspconfig.nil_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = { ["nil"] = { formatting = { command = { "nixpkgs-fmt" } } } },
+    -- settings = { ["nil"] = { formatting = { command = { "nixpkgs-fmt" } } } },
   })
 
   lspconfig.bashls.setup({

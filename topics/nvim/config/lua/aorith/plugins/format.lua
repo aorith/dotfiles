@@ -21,7 +21,7 @@ local opts = {
 
     go = { "goimports", "gofmt" },
     lua = { "stylua" },
-    -- nix = { "alejandra" }, -- handled by nil
+    nix = { "alejandra" },
     python = { "ruff", "black" },
 
     sh = { "shfmt" },
