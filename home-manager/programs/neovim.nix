@@ -30,13 +30,13 @@ in {
           # others
           gitcommit
           gitignore
-          json
           go
+          json
           markdown
           markdown_inline
-          python
           nix
-          norg
+          python
+          terraform
         ]))
 
       # dependencies
