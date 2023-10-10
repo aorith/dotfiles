@@ -5,6 +5,8 @@
     ./programs/misc.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   home = {
     username = "aorith";
     homeDirectory =
