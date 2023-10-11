@@ -6,6 +6,10 @@ map("n", "x", '"_x', { desc = "Avoid 'x' copying to the register" })
 map("v", "<leader>y", '"+y', { remap = true, desc = "Copy to the system clipboard" })
 map("n", "<leader>y", '"+yy', { remap = true, desc = "Copy to the system clipboard" })
 
+-- Moves lines
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
