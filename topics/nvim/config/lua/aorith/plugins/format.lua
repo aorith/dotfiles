@@ -23,7 +23,7 @@ local opts = {
     go = { "goimports", "gofmt" },
     lua = { "stylua" },
     nix = { "alejandra" },
-    python = { "ruff", "black" },
+    python = { "black", "isort" },
 
     sh = { "shfmt" },
     bash = { "shfmt" },
