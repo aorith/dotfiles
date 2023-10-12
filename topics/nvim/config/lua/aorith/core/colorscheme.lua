@@ -31,15 +31,17 @@ if bg == "dark" then
   -- })
   -- vim.cmd.colorscheme("dracula-soft")
 
-  require("catppuccin").setup({
-    transparent_background = true,
-    show_end_of_buffer = true,
-    integrations = {
-      nvimtree = false,
-      mini = true,
-    },
-  })
-  vim.cmd.colorscheme("catppuccin-mocha")
+  -- require("catppuccin").setup({
+  --   transparent_background = true,
+  --   show_end_of_buffer = true,
+  --   integrations = {
+  --     nvimtree = false,
+  --     mini = true,
+  --   },
+  -- })
+  -- vim.cmd.colorscheme("catppuccin-mocha")
+
+  vim.cmd.colorscheme("gruvbox")
 else
   -- require("catppuccin").setup({
   --   transparent_background = true,
@@ -51,10 +53,12 @@ else
   -- })
   -- vim.cmd.colorscheme("catppuccin-latte")
 
-  require("github-theme").setup({
-    options = {
-      transparent = true,
-    },
-  })
-  vim.cmd.colorscheme("github_light_high_contrast")
+  -- require("github-theme").setup({
+  --   options = {
+  --     transparent = true,
+  --   },
+  -- })
+  -- vim.cmd.colorscheme("github_light_high_contrast")
+
+  vim.cmd.colorscheme("gruvbox")
 end

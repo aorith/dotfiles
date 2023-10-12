@@ -46,6 +46,7 @@ in {
 
       catppuccin-nvim
       dracula-nvim
+      gruvbox-nvim
       kanagawa-nvim
 
       dressing-nvim
