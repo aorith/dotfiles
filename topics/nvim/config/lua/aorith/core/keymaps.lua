@@ -10,6 +10,14 @@ map("n", "<leader>y", '"+yy', { remap = true, desc = "Copy to the system clipboa
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Navigate wrapped lines
+map("n", "j", "gj")
+map("n", "k", "gk")
+
+-- Spelling
+map({ "n", "v", "i" }, "<F2>", ":setlocal spell spelllang=en_us,es<CR>", { desc = "spell en_us,es" })
+map({ "n", "v", "i" }, "<F3>", ":setlocal nospell<CR>", { desc = "no spell" })
+
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })

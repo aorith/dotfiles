@@ -8,9 +8,9 @@ g.maplocalleader = ","
 -- Ensure nomodelineexpr
 opt.modelineexpr = false
 
--- Disable netrw
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
+-- Disable netrw (needed for downloading spell dictionaries)
+--g.loaded_netrw = 1
+--g.loaded_netrwPlugin = 1
 
 -- Disable unused providers.
 g.loaded_node_provider = 0
