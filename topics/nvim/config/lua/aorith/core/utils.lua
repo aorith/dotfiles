@@ -1,3 +1,6 @@
+-- command to check server capabilities
+vim.cmd("command! CheckLspServerCapabilities :lua =require('aorith.core.utils').custom_server_capabilities()")
+
 local M = {}
 
 -- directory configuration

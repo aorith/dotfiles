@@ -1,16 +1,6 @@
 local M = {}
 
 local on_attach = function(client, bufnr)
-  if client.server_capabilities.completionProvider then
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
-  end
-
-  -- command to check server capabilities
-  vim.cmd("command! CheckLspServerCapabilities :lua =require('aorith.core.utils').custom_server_capabilities()")
-
-  -- enable navic
-  if client.server_capabilities["documentSymbolProvider"] then require("nvim-navic").attach(client, bufnr) end
-
   -- disable some more capabilities
   if client.name == "pylsp" then
     client.server_capabilities.renameProvider = false
