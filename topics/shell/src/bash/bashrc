@@ -48,4 +48,14 @@ if [[ -e /opt/homebrew/bin/brew ]]; then
     . /opt/homebrew/etc/profile.d/bash_completion.sh
 fi
 
+# Optionally use starship
+# if type starship >/dev/null 2>&1; then
+#     set_win_title() {
+#         echo -ne "\033]0;$USER@$HOSTNAME $PWD\007"
+#     }
+#     starship_precmd_user_func="set_win_title"
+#     eval "$(starship init bash)"
+# else
+#     . "${DOTFILES}"/topics/shell/src/bash/etc/prompt.sh
+# fi
 . "${DOTFILES}"/topics/shell/src/bash/etc/prompt.sh

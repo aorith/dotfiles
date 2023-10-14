@@ -1,0 +1,75 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+$time\
+$container\
+${custom.container}\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$aws\
+$terraform\
+$nix_shell\
+$python\
+$jobs\
+$cmd_duration\
+$status\
+$line_break\
+$character"""
+
+[time]
+disabled = false
+time_format = '%H:%M'
+format = '[$time]($style) '
+style = 'white dimmed'
+
+[jobs]
+format = '[$number]($style) '
+number_threshold = 1
+
+[status]
+disabled = false
+format = '[$status]($style) '
+
+[directory]
+truncation_symbol = '…/'
+truncation_length = 4
+truncate_to_repo = false
+format = "[$path]($style)[ $read_only ]($read_only_style)"
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+
+[git_metrics]
+disabled = false
+
+[python]
+disabled = false
+detect_extensions = []
+
+[package]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[container]
+format='[$symbol]($style) '
+
+[custom.container]
+description = "Active container"
+command = 'echo $CONTAINER_ID'
+when = ''' [[ -n $CONTAINER_ID ]] '''
+style = "bold red"
+format = '[\[$output\]]($style) '
+disabled = false
