@@ -1,6 +1,9 @@
 local utils = require("aorith.core.utils")
 local map = vim.keymap.set
 
+-- Copy to primary selection on select
+map("v", "<LeftRelease>", '"*ygv')
+
 -- Misc
 map("n", "x", '"_x', { desc = "Avoid 'x' copying to the register" })
 map("v", "<leader>y", '"+y', { remap = true, desc = "Copy to the system clipboard" })
