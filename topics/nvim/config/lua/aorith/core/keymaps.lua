@@ -14,10 +14,6 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "j", "gj")
 map("n", "k", "gk")
 
--- Spelling
-map({ "n", "v", "i" }, "<F2>", ":setlocal spell spelllang=en_us,es<CR>", { desc = "spell en_us,es" })
-map({ "n", "v", "i" }, "<F3>", ":setlocal nospell<CR>", { desc = "no spell" })
-
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
@@ -79,6 +75,13 @@ map("n", "<leader>ub", function()
     vim.o.background = "light"
   end
 end, { remap = true, desc = "Toggle dark/light mode" })
+
+-- Spelling
+map("n", "<leader>us", function()
+  vim.opt_local.spell = not (vim.opt_local.spell:get())
+  vim.opt_local.spelllang = "en_us,es"
+  vim.notify("Spell " .. (vim.opt_local.spell:get() and "ON" or "OFF"))
+end, { desc = "toggle spelling" })
 
 -- toggle diagnostics
 map("n", "<leader>ud", function()
