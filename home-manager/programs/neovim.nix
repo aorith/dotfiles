@@ -27,16 +27,22 @@ in {
           vimdoc
           query
 
-          # others
+          # extra
+          diff
           gitcommit
           gitignore
           go
           json
+          jsonc
+          luadoc
           markdown
           markdown_inline
           nix
           python
+          regex
           terraform
+          toml
+          yaml
         ]))
 
       # dependencies
@@ -56,11 +62,9 @@ in {
       neo-tree-nvim
       trouble-nvim
 
-      barbecue-nvim
-      nvim-navic
-
-      nvim-lspconfig
+      aerial-nvim
       neodev-nvim
+      nvim-lspconfig
 
       # completion
       cmp_luasnip
