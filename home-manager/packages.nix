@@ -10,6 +10,7 @@
       jq
       rclone
       silver-searcher
+      starship
       terraform
       tmux
       yq-go
