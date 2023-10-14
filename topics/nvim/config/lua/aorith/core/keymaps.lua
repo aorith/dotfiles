@@ -14,6 +14,10 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "j", "gj")
 map("n", "k", "gk")
 
+-- Center view on search
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
+
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
