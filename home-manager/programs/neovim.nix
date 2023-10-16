@@ -4,7 +4,7 @@
   ...
 }: let
   plugFromInput = pname: src:
-    pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.shortRev;
     };
