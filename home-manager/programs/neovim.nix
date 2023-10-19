@@ -54,6 +54,7 @@ in {
       dracula-nvim
       gruvbox-nvim
       kanagawa-nvim
+      nightfox-nvim
 
       dressing-nvim
       fzf-lua
