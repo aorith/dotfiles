@@ -50,6 +50,8 @@ in {
       nvim-web-devicons
       plenary-nvim
 
+      vim-go
+
       catppuccin-nvim
       dracula-nvim
       gruvbox-nvim
