@@ -113,6 +113,7 @@ opt.updatetime = 300 -- For CursorHold and swapfile
 
 -- wrap
 opt.wrap = false
+opt.linebreak = true
 opt.showbreak = "↳ "
 
 -- splits
