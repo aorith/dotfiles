@@ -1,5 +1,4 @@
 local utils = require("aorith.core.utils")
-local prettier = { "prettierd", "prettier" }
 local map = vim.keymap.set
 
 local opts = {
@@ -7,18 +6,18 @@ local opts = {
     jinja = { "djlint" },
     htmldjango = { "djlint" },
 
-    css = { prettier },
-    graphql = { prettier },
-    html = { prettier },
-    javascript = { prettier },
-    javascriptreact = { prettier },
-    json = { prettier },
-    jsonc = { prettier },
-    markdown = { prettier },
+    css = { "prettier" },
+    graphql = { "prettier" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    json = { "prettier" },
+    jsonc = { "prettier" },
+    markdown = { "prettier" },
     terraform = { "terraform_fmt", "trim_newlines", "trim_whitespace" },
-    typescript = { prettier },
-    typescriptreact = { prettier },
-    yaml = { prettier },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+    yaml = { "prettier" },
 
     go = { "goimports", "gofmt" },
     lua = { "stylua" },

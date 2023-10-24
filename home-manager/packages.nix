@@ -3,6 +3,7 @@
     packages = with pkgs; [
       (nerdfonts.override {fonts = ["Hack" "JetBrainsMono" "IBMPlexMono" "Iosevka"];})
 
+      age
       awscli
       fd
       gitui

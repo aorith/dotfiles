@@ -100,7 +100,7 @@ in {
       isort
       nixpkgs-fmt
       nodePackages.prettier
-      prettierd
+      proselint
       ruff
       shellcheck
       shfmt
