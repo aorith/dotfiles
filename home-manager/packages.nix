@@ -4,7 +4,7 @@
       (nerdfonts.override {fonts = ["Hack" "JetBrainsMono" "IBMPlexMono" "Iosevka"];})
 
       age
-      awscli
+      awscli2
       fd
       gitui
       go
