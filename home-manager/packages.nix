@@ -12,6 +12,7 @@
       pandoc
       rclone
       silver-searcher
+      sops
       starship
       terraform
       tmux
