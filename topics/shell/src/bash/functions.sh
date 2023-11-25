@@ -32,3 +32,11 @@ repos() {
     echo "ERROR: Unable to find repository: '$1'."
     return 1
 }
+
+repos-fzf() {
+    local path
+    path=$(fd \.git$ "$HOME/Syncthing/TES/gitlab" --max-depth 4 --type d --unrestricted --color never | fzf --delimiter / --with-nth -3,-4)
+    if [[ -d "$path" ]]; then
+        cd "${path}/.." || return 1
+    fi
+}
