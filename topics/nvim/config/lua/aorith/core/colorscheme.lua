@@ -1,13 +1,15 @@
 ---@diagnostic disable: missing-fields
 
 local function detect_background()
-  if vim.fn.has("macunix") == 1 then
-    local output = vim.fn.system("defaults read -g AppleInterfaceStyle")
-    return string.match(output, ".*Dark.*") and "dark" or "light"
-  end
+  -- if vim.fn.has("macunix") == 1 then
+  --   local output = vim.fn.system("defaults read -g AppleInterfaceStyle")
+  --   return string.match(output, ".*Dark.*") and "dark" or "light"
+  -- end
+  --
+  -- local output = vim.fn.system("gsettings get org.gnome.desktop.interface color-scheme")
 
-  local output = vim.fn.system("gsettings get org.gnome.desktop.interface color-scheme")
-  return string.match(output, ".*dark.*") and "dark" or "light"
+  local output = vim.fn.system("realpath -- ~/.config/alacritty/theme.yml")
+  return string.match(output, ".*dark_.*") and "dark" or "light"
 end
 
 local bg = detect_background()

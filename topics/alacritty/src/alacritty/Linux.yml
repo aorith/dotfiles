@@ -1,9 +1,7 @@
-window:
-  decorations: none
 font:
   size: 15
   normal:
-    family: "Hack Nerd Font"
+    family: "JetBrainsMono Nerd Font"
 shell:
   program: /usr/bin/env
   args:
