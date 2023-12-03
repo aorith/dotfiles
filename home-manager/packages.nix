@@ -5,8 +5,16 @@
 
       age
       awscli2
+      coreutils-full
+      curl
+      diffutils
       fd
+      findutils
+      gitFull
       gitui
+      gnugrep
+      gnused
+      gnutar
       go
       jq
       pandoc
@@ -17,6 +25,12 @@
       terraform
       tmux
       yq-go
+
+      kubectl
+      kubectl-tree
+      kubectl-neat # clean yaml output
+      kubectl-ktop
+      kubectl-klock
     ];
   };
 }
