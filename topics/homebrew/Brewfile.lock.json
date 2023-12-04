@@ -8,7 +8,7 @@
         "revision": "f7c0fa43868612596c717008d6c79ce82e9028b2"
       },
       "homebrew/cask-fonts": {
-        "revision": "49c1586e5e5bdc9b0f0d1e847d3c655826a60ae2"
+        "revision": "4f7a21de57731f3673317c9521eb8bd53071deaa"
       },
       "homebrew/cask-versions": {
         "revision": "2d464633844d1365fda3a337a5a79a1e7cc0cc94"
@@ -3126,13 +3126,13 @@
         }
       },
       "openwebstart": {
-        "version": "1.8.0",
+        "version": "1.9.0",
         "options": {
           "full_name": "openwebstart"
         }
       },
       "rectangle": {
-        "version": "0.74",
+        "version": "0.75",
         "options": {
           "full_name": "rectangle"
         }
@@ -3150,7 +3150,7 @@
         }
       },
       "tunnelblick": {
-        "version": "3.8.8f,5779.2",
+        "version": "3.8.8g,5779.3",
         "options": {
           "full_name": "tunnelblick"
         }
@@ -3216,7 +3216,7 @@
         }
       },
       "dbeaver-community": {
-        "version": "23.2.5",
+        "version": "23.3.0",
         "options": {
           "full_name": "dbeaver-community"
         }
