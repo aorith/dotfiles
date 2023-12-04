@@ -10,7 +10,6 @@
       diffutils
       fd
       findutils
-      gitFull
       gitui
       gnugrep
       gnused

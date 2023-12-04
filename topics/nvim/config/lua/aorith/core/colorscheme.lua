@@ -22,10 +22,10 @@ vim.opt.background = bg
 --vim.cmd.colorscheme("minischeme")
 
 if bg == "dark" then
-  -- require("kanagawa").setup({
-  --   transparent = true,
-  -- })
-  -- vim.cmd.colorscheme("kanagawa")
+  require("kanagawa").setup({
+    transparent = false,
+  })
+  vim.cmd.colorscheme("kanagawa")
 
   -- require("dracula").setup({
   --   show_end_of_buffer = true,
@@ -43,7 +43,7 @@ if bg == "dark" then
   -- })
   -- vim.cmd.colorscheme("catppuccin-mocha")
 
-  vim.cmd.colorscheme("gruvbox")
+  -- vim.cmd.colorscheme("gruvbox")
 else
   -- require("catppuccin").setup({
   --   transparent_background = true,
