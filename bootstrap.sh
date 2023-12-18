@@ -6,7 +6,7 @@ shopt -s nullglob
 export DOTFILES="$HOME/githome/dotfiles"
 export PRIVATE_DOTFILES="$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles"
 
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname -- "$0")" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
 export _SKIP=247 # valid exit codes: 0-255

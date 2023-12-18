@@ -6,6 +6,7 @@ type distrobox >/dev/null 2>&1 || {
     exit "$_SKIP"
 }
 
+mkdir -p ~/.local/bin
 create_link "$PWD/src/distrobox" "$HOME/.config/distrobox"
 
 distrobox assemble create --replace --file "$HOME/githome/dotfiles/topics/distrobox/distrobox.ini"
