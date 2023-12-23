@@ -24,6 +24,4 @@ flatpak_common_packages:
   - {remote: "flathub", package: "org.keepassxc.KeePassXC"}
   - {remote: "flathub", package: "org.libreoffice.LibreOffice"}
   - {remote: "flathub", package: "org.remmina.Remmina"}
-  - {remote: "flathub", package: "org.videolan.VLC"}
-flatpak_non_nixos_packages:
-  - {remote: "flathub", package: "io.mpv.Mpv"}
+flatpak_non_nixos_packages: []

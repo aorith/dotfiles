@@ -18,11 +18,11 @@
     remote: "{{ item.remote }}"
   loop: "{{ flatpak_common_packages }}"
 
-- name: Install Flatpak packages
+- name: Install Flatpak packages (non NixOS)
   community.general.flatpak:
     name: "{{ item.package }}"
     state: present
     method: user
     remote: "{{ item.remote }}"
   loop: "{{ flatpak_non_nixos_packages }}"
-  when: ansible_os_family != "NixOS"
+  when: ansible_os_family != "NixOS" and flatpak_non_nixos_packages is defined and flatpak_non_nixos_packages | length > 0

@@ -1,7 +1,7 @@
 font:
   size: 15
   normal:
-    family: "JetBrainsMono Nerd Font"
+    family: "IosevkaTerm Nerd Font"
 shell:
   program: /usr/bin/env
   args:

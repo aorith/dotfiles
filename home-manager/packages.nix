@@ -1,8 +1,6 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["Hack" "JetBrainsMono" "IBMPlexMono" "Iosevka"];})
-
       age
       awscli2
       coreutils-full
