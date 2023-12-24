@@ -7,22 +7,20 @@
     flatpakrepo_url: "{{ item.url }}"
   loop: "{{ flatpak_remotes }}"
 
-- name: Update flatpak remote metadata
-  ansible.builtin.command: flatpak update --appstream
+# name: Update flatpak remote metadata
+# ansible.builtin.command: flatpak update --appstream
 
-- name: Install Flatpak packages
+- name: Install Flatpak packages (FlatHub)
   community.general.flatpak:
-    name: "{{ item.package }}"
+    name: "{{ flathub_common_packages }}"
     state: present
     method: user
-    remote: "{{ item.remote }}"
-  loop: "{{ flatpak_common_packages }}"
+    remote: "flathub"
 
-- name: Install Flatpak packages (non NixOS)
+- name: Install Flatpak packages (FlatHub) (non NixOS)
   community.general.flatpak:
-    name: "{{ item.package }}"
+    name: "{{ flathub_non_nixos_packages }}"
     state: present
     method: user
-    remote: "{{ item.remote }}"
-  loop: "{{ flatpak_non_nixos_packages }}"
+    remote: "flathub"
   when: ansible_os_family != "NixOS" and flatpak_non_nixos_packages is defined and flatpak_non_nixos_packages | length > 0

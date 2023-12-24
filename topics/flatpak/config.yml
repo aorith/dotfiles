@@ -1,27 +1,33 @@
 # flatpak remotes --show-details
+
 flatpak_remotes:
-  - {name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
-flatpak_common_packages:
-  - {remote: "flathub", package: "chat.rocket.RocketChat"}
-  - {remote: "flathub", package: "com.bitwarden.desktop"}
-  - {remote: "flathub", package: "com.discordapp.Discord"}
-  - {remote: "flathub", package: "com.github.tchx84.Flatseal"}
-  - {remote: "flathub", package: "com.google.Chrome"}
-  - {remote: "flathub", package: "com.mattjakeman.ExtensionManager"}
-  - {remote: "flathub", package: "com.obsproject.Studio"}
-  - {remote: "flathub", package: "com.spotify.Client"}
-  - {remote: "flathub", package: "com.valvesoftware.Steam"}
-  - {remote: "flathub", package: "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"}
-  - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity"}
-  - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.mariadb"}
-  - {remote: "flathub", package: "io.dbeaver.DBeaverCommunity.Client.pgsql"}
-  - {remote: "flathub", package: "md.obsidian.Obsidian"}
-  - {remote: "flathub", package: "org.blender.Blender"}
-  - {remote: "flathub", package: "org.geany.Geany"}
-  - {remote: "flathub", package: "org.gimp.GIMP"}
-  - {remote: "flathub", package: "org.gnome.Firmware"}
-  - {remote: "flathub", package: "org.inkscape.Inkscape"}
-  - {remote: "flathub", package: "org.keepassxc.KeePassXC"}
-  - {remote: "flathub", package: "org.libreoffice.LibreOffice"}
-  - {remote: "flathub", package: "org.remmina.Remmina"}
-flatpak_non_nixos_packages: []
+  - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
+
+flathub_common_packages:
+  - chat.rocket.RocketChat
+  - com.bitwarden.desktop
+  - com.discordapp.Discord
+  - com.github.micahflee.torbrowser-launcher
+  - com.github.tchx84.Flatseal
+  - com.google.Chrome
+  - com.mattjakeman.ExtensionManager
+  - com.obsproject.Studio
+  - com.spotify.Client
+  - com.usebottles.bottles # Run Windows apps
+  - com.valvesoftware.Steam
+  - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+  - io.dbeaver.DBeaverCommunity
+  - io.dbeaver.DBeaverCommunity.Client.mariadb
+  - io.dbeaver.DBeaverCommunity.Client.pgsql
+  - io.missioncenter.MissionCenter # CPU, Memory, GPU, ... Monitor
+  - md.obsidian.Obsidian
+  - org.blender.Blender
+  - org.geany.Geany
+  - org.gimp.GIMP
+  - org.gnome.Firmware
+  - org.inkscape.Inkscape
+  - org.keepassxc.KeePassXC
+  - org.libreoffice.LibreOffice
+  - org.remmina.Remmina
+
+flathub_non_nixos_packages: []
