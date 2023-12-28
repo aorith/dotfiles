@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   imports = [
-    ./packages.nix
-    ./programs/neovim.nix
-    ./programs/misc.nix
-    ./programs/zsh.nix
+    #./packages.nix
+    #./programs/neovim.nix
+    #./programs/misc.nix
+    #./programs/zsh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
