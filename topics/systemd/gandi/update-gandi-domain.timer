@@ -1,0 +1,10 @@
+[Install]
+WantedBy=timers.target
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=12h
+Unit=update-gandi-domain.service
+
+[Unit]
+Description=Update Gandi Domain Timer

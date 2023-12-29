@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/home/aorith/githome/dotfiles/topics/systemd/keepass/backup-keepass.sh
+Type=oneshot
+
+[Unit]
+Description=Backup KeePass

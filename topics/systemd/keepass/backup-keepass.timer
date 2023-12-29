@@ -1,0 +1,10 @@
+[Install]
+WantedBy=timers.target
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=12h
+Unit=backup-keepass.service
+
+[Unit]
+Description=Backup KeePass Timer

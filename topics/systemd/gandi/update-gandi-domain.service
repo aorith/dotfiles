@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/usr/bin/bash /home/aorith/Syncthing/KeePass/iou.re/update-gandi-domain.sh
+Type=oneshot
+
+[Unit]
+Description=Update Gandi Domain

@@ -1,0 +1,10 @@
+[Install]
+WantedBy=timers.target
+
+[Timer]
+OnBootSec=6m
+OnUnitActiveSec=2h
+Unit=check-flatpak-updates.service
+
+[Unit]
+Description=Check Flatpak Updates Timer

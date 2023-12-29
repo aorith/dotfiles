@@ -20,6 +20,7 @@ return {
       "djlint",
       "golangci-lint",
       "yamllint",
+      "shellcheck",
 
       -- LSP
       "lua-language-server",
