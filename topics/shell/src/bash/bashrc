@@ -12,7 +12,7 @@ done
 set +a
 
 shopt -s checkjobs checkwinsize histappend cmdhist globstar autocd 2>/dev/null
-set -o notify # notify completed background jobs inmediately
+set -o notify # notify completed background jobs immediately
 
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/.bash_history"
 export HISTCONTROL="erasedups:ignoreboth"
@@ -32,6 +32,11 @@ export PS4='+ ${BASH_SOURCE:-}:${LINENO:-}: ${FUNCNAME[0]:-}() [${?:-}] → '
 # Extra
 if [[ -e "$PRIVATE_DOTFILES" ]]; then
     . "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"
+fi
+
+# Containers
+if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then
+    export CONTAINER_ID=$(awk -F '=' '/^name=/ {print $2}' /run/.containerenv | tr -d '"')
 fi
 
 # Nix (non NixOS)
