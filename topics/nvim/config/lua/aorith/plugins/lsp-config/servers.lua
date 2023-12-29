@@ -103,7 +103,7 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  lspconfig.tsserver.setup({
+  lspconfig.eslint.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })

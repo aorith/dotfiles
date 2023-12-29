@@ -15,6 +15,10 @@
       then "/home/aorith"
       else "/Users/aorith";
 
+    packages = with pkgs; [
+    alejandra
+    ];
+
     stateVersion = "23.05";
   };
 

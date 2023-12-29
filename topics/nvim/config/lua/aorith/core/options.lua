@@ -107,9 +107,9 @@ opt.softtabstop = -1
 opt.tabstop = 4
 
 -- timers
-opt.timeout = true
-opt.timeoutlen = 500
-opt.updatetime = 300 -- For CursorHold and swapfile
+vim.o.timeout = true
+vim.o.timeoutlen = 500
+vim.o.updatetime = 300 -- For CursorHold and swapfile
 
 -- wrap
 opt.wrap = false
@@ -145,7 +145,7 @@ opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 
 -- bars
-opt.laststatus = 3
+opt.laststatus = 2
 --opt.winbar = "%#MiniStatuslineInactive#%=%-m %-.48f"
 
 -- Use signs for diagnostics in the gutter
