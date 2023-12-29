@@ -1,3 +1,7 @@
 {...}: {
-  imports = [./homelab.nix ./flatpak.nix ./packages.nix];
+  imports = [
+    ./homelab.nix
+    ./flatpak.nix
+    #./packages.nix
+  ];
 }

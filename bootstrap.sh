@@ -66,7 +66,6 @@ if [[ $# -eq 1 ]]; then
     _bootstrap "$PRIVATE_DOTFILES"  "init.sh"        "Bootstrap of dotfiles (private)" "$1"
     _bootstrap "$DOTFILES"          "postinstall.sh" "Postinstall"                     "$1"
     _bootstrap "$PRIVATE_DOTFILES"  "postinstall.sh" "Postinstall (private)"           "$1"
-    exit 0
 else
     # Bootstrap all topics
     _bootstrap "$DOTFILES"          "install.sh"     "Install requirements"            "*"
