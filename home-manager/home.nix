@@ -16,7 +16,7 @@
       else "/Users/aorith";
 
     packages = with pkgs; [
-    alejandra
+      alejandra
     ];
 
     stateVersion = "23.05";
