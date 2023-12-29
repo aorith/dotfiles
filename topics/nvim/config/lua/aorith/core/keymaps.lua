@@ -51,8 +51,9 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- buffers
-map("n", "<TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
-map("n", "<S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
+map("n", "<leader><TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
+--map("n", "<TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
+--map("n", "<S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
 map("n", "<leader><TAB>", "<cmd>b#<CR>", { silent = true, desc = "Last buffer" })
 
 map("n", "<leader>bb", function()
