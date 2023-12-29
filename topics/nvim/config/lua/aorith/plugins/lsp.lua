@@ -34,6 +34,6 @@ return {
     vim.lsp.handlers["textDocument/signatureHelp"] =
       vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-    require("aorith.plugins.lsp-config.servers")
+    require("aorith.plugins.lsp-config.servers").setup()
   end,
 }

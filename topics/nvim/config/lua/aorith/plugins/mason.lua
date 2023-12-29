@@ -10,6 +10,8 @@ return {
       "black",
       "isort",
       "ruff",
+      "prettier",
+      "goimports",
 
       -- Linters
       "typos",
@@ -30,7 +32,7 @@ return {
       "marksman",
       "ruff-lsp",
       "pyright",
-      "eslint-lsp",
+      "typescript-language-server",
       "html-lsp",
       "css-lsp",
     }
