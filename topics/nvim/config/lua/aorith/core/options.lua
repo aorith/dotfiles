@@ -134,8 +134,6 @@ opt.fillchars:append({
 })
 
 -- folds
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 1 -- Display all folds except top ones
 opt.foldnestmax = 10 -- Create folds only for some number of nested levels
 opt.foldlevelstart = 99 -- Start with all folds open

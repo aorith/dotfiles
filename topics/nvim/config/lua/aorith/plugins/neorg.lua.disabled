@@ -1,6 +1,20 @@
+local notes_dir = "~/Syncthing/SYNC_STUFF/notes/main"
+
+-- Global keymaps
+local map = vim.keymap.set
+map("n", "<leader>nn", "<cmd>Neorg<cr>", { desc = "Neorg" })
+map("n", "<leader>nf", function() require("telescope.builtin").find_files({ cwd = notes_dir }) end, { desc = "Find" })
+map(
+  "n",
+  "<leader>ng",
+  function() require("telescope.builtin").live_grep({ cwd = notes_dir, layout_strategy = "horizontal" }) end,
+  { desc = "Grep ALL" }
+)
+
 return {
-  --dir = "/Users/aorith/githome/01_UPSTREAM/neorg",
-  "nvim-neorg/neorg",
+  dir = "/home/aorith/githome/01_UPSTREAM/neorg",
+  --"nvim-neorg/neorg",
+  version = "*",
   build = ":Neorg sync-parsers",
   dependencies = { "nvim-lua/plenary.nvim" },
   lazy = true,
@@ -43,7 +57,7 @@ return {
         ["core.dirman"] = {
           config = {
             workspaces = {
-              notes = "~/Syncthing/SYNC_STUFF/notes/main",
+              notes = notes_dir,
               test = "~/Syncthing/SYNC_STUFF/notes/test",
             },
             default_workspace = "notes",
