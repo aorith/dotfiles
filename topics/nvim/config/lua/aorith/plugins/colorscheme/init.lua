@@ -2,6 +2,7 @@ return {
   "rebelot/kanagawa.nvim",
   dependencies = {
     "ellisonleao/gruvbox.nvim",
+    "catppuccin/nvim"
   },
   lazy = false,
   priority = 1000,

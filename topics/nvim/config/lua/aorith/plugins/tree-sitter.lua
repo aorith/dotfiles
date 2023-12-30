@@ -12,7 +12,7 @@ return {
       highlight = {
         enable = true,
         disable = { "sh", "bash", "dockerfile" },
-        additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = { "sh", "bash", "dockerfile" },
       },
 
       indent = {
@@ -21,7 +21,18 @@ return {
 
       auto_install = true,
       ignore_install = {},
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+      ensure_installed = {
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "norg",
+        "norg_meta",
+      },
 
       textobjects = {
         select = {

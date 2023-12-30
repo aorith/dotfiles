@@ -21,12 +21,14 @@ M.setup = function()
   vim.opt.background = bg
 
   if bg == "dark" then
-    require("kanagawa").setup({
-      transparent = false,
-    })
-    vim.cmd.colorscheme("kanagawa")
+    -- require("kanagawa").setup({
+    --   transparent = false,
+    -- })
+    -- vim.cmd.colorscheme("kanagawa")
+    vim.cmd.colorscheme "catppuccin-macchiato"
   else
-    vim.cmd.colorscheme("gruvbox")
+    -- vim.cmd.colorscheme("gruvbox")
+    vim.cmd.colorscheme "catppuccin-frappe"
   end
 end
 

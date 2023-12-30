@@ -1,8 +1,23 @@
+local map = vim.keymap.set
+map(
+  "n",
+  "<leader>lf",
+  function() require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 }) end,
+  { desc = "Format buffer" }
+)
+map(
+  "v",
+  "<leader>lf",
+  function() require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 }) end,
+  { desc = "Format buffer" }
+)
+
 return {
   "stevearc/conform.nvim",
+  lazy = true,
+  cmd = "ConformInfo",
   config = function()
     local utils = require("aorith.core.utils")
-    local map = vim.keymap.set
 
     local opts = {
       formatters_by_ft = {
@@ -43,18 +58,5 @@ return {
     )
 
     require("conform").setup(opts)
-
-    map(
-      "n",
-      "<leader>lf",
-      function() require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 }) end,
-      { desc = "Format buffer" }
-    )
-    map(
-      "v",
-      "<leader>lf",
-      function() require("conform").format({ async = false, lsp_fallback = true, timeout_ms = 5000 }) end,
-      { desc = "Format buffer" }
-    )
   end,
 }

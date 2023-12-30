@@ -1,66 +1,73 @@
 return {
+  --dir = "/Users/aorith/githome/01_UPSTREAM/neorg",
   "nvim-neorg/neorg",
   build = ":Neorg sync-parsers",
-  dependencies = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
-
+  dependencies = { "nvim-lua/plenary.nvim" },
+  lazy = true,
+  cmd = "Neorg",
+  ft = "norg",
   config = function()
     require("neorg").setup({
       load = {
         ["core.defaults"] = {},
-        ["core.qol.toc"] = {},
-        ["core.qol.todo_items"] = {},
-        ["core.looking-glass"] = {},
-        ["core.export"] = {},
-        ["core.export.markdown"] = { config = { extensions = "all" } },
-        ["core.tangle"] = { config = { report_on_empty = false } },
 
-        -- Completion
+        ["core.export"] = {},
+        -- Neorg export to-file ~/out.md
+        ["core.export.markdown"] = {},
+
+        -- Metadata
+        ["core.esupports.metagen"] = {
+          config = { type = "auto" },
+        },
+
+        -- Neorg generate-workspace-summary work todos
+        ["core.summary"] = {},
+
         ["core.completion"] = {
           config = {
             engine = "nvim-cmp",
-            name = "[Norg]",
           },
         },
-        ["core.integrations.nvim-cmp"] = {},
 
-        -- Concealer
         ["core.concealer"] = {
           config = {
+            icon_preset = "diamond", -- basic, diamond, varied
             icons = {
               todo = {
-                undone = { icon = "" },
+                undone = { icon = " " },
               },
             },
           },
         },
 
-        -- Keybindings
-        ["core.keybinds"] = {
-          -- https://github.com/nvim-neorg/neorg/wiki/User-Keybinds
-          config = {
-            default_keybinds = true,
-            neorg_leader = "<LocalLeader>",
-          },
-        },
-
-        -- Workspaces
         ["core.dirman"] = {
           config = {
             workspaces = {
-              notes = "~/Syncthing/SYNC_STUFF/neorg",
+              notes = "~/Syncthing/SYNC_STUFF/notes/main",
+              test = "~/Syncthing/SYNC_STUFF/notes/test",
             },
             default_workspace = "notes",
           },
         },
 
-        -- Telescope
-        ["core.integrations.telescope"] = {},
+        -- Keymaps
+        ["core.keybinds"] = {
+          config = {
+            default_keybinds = true,
+            hook = function(k)
+              k.map(
+                "norg",
+                "n",
+                "<LocalLeader>e",
+                "<cmd>Neorg keybind all core.looking-glass.magnify-code-block<cr>",
+                { desc = "Looking glass" }
+              )
+              k.map("norg", "n", "<LocalLeader>c", "<cmd>Neorg toggle-concealer<cr>", { desc = "Toggle Concealer" })
+              k.map("norg", "n", "<LocalLeader>T", "<cmd>Neorg toc<cr>", { desc = "Table of Content" })
+            end,
+          },
+        },
       },
     })
-
-    vim.wo.conceallevel = 2
-
-    local map = vim.keymap.set
-    map("n", "<leader>nn", "<cmd>Neorg<cr>", { desc = "Neorg" })
   end,
 }

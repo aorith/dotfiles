@@ -54,7 +54,7 @@ map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader><TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
 --map("n", "<TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
 --map("n", "<S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
-map("n", "<leader><TAB>", "<cmd>b#<CR>", { silent = true, desc = "Last buffer" })
+--map("n", "<leader><TAB>", "<cmd>b#<CR>", { silent = true, desc = "Last buffer" })
 
 map("n", "<leader>bb", function()
   local curbufnr = vim.api.nvim_get_current_buf()

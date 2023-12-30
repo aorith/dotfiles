@@ -1,9 +1,18 @@
+local map = vim.keymap.set
+map(
+  "n",
+  "<leader>e",
+  function() require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd(), position = "left" }) end,
+  { desc = "Neo-Tree" }
+)
+
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
+  lazy = true,
+  cmd = "Neotree",
   deactivate = function() vim.cmd([[Neotree close]]) end,
   config = function(_, opts)
-    local map = vim.keymap.set
     require("neo-tree").setup({
       enable_diagnostics = false,
       sources = { "filesystem", "document_symbols" },
@@ -27,12 +36,5 @@ return {
         },
       },
     })
-
-    map(
-      "n",
-      "<leader>e",
-      function() require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd(), position = "left" }) end,
-      { desc = "Neo-Tree" }
-    )
   end,
 }

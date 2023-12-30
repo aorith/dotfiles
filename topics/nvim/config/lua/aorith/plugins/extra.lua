@@ -1,6 +1,17 @@
 return {
   {
+    "MunifTanjim/nui.nvim",
+    lazy = false,
+  },
+
+  {
+    "nvim-lua/plenary.nvim",
+    lazy = false,
+  },
+
+  {
     "stevearc/dressing.nvim",
+    lazy = false,
     config = function()
       require("dressing").setup({
         input = {
@@ -14,10 +25,30 @@ return {
   },
 
   {
-    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+    lazy = false,
+    config = function()
+      ---@diagnostic disable: missing-fields
+      require("notify").setup({
+        stages = "static",
+        render = "wrapped-compact",
+        minimum_width = 30,
+      })
+
+      vim.notify = require("notify")
+    end,
   },
 
-  {
-    "nvim-lua/plenary.nvim",
-  },
+  -- {
+  --   "lukas-reineke/headlines.nvim",
+  --   dependencies = "nvim-treesitter/nvim-treesitter",
+  --   opts = {
+  --     markdown = {
+  --       headline_highlights = false,
+  --     },
+  --     norg = {
+  --       headline_highlights = false,
+  --     },
+  --   },
+  -- },
 }

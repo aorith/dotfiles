@@ -9,6 +9,13 @@ local on_attach = function(client, bufnr)
 
   -- disable hover in favor of pyright
   if client.name == "ruff_lsp" then client.server_capabilities.hoverProvider = false end
+
+  -- notify attachment
+  ---@diagnostic disable-next-line: param-type-mismatch
+  vim.notify(client.name, vim.log.levels.INFO, {
+    title = "Attaching LSP",
+    timeout = 3000,
+  })
 end
 
 --local capabilities = vim.lsp.protocol.make_client_capabilities()
