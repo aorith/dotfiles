@@ -44,7 +44,7 @@ if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
 
 -- misc
 opt.cinkeys:remove("0#") -- don't reindent on # char
-opt.completeopt = "menuone,noinsert,noselect"
+opt.completeopt = "menuone,noinsert,noselect,preview"
 opt.confirm = true -- confirm to save changes before exiting a modified buffer
 opt.diffopt:append({
   "linematch:50", -- better diff: https://github.com/neovim/neovim/pull/14537

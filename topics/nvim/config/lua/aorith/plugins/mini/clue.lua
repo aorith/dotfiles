@@ -13,7 +13,7 @@ M.setup = function()
         col = "auto",
 
         -- Compute window width automatically
-        -- width = "auto",
+        width = "auto",
 
         -- Use double-line border
         border = "double",
