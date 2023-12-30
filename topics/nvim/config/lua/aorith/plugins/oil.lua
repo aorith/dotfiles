@@ -11,7 +11,10 @@ return {
         "size",
         "mtime",
       },
+      keymaps = {
+        ["q"] = "actions.close",
+      },
     })
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   end,
 }

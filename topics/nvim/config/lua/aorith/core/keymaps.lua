@@ -1,5 +1,4 @@
 local utils = require("aorith.core.utils")
-local map = vim.keymap.set
 
 -- Copy to primary selection on select
 map("v", "<LeftRelease>", '"*ygv')

@@ -12,7 +12,7 @@ return {
       highlight = {
         enable = true,
         disable = { "sh", "bash", "dockerfile" },
-        additional_vim_regex_highlighting = { "sh", "bash", "dockerfile" },
+        additional_vim_regex_highlighting = { "sh", "bash", "dockerfile", "org" },
       },
 
       indent = {
@@ -47,6 +47,15 @@ return {
             ["ac"] = "@class.outer",
             ["ic"] = "@class.inner",
           },
+        },
+      },
+
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<LocalLeader>s",
+          node_incremental = "<LocalLeader>s",
+          node_decremental = "<LocalLeader>d",
         },
       },
     })

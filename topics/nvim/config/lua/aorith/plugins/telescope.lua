@@ -16,9 +16,16 @@ return {
       tc.setup({
         defaults = {
           file_ignore_patterns = { "venv", "__pycache__", ".git" },
+          path_display = { truncate = 5 },
+          dynamic_preview_title = true,
+          scroll_strategy = "limit",
+          layout_strategy = "bottom_pane",
           layout_config = {
             vertical = { width = 0.98 },
             horizontal = { width = 0.98 },
+            bottom_pane = {
+              prompt_position = "bottom",
+            },
           },
           mappings = {
             i = {
@@ -46,8 +53,6 @@ return {
       tc.load_extension("fzf")
 
       --- keymaps
-      local map = vim.keymap.set
-
       map(
         "n",
         "<leader><space>",
@@ -58,13 +63,8 @@ return {
       -- find
       map("n", "<leader>ff", function() tcb.find_files() end, { desc = "Find Files" })
       map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Recent" })
-      map("n", "<leader>fg", function() tcb.live_grep({ layout_strategy = "horizontal" }) end, { desc = "Grep ALL" })
-      map(
-        "n",
-        "<leader>fG",
-        function() tcb.live_grep({ layout_strategy = "horizontal", grep_open_files = true }) end,
-        { desc = "Grep open files" }
-      )
+      map("n", "<leader>fg", function() tcb.live_grep({}) end, { desc = "Grep ALL" })
+      map("n", "<leader>fG", function() tcb.live_grep({ grep_open_files = true }) end, { desc = "Grep open files" })
       map("n", "<leader>fm", "<cmd>Telescope marks<cr>", { desc = "Marks" })
       -- git
       map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "commits" })

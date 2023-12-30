@@ -65,6 +65,8 @@ opt.signcolumn = "yes:1"
 opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
 opt.winminwidth = 5 -- Minimum window width
 opt.colorcolumn = "80,120" -- Color columns on 80 and 120 width characters
+opt.wildmode = "longest:full,full"
+opt.wildignorecase = true
 
 -- extra ui options
 opt.pumblend = 0

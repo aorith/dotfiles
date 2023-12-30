@@ -72,12 +72,7 @@ M.setup = function()
       { mode = "n", keys = "<leader>u", desc = "+ui" },
       { mode = "n", keys = "<leader>w", desc = "+windows" },
       { mode = "n", keys = "<leader>x", desc = "+diagnostics/quickfix" },
-
-      { mode = "n", keys = "<leader>n", desc = "+neorg" },
-
-      { mode = "n", keys = "<LocalLeader>t", desc = "To-Do" },
-      { mode = "n", keys = "<LocalLeader>c", desc = "Toggle concealer" },
-      { mode = "n", keys = "<LocalLeader>T", desc = "Open ToC" },
+      { mode = "n", keys = "<leader>n", desc = "+notes" },
     },
   })
 end

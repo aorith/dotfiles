@@ -1,7 +1,6 @@
 local notes_dir = "~/Syncthing/SYNC_STUFF/notes/main"
 
 -- Global keymaps
-local map = vim.keymap.set
 map("n", "<leader>nn", "<cmd>Neorg<cr>", { desc = "Neorg" })
 map("n", "<leader>nf", function() require("telescope.builtin").find_files({ cwd = notes_dir }) end, { desc = "Find" })
 map(

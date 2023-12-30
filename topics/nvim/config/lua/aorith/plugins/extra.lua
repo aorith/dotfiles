@@ -10,6 +10,11 @@ return {
   },
 
   {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "G" },
+  },
+
+  {
     "stevearc/dressing.nvim",
     lazy = false,
     config = function()
@@ -39,16 +44,17 @@ return {
     end,
   },
 
-  -- {
-  --   "lukas-reineke/headlines.nvim",
-  --   dependencies = "nvim-treesitter/nvim-treesitter",
-  --   opts = {
-  --     markdown = {
-  --       headline_highlights = false,
-  --     },
-  --     norg = {
-  --       headline_highlights = false,
-  --     },
-  --   },
-  -- },
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {
+      markdown = {
+        -- headline_highlights = false,
+        fat_headlines = false,
+      },
+      norg = {
+        headline_highlights = false,
+      },
+    },
+  },
 }
