@@ -1,13 +1,16 @@
 return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
+    lazy = false,
     build = "make",
   },
 
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    version = "*",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim", "folke/trouble.nvim" },
+    lazy = false,
+
     config = function()
       local tc = require("telescope")
       local tcb = require("telescope.builtin")
@@ -15,26 +18,31 @@ return {
 
       tc.setup({
         defaults = {
-          file_ignore_patterns = { "venv", "__pycache__", ".git" },
-          path_display = { truncate = 5 },
+          file_ignore_patterns = { ".venv", "venv", "__pycache__", ".git" },
+          path_display = { smart = true },
           dynamic_preview_title = true,
-          scroll_strategy = "limit",
-          layout_strategy = "bottom_pane",
+          layout_strategy = "horizontal",
           layout_config = {
-            vertical = { width = 0.98 },
-            horizontal = { width = 0.98 },
-            bottom_pane = {
-              prompt_position = "bottom",
-            },
+            vertical = { width = 0.98, preview_width = 0.5 },
+            horizontal = { width = 0.98, preview_width = 0.5 },
           },
           mappings = {
             i = {
+              -- C-q opens all in quickfix list
+              ["<c-t>"] = function(...) require("trouble.providers.telescope").open_with_trouble(...) end,
+
               -- disable if you want to use normal mode in telescope
               ["<esc>"] = function(...) require("telescope.actions").close(...) end,
+
               ["<c-d>"] = function(...) require("telescope.actions").delete_buffer(...) end,
+              ["<Up>"] = function(...) require("telescope.actions").preview_scrolling_up(...) end,
+              ["<Down>"] = function(...) require("telescope.actions").preview_scrolling_down(...) end,
             },
             n = {
               ["q"] = function(...) return require("telescope.actions").close(...) end,
+              ["<c-t>"] = function(...) require("trouble.providers.telescope").open_with_trouble(...) end,
+              ["<Up>"] = function(...) require("telescope.actions").preview_scrolling_up(...) end,
+              ["<Down>"] = function(...) require("telescope.actions").preview_scrolling_down(...) end,
             },
           },
         },

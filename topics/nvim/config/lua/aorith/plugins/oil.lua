@@ -1,8 +1,12 @@
+map("n", "-", function() require("oil").open() end, { desc = "Open parent directory" })
+
 return {
   "stevearc/oil.nvim",
   version = "*",
-  lazy = false,
+  lazy = true,
+  cmd = "Oil",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+
   config = function()
     require("oil").setup({
       columns = {
@@ -15,6 +19,5 @@ return {
         ["q"] = "actions.close",
       },
     })
-    map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   end,
 }

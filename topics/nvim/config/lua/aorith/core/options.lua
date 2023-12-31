@@ -60,7 +60,7 @@ opt.report = 0 -- Always report the number of lines changed after :command
 opt.ruler = false
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.showmatch = true
-opt.showmode = false -- don't show mode - it's shown in the statusline
+opt.showmode = true -- show current mode
 opt.signcolumn = "yes:1"
 opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
 opt.winminwidth = 5 -- Minimum window width

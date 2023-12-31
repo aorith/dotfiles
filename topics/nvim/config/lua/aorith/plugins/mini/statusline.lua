@@ -1,3 +1,5 @@
+local blocked_filetypes = { ["neo-tree"] = true }
+
 local M = {}
 
 M.setup = function()
@@ -5,23 +7,27 @@ M.setup = function()
 
   require("mini.statusline").setup({
     set_vim_settings = false,
+    use_icons = true,
 
     content = {
       active = function()
-        local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+        if blocked_filetypes[vim.bo.filetype] then return "" end
+
+        --local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
         local git = MiniStatusline.section_git({ trunc_width = 75 })
         local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
         local filename = MiniStatusline.section_filename({ trunc_width = 140 })
         local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
 
         return MiniStatusline.combine_groups({
-          { hl = mode_hl, strings = { mode } },
-          { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
+          --{ hl = mode_hl, strings = { mode } },
+          { hl = "MiniStatuslineDevinfo", strings = { git } },
           "%<", -- Mark general truncate point
           { hl = "MiniStatuslineFilename", strings = { filename } },
+          { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
           "%=", -- End left alignment
           { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-          { hl = "MiniStatuslineFileinfo", strings = { "%l:%c%V %P 0x%B" } },
+          { hl = "MiniStatuslineFilename", strings = { "%l:%c%V %P 0x%B" } },
         })
       end,
 
