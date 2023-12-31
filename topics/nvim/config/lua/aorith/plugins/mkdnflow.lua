@@ -1,6 +1,12 @@
 local notes_dir = "~/Syncthing/SYNC_STUFF/notes/main"
 
+local function openHomeIndex()
+  vim.api.nvim_set_current_dir(notes_dir)
+  vim.api.nvim_command("edit " .. notes_dir .. "/index.md")
+end
+
 -- Global keymaps
+map("n", "<leader>ni", openHomeIndex, { desc = "Go to index" })
 map("n", "<leader>nf", function() require("telescope.builtin").find_files({ cwd = notes_dir }) end, { desc = "Find" })
 map(
   "n",
