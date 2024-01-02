@@ -22,7 +22,7 @@ return {
       modules = {
         bib = false,
         buffers = false,
-        conceal = true,
+        conceal = false, -- something else does the conceal
         cursor = true,
         folds = true,
         links = true,

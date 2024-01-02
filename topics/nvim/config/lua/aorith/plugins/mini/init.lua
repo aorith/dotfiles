@@ -5,7 +5,7 @@ return {
 
   config = function()
     require("mini.bufremove").setup()
-    require("mini.trailspace").setup()
+    --require("mini.trailspace").setup() -- using hipatterns instead
     require("mini.misc").setup()
     require("mini.comment").setup()
 

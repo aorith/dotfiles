@@ -12,8 +12,8 @@ local on_attach = function(client, bufnr)
 
   -- notify attachment
   ---@diagnostic disable-next-line: param-type-mismatch
-  vim.notify(client.name, vim.log.levels.INFO, {
-    title = "Attaching LSP",
+  vim.notify(client.name .. " started", vim.log.levels.INFO, {
+    -- title = "Attaching LSP",
     timeout = 3000,
   })
 end
