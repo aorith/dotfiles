@@ -34,7 +34,6 @@ M.setup = function()
   lspconfig.bashls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "sh", "bash" },
   })
 
   lspconfig.gopls.setup({

@@ -149,7 +149,9 @@ opt.laststatus = 2
 --opt.winbar = "%#MiniStatuslineInactive#%=%-m %-.48f"
 
 -- Use signs for diagnostics in the gutter
-vim.cmd("sign define DiagnosticSignError text=󰅚 texthl=DiagnosticSignError")
-vim.cmd("sign define DiagnosticSignWarn text=󰀪 texthl=DiagnosticSignWarn")
-vim.cmd("sign define DiagnosticSignInfo text=󰋽 texthl=DiagnosticSignInfo")
-vim.cmd("sign define DiagnosticSignHint text=󰌶 texthl=DiagnosticSignHint")
+vim.cmd([[
+  sign define DiagnosticSignError text=󰅚 texthl=DiagnosticSignError
+  sign define DiagnosticSignWarn text=󰀪 texthl=DiagnosticSignWarn
+  sign define DiagnosticSignInfo text=󰋽 texthl=DiagnosticSignInfo
+  sign define DiagnosticSignHint text=󰌶 texthl=DiagnosticSignHint
+]])

@@ -1,19 +1,23 @@
+local enabled = false
 local notes_dir = "~/Syncthing/SYNC_STUFF/notes/main"
 
--- Global keymaps
-map("n", "<leader>nn", "<cmd>Neorg<cr>", { desc = "Neorg" })
-map("n", "<leader>nf", function() require("telescope.builtin").find_files({ cwd = notes_dir }) end, { desc = "Find" })
-map(
-  "n",
-  "<leader>ng",
-  function() require("telescope.builtin").live_grep({ cwd = notes_dir, layout_strategy = "horizontal" }) end,
-  { desc = "Grep ALL" }
-)
+if enabled then
+  -- Global keymaps
+  map("n", "<leader>nn", "<cmd>Neorg<cr>", { desc = "Neorg" })
+  map("n", "<leader>nf", function() require("telescope.builtin").find_files({ cwd = notes_dir }) end, { desc = "Find" })
+  map(
+    "n",
+    "<leader>ng",
+    function() require("telescope.builtin").live_grep({ cwd = notes_dir, layout_strategy = "horizontal" }) end,
+    { desc = "Grep ALL" }
+  )
+end
 
 return {
-  dir = "/home/aorith/githome/01_UPSTREAM/neorg",
-  --"nvim-neorg/neorg",
+  --dir = "/home/aorith/githome/01_UPSTREAM/neorg",
+  "nvim-neorg/neorg",
   version = "*",
+  enabled = enabled,
   build = ":Neorg sync-parsers",
   dependencies = { "nvim-lua/plenary.nvim" },
   lazy = true,

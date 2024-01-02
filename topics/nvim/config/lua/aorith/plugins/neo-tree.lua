@@ -11,7 +11,7 @@ return {
   lazy = true,
   cmd = "Neotree",
   deactivate = function() vim.cmd([[Neotree close]]) end,
-  config = function(_, opts)
+  config = function()
     require("neo-tree").setup({
       enable_diagnostics = false,
       sources = { "filesystem", "document_symbols" },
