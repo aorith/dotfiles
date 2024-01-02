@@ -19,10 +19,32 @@ zstyle ':completion:*'                     squeeze-slashes      true            
 # Make sure complist is loaded
 zmodload zsh/complist
 
+fpath=(/usr/share/zsh/site-functions $fpath)
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
-    FPATH=${HOMEBREW_PREFIX}/share/zsh-completions:$FPATH
-    FPATH=${HOMEBREW_PREFIX}/share/zsh/site-functions:$FPATH
+    fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
+    fpath=(${HOMEBREW_PREFIX}/share/zsh/site-functions $fpath)
 fi
+
+# FZF
+if [[ -e /usr/share/zsh/site-functions/fzf ]]; then
+    source /usr/share/zsh/site-functions/fzf # fedora
+    source /usr/share/fzf/shell/key-bindings.zsh
+elif [[ -e /usr/share/fzf/completion.zsh ]]; then
+    source /usr/share/fzf/completion.zsh
+    source /usr/share/fzf/key-bindings.zsh
+fi
+
+# Pass (password store): https://github.com/junegunn/fzf/wiki/Examples-(completion)#zsh-pass
+# TODO: figure out why this is not working
+_fzf_complete_pass() {
+  _fzf_complete +m -- "$@" < <(
+    local prefix
+    prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+    command find -L "$prefix" \
+      -name "*.gpg" -type f | \
+      sed -e "s#${prefix}/\{0,1\}##" -e 's#\.gpg##' -e 's#\\#\\\\#' | sort
+  )
+}
 
 # Init completions, but regenerate compdump only once a day.
 # The globbing is a little complicated here:

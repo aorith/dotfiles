@@ -53,6 +53,11 @@ if [[ -e /opt/homebrew/bin/brew ]]; then
     . /opt/homebrew/etc/profile.d/bash_completion.sh
 fi
 
+# FZF
+if [[ -e /usr/share/fzf/shell/key-bindings.bash ]]; then
+    . /usr/share/fzf/shell/key-bindings.bash
+fi
+
 # Optionally use starship
 # if type starship >/dev/null 2>&1; then
 #     set_win_title() {
