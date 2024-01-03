@@ -1,9 +1,5 @@
 # ~/.bashrc
-
-# Source global definitions
-if [[ -f /etc/bashrc ]]; then
-    . /etc/bashrc
-fi
+# shellcheck disable=SC1090,SC2155,SC1091
 
 set -a
 for f in ~/.config/environment.d/*.conf; do
@@ -24,6 +20,7 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 export PROMPT_DIRTRIM=8
 export PS4='+ ${BASH_SOURCE:-}:${LINENO:-}: ${FUNCNAME[0]:-}() [${?:-}] → '
 
+. ~/githome/dotfiles/utils/functions.sh
 . ~/githome/dotfiles/topics/shell/etc/common/exports.sh
 . ~/githome/dotfiles/topics/shell/etc/common/aliases.sh
 . ~/githome/dotfiles/topics/shell/src/bash/functions.sh
@@ -39,14 +36,6 @@ if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then
     export CONTAINER_ID=$(awk -F '=' '/^name=/ {print $2}' /run/.containerenv | tr -d '"')
 fi
 
-# Nix (non NixOS)
-if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
-    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-if [[ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
-    . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-fi
-
 # Homebrew
 if [[ -e /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -56,6 +45,42 @@ fi
 # FZF
 if [[ -e /usr/share/fzf/shell/key-bindings.bash ]]; then
     . /usr/share/fzf/shell/key-bindings.bash
+fi
+
+# Nix (non NixOS)
+if [[ ! -e /etc/nixos ]]; then
+    if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
+    if [[ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
+        . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+    fi
+fi
+
+# Paths
+for p in \
+    "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/tcdn/bin" \
+    "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/scripts-private/bin" \
+    "$HOME/.local/bin" \
+    "$HOME/.local/go/bin" \
+    "$HOME/.local/share/nvim/mason/bin"; do
+    prepend_to_path "$p" PATH
+done
+
+if [[ "$_OS" == "Darwin" ]]; then
+    for p in \
+        "$HOME/.docker/bin" \
+        "/opt/homebrew/opt/coreutils/libexec/gnubin" \
+        "/opt/homebrew/opt/findutils/libexec/gnubin" \
+        "/opt/homebrew/opt/diffutils/bin" \
+        "/opt/homebrew/opt/grep/libexec/gnubin" \
+        "/opt/homebrew/opt/gnu-sed/libexec/gnubin" \
+        "/opt/homebrew/opt/curl/bin" \
+        "/opt/homebrew/opt/util-linux/bin" \
+        "/opt/homebrew/opt/openssl@3/bin" \
+        "/opt/homebrew/opt/gnu-tar/libexec/gnubin"; do
+        prepend_to_path "$p" PATH
+    done
 fi
 
 # Optionally use starship

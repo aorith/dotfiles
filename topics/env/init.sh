@@ -17,9 +17,9 @@ for f in ./environment.d/"$_OS"/*.conf; do
 done
 
 # Paths
-cat <<EOF >"$_ENV_PATH/20-path.conf"
-PATH="$(cat environment.d/path.list environment.d/"${_OS}"/path.list 2>/dev/null | xargs | tr ' ' ':'):\$PATH"
-EOF
+#cat <<EOF >"$_ENV_PATH/20-path.conf"
+#PATH="$(cat environment.d/path.list environment.d/"${_OS}"/path.list 2>/dev/null | xargs | tr ' ' ':'):\$PATH"
+#EOF
 
 # Dynamically generated
 mkdir -p ~/.local/bin
