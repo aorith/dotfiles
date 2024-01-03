@@ -1,14 +1,40 @@
 #!/usr/bin/env bash
 
 set -a
-add_to_path() {
-    # add_to_path <path> [last]
+prepend_to_path() {
+    # prepend_to_path <path> [VARIABLE]
+    local v="${2:-PATH}"
     [[ -n "$1" ]] || return 1
-    case ":${PATH}:" in
-        *":${1}:"*) ;; # already there
-        *) [[ "$2" == "last" ]] && PATH="${PATH}:${1}" || PATH="${1}:${PATH}";;
+    case ":${!v}:" in
+    *":${1}:"*) ;; # already there
+    *)
+        if [[ -n "${!v}" ]]; then
+            declare -g -x "${v?}"="${1}:${!v}"
+        elif [[ "${!v}" == "$1" ]]; then
+            return
+        else
+            declare -g -x "${v?}"="${1}"
+        fi
+        ;;
     esac
-    export PATH
+}
+
+append_to_path() {
+    # append_to_path <path> [VARIABLE]
+    local v="${2:-PATH}"
+    [[ -n "$1" ]] || return 1
+    case ":${!v}:" in
+    *":${1}:"*) ;; # already there
+    *)
+        if [[ -n "${!v}" ]]; then
+            declare -g -x "${v?}"="${!v}:${1}"
+        elif [[ "${!v}" == "$1" ]]; then
+            return
+        else
+            declare -g -x "${v?}"="${1}"
+        fi
+        ;;
+    esac
 }
 
 _backup() {
@@ -22,24 +48,23 @@ _backup() {
     BACKUP_NAME="${1/$HOME/}"
     BACKUP_NAME="${BACKUP_NAME////_}"
 
-
     if [[ ! -L $1 ]] && [[ -e $1 ]]; then
-        mv "${1}" "${BACKUP_DIR}/${BACKUP_NAME}" \
-            && link_arrow "Backup for $(basename "$1") done." \
-            && return 0
+        mv "${1}" "${BACKUP_DIR}/${BACKUP_NAME}" &&
+            link_arrow "Backup for $(basename "$1") done." &&
+            return 0
         link_error "Backup for $(basename "$1") failed."
         exit 1
     fi
 }
 
 _link() {
-    add_to_path "/opt/homebrew/opt/coreutils/libexec/gnubin"
+    prepend_to_path "/opt/homebrew/opt/coreutils/libexec/gnubin"
     # _link <SOURCE_FILE> <LINK_NAME>
     local _source _link_name _sudo
     _source="$1"
     _link_name="$2"
-    [[ "$(uname -s)" == "Darwin" ]] && _canon_link_name="$(readlink -- "${_link_name}")" \
-        || _canon_link_name="$(readlink -f "${_link_name}")"
+    [[ "$(uname -s)" == "Darwin" ]] && _canon_link_name="$(readlink -- "${_link_name}")" ||
+        _canon_link_name="$(readlink -f "${_link_name}")"
     name="${_link_name/$HOME/\~}"
 
     # necesito sudo?
@@ -55,7 +80,10 @@ _link() {
     fi
 
     [[ -L $_link_name ]] && ${_sudo} rm "$_link_name"
-    [[ -d "$_lind_name" ]] && { link_error "Target is a directory: '$_link_name'."; exit 1; }
+    [[ -d "$_lind_name" ]] && {
+        link_error "Target is a directory: '$_link_name'."
+        exit 1
+    }
     if ${_sudo} ln -s "$_source" "$_link_name"; then
         [[ -n "$_sudo" ]] && link_arrow_sudo "$name" || link_arrow "$name"
         return 0
@@ -68,7 +96,10 @@ _link() {
 create_link() {
     # create_link <SOURCE_FILE> <DEST_FILE>
     [[ $# -ne 2 ]] && exit 1
-    [[ ! -r "$1" ]] && { link_error "$1 does not exists."; exit 1; }
+    [[ ! -r "$1" ]] && {
+        link_error "$1 does not exists."
+        exit 1
+    }
     _backup "${2}"
     _link "${1}" "${2}"
 }
