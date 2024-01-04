@@ -29,20 +29,20 @@ return {
     end,
   },
 
-  {
-    "rcarriga/nvim-notify",
-    lazy = false,
-    config = function()
-      ---@diagnostic disable: missing-fields
-      require("notify").setup({
-        stages = "static",
-        render = "wrapped-compact",
-        minimum_width = 30,
-      })
-
-      vim.notify = require("notify")
-    end,
-  },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   lazy = false,
+  --   config = function()
+  --     ---@diagnostic disable: missing-fields
+  --     require("notify").setup({
+  --       stages = "static",
+  --       render = "wrapped-compact",
+  --       minimum_width = 30,
+  --     })
+  --
+  --     vim.notify = require("notify")
+  --   end,
+  -- },
 
   {
     "lukas-reineke/headlines.nvim",
