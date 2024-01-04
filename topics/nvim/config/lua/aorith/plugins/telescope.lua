@@ -35,14 +35,14 @@ return {
               ["<esc>"] = function(...) require("telescope.actions").close(...) end,
 
               ["<c-d>"] = function(...) require("telescope.actions").delete_buffer(...) end,
-              ["<Up>"] = function(...) require("telescope.actions").preview_scrolling_up(...) end,
-              ["<Down>"] = function(...) require("telescope.actions").preview_scrolling_down(...) end,
+              ["<C-Up>"] = function(...) require("telescope.actions").preview_scrolling_up(...) end,
+              ["<C-Down>"] = function(...) require("telescope.actions").preview_scrolling_down(...) end,
             },
             n = {
               ["q"] = function(...) return require("telescope.actions").close(...) end,
               ["<c-t>"] = function(...) require("trouble.providers.telescope").open_with_trouble(...) end,
-              ["<Up>"] = function(...) require("telescope.actions").preview_scrolling_up(...) end,
-              ["<Down>"] = function(...) require("telescope.actions").preview_scrolling_down(...) end,
+              ["<C-Up>"] = function(...) require("telescope.actions").preview_scrolling_up(...) end,
+              ["<C-Down>"] = function(...) require("telescope.actions").preview_scrolling_down(...) end,
             },
           },
         },
