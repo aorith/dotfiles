@@ -19,5 +19,5 @@ require("lazy").setup("aorith.plugins", {
     notify = false,
     frequency = 3600,
   },
-  defaults = { lazy = false },
+  defaults = { lazy = true },
 })

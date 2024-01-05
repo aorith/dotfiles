@@ -2,7 +2,8 @@ return {
   {
     "L3MON4D3/LuaSnip",
     version = "*",
-    lazy = false,
+    lazy = true,
+    event = "VeryLazy",
     build = "make install_jsregexp",
     dependencies = {
       "rafamadriz/friendly-snippets",
@@ -13,6 +14,8 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
+    lazy = true,
+    event = "VeryLazy",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
