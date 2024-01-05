@@ -1,0 +1,22 @@
+[font]
+size = 15
+
+[font.normal]
+family = "MonaspiceNe Nerd Font Mono"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Control|Shift"
+
+[keyboard.bindings.command]
+args = ["bash", "-ilc", "tmux display-popup -w80% -h80% -E $HOME/.config/alacritty/bin/switch-theme.sh"]
+program = "/usr/bin/env"
+
+[shell]
+args = ["bash", "--login"]
+program = "/usr/bin/env"

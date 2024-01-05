@@ -1,0 +1,223 @@
+[font]
+builtin_box_drawing = true
+size = 17
+
+[font.normal]
+family = "Iosevka Nerd Font Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Control|Shift"
+
+[keyboard.bindings.command]
+args = ["bash", "-ilc", "tmux display-popup -w65% -h65% -E $HOME/.config/alacritty/bin/switch-theme.sh"]
+program = "/usr/bin/env"
+
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "B"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = " "
+key = "Space"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = " "
+key = "Space"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ToggleSimpleFullscreen"
+key = "F12"
+
+[[keyboard.bindings]]
+chars = "\u001Bw"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bt"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BT"
+key = "T"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001Bh"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bj"
+key = "J"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bk"
+key = "K"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bl"
+key = "L"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BH"
+key = "H"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001BJ"
+key = "J"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001BK"
+key = "K"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001BL"
+key = "L"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B\r"
+key = "Return"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001Bd"
+key = "D"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BD"
+key = "D"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001Bs"
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B1"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B2"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B3"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B4"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B5"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B6"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B7"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B8"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B9"
+key = "Key9"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bg"
+key = "G"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Br"
+key = "R"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BR"
+key = "R"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B,"
+key = "Comma"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bn"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bz"
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "F"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001Be"
+key = "E"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bi"
+key = "I"
+mods = "Command"
+
+[window]
+decorations = "buttonless"
+option_as_alt = "None"

@@ -1,0 +1,36 @@
+import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
+
+[bell]
+animation = "EaseOutExpo"
+color = "#777777"
+duration = 10
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.cursor]
+cursor = "#3abf36"
+text = "#000000"
+
+[cursor]
+blink_interval = 500
+
+[cursor.style]
+blinking = "Never"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 1000
+
+[selection]
+save_to_clipboard = true
+
+[window.padding]
+x = 7
+y = 7
