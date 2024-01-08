@@ -6,6 +6,7 @@ map("n", "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", { desc = "Quickfix Lis
 return {
   "folke/trouble.nvim",
   lazy = true,
+  event = "BufEnter",
   cmd = "TroubleToggle",
 
   config = function()
