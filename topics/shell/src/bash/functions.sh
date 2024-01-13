@@ -40,3 +40,18 @@ repos-fzf() {
         cd "${path}/.." || return 1
     fi
 }
+
+k8s-load-kubeconfig() {
+    [[ -n "$PRIVATE_DOTFILES" ]] || {
+        echo 'Environment variable "PRIVATE_DOTFILES" not set.'
+        exit 1
+    }
+    opt=$(find "$PRIVATE_DOTFILES/k8s-configs/" -type f | awk -F'/' '{print $NF}' | fzf)
+    [[ -f "$PRIVATE_DOTFILES/k8s-configs/$opt" ]] || {
+        echo 'Kubeconfig not selected, aborting.'
+        exit 1
+    }
+    export KUBECONFIG="$PRIVATE_DOTFILES/k8s-configs/$opt"
+    echo "Loaded: $KUBECONFIG"
+    kubectl cluster-info
+}
