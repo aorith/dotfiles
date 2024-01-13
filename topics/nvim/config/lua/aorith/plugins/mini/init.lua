@@ -18,6 +18,7 @@ return {
     require("aorith.plugins.mini.hipatterns").setup()
     require("aorith.plugins.mini.clue").setup()
     require("aorith.plugins.mini.notify").setup()
+    require("aorith.plugins.mini.files").setup()
 
     map("n", "<leader>q", function() MiniBufremove.delete() end, { desc = "Delete current buffer" })
     map("n", "<leader>z", function() MiniMisc.zoom() end, { desc = "Zoom window" })

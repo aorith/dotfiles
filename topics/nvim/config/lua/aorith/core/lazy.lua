@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("aorith.plugins", {
-  change_detection = { notify = false },
+  change_detection = { enabled = false, notify = false },
   checker = {
     enabled = true,
     concurrency = 20,

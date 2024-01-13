@@ -1,4 +1,4 @@
-local dark_theme = "gruvbox"
+local dark_theme = "kanagawa"
 local light_theme = "catppuccin"
 
 local function detect_background()
@@ -28,8 +28,31 @@ return {
     config = function()
       if string.find(theme, "kanagawa") then
         require("kanagawa").setup({
+          dimInactive = false,
           transparent = false,
+          background = {
+            dark = "wave",
+            light = "lotus",
+          },
+          colors = {
+            theme = {
+              all = {
+                ui = {
+                  -- remove gutter (line numbers) background
+                  bg_gutter = "none",
+                },
+              },
+            },
+          },
+          overrides = function(colors)
+            return {
+              TelescopeTitle = { fg = colors.theme.ui.special, bold = true },
+              ["@text.todo.checked.markdown"] = { bg = "NONE", fg = colors.theme.vcs.added },
+              ["@text.todo.unchecked.markdown"] = { bg = "NONE", fg = colors.theme.vcs.changed },
+            }
+          end,
         })
+
         vim.cmd.colorscheme(theme)
       end
     end,
