@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   version = false, -- use last version from git
   build = ":TSUpdate",
+  lazy = false,
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },

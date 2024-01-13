@@ -14,6 +14,7 @@ map(
 return {
   "stevearc/conform.nvim",
   lazy = true,
+  event = "BufEnter",
   cmd = "ConformInfo",
   config = function()
     local utils = require("aorith.core.utils")

@@ -1,8 +1,8 @@
-map("n", "<leader>av", "<cmd>GpWhisperAppend<cr>", { desc = "Voice Command" })
-map("x", "<leader>av", "<cmd>GpWhisperRewrite<cr>", { desc = "Voice Command" })
-map("n", "<leader>aa", "<cmd>GpAppend<cr>", { desc = "Text Command" })
-map("x", "<leader>aa", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "Edit with instructions" })
-map("n", "<leader>ac", "<cmd>GpChatToggle<cr>", { desc = "Toggle Chat" })
+map("n", "<leader>cv", "<cmd>GpWhisperAppend<cr>", { desc = "Voice Command" })
+map("x", "<leader>cv", "<cmd>GpWhisperRewrite<cr>", { desc = "Voice Command" })
+map("n", "<leader>ca", "<cmd>GpAppend<cr>", { desc = "Text Command" })
+map("x", "<leader>ca", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "Edit with instructions" })
+map("n", "<leader>cc", "<cmd>GpChatToggle<cr>", { desc = "Toggle Chat" })
 
 return {
   {
