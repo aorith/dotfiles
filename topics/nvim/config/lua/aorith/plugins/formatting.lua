@@ -35,8 +35,8 @@ return {
         terraform = { "terraform_fmt", "trim_newlines", "trim_whitespace" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
-        yaml = { "prettier" },
 
+        yaml = { "yamlfix" }, -- or prettier
         go = { "goimports", "gofmt" },
         lua = { "stylua" },
         nix = { "alejandra" },

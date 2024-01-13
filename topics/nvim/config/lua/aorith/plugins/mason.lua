@@ -6,13 +6,14 @@ return {
   config = function()
     local tools = {
       -- Formatters
-      "stylua",
-      "shfmt",
       "black",
-      "isort",
-      "ruff",
-      "prettier",
       "goimports",
+      "isort",
+      "prettier",
+      "ruff",
+      "shfmt",
+      "stylua",
+      "yamlfix",
 
       -- Linters
       "typos",

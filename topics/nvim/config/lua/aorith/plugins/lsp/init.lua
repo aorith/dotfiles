@@ -8,11 +8,11 @@ return {
     "hrsh7th/nvim-cmp",
     "L3MON4D3/LuaSnip",
   },
-  event = "BufEnter",
+  lazy = false,
 
   config = function()
     -- Log level
-    vim.lsp.set_log_level("OFF")
+    vim.lsp.set_log_level(vim.log.levels.OFF)
 
     -- Diagnostics
     vim.diagnostic.config({
@@ -35,6 +35,6 @@ return {
     vim.lsp.handlers["textDocument/signatureHelp"] =
       vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-    require("aorith.plugins.lsp-config.servers").setup()
+    require("aorith.plugins.lsp.servers").setup()
   end,
 }

@@ -47,17 +47,18 @@ return {
 
   {
     "lukas-reineke/headlines.nvim",
-    lazy = true,
-    event = "VeryLazy",
+    lazy = false,
     dependencies = "nvim-treesitter/nvim-treesitter",
-    opts = {
-      markdown = {
-        -- headline_highlights = false,
-        fat_headlines = false,
-      },
-      norg = {
-        headline_highlights = false,
-      },
-    },
+    config = function()
+      require("headlines").setup({
+        markdown = {
+          headline_highlights = false,
+          fat_headlines = false,
+        },
+        norg = {
+          headline_highlights = false,
+        },
+      })
+    end,
   },
 }

@@ -138,5 +138,6 @@ map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[S]ignature" })
 
 -- without leader key
 map("n", "gr", "<cmd>Trouble lsp_references<cr>", { desc = "[G]oto [R]eferences" })
+map("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]definition" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })

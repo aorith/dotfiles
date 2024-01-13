@@ -1,5 +1,5 @@
-local dark_theme = "catppuccin"
-local light_theme = "catppuccin-frappe"
+local dark_theme = "gruvbox"
+local light_theme = "catppuccin"
 
 local function detect_background()
   -- if vim.fn.has("macunix") == 1 then
@@ -9,7 +9,7 @@ local function detect_background()
   --
   -- local output = vim.fn.system("gsettings get org.gnome.desktop.interface color-scheme")
 
-  local output = vim.fn.system("realpath -- ~/.config/alacritty/theme.yml")
+  local output = vim.fn.system("realpath -- ~/.config/alacritty/theme.toml")
   return string.match(output, ".*dark_.*") and "dark" or "light"
 end
 
@@ -17,11 +17,8 @@ local bg = detect_background()
 vim.opt.termguicolors = true
 vim.opt.background = bg
 
-if bg == "dark" then
-  theme = dark_theme
-else
-  theme = light_theme
-end
+local theme = light_theme
+if bg == "dark" then theme = dark_theme end
 
 return {
   {
@@ -29,7 +26,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      if theme == "kanagawa" then
+      if string.find(theme, "kanagawa") then
         require("kanagawa").setup({
           transparent = false,
         })
@@ -54,6 +51,15 @@ return {
     priority = 1000,
     config = function()
       if string.find(theme, "gruvbox") then vim.cmd.colorscheme(theme) end
+    end,
+  },
+
+  {
+    "navarasu/onedark.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      if string.find(theme, "onedark") then require("onedark").load() end
     end,
   },
 }

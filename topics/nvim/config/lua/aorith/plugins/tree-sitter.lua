@@ -42,11 +42,33 @@ return {
           -- If outside of an object, jump to the next one
           lookahead = true,
 
+          -- For example, 'vaf' would enter visual mode and select the defined @function.outer
           keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
+            ["af"] = { query = "@function.outer", desc = "Function outer" },
+            ["if"] = { query = "@function.inner", desc = "Function inner" },
+            ["ac"] = { query = "@class.outer", desc = "Class outer" },
+            ["ic"] = { query = "@class.inner", desc = "Class inner" },
+          },
+        },
+
+        move = {
+          enable = true,
+          set_jumps = false,
+          goto_next_start = {
+            ["]f"] = { query = "@function.outer", desc = "Next Function outer" },
+            ["]c"] = { query = "@class.outer", desc = "Next Class outer" },
+          },
+          goto_next_end = {
+            ["]F"] = { query = "@function.outer", desc = "Next Function outer end" },
+            ["]C"] = { query = "@class.outer", desc = "Next Class outer end" },
+          },
+          goto_previous_start = {
+            ["[f"] = { query = "@function.outer", desc = "Prev Function outer" },
+            ["[c"] = { query = "@class.outer", desc = "Prev Class outer" },
+          },
+          goto_previous_end = {
+            ["[F"] = { query = "@function.outer", desc = "Prev Function outer end" },
+            ["[C"] = { query = "@class.outer", desc = "Prev Class outer end" },
           },
         },
       },
@@ -54,9 +76,9 @@ return {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<LocalLeader>s",
-          node_incremental = "<LocalLeader>s",
-          node_decremental = "<LocalLeader>d",
+          init_selection = "<LocalLeader>+",
+          node_incremental = "<LocalLeader>+",
+          node_decremental = "<LocalLeader>-",
         },
       },
     })

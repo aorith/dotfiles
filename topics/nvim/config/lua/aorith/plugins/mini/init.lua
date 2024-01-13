@@ -9,6 +9,11 @@ return {
     require("mini.misc").setup()
     require("mini.comment").setup()
 
+    -- sa => surround around
+    -- sd => surround delete
+    -- sr => surround replace
+    require("mini.surround").setup()
+
     require("aorith.plugins.mini.statusline").setup()
     require("aorith.plugins.mini.hipatterns").setup()
     require("aorith.plugins.mini.clue").setup()
