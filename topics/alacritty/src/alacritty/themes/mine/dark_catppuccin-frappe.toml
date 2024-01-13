@@ -58,10 +58,6 @@ foreground = "#C6D0F5"
 background = "#A6D189"
 foreground = "#303446"
 
-[colors.search.footer_bar]
-background = "#A5ADCE"
-foreground = "#303446"
-
 [colors.search.matches]
 background = "#A5ADCE"
 foreground = "#303446"

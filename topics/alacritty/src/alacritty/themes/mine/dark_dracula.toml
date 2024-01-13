@@ -12,10 +12,6 @@ yellow = "#ffffa5"
 cursor = "CellForeground"
 text = "CellBackground"
 
-[colors.footer_bar]
-background = "#282a36"
-foreground = "#f8f8f2"
-
 [colors.hints.end]
 background = "#282a36"
 foreground = "#f1fa8c"
