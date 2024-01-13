@@ -91,17 +91,17 @@ end
 
 -- Navigate between links / headers
 M.markdown_next_link = function()
-  if vim.fn.search("\\(](.\\+)\\|^# .\\+\\|\\[\\[.\\+]]\\)", "w") ~= 0 then
+  if vim.fn.search("\\(](.\\+)\\|^#\\+ .\\+\\|\\[\\[.\\+]]\\)", "w") ~= 0 then
     vim.cmd("norm w")
   else
     vim.notify("No markdown headers or links found.")
   end
 end
 M.markdown_prev_link = function()
-  if vim.fn.search("\\(](.\\+)\\|^# .\\+\\|\\[\\[.\\+]]\\)", "b") ~= 0 then
+  if vim.fn.search("\\(](.\\+)\\|^#\\+ .\\+\\|\\[\\[.\\+]]\\)", "b") ~= 0 then
     -- I have to search twice backwards because the cursor is moved
     -- with 'w' and the backward search finds the same item
-    vim.fn.search("\\(](.\\+)\\|^# .\\+\\|\\[\\[.\\+]]\\)", "b")
+    vim.fn.search("\\(](.\\+)\\|^#\\+ .\\+\\|\\[\\[.\\+]]\\)", "b")
     vim.cmd("norm w")
   else
     vim.notify("No markdown headers or links found.")
