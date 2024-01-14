@@ -51,6 +51,7 @@ return {
               EndOfBuffer = { fg = colors.theme.ui.nontext },
               ["@text.todo.checked.markdown"] = { bg = "NONE", fg = colors.theme.vcs.added },
               ["@text.todo.unchecked.markdown"] = { bg = "NONE", fg = colors.theme.vcs.changed },
+              ["@text.strong.markdown_inline"] = { fg = colors.theme.syn.constant, bold = true },
             }
           end,
         })
