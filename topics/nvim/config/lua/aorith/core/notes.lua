@@ -29,17 +29,10 @@ map(
   { desc = "Open To-Do" }
 )
 
-map("n", "<leader>nf", function() require("telescope.builtin").find_files({ cwd = notes_dir }) end, { desc = "Find" })
+map("n", "<leader>nh", function()
+  vim.api.nvim_set_current_dir(notes_dir)
+  vim.notify("Switched dir to 'notes_dir'")
+end, { desc = "Change dir to notes_dir" })
 
-map(
-  "n",
-  "<leader>ng",
-  function()
-    require("telescope.builtin").live_grep({
-      cwd = notes_dir,
-      layout_strategy = "horizontal",
-      additional_args = { "-i" },
-    })
-  end,
-  { desc = "Grep ALL" }
-)
+map("n", "<leader>nf", "<Cmd>Pick notes<CR>", { desc = "Find" })
+map("n", "<leader>ng", "<Cmd>Pick notes_grep<CR>", { desc = "Grep live" })

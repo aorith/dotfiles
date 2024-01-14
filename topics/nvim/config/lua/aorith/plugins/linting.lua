@@ -15,9 +15,6 @@ return {
       nix = { "nix" },
       --python = { "ruff" }, -- ruff already lints with ruff_lsp
       yaml = { "yamllint" },
-
-      lua = {},
-      sh = {},
     }
 
     linters.vale.args = {

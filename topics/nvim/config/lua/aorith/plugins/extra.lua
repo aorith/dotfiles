@@ -13,7 +13,7 @@ return {
   {
     "stevearc/dressing.nvim",
     lazy = false,
-    opts = { input = { relative = "win" } },
+    opts = { input = { relative = "win" }, select = { enabled = false } },
   },
 
   {

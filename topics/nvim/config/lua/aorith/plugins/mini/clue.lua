@@ -7,16 +7,11 @@ M.setup = function()
       delay = 250,
 
       config = {
-        -- Position
         anchor = "SW",
         row = "auto",
         col = "auto",
-
-        -- Compute window width automatically
         width = "auto",
-
-        -- Use double-line border
-        border = "double",
+        border = "single",
       },
     },
 
@@ -56,13 +51,6 @@ M.setup = function()
     },
 
     clues = {
-      miniclue.gen_clues.builtin_completion(),
-      miniclue.gen_clues.g(),
-      miniclue.gen_clues.marks(),
-      miniclue.gen_clues.registers(),
-      miniclue.gen_clues.windows(),
-      miniclue.gen_clues.z(),
-
       { mode = "n", keys = "<leader>b", desc = "+buffers" },
       { mode = "n", keys = "<leader>f", desc = "+file/find" },
       { mode = "n", keys = "<leader>g", desc = "+git" },
@@ -73,6 +61,13 @@ M.setup = function()
       { mode = "n", keys = "<leader>w", desc = "+windows" },
       { mode = "n", keys = "<leader>x", desc = "+diagnostics/quickfix" },
       { mode = "n", keys = "<leader>n", desc = "+notes" },
+
+      miniclue.gen_clues.builtin_completion(),
+      miniclue.gen_clues.g(),
+      miniclue.gen_clues.marks(),
+      miniclue.gen_clues.registers(),
+      miniclue.gen_clues.windows(),
+      miniclue.gen_clues.z(),
     },
   })
 end
