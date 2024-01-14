@@ -24,9 +24,9 @@ M.setup = function()
           { hl = "MiniStatuslineDevinfo", strings = { git } },
           "%<", -- Mark general truncate point
           { hl = "MiniStatuslineFilename", strings = { filename } },
+          { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
           { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
           "%=", -- End left alignment
-          { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
           { hl = "MiniStatuslineFilename", strings = { "%l:%c%V %P 0x%B" } },
         })
       end,
