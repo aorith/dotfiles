@@ -67,6 +67,8 @@ opt.winminwidth = 5 -- Minimum window width
 opt.colorcolumn = "+1" -- Highlight column after 'textwidth'
 opt.wildmode = "longest:full,full"
 opt.wildignorecase = true
+opt.spelllang = "en,es"
+opt.spelloptions = "camel"
 
 -- extra ui options
 opt.pumblend = 0
@@ -74,7 +76,7 @@ opt.pumheight = 12
 opt.winblend = 0
 
 -- context
-opt.scrolloff = 4 -- Lines of context
+--opt.scrolloff = 4 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
 
 -- list chars
@@ -116,28 +118,16 @@ vim.o.updatetime = 300 -- For CursorHold and swapfile
 -- wrap
 opt.wrap = false
 opt.linebreak = true
-opt.showbreak = "↳ "
+--opt.showbreak = "↳ "
 
 -- splits
 opt.splitkeep = "screen"
 opt.splitright = true
 opt.splitbelow = true
 
--- splits and other chars
-opt.fillchars:append({
-  fold = "╌",
-  horiz = "═",
-  horizup = "╩",
-  horizdown = "╦",
-  vert = "║",
-  vertleft = "╣",
-  vertright = "╠",
-  verthoriz = "╬",
-})
-
 -- folds
 opt.foldlevel = 1 -- Display all folds except top ones
-opt.foldnestmax = 10 -- Create folds only for some number of nested levels
+opt.foldnestmax = 5 -- Create folds only for some number of nested levels
 opt.foldlevelstart = 99 -- Start with all folds open
 
 -- grep

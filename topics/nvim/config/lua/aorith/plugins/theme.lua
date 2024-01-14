@@ -46,7 +46,9 @@ return {
           },
           overrides = function(colors)
             return {
+              -- https://github.com/rebelot/kanagawa.nvim/blob/master/lua/kanagawa/themes.lua
               TelescopeTitle = { fg = colors.theme.ui.special, bold = true },
+              EndOfBuffer = { fg = colors.theme.ui.nontext },
               ["@text.todo.checked.markdown"] = { bg = "NONE", fg = colors.theme.vcs.added },
               ["@text.todo.unchecked.markdown"] = { bg = "NONE", fg = colors.theme.vcs.changed },
             }
