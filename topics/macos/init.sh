@@ -1,7 +1,10 @@
 # vim: ft=bash
 
 # macos only
-[[ "$(uname -s)" == "Darwin" ]] || exit "$_SKIP"
+case $OSTYPE in
+darwin*) true ;;
+*) exit $_SKIP ;;
+esac
 
 # Fix Option+Space inserting non-breaking space (0xA0) " "
 # UPDATE: doesn't work reliably, fixed directly in alacritty

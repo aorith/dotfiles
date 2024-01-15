@@ -1,5 +1,10 @@
 # vim: ft=bash
-[[ "$(uname -s)" != "Darwin" ]] || exit $_SKIP
+
+case $OSTYPE in
+linux*) true ;;
+*) exit $_SKIP ;;
+esac
+
 [[ -z "$CONTAINER_ID" ]] || {
     log_warn "run this outside of a container"
     exit "$_SKIP"

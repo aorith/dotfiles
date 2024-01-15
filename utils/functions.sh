@@ -63,17 +63,24 @@ _link() {
     local _source _link_name _sudo
     _source="$1"
     _link_name="$2"
-    [[ "$(uname -s)" == "Darwin" ]] && _canon_link_name="$(readlink -- "${_link_name}")" ||
-        _canon_link_name="$(readlink -f "${_link_name}")"
+
+    case $OSTYPE in
+    darwin*) _canon_link_name="$(readlink -- "${_link_name}")" ;;
+    linux*) _canon_link_name="$(readlink -f "${_link_name}")" ;;
+    *)
+        echo "Get out of here."
+        exit 1
+        ;;
+    esac
     name="${_link_name/$HOME/\~}"
 
-    # necesito sudo?
+    # need sudo?
     _sudo=''
     if [[ ! -w "$(dirname -- "$_link_name")" ]]; then
         _sudo='sudo'
     fi
 
-    # ya esta linkado?
+    # already linked?
     if [[ -L $_link_name ]] && [[ "${_canon_link_name}" == "${_source}" ]]; then
         [[ -n "$_sudo" ]] && link_success_sudo "$name" || link_success "$name"
         return 0

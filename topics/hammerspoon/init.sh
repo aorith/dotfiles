@@ -1,7 +1,10 @@
 # vim: ft=bash
 
 # mac only
-[[ "$(uname -s)" == "Darwin" ]] || exit $_SKIP
+case $OSTYPE in
+darwin*) true ;;
+*) exit $_SKIP ;;
+esac
 
 ### bootstrap
 create_link "${PWD}/src/hammerspoon" "$HOME/.hammerspoon"

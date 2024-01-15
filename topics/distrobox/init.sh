@@ -1,6 +1,10 @@
 # vim: ft=bash
 
-[[ "$(uname -s)" == "Linux" ]] || exit "$_SKIP"
+case $OSTYPE in
+linux*) true ;;
+*) exit $_SKIP ;;
+esac
+
 type distrobox >/dev/null 2>&1 || {
     log_warn "distrobox is not installed"
     exit "$_SKIP"

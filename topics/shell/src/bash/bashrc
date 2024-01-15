@@ -67,7 +67,8 @@ for p in \
     prepend_to_path "$p" PATH
 done
 
-if [[ "$_OS" == "Darwin" ]]; then
+case $OSTYPE in
+darwin*)
     for p in \
         "$HOME/.docker/bin" \
         "/opt/homebrew/opt/coreutils/libexec/gnubin" \
@@ -81,7 +82,8 @@ if [[ "$_OS" == "Darwin" ]]; then
         "/opt/homebrew/opt/gnu-tar/libexec/gnubin"; do
         prepend_to_path "$p" PATH
     done
-fi
+    ;;
+esac
 
 # Optionally use starship
 # if type starship >/dev/null 2>&1; then

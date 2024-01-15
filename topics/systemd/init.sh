@@ -1,5 +1,8 @@
 # vim: ft=bash
-[[ "$(uname -s)" == "Linux" ]] || exit $_SKIP
+case $OSTYPE in
+linux*) true ;;
+*) exit $_SKIP ;;
+esac
 
 here=$(dirname -- "$0")
 mkdir -p ~/.config/systemd/user/timers.target.wants

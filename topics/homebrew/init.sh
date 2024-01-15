@@ -1,7 +1,10 @@
 # vim: ft=bash
 
 # macos only
-[[ "$(uname -s)" == "Darwin" ]] || exit $_SKIP
+case $OSTYPE in
+darwin*) true ;;
+*) exit $_SKIP ;;
+esac
 
 cd "$(dirname -- "$0")" || exit 1
 
