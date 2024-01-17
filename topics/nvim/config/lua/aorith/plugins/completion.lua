@@ -79,7 +79,6 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp", priority = 99 },
           { name = "path" },
-          { name = "mkdnflow" },
           { name = "nvim_lua" },
           { name = "luasnip" },
           { name = "treesitter" },
