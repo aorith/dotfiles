@@ -41,6 +41,7 @@ return {
         lua = { "stylua" },
         nix = { "alejandra" },
         python = { "black", "isort" },
+        xml = { "xmlformat" },
 
         sh = { "shfmt" },
         bash = { "shfmt" },

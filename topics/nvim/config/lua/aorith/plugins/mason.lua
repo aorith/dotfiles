@@ -13,6 +13,7 @@ return {
       "ruff",
       "shfmt",
       "stylua",
+      "xmlformatter",
       "yamlfix",
 
       -- Linters
