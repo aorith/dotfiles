@@ -1,4 +1,4 @@
-local dark_theme = "randomhue"
+local dark_theme = "kanagawa"
 local light_theme = "catppuccin"
 
 local function detect_background()

@@ -2,6 +2,10 @@
 decorations = "buttonless"
 option_as_alt = "None"
 
+[window.padding]
+x = 4
+y = 4
+
 [font]
 builtin_box_drawing = true
 size = 17

@@ -1,3 +1,10 @@
+[window]
+decorations = "none"
+
+[window.padding]
+x = 4
+y = 4
+
 [shell]
 args = ["bash", "--login"]
 program = "/usr/bin/env"
@@ -6,7 +13,7 @@ program = "/usr/bin/env"
 size = 15
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "Iosevka"
 
 [keyboard]
 bindings = [

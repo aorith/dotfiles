@@ -30,7 +30,3 @@ history = 1000
 
 [selection]
 save_to_clipboard = true
-
-[window.padding]
-x = 7
-y = 7
