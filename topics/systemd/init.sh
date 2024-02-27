@@ -1,7 +1,12 @@
 # vim: ft=bash
 case $OSTYPE in
-linux*) true ;;
-*) exit $_SKIP ;;
+linux*)
+    if [[ -e /etc/nixos ]]; then
+        log_info "Systemd User services do not work on NixOS"
+        exit "$_SKIP"
+    fi
+    ;;
+*) exit "$_SKIP" ;;
 esac
 
 here=$(dirname -- "$0")

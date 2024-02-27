@@ -1,7 +1,9 @@
 # vim: ft=bash
 
 create_link "${PWD}/src/yamllint" "$HOME/.config/yamllint"
-create_link "${PWD}/src/nix" "$HOME/.config/nix"
+if [[ ! -d /etc/nixos ]]; then
+    create_link "${PWD}/src/nix" "$HOME/.config/nix"
+fi
 
 create_link "${PWD}/src/vale" "$HOME/.config/vale"
 mkdir -p "$HOME/.config/vale/styles"
