@@ -6,7 +6,7 @@ x = 4
 y = 4
 
 [shell]
-args = ["bash", "--login"]
+args = ["bash", "-l", "-i"]
 program = "/usr/bin/env"
 
 [font]
