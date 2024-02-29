@@ -1,16 +1,12 @@
 # flatpak remotes --show-details
 
 flatpak_remotes:
-  - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
-
+  - {name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
 flathub_common_packages:
-  - chat.rocket.RocketChat
   - com.bitwarden.desktop
   - com.discordapp.Discord
   - com.github.micahflee.torbrowser-launcher
   - com.github.tchx84.Flatseal
-  - com.google.Chrome
-  - com.mattjakeman.ExtensionManager
   - com.obsproject.Studio
   - com.spotify.Client
   - com.usebottles.bottles # Run Windows apps
@@ -19,15 +15,13 @@ flathub_common_packages:
   - io.dbeaver.DBeaverCommunity
   - io.dbeaver.DBeaverCommunity.Client.mariadb
   - io.dbeaver.DBeaverCommunity.Client.pgsql
-  - io.missioncenter.MissionCenter # CPU, Memory, GPU, ... Monitor
-  - md.obsidian.Obsidian
   - org.blender.Blender
   - org.geany.Geany
-  - org.gimp.GIMP
   - org.gnome.Firmware
-  - org.inkscape.Inkscape
-  - org.keepassxc.KeePassXC
   - org.libreoffice.LibreOffice
   - org.remmina.Remmina
-
-flathub_non_nixos_packages: []
+flathub_non_nixos_packages:
+  - org.gimp.GIMP
+  - com.google.Chrome
+  - com.mattjakeman.ExtensionManager
+  - org.keepassxc.KeePassXC
