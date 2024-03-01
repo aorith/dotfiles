@@ -2,11 +2,7 @@
 
 case $OSTYPE in
 linux*)
-    if [[ -d /etc/nixos ]]; then
-        db_ini="distrobox-nixos.ini"
-    else
-        db_ini="distrobox.ini"
-    fi
+    db_ini="distrobox.ini"
     ;;
 *) exit "$_SKIP" ;;
 esac
