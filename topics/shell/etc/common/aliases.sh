@@ -4,6 +4,7 @@ alias fbox="distrobox enter fbox"
 alias archbox="distrobox enter archbox"
 
 alias ls='ls --color=auto'
+alias ll='ls -Ahl --group-directories-first --color=auto'
 alias diff='diff --color=auto'
 alias htop='TERM=xterm-256color htop'
 alias grep='grep --color=auto'
