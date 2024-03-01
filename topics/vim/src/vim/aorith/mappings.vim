@@ -67,22 +67,10 @@ map! <silent> <F3> <Esc><Esc>:set list!<CR>
 
 " --- PLUGINS {{{ ---
 
-" ALE
-nnoremap <leader>ld :ALEGoToDefinition<CR>
-nnoremap <leader>ll :ALEHover<CR>
-nnoremap <leader>lr :ALEFindReferences<CR>
-
 " VIM-FUGITIVE
 noremap <leader>gb :Git blame<CR>
 
 " VIM-SIGNIFY
 nnoremap <leader>gd :SignifyDiff<CR>:wincmd h<CR>
-
-" FZF
-nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <leader>fg :Rg<CR>
-nnoremap <silent> <leader>fgf :GFiles<CR>
-nnoremap <silent> <leader>fb :Buffers<CR>
-nnoremap <silent> <leader>fl :Lines<CR>
 
 " --- }}} ---

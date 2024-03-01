@@ -32,23 +32,6 @@ let g:omni_sql_default_compl_type = 'syntax'
 " VIM-MARKDOWN (from polyglot)
 let g:vim_markdown_conceal_code_blocks = 0
 
-" FZF
-let g:fzf_layout = { 'window': { 'width': 0.90, 'height': 0.90 } }
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
 " SIGNIFY
 let g:signify_sign_change = '~'
 let g:signify_priority = 9
@@ -67,14 +50,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'lifepillar/vim-mucomplete'
-Plug 'fgsch/vim-varnish'
-
-if empty($SSH_CLIENT)
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-end
-
-Plug 'lifepillar/vim-gruvbox8'
+Plug 'varnishcache-friends/vim-varnish'
 
 call plug#end()
 " }}} -------------------------------------------------------------------------
@@ -86,8 +62,12 @@ call plug#end()
 " {{{ Sources -----------------------------------------------------------------
 source ~/.vim/aorith/basic.vim
 source ~/.vim/aorith/mappings.vim
-source ~/.vim/aorith/commands.vim
 source ~/.vim/aorith/terminal_setup.vim
 source ~/.vim/aorith/autocmds.vim
-source ~/.vim/aorith/themes/gruvbox8.vim
+" }}} -------------------------------------------------------------------------
+
+" {{{ Theme -------------------------------------------------------------------
+set termguicolors
+set background=dark
+colorscheme retrobox " gruvbox lookalike
 " }}} -------------------------------------------------------------------------
