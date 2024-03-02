@@ -3,6 +3,8 @@
 
 [branch]
     color = auto
+    # Sort most recent branches first
+    sort = -committerdate
 
 [user]
     name = Manuel Sanchez Pinar
@@ -14,9 +16,21 @@
 
 [commit]
     gpgsign = true
+    # Add the diff into the commit editor
+    verbose = true
+
+[tag]
+    gpgsign = true
+    # Change sort order of git tag to respect version numbers
+    sort = version:refname
 
 [core]
     pager = less -RS
+
+[pager]
+    diff = riff
+    show = riff
+    log = riff
 
 [diff]
     color = auto
