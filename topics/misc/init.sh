@@ -8,8 +8,10 @@ fi
 create_link "${PWD}/src/vale" "$HOME/.config/vale"
 mkdir -p "$HOME/.config/vale/styles"
 
-if type vale >/dev/null 2>&1; then
+if type -f vale >/dev/null 2>&1; then
     (cd ~/.config/vale && vale sync)
+elif type -f nix >/dev/null 2>&1; then
+    (cd ~/.config/vale && nix run nixpkgs#vale -- sync)
 fi
 
 # https://wiki.archlinux.org/title/PipeWire#Noticeable_audio_delay_or_audible_pop/crack_when_starting_playback
