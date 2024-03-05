@@ -28,6 +28,8 @@ export LESSHISTFILE="$XDG_DATA_HOME/less_history"
 export IPYTHONDIR="$XDG_DATA_HOME/ipython"
 export GOBIN="$HOME/.local/go/bin"
 export GOPATH="$XDG_CACHE_HOME/golang"
+export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
+export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/xcompose"
 
 export FZF_DEFAULT_COMMAND="fd --type f --follow --exclude .git"
 
