@@ -82,17 +82,25 @@ _link() {
 
     # already linked?
     if [[ -L $_link_name ]] && [[ "${_canon_link_name}" == "${_source}" ]]; then
-        [[ -n "$_sudo" ]] && link_success_sudo "$name" || link_success "$name"
+        if [[ -n "$_sudo" ]]; then
+            link_success_sudo "$name"
+        else
+            link_success "$name"
+        fi
         return 0
     fi
 
-    [[ -L $_link_name ]] && ${_sudo} rm "$_link_name"
-    [[ -d "$_lind_name" ]] && {
+    [[ ! -L $_link_name ]] || ${_sudo} rm "$_link_name"
+    [[ ! -d "$_link_name" ]] || {
         link_error "Target is a directory: '$_link_name'."
         exit 1
     }
     if ${_sudo} ln -s "$_source" "$_link_name"; then
-        [[ -n "$_sudo" ]] && link_arrow_sudo "$name" || link_arrow "$name"
+        if [[ -n "$_sudo" ]]; then
+            link_arrow_sudo "$name"
+        else
+            link_arrow "$name"
+        fi
         return 0
     else
         link_error "$name"
