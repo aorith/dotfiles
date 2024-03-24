@@ -2,6 +2,7 @@
 
 mkdir -p ~/.local/bin
 
+# BASH
 mkdir -p ~/.local/share/zsh
 create_link "${PWD}/src/inputrc" "$HOME/.inputrc"
 create_link "${PWD}/src/bash/bashrc" "$HOME/.bashrc"
@@ -11,8 +12,10 @@ if [[ -n "$GOBIN" ]]; then
     mkdir -p "$GOBIN"
 fi
 
-create_link "${PWD}/src/zsh/.zshenv" "$HOME/.zshenv"
-create_link "${PWD}/src/zsh" "$HOME/.config/zsh"
-mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/zsh
+# ZSH
+# create_link "${PWD}/src/zsh/.zshenv" "$HOME/.zshenv"
+# create_link "${PWD}/src/zsh" "$HOME/.config/zsh"
+# mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/zsh
 
+# STARSHIP
 create_link "${PWD}/src/starship.toml" "$HOME/.config/starship.toml"

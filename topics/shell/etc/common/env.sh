@@ -43,7 +43,6 @@ export CLIPBOARD_PASTE="pbpaste"
 
 # Source
 . ~/githome/dotfiles/utils/functions.sh
-. ~/githome/dotfiles/topics/shell/etc/common/aliases.sh
 
 # Paths
 for p in \
@@ -51,7 +50,7 @@ for p in \
     "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/scripts-private/bin" \
     "$HOME/.local/bin" \
     "$HOME/.local/go/bin"; do
-    prepend_to_path "$p" PATH
+    prepend_to_path "$p"
 done
 
 case $OSTYPE in
@@ -96,7 +95,7 @@ darwin*)
         "/opt/homebrew/opt/util-linux/bin" \
         "/opt/homebrew/opt/openssl@3/bin" \
         "/opt/homebrew/opt/gnu-tar/libexec/gnubin"; do
-        prepend_to_path "$p" PATH
+        prepend_to_path "$p"
     done
     ;;
 *) ;;

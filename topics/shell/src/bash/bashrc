@@ -2,3 +2,4 @@
 # shellcheck disable=SC1090,SC2155,SC1091
 
 . ~/githome/dotfiles/topics/shell/etc/common/env.sh
+. ~/githome/dotfiles/topics/shell/etc/common/aliases.sh

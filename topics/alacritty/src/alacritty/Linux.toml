@@ -13,7 +13,7 @@ program = "/usr/bin/env"
 size = 15
 
 [font.normal]
-family = "Iosevka"
+family = "JetBrainsMono"
 
 [keyboard]
 bindings = [

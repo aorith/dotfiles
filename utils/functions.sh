@@ -2,39 +2,21 @@
 
 set -a
 prepend_to_path() {
-    # prepend_to_path <path> [VARIABLE]
-    local v="${2:-PATH}"
-    [[ -n "$1" ]] || return 1
-    case ":${!v}:" in
+    [[ -n "$1" ]] || return 0
+    case ":${PATH}:" in
     *":${1}:"*) ;; # already there
-    *)
-        if [[ -n "${!v}" ]]; then
-            declare -g -x "${v?}"="${1}:${!v}"
-        elif [[ "${!v}" == "$1" ]]; then
-            return
-        else
-            declare -g -x "${v?}"="${1}"
-        fi
-        ;;
+    *) PATH="${1}:${PATH}" ;;
     esac
+    export PATH
 }
 
 append_to_path() {
-    # append_to_path <path> [VARIABLE]
-    local v="${2:-PATH}"
-    [[ -n "$1" ]] || return 1
-    case ":${!v}:" in
+    [[ -n "$1" ]] || return 0
+    case ":${PATH}:" in
     *":${1}:"*) ;; # already there
-    *)
-        if [[ -n "${!v}" ]]; then
-            declare -g -x "${v?}"="${!v}:${1}"
-        elif [[ "${!v}" == "$1" ]]; then
-            return
-        else
-            declare -g -x "${v?}"="${1}"
-        fi
-        ;;
+    *) PATH="${PATH}:${1}" ;;
     esac
+    export PATH
 }
 
 _backup() {

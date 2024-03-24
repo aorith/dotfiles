@@ -34,10 +34,10 @@ repos() {
 }
 
 repos-fzf() {
-    local path
-    path=$(fd \.git$ "$HOME/Syncthing/TES/gitlab" --max-depth 4 --type d --unrestricted --color never | fzf --delimiter / --with-nth -3,-4)
-    if [[ -d "$path" ]]; then
-        cd "${path}/.." || return 1
+    local p
+    p=$(fd \.git$ "$HOME/Syncthing/TES/gitlab" --max-depth 4 --type d --unrestricted --color never | fzf --delimiter / --with-nth -3,-4)
+    if [[ -d "$p" ]]; then
+        cd "${p}/.." || return 1
     fi
 }
 
