@@ -10,6 +10,7 @@ cd "$(dirname -- "$0")" || exit 1
 
 brew update
 brew bundle
+brew upgrade
 brew cleanup
 brew bundle cleanup --force
 
