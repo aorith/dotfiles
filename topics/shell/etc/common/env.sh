@@ -111,11 +111,6 @@ if [[ ! -e /etc/nixos ]]; then
     fi
 fi
 
-# Extra NixOS paths inside of distrobox containers
-if [[ -n "$EXTRA_PATH" ]]; then
-    export PATH="${EXTRA_PATH}:${PATH}"
-fi
-
 # Extra
 if [[ -e "$PRIVATE_DOTFILES" ]]; then
     . "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"

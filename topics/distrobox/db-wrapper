@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+[[ "$OSTYPE" =~ ^linux ]] || {
+    echo "Cannot run this here: OSTYPE=$OSTYPE"
+    exit 1
+}
+[[ -z "$CONTAINER_ID" ]] || {
+    echo "Already inside of the container '$CONTAINER_ID'."
+    exit 1
+}
+type distrobox >/dev/null 2>&1 || {
+    log_warn "distrobox is not installed"
+    exit "$_SKIP"
+}
+
+case "$1" in
+"fbox")
+    name="fbox"
+    [[ ! -d /etc/nixos ]] || {
+        name="fbox-slim"
+    }
+    ;;
+"ubuntu")
+    name="ubuntu"
+    ;;
+*)
+    if [[ -z "$1" ]]; then
+        echo "Missing first argument for the name of the distrobox container"
+        exit 1
+    fi
+    echo "Invalid distrobox name: '$1'."
+    exit 1
+    ;;
+esac
+
+db_ini="distrobox_non_nixos.ini"
+[[ ! -d /etc/nixos ]] || {
+    db_ini="distrobox_nixos.ini"
+}
+
+if ! distrobox ls --no-color | grep -q "$name"; then
+    distrobox assemble create --replace --file "$HOME/githome/dotfiles/topics/distrobox/${db_ini}"
+fi
+
+distrobox enter --clean-path --name "$name" "$name" -- /bin/bash -li
