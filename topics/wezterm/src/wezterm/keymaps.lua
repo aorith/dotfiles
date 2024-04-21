@@ -1,12 +1,11 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-local is_macos = string.find(wezterm.target_triple, "apple") ~= nil
+local is_darwin = wezterm.target_triple:find("darwin") ~= nil
 
 local leader = { key = "b", mods = "CTRL", timeout_milliseconds = 5000 }
 -- 'setxkbmap -option ctrl:nocaps' capslock acts as ctrl
-local wez_mod = is_macos and "CMD" or "ALT"
-local both = { "LEADER", wez_mod }
+local wez_mod = is_darwin and "CMD" or "ALT"
 
 local normal = {}
 local copy_mode = {}
@@ -26,9 +25,7 @@ end
 local rename = act.PromptInputLine({
   description = "New name",
   action = wezterm.action_callback(function(window, pane, line)
-    if line then
-      window:active_tab():set_title(line)
-    end
+    if line then window:active_tab():set_title(line) end
   end),
 })
 
@@ -43,56 +40,46 @@ map(normal, "Insert", "SHIFT", act.PasteFrom("Clipboard"))
 map(normal, "Insert", "CTRL|SHIFT", act.PasteFrom("PrimarySelection"))
 
 -- clear scrollback
-map(
-  normal,
-  "l",
-  "CTRL",
-  act.Multiple({ act.ClearScrollback("ScrollbackOnly"), act.SendKey({ key = "l", mods = "CTRL" }) })
-)
+map(normal, "l", "CTRL", act.Multiple({ act.ClearScrollback("ScrollbackOnly"), act.SendKey({ key = "l", mods = "CTRL" }) }))
 
 -- activate tabs
 for i = 1, 9 do
-  map(normal, "phys:" .. tostring(i), both, act.ActivateTab(i - 1))
+  map(normal, "phys:" .. tostring(i), wez_mod, act.ActivateTab(i - 1))
 end
 -- splits
 map(normal, "d", { "LEADER", wez_mod }, act.SplitHorizontal)
 map(normal, "D", { "LEADER", wez_mod }, act.SplitVertical)
 
 -- move between panes
-map(normal, "h", both, act.ActivatePaneDirection("Left"))
-map(normal, "j", both, act.ActivatePaneDirection("Down"))
-map(normal, "k", both, act.ActivatePaneDirection("Up"))
-map(normal, "l", both, act.ActivatePaneDirection("Right"))
+map(normal, "h", wez_mod, act.ActivatePaneDirection("Left"))
+map(normal, "j", wez_mod, act.ActivatePaneDirection("Down"))
+map(normal, "k", wez_mod, act.ActivatePaneDirection("Up"))
+map(normal, "l", wez_mod, act.ActivatePaneDirection("Right"))
 -- rotate panes
-map(normal, "Enter", both, act.RotatePanes("Clockwise"))
+map(normal, "Enter", wez_mod, act.RotatePanes("Clockwise"))
 -- spawn
-map(normal, "t", both, act.SpawnCommandInNewTab({ cwd = os.getenv("HOME") }))
-map(normal, "n", both, act.SpawnWindow)
+map(normal, "t", wez_mod, act.SpawnCommandInNewTab({ cwd = os.getenv("HOME") }))
+map(normal, "n", wez_mod, act.SpawnWindow)
 -- rename
-map(normal, "r", both, rename)
+map(normal, "r", wez_mod, rename)
 -- close
-map(normal, "w", both, act.CloseCurrentPane({ confirm = true }))
+map(normal, "w", wez_mod, act.CloseCurrentPane({ confirm = true }))
 -- search
-map(
-  normal,
-  "f",
-  both,
-  act.Multiple({ act.ActivateCopyMode, act.CopyMode("ClearPattern"), act.Search("CurrentSelectionOrEmptyString") })
-)
+map(normal, "f", wez_mod, act.Multiple({ act.ActivateCopyMode, act.CopyMode("ClearPattern"), act.Search("CurrentSelectionOrEmptyString") }))
 -- zoom
-map(normal, "z", both, act.TogglePaneZoomState)
+map(normal, "z", wez_mod, act.TogglePaneZoomState)
 map(normal, "F12", "", act.ToggleFullScreen)
 -- font size
 map(normal, "-", { "CTRL", "SUPER" }, act.DecreaseFontSize)
 map(normal, "+", { "CTRL", "SUPER" }, act.IncreaseFontSize)
 map(normal, "0", { "CTRL", "SUPER" }, act.ResetFontSize)
 -- palette & debug overlay
-map(normal, "p", both, act.ActivateCommandPalette)
-map(normal, "o", both, act.ShowDebugOverlay)
+map(normal, "p", wez_mod, act.ActivateCommandPalette)
+map(normal, "o", wez_mod, act.ShowDebugOverlay)
 -- copy mode
-map(normal, "x", both, act.Multiple({ act.CopyMode("ClearPattern"), act.ActivateCopyMode }))
+map(normal, "x", wez_mod, act.Multiple({ act.CopyMode("ClearPattern"), act.ActivateCopyMode }))
 -- quickselect
-map(normal, "Space", both, act.QuickSelect)
+map(normal, "Space", wez_mod, act.QuickSelect)
 
 --- copy mode
 map(copy_mode, "h", "NONE", act.CopyMode("MoveLeft"))
@@ -116,28 +103,13 @@ map(copy_mode, "V", "SHIFT", act.CopyMode({ SetSelectionMode = "Line" }))
 map(copy_mode, "v", "CTRL", act.CopyMode({ SetSelectionMode = "Block" }))
 
 map(copy_mode, "y", "NONE", act.Multiple({ act.CopyTo("Clipboard"), act.ClearSelection, act.CopyMode("Close") }))
-map(
-  copy_mode,
-  "c",
-  "NONE",
-  act.Multiple({ act.CopyTo("Clipboard"), act.ClearSelection, act.CopyMode("ClearSelectionMode") })
-)
+map(copy_mode, "c", "NONE", act.Multiple({ act.CopyTo("Clipboard"), act.ClearSelection, act.CopyMode("ClearSelectionMode") }))
 
-map(
-  copy_mode,
-  "/",
-  "SHIFT",
-  act.Multiple({ act.CopyMode("ClearSelectionMode"), act.Search("CurrentSelectionOrEmptyString") })
-)
+map(copy_mode, "/", "SHIFT", act.Multiple({ act.CopyMode("ClearSelectionMode"), act.Search("CurrentSelectionOrEmptyString") }))
 map(copy_mode, "n", "NONE", act.CopyMode("NextMatch"))
 map(copy_mode, "N", "SHIFT", act.CopyMode("PriorMatch"))
 
-map(
-  copy_mode,
-  "Escape",
-  "NONE",
-  act.Multiple({ act.CopyMode("ClearPattern"), act.CopyMode("Close"), act.ClearSelection })
-)
+map(copy_mode, "Escape", "NONE", act.Multiple({ act.CopyMode("ClearPattern"), act.CopyMode("Close"), act.ClearSelection }))
 
 --- search mode
 map(search_mode, "r", "CTRL", act.CopyMode("CycleMatchType"))

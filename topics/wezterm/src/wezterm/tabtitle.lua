@@ -3,16 +3,12 @@ local wezterm = require("wezterm")
 -- Equivalent to POSIX basename(3)
 -- Given "/foo/bar" returns "bar"
 -- Given "c:\\foo\\bar" returns "bar"
-local function basename(s)
-  return string.gsub(s, "(.*[/\\])(.*)", "%2")
-end
+local function basename(s) return string.gsub(s, "(.*[/\\])(.*)", "%2") end
 
 local function tab_title(tab_info)
   local title = tab_info.tab_title
   -- if the tab title is explicitly set, take that
-  if title and #title > 0 then
-    return title
-  end
+  if title and #title > 0 then return title end
   return basename(tab_info.active_pane.foreground_process_name)
 end
 

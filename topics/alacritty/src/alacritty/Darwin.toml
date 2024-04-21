@@ -7,7 +7,6 @@ x = 4
 y = 4
 
 [font]
-builtin_box_drawing = true
 size = 17
 
 [font.normal]
