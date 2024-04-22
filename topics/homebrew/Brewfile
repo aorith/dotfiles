@@ -36,7 +36,7 @@ brew "sops"
 brew "sox" # sound sample translator (gp.nvim)
 brew "starship"
 brew "the_silver_searcher"
-brew "tmux"
+#brew "tmux"
 brew "tree"
 brew "util-linux"
 brew "vim"

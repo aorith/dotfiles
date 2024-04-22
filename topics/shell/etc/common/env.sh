@@ -41,12 +41,6 @@ export LS_COLORS="*.7z=01;31:*.aac=00;36:*.ace=01;31:*.alz=01;31:*.arc=01;31:*.a
 export CLIPBOARD_COPY="pbcopy"
 export CLIPBOARD_PASTE="pbpaste"
 
-# Damn it, MacOs
-if [[ -x /usr/libexec/path_helper ]]; then
-    unset PATH
-    eval "$(/usr/libexec/path_helper -s)"
-fi
-
 # Source
 . ~/githome/dotfiles/utils/functions.sh
 
@@ -121,3 +115,5 @@ esac
 if [[ -e "$PRIVATE_DOTFILES" ]]; then
     . "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"
 fi
+
+prepend_to_path_commit
