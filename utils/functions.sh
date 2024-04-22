@@ -3,8 +3,9 @@
 set -a
 prepend_to_path() {
     [[ -n "$1" ]] || return 0
-    case ":${MY_PATH}:" in
-    *":${1}:"*) ;; # already there
+    case ":${MY_PATH:-unset}:" in
+    *":${1}:"*) ;;             # already there
+    ":unset:") MY_PATH="$1" ;; # was empty
     *) MY_PATH="${1}:${MY_PATH}" ;;
     esac
     export MY_PATH
@@ -17,8 +18,9 @@ prepend_to_path_commit() {
 
 append_to_path() {
     [[ -n "$1" ]] || return 0
-    case ":${PATH}:" in
-    *":${1}:"*) ;; # already there
+    case ":${PATH:-unset}:" in
+    *":${1}:"*) ;;             # already there
+    ":unset:") MY_PATH="$1" ;; # was empty
     *) PATH="${PATH}:${1}" ;;
     esac
     export PATH
