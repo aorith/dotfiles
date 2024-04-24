@@ -10,7 +10,7 @@ y = 4
 size = 17
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "IosevkaTerm Nerd Font"
 style = "Regular"
 
 [[keyboard.bindings]]

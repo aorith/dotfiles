@@ -48,6 +48,7 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-iosevka-nerd-font"
+cask "font-iosevka-term-nerd-font"
 
 cask "adobe-acrobat-reader"
 cask "alacritty"

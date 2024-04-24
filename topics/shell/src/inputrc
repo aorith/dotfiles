@@ -1,9 +1,15 @@
+# https://man.archlinux.org/man/readline.3
+
 set bell-style none
+set enable-bracketed-paste On
+
+set visible-stats On
 set colored-stats On
 set colored-completion-prefix On
-set visible-stats On
 set mark-symlinked-directories On
-set menu-complete-display-prefix On
-set enable-bracketed-paste On
+
 set show-all-if-ambiguous On
 set show-all-if-unmodified On
+set menu-complete-display-prefix On
+set completion-query-items 1000
+
