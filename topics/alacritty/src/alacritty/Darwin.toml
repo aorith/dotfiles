@@ -9,9 +9,9 @@ y = 4
 [font]
 size = 17
 
-[font.normal]
-family = "IosevkaTerm Nerd Font"
-style = "Regular"
+# Nerd Font Mono == Fully monospaced, smaller icons
+# Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
+normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
 
 [[keyboard.bindings]]
 action = "Paste"
