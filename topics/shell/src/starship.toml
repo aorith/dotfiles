@@ -3,36 +3,16 @@
 
 add_newline = true
 
-format = """
-$time\
-$container\
-${custom.container}\
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$aws\
-$terraform\
-$nix_shell\
-$python\
-$jobs\
-$cmd_duration\
-$status\
-$line_break\
-$character"""
+format = '$all$git_branch$git_commit$git_state$git_status${custom.container}$jobs$status$character'
 
 [time]
 disabled = false
-time_format = '%H:%M'
+time_format = '%H:%M:%S'
 format = '[$time]($style) '
 style = 'white dimmed'
 
 [jobs]
-format = '[$number]($style) '
+format = '[$number jobs]($style) '
 number_threshold = 1
 
 [status]
@@ -46,12 +26,13 @@ truncate_to_repo = false
 format = "[$path]($style)[ $read_only ]($read_only_style)"
 
 [git_status]
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
+disabled = false
 
 [git_metrics]
-disabled = false
+disabled = true
+
+[git_commit]
+tag_disabled = false
 
 [python]
 disabled = false
@@ -63,13 +44,10 @@ disabled = true
 [docker_context]
 disabled = true
 
-[container]
-format='[$symbol]($style) '
-
 [custom.container]
 description = "Active container"
-command = 'echo $CONTAINER_ID'
-when = ''' [[ -n $CONTAINER_ID ]] '''
+when = ''' [[ -n "$CONTAINER_ID" ]] '''
+command = 'echo -n "$CONTAINER_ID"'
 style = "bold red"
 format = '[\[$output\]]($style) '
 disabled = false

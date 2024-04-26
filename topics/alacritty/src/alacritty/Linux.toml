@@ -12,8 +12,10 @@ program = "/usr/bin/env"
 [font]
 size = 15
 
-[font.normal]
-family = "JetBrainsMono"
+# Nerd Font Mono == Fully monospaced, smaller icons
+# Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
+normal = { family = "IosevkaTerm Nerd Font" }
+#normal = { family = "Input Mono Condensed" }
 
 [keyboard]
 bindings = [
