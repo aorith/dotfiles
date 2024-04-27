@@ -12,26 +12,32 @@ local function tab_title(tab_info)
   return basename(tab_info.active_pane.foreground_process_name)
 end
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local title = tab_title(tab)
-  local idx = tostring(tab.tab_index + 1)
-  local zoomed = tab.active_pane.is_zoomed and "[z]" or ""
+local M = {}
 
-  local background = "#333333"
-  local foreground = "#ebdbb2"
+function M.setup()
+  wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local title = tab_title(tab)
+    local idx = tostring(tab.tab_index + 1)
+    local zoomed = tab.active_pane.is_zoomed and "[z]" or ""
 
-  if tab.is_active then
-    background = "#405578"
-    foreground = "#ffffff"
-  end
+    local background = "#333333"
+    local foreground = "#ebdbb2"
 
-  return {
-    { Background = { Color = background } },
-    { Foreground = { Color = foreground } },
-    { Text = " " .. zoomed },
-    { Attribute = { Intensity = "Bold" } },
-    { Text = idx },
-    { Attribute = { Intensity = "Normal" } },
-    { Text = ":" .. title .. " " },
-  }
-end)
+    if tab.is_active then
+      background = "#405578"
+      foreground = "#ffffff"
+    end
+
+    return {
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
+      { Text = " " .. zoomed },
+      { Attribute = { Intensity = "Bold" } },
+      { Text = idx },
+      { Attribute = { Intensity = "Normal" } },
+      { Text = ":" .. title .. " " },
+    }
+  end)
+end
+
+return M
