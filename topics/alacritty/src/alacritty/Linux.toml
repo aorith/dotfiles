@@ -14,10 +14,15 @@ size = 15
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
-normal = { family = "IosevkaTerm Nerd Font" }
-#normal = { family = "Input Mono Condensed" }
+#normal = { family = "IosevkaTerm Nerd Font" }
+
+#normal = { family = "IosevkaInputFixed" }
+#normal = { family = "IosevkaInputFixed SmEx" }
+#normal = { family = "IosevkaInputFixed Extended" }
+
+#normal = { family = "IosevkaPragmataFixed" }
+normal = { family = "IosevkaPragmataFixed SmEx" }
+#normal = { family = "IosevkaPragmataFixed Extended" }
 
 [keyboard]
-bindings = [
-{ key = "N", mods = "Alt|Shift", action = "SpawnNewInstance" },
-]
+bindings = [{ key = "N", mods = "Alt|Shift", action = "SpawnNewInstance" }]
