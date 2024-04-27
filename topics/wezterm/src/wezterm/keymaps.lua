@@ -4,13 +4,6 @@ local act = wezterm.action
 local is_darwin = wezterm.target_triple:find("darwin") ~= nil
 local mod = is_darwin and "CMD" or "ALT"
 
-local rename = act.PromptInputLine({
-  description = "Name: ",
-  action = wezterm.action_callback(function(window, pane, line)
-    if line then window:active_tab():set_title(line) end
-  end),
-})
-
 local M = {}
 
 M.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 5000 }
@@ -32,6 +25,9 @@ M.keys = {
   { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
   { key = "v", mods = mod, action = act.PasteFrom("Clipboard") },
 
+  { key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-1) },
+  { key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(1) },
+
   { key = "D", mods = mod, action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "d", mods = mod, action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
@@ -45,9 +41,48 @@ M.keys = {
 
   { key = "l", mods = "CTRL", action = act.Multiple({ { ClearScrollback = "ScrollbackOnly" }, { SendKey = { key = "l", mods = "CTRL" } } }) },
   { key = "n", mods = mod, action = act.SpawnWindow },
-  { key = "o", mods = mod, action = act.ShowDebugOverlay },
-  { key = "p", mods = mod, action = act.ActivateCommandPalette },
-  { key = "r", mods = mod, action = rename },
+  { key = "o", mods = "LEADER", action = act.ShowDebugOverlay },
+  { key = "p", mods = "LEADER", action = act.ActivateCommandPalette },
+  {
+    -- rename pane
+    key = "r",
+    mods = mod,
+    action = act.PromptInputLine({
+      description = wezterm.format({
+        { Attribute = { Intensity = "Bold" } },
+        { Foreground = { AnsiColor = "Fuchsia" } },
+        { Text = "Rename pane to" },
+      }),
+      action = wezterm.action_callback(function(window, _, line)
+        if line then window:active_tab():set_title(line) end
+      end),
+    }),
+  },
+  {
+    -- create a new workspace with a given name
+    key = "T",
+    mods = mod,
+    action = act.PromptInputLine({
+      description = wezterm.format({
+        { Attribute = { Intensity = "Bold" } },
+        { Foreground = { AnsiColor = "Fuchsia" } },
+        { Text = "Enter name for new workspace" },
+      }),
+      action = wezterm.action_callback(function(window, pane, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line and line ~= "" then window:perform_action(
+          act.SwitchToWorkspace({
+            name = line,
+          }),
+          pane
+        ) end
+      end),
+    }),
+  },
+  { key = ",", mods = mod, action = act.SwitchWorkspaceRelative(1) },
+
   { key = "t", mods = mod, action = act.SpawnCommandInNewTab({ cwd = os.getenv("HOME"), domain = "CurrentPaneDomain" }) },
   { key = "v", mods = mod, action = act.PasteFrom("Clipboard") },
   { key = "w", mods = mod, action = act.CloseCurrentPane({ confirm = true }) },
@@ -69,6 +104,8 @@ M.keys = {
   { key = "Insert", mods = "CTRL", action = act.CopyTo("PrimarySelection") },
   { key = "Insert", mods = "SHIFT|CTRL", action = act.PasteFrom("PrimarySelection") },
   { key = "F12", mods = "NONE", action = act.ToggleFullScreen },
+
+  { key = "o", mods = mod, action = act.EmitEvent("trigger-vim-with-scrollback") },
 }
 
 M.key_tables = {
