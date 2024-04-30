@@ -24,10 +24,10 @@ __ps1_git_info_f() {
     fi
 
     # Get the status of the working tree
-    status="$(git status --short --untracked-files=all | awk '{ count[$1]++; } END { out=""; for (s in count) { if (out != "") { out = out " "; } out = out s ":" count[s]; } print out; }')"
-    if [[ -n "$status" ]]; then
-        branch="${branch} ${my_rst}${my_gry}($status)"
-    fi
+    # status="$(git status --short --untracked-files=all --porcelain | awk '{ count[$1]++; } END { out=""; for (s in count) { if (out != "") { out = out " "; } out = out s ":" count[s]; } print out; }')"
+    # if [[ -n "$status" ]]; then
+    #     branch="${branch} ${my_rst}${my_gry}($status)"
+    # fi
 
     __ps1_git_info="${my_grn2}${branch}${my_rst} "
 }
