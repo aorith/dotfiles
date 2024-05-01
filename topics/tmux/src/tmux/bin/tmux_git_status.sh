@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+# $1 = current path
+# $2 = pane is active
+# $3 = current command
+
 [[ "$2" == "1" ]] || exit
+[[ ! "$3" =~ ^ssh|docker|podman ]] || exit
 cd "$1" || exit 1
 
 my_rst="#[default]"
@@ -31,4 +36,5 @@ if [[ -n "$status" ]]; then
     branch="${branch} ${my_rst}${my_gry}($status)"
 fi
 
-echo -n "=[${my_grn2}${branch}${my_rst}]"
+#echo -n "=[${my_grn2}${branch}${my_rst}]"
+echo -n "${my_grn2}${branch}${my_rst}"
