@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# $1 == session_name
+
+if [[ "$1" == "popup" ]]; then
+    tmux detach-client -s "popup"
+else
+    tmux new-session -d -s popup 2>/dev/null || true
+    tmux set-option -t popup detach-on-destroy on 2>/dev/null || true
+    tmux display-popup -w 90% -h 90% -E "tmux new-session -D -A -s popup"
+fi
