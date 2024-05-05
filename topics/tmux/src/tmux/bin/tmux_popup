@@ -8,5 +8,5 @@ if [[ "$1" == "popup" ]]; then
 else
     tmux new-session -d -s "popup" -c "$2" 2>/dev/null || true
     tmux set-option -t "popup" detach-on-destroy on 2>/dev/null || true
-    tmux display-popup -w 90% -h 90% -E "tmux new-session -D -A -s 'popup' -c '$2'"
+    tmux display-popup -w 100% -h 100% -E "tmux new-session -D -A -s 'popup' -c '$2'"
 fi
