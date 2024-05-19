@@ -1,9 +1,8 @@
 # vim: ft=bash
+# To update distroboxes, delete them and run their alias to db-wrapper.
 
 case $OSTYPE in
-linux*)
-    db_ini="distrobox.ini"
-    ;;
+linux*) ;;
 *) exit "$_SKIP" ;;
 esac
 
