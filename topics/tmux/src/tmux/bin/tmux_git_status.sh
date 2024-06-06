@@ -8,11 +8,11 @@
 [[ ! "$3" =~ ^ssh|docker|podman ]] || exit
 cd "$1" || exit 1
 
-my_rst="#[default]"
+my_rst="#[nobold]"
 my_bld="#[bold]"
-my_gry="#[fg=gray]"
-my_grn2="#[fg=lightgreen]"
-my_blu2="#[fg=blue]"
+my_gry=""
+my_grn2=""
+my_blu2=""
 
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     exit
@@ -36,5 +36,4 @@ if [[ -n "$status" ]]; then
     branch="${branch} ${my_rst}${my_gry}($status)"
 fi
 
-#echo -n "=[${my_grn2}${branch}${my_rst}]"
 echo -n "${my_grn2}${branch}${my_rst}"
