@@ -10,9 +10,6 @@ cd "$1" || exit 1
 
 my_rst="#[nobold]"
 my_bld="#[bold]"
-my_gry=""
-my_grn2=""
-my_blu2=""
 
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     exit
@@ -22,18 +19,18 @@ fi
 branch="${my_bld}$(git symbolic-ref --short HEAD 2>/dev/null || {
     echo -n "D "
     git rev-parse --short HEAD
-})"
+})${my_rst}"
 
 # Check for tag, fallback to commit hash if none
 tag="$(git describe --exact-match HEAD 2>/dev/null)"
 if [[ -n "$tag" ]]; then
-    branch="${branch} ${my_blu2}${tag}${my_rst}"
+    branch="${branch} ${tag}"
 fi
 
 # Get the status of the working tree
 status="$(git status --short --untracked-files=all --porcelain | awk '{ count[$1]++; } END { out=""; for (s in count) { if (out != "") { out = out " "; } out = out s ":" count[s]; } print out; }')"
 if [[ -n "$status" ]]; then
-    branch="${branch} ${my_rst}${my_gry}($status)"
+    branch="${branch} ($status)"
 fi
 
-echo -n "${my_grn2}${branch}${my_rst}"
+echo -n "${branch}"
