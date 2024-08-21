@@ -23,4 +23,4 @@
     state: present
     method: user
     remote: "flathub"
-  when: ansible_os_family != "NixOS" and flatpak_non_nixos_packages is defined and flatpak_non_nixos_packages | length > 0
+  when: ansible_os_family != "NixOS" and flathub_non_nixos_packages is defined and flathub_non_nixos_packages | length > 0

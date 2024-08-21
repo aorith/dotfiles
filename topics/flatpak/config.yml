@@ -25,3 +25,5 @@ flathub_non_nixos_packages:
   - com.google.Chrome
   - com.mattjakeman.ExtensionManager
   - org.keepassxc.KeePassXC
+  - com.valvesoftware.Steam
+  - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
