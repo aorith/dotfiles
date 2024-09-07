@@ -11,3 +11,8 @@ linux*)
     ;;
 *) ;;
 esac
+
+create_link "${PWD}/src/vale" "$HOME/.config/vale"
+if type vale >/dev/null 2>&1; then
+    vale --config ~/.config/vale/vale.ini sync >/dev/null 2>&1
+fi
