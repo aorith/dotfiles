@@ -9,37 +9,104 @@
     exit 1
 }
 type distrobox >/dev/null 2>&1 || {
-    log_warn "distrobox is not installed"
-    exit "$_SKIP"
-}
-
-case "$1" in
-"fbox")
-    name="fbox"
-    [[ ! -d /etc/nixos ]] || {
-        name="fbox-slim"
-    }
-    ;;
-"ubuntu")
-    name="ubuntu"
-    ;;
-*)
-    if [[ -z "$1" ]]; then
-        echo "Missing first argument for the name of the distrobox container"
-        exit 1
-    fi
-    echo "Invalid distrobox name: '$1'."
+    echo "distrobox is not installed"
     exit 1
-    ;;
-esac
-
-db_ini="distrobox_non_nixos.ini"
-[[ ! -d /etc/nixos ]] || {
-    db_ini="distrobox_nixos.ini"
 }
 
-if ! distrobox ls --no-color | grep -q "$name"; then
-    distrobox assemble create --replace --file "$HOME/githome/dotfiles/topics/distrobox/${db_ini}"
-fi
+# Symlink directories mounted into /mnt which will be present inside of the container at /run/host/mnt/
+while read -r mp; do extra_create_args+=("--init-hooks" "ln -s '/run/host${mp}' '$mp'"); done < <(find /mnt/ -maxdepth 1 -mindepth 1 -type d)
 
-distrobox enter --clean-path --name "$name" "$name" -- /bin/bash -li
+set -x
+if [[ -d /etc/nixos ]]; then
+    case "$1" in
+    fbox)
+        distrobox create \
+            --image ghcr.io/aorith/fbox:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/fbox \
+            --name fbox &&
+            distrobox enter --clean-path fbox
+        ;;
+    fbox-slim)
+        distrobox create \
+            --image ghcr.io/aorith/fbox-slim:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/fbox-slim \
+            --name fbox-slim &&
+            distrobox enter --clean-path fbox-slim
+        ;;
+    archbox)
+        distrobox create \
+            --image ghcr.io/aorith/archbox:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/archbox \
+            --name archbox &&
+            distrobox enter --clean-path archbox
+        ;;
+    ubox)
+        distrobox create \
+            --image docker.io/ubuntu:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/ubox \
+            --name ubox &&
+            distrobox enter --clean-path ubox
+        ;;
+    tbox)
+        distrobox create \
+            --image registry.opensuse.org/opensuse/distrobox:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/tbox \
+            --name tbox &&
+            distrobox enter --clean-path tbox
+        ;;
+    *)
+        echo "Unknown distrobox: '$1'"
+        exit 1
+        ;;
+    esac
+else
+    case "$1" in
+    fbox)
+        distrobox create \
+            --image ghcr.io/aorith/fbox:latest \
+            "${extra_create_args[@]}" \
+            --name fbox &&
+            distrobox enter fbox
+        ;;
+    fbox-slim)
+        distrobox create \
+            --image ghcr.io/aorith/fbox-slim:latest \
+            "${extra_create_args[@]}" \
+            --name fbox-slim &&
+            distrobox enter fbox-slim
+        ;;
+    archbox)
+        distrobox create \
+            --image ghcr.io/aorith/archbox:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/archbox \
+            --name archbox &&
+            distrobox enter archbox
+        ;;
+    ubox)
+        distrobox create \
+            --image docker.io/ubuntu:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/ubox \
+            --name ubox &&
+            distrobox enter ubox
+        ;;
+    tbox)
+        distrobox create \
+            --image registry.opensuse.org/opensuse/distrobox:latest \
+            "${extra_create_args[@]}" \
+            --home ~/homes/tbox \
+            --name tbox &&
+            distrobox enter tbox
+        ;;
+    *)
+        echo "Unknown distrobox: '$1'"
+        exit 1
+        ;;
+    esac
+fi

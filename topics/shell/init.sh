@@ -6,9 +6,8 @@ mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/zsh
 create_link "${PWD}/src/inputrc" "$HOME/.inputrc"
 
-# Managed by nix
-#create_link "${PWD}/src/bash/bashrc" "$HOME/.bashrc"
-#create_link "${PWD}/src/bash/bash_profile" "$HOME/.bash_profile"
+create_link "${PWD}/src/bash/bashrc" "$HOME/.bashrc"
+create_link "${PWD}/src/bash/bash_profile" "$HOME/.bash_profile"
 
 source "${PWD}/etc/common/env.sh"
 if [[ -n "$GOBIN" ]]; then
