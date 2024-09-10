@@ -13,8 +13,7 @@ type distrobox >/dev/null 2>&1 || {
     exit 1
 }
 
-# Symlink directories mounted into /mnt which will be present inside of the container at /run/host/mnt/
-while read -r mp; do extra_create_args+=("--init-hooks" "ln -s '/run/host${mp}' '$mp'"); done < <(find /mnt/ -maxdepth 1 -mindepth 1 -type d)
+extra_create_args=()
 
 set -x
 if [[ -d /etc/nixos ]]; then
