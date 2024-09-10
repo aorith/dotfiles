@@ -49,6 +49,7 @@ brew "yq"
 # cask "font-hack-nerd-font"
 # cask "font-iosevka-nerd-font"
 # cask "font-iosevka-term-nerd-font"
+cask "font-recursive-mono-nerd-font"
 
 cask "adobe-acrobat-reader"
 cask "alacritty"
