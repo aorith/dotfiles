@@ -9,7 +9,7 @@
 [user]
     name = Manuel Sanchez Pinar
     email = aomanu@gmail.com
-    signingKey = "~/.ssh/id_rsa.pub"
+    signingKey = "~/.ssh/id_ed25519.pub"
 
 [gpg]
     format = ssh
