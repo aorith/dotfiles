@@ -15,7 +15,12 @@ size = 17
 #normal = { family = "SauceCodePro Nerd Font", style = "Regular" }
 #normal = { family = "JetBrainsMono Nerd Font" }
 #normal = { family = "RecMonoLinear Nerd Font" }
-normal = { family = "RecMonoCasual Nerd Font" }
+#normal = { family = "RecMonoCasual Nerd Font" }
+
+# LG = Large Glyphs
+# L, M, S = spacing
+# DZ = dotted zero
+normal = { family = "MesloLGS Nerd Font" }
 
 #normal = { family = "IosevkaInputFixed" }
 #normal = { family = "IosevkaInputFixed SmEx" }
