@@ -27,6 +27,9 @@ if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then
     export CONTAINER_ID=$(awk -F '=' '/^name=/ {print $2}' /run/.containerenv | tr -d '"')
 fi
 
+# Fzf
+eval "$(fzf --bash)"
+
 # Optionally use starship
 # if type starship >/dev/null 2>&1; then
 #     set_win_title() {
