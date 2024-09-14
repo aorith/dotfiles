@@ -15,6 +15,7 @@ flathub_common_packages:
   - io.dbeaver.DBeaverCommunity
   - io.dbeaver.DBeaverCommunity.Client.mariadb
   - io.dbeaver.DBeaverCommunity.Client.pgsql
+  - me.iepure.devtoolbox
   - org.blender.Blender
   - org.geany.Geany
   - org.gnome.Firmware
