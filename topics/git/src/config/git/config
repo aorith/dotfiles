@@ -27,10 +27,10 @@
 [core]
     pager = less -RS
 
-[pager]
-    diff = riff
-    show = riff
-    log = riff
+; [pager]
+;     diff = riff
+;     show = riff
+;     log = riff
 
 [diff]
     color = auto
