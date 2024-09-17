@@ -9,7 +9,12 @@ linux*)
 *) exit "$_SKIP" ;;
 esac
 
-here=$(dirname -- "$0")
+case $HOSTNAME in
+trantor) ;;
+*) exit "$_SKIP" ;;
+esac
+
+here="$(dirname -- "$(readlink -f "$0")")"
 mkdir -p ~/.config/systemd/user/timers.target.wants
 mkdir -p ~/.config/systemd/user/default.target.wants
 
