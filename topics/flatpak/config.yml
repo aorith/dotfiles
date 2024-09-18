@@ -5,8 +5,10 @@ flatpak_remotes:
 flathub_common_packages:
   - com.bitwarden.desktop
   - com.discordapp.Discord
+  - com.github.PintaProject.Pinta
   - com.github.micahflee.torbrowser-launcher
   - com.github.tchx84.Flatseal
+  - com.github.xournalpp.xournalpp
   - com.obsproject.Studio
   - com.spotify.Client
   - com.usebottles.bottles # Run Windows apps
