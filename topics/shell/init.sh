@@ -21,3 +21,11 @@ fi
 
 # STARSHIP
 create_link "${PWD}/src/starship.toml" "$HOME/.config/starship.toml"
+
+# TINTED SHELL
+if [[ -d "$HOME/.config/tinted-theming/tinted-shell" ]]; then
+    (cd "$HOME/.config/tinted-theming/tinted-shell" && git pull) >/dev/null
+else
+    git clone https://github.com/tinted-theming/tinted-shell.git \
+        "$HOME/.config/tinted-theming/tinted-shell"
+fi
