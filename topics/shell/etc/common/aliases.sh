@@ -25,3 +25,5 @@ alias fbox-slim="~/githome/dotfiles/topics/distrobox/db-wrapper fbox-slim"
 alias archbox="~/githome/dotfiles/topics/distrobox/db-wrapper archbox"
 alias tbox="~/githome/dotfiles/topics/distrobox/db-wrapper tbox"
 alias ubox="~/githome/dotfiles/topics/distrobox/db-wrapper ubox"
+
+alias pick-shell-theme="~/githome/dotfiles/topics/shell/bin/pick-shell-theme.sh"
