@@ -29,4 +29,10 @@ normal = { family = "RecMonoLinear Nerd Font" }
 #normal = { family = "IosevkaPragmataFixed Extended" }
 
 [keyboard]
-bindings = [{ key = "N", mods = "Alt|Shift", action = "SpawnNewInstance" }]
+bindings = [
+  { key = "N", mods = "Alt|Shift", action = "SpawnNewInstance" },
+
+  # Disable forward and backward search
+  { key = "F", mods = "Shift|Control", action = "ReceiveChar" },
+  { key = "B", mods = "Shift|Control", action = "ReceiveChar" },
+]
