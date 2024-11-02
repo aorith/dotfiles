@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if type delta >/dev/null 2>&1; then
+    exec delta
+else
+    exec less -F
+fi

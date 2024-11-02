@@ -74,9 +74,12 @@ linux*)
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         ln -sf "$DOTFILES/topics/shell/bin/wl-copy" ~/.local/bin/pbcopy
         ln -sf "$DOTFILES/topics/shell/bin/wl-paste" ~/.local/bin/pbpaste
+        mkdir -p "$HOME/.config/environment.d"
+        cp "$DOTFILES/topics/shell/etc/common/environment.d/wayland.conf" "$HOME"/.config/environment.d/
     else
         ln -sf "$DOTFILES/topics/shell/bin/xcopy" ~/.local/bin/pbcopy
         ln -sf "$DOTFILES/topics/shell/bin/xpaste" ~/.local/bin/pbpaste
+        rm -f "$HOME"/.config/environment.d/wayland.conf
     fi
     ;;
 darwin*)

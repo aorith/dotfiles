@@ -25,12 +25,7 @@
     sort = version:refname
 
 [core]
-    pager = less -RS
-
-; [pager]
-;     diff = riff
-;     show = riff
-;     log = riff
+    pager = pager
 
 [diff]
     color = auto
