@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-wl-copy && wl-copy -p < <(wl-paste --no-newline)
+# https://bbs.archlinux.org/viewtopic.php?id=283588
+wl-copy --type text/plain && wl-copy -p < <(wl-paste --no-newline)
+
+#wl-copy && wl-copy -p < <(wl-paste --no-newline)
