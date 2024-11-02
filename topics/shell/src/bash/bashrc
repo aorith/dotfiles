@@ -33,7 +33,9 @@ if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then
 fi
 
 # Fzf
-eval "$(fzf --bash)"
+if type fzf >/dev/null 2>&1; then
+    eval "$(fzf --bash)"
+fi
 
 # Optionally use starship
 # if type starship >/dev/null 2>&1; then
