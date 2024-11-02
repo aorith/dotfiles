@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+[[ "$OSTYPE" =~ ^linux ]] || {
+    echo "Cannot run this here: OSTYPE=$OSTYPE"
+    exit 1
+}
+[[ -z "$CONTAINER_ID" ]] || {
+    echo "Already inside of the container '$CONTAINER_ID'."
+    exit 1
+}
+type toolbox >/dev/null 2>&1 || {
+    echo "toolbox is not installed"
+    exit 1
+}
+
+case "$1" in
+    fbox)
+        if ! toolbox list --containers | awk '{print $2}' | grep -qE '\bfbox\b'; then
+            toolbox create -y --image ghcr.io/aorith/fbox:latest fbox
+        fi
+            toolbox enter fbox
+        ;;
+    fbox-update)
+        podman pull ghcr.io/aorith/fbox:latest
+        toolbox rm --force fbox
+        "$0" fbox
+        ;;
+    *)
+        echo "Unknown toolbox: '$1'"
+        exit 1
+        ;;
+esac

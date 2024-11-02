@@ -20,10 +20,7 @@ alias private_githome='cd "$PRIVATE_GITHOME"'
 alias k="kubectl"
 alias rpm-ostree-changelogs='rpm-ostree db diff --changelogs'
 
-alias fbox="~/githome/dotfiles/topics/distrobox/db-wrapper fbox"
-alias fbox-slim="~/githome/dotfiles/topics/distrobox/db-wrapper fbox-slim"
-alias archbox="~/githome/dotfiles/topics/distrobox/db-wrapper archbox"
-alias tbox="~/githome/dotfiles/topics/distrobox/db-wrapper tbox"
-alias ubox="~/githome/dotfiles/topics/distrobox/db-wrapper ubox"
+alias fbox='~/githome/dotfiles/topics/toolbox/toolbox-wrapper fbox'
+alias fbox-update='~/githome/dotfiles/topics/toolbox/toolbox-wrapper fbox-update'
 
 alias pick-shell-theme="~/githome/dotfiles/topics/shell/bin/pick-shell-theme.sh"
