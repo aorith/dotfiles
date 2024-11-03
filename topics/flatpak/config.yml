@@ -1,32 +1,33 @@
 # flatpak remotes --show-details
 
 flatpak_remotes:
-  - {name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
+- {name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo"}
 flathub_common_packages:
-  - com.bitwarden.desktop
-  - com.discordapp.Discord
-  - com.github.PintaProject.Pinta
-  - com.github.micahflee.torbrowser-launcher
-  - com.github.tchx84.Flatseal
-  - com.github.xournalpp.xournalpp
-  - com.obsproject.Studio
-  - com.spotify.Client
-  - com.usebottles.bottles # Run Windows apps
-  - com.valvesoftware.Steam
-  - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
-  - io.dbeaver.DBeaverCommunity
-  - io.dbeaver.DBeaverCommunity.Client.mariadb
-  - io.dbeaver.DBeaverCommunity.Client.pgsql
-  - me.iepure.devtoolbox
-  - org.blender.Blender
-  - org.geany.Geany
-  - org.gnome.Firmware
-  - org.libreoffice.LibreOffice
-  - org.remmina.Remmina
+- com.bitwarden.desktop
+- com.discordapp.Discord
+- com.github.PintaProject.Pinta
+- com.github.micahflee.torbrowser-launcher
+- com.github.tchx84.Flatseal
+- com.github.xournalpp.xournalpp
+- com.obsproject.Studio
+- com.spotify.Client
+- com.usebottles.bottles # Run Windows apps
+- com.valvesoftware.Steam
+- com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+- de.haeckerfelix.Shortwave # Streaming radio
+- io.dbeaver.DBeaverCommunity
+- io.dbeaver.DBeaverCommunity.Client.mariadb
+- io.dbeaver.DBeaverCommunity.Client.pgsql
+- me.iepure.devtoolbox
+- org.blender.Blender
+- org.geany.Geany
+- org.gnome.Firmware
+- org.libreoffice.LibreOffice
+- org.remmina.Remmina
 flathub_non_nixos_packages:
-  - org.gimp.GIMP
-  - com.google.Chrome
-  - com.mattjakeman.ExtensionManager
-  - org.keepassxc.KeePassXC
-  - com.valvesoftware.Steam
-  - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+- org.gimp.GIMP
+- com.google.Chrome
+- com.mattjakeman.ExtensionManager
+- org.keepassxc.KeePassXC
+- com.valvesoftware.Steam
+- com.valvesoftware.Steam.CompatibilityTool.Proton-GE
