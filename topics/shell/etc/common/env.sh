@@ -85,6 +85,14 @@ linux*)
         ln -sf "$DOTFILES/topics/shell/bin/xpaste" ~/.local/bin/pbpaste
         rm -f "$HOME"/.config/environment.d/wayland.conf
     fi
+
+    set -a
+    shopt -s nullglob
+    for f in "$HOME/.config/environment.d"/*; do
+        . "$f"
+    done
+    shopt -u nullglob
+    set +a
     ;;
 darwin*)
     export LANG="en_US.UTF-8"
