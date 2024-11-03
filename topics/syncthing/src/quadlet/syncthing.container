@@ -1,0 +1,40 @@
+[Unit]
+Description=Syncthing - file sync tool
+Wants=network-online.target
+After=network-online.target
+After=local-fs.target
+
+[Service]
+Restart=on-failure
+RestartSec=1
+SuccessExitStatus=3 4
+RestartForceExitStatus=3 4
+
+EnvironmentFile=/%h/.config/containers/systemd/syncthing/syncthing.env
+
+# man quadlet 5
+[Container]
+ContainerName=syncthing
+HostName=%l
+
+Image=docker.io/syncthing/syncthing
+Exec=serve --gui-address=${ST_GUI_ADDRESS} --no-browser --no-restart --no-upgrade --no-default-folder --logflags=0
+
+AutoUpdate=registry
+#Pull=always
+
+Volume=${ST_CONFIG_PATH}:/var/syncthing/config:Z
+Volume=${ST_DATA_PATH}:/var/mnt/data/syncthing:z
+
+UserNS=keep-id:uid=1000,gid=1000
+
+Network=host
+
+#Network=syncthing.network
+#PublishPort=127.0.0.1:8384:8384
+#PublishPort=22000:22000/tcp
+#PublishPort=22000:22000/udp
+#PublishPort=21027:21027/udp
+
+[Install]
+WantedBy=default.target
