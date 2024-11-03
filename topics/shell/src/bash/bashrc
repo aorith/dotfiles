@@ -14,7 +14,7 @@ fi
 . ~/githome/dotfiles/topics/shell/src/bash/functions.sh
 . ~/githome/dotfiles/topics/shell/src/bash/completion.sh
 
-shopt -s checkjobs checkwinsize histappend cmdhist lithist globstar autocd 2>/dev/null
+shopt -s checkjobs checkwinsize histappend cmdhist lithist globstar 2>/dev/null
 set -o notify # notify completed background jobs immediately
 
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/.bash_history"
