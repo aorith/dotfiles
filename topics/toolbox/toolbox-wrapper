@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# images: https://github.com/containers/toolbox
+
 [[ "$OSTYPE" =~ ^linux ]] || {
     echo "Cannot run this here: OSTYPE=$OSTYPE"
     exit 1
@@ -12,21 +14,37 @@ type toolbox >/dev/null 2>&1 || {
     echo "toolbox is not installed"
     exit 1
 }
+[[ -d "$HOME" ]] || mkdir -p "$HOME"
 
 case "$1" in
-    fbox)
-        if ! toolbox list --containers | awk '{print $2}' | grep -qE '\bfbox\b'; then
-            toolbox create -y --image ghcr.io/aorith/fbox:latest fbox
-        fi
-            toolbox enter fbox
-        ;;
-    fbox-update)
-        podman pull ghcr.io/aorith/fbox:latest
-        toolbox rm --force fbox
-        "$0" fbox
-        ;;
-    *)
-        echo "Unknown toolbox: '$1'"
-        exit 1
-        ;;
+fbox | fbox-update)
+    name="fbox"
+    image="ghcr.io/aorith/fbox:latest"
+    ;;
+archbox | archbox-update)
+    name="archbox"
+    image="ghcr.io/aorith/archbox:latest"
+    ;;
+*)
+    echo "Unknown toolbox image: '$1'"
+    exit 1
+    ;;
+esac
+
+case "$1" in
+fbox | archbox)
+    if ! toolbox list --containers | awk '{print $2}' | grep -qE "\b${1}\b"; then
+        toolbox create -y --image "$image" "$name"
+    fi
+    toolbox enter "$name"
+    ;;
+fbox-update | archbox-update)
+    podman pull "$image"
+    toolbox rm --force "$name"
+    "$0" "$name"
+    ;;
+*)
+    echo "Unknown toolbox: '$1'"
+    exit 1
+    ;;
 esac
