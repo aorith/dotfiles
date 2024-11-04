@@ -24,7 +24,7 @@ AutoUpdate=registry
 #Pull=always
 
 Volume=${ST_CONFIG_PATH}:/var/syncthing/config:Z
-Volume=${ST_DATA_PATH}:/var/mnt/data/syncthing:z
+Volume=${ST_DATA_PATH}:/var/syncthing/my_data/syncthing:z
 
 UserNS=keep-id:uid=1000,gid=1000
 
