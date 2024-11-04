@@ -14,11 +14,17 @@ export _SKIP=247 # valid exit codes: 0-255
 # check for basic commands
 deps="awk curl find sed git"
 for dep in $deps; do
-    command -v "$dep" &>/dev/null || { printf '%s not found.\n' "$dep"; exit 1; }
+    command -v "$dep" &>/dev/null || {
+        printf '%s not found.\n' "$dep"
+        exit 1
+    }
 done
 
 check_result() {
-    [[ $1 -ne $_SKIP ]] || { log_skip "$2"; return 0; }
+    [[ $1 -ne $_SKIP ]] || {
+        log_skip "$2"
+        return 0
+    }
     log_error "Execution of \"$3\" failed."
     popd >/dev/null || exit 1
     exit 1
@@ -30,7 +36,10 @@ _bootstrap() {
 
     log_header "$3"
     for folder in $1; do
-        [[ -d "$folder" ]] || { log_skip "$folder"; continue; }
+        [[ -d "$folder" ]] || {
+            log_skip "$folder"
+            continue
+        }
         pushd "$folder" >/dev/null || exit 1
 
         # Check if topic exists, compgen -G returns 1 if no matches
@@ -58,22 +67,12 @@ _bootstrap() {
 
 log_header "Start"
 
-if [[ $# -eq 1 ]]; then
-    # Bootstrap only topics that match the glob in $1
-    _bootstrap "$DOTFILES"          "install.sh"     "Install requirements"            "$1"
-    _bootstrap "$DOTFILES"          "init.sh"        "Bootstrap of dotfiles"           "$1"
-    _bootstrap "$PRIVATE_DOTFILES"  "install.sh"     "Install requirements (private)"  "$1"
-    _bootstrap "$PRIVATE_DOTFILES"  "init.sh"        "Bootstrap of dotfiles (private)" "$1"
-    _bootstrap "$DOTFILES"          "postinstall.sh" "Postinstall"                     "$1"
-    _bootstrap "$PRIVATE_DOTFILES"  "postinstall.sh" "Postinstall (private)"           "$1"
-else
-    # Bootstrap all topics
-    _bootstrap "$DOTFILES"          "install.sh"     "Install requirements"            "*"
-    _bootstrap "$DOTFILES"          "init.sh"        "Bootstrap of dotfiles"           "*"
-    _bootstrap "$PRIVATE_DOTFILES"  "install.sh"     "Install requirements (private)"  "*"
-    _bootstrap "$PRIVATE_DOTFILES"  "init.sh"        "Bootstrap of dotfiles (private)" "*"
-    _bootstrap "$DOTFILES"          "postinstall.sh" "Postinstall"                     "*"
-    _bootstrap "$PRIVATE_DOTFILES"  "postinstall.sh" "Postinstall (private)"           "*"
-fi
+# Bootstrap only topics that match the glob in $1
+_bootstrap "$DOTFILES"          "install.sh"     "Install requirements"            "${1:-*}"
+_bootstrap "$DOTFILES"          "init.sh"        "Bootstrap of dotfiles"           "${1:-*}"
+_bootstrap "$PRIVATE_DOTFILES"  "install.sh"     "Install requirements (private)"  "${1:-*}"
+_bootstrap "$PRIVATE_DOTFILES"  "init.sh"        "Bootstrap of dotfiles (private)" "${1:-*}"
+_bootstrap "$DOTFILES"          "postinstall.sh" "Postinstall"                     "${1:-*}"
+_bootstrap "$PRIVATE_DOTFILES"  "postinstall.sh" "Postinstall (private)"           "${1:-*}"
 
 log_header "End"
