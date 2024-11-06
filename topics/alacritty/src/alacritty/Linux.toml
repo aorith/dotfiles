@@ -5,7 +5,7 @@ decorations = "none"
 x = 4
 y = 4
 
-[shell]
+[terminal.shell]
 args = ["bash", "-l", "-i"]
 program = "/usr/bin/env"
 

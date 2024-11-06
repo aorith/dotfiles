@@ -1,3 +1,4 @@
+[general]
 import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
 
 [bell]
