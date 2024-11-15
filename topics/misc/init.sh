@@ -1,7 +1,9 @@
 # vim: ft=bash
 
 create_link "${PWD}/src/yamllint" "$HOME/.config/yamllint"
-#[[ ! -d /etc/nixos ]] || create_link "${PWD}/src/nix" "$HOME/.config/nix"
+if [[ ! -d /etc/nixos ]] && [[ ! -e "$HOME/.config/nix" ]]; then
+    create_link "${PWD}/src/nix" "$HOME/.config/nix"
+fi
 
 # https://wiki.archlinux.org/title/PipeWire#Noticeable_audio_delay_or_audible_pop/crack_when_starting_playback
 case $OSTYPE in
