@@ -17,6 +17,7 @@ size = 15
 #normal = { family = "IosevkaTerm Nerd Font" }
 #normal = { family = "SauceCodePro Nerd Font" }
 #normal = { family = "JetBrainsMono Nerd Font" }
+#normal = { family = "Hack Nerd Font" }
 #normal = { family = "RecMonoCasual Nerd Font" }
 normal = { family = "RecMonoLinear Nerd Font" }
 

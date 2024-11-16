@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily clean-up of files
+
+[Timer]
+OnBootSec=5m
+OnStartupSec=1min
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target

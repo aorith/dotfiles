@@ -6,6 +6,7 @@ flathub_common_packages:
 - com.bitwarden.desktop
 - com.discordapp.Discord
 - com.github.PintaProject.Pinta
+- com.github.flxzt.rnote # can draw arrows
 - com.github.micahflee.torbrowser-launcher
 - com.github.tchx84.Flatseal
 - com.github.xournalpp.xournalpp
@@ -25,9 +26,9 @@ flathub_common_packages:
 - org.libreoffice.LibreOffice
 - org.remmina.Remmina
 flathub_non_nixos_packages:
-- org.gimp.GIMP
 - com.google.Chrome
 - com.mattjakeman.ExtensionManager
-- org.keepassxc.KeePassXC
 - com.valvesoftware.Steam
 - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+- org.gimp.GIMP
+- org.keepassxc.KeePassXC

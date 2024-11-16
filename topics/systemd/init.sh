@@ -10,25 +10,37 @@ linux*)
 esac
 
 case $HOSTNAME in
-trantor) ;;
-*) exit "$_SKIP" ;;
+trantor)
+    folders=("flatpak" "cleanup" "gandi" "keepass")
+    ;;
+*)
+    folders=("flatpak" "cleanup")
+    ;;
 esac
 
 here="$(dirname -- "$(readlink -f "$0")")"
-mkdir -p ~/.config/systemd/user/timers.target.wants
-mkdir -p ~/.config/systemd/user/default.target.wants
+folders=("flatpak" "gandi" "cleanup" "keepass")
+config_dir="$HOME/.config/systemd/user"
+timers_target_dir="$config_dir/timers.target.wants"
+mkdir -p "$timers_target_dir"
 
-cp "${here}/flatpak/check-flatpak-updates.timer" ~/.config/systemd/user/check-flatpak-updates.timer
-cp "${here}/flatpak/check-flatpak-updates.service" ~/.config/systemd/user/check-flatpak-updates.service
-rm -f ~/.config/systemd/user/timers.target.wants/check-flatpak-updates.timer
-ln -sf "$(realpath -- "${here}/flatpak/check-flatpak-updates.timer")" ~/.config/systemd/user/timers.target.wants/check-flatpak-updates.timer
+for folder in "${folders[@]}"; do
+    folder="${here}/${folder}"
+    [[ -d "$folder" ]] || {
+        log_error "Folder '$folder' not found."
+        exit 1
+    }
 
-cp "${here}/keepass/backup-keepass.timer" ~/.config/systemd/user/backup-keepass.timer
-cp "${here}/keepass/backup-keepass.service" ~/.config/systemd/user/backup-keepass.service
-rm -f ~/.config/systemd/user/timers.target.wants/backup-keepass.timer
-ln -sf "$(realpath -- "${here}/keepass/backup-keepass.timer")" ~/.config/systemd/user/timers.target.wants/backup-keepass.timer
+    for file in "$folder"/*.service "$folder"/*.timer; do
+        if [ -f "$file" ]; then
+            base_name=$(basename -- "$file")
+            cp "$file" "$config_dir/"
 
-cp "${here}/gandi/update-gandi-domain.timer" ~/.config/systemd/user/update-gandi-domain.timer
-cp "${here}/gandi/update-gandi-domain.service" ~/.config/systemd/user/update-gandi-domain.service
-rm -f ~/.config/systemd/user/timers.target.wants/update-gandi-domain.timer
-ln -sf "$(realpath -- "${here}/gandi/update-gandi-domain.timer")" ~/.config/systemd/user/timers.target.wants/update-gandi-domain.timer
+            if [[ "$file" =~ \.timer$ ]]; then
+                create_link "$config_dir/$base_name" "$timers_target_dir/$base_name"
+            fi
+        fi
+    done
+done
+
+systemctl --user daemon-reload
