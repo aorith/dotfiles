@@ -34,9 +34,6 @@ export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/xcompose"
 
 export FZF_DEFAULT_COMMAND="fd --type f --follow --exclude .git"
 
-# Terraform >= 1.6.0 has bsl license
-export NIXPKGS_ALLOW_UNFREE=1
-
 # See: https://wiki.archlinux.org/title/Color_output_in_console#man
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-P -c"
@@ -49,15 +46,18 @@ export CLIPBOARD_PASTE="pbpaste"
 # Source
 . ~/githome/dotfiles/utils/functions.sh
 
-# Nix (non NixOS)
-if [[ ! -e /etc/nixos ]]; then
-    if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
-        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
-    if [[ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
-        . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    fi
-fi
+# # Nix (non NixOS)
+# if [[ ! -e /etc/nixos ]]; then
+#     # Terraform >= 1.6.0 has bsl license
+#     export NIXPKGS_ALLOW_UNFREE=1
+#
+#     if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+#         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+#     fi
+#     if [[ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
+#         . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+#     fi
+# fi
 
 # Paths
 for p in \
