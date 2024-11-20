@@ -38,6 +38,7 @@ brew "sops"
 brew "sox" # sound sample translator (gp.nvim)
 brew "starship"
 brew "stylua"
+brew "tealdeer"
 brew "terraform"
 brew "the_silver_searcher"
 brew "tmux"
