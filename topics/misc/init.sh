@@ -23,3 +23,5 @@ fi
 if type "$VALE" >/dev/null 2>&1; then
     "$VALE" --config ~/.config/vale/vale.ini sync >/dev/null 2>&1
 fi
+
+create_link "${PWD}/src/tealdeer" "$HOME/.config/tealdeer"
