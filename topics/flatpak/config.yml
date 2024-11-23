@@ -32,3 +32,4 @@ flathub_non_nixos_packages:
 - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 - org.gimp.GIMP
 - org.keepassxc.KeePassXC
+- org.videolan.VLC
