@@ -45,7 +45,7 @@ __ps1_jobs_f() {
 }
 
 __prompt_command() {
-    local _wd _err OnSSH OnVENV OnNixShell OnContainer
+    local _wd _err OnSSH OnVENV OnNixShell OnContainer OnKubeconfig _ns
     (($1 == 0)) || _err="${my_red}${1}${my_rst} "
 
     # background jobs
@@ -62,13 +62,18 @@ __prompt_command() {
     [[ -z "$IN_NIX_SHELL" ]] || OnNixShell="${my_red2}(${name:-unset})${my_rst} "
     [[ -z "$VIRTUAL_ENV_PROMPT" ]] || OnVENV="${my_rst}${my_pur2}venv:${VIRTUAL_ENV_PROMPT:1:-2}${my_rst} "
     [[ -z "$CONTAINER_ID" ]] || OnContainer="${my_pur2}[$CONTAINER_ID]${my_rst} "
+    if [[ -n "$KUBECONFIG" ]]; then
+        # _ns="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"
+        _ns="$(awk '$1 ~ /^namespace:/ { print $NF }' "$KUBECONFIG" 2>/dev/null)"
+        OnKubeconfig="${my_ylw2}${KUBECONFIG##*/}${my_rst}:${my_grn2}${ns:-default}${my_rst} "
+    fi
 
     # \d -> date
     # \D{%H:%M:%S} -> date in H:M:S format
     # \t -> time in 24-hour format HH:MM:SS
 
     printf '\e]133;A\e\\' # prompt start
-    PS1="${my_blu2}\t${my_rst} ${OnContainer}\[\033]0;\u@\h \w\007\]${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${_err}\n${my_blu2}${my_bld}❯${my_rst} "
+    PS1="${my_blu2}\t${my_rst} ${OnContainer}\[\033]0;\u@\h \w\007\]${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnKubeconfig}${OnNixShell}${OnVENV}${_err}\n${my_blu2}${my_bld}❯${my_rst} "
     printf '\e]133;B\e\\' # prompt end
 }
 

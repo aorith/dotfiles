@@ -40,3 +40,7 @@ repos-fzf() {
         cd "${p}/.." || return 1
     fi
 }
+
+# To manage k8s contexts
+# shellcheck disable=SC1091
+source "${PRIVATE_DOTFILES}/topics/k8s/k8s-kc"
