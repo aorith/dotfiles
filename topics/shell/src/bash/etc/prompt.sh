@@ -65,7 +65,7 @@ __prompt_command() {
     if [[ -n "$KUBECONFIG" ]]; then
         # _ns="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"
         _ns="$(awk '$1 ~ /^namespace:/ { print $NF }' "$KUBECONFIG" 2>/dev/null)"
-        OnKubeconfig="${my_ylw2}${KUBECONFIG##*/}${my_rst}:${my_grn2}${ns:-default}${my_rst} "
+        OnKubeconfig="${my_ylw2}${KUBECONFIG##*/}${my_rst}:${my_grn2}${_ns:-default}${my_rst} "
     fi
 
     # \d -> date
