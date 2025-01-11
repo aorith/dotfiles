@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "homebrew/cask-fonts"
 
 # Formulaes
 brew "age"
