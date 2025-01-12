@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -a
-prepend_to_path() {
+_prepend_to_path() {
     [[ -n "$1" ]] || return 0
     case ":${MY_PATH:-unset}:" in
     *":${1}:"*) ;;             # already there
@@ -11,12 +11,12 @@ prepend_to_path() {
     export MY_PATH
 }
 
-prepend_to_path_commit() {
+_prepend_to_path_commit() {
     export PATH="${MY_PATH}:${PATH}"
     unset MY_PATH
 }
 
-append_to_path() {
+_append_to_path() {
     [[ -n "$1" ]] || return 0
     case ":${PATH:-unset}:" in
     *":${1}:"*) ;;             # already there
@@ -47,7 +47,7 @@ _backup() {
 }
 
 _link() {
-    prepend_to_path "/opt/homebrew/opt/coreutils/libexec/gnubin"
+    _prepend_to_path "/opt/homebrew/opt/coreutils/libexec/gnubin"
     # _link <SOURCE_FILE> <LINK_NAME>
     local _source _link_name _sudo
     _source="$1"

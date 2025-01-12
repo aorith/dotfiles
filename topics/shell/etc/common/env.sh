@@ -65,7 +65,7 @@ for p in \
     "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/scripts-private/bin" \
     "$HOME/.local/bin" \
     "$HOME/.local/go/bin"; do
-    prepend_to_path "$p"
+    _prepend_to_path "$p"
 done
 
 case $OSTYPE in
@@ -121,7 +121,7 @@ darwin*)
         "/opt/homebrew/opt/util-linux/bin" \
         "/opt/homebrew/opt/openssl@3/bin" \
         "/opt/homebrew/opt/gnu-tar/libexec/gnubin"; do
-        prepend_to_path "$p"
+        _prepend_to_path "$p"
     done
     ;;
 *) ;;
@@ -132,4 +132,4 @@ if [[ -e "$PRIVATE_DOTFILES" ]]; then
     . "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"
 fi
 
-prepend_to_path_commit
+_prepend_to_path_commit
