@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -53,7 +52,7 @@ func main() {
 	}
 
 	// Abrimos el fichero del internal.db
-	f, err := ioutil.ReadFile(os.Getenv("HOME") + "/Syncthing/TES/gitlab/tcdn/sistemas/internaldns/db.transparent")
+	f, err := os.ReadFile(os.Getenv("HOME") + "/storage/tank/data/TES/gitlab/tcdn/sistemas/internaldns/db.transparent")
 	if err != nil {
 		fmt.Println(err)
 		return

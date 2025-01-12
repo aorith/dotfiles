@@ -2,7 +2,7 @@
 
 _sync_repo() {
     [[ $(shuf -n 1 -i 1-10) -eq 1 ]] || return
-    { cd "$HOME/Syncthing/TES/gitlab/tcdn/sistemas/internaldns" && timeout 10 git pull origin master >/dev/null 2>&1; } &
+    { cd "$HOME/storage/tank/data/TES/gitlab/tcdn/sistemas/internaldns" && timeout 10 git pull origin master >/dev/null 2>&1; } &
 }
 _sync_repo
 
