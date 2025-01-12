@@ -73,5 +73,6 @@ cask "tunnelblick"
 cask "utm"
 cask "vscodium"
 cask "wezterm"
+cask "discord"
 
 # vim: ft=conf
