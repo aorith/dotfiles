@@ -42,10 +42,13 @@ bindings = [
   { key = "W", mods = "Command", chars = "\u001Bw" },
   { key = "T", mods = "Command", chars = "\u001Bt" },
   { key = "T", mods = "Command|Shift", chars = "\u001BT" },
+
+  # Keyboard -> Shortcuts (or app shortcuts) -> Create an entry for 'Hide alacritty' (name must match) to some other shortcut
   { key = "H", mods = "Command", chars = "\u001Bh" },
   { key = "J", mods = "Command", chars = "\u001Bj" },
   { key = "K", mods = "Command", chars = "\u001Bk" },
   { key = "L", mods = "Command", chars = "\u001Bl" },
+
   { key = "H", mods = "Command|Shift", chars = "\u001BH" },
   { key = "J", mods = "Command|Shift", chars = "\u001BJ" },
   { key = "K", mods = "Command|Shift", chars = "\u001BK" },
