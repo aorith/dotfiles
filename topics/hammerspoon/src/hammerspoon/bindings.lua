@@ -16,7 +16,9 @@ end
 
 local nop = function() end
 
-hs.hotkey.bind({ "cmd" }, "º", trigger_term)
+-- I leave mission control on this hotkey
+-- hs.hotkey.bind({ "cmd" }, "º", trigger_term)
+
 hs.hotkey.bind({ "alt"}, "space", nop)
 
 -- swap Right Command and Right Opt
