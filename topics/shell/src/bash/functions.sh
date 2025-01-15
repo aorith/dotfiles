@@ -10,7 +10,10 @@ dotfiles() {
 
 repos() {
     local p
-    p="$(fd \.git$ "${HOME}/storage/tank/data/TES/gitlab" --max-depth 4 --type d --unrestricted --color never | fzf --delimiter / --with-nth -3,-4)"
+    p="$(
+        fd \.git$ "${HOME}/githome/SyncRepos/DEXTools" --max-depth 4 --type d --unrestricted --color never |
+            fzf --reverse --border --margin 15% --delimiter / --with-nth -4,-3
+    )"
     [[ -d "$p" ]] || return
     cd "${p}/.." || return 1
 }
@@ -18,3 +21,7 @@ repos() {
 # To manage k8s contexts, source the ,kc function here
 # shellcheck disable=SC1091
 source "${PRIVATE_DOTFILES}/topics/k8s/k8s-kc"
+
+# To manage aws profiles, source the ,aws function here
+# shellcheck disable=SC1091
+source "${PRIVATE_DOTFILES}/topics/aws/,aws"
