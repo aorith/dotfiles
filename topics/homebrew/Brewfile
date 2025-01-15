@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "fluxcd/tap"
 
 # Formulaes
 brew "age"
@@ -12,6 +13,7 @@ brew "diffutils"
 brew "entr" # Run arbitrary commands when files change (I don't remember which program needs it)
 brew "fd"
 brew "findutils"
+brew "fluxcd/tap/flux"
 brew "fzf"
 brew "gcc" # tree-sitter (neorg)
 brew "git"
