@@ -4,18 +4,21 @@ tap "fluxcd/tap"
 
 # Formulaes
 brew "age"
+brew "ansible"
 brew "awscli"
 brew "bash"
 brew "bash-completion@2"
 brew "bat"
 brew "coreutils"
 brew "diffutils"
+brew "dive"
 brew "entr" # Run arbitrary commands when files change (I don't remember which program needs it)
 brew "fd"
 brew "findutils"
-brew "fluxcd/tap/flux"
+# brew "fluxcd/tap/flux" # use concrete version for the cluster
 brew "fzf"
 brew "gcc" # tree-sitter (neorg)
+brew "gh"
 brew "git"
 brew "gnu-sed"
 brew "gnu-tar"
@@ -43,6 +46,7 @@ brew "sox" # sound sample translator (gp.nvim)
 brew "starship"
 brew "stylua"
 brew "tealdeer"
+brew "telnet"
 brew "terraform"
 brew "the_silver_searcher"
 brew "tmux"
