@@ -14,11 +14,6 @@ if [[ -n "$GOBIN" ]]; then
     mkdir -p "$GOBIN"
 fi
 
-# ZSH
-# create_link "${PWD}/src/zsh/.zshenv" "$HOME/.zshenv"
-# create_link "${PWD}/src/zsh" "$HOME/.config/zsh"
-# mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/zsh
-
 # STARSHIP
 create_link "${PWD}/src/starship.toml" "$HOME/.config/starship.toml"
 
