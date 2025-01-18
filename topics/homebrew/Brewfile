@@ -1,8 +1,11 @@
+# Taps
+# -----------------------------------------------------------------------------
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "fluxcd/tap"
 
 # Formulaes
+# -----------------------------------------------------------------------------
 brew "age"
 brew "ansible"
 brew "awscli"
@@ -44,7 +47,6 @@ brew "ripgrep"
 brew "sops"
 brew "sox" # sound sample translator (gp.nvim)
 brew "starship"
-brew "stylua"
 brew "tealdeer"
 brew "telnet"
 brew "terraform"
@@ -56,12 +58,16 @@ brew "vim"
 brew "wget"
 brew "yq"
 
+# Fonts
+# -----------------------------------------------------------------------------
 cask "font-hack-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
 cask "font-recursive-mono-nerd-font"
 
+# Casks
+# -----------------------------------------------------------------------------
 cask "alacritty"
 cask "cyberduck" # ftp client
 cask "dbeaver-community"
@@ -79,5 +85,40 @@ cask "tunnelblick"
 cask "utm"
 cask "vlc"
 cask "vscodium"
+
+# Neovim
+# -----------------------------------------------------------------------------
+# Formatters
+brew "black"
+brew "isort"
+brew "prettierd"
+brew "ruff"
+brew "shfmt"
+brew "stylua"
+brew "taplo"
+brew "yamlfmt"
+
+# Linters
+brew "ansible-lint"
+brew "djlint"
+brew "golangci-lint"
+brew "proselint"
+brew "shellcheck"
+brew "tflint"
+brew "typos-cli"
+brew "yamllint"
+
+# LSP
+brew "basedpyright"
+brew "bash-language-server"
+brew "vscode-langservers-extracted"
+brew "gopls"
+brew "lua-language-server"
+brew "marksman"
+brew "ruff-lsp"
+brew "templ"
+brew "terraform-ls"
+brew "typescript-language-server"
+brew "yaml-language-server"
 
 # vim: ft=conf
