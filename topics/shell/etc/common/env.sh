@@ -127,9 +127,4 @@ darwin*)
 *) ;;
 esac
 
-# Extra
-if [[ -e "$PRIVATE_DOTFILES" ]]; then
-    . "$PRIVATE_DOTFILES/topics/tcdn/env/all/bash/04_aliases"
-fi
-
 _prepend_to_path_commit
