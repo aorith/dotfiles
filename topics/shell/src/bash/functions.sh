@@ -11,11 +11,15 @@ dotfiles() {
 repos() {
     local p
     p="$(
-        fd \.git$ "${HOME}/githome/SyncRepos/DEXTools" --max-depth 4 --type d --unrestricted --color never |
+        fd \.git$ "${HOME}/githome/SyncRepos/${1:-DEXTools}" --max-depth 6 --type d --unrestricted --color never |
             fzf --reverse --border --margin 15% --delimiter / --with-nth -4,-3 --nth 2
     )"
     [[ -d "$p" ]] || return
     cd "${p}/.." || return 1
+}
+
+repos-old() {
+    repos "TES"
 }
 
 # To manage k8s contexts, source the ,kc function here
