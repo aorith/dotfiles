@@ -6,6 +6,11 @@ if type -f kubectl >/dev/null 2>&1; then
     complete -F __start_kubectl k
 fi
 
+# GitHub
+if type -f gh >/dev/null 2>&1; then
+    source <(gh completion --shell bash)
+fi
+
 # ------------------ bash completion basics ------------------ #
 
 # ---- this loads when the shell starts
@@ -21,22 +26,12 @@ fi
 
 # Adds completion to the "dotfiles" function
 _dotfiles_completions() {
-    mapfile -t COMPREPLY < <(compgen -W "$(find "$DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;; find "$PRIVATE_DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)" "${COMP_WORDS[1]}")
+    mapfile -t COMPREPLY < <(compgen -W "$(
+        find "$DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;
+        find "$PRIVATE_DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;
+    )" "${COMP_WORDS[1]}")
 }
 complete -F _dotfiles_completions dotfiles
-
-# Adds completion to the "repos" function
-_repos_completions() {
-    mapfile -t COMPREPLY < <(compgen -W "$(find ~/Syncthing/TES/gitlab/ -maxdepth 4 -type d -name '.git' -print0 | xargs -0 -I {} dirname -- {} | xargs -I {} basename -- {})" "${COMP_WORDS[1]}")
-}
-complete -F _repos_completions repos
-
-# Completion for the "tes" command
-# THIS IS VERY SLOW
-#_tes_completions() {
-#    COMPREPLY=($(compgen -W "$(tes --options)" "${COMP_WORDS[1]}"))
-#}
-#complete -F _tes_completions tes
 
 _tes_completions() {
     mapfile -t COMPREPLY < <(sed -n '/options = {/,/}/p' "$PRIVATE_DOTFILES/topics/tcdn/bin/tes" | grep -Eo '".*"' | tr -d '"' | grep -E "^${2}")
