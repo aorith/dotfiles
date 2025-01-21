@@ -14,12 +14,22 @@ repos() {
         fd \.git$ "${HOME}/githome/SyncRepos/${1:-DEXTools}" --max-depth 6 --type d --unrestricted --color never |
             fzf --reverse --border --margin 15% --delimiter / --with-nth -4,-3 --nth 2
     )"
-    [[ -d "$p" ]] || return
+    [[ -d "$p" ]] || return 1
     cd "${p}/.." || return 1
 }
 
 repos-old() {
     repos "TES"
+}
+
+,cd() {
+    local p
+    p="$(
+        fd . "${1:-.}" --exclude .git --max-depth 6 --type d --unrestricted --color never |
+            fzf --reverse --border --margin 15% --delimiter /
+    )"
+    [[ -d "$p" ]] || return 1
+    cd "${p}" || return 1
 }
 
 # To manage k8s contexts, source the ,kc function here
