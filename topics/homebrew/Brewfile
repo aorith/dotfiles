@@ -6,6 +6,7 @@ tap "fluxcd/tap"
 
 # Formulaes
 # -----------------------------------------------------------------------------
+# brew "fluxcd/tap/flux" # use concrete version for the cluster
 brew "age"
 brew "ansible"
 brew "awscli"
@@ -18,7 +19,6 @@ brew "dive"
 brew "entr" # Run arbitrary commands when files change (I don't remember which program needs it)
 brew "fd"
 brew "findutils"
-# brew "fluxcd/tap/flux" # use concrete version for the cluster
 brew "fzf"
 brew "gcc" # tree-sitter (neorg)
 brew "gh"
@@ -27,6 +27,7 @@ brew "gnu-sed"
 brew "gnu-tar"
 brew "go"
 brew "grep"
+brew "helm"
 brew "ipcalc"
 brew "jq"
 brew "k9s"
@@ -57,6 +58,7 @@ brew "util-linux"
 brew "vim"
 brew "wget"
 brew "yq"
+brew "zk"
 
 # Fonts
 # -----------------------------------------------------------------------------

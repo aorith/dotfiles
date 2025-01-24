@@ -1,0 +1,30 @@
+[notebook]
+dir = "~/Syncthing/SYNC_STUFF/zk"
+
+[note]
+filename = "{{id}}"
+
+[format.markdown]
+hashtags = true
+link-format = "[{{title}}]({{rel-path}})"
+
+[lsp.diagnostics]
+dead-link = "error"
+
+[alias]
+n = "zk new"
+nj = "zk new ~/Syncthing/SYNC_STUFF/zk/journal"
+e = "zk edit --interactive --exclude journal"
+ea = "zk edit --interactive"
+ej = "zk edit --interactive journal --sort title-"
+
+[group.journal]
+paths = ["journal"]
+
+[group.journal.note]
+filename = "{{format-date now '%Y-%m-%d_%H%M'}}"
+template = "journal.md"
+
+[tool]
+# pandoc wraps even if told not to; --columns works around this
+fzf-preview = "pandoc {-1} --wrap none --columns=8000 -t ansi"

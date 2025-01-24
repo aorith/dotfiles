@@ -72,9 +72,9 @@ case $OSTYPE in
 linux*)
     export LANG="C.UTF-8"
     export LC_COLLATE="C"
+    export LC_NUMERIC="C"
     export LC_MONETARY="es_ES.UTF-8"
     export LC_TIME="es_ES.UTF-8"
-    export LC_NUMERIC="es_ES.UTF-8"
 
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         ln -sf "$DOTFILES/topics/shell/bin/wl-copy" ~/.local/bin/pbcopy
@@ -99,10 +99,10 @@ darwin*)
     export LANG="en_US.UTF-8"
     export LANGUAGE="en_US.UTF-8"
     export LC_COLLATE="C"
+    export LC_NUMERIC="C"
     export LC_CTYPE="UTF-8"
     export LC_MONETARY="es_ES.UTF-8"
     export LC_TIME="es_ES.UTF-8"
-    export LC_NUMERIC="es_ES.UTF-8"
 
     # Homebrew
     if [[ -e /opt/homebrew/bin/brew ]]; then
