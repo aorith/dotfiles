@@ -5,7 +5,7 @@ linux*) true ;;
 *) exit "$_SKIP" ;;
 esac
 
-type -P flatpak >/dev/null 2>&1 || {
+command -v flatpak >/dev/null 2>&1 || {
     log_warn "flatpak is not installed"
     exit "$_SKIP"
 }

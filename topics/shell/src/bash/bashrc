@@ -33,12 +33,12 @@ if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then
 fi
 
 # Fzf
-if type fzf >/dev/null 2>&1; then
+if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --bash)"
 fi
 
 # Optionally use starship
-# if type starship >/dev/null 2>&1; then
+# if command -v starship >/dev/null 2>&1; then
 #     set_win_title() {
 #         echo -ne "\033]0;$USER@$HOSTNAME $PWD\007"
 #     }

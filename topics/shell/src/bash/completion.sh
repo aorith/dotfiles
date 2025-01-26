@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # K8s
-if type -f kubectl >/dev/null 2>&1; then
+if command -v kubectl >/dev/null 2>&1; then
     source <(kubectl completion bash)
     complete -F __start_kubectl k
 fi
 
 # GitHub
-if type -f gh >/dev/null 2>&1; then
+if command -v gh >/dev/null 2>&1; then
     source <(gh completion --shell bash)
 fi
 

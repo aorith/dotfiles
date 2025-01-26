@@ -10,7 +10,7 @@
     echo "Already inside of the container '$CONTAINER_ID'."
     exit 1
 }
-type toolbox >/dev/null 2>&1 || {
+command -v toolbox >/dev/null 2>&1 || {
     echo "toolbox is not installed"
     exit 1
 }

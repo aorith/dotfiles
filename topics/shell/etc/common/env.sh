@@ -6,7 +6,7 @@ export DOTFILES="$GITHOME/dotfiles"
 export PRIVATE_GITHOME="$HOME/Syncthing/SYNC_STUFF/githome"
 export PRIVATE_DOTFILES="$PRIVATE_GITHOME/private_dotfiles"
 
-if type -f nvim >/dev/null 2>&1; then
+if command -v nvim >/dev/null 2>&1; then
     export EDITOR="nvim"
 else
     export EDITOR="vim"

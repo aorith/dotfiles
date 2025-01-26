@@ -17,7 +17,11 @@ alias syncthing-check-conflicts='fd --unrestricted --regex -L ".*\.sync-conflict
 alias nixconf="cd ~/githome/nixconf"
 alias private_dotfiles='cd "$PRIVATE_DOTFILES"'
 alias private_githome='cd "$PRIVATE_GITHOME"'
-alias k="kubectl"
+if command -v kubecolor >/dev/null 2>&1; then
+    alias k="kubecolor"
+else
+    alias k="kubectl"
+fi
 alias rpm-ostree-changelogs='rpm-ostree db diff --changelogs'
 
 alias fbox='~/githome/dotfiles/topics/toolbox/toolbox-wrapper fbox'
