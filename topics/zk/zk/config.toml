@@ -22,7 +22,7 @@ ej = "zk edit --interactive journal --sort title-"
 paths = ["journal"]
 
 [group.journal.note]
-filename = "{{format-date now '%Y-%m-%d_%H%M'}}"
+filename = "{{format-date now '%Y-%m-%d_%A_%H%M'}}"
 template = "journal.md"
 
 [tool]
