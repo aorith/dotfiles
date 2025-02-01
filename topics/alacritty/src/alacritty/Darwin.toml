@@ -11,10 +11,18 @@ size = 17
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
-normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
+#normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
 #normal = { family = "JetBrainsMono Nerd Font" }
 #normal = { family = "RecMonoLinear Nerd Font" }
 #normal = { family = "RecMonoCasual Nerd Font" }
+#normal = { family = "Hack Nerd Font Mono" }
+normal = { family = "BlexMono Nerd Font Mono" }
+
+# normal = { family = "MonaspiceXe Nerd Font Mono" }
+# normal = { family = "MonaspiceAr Nerd Font Mono" }
+# normal = { family = "MonaspiceKr Nerd Font Mono" }
+# normal = { family = "MonaspiceNe Nerd Font Mono" }
+# normal = { family = "MonaspiceRn Nerd Font Mono" }
 
 # LG = Large Glyphs
 # L, M, S = spacing

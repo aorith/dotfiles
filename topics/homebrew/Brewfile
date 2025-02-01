@@ -66,10 +66,12 @@ brew "zk"
 
 # Fonts
 # -----------------------------------------------------------------------------
+cask "font-blex-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
+cask "font-monaspace-nerd-font"
 cask "font-recursive-mono-nerd-font"
 
 # Casks

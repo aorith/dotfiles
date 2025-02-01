@@ -16,10 +16,12 @@ end
 
 local nop = function() end
 
--- I leave mission control on this hotkey
--- hs.hotkey.bind({ "cmd" }, "º", trigger_term)
+-- to check keycodes in the console, then use as 'hs.keycodes.map[CODE]'
+-- hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event) print("Keycode:", event:getKeyCode()) end):start()
 
-hs.hotkey.bind({ "alt"}, "space", nop)
+hs.hotkey.bind({ "cmd" }, hs.keycodes.map[10], trigger_term)
+
+hs.hotkey.bind({ "alt" }, "space", nop)
 
 -- swap Right Command and Right Opt
 local cmd = [[hidutil property --set '{"UserKeyMapping":
