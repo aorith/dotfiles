@@ -178,6 +178,11 @@ return {
       on_attach = on_attach,
     })
 
+    -- go install github.com/grafana/jsonnet-language-server@latest
+    lspconfig.jsonnet_ls.setup({
+      on_attach = on_attach,
+    })
+
     lspconfig.helm_ls.setup({
       on_attach = on_attach,
       settings = {

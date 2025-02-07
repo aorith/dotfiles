@@ -3,12 +3,8 @@ return {
   opts = {},
 
   config = function()
-    map("n", "<leader>lf", function()
-      require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })
-    end, { desc = "Format buffer" })
-    map("v", "<leader>lf", function()
-      require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })
-    end, { desc = "Format buffer" })
+    map("n", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
+    map("v", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
 
     local utils = require("aorith.core.utils")
 
@@ -42,6 +38,8 @@ return {
         bash = { "shfmt" },
 
         templ = { "templ" },
+
+        jsonnet = { "jsonnetfmt" },
       },
       log_level = vim.log.levels.ERROR,
       notify_on_error = true,
