@@ -19,7 +19,7 @@ local nop = function() end
 -- to check keycodes in the console, then use as 'hs.keycodes.map[CODE]'
 -- hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event) print("Keycode:", event:getKeyCode()) end):start()
 
-hs.hotkey.bind({ "cmd" }, hs.keycodes.map[10], trigger_term)
+-- hs.hotkey.bind({ "cmd" }, hs.keycodes.map[10], trigger_term)
 
 hs.hotkey.bind({ "alt" }, "space", nop)
 
