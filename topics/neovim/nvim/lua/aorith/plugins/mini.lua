@@ -1,45 +1,29 @@
 return {
   "echasnovski/mini.nvim",
   version = false,
+
   config = function()
     require("mini.icons").setup()
-    MiniIcons.mock_nvim_web_devicons()
+    require("mini.icons").mock_nvim_web_devicons()
 
+    require("mini.extra").setup()
     require("mini.diff").setup()
     require("mini.git").setup()
+    require("mini.ai").setup() -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
+
+    -- sa => surround around
+    -- sd => surround delete
+    -- sr => surround replace
+    -- Example: Visual select a word -> sa"  (surround around quotes, 'saq' with mini.ai)
+    require("mini.surround").setup()
+
+    require("mini.tabline").setup({})
+
+    -- require("aorith.plugins.mini.statusline").setup()
+    require("aorith.plugins.mini.files").setup()
+    require("aorith.plugins.mini.hipatterns").setup()
 
     map("n", "<leader>q", function() require("mini.bufremove").delete() end, { desc = "Delete current buffer" })
-    map("n", "<leader>go", function() MiniDiff.toggle_overlay(0) end, { desc = "Toggle diff overlay" })
-
-    require("aorith.plugins.mini.statusline").setup()
-    require("aorith.plugins.mini.files").setup()
-
-    --
-    -- Hipatterns
-    --
-    local hipatterns = require("mini.hipatterns")
-    local space_group = hipatterns.compute_hex_color_group("#747070", "bg")
-
-    hipatterns.setup({
-      highlighters = {
-        delay = {
-          text_change = 600,
-          scroll = 200,
-        },
-
-        -- Highlight standalone 'FIX', 'FIXME', 'HACK', 'TODO', 'NOTE'
-        fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
-        fix = { pattern = "%f[%w]()FIX()%f[%W]", group = "MiniHipatternsFixme" },
-        hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
-        todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
-        note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-
-        -- Highlight hex color strings (`#rrggbb`) using that color
-        -- #992233, #229933, #223399
-        hex_color = hipatterns.gen_highlighter.hex_color(),
-
-        trailspace = { pattern = "%f[%s]%s*$", group = space_group },
-      },
-    })
+    map("n", "<leader>go", function() require("mini.diff").toggle_overlay(0) end, { desc = "Toggle diff overlay" })
   end,
 }

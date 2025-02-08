@@ -24,9 +24,6 @@
     # Change sort order of git tag to respect version numbers
     sort = version:refname
 
-[core]
-    pager = pager
-
 [diff]
     color = auto
     algorithm = patience

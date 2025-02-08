@@ -3,8 +3,6 @@ local blocked_filetypes = { ["neo-tree"] = true }
 local M = {}
 
 M.setup = function()
-  require("mini.tabline").setup({})
-
   ---@diagnostic disable-next-line: redundant-parameter
   require("mini.statusline").setup({
     set_vim_settings = false,

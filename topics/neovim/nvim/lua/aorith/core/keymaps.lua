@@ -46,9 +46,6 @@ end, { desc = "highlight group under cursor" })
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
--- highlights under cursor
-map("n", "<leader>tI", vim.show_pos, { desc = "Inspect Pos" })
-
 -- buffers
 map("n", "<leader><TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
 --map("n", "<TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
@@ -61,9 +58,7 @@ map("n", "<leader>bb", function()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     if bufnr ~= curbufnr and vim.api.nvim_get_option_value("modified", { buf = bufnr }) == false then
       bufinfo = vim.fn.getbufinfo(bufnr)[1]
-      if bufinfo.loaded == 1 and bufinfo.listed == 1 then
-        vim.cmd("bd! " .. tostring(bufnr))
-      end
+      if bufinfo.loaded == 1 and bufinfo.listed == 1 then vim.cmd("bd! " .. tostring(bufnr)) end
     end
   end
 end, { desc = "Close all other unmodified buffers" })
@@ -76,41 +71,6 @@ map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 
--- ui
-map("n", "<leader>tb", function()
-  if vim.o.background == "light" then
-    vim.opt.background = "dark"
-  else
-    vim.opt.background = "light"
-  end
-end, { remap = true, desc = "Toggle dark/light mode" })
-
--- Spelling
-map("n", "<leader>ts", function()
-  vim.opt_local.spell = not (vim.opt.spell:get())
-  vim.opt_local.spelllang = "en_us,es"
-  vim.notify("Spell " .. (vim.opt.spell:get() and "ON" or "OFF"))
-end, { desc = "toggle spelling" })
-
--- toggle mini.indentscope
-map("n", "<leader>ti", function()
-  vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable
-  vim.notify("Indentscope " .. (vim.g.miniindentscope_disable and "OFF" or "ON"))
-end, { desc = "toggle indentscope" })
-
--- toggle diagnostics
-map("n", "<leader>td", function()
-  if vim.diagnostic.is_enabled() then
-    vim.diagnostic.enable(false)
-  else
-    vim.diagnostic.enable(true)
-  end
-  vim.notify("Diagnostics " .. (vim.diagnostic.is_enabled() and "OFF" or "ON"))
-end, { remap = true, desc = "Toggle diagnostics" })
-
--- toggle listchars
-map("n", "<leader>tl", function() vim.cmd("set list! list?") end, { remap = true, desc = "Toggle list chars" })
-
 -- others
 map("", "<F1>", "<nop>") -- "" == map
 map("!", "<F1>", "<nop>") -- "!" == map!
@@ -118,7 +78,6 @@ vim.api.nvim_create_user_command("W", "w", { bang = true })
 vim.api.nvim_create_user_command("Q", "q", { bang = true })
 
 -- terminal
-map({ "n", "v", "i" }, "<F1>", "<cmd>split | term<cr>", { desc = "Open terminal" })
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })
 
 --- LSP
@@ -126,37 +85,21 @@ map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })
 -- no lsp server is attached, useful for null-ls and I prefer the keymap to fail than to not exist
 
 -- Show active LSP clients
-map(
-  "n",
-  "<leader>la",
-  function() utils.show_in_popup(utils.get_active_lsp_clients(), "markdown") end,
-  { desc = "Get active LSP clients" }
-)
+map("n", "<leader>la", function() utils.show_in_popup(utils.get_active_lsp_clients(), "markdown") end, { desc = "Get active LSP clients" })
 
 -- quick fix
 map("n", "<leader>j", "<cmd>cnext<CR>", { desc = "Next item in QuickFix" })
 map("n", "<leader>k", "<cmd>cprevious<CR>", { desc = "Previous item in QuickFix" })
 
 -- diagnostics
-map("n", "<leader>ll", vim.diagnostic.open_float, { desc = "[L]ine diagnostics" })
+map("n", "<leader>ll", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Set Loc List" })
 map("n", "<leader>lj", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 map("n", "<leader>lk", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 
 map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Code actions" })
-map("n", "<leader>lh", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }))
-  vim.notify("Inlay Hints " .. (vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }) and "ON" or "OFF"))
-end, { desc = "Toggle inlay [h]ints" })
-map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "[R]ename" })
-map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "[S]ignature" })
-
--- UndoTree
-map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
+map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "Signature" })
 
 -- without leader key
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-
--- Diffview
-map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "DiffviewOpen" })
-map("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "DiffviewFileHistory" })
