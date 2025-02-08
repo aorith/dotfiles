@@ -41,6 +41,8 @@ return {
       },
       dim_inactive = { enabled = true },
       show_end_of_buffer = true,
+
+      integrations = { blink_cmp = true },
     })
 
     vim.cmd.colorscheme("catppuccin")

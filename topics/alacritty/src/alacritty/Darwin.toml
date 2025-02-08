@@ -1,5 +1,6 @@
 [window]
-decorations = "buttonless"
+decorations = "Buttonless"
+startup_mode = "Maximized"
 option_as_alt = "None"
 
 [window.padding]
@@ -7,16 +8,16 @@ x = 4
 y = 4
 
 [font]
-size = 17
+size = 16
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
-#normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
-normal = { family = "JetBrainsMono Nerd Font" }
-#normal = { family = "RecMonoLinear Nerd Font" }
-#normal = { family = "RecMonoCasual Nerd Font" }
-#normal = { family = "Hack Nerd Font Mono" }
-#normal = { family = "BlexMono Nerd Font Mono" }
+
+# normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
+# normal = { family = "JetBrainsMono Nerd Font Mono" }
+# normal = { family = "Hack Nerd Font Mono" }
+# normal = { family = "BlexMono Nerd Font Mono" }
+# normal = { family = "CommitMono Nerd Font Mono" }
 
 # normal = { family = "MonaspiceNe Nerd Font Mono" }
 # normal = { family = "MonaspiceAr Nerd Font Mono" }
@@ -28,10 +29,14 @@ normal = { family = "JetBrainsMono Nerd Font" }
 # italic = { family = "MonaspiceAr Nerd Font" }
 # bold_italic = { family = "MonaspiceAr Nerd Font" }
 
+normal = { family = "SauceCodePro Nerd Font Mono", style = "Regular" }
+italic = { family = "SauceCodePro Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "SauceCodePro Nerd Font Mono", style = "Bold Italic" }
+
 # LG = Large Glyphs
 # L, M, S = spacing
 # DZ = dotted zero
-#normal = { family = "MesloLGS Nerd Font" }
+# normal = { family = "MesloLGS Nerd Font" }
 
 [keyboard]
 bindings = [

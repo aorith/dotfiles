@@ -57,23 +57,30 @@ return {
       })
     end
 
+    -- capabilities
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+
     -- Load LSP
     local lspconfig = require("lspconfig")
 
     lspconfig.nil_ls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
       -- settings = { ["nil"] = { formatting = { command = { "nixpkgs-fmt" } } } },
     })
 
     lspconfig.bashls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.gopls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.yamlls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
       on_init = function() require("aorith.core.yaml_schema").get_client() end,
 
@@ -111,14 +118,17 @@ return {
     })
 
     lspconfig.terraformls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.marksman.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.lua_ls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         Lua = {
@@ -140,6 +150,7 @@ return {
     })
 
     lspconfig.basedpyright.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         {
@@ -155,35 +166,43 @@ return {
     })
 
     lspconfig.ruff.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.ts_ls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.html.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.cssls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.templ.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.zk.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- go install github.com/grafana/jsonnet-language-server@latest
     lspconfig.jsonnet_ls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     lspconfig.helm_ls.setup({
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         ["helm-ls"] = {

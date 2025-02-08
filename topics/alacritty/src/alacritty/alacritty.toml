@@ -1,6 +1,9 @@
 [general]
 import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
 
+[window]
+dynamic_padding = true
+
 [bell]
 animation = "EaseOutExpo"
 color = "#777777"
@@ -10,8 +13,8 @@ duration = 10
 draw_bold_text_with_bright_colors = false
 
 [colors.cursor]
-cursor = "#3abf36"
-text = "#000000"
+#cursor = "#3abf36"
+#text = "#000000"
 
 [cursor]
 blink_interval = 500

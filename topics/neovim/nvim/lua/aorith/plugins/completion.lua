@@ -26,24 +26,21 @@ return {
 
     completion = {
       menu = {
-        -- nvim-cmp style menu
+        border = "single",
         draw = {
-          columns = {
-            { "label", "label_description", gap = 1 },
-            { "kind_icon", "kind" },
-          },
+          treesitter = { "lsp" },
         },
       },
 
       -- Show documentation when selecting a completion item
-      documentation = { auto_show = true, auto_show_delay_ms = 500 },
+      documentation = { auto_show = true, auto_show_delay_ms = 300, window = { border = "single" } },
 
       -- Display a preview of the selected item on the current line
       ghost_text = { enabled = false },
     },
 
     -- Experimental signature help support
-    signature = { enabled = true },
+    signature = { enabled = true, window = { border = "single" } },
 
     appearance = {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups

@@ -73,12 +73,13 @@ brew "yq"
 # Fonts
 # -----------------------------------------------------------------------------
 cask "font-blex-mono-nerd-font"
+cask "font-commit-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
 cask "font-monaspace-nerd-font"
-cask "font-recursive-mono-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
 
 # Casks
 # -----------------------------------------------------------------------------
