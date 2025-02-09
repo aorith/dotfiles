@@ -8,8 +8,10 @@ vim.api.nvim_create_user_command("YAMLSchemaSelect", require("aorith.core.yaml_s
 
 vim.api.nvim_create_user_command("YAMLSchemaView", function()
   local schema = require("aorith.core.yaml_schema").get_current_schema()
-  vim.notify(vim.inspect(schema), vim.log.levels.INFO)
+  vim.notify(schema and schema or "No YAML schema", vim.log.levels.INFO)
 end, {})
 
+map("n", "<leader>ly", "<cmd>YAMLSchemaView<cr>", { buffer = 0, desc = "YAML Schema View" })
+map("n", "<leader>lY", "<cmd>YAMLSchemaSelect<cr>", { buffer = 0, desc = "YAML Schema Select" })
 -- notify the current schema
-vim.defer_fn(function() vim.cmd("YAMLSchemaView") end, 3000)
+-- vim.defer_fn(function() vim.cmd("YAMLSchemaView") end, 3000)

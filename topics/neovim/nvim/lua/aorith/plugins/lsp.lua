@@ -110,6 +110,7 @@ return {
           -- custom option to select schemas by name with 'YAMLSchemaSelect' (aorith.core.yaml_schema)
           -- [<uri>] = <name>
           custom_schemas = {
+            ["kubernetes"] = "kubernetes",
             ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.25.16-standalone-strict/all.json"] = "k8s-1.25.16",
             ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.4-standalone-strict/all.json"] = "k8s-1.31.4",
           },
