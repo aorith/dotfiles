@@ -45,7 +45,7 @@ vim.cmd.filetype("plugin", "indent", "on")
 vim.o.breakindent   = true         -- Indent wrapped lines to match line start
 vim.o.colorcolumn   = '+1'         -- Colored column according to 'textwidth' if it's > 0
 vim.o.cursorline    = true         -- Enable highlighting of the current line
-vim.o.cursorlineopt = "number"     -- Cursorline highlights only the number column
+vim.o.cursorlineopt = "both"       -- How cursorline highlights
 vim.o.laststatus    = 2            -- Always show statusline
 vim.o.linebreak     = true         -- Wrap long lines at 'breakat' (if 'wrap' is set)
 vim.o.list          = true         -- Show helpful character indicators

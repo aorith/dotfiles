@@ -5,7 +5,7 @@ local function _autoread()
     2000,
     0,
     vim.schedule_wrap(function()
-      vim.api.nvim_command("checktime")
+      vim.api.nvim_command("silent! checktime")
       _autoread()
     end)
   )
