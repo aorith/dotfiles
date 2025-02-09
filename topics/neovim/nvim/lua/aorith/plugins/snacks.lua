@@ -46,6 +46,21 @@ return {
     explorer = { enabled = true },
     scope = { enabled = true },
 
+    styles = {
+      ---@diagnostic disable: missing-fields
+      notification = {
+        wo = {
+          wrap = true,
+        },
+      },
+      notification_history = {
+        wo = {
+          wrap = true,
+          number = false,
+        },
+      },
+    },
+
     picker = {
       enabled = true,
       layout = {
