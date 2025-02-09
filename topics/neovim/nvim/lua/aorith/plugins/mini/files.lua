@@ -1,5 +1,3 @@
-map("n", "-", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end, { desc = "Open parent directory" })
-
 local M = {}
 
 M.setup = function()
@@ -59,6 +57,15 @@ M.setup = function()
       map("n", "g.", toggle_dotfiles, { buffer = buf_id })
     end,
   })
+
+  map("n", "-", function()
+    local currFile = vim.api.nvim_buf_get_name(0)
+    if vim.uv.fs_stat(currFile) then
+      require("mini.files").open(currFile)
+    else
+      require("mini.files").open(nil, false)
+    end
+  end, { desc = "Open parent directory" })
 end
 
 return M
