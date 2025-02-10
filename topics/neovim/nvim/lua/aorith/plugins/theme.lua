@@ -70,6 +70,20 @@ return {
   lazy = false,
   priority = 10000,
   config = function()
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      group = vim.api.nvim_create_augroup("custom_highlights_sonokai", {}),
+      pattern = "sonokai",
+      callback = function()
+        local config = vim.fn["sonokai#get_configuration"]()
+        local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
+        local set_hl = vim.fn["sonokai#highlight"]
+
+        -- Override CursorLine for SnacksPicker to make it more visible
+        -- :lua Snacks.picker.highlights({pattern = "hl_group:^SnacksPicker"})
+        set_hl("SnacksPickerListCursorLine", palette.none, palette.diff_red)
+      end,
+    })
+
     vim.g.sonokai_enable_italic = 1
     vim.g.sonokai_style = "espresso" -- 'default'`, `'atlantis'`, `'andromeda'`, `'shusia'`, `'maia'`, `'espresso'
     vim.g.sonokai_dim_inactive_windows = 1
