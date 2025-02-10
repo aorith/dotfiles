@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "folke/lazydev.nvim",
+    "kcl-lang/kcl.nvim",
   },
 
   config = function()
@@ -62,6 +63,7 @@ return {
 
     -- Load LSP
     local lspconfig = require("lspconfig")
+    local util = require("lspconfig.util")
 
     lspconfig.nil_ls.setup({
       capabilities = capabilities,
@@ -212,6 +214,19 @@ return {
           },
         },
       },
+    })
+
+    lspconfig.kcl.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = { "kcl-language-server" },
+      filetypes = { "kcl" },
+      root_dir = util.root_pattern("kcl.mod"),
+    })
+
+    lspconfig.autotools_ls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
     })
   end,
 }

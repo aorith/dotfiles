@@ -63,6 +63,7 @@ export CLIPBOARD_PASTE="pbpaste"
 for p in \
     "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/tcdn/bin" \
     "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/scripts-private/bin" \
+    "$HOME/.local/share/nvim/mason/bin" \
     "$HOME/.local/bin" \
     "$HOME/.local/go/bin"; do
     _prepend_to_path "$p"

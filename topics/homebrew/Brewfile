@@ -3,6 +3,7 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "fluxcd/tap"
+tap "kcl-lang/tap"
 
 # Formulaes
 # -----------------------------------------------------------------------------
@@ -13,7 +14,6 @@ brew "awscli"
 brew "bash"
 brew "bash-completion@2"
 brew "bat"
-brew "cdk8s"
 brew "coreutils"
 brew "diffutils"
 brew "dive"
@@ -37,6 +37,8 @@ brew "ipcalc"
 brew "jq"
 brew "jsonnet-bundler" # for tanka
 brew "k9s"
+brew "kcl-lang/tap/kcl"
+brew "kcl-lang/tap/kcl-lsp"
 brew "kind"
 brew "kubecolor"
 brew "kubeconform"
