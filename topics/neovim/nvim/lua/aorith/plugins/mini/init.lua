@@ -13,11 +13,26 @@ return {
     require("mini.diff").setup()
     require("mini.git").setup()
     require("mini.ai").setup() -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
-    require("mini.indentscope").setup()
     require("mini.misc").setup()
     require("mini.animate").setup({
       cursor = { enable = true },
       resize = { enable = false },
+    })
+
+    require("mini.indentscope").setup()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = {
+        "help",
+        "dashboard",
+        "minipick",
+        "bigfile",
+        "Trouble",
+        "trouble",
+        "lazy",
+        "mason",
+        "notify",
+      },
+      callback = function() vim.b.miniindentscope_disable = true end,
     })
 
     -- sa => surround around
