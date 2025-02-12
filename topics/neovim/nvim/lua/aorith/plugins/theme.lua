@@ -81,6 +81,8 @@ return {
         -- Override CursorLine for SnacksPicker to make it more visible
         -- :lua Snacks.picker.highlights({pattern = "hl_group:^SnacksPicker"})
         set_hl("SnacksPickerListCursorLine", palette.none, palette.diff_red)
+        -- Same for MiniPick
+        set_hl("MiniPickMatchCurrent", palette.none, palette.diff_red)
       end,
     })
 

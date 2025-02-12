@@ -1,4 +1,4 @@
-local blocked_filetypes = { ["neo-tree"] = true }
+local blocked_filetypes = { ["neo-tree"] = true, ["snacks_picker_list"] = true, ["minipick"] = true }
 
 local M = {}
 
@@ -12,13 +12,18 @@ M.setup = function()
       active = function()
         if blocked_filetypes[vim.bo.filetype] then return "" end
 
-        local git = MiniStatusline.section_git({ trunc_width = 75 })
         local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 1024 })
+        local git = MiniStatusline.section_git({ trunc_width = 75 })
+        -- local diff = MiniStatusline.section_diff({ trunc_width = 75 })
         local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-        local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+        -- local lsp = MiniStatusline.section_lsp({ trunc_width = 75 }) -- Shows number of attached lsp servers
+
+        -- local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+        local filename = M.section_filename({ trunc_width = 100 })
+
         local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-        local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
         local location = MiniStatusline.section_location({ trunc_width = 75 })
+        local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
 
         local lsp_clients = M.section_lsp({ trunc_width = 75 })
 
@@ -29,8 +34,7 @@ M.setup = function()
           { hl = "MiniStatuslineFilename", strings = { filename } },
           "%=", -- End left alignment
           { hl = "MiniStatuslineModeReplace", strings = { search } },
-          { hl = "MiniStatuslineInactive", strings = { lsp_clients } },
-          { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+          { hl = "MiniStatuslineFileinfo", strings = { lsp_clients, fileinfo } },
           { hl = mode_hl, strings = { location } },
           -- { hl = mode_hl, strings = { "%l:%c%V %P 0x%B" } }, -- remove '0x%B', use :ascii
         })
@@ -85,6 +89,31 @@ end
 M.section_lsp = function(args)
   if MiniStatusline.is_truncated(args.trunc_width) then return "" end
   return M.attached_lsp[vim.api.nvim_get_current_buf()] or "{}"
+end
+
+M.section_filename = function(args)
+  args = vim.tbl_extend("force", {
+    trunc_width = 80,
+  }, args or {})
+
+  if vim.bo.buftype == "terminal" then return "%t" end
+
+  local path = vim.fn.expand("%:p")
+  local cwd = vim.uv.cwd() or ""
+  cwd = vim.uv.fs_realpath(cwd) or ""
+
+  if path:find(cwd, 1, true) == 1 then path = path:sub(#cwd + 2) end
+
+  local sep = package.config:sub(1, 1)
+  local parts = vim.split(path, sep)
+  if require("mini.statusline").is_truncated(args.trunc_width) and #parts > 3 then parts = { parts[1], "…", parts[#parts - 1], parts[#parts] } end
+
+  local dir = ""
+  if #parts > 1 then dir = table.concat({ unpack(parts, 1, #parts - 1) }, sep) .. sep end
+
+  local file = parts[#parts]
+  local modified = vim.bo.modified and " [+]" or ""
+  return dir .. "%#NONE#" .. file .. "%#MiniStatuslineFilename#" .. modified
 end
 
 return M

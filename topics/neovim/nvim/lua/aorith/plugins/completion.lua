@@ -21,7 +21,9 @@ return {
 
     -- Disable on some filetypes
     enabled = function()
-      return not vim.tbl_contains({ "minifiles", "snacks_picker_input" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+      return not vim.tbl_contains({ "minifiles", "minipick", "snacks_picker_input" }, vim.bo.filetype)
+        and vim.bo.buftype ~= "prompt"
+        and vim.b.completion ~= false
     end,
 
     completion = {
