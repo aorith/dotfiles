@@ -224,6 +224,12 @@ return {
       root_dir = util.root_pattern("kcl.mod"),
     })
 
+    lspconfig.cue.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = util.root_pattern("cue.mod"),
+    })
+
     lspconfig.autotools_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,

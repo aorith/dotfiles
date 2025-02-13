@@ -15,18 +15,18 @@ return {
       terraform = { "tflint" },
       hcl = { "tflint" },
       yaml = { "yamllint" },
+      cue = { "cue" },
     }
 
-  vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
-    group = vim.api.nvim_create_augroup("Nvim-Lint", { clear = true }),
-    callback = function()
-      lint.try_lint()
+    vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
+      group = vim.api.nvim_create_augroup("Nvim-Lint", { clear = true }),
+      callback = function()
+        lint.try_lint()
 
-      if vim.bo.filetype ~= "bigfile" then
-        lint.try_lint("typos") -- run on all files
-      end
-    end,
-  })
-
+        if vim.bo.filetype ~= "bigfile" then
+          lint.try_lint("typos") -- run on all files
+        end
+      end,
+    })
   end,
 }
