@@ -1,11 +1,7 @@
 return {
   "stevearc/conform.nvim",
-  opts = {},
 
   config = function()
-    map("n", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
-    map("v", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
-
     local utils = require("aorith.core.utils")
 
     local opts = {
@@ -54,5 +50,8 @@ return {
     require("conform").formatters.stylua = { prepend_args = utils.find_stylua_conf }
 
     require("conform").setup(opts)
+
+    map("n", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
+    map("v", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
   end,
 }
