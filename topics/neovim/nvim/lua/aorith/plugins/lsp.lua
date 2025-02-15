@@ -38,17 +38,18 @@ return {
         client.server_capabilities.rename = false
       end
 
+      -- NOTE: replaced by mini.cursorword
       -- When you move your cursor, the highlights will be cleared (the second autocommand).
-      if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          buffer = bufnr,
-          callback = vim.lsp.buf.document_highlight,
-        })
-        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-          buffer = bufnr,
-          callback = vim.lsp.buf.clear_references,
-        })
-      end
+      -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+      --   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      --     buffer = bufnr,
+      --     callback = vim.lsp.buf.document_highlight,
+      --   })
+      --   vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+      --     buffer = bufnr,
+      --     callback = vim.lsp.buf.clear_references,
+      --   })
+      -- end
 
       -- notify attachment
       ---@diagnostic disable-next-line: param-type-mismatch

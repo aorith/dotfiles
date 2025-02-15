@@ -15,6 +15,7 @@ return {
     require("mini.ai").setup() -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
     require("mini.misc").setup()
 
+    require("mini.cursorword").setup()
     require("mini.indentscope").setup({
       draw = {
         animation = require("mini.indentscope").gen_animation.none(),
