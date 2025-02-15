@@ -25,7 +25,7 @@ repos-old() {
 ,cd() {
     local p
     p="$(
-        fd . "${1:-.}" --exclude .git --max-depth 6 --type d --unrestricted --color never |
+        fd . "${1:-.}" --exclude .git --max-depth 10 --type d --follow --unrestricted --color never |
             fzf --reverse --border --margin 15% --delimiter /
     )"
     [[ -d "$p" ]] || return 1
