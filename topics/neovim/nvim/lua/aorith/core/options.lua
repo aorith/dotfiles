@@ -93,8 +93,6 @@ vim.opt.cinkeys:remove("0#")   -- Prevent reindent of comments
 vim.o.grepprg = "rg --vimgrep"   -- Configure grep to use ripgrep
 vim.o.grepformat = "%f:%l:%c:%m" -- Grep format
 
-vim.opt.completeopt = { "menu", "menuone", "noselect", "preview" }
-
 -- Spelling -------------------------------------------------------------------
 vim.opt.spelllang    = 'en_us,es' -- Define spelling dictionaries
 vim.opt.spelloptions = 'camel'    -- Treat parts of camelCase words as separate words

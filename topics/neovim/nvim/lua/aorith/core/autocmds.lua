@@ -10,14 +10,18 @@ A.nvim_create_autocmd("TextYankPost", {
 -- Tweak terminal on open and go into insert mode
 A.nvim_create_autocmd("TermOpen", {
   group = my_au,
-  callback = function(data)
-    if not string.find(vim.bo[data.buf].filetype, "^[fF][tT]erm") then
-      A.nvim_set_option_value("number", false, { scope = "local" })
-      A.nvim_set_option_value("relativenumber", false, { scope = "local" })
-      A.nvim_set_option_value("signcolumn", "no", { scope = "local" })
-      A.nvim_command("startinsert")
-    end
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+    vim.opt.signcolumn = "no"
+    A.nvim_command("startinsert")
   end,
+})
+
+-- Automatically close terminal Buffers when their Process is done
+vim.api.nvim_create_autocmd("TermClose", {
+  group = my_au,
+  callback = function() vim.cmd("bdelete") end,
 })
 
 -- go to the last line before closing the file

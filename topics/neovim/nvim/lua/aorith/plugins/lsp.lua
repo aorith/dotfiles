@@ -38,6 +38,9 @@ return {
         client.server_capabilities.rename = false
       end
 
+      -- Set up 'mini.completion' LSP part of completion
+      vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
+
       -- NOTE: replaced by mini.cursorword
       -- When you move your cursor, the highlights will be cleared (the second autocommand).
       -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
@@ -60,7 +63,7 @@ return {
     end
 
     -- capabilities
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    local capabilities = nil
 
     -- Load LSP
     local lspconfig = require("lspconfig")
