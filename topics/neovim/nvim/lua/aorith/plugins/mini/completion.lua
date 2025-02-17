@@ -4,19 +4,14 @@ M.setup = function()
   require("mini.completion").setup({
     set_vim_settings = true,
 
-    delay = { completion = 100, info = 100, signature = 50 },
-
     window = {
       info = { border = "single" },
       signature = { border = "single" },
     },
 
     lsp_completion = {
-      source_func = "omnifunc",
       auto_setup = false, -- Done manually on 'lsp.lua'
     },
-
-    fallback_action = "<C-x><C-i>",
   })
 
   if vim.fn.has("nvim-0.11") == 1 then

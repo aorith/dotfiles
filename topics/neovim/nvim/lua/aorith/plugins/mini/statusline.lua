@@ -98,7 +98,7 @@ M.section_filename = function(args)
 
   if vim.bo.buftype == "terminal" then return "%t" end
 
-  local path = vim.fn.expand("%:p")
+  local path = vim.fn.expand("%")
   local cwd = vim.uv.cwd() or ""
   cwd = vim.uv.fs_realpath(cwd) or ""
 
