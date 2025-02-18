@@ -43,9 +43,11 @@ vim.cmd.filetype("plugin", "indent", "on")
 
 -- UI -------------------------------------------------------------------------
 vim.o.breakindent   = true         -- Indent wrapped lines to match line start
+vim.o.breakindentopt = 'list:-1'   -- Add padding for lists when 'wrap' is on
+vim.o.showbreak = "  "             -- String to put at the start of lines that have been wrapped
 vim.o.colorcolumn   = '+1'         -- Colored column according to 'textwidth' if it's > 0
 vim.o.cursorline    = true         -- Enable highlighting of the current line
-vim.o.cursorlineopt = "both"       -- How cursorline highlights
+vim.o.cursorlineopt = 'screenline,number' -- Show cursor line only screen line when wrapped
 vim.o.laststatus    = 3            -- Always show statusline
 vim.o.linebreak     = true         -- Wrap long lines at 'breakat' (if 'wrap' is set)
 vim.o.list          = true         -- Show helpful character indicators
@@ -65,10 +67,10 @@ vim.o.wrap          = false        -- Display long lines as just one line
 vim.o.showmatch     = true         -- Highlight matching parentheses
 
 vim.o.fillchars = table.concat(
-  { 'eob: ', 'fold:╌', 'horiz:═', 'horizdown:╦', 'horizup:╩', 'vert:║', 'verthoriz:╬', 'vertleft:╣', 'vertright:╠' },
+  { 'fold:╌', 'horiz:═', 'horizdown:╦', 'horizup:╩', 'vert:║', 'verthoriz:╬', 'vertleft:╣', 'vertright:╠' },
   ','
 )
-vim.o.listchars = table.concat({ 'extends:…', 'trail:·', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
+vim.o.listchars = table.concat({ 'extends:…', 'trail:·', 'nbsp:␣', 'precedes:…', 'tab:» ' }, ',')
 
 -- Enable syntax highlighting
 if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
