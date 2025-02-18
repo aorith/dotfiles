@@ -6,7 +6,7 @@ return {
     local lint = require("lint")
 
     lint.linters_by_ft = {
-      --python = { "ruff" }, -- ruff already lints with ruff lsp
+      python = { "ruff" },
       ansible = { "ansible_lint" },
       go = { "golangcilint" },
       htmldjango = { "djlint" },

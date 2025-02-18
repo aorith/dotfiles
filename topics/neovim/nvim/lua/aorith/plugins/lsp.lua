@@ -6,10 +6,8 @@ return {
   },
 
   config = function()
-    local lsp = vim.lsp
-
     -- Log level
-    lsp.set_log_level(vim.log.levels.OFF)
+    vim.lsp.set_log_level(vim.log.levels.OFF)
 
     -- Diagnostics
     vim.diagnostic.config({
@@ -28,8 +26,8 @@ return {
     })
 
     -- common handlers
-    lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
-    lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
     local on_attach = function(client, bufnr)
       -- disable some more capabilities
@@ -41,19 +39,6 @@ return {
       -- Set up 'mini.completion' LSP part of completion
       vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
 
-      -- NOTE: replaced by mini.cursorword
-      -- When you move your cursor, the highlights will be cleared (the second autocommand).
-      -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-      --   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      --     buffer = bufnr,
-      --     callback = vim.lsp.buf.document_highlight,
-      --   })
-      --   vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-      --     buffer = bufnr,
-      --     callback = vim.lsp.buf.clear_references,
-      --   })
-      -- end
-
       -- notify attachment
       ---@diagnostic disable-next-line: param-type-mismatch
       vim.notify(client.name .. " started", vim.log.levels.INFO, {
@@ -63,7 +48,21 @@ return {
     end
 
     -- capabilities
-    local capabilities = nil
+    local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
+      textDocument = {
+        completion = {
+          completionItem = {
+            -- Fetch additional info for completion items
+            resolveSupport = {
+              properties = {
+                "documentation",
+                "detail",
+              },
+            },
+          },
+        },
+      },
+    })
 
     -- Load LSP
     local lspconfig = require("lspconfig")
@@ -172,10 +171,11 @@ return {
       },
     })
 
-    lspconfig.ruff.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- TODO: it seems to disable basedpyright documentation (priority thing?)
+    -- lspconfig.ruff.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
 
     lspconfig.ts_ls.setup({
       capabilities = capabilities,

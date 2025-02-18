@@ -10,10 +10,12 @@ M.setup = function()
     },
 
     lsp_completion = {
+      source_func = "omnifunc",
       auto_setup = false, -- Done manually on 'lsp.lua'
     },
   })
 
+  vim.opt.completeopt:append("popup")
   if vim.fn.has("nvim-0.11") == 1 then
     vim.opt.completeopt:append("fuzzy") -- Use fuzzy matching for built-in completion
   end
