@@ -113,7 +113,7 @@ M.section_filename = function(args)
 
   local file = parts[#parts]
   local modified = vim.bo.modified and " [+]" or ""
-  return dir .. "%#NONE#" .. file .. "%#MiniStatuslineFilename#" .. modified
+  return dir .. "%#CustomMiniStatuslineFilename#" .. file .. "%#MiniStatuslineFilename#" .. modified
 end
 
 return M

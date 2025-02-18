@@ -58,3 +58,29 @@ A.nvim_create_autocmd("FileType", {
   pattern = { "*" },
   callback = function(event) vim.cmd("setlocal formatoptions-=c formatoptions-=r formatoptions-=o") end,
 })
+
+-- Theme overrides
+A.nvim_create_autocmd("ColorScheme", {
+  group = my_au,
+  pattern = "sonokai",
+  callback = function()
+    local config = vim.fn["sonokai#get_configuration"]()
+    local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
+    local set_hl = vim.fn["sonokai#highlight"]
+
+    -- Override CursorLine for SnacksPicker to make it more visible
+    -- :lua Snacks.picker.highlights({pattern = "hl_group:^SnacksPicker"})
+    set_hl("SnacksPickerListCursorLine", palette.none, palette.diff_red)
+    -- Same for MiniPick
+    set_hl("MiniPickMatchCurrent", palette.none, palette.diff_red)
+  end,
+})
+
+A.nvim_create_autocmd("ColorScheme", {
+  group = my_au,
+  pattern = "*",
+  callback = function()
+    local hl_filename = vim.api.nvim_get_hl(0, { name = "MiniStatuslineFilename" })
+    vim.api.nvim_set_hl(0, "CustomMiniStatuslineFilename", { fg = nil, bg = hl_filename.bg, bold = false })
+  end,
+})
