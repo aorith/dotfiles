@@ -36,7 +36,6 @@ vim.o.backup       = false    -- Don't store backup
 vim.o.writebackup  = false    -- Don't store backup
 vim.o.mouse        = 'a'      -- Enable mouse
 vim.o.undofile     = true     -- Enable persistent undo
-vim.opt.path:append("**")     -- Search down into subfolders
 
 -- Enable filetype plugins
 vim.cmd.filetype("plugin", "indent", "on")
@@ -91,15 +90,14 @@ vim.o.softtabstop   = -1       -- Copy shiftwidth value
 vim.o.virtualedit   = 'block'  -- Allow going past the end of line in visual block mode
 vim.o.confirm       = true     -- Confirm on exit unsaved changes
 vim.o.cindent       = true     -- Or else comments do not indent in visualmode + > or <
-vim.opt.cinkeys:remove("0#")   -- Prevent reindent of comments
+-- vim.opt.cinkeys:remove("0#")   -- Prevent reindent of comments
 vim.o.grepprg = "rg --vimgrep"   -- Configure grep to use ripgrep
 vim.o.grepformat = "%f:%l:%c:%m" -- Grep format
 
 -- Spelling -------------------------------------------------------------------
-vim.opt.spelllang    = 'en_us,es' -- Define spelling dictionaries
-vim.opt.spelloptions = 'camel'    -- Treat parts of camelCase words as separate words
-vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
-vim.opt.complete:remove('t')      -- Don't use tags for completion
+vim.o.spelllang    = 'en,es'      -- Define spelling dictionaries
+vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as separate words
+vim.o.complete     = ".,b,kspell" -- Use spell check and don't use tags for completion
 
 -- Folds ----------------------------------------------------------------------
 vim.o.foldmethod       = 'indent' -- Set 'indent' folding method

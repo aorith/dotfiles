@@ -89,6 +89,7 @@ vim.api.nvim_create_user_command("Q", "q", { bang = true })
 
 -- terminal
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })
+map("n", "<F1>", "<cmd>split<bar>terminal<cr>", { desc = "Terminal" })
 
 --- LSP
 -- having the keymaps outside of the 'on_attach' lsp allows to use them even if
@@ -127,8 +128,6 @@ nmap_leader("fr", "<Cmd>Pick resume<CR>", "Resume")
 nmap_leader("fR", '<Cmd>Pick lsp scope="references"<CR>', "References (LSP)")
 nmap_leader("fs", '<Cmd>Pick lsp scope="document_symbol"<CR>', "Symbols buffer (LSP)")
 nmap_leader("fS", '<Cmd>Pick lsp scope="workspace_symbol"<CR>', "Symbols workspace (LSP)")
-nmap_leader("fv", '<Cmd>Pick visit_paths cwd=""<CR>', "Visit paths (all)")
-nmap_leader("fV", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
 nmap_leader("fh", "<Cmd>Pick help<CR>", "Help tags")
 nmap_leader("fH", "<Cmd>Pick hl_groups<CR>", "Highlight groups")
 nmap_leader("fp", [[<Cmd>Pick spellsuggest<CR>]], "Spell suggest")
@@ -143,6 +142,7 @@ nmap_leader("gc", "<Cmd>Git commit<CR>", "Commit")
 nmap_leader("gC", "<Cmd>Git commit --amend<CR>", "Commit amend")
 nmap_leader("gd", "<Cmd>Git diff -- %:p<CR>", "Diff buffer")
 nmap_leader("gD", "<Cmd>Git diff<CR>", "Diff")
+nmap_leader("gg", "<Cmd>terminal lazygit<CR>", "Log buffer")
 nmap_leader("gl", "<Cmd>" .. git_log_cmd .. " --follow -- %:p<CR>", "Log buffer")
 nmap_leader("gL", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
 nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
