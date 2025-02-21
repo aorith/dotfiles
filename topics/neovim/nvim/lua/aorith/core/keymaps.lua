@@ -89,7 +89,6 @@ vim.api.nvim_create_user_command("Q", "q", { bang = true })
 
 -- terminal
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Go to normal mode" })
-map("n", "<F1>", "<cmd>split<bar>terminal<cr>", { desc = "Terminal" })
 
 --- LSP
 -- having the keymaps outside of the 'on_attach' lsp allows to use them even if
