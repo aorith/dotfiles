@@ -1,5 +1,17 @@
 local utils = require("aorith.core.utils")
 
+-- Create `<Leader>` mappings
+local nmap_leader = function(suffix, rhs, desc, opts)
+  opts = opts or {}
+  opts.desc = desc
+  vim.keymap.set("n", "<Leader>" .. suffix, rhs, opts)
+end
+local xmap_leader = function(suffix, rhs, desc, opts)
+  opts = opts or {}
+  opts.desc = desc
+  vim.keymap.set("x", "<Leader>" .. suffix, rhs, opts)
+end
+
 -- Copy to primary selection on select
 map("v", "<LeftRelease>", '"*ygv')
 
@@ -48,10 +60,11 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- buffers
 map("n", "<leader><TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
---map("n", "<TAB>", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
---map("n", "<S-TAB>", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
---map("n", "<leader><TAB>", "<cmd>b#<CR>", { silent = true, desc = "Last buffer" })
-
+map("n", "<leader>ba", "<cmd>b#<cr>", { desc = "Alternate buffer" })
+map("n", "<leader>bd", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Delete" })
+map("n", "<leader>bD", "<Cmd>lua MiniBufremove.delete(0, true)<CR>", { desc = "Delete!" })
+map("n", "<leader>bw", "<Cmd>lua MiniBufremove.wipeout()<CR>", { desc = "Wipeout" })
+map("n", "<leader>bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", { desc = "Wipeout!" })
 map("n", "<leader>bb", function()
   local curbufnr = vim.api.nvim_get_current_buf()
   local bufinfo
@@ -64,10 +77,7 @@ map("n", "<leader>bb", function()
 end, { desc = "Close all other unmodified buffers" })
 
 -- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
+map("n", "<leader>w", "<C-W>c", { desc = "Delete window" })
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 
@@ -103,3 +113,46 @@ map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "Signature" })
 
 -- without leader key
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+
+nmap_leader("<leader>", "<Cmd>Pick buffers include_current=false<CR>", "Buffers")
+nmap_leader("ff", "<Cmd>Pick files<CR>", "Files")
+nmap_leader("fg", "<Cmd>Pick grep_live<CR>", "Grep live")
+nmap_leader("fl", '<Cmd>Pick buf_lines scope="all"<CR>', "Lines (all)")
+nmap_leader("fL", '<Cmd>Pick buf_lines scope="current"<CR>', "Lines (current)")
+nmap_leader("fd", '<Cmd>Pick diagnostic scope="all"<CR>', "Diagnostic workspace")
+nmap_leader("fD", '<Cmd>Pick diagnostic scope="current"<CR>', "Diagnostic buffer")
+nmap_leader("fm", "<Cmd>Pick git_hunks<CR>", "Modified hunks (all)")
+nmap_leader("fM", '<Cmd>Pick git_hunks path="%:p"<CR>', "Modified hunks (current)")
+nmap_leader("fr", "<Cmd>Pick resume<CR>", "Resume")
+nmap_leader("fR", '<Cmd>Pick lsp scope="references"<CR>', "References (LSP)")
+nmap_leader("fs", '<Cmd>Pick lsp scope="document_symbol"<CR>', "Symbols buffer (LSP)")
+nmap_leader("fS", '<Cmd>Pick lsp scope="workspace_symbol"<CR>', "Symbols workspace (LSP)")
+nmap_leader("fv", '<Cmd>Pick visit_paths cwd=""<CR>', "Visit paths (all)")
+nmap_leader("fV", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
+nmap_leader("fh", "<Cmd>Pick help<CR>", "Help tags")
+nmap_leader("fH", "<Cmd>Pick hl_groups<CR>", "Highlight groups")
+nmap_leader("fp", [[<Cmd>Pick spellsuggest<CR>]], "Spell suggest")
+nmap_leader("fk", [[<Cmd>Pick keymaps<CR>]], "Keymaps")
+nmap_leader("fc", '<Cmd>Pick git_commits path="%:p"<CR>', "Commits (current)")
+nmap_leader("fC", "<Cmd>Pick git_commits<CR>", "Commits (all)")
+
+local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
+nmap_leader("ga", "<Cmd>Git diff --cached<CR>", "Added diff")
+nmap_leader("gA", "<Cmd>Git diff --cached -- %:p<CR>", "Added diff buffer")
+nmap_leader("gc", "<Cmd>Git commit<CR>", "Commit")
+nmap_leader("gC", "<Cmd>Git commit --amend<CR>", "Commit amend")
+nmap_leader("gd", "<Cmd>Git diff -- %:p<CR>", "Diff buffer")
+nmap_leader("gD", "<Cmd>Git diff<CR>", "Diff")
+nmap_leader("gl", "<Cmd>" .. git_log_cmd .. " --follow -- %:p<CR>", "Log buffer")
+nmap_leader("gL", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
+nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
+nmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor")
+
+xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at selection")
+
+-- LSP
+map("n", "gd", "<Cmd>Pick lsp scope='definition'<CR>", { desc = "Definitions" })
+map("n", "gD", "<Cmd>Pick lsp scope='declaration'<CR>", { desc = "Declaration" })
+map("n", "gr", "<Cmd>Pick lsp scope='references'<CR>", { desc = "References" })
+map("n", "gI", "<Cmd>Pick lsp scope='implementation'<CR>", { desc = "Implementation" })
+map("n", "gy", "<Cmd>Pick lsp scope='type_definition'<CR>", { desc = "Type Definitions" })

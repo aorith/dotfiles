@@ -52,10 +52,11 @@ return {
     })
 
     require("mini.extra").setup()
-    require("mini.diff").setup()
-    require("mini.git").setup()
+    require("mini.diff").setup({ view = { style = "sign" } })
+    require("mini.git").setup({ command = { split = "vertical" } })
     require("mini.ai").setup() -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
     require("mini.misc").setup()
+    require("mini.bufremove").setup()
 
     require("mini.cursorword").setup()
     require("mini.indentscope").setup({

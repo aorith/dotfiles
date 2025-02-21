@@ -18,10 +18,11 @@ return {
         json = { "prettierd" },
         jsonc = { "prettierd" },
         markdown = { "prettierd" },
-        terraform = { "terraform_fmt", "trim_newlines", "trim_whitespace" },
-        hcl = { "terraform_fmt", "trim_newlines", "trim_whitespace" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
+
+        terraform = { "tofu_fmt", "trim_newlines", "trim_whitespace" },
+        hcl = { "tofu_fmt", "trim_newlines", "trim_whitespace" },
 
         go = { "goimports", "gofmt" }, -- go install golang.org/x/tools/cmd/goimports@latest
         lua = { "stylua" },

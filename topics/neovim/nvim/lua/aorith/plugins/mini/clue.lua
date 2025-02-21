@@ -44,14 +44,14 @@ M.setup = function()
     },
 
     clues = {
-      { mode = "n", keys = "<leader>b", desc = "+buffers" },
-      { mode = "n", keys = "<leader>f", desc = "+file/find" },
-      { mode = "n", keys = "<leader>s", desc = "+search" },
-      { mode = "n", keys = "<leader>g", desc = "+git" },
-      { mode = "n", keys = "<leader>l", desc = "+lsp" },
-      { mode = "n", keys = "<leader>w", desc = "+windows" },
-      { mode = "n", keys = "<leader>x", desc = "+diagnostics/quickfix" },
-      { mode = "n", keys = "<leader>t", desc = "+toggles" },
+      { mode = "n", keys = "<leader>b", desc = "+Buffer" },
+      { mode = "n", keys = "<leader>f", desc = "+Find" },
+      -- { mode = "n", keys = "<leader>s", desc = "+Search" },
+      { mode = "n", keys = "<leader>g", desc = "+Git" },
+      { mode = "n", keys = "<leader>l", desc = "+LSP" },
+      { mode = "n", keys = "<leader>w", desc = "+Window" },
+      { mode = "n", keys = "<leader>x", desc = "+Quickfix" },
+      { mode = "n", keys = "<leader>t", desc = "+Toggle" },
 
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),

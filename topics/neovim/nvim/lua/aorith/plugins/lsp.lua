@@ -36,6 +36,10 @@ return {
         client.server_capabilities.rename = false
       end
 
+      -- disable semantic tokens
+      -- currently it messes the highlighting, when I open a tf file it changes after a few seconds
+      if client.name == "terraformls" then client.server_capabilities.semanticTokensProvider = nil end
+
       -- Set up 'mini.completion' LSP part of completion
       vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
 
