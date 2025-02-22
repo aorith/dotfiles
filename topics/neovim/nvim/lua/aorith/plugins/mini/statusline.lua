@@ -14,7 +14,7 @@ M.setup = function()
 
         local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 1024 })
         local git = MiniStatusline.section_git({ trunc_width = 75 })
-        -- local diff = MiniStatusline.section_diff({ trunc_width = 75 })
+        local diff = MiniStatusline.section_diff({ trunc_width = 75 })
         local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
         -- local lsp = MiniStatusline.section_lsp({ trunc_width = 75 }) -- Shows number of attached lsp servers
 
@@ -29,7 +29,7 @@ M.setup = function()
 
         return MiniStatusline.combine_groups({
           { hl = mode_hl, strings = { mode } },
-          { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
+          { hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics } },
           "%<", -- Mark general truncate point
           { hl = "MiniStatuslineFilename", strings = { filename } },
           "%=", -- End left alignment

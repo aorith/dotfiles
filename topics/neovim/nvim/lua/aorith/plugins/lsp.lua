@@ -72,6 +72,13 @@ return {
     local lspconfig = require("lspconfig")
     local util = require("lspconfig.util")
 
+    -- TODO: nvim 0.11
+    -- Remove capabilities and on_attach from the specific lsps
+    -- vim.lsp.config("*", {
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
+
     lspconfig.nil_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
