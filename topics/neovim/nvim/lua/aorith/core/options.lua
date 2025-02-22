@@ -3,7 +3,7 @@ _G.map = vim.keymap.set
 
 -- Leader keys configuration ---------------------------------------------------
 vim.g.mapleader = " "      -- Leader key must set before plugins
-vim.g.maplocalleader = " " -- Using ',' breaks: f<letter> + ;,
+vim.g.maplocalleader = "\\" -- Using ',' breaks: f<letter> + ;,
 
 -- Disable builtin plugins to improve loading time -----------------------------
 vim.g.loaded_gzip = 1

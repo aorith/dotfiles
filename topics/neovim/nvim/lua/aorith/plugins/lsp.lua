@@ -1,8 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-  dependencies = {
-    "kcl-lang/kcl.nvim",
-  },
 
   config = function()
     -- Log level
@@ -164,8 +161,6 @@ return {
             -- Get the language server to recognize common globals
             globals = { "vim" },
             disable = { "need-check-nil" },
-            -- Don't make workspace diagnostic, as it consumes too much CPU and RAM
-            workspaceDelay = -1,
           },
           workspace = {
             library = vim.api.nvim_get_runtime_file("", true),

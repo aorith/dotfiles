@@ -111,11 +111,9 @@ map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Code actions" })
 map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "Signature" })
 
--- without leader key
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-
 nmap_leader("<leader>", "<Cmd>Pick buffers include_current=false<CR>", "Buffers")
 nmap_leader("ff", "<Cmd>Pick files<CR>", "Files")
+map("n", "<localleader><localleader>", "<Cmd>Pick files<CR>", { desc = "Files" })
 nmap_leader("fg", "<Cmd>Pick grep_live<CR>", "Grep live")
 nmap_leader("fl", '<Cmd>Pick buf_lines scope="current"<CR>', "Lines (current)")
 nmap_leader("fL", '<Cmd>Pick buf_lines scope="all"<CR>', "Lines (all)")
