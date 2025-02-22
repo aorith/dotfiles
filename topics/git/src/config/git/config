@@ -58,5 +58,3 @@
     path = local.config
 
 # vim: ft=gitconfig
-[core]
-	editor = vim
