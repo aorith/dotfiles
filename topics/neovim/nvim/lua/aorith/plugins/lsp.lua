@@ -1,7 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "folke/lazydev.nvim",
     "kcl-lang/kcl.nvim",
   },
 
@@ -29,7 +28,7 @@ return {
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-    local on_attach = function(client, bufnr)
+    local custom_on_attach = function(client, bufnr)
       -- disable some more capabilities
       if client.name == "pylsp" then
         client.server_capabilities.renameProvider = false
@@ -81,23 +80,23 @@ return {
 
     lspconfig.nil_ls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
       -- settings = { ["nil"] = { formatting = { command = { "nixpkgs-fmt" } } } },
     })
 
     lspconfig.bashls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.gopls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.yamlls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
       on_init = function() require("aorith.core.yaml_schema").get_client() end,
 
       settings = {
@@ -136,28 +135,42 @@ return {
 
     lspconfig.terraformls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.marksman.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+
+      on_attach = function(client, bufnr)
+        custom_on_attach(client, bufnr)
+        -- Reduce unnecessarily long list of completion triggers for better
+        -- 'mini.completion' experience
+        client.server_capabilities.completionProvider.triggerCharacters = { ".", ":" }
+      end,
+
       settings = {
         Lua = {
           runtime = {
             version = "LuaJIT",
+            -- Setup your lua path
+            path = vim.split(package.path, ";"),
           },
           diagnostics = {
+            -- Get the language server to recognize common globals
             globals = { "vim" },
+            disable = { "need-check-nil" },
+            -- Don't make workspace diagnostic, as it consumes too much CPU and RAM
+            workspaceDelay = -1,
           },
           workspace = {
             library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false,
+            -- Don't analyze code from submodules
+            ignoreSubmodules = true,
           },
           telemetry = {
             enable = false,
@@ -168,7 +181,7 @@ return {
 
     lspconfig.basedpyright.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
       settings = {
         {
           python = {
@@ -190,38 +203,38 @@ return {
 
     lspconfig.ts_ls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.html.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.cssls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.templ.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.zk.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     -- go install github.com/grafana/jsonnet-language-server@latest
     lspconfig.jsonnet_ls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.helm_ls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
       settings = {
         ["helm-ls"] = {
           yamlls = {
@@ -233,7 +246,7 @@ return {
 
     lspconfig.kcl.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
       cmd = { "kcl-language-server" },
       filetypes = { "kcl" },
       root_dir = util.root_pattern("kcl.mod"),
@@ -241,12 +254,12 @@ return {
 
     lspconfig.cue.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
 
     lspconfig.autotools_ls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = custom_on_attach,
     })
   end,
 }

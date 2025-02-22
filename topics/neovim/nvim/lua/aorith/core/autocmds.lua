@@ -55,8 +55,8 @@ A.nvim_create_autocmd("FileType", {
 -- Dont format or add comment string on newline
 A.nvim_create_autocmd("FileType", {
   group = my_au,
-  pattern = { "*" },
-  callback = function(event) vim.cmd("setlocal formatoptions-=c formatoptions-=r formatoptions-=o") end,
+  callback = function() vim.cmd("setlocal formatoptions-=c formatoptions-=r formatoptions-=o") end,
+  desc = "Ensure proper 'formatoptions'",
 })
 
 -- Theme overrides

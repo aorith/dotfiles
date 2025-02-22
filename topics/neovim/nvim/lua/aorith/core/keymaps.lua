@@ -117,10 +117,10 @@ map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
 nmap_leader("<leader>", "<Cmd>Pick buffers include_current=false<CR>", "Buffers")
 nmap_leader("ff", "<Cmd>Pick files<CR>", "Files")
 nmap_leader("fg", "<Cmd>Pick grep_live<CR>", "Grep live")
-nmap_leader("fl", '<Cmd>Pick buf_lines scope="all"<CR>', "Lines (all)")
-nmap_leader("fL", '<Cmd>Pick buf_lines scope="current"<CR>', "Lines (current)")
-nmap_leader("fd", '<Cmd>Pick diagnostic scope="all"<CR>', "Diagnostic workspace")
-nmap_leader("fD", '<Cmd>Pick diagnostic scope="current"<CR>', "Diagnostic buffer")
+nmap_leader("fl", '<Cmd>Pick buf_lines scope="current"<CR>', "Lines (current)")
+nmap_leader("fL", '<Cmd>Pick buf_lines scope="all"<CR>', "Lines (all)")
+nmap_leader("fd", '<Cmd>Pick diagnostic scope="current"<CR>', "Diagnostic buffer")
+nmap_leader("fD", '<Cmd>Pick diagnostic scope="all"<CR>', "Diagnostic workspace")
 nmap_leader("fm", '<Cmd>Pick git_hunks path="%:p" n_context=0<CR>', "Modified hunks (current)")
 nmap_leader("fM", "<Cmd>Pick git_hunks<CR>", "Modified hunks (all)")
 nmap_leader("fr", "<Cmd>Pick resume<CR>", "Resume")
@@ -147,8 +147,7 @@ nmap_leader("gL", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
 nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
 nmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor")
 
-xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at selection")
-xmap_leader("gr", "<Cmd>lua MiniGit.show_range_history()<CR>", "Range history at selection") -- show_at_cursor already gives range info
+xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at selection") -- Show at cursor already gives info from show_range_history
 
 -- LSP
 map("n", "gd", "<Cmd>Pick lsp scope='definition'<CR>", { desc = "Definitions" })
