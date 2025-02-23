@@ -12,9 +12,7 @@ return {
     }
 
     local disabled_filetypes = {
-      "bash",
       "dockerfile",
-      "sh",
       "tmux",
     }
 
@@ -31,15 +29,26 @@ return {
       "diff",
       "go",
       "html",
+      "javascript",
+      "jsdoc",
+      "json",
+      "jsonc",
       "lua",
       "luadoc",
+      "luap",
       "markdown",
       "markdown_inline",
+      "printf",
       "python",
       "query",
       "regex",
+      "toml",
+      "tsx",
+      "typescript",
       "vim",
       "vimdoc",
+      "xml",
+      "yaml",
     }
 
     ---@diagnostic disable-next-line: missing-fields
@@ -55,7 +64,7 @@ return {
             return true
           end
         end,
-        additional_vim_regex_highlighting = { "sh", "bash", "dockerfile", "org" },
+        additional_vim_regex_highlighting = disabled_filetypes,
       },
 
       indent = {
