@@ -7,7 +7,12 @@ return {
   },
 
   config = function()
-    map("n", "<leader>e", function() require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd(), position = "left" }) end, { desc = "Neo-Tree" })
+    vim.keymap.set(
+      "n",
+      "<leader>e",
+      function() require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd(), position = "left" }) end,
+      { desc = "Neo-Tree" }
+    )
 
     require("neo-tree").setup({
       sources = { "filesystem" },

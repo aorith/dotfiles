@@ -10,11 +10,11 @@ vim.opt_local.spell = true
 
 -- Mappings
 local utils = require("aorith.core.utils")
-map("n", "<TAB>", utils.markdown_next_link, { buffer = 0, desc = "Next header or link" })
-map("n", "<S-TAB>", utils.markdown_prev_link, { buffer = 0, desc = "Prev header or link" })
-map("n", "<LocalLeader>c", utils.markdown_insert_codeblock, { buffer = 0, desc = "Insert code block" })
-map("n", "tt", utils.markdown_todo_toggle, { buffer = 0, desc = "Toggle To-Do" })
-map("n", "<CR>", vim.lsp.buf.definition, { buffer = 0, desc = "Follow link (go to definition)" })
+vim.keymap.set("n", "<TAB>", utils.markdown_next_link, { buffer = 0, desc = "Next header or link" })
+vim.keymap.set("n", "<S-TAB>", utils.markdown_prev_link, { buffer = 0, desc = "Prev header or link" })
+vim.keymap.set("n", "<LocalLeader>c", utils.markdown_insert_codeblock, { buffer = 0, desc = "Insert code block" })
+vim.keymap.set("n", "tt", utils.markdown_todo_toggle, { buffer = 0, desc = "Toggle To-Do" })
+vim.keymap.set("n", "<CR>", vim.lsp.buf.definition, { buffer = 0, desc = "Follow link (go to definition)" })
 
 ---@diagnostic disable-next-line: inject-field
 vim.b.minihipatterns_config = {

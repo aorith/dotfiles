@@ -40,10 +40,10 @@ M.setup = function()
     end
   end
 
-  map("i", "<CR>", "v:lua._G.cr_action()", { expr = true })
+  vim.keymap.set("i", "<CR>", "v:lua._G.cr_action()", { expr = true })
 
-  map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
-  map("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+  vim.keymap.set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
+  vim.keymap.set("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 
   require("mini.icons").tweak_lsp_kind()
 end

@@ -1,5 +1,4 @@
 --stylua: ignore start
-_G.map = vim.keymap.set
 
 -- Leader keys configuration ---------------------------------------------------
 vim.g.mapleader = " "      -- Leader key must set before plugins

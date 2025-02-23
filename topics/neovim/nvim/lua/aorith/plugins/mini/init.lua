@@ -61,9 +61,9 @@ return {
     starter.setup({
       evaluate_single = true,
       items = {
-        starter.sections.builtin_actions(),
         starter.sections.recent_files(4, true),
         starter.sections.recent_files(5, false),
+        starter.sections.builtin_actions(),
       },
       content_hooks = {
         starter.gen_hook.adding_bullet(),
@@ -98,6 +98,7 @@ return {
     -- sr => surround replace
     -- Example: Visual select a word -> sa"  (surround around quotes, 'saq' with mini.ai)
     require("mini.surround").setup()
+    require("mini.visits").setup()
 
     require("mini.tabline").setup()
     require("aorith.plugins.mini.statusline").setup()
@@ -108,8 +109,8 @@ return {
     require("aorith.plugins.mini.clue").setup()
     require("aorith.plugins.mini.completion").setup()
 
-    map("n", "<leader>q", function() require("mini.bufremove").delete() end, { desc = "Delete current buffer" })
-    map("n", "<leader>z", function() MiniMisc.zoom() end, { desc = "Zoom window" })
-    map("n", "<leader>go", function() require("mini.diff").toggle_overlay(0) end, { desc = "Toggle diff overlay" })
+    vim.keymap.set("n", "<leader>q", function() require("mini.bufremove").delete() end, { desc = "Delete current buffer" })
+    vim.keymap.set("n", "<leader>z", function() MiniMisc.zoom() end, { desc = "Zoom window" })
+    vim.keymap.set("n", "<leader>go", function() require("mini.diff").toggle_overlay(0) end, { desc = "Toggle diff overlay" })
   end,
 }

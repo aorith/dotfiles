@@ -52,7 +52,17 @@ return {
 
     require("conform").setup(opts)
 
-    map("n", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
-    map("v", "<leader>lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, { desc = "Format buffer" })
+    vim.keymap.set(
+      "n",
+      "<leader>lf",
+      function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end,
+      { desc = "Format buffer" }
+    )
+    vim.keymap.set(
+      "v",
+      "<leader>lf",
+      function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end,
+      { desc = "Format buffer" }
+    )
   end,
 }

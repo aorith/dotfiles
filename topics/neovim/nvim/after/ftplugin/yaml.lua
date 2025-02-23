@@ -11,7 +11,7 @@ vim.api.nvim_create_user_command("YAMLSchemaView", function()
   vim.notify(schema and schema or "No YAML schema", vim.log.levels.INFO)
 end, {})
 
-map("n", "<leader>ly", "<cmd>YAMLSchemaView<cr>", { buffer = 0, desc = "YAML Schema View" })
-map("n", "<leader>lY", "<cmd>YAMLSchemaSelect<cr>", { buffer = 0, desc = "YAML Schema Select" })
+vim.keymap.set("n", "<leader>ly", "<cmd>YAMLSchemaView<cr>", { buffer = 0, desc = "YAML Schema View" })
+vim.keymap.set("n", "<leader>lY", "<cmd>YAMLSchemaSelect<cr>", { buffer = 0, desc = "YAML Schema Select" })
 -- notify the current schema
 -- vim.defer_fn(function() vim.cmd("YAMLSchemaView") end, 3000)

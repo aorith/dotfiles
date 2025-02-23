@@ -14,7 +14,7 @@ M.setup = function()
 
   vim.notify = require("mini.notify").make_notify()
   vim.api.nvim_create_user_command("Notifications", function() require("mini.notify").show_history() end, {})
-  map("n", "<leader>n", function() require("mini.notify").show_history() end, { desc = "Show Notifications" })
+  vim.keymap.set("n", "<leader>n", function() require("mini.notify").show_history() end, { desc = "Show Notifications" })
 end
 
 return M

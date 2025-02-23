@@ -4,9 +4,7 @@ M.setup = function()
   local miniclue = require("mini.clue")
   ---@diagnostic disable-next-line: redundant-parameter
   miniclue.setup({
-    window = {
-      delay = 200,
-    },
+    window = { delay = 200 },
 
     triggers = {
       -- Leader triggers
@@ -53,6 +51,7 @@ M.setup = function()
       { mode = "n", keys = "<leader>w", desc = "+Window" },
       { mode = "n", keys = "<leader>x", desc = "+Quickfix" },
       { mode = "n", keys = "<leader>t", desc = "+Toggle" },
+      { mode = "n", keys = "<Leader>v", desc = "+Visits" },
 
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),

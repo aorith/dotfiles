@@ -1,5 +1,7 @@
 local utils = require("aorith.core.utils")
 
+local map = vim.keymap.set
+
 -- Create `<Leader>` mappings
 local nmap_leader = function(suffix, rhs, desc, opts)
   opts = opts or {}
@@ -131,6 +133,13 @@ nmap_leader("fp", "<Cmd>Pick spellsuggest<CR>", "Spell suggest")
 nmap_leader("fk", "<Cmd>Pick keymaps<CR>", "Keymaps")
 nmap_leader("fc", '<Cmd>Pick git_commits path="%:p"<CR>', "Commits (current)")
 nmap_leader("fC", "<Cmd>Pick git_commits<CR>", "Commits (all)")
+nmap_leader("fv", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
+nmap_leader("fV", '<Cmd>Pick visit_paths cwd=""<CR>', "Visit paths (all)")
+
+-- v is for 'visits'
+nmap_leader("vv", "<Cmd>Pick visit_labels<CR>", "Visit labels")
+nmap_leader("va", "<Cmd>lua MiniVisits.add_label()<CR>", "Add label")
+nmap_leader("vr", "<Cmd>lua MiniVisits.remove_label()<CR>", "Remove label")
 
 local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
 nmap_leader("ga", "<Cmd>Git diff --cached -- %:p<CR>", "Added diff buffer")

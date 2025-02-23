@@ -54,11 +54,11 @@ M.setup = function()
     pattern = "MiniFilesBufferCreate",
     callback = function(args)
       local buf_id = args.data.buf_id
-      map("n", "g.", toggle_dotfiles, { buffer = buf_id })
+      vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
     end,
   })
 
-  map("n", "-", function()
+  vim.keymap.set("n", "-", function()
     local currFile = vim.api.nvim_buf_get_name(0)
     if vim.uv.fs_stat(currFile) then
       require("mini.files").open(currFile)
