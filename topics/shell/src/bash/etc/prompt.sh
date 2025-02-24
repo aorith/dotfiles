@@ -68,7 +68,7 @@ __prompt_command() {
     # \t -> time in 24-hour format HH:MM:SS
 
     printf '\e]133;A\e\\' # prompt start
-    PS1="${my_blu2}\t${my_rst} ${OnContainer}\[\033]0;\u@\h \w\007\]${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${_err}\n${my_blu2}${my_bld}❯${my_rst} "
+    PS1="${my_blu2}▒${my_rst} ${OnContainer}\[\033]0;\u@\h \w\007\]${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${_err}\n${my_blu2}${my_bld}▒ ❯${my_rst} "
     printf '\e]133;B\e\\' # prompt end
 }
 
