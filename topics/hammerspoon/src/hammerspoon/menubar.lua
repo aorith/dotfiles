@@ -16,40 +16,40 @@ local icon = [[
 7 . . . . . . . . . . . 5
 ]]
 
-menuBar1:setIcon('ASCII:' .. icon)
+menuBar1:setIcon("ASCII:" .. icon)
 
 local menu = nil
 
 local reloadMenu = function() menuBar1:setMenu(menu) end
 
 -- enable on startup
-hs.caffeinate.toggle('displayIdle')
+hs.caffeinate.toggle("displayIdle")
 
 menu = {
   {
     title = "Caffeinate",
     checked = true,
     fn = function(modifiers, menuItem)
-      local enabled = hs.caffeinate.toggle('displayIdle')
+      local enabled = hs.caffeinate.toggle("displayIdle")
       if enabled then
-        hs.notify.new({title='Caffeinate', informativeText='Caffeinate on'}):send()
+        hs.notify.new({ title = "Caffeinate", informativeText = "Caffeinate on" }):send()
       else
-        hs.notify.new({title='Caffeinate', informativeText='Caffeinate off'}):send()
+        hs.notify.new({ title = "Caffeinate", informativeText = "Caffeinate off" }):send()
       end
 
       menuItem.checked = enabled
       reloadMenu()
-    end
+    end,
   },
   {
-    title = "-" -- separator
+    title = "-", -- separator
   },
   {
     title = "Rescue Windows",
     -- fn = rescue
   },
   {
-    title = "-" -- separator
+    title = "-", -- separator
   },
   {
     title = "Auto Layout",
@@ -58,4 +58,3 @@ menu = {
 }
 
 reloadMenu()
-
