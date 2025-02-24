@@ -1,7 +1,7 @@
 [window]
 decorations = "Buttonless"
 startup_mode = "Maximized"
-option_as_alt = "None"
+option_as_alt = "OnlyLeft"
 
 [window.padding]
 x = 4
@@ -13,35 +13,24 @@ size = 16
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
 
+# LG = Large Glyphs
+# L, M, S = spacing
+# DZ = dotted zero
+# normal = { family = "MesloLGS Nerd Font Mono" }
+
 # normal = { family = "JetBrainsMono Nerd Font Mono" }
 # normal = { family = "Hack Nerd Font Mono" }
-# normal = { family = "BlexMono Nerd Font Mono" }
+# normal = { family = "BlexMono Nerd Font Mono", style = "Regular" }
 # normal = { family = "CommitMono Nerd Font Mono" }
+# normal = { family = "Lilex Nerd Font Mono", style = "Regular" }
 
-# normal = { family = "MonaspiceNe Nerd Font Mono" }
-# normal = { family = "MonaspiceAr Nerd Font Mono" }
-# normal = { family = "MonaspiceXe Nerd Font Mono" }
-# normal = { family = "MonaspiceRn Nerd Font Mono" }
-# normal = { family = "MonaspiceKr Nerd Font Mono" }
-
-# normal = { family = "MonaspiceNe Nerd Font" }
-# italic = { family = "MonaspiceAr Nerd Font" }
-# bold_italic = { family = "MonaspiceAr Nerd Font" }
-
-# normal = { family = "IosevkaTerm Nerd Font Mono", style = "Regular" }
-# italic = { family = "IosevkaTerm Nerd Font Mono", style = "Light Italic" }
-# bold_italic = { family = "IosevkaTerm Nerd Font Mono", style = "SemiBold Italic" }
-
-normal = { family = "Lilex Nerd Font Mono" }
+normal = { family = "IosevkaTerm Nerd Font", style = "Light" }
+italic = { family = "IosevkaTerm Nerd Font", style = "Light Italic" }
+bold_italic = { family = "IosevkaTerm Nerd Font", style = "SemiBold Italic" }
 
 # normal = { family = "SauceCodePro Nerd Font Mono", style = "Regular" }
 # italic = { family = "SauceCodePro Nerd Font Mono", style = "Italic" }
 # bold_italic = { family = "SauceCodePro Nerd Font Mono", style = "Bold Italic" }
-
-# LG = Large Glyphs
-# L, M, S = spacing
-# DZ = dotted zero
-# normal = { family = "MesloLGS Nerd Font" }
 
 [keyboard]
 bindings = [

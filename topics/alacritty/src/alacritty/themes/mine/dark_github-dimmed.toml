@@ -26,6 +26,10 @@ red = "0xff938a"
 white = "0x768390"
 yellow = "0xc69026"
 
+# [colors.primary]
+# foreground = "0x768390"
+# background = "0x22272e"
+
 [colors.primary]
-background = "0x22272e"
-foreground = "0x768390"
+foreground = "#a6b3c0"
+background = "#22272e"
