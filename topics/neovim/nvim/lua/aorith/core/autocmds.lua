@@ -80,7 +80,12 @@ A.nvim_create_autocmd("ColorScheme", {
   group = my_au,
   pattern = "*",
   callback = function()
+    -- Make the filename in mini.statusline more noticeable
     local hl_filename = vim.api.nvim_get_hl(0, { name = "MiniStatuslineFilename" })
-    vim.api.nvim_set_hl(0, "CustomMiniStatuslineFilename", { fg = nil, bg = hl_filename.bg, bold = false })
+    vim.api.nvim_set_hl(0, "CustomMiniStatuslineFilename", { fg = nil, bg = hl_filename.bg, bold = true })
+
+    -- Ensure that mini.cursorword always highlights without using underline
+    vim.api.nvim_set_hl(0, "MiniCursorWord", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "MiniCursorWordCurrent", { link = "Visual" })
   end,
 })

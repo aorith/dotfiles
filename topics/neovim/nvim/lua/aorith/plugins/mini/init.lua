@@ -5,6 +5,8 @@ return {
   priority = 500,
 
   config = function()
+    vim.cmd.colorscheme("randomhue")
+
     require("mini.icons").setup()
     require("mini.icons").mock_nvim_web_devicons()
     require("aorith.plugins.mini.notify").setup()
