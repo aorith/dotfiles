@@ -5,10 +5,11 @@
 local apps = {
   F1 = "Alacritty",
   F2 = "Google Chrome",
-  F3 = "Obsidian",
-  F4 = "Discord",
+  F3 = "Discord",
+  F4 = "Obsidian",
   F5 = "KeePassXC",
 }
+
 for key, app in pairs(apps) do
   hs.hotkey.bind({ "cmd" }, key, function() hs.application.launchOrFocus(app) end)
 end
