@@ -3,6 +3,7 @@ import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
 
 [window]
 dynamic_padding = false
+dynamic_title = false
 
 [bell]
 animation = "EaseOutExpo"

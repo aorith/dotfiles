@@ -9,6 +9,7 @@ y = 4
 
 [font]
 size = 16
+offset = { x = 0, y = 4 }
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
@@ -18,15 +19,15 @@ size = 16
 # DZ = dotted zero
 # normal = { family = "MesloLGS Nerd Font Mono" }
 
-# normal = { family = "JetBrainsMono Nerd Font Mono" }
+normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Light" }
 # normal = { family = "Hack Nerd Font Mono" }
-# normal = { family = "BlexMono Nerd Font Mono", style = "Regular" }
+# normal = { family = "BlexMono Nerd Font Mono", style = "Light" }
 # normal = { family = "CommitMono Nerd Font Mono" }
 # normal = { family = "Lilex Nerd Font Mono", style = "Regular" }
 
-normal = { family = "IosevkaTerm Nerd Font", style = "Light" }
-italic = { family = "IosevkaTerm Nerd Font", style = "Light Italic" }
-bold_italic = { family = "IosevkaTerm Nerd Font", style = "SemiBold Italic" }
+# normal = { family = "IosevkaTerm Nerd Font Mono", style = "Light" }
+# italic = { family = "IosevkaTerm Nerd Font Mono", style = "Light Italic" }
+# bold_italic = { family = "IosevkaTerm Nerd Font Mono", style = "SemiBold Italic" }
 
 # normal = { family = "SauceCodePro Nerd Font Mono", style = "Regular" }
 # italic = { family = "SauceCodePro Nerd Font Mono", style = "Italic" }
