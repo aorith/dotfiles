@@ -142,19 +142,22 @@ nmap_leader("va", "<Cmd>lua MiniVisits.add_label()<CR>", "Add label")
 nmap_leader("vr", "<Cmd>lua MiniVisits.remove_label()<CR>", "Remove label")
 
 local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
+local git_reflog_cmd = [[Git log --abbrev-commit --walk-reflogs --pretty=format:\%h\ \%ai\ \%al\ \%d\ |\ \%s]] -- similar to 'git reflog'
 nmap_leader("ga", "<Cmd>Git diff --cached -- %:p<CR>", "Added diff buffer")
 nmap_leader("gA", "<Cmd>Git diff --cached<CR>", "Added diff")
 nmap_leader("gc", "<Cmd>Git commit<CR>", "Commit")
 nmap_leader("gC", "<Cmd>Git commit --amend<CR>", "Commit amend")
 nmap_leader("gd", "<Cmd>Git diff -- %:p<CR>", "Diff buffer")
 nmap_leader("gD", "<Cmd>Git diff<CR>", "Diff")
-nmap_leader("gb", "<Cmd>Git blame -- %:p<CR>", "Diff")
+nmap_leader("gb", "<Cmd>Git blame -- %:p<CR>", "Blame buffer")
 nmap_leader("gl", "<Cmd>" .. git_log_cmd .. " --follow -- %:p<CR>", "Log buffer")
 nmap_leader("gL", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
+nmap_leader("gr", "<Cmd>tab " .. git_reflog_cmd .. "<CR>", "Reflog")
 nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
 nmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor")
 
 xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at selection") -- Show at cursor already gives info from show_range_history
+xmap_leader("gb", function() vim.cmd("Git log -L " .. vim.fn.line("'<") .. "," .. vim.fn.line("'>") .. ":" .. vim.fn.expand("%:p")) end, "Blame selection")
 
 -- LSP
 map("n", "gd", "<Cmd>Pick lsp scope='definition'<CR>", { desc = "Definitions" })

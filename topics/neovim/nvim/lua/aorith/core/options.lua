@@ -68,7 +68,7 @@ vim.o.fillchars = table.concat(
   { 'fold:╌', 'horiz:═', 'horizdown:╦', 'horizup:╩', 'vert:║', 'verthoriz:╬', 'vertleft:╣', 'vertright:╠' },
   ','
 )
-vim.o.listchars = table.concat({ 'extends:…', 'trail:·', 'nbsp:␣', 'precedes:…', 'tab:» ' }, ',')
+vim.o.listchars = table.concat({ 'extends:…', 'trail:·', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
 
 -- Enable syntax highlighting
 if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
@@ -84,7 +84,7 @@ vim.o.infercase     = true     -- Infer letter cases for a richer built-in keywo
 vim.o.shiftwidth    = 4        -- Use this number of spaces for indentation
 vim.o.smartcase     = true     -- Don't ignore case when searching if pattern has upper case
 vim.o.smartindent   = true     -- Make indenting smart
-vim.o.tabstop       = 8        -- Default tab size
+vim.o.tabstop       = 4        -- Default tab size
 vim.o.softtabstop   = -1       -- Copy shiftwidth value
 vim.o.virtualedit   = 'block'  -- Allow going past the end of line in visual block mode
 vim.o.confirm       = true     -- Confirm on exit unsaved changes
