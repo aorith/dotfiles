@@ -5,6 +5,9 @@
     color = auto
     # Sort most recent branches first
     sort = -committerdate
+    # https://stackoverflow.com/questions/5480069/autosetuprebase-vs-autosetupmerge
+    autosetupmerge = always
+    autosetuprebase = always
 
 [user]
     name = Manuel Sanchez Pinar
