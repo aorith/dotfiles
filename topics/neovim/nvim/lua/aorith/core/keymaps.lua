@@ -142,7 +142,8 @@ nmap_leader("va", "<Cmd>lua MiniVisits.add_label()<CR>", "Add label")
 nmap_leader("vr", "<Cmd>lua MiniVisits.remove_label()<CR>", "Remove label")
 
 local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
-local git_reflog_cmd = [[Git log --abbrev-commit --walk-reflogs --pretty=format:\%h\ \%ai\ \%al\ \%d\ |\ \%s]] -- similar to 'git reflog'
+local git_reflog_cmd = [[Git log --abbrev-commit --walk-reflogs --pretty=format:\%h\ \%ai\ \%al\ |\ \%s\ |\ \%d]] -- similar to 'git reflog'
+local git_graph_cmd = [[Git log --graph --all --pretty=format:\%h\ \%ai\ \%al\ |\ \%s\ |\ \%d]]
 nmap_leader("ga", "<Cmd>Git diff --cached -- %:p<CR>", "Added diff buffer")
 nmap_leader("gA", "<Cmd>Git diff --cached<CR>", "Added diff")
 nmap_leader("gc", "<Cmd>Git commit<CR>", "Commit")
@@ -153,6 +154,7 @@ nmap_leader("gb", "<Cmd>Git blame -- %:p<CR>", "Blame buffer")
 nmap_leader("gl", "<Cmd>" .. git_log_cmd .. " --follow -- %:p<CR>", "Log buffer")
 nmap_leader("gL", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
 nmap_leader("gr", "<Cmd>tab " .. git_reflog_cmd .. "<CR>", "Reflog")
+nmap_leader("gg", "<Cmd>tab " .. git_graph_cmd .. "<CR>", "Graph")
 nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
 nmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor")
 
