@@ -41,10 +41,10 @@ return {
 
       -- notify attachment
       ---@diagnostic disable-next-line: param-type-mismatch
-      vim.notify(client.name .. " started", vim.log.levels.INFO, {
-        -- title = "Attaching LSP",
-        timeout = 3000,
-      })
+      -- vim.notify(client.name .. " started", vim.log.levels.INFO, {
+      --   -- title = "Attaching LSP",
+      --   timeout = 3000,
+      -- })
     end
 
     -- capabilities

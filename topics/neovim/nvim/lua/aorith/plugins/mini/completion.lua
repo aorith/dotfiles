@@ -4,9 +4,10 @@ M.setup = function()
   require("mini.completion").setup({
     set_vim_settings = true,
 
+    delay = { signature = 10 ^ 7 }, -- disable signature help
+
     window = {
       info = { border = "single" },
-      signature = { border = "single" },
     },
 
     lsp_completion = {

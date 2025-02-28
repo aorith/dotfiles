@@ -1,7 +1,5 @@
---stylua: ignore start
-
 -- Leader keys configuration ---------------------------------------------------
-vim.g.mapleader = " "      -- Leader key must set before plugins
+vim.g.mapleader = " " -- Leader key must set before plugins
 vim.g.maplocalleader = "\\" -- Using ',' breaks: f<letter> + ;,
 
 -- Disable builtin plugins to improve loading time -----------------------------
@@ -28,6 +26,12 @@ vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+-- Enable filetype plugins
+vim.cmd("filetype plugin indent on")
+-- Enable syntax highlighting if it wasn't already (as it is time consuming)
+if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
+
+--stylua: ignore start
 -- General --------------------------------------------------------------------
 vim.o.shell        = "bash"   -- Force bash as the shell for '!' commands
 vim.o.modelineexpr = false    -- Disable modeline expressions for security
@@ -35,9 +39,6 @@ vim.o.backup       = false    -- Don't store backup
 vim.o.writebackup  = false    -- Don't store backup
 vim.o.mouse        = 'a'      -- Enable mouse
 vim.o.undofile     = true     -- Enable persistent undo
-
--- Enable filetype plugins
-vim.cmd.filetype("plugin", "indent", "on")
 
 -- UI -------------------------------------------------------------------------
 vim.o.breakindent   = true         -- Indent wrapped lines to match line start
@@ -69,9 +70,6 @@ vim.o.fillchars = table.concat(
   ','
 )
 vim.o.listchars = table.concat({ 'extends:…', 'trail:·', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
-
--- Enable syntax highlighting
-if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
 
 -- Editing --------------------------------------------------------------------
 vim.o.autoindent    = true     -- Use auto indent
@@ -111,6 +109,6 @@ vim.o.updatetime    = 250   -- Affects cursor hold update time
 vim.o.lazyredraw    = true  -- Do not redraw when executing macros, registers and other commands
 
 -- let sqlite.lua know where to find sqlite
-vim.g.sqlite_clib_path = vim.fn.getenv("LIBSQLITE")
+-- vim.g.sqlite_clib_path = vim.fn.getenv("LIBSQLITE")
 
 --stylua: ignore end

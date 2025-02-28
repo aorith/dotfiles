@@ -165,3 +165,14 @@ map("n", "gD", "<Cmd>Pick lsp scope='declaration'<CR>", { desc = "Declaration" }
 map("n", "gr", "<Cmd>Pick lsp scope='references'<CR>", { desc = "References" })
 map("n", "gI", "<Cmd>Pick lsp scope='implementation'<CR>", { desc = "Implementation" })
 map("n", "gy", "<Cmd>Pick lsp scope='type_definition'<CR>", { desc = "Type Definitions" })
+
+-- Toggles (most of them are setup with 'mini.basics'
+nmap_leader("tx", function()
+  local ctx = require("treesitter-context")
+  ctx.toggle()
+  if ctx.enabled() then
+    vim.notify("Context enabled")
+  else
+    vim.notify("Context disabled")
+  end
+end, "Toggle context")
