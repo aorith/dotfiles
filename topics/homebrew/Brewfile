@@ -4,6 +4,7 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "fluxcd/tap"
 tap "kcl-lang/tap"
+tap "go-task/tap"
 
 # Formulaes
 # -----------------------------------------------------------------------------
@@ -32,6 +33,7 @@ brew "gnu-sed"
 brew "gnu-tar"
 brew "go"
 brew "go-jsonnet" # jsonnetfmt
+brew "go-task"
 brew "grep"
 brew "helm"
 brew "helm-docs"
