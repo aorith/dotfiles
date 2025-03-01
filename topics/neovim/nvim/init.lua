@@ -25,7 +25,7 @@ require("aorith.core.autocmds")
 local add, later = MiniDeps.add, MiniDeps.later
 local now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or later
 
-add({ name = "mini.nvim", checkout = "HEAD" })
+add({ name = "mini.nvim" })
 require("aorith.plugins.theme")
 
 require("aorith.plugins.mini.basics")
