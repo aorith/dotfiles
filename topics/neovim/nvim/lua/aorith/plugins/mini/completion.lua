@@ -1,13 +1,15 @@
 local M = {}
 
 M.setup = function()
+  ---@diagnostic disable-next-line: redundant-parameter
   require("mini.completion").setup({
     set_vim_settings = true,
 
-    delay = { signature = 10 ^ 7 }, -- disable signature help
+    delay = { signature = 200 },
 
     window = {
       info = { border = "single" },
+      signature = { border = "single" },
     },
 
     lsp_completion = {
