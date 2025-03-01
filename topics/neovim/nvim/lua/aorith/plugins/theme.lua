@@ -1,83 +1,14 @@
-return {
-  --- tokyonight
-  -- "folke/tokyonight.nvim",
-  -- lazy = false,
-  -- priority = 10000,
-  --
-  -- config = function()
-  --   require("tokyonight").setup({
-  --     style = "moon",
-  --     dim_inactive = true, -- dims inactive windows
-  --   })
-  --
-  --   vim.cmd.colorscheme("tokyonight")
-  -- end,
+--- randomhue
+vim.cmd("colorscheme randomhue")
 
-  --- kanagawa
-  -- "rebelot/kanagawa.nvim",
-  -- lazy = false,
-  -- priority = 10000,
-  --
-  -- config = function()
-  --   require("kanagawa").setup({
-  --     background = {
-  --       dark = "dragon", -- wave, dragon
-  --       light = "lotus",
-  --     },
-  --     dimInactive = true,
-  --   })
-  --
-  --   vim.cmd.colorscheme("kanagawa")
-  -- end,
-
-  --- catppuccin
-  -- "catppuccin/nvim",
-  -- name = "catppuccin",
-  -- priority = 10000,
-  --
-  -- config = function()
-  --   require("catppuccin").setup({
-  --     background = {
-  --       dark = "frappe", -- frappe, macchiato, mocha
-  --       light = "latte",
-  --     },
-  --     dim_inactive = { enabled = true },
-  --     show_end_of_buffer = true,
-  --
-  --     integrations = { blink_cmp = true },
-  --   })
-  --
-  --   vim.cmd.colorscheme("catppuccin")
-  -- end,
-
-  --- rose-pine
-  -- "rose-pine/neovim",
-  -- name = "rose-pine",
-  -- priority = 10000,
-  --
-  -- config = function()
-  --   require("rose-pine").setup({
-  --     dark_variant = "moon",
-  --     dim_inactive_windows = true,
-  --   })
-  --
-  --   vim.cmd.colorscheme("rose-pine")
-  -- end,
-
-  --- sonokai
-  -- "sainnhe/sonokai",
-  -- lazy = false,
-  -- priority = 10000,
-  -- config = function()
-  --   vim.g.sonokai_enable_italic = 1
-  --   vim.g.sonokai_style = "espresso" -- 'default'`, `'atlantis'`, `'andromeda'`, `'shusia'`, `'maia'`, `'espresso'
-  --   vim.g.sonokai_dim_inactive_windows = 1
-  --   vim.g.sonokai_menu_selection_background = "red" -- 'blue', 'green', 'red'
-  --   vim.g.sonokai_float_style = "dim" -- 'bright', 'dim'
-  --   vim.g.sonokai_diagnostic_line_highlight = 1
-  --   vim.g.sonokai_diagnostic_virtual_text = "highlighted" -- 'grey'`, `'colored'`, `'highlighted'
-  --   vim.g.sonokai_inlay_hints_background = "dimmed"
-  --
-  --   vim.cmd.colorscheme("sonokai")
-  -- end,
-}
+--- sonokai
+-- MiniDeps.add({ source = "sainnhe/sonokai", name = "sonokai" })
+-- vim.g.sonokai_enable_italic = 1
+-- vim.g.sonokai_style = "espresso" -- 'default'`, `'atlantis'`, `'andromeda'`, `'shusia'`, `'maia'`, `'espresso'
+-- vim.g.sonokai_dim_inactive_windows = 1
+-- vim.g.sonokai_menu_selection_background = "red" -- 'blue', 'green', 'red'
+-- vim.g.sonokai_float_style = "dim" -- 'bright', 'dim'
+-- vim.g.sonokai_diagnostic_line_highlight = 1
+-- vim.g.sonokai_diagnostic_virtual_text = "highlighted" -- 'grey'`, `'colored'`, `'highlighted'
+-- vim.g.sonokai_inlay_hints_background = "dimmed"
+-- vim.cmd.colorscheme("sonokai")

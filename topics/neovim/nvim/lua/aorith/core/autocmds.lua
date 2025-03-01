@@ -87,5 +87,7 @@ A.nvim_create_autocmd("ColorScheme", {
     -- Ensure that mini.cursorword always highlights without using underline
     vim.api.nvim_set_hl(0, "MiniCursorWord", { link = "Visual" })
     vim.api.nvim_set_hl(0, "MiniCursorWordCurrent", { link = "Visual" })
+
+    vim.api.nvim_set_hl(0, "MiniJump", { link = "Search" })
   end,
 })

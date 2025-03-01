@@ -168,7 +168,18 @@ map("n", "gr", "<Cmd>Pick lsp scope='references'<CR>", { desc = "References" })
 map("n", "gI", "<Cmd>Pick lsp scope='implementation'<CR>", { desc = "Implementation" })
 map("n", "gy", "<Cmd>Pick lsp scope='type_definition'<CR>", { desc = "Type Definitions" })
 
--- Toggles (most of them are setup with 'mini.basics'
+-- Formatting
+nmap_leader("lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, "Format buffer")
+xmap_leader("lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, "Format buffer")
+
+-- Outline
+nmap_leader("a", "<cmd>Outline<CR>", "Toggle outline")
+
+-- Neotree
+nmap_leader("e", "<Cmd>Neotree position=current toggle<CR>", "Neo-Tree (Current)")
+nmap_leader("E", "<Cmd>Neotree position=left toggle<CR>", "Neo-Tree (Left)")
+
+-- Toggles (most of them are setup with 'mini.basics')
 nmap_leader("tx", function()
   local ctx = require("treesitter-context")
   ctx.toggle()
@@ -178,3 +189,8 @@ nmap_leader("tx", function()
     vim.notify("Context disabled")
   end
 end, "Toggle context")
+
+-- Misc
+nmap_leader("q", function() require("mini.bufremove").delete() end, "Delete current buffer")
+nmap_leader("z", function() require("mini.misc").zoom() end, "Zoom window")
+nmap_leader("go", function() require("mini.diff").toggle_overlay(0) end, "Toggle diff overlay")

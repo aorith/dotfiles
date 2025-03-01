@@ -23,7 +23,7 @@ M.setup = function()
       -- Whether to delete permanently or move into module-specific trash
       permanent_delete = false,
       -- Whether to use for editing directories
-      use_as_default_explorer = false,
+      use_as_default_explorer = true,
     },
 
     -- Customization of explorer windows
