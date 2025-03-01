@@ -4,11 +4,6 @@ require("mini.completion").setup({
 
   delay = { signature = 200 },
 
-  window = {
-    info = { border = "single" },
-    signature = { border = "single" },
-  },
-
   lsp_completion = {
     source_func = "omnifunc",
     auto_setup = false, -- Done manually on 'lsp.lua'
