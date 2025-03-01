@@ -179,6 +179,16 @@ nmap_leader("a", "<cmd>Outline<CR>", "Toggle outline")
 nmap_leader("e", "<Cmd>Neotree position=current toggle<CR>", "Neo-Tree (Current)")
 nmap_leader("E", "<Cmd>Neotree position=left toggle<CR>", "Neo-Tree (Left)")
 
+-- Mini.files
+map("n", "-", function()
+  local currFile = vim.api.nvim_buf_get_name(0)
+  if vim.uv.fs_stat(currFile) then
+    require("mini.files").open(currFile)
+  else
+    require("mini.files").open(nil, false)
+  end
+end, { desc = "Open parent directory" })
+
 -- Toggles (most of them are setup with 'mini.basics')
 nmap_leader("tx", function()
   local ctx = require("treesitter-context")
@@ -194,3 +204,4 @@ end, "Toggle context")
 nmap_leader("q", function() require("mini.bufremove").delete() end, "Delete current buffer")
 nmap_leader("z", function() require("mini.misc").zoom() end, "Zoom window")
 nmap_leader("go", function() require("mini.diff").toggle_overlay(0) end, "Toggle diff overlay")
+nmap_leader("n", function() require("mini.notify").show_history() end, "Show Notifications")

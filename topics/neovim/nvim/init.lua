@@ -28,33 +28,33 @@ local now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or later
 add({ name = "mini.nvim", checkout = "HEAD" })
 require("aorith.plugins.theme")
 
-require("aorith.plugins.mini.basics").setup()
-require("aorith.plugins.mini.notify").setup()
+require("aorith.plugins.mini.basics")
+require("aorith.plugins.mini.notify")
 require("mini.icons").setup()
 require("mini.icons").mock_nvim_web_devicons()
 require("mini.tabline").setup()
-require("aorith.plugins.mini.statusline").setup()
+require("aorith.plugins.mini.statusline")
 require("mini.extra").setup()
 require("mini.diff").setup({ view = { style = "sign" } })
 require("mini.git").setup({ command = { split = "vertical" } })
 require("mini.jump").setup({ delay = { highlight = 50 } })
-require("aorith.plugins.mini.files").setup()
+require("aorith.plugins.mini.files")
 
-later(require("mini.misc").setup)
-later(require("mini.ai").setup) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
-later(require("mini.bufremove").setup)
+later(function() require("mini.misc").setup() end)
+later(function() require("mini.ai").setup() end) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
+later(function() require("mini.bufremove").setup() end)
 -- later(require("mini.cursorword").setup)
-later(require("aorith.plugins.mini.indentscope").setup)
+later(function() require("aorith.plugins.mini.indentscope") end)
 -- sa => surround around
 -- sd => surround delete
 -- sr => surround replace
 -- Example: Visual select a word -> sa"  (surround around quotes, 'saq' with mini.ai)
-later(require("mini.surround").setup)
-later(require("mini.visits").setup)
-later(require("aorith.plugins.mini.pick").setup)
-later(require("aorith.plugins.mini.hipatterns").setup)
-later(require("aorith.plugins.mini.clue").setup)
-later(require("aorith.plugins.mini.completion").setup)
+later(function() require("mini.surround").setup() end)
+later(function() require("mini.visits").setup() end)
+later(function() require("aorith.plugins.mini.pick") end)
+later(function() require("aorith.plugins.mini.hipatterns") end)
+later(function() require("aorith.plugins.mini.clue") end)
+later(function() require("aorith.plugins.mini.completion") end)
 
 --- Plugins
 -------------------------------------------------------------------------------
