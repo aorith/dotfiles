@@ -1,1 +1,4 @@
 # Ignoring files causes too much "Out of sync items" that I don't want to deal with
+
+# https://docs.syncthing.net/users/ignoring.html
+(?d).terraform
