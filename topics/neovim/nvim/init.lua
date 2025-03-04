@@ -39,6 +39,7 @@ require("mini.diff").setup({ view = { style = "sign" } })
 require("mini.git").setup({ command = { split = "vertical" } })
 require("mini.jump").setup({ delay = { highlight = 50 } })
 require("aorith.plugins.mini.files")
+require("aorith.plugins.mini.hipatterns")
 
 later(function() require("mini.misc").setup() end)
 later(function() require("mini.ai").setup() end) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
@@ -52,7 +53,6 @@ later(function() require("aorith.plugins.mini.indentscope") end)
 later(function() require("mini.surround").setup() end)
 later(function() require("mini.visits").setup() end)
 later(function() require("aorith.plugins.mini.pick") end)
-later(function() require("aorith.plugins.mini.hipatterns") end)
 later(function() require("aorith.plugins.mini.clue") end)
 later(function() require("aorith.plugins.mini.completion") end)
 

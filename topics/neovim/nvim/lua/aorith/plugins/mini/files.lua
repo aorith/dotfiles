@@ -30,10 +30,6 @@ require("mini.files").setup({
     max_number = 2,
     -- Whether to show preview of file/directory under cursor
     preview = true,
-    -- Width of focused window
-    width_focus = 60,
-    -- Width of non-focused window
-    width_nofocus = 30,
     -- Width of preview window
     width_preview = 70,
   },
@@ -53,5 +49,16 @@ vim.api.nvim_create_autocmd("User", {
   callback = function(args)
     local buf_id = args.data.buf_id
     vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
+  end,
+})
+
+-- Customize window
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesWindowOpen",
+  callback = function(args)
+    local win_id = args.data.win_id
+    local config = vim.api.nvim_win_get_config(win_id)
+    config.border = "double"
+    vim.api.nvim_win_set_config(win_id, config)
   end,
 })

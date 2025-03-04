@@ -6,7 +6,6 @@ local disabled_files = {
 }
 
 local disabled_filetypes = {
-  "dockerfile",
   "tmux",
 }
 
