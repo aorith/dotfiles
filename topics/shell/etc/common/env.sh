@@ -16,7 +16,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export PYTHONPYCACHEPREFIX="/tmp/python-cache" # fine for sinlge-user systems
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python-cache"
+export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
 
 # AA for java apps
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# $1 == current directory of pane
+# $* == selection
+
+curr_dir="$1"
+shift
+cd "$curr_dir" || exit 1
+
+if [[ "$1" =~ ^[A-Fa-f0-9]{8,} ]]; then
+    # Git commit sha
+    tmux display-popup -d "$curr_dir" -w 100% -h 100% -E "git --paginate diff ${1}^ ${1} | delta --paging=always --syntax-theme=ansi"
+fi

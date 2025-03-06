@@ -32,6 +32,14 @@ repos-old() {
     cd "${p}" || return 1
 }
 
+tt() {
+    bat --theme ansi --plain ~/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt
+}
+
+te() {
+    "$EDITOR" ~/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt
+}
+
 # To manage k8s contexts, source the ,kc function here
 # shellcheck disable=SC1091
 source "${PRIVATE_DOTFILES}/topics/k8s/k8s-kc"

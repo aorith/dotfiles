@@ -11,73 +11,58 @@ y = 4
 size = 16
 offset = { x = 0, y = 4 }
 
-# Nerd Font Mono == Fully monospaced, smaller icons
-# Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
-
-# LG = Large Glyphs
-# L, M, S = spacing
-# DZ = dotted zero
-# normal = { family = "MesloLGS Nerd Font Mono" }
-
-normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Light" }
-# normal = { family = "Hack Nerd Font Mono" }
-# normal = { family = "BlexMono Nerd Font Mono", style = "Light" }
-# normal = { family = "CommitMono Nerd Font Mono" }
-# normal = { family = "Lilex Nerd Font Mono", style = "Regular" }
-
-# normal = { family = "IosevkaTerm Nerd Font Mono", style = "Light" }
-# italic = { family = "IosevkaTerm Nerd Font Mono", style = "Light Italic" }
-# bold_italic = { family = "IosevkaTerm Nerd Font Mono", style = "SemiBold Italic" }
-
-# normal = { family = "SauceCodePro Nerd Font Mono", style = "Regular" }
-# italic = { family = "SauceCodePro Nerd Font Mono", style = "Italic" }
-# bold_italic = { family = "SauceCodePro Nerd Font Mono", style = "Bold Italic" }
+normal = { family = "Hack Nerd Font Mono" }
 
 [keyboard]
+
 bindings = [
   { key = "V", mods = "Command", action = "Paste" },
   { key = "C", mods = "Command", action = "Copy" },
   { key = "N", mods = "Command|Shift", action = "SpawnNewInstance" },
-  { key = "B", mods = "Command", action = "ReceiveChar" },
-  { key = "Space", mods = "Alt", chars = " " },
-  { key = "Space", mods = "Command", chars = " " },
   { key = "F12", action = "ToggleSimpleFullscreen" },
-  { key = "W", mods = "Command", chars = "\u001Bw" },
-  { key = "T", mods = "Command", chars = "\u001Bt" },
-  { key = "T", mods = "Command|Shift", chars = "\u001BT" },
 
-  # Keyboard -> Shortcuts (or app shortcuts) -> Create an entry for 'Hide alacritty' (name must match) to some other shortcut
-  { key = "H", mods = "Command", chars = "\u001Bh" },
-  { key = "J", mods = "Command", chars = "\u001Bj" },
-  { key = "K", mods = "Command", chars = "\u001Bk" },
-  { key = "L", mods = "Command", chars = "\u001Bl" },
+  { key = "Space", mods = "Alt", chars = "\u0020" },
+  { key = "Space", mods = "Command", chars = "\u0020" },
 
-  { key = "H", mods = "Command|Shift", chars = "\u001BH" },
-  { key = "J", mods = "Command|Shift", chars = "\u001BJ" },
-  { key = "K", mods = "Command|Shift", chars = "\u001BK" },
-  { key = "L", mods = "Command|Shift", chars = "\u001BL" },
-  { key = "Return", mods = "Command|Shift", chars = "\u001B\r" },
-  { key = "D", mods = "Command", chars = "\u001Bd" },
-  { key = "D", mods = "Command|Shift", chars = "\u001BD" },
-  { key = "S", mods = "Command", chars = "\u001Bs" },
-  { key = "Key1", mods = "Command", chars = "\u001B1" },
-  { key = "Key2", mods = "Command", chars = "\u001B2" },
-  { key = "Key3", mods = "Command", chars = "\u001B3" },
-  { key = "Key4", mods = "Command", chars = "\u001B4" },
-  { key = "Key5", mods = "Command", chars = "\u001B5" },
-  { key = "Key6", mods = "Command", chars = "\u001B6" },
-  { key = "Key7", mods = "Command", chars = "\u001B7" },
-  { key = "Key8", mods = "Command", chars = "\u001B8" },
-  { key = "Key9", mods = "Command", chars = "\u001B9" },
-  { key = "G", mods = "Command", chars = "\u001Bg" },
-  { key = "R", mods = "Command", chars = "\u001Br" },
-  { key = "R", mods = "Command|Shift", chars = "\u001BR" },
-  { key = "Comma", mods = "Command", chars = "\u001B," },
-  { key = "N", mods = "Command", chars = "\u001Bn" },
-  { key = "Z", mods = "Command", chars = "\u001Bz" },
-  { key = "F", mods = "Command", chars = "\u001Bf" },
-  { key = "F", mods = "Command|Shift", chars = "\u001BF" },
-  { key = "E", mods = "Command", chars = "\u001Be" },
-  { key = "I", mods = "Command", chars = "\u001Bi" },
-  { key = "P", mods = "Command", chars = "\u001Bp" },
+  { key = "W", mods = "Command", chars = "\u0002x" },
+  { key = "T", mods = "Command", chars = "\u0002c" },
+  { key = "T", mods = "Command|Shift", chars = "\u0002C" },
+
+  { key = "H", mods = "Command", chars = "\u0002h" },
+  { key = "J", mods = "Command", chars = "\u0002j" },
+  { key = "K", mods = "Command", chars = "\u0002k" },
+  { key = "L", mods = "Command", chars = "\u0002l" },
+
+  { key = "H", mods = "Command|Shift", chars = "\u0002H" },
+  { key = "J", mods = "Command|Shift", chars = "\u0002J" },
+  { key = "K", mods = "Command|Shift", chars = "\u0002K" },
+  { key = "L", mods = "Command|Shift", chars = "\u0002L" },
+
+  { key = "Left", mods = "Command", chars = "\u0002\u0008" },
+  { key = "Down", mods = "Command", chars = "\u0002\u000a" },
+  { key = "Up", mods = "Command", chars = "\u0002\u000b" },
+  { key = "Right", mods = "Command", chars = "\u0002\u000c" },
+
+  { key = "Enter", mods = "Command|Shift", chars = "\u0002\u0020" },
+  { key = "D", mods = "Command", chars = "\u0002\u0025" },
+  { key = "D", mods = "Command|Shift", chars = "\u0002\u0022" },
+  { key = "S", mods = "Command", chars = "\u0002s" },
+
+  { key = "1", mods = "Command", chars = "\u00021" },
+  { key = "2", mods = "Command", chars = "\u00022" },
+  { key = "3", mods = "Command", chars = "\u00023" },
+  { key = "4", mods = "Command", chars = "\u00024" },
+  { key = "5", mods = "Command", chars = "\u00025" },
+  { key = "6", mods = "Command", chars = "\u00026" },
+  { key = "7", mods = "Command", chars = "\u00027" },
+  { key = "8", mods = "Command", chars = "\u00028" },
+  { key = "9", mods = "Command", chars = "\u00029" },
+
+  { key = "G", mods = "Command", chars = "\u0002[" },
+  { key = "R", mods = "Command", chars = "\u0002W" },
+  { key = "R", mods = "Command|Shift", chars = "\u0002S" },
+  { key = "Comma", mods = "Command", chars = "\u0002(" },
+  { key = "Z", mods = "Command", chars = "\u0002z" },
+  { key = "F", mods = "Command", chars = "\u0002/" },
+  { key = "P", mods = "Command", chars = "\u0002p" },
 ]

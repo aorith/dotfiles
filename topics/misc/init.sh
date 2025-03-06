@@ -25,3 +25,4 @@ if command -v "$VALE" >/dev/null 2>&1; then
 fi
 
 create_link "${PWD}/src/tealdeer" "$HOME/.config/tealdeer"
+create_link "${PWD}/src/k9s" "$HOME/.config/k9s"

@@ -49,6 +49,7 @@ vim.api.nvim_create_autocmd("User", {
   callback = function(args)
     local buf_id = args.data.buf_id
     vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
+    vim.keymap.set("n", "<Esc>", MiniFiles.close, { buffer = buf_id })
   end,
 })
 

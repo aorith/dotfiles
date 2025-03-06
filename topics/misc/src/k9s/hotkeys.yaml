@@ -1,0 +1,10 @@
+hotKeys:
+  shift-1:
+    shortCut: Shift-1
+    description: View Namespaces
+    command: namespaces
+
+  shift-2:
+    shortCut: Shift-2
+    description: View Pods
+    command: pods
