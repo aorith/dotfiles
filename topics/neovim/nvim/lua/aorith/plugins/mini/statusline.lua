@@ -39,16 +39,12 @@ local section_lsp = function(args)
 end
 
 local section_filename = function(args)
-  -- In terminal always use plain name
-  if vim.bo.buftype == "terminal" then
-    return "%t"
-  elseif MiniStatusline.is_truncated(args.trunc_width) then
-    -- File name with 'truncate', 'modified', 'readonly' flags
-    -- Use relative path if truncated
-    return "%#CustomMiniStatuslineFilename#%f%#MiniStatuslineFilename#%m%r"
+  if vim.bo.buftype == "terminal" then return "%t" end
+
+  if MiniStatusline.is_truncated(args.trunc_width) then
+    return vim.fn.expand("%:h") .. "/%#CustomMiniStatuslineFilename#%t%#MiniStatuslineFilename# %m%r"
   else
-    -- Use fullpath if not truncated
-    return "%#CustomMiniStatuslineFilename#%t%#MiniStatuslineFilename#%m%r %F"
+    return vim.fn.expand("%:p:h") .. "/%#CustomMiniStatuslineFilename#%t%#MiniStatuslineFilename# %m%r"
   end
 end
 
@@ -60,8 +56,8 @@ require("mini.statusline").setup({
   content = {
     active = function()
       local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 1024 })
-      local git = MiniStatusline.section_git({ trunc_width = 75 })
-      local diff = MiniStatusline.section_diff({ trunc_width = 75 })
+      -- local git = MiniStatusline.section_git({ trunc_width = 75 })
+      -- local diff = MiniStatusline.section_diff({ trunc_width = 75 })
       local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
       -- local lsp = MiniStatusline.section_lsp({ trunc_width = 75 }) -- Shows number of attached lsp servers
 
@@ -76,7 +72,7 @@ require("mini.statusline").setup({
 
       return MiniStatusline.combine_groups({
         { hl = mode_hl, strings = { mode } },
-        { hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics } },
+        { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
         "%<", -- Mark general truncate point
         { hl = "MiniStatuslineFilename", strings = { filename } },
         "%=", -- End left alignment

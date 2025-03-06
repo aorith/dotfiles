@@ -54,9 +54,8 @@ vim.o.number        = true         -- Show line numbers
 vim.o.pumblend      = 0            -- Builtin completion menus transparency
 vim.o.winblend      = 0            -- Floating windows transparency
 vim.o.pumheight     = 12           -- Popup menu size
-vim.o.ruler         = false        -- Don't show cursor position
 vim.o.shortmess     = 'aoOTtWFCcS' -- Disable certain messages from |ins-completion-menu|
-vim.o.showmode      = false        -- Don't show mode in command line
+vim.o.showmode      = false        -- Show mode in command line
 vim.o.showtabline   = 2            -- Always show tabline
 vim.o.signcolumn    = 'yes'        -- How signcolumn behaves
 vim.o.splitbelow    = true         -- Horizontal splits will be below
@@ -64,6 +63,8 @@ vim.o.splitright    = true         -- Vertical splits will be to the right
 vim.o.splitkeep     = 'screen'     -- Reduce scroll during a window split
 vim.o.wrap          = false        -- Display long lines as just one line
 vim.o.showmatch     = true         -- Highlight matching parentheses
+vim.o.scrolloff     = 3            -- Scroll context
+vim.o.sidescrolloff = 3            -- Line scroll context
 
 vim.o.fillchars = table.concat(
   { 'fold:╌', 'horiz:═', 'horizdown:╦', 'horizup:╩', 'vert:║', 'verthoriz:╬', 'vertleft:╣', 'vertright:╠' },
@@ -105,7 +106,7 @@ vim.o.foldnestmax      = 10       -- Create folds only for some number of nested
 -- Timers and performance -----------------------------------------------------
 vim.o.ttimeoutlen   = 5     -- Milliseconds to wait for a key code sequence to complete
 vim.o.timeoutlen    = 700   -- Milliseconds to wait for a mapped sequence to complete
-vim.o.updatetime    = 250   -- Affects cursor hold update time
+vim.o.updatetime    = 150   -- Affects cursor hold update time
 vim.o.lazyredraw    = true  -- Do not redraw when executing macros, registers and other commands
 
 -- let sqlite.lua know where to find sqlite

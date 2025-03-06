@@ -80,6 +80,25 @@ A.nvim_create_autocmd("ColorScheme", {
   group = my_au,
   pattern = "*",
   callback = function()
+    -- Transparency
+    local groups = {
+      "Normal",
+      "NormalNC",
+      "EndOfBuffer",
+      "MsgArea",
+      "MsgSeparator",
+      "VertSplit",
+      "WinSeparator",
+      "FloatBorder",
+      "FloatTitle",
+      "NormalFloat",
+      "MiniFilesTitleFocused",
+    }
+
+    for _, g in ipairs(groups) do
+      vim.api.nvim_set_hl(0, g, { bg = "NONE" })
+    end
+
     -- Make the filename in mini.statusline more noticeable
     local hl_filename = vim.api.nvim_get_hl(0, { name = "MiniStatuslineFilename" })
     vim.api.nvim_set_hl(0, "CustomMiniStatuslineFilename", { fg = nil, bg = hl_filename.bg, bold = true })

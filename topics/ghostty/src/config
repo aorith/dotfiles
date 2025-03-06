@@ -26,8 +26,8 @@ font-family = "Symbols Nerd Font Mono"
 # To generally disable most ligatures, use `-calt, -liga, -dlig`.
 font-feature = -calt, -liga, -dlig
 
+#theme = "nord"
 cursor-invert-fg-bg = true
-minimum-contrast = 1.1
 
 # Keybinds - NOTE: inline comments not allowed!
 keybind = clear
