@@ -11,8 +11,6 @@ vim.b.minihipatterns_config = {
   },
 }
 
-vim.keymap.set("n", ",s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", { buffer = 0, desc = "Sort" })
-
 local insert_new_todo = function()
   local win = vim.api.nvim_get_current_win()
   local row, _ = unpack(vim.api.nvim_win_get_cursor(win))
@@ -24,7 +22,6 @@ local insert_new_todo = function()
 
   vim.api.nvim_win_set_cursor(win, { newRow, newCol })
 end
-vim.keymap.set("n", ",,", insert_new_todo, { buffer = 0, desc = "Create todo" })
 
 local toggle_todo_state = function()
   local node = vim.treesitter.get_node()
@@ -43,4 +40,34 @@ local toggle_todo_state = function()
 
   vim.fn.setline(start_row + 1, line)
 end
+
+local cycle_priority = function()
+  local node = vim.treesitter.get_node()
+  if not node then return end
+
+  local start_row, _ = node:range()
+  local line = vim.fn.getline(start_row + 1)
+
+  if line:match("^x") then
+    vim.notify("Cannot cycle priority of tasks marked as done")
+    return
+  end
+
+  local current_priority = line:match("^%((%a)%)")
+
+  local priority_map = { A = "(B) ", B = "(C) ", C = "(D) ", D = "(E) ", E = "(A) " }
+  local new_priority = priority_map[current_priority] or "(A)"
+
+  if current_priority then
+    line = line:gsub("^%(%a%)%s*", new_priority)
+  else
+    line = new_priority .. " " .. line
+  end
+
+  vim.fn.setline(start_row + 1, line)
+end
+
+vim.keymap.set("n", ",s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", { buffer = 0, desc = "Sort" })
+vim.keymap.set("n", ",,", insert_new_todo, { buffer = 0, desc = "Create todo" })
 vim.keymap.set("n", ",d", toggle_todo_state, { buffer = 0, desc = "Toggle todo state" })
+vim.keymap.set("n", ",a", cycle_priority, { buffer = 0, desc = "Cycle priority" })
