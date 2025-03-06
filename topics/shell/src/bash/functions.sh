@@ -33,11 +33,17 @@ repos-old() {
 }
 
 tt() {
-    bat --theme ansi --plain ~/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt
+    local todo="$HOME/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt"
+    if [[ -n "$1" ]]; then
+        grep "$1" "$todo" | sort | bat --plain --language todo.txt --theme ansi
+    else
+        sort "$todo" | bat --plain --language todo.txt --theme ansi "$todo"
+    fi
 }
 
 te() {
-    "$EDITOR" ~/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt
+    local todo="$HOME/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt"
+    "$EDITOR" "$todo"
 }
 
 # To manage k8s contexts, source the ,kc function here
