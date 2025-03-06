@@ -43,7 +43,8 @@ tt() {
 
 te() {
     local todo="$HOME/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt"
-    "$EDITOR" "$todo"
+    local _done="$HOME/Syncthing/SYNC_STUFF/notes/zk/todo/done.txt"
+    "$EDITOR" -o "$todo" "$_done"
 }
 
 # To manage k8s contexts, source the ,kc function here

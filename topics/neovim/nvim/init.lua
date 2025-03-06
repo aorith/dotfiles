@@ -41,7 +41,10 @@ require("mini.jump").setup({ delay = { highlight = 50 } })
 require("aorith.plugins.mini.files")
 require("aorith.plugins.mini.hipatterns")
 
-later(function() require("mini.misc").setup() end)
+later(function()
+  require("mini.misc").setup({ make_global = { "put", "put_text" } })
+  MiniMisc.setup_auto_root()
+end)
 later(function() require("mini.ai").setup() end) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
 later(function() require("mini.bufremove").setup() end)
 -- later(require("mini.cursorword").setup)

@@ -67,7 +67,11 @@ local cycle_priority = function()
   vim.fn.setline(start_row + 1, line)
 end
 
-vim.keymap.set("n", ",s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", { buffer = 0, desc = "Sort" })
+if vim.fn.expand("%:t") == "done.txt" then
+  vim.keymap.set("n", ",s", "<Cmd>w | %sort! | w | lua vim.notify('sorted')<CR>", { buffer = 0, desc = "Sort reverse" })
+else
+  vim.keymap.set("n", ",s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", { buffer = 0, desc = "Sort" })
+end
 vim.keymap.set("n", ",,", insert_new_todo, { buffer = 0, desc = "Create todo" })
 vim.keymap.set("n", ",d", toggle_todo_state, { buffer = 0, desc = "Toggle todo state" })
 vim.keymap.set("n", ",a", cycle_priority, { buffer = 0, desc = "Cycle priority" })
