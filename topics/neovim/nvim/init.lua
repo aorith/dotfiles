@@ -26,7 +26,7 @@ local add, later = MiniDeps.add, MiniDeps.later
 local now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or later
 
 add({ name = "mini.nvim" })
-require("aorith.plugins.theme")
+vim.cmd("colorscheme mininord")
 
 require("aorith.plugins.mini.basics")
 require("aorith.plugins.mini.notify")

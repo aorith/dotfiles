@@ -62,51 +62,13 @@ A.nvim_create_autocmd("FileType", {
 -- Theme overrides
 A.nvim_create_autocmd("ColorScheme", {
   group = my_au,
-  pattern = "sonokai",
-  callback = function()
-    local config = vim.fn["sonokai#get_configuration"]()
-    local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
-    local set_hl = vim.fn["sonokai#highlight"]
-
-    -- Override CursorLine for SnacksPicker to make it more visible
-    -- :lua Snacks.picker.highlights({pattern = "hl_group:^SnacksPicker"})
-    set_hl("SnacksPickerListCursorLine", palette.none, palette.diff_red)
-    -- Same for MiniPick
-    set_hl("MiniPickMatchCurrent", palette.none, palette.diff_red)
-  end,
-})
-
-A.nvim_create_autocmd("ColorScheme", {
-  group = my_au,
   pattern = "*",
   callback = function()
-    -- Transparency
-    local groups = {
-      "Normal",
-      "NormalNC",
-      "EndOfBuffer",
-      "MsgArea",
-      "MsgSeparator",
-      "VertSplit",
-      "WinSeparator",
-      "FloatBorder",
-      "FloatTitle",
-      "NormalFloat",
-      "MiniFilesTitleFocused",
-    }
-
-    for _, g in ipairs(groups) do
-      vim.api.nvim_set_hl(0, g, { bg = "NONE" })
-    end
-
-    -- Make the filename in mini.statusline more noticeable
-    local hl_filename = vim.api.nvim_get_hl(0, { name = "MiniStatuslineFilename" })
-    vim.api.nvim_set_hl(0, "CustomMiniStatuslineFilename", { fg = nil, bg = hl_filename.bg, bold = true })
-
     -- Ensure that mini.cursorword always highlights without using underline
     vim.api.nvim_set_hl(0, "MiniCursorWord", { link = "Visual" })
     vim.api.nvim_set_hl(0, "MiniCursorWordCurrent", { link = "Visual" })
 
+    -- Make MiniJump more noticeable
     vim.api.nvim_set_hl(0, "MiniJump", { link = "Search" })
   end,
 })

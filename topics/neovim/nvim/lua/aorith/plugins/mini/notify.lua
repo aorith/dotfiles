@@ -4,9 +4,7 @@ require("mini.notify").setup({
     -- do not append time to the notification
     format = function(notif) return notif.msg end,
   },
-  window = {
-    winblend = 5,
-  },
+  window = { winblend = 0 },
 })
 
 vim.notify = require("mini.notify").make_notify()
