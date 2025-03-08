@@ -1,4 +1,4 @@
-vim.wo.spell = true
+vim.wo[0][0].spell = true
 
 vim.b.minihipatterns_config = {
   highlighters = {

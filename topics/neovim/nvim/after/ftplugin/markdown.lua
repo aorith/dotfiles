@@ -1,12 +1,14 @@
 vim.bo.textwidth = 0
 
-vim.wo.spell = true
-vim.wo.conceallevel = 0
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.wo.foldmethod = "expr"
-vim.wo.foldlevel = 99
-vim.wo.wrap = true
-vim.wo.breakindent = true
+vim.wo[0][0].number = false
+vim.wo[0][0].signcolumn = "auto"
+vim.wo[0][0].spell = true
+vim.wo[0][0].conceallevel = 0
+vim.wo[0][0].foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo[0][0].foldmethod = "expr"
+vim.wo[0][0].foldlevel = 99
+vim.wo[0][0].wrap = true
+vim.wo[0][0].breakindent = true
 
 ---@diagnostic disable-next-line: inject-field
 vim.b.minihipatterns_config = {
