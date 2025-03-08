@@ -61,8 +61,10 @@ later(function() require("aorith.plugins.mini.pick") end)
 later(function() require("aorith.plugins.mini.clue") end)
 later(function() require("aorith.plugins.mini.completion") end)
 later(function() require("mini.jump").setup({ delay = { highlight = 50 } }) end)
-later(function() require("mini.jump2d").setup() end)
-
+later(
+  -- Press CR to start jumping
+  function() require("mini.jump2d").setup({ labels = "abcdefghijklmnopqrstu1234vwxyz", allowed_lines = { blank = false, cursor_at = false, fold = false } }) end
+)
 --- Plugins
 -------------------------------------------------------------------------------
 add({ source = "tpope/vim-sleuth" })
