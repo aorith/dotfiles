@@ -204,4 +204,7 @@ end, "Toggle context")
 nmap_leader("q", function() require("mini.bufremove").delete() end, "Delete current buffer")
 nmap_leader("z", function() require("mini.misc").zoom() end, "Zoom window")
 nmap_leader("go", function() require("mini.diff").toggle_overlay(0) end, "Toggle diff overlay")
-nmap_leader("n", function() require("mini.notify").show_history() end, "Show Notifications")
+
+-- Search
+nmap_leader("nn", "<Cmd>Pick notes<CR>", "Notes")
+nmap_leader("ng", "<Cmd>Pick notes_grep<CR>", "Notes Grep")

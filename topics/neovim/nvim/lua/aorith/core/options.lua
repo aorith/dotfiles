@@ -43,7 +43,6 @@ vim.o.undofile     = true     -- Enable persistent undo
 -- UI -------------------------------------------------------------------------
 vim.o.breakindent   = true         -- Indent wrapped lines to match line start
 vim.o.breakindentopt = 'list:-1'   -- Add padding for lists when 'wrap' is on
-vim.o.showbreak = "  "             -- String to put at the start of lines that have been wrapped
 vim.o.colorcolumn   = '+1'         -- Colored column according to 'textwidth' if it's > 0
 vim.o.cursorline    = true         -- Enable highlighting of the current line
 vim.o.cursorlineopt = 'number'     -- Highlight only the number, both and or screenline messes up some treesitter highlights

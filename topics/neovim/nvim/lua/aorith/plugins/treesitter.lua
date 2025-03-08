@@ -81,22 +81,22 @@ local opts = {
 
     move = {
       enable = true,
-      set_jumps = false,
+      set_jumps = true,
       goto_next_start = {
-        ["]f"] = { query = "@function.outer", desc = "Next Function outer" },
-        ["]c"] = { query = "@class.outer", desc = "Next Class outer" },
+        ["]m"] = "@function.outer",
+        ["]]"] = { query = "@class.outer", desc = "Next class start" },
       },
       goto_next_end = {
-        ["]F"] = { query = "@function.outer", desc = "Next Function outer end" },
-        ["]C"] = { query = "@class.outer", desc = "Next Class outer end" },
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
       },
       goto_previous_start = {
-        ["[f"] = { query = "@function.outer", desc = "Prev Function outer" },
-        ["[c"] = { query = "@class.outer", desc = "Prev Class outer" },
+        ["[m"] = "@function.outer",
+        ["[["] = { query = "@class.outer", desc = "Previous class start" },
       },
       goto_previous_end = {
-        ["[F"] = { query = "@function.outer", desc = "Prev Function outer end" },
-        ["[C"] = { query = "@class.outer", desc = "Prev Class outer end" },
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
       },
     },
   },

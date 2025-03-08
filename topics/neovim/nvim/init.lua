@@ -1,4 +1,7 @@
 vim.loader.enable()
+_G.Config = {
+  notes_dir = "~/Syncthing/SYNC_STUFF/notes/notes",
+}
 
 --- Bootstrap 'mini.deps'
 -------------------------------------------------------------------------------
@@ -72,6 +75,7 @@ now_if_args(function()
     hooks = { post_checkout = function() vim.cmd("TSUpdate") end },
   })
   add({ source = "nvim-treesitter/nvim-treesitter-context" })
+  add({ source = "nvim-treesitter/nvim-treesitter-textobjects" })
 
   require("aorith.plugins.treesitter")
 end)

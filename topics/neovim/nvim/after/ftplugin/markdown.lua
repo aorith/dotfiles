@@ -20,9 +20,8 @@ vim.b.minihipatterns_config = {
 
 -- Mappings
 local utils = require("aorith.core.utils")
-local lmap = function(key, f, desc) vim.keymap.set("n", key, f, { buffer = 0, desc = desc }) end
 
-lmap("<TAB>", utils.markdown_next_link, "Next header or link")
-lmap("<S-TAB>", utils.markdown_prev_link, "Prev header or link")
-lmap("<LocalLeader>c", utils.markdown_insert_codeblock, "Insert code block")
-lmap("tt", utils.markdown_todo_toggle, "Toggle checkbox")
+vim.keymap.set("n", "<TAB>", "]]", { remap = true, desc = "Next header " })
+vim.keymap.set("n", "<S-TAB>", "[[", { remap = true, desc = "Previous header" })
+vim.keymap.set("n", "<LocalLeader>c", utils.markdown_insert_codeblock, { desc = "Insert code block" })
+vim.keymap.set("n", "tt", utils.markdown_todo_toggle, { desc = "Toggle checkbox" })

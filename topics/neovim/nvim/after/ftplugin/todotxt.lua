@@ -1,4 +1,6 @@
 vim.wo[0][0].spell = true
+vim.wo[0][0].number = false
+vim.wo[0][0].signcolumn = "auto"
 
 vim.b.minihipatterns_config = {
   highlighters = {
