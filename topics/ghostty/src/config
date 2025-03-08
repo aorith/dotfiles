@@ -26,9 +26,9 @@ font-family = "Hack Nerd Font Mono"
 # To generally disable most ligatures, use `-calt, -liga, -dlig`.
 font-feature = -calt, -liga, -dlig
 
-theme = "nord"
-background = "#262c38"
-foreground = "#d8dee9"
+# theme = "nord"
+# background = "#262c38"
+# foreground = "#d8dee9"
 cursor-invert-fg-bg = true
 
 # Keybinds - NOTE: inline comments not allowed!

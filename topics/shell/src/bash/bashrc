@@ -3,10 +3,9 @@
 
 [[ $- == *i* ]] || return
 
-# if [[ -z "$THEME_SET" ]] && [[ -e "$HOME/.config/tinted-shell-theme.sh" ]] && [[ -z $GHOSTTY_BIN_DIR ]]; then
-#     bash "$HOME/.config/tinted-shell-theme.sh"
-#     export THEME_SET=1
-# fi
+if [[ -z "$THEME_SET" ]]; then
+    sh "$HOME/.config/tinted-shell-theme.sh" && export THEME_SET=1
+fi
 
 . ~/githome/dotfiles/topics/shell/etc/common/env.sh
 . ~/githome/dotfiles/topics/shell/etc/common/aliases.sh

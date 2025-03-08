@@ -16,15 +16,3 @@ fi
 
 # STARSHIP
 create_link "${PWD}/src/starship.toml" "$HOME/.config/starship.toml"
-
-# TINTED SHELL
-if [[ -d "$HOME/.config/tinted-theming/tinted-shell" ]]; then
-    (cd "$HOME/.config/tinted-theming/tinted-shell" && git pull) >/dev/null
-else
-    git clone https://github.com/tinted-theming/tinted-shell.git \
-        "$HOME/.config/tinted-theming/tinted-shell"
-fi
-
-if [[ ! -L "$HOME/.config/tinted-shell-theme.sh" ]]; then
-    (ln -sf "$HOME/.config/tinted-theming/tinted-shell/scripts/base16-solarized-dark.sh" "$HOME/.config/tinted-shell-theme.sh" && bash "$HOME/.config/tinted-shell-theme.sh")
-fi
