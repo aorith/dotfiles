@@ -40,7 +40,6 @@ require("aorith.plugins.mini.statusline")
 require("mini.extra").setup()
 require("mini.diff").setup({ view = { style = "sign" } })
 require("mini.git").setup({ command = { split = "vertical" } })
-require("mini.jump").setup({ delay = { highlight = 50 } })
 require("aorith.plugins.mini.files")
 require("aorith.plugins.mini.hipatterns")
 
@@ -61,6 +60,8 @@ later(function() require("mini.visits").setup() end)
 later(function() require("aorith.plugins.mini.pick") end)
 later(function() require("aorith.plugins.mini.clue") end)
 later(function() require("aorith.plugins.mini.completion") end)
+later(function() require("mini.jump").setup({ delay = { highlight = 50 } }) end)
+later(function() require("mini.jump2d").setup() end)
 
 --- Plugins
 -------------------------------------------------------------------------------
