@@ -1,2 +1,2 @@
-vim.opt_local.foldmethod = "expr"
-vim.opt_local.foldexpr = "v:lua.MiniGit.diff_foldexpr()"
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.MiniGit.diff_foldexpr()"

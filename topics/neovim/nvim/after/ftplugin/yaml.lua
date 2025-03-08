@@ -1,8 +1,8 @@
-vim.opt_local.shiftwidth = 2
-vim.opt_local.expandtab = true
-vim.opt_local.cindent = false
-vim.opt_local.foldmethod = "indent"
-vim.opt_local.foldlevel = 99
+vim.bo.shiftwidth = 2
+vim.bo.expandtab = true
+vim.bo.cindent = false
+vim.wo.foldmethod = "indent"
+vim.wo.foldlevel = 99
 
 vim.api.nvim_create_user_command("YAMLSchemaSelect", require("aorith.core.yaml_schema").select, {})
 

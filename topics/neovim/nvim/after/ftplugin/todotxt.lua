@@ -1,4 +1,4 @@
-vim.cmd("set spell")
+vim.wo.spell = true
 
 vim.b.minihipatterns_config = {
   highlighters = {
@@ -67,11 +67,13 @@ local cycle_priority = function()
   vim.fn.setline(start_row + 1, line)
 end
 
+local lmap = function(key, f, desc) vim.keymap.set("n", key, f, { buffer = 0, desc = desc }) end
+
 if vim.fn.expand("%:t") == "done.txt" then
-  vim.keymap.set("n", ",s", "<Cmd>w | %sort! | w | lua vim.notify('sorted')<CR>", { buffer = 0, desc = "Sort reverse" })
+  lmap(",s", "<Cmd>w | %sort! | w | lua vim.notify('sorted')<CR>", "Sort reverse")
 else
-  vim.keymap.set("n", ",s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", { buffer = 0, desc = "Sort" })
+  lmap(",s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", "Sort")
 end
-vim.keymap.set("n", ",,", insert_new_todo, { buffer = 0, desc = "Create todo" })
-vim.keymap.set("n", ",d", toggle_todo_state, { buffer = 0, desc = "Toggle todo state" })
-vim.keymap.set("n", ",a", cycle_priority, { buffer = 0, desc = "Cycle priority" })
+lmap(",,", insert_new_todo, "Create todo")
+lmap(",d", toggle_todo_state, "Toggle todo state")
+lmap(",a", cycle_priority, "Cycle priority")

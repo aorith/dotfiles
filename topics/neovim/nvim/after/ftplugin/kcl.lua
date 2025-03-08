@@ -1,2 +1,2 @@
-vim.opt_local.expandtab = true
-vim.opt_local.commentstring = "# %s"
+vim.bo.expandtab = true
+vim.bo.commentstring = "# %s"

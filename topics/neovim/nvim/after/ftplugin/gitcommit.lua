@@ -1,5 +1,5 @@
-vim.opt_local.textwidth = 72
-vim.wo.colorcolumn = "+0"
+vim.bo.textwidth = 72
 
-vim.opt_local.foldmethod = "expr"
-vim.opt_local.foldexpr = "v:lua.MiniGit.diff_foldexpr()"
+vim.wo.colorcolumn = "+0"
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.MiniGit.diff_foldexpr()"
