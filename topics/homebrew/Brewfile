@@ -68,6 +68,7 @@ brew "sox" # sound sample translator (gp.nvim)
 brew "starship"
 brew "tanka"
 brew "tealdeer"
+brew "television"
 brew "telnet"
 brew "tenv"
 brew "the_silver_searcher"
@@ -82,9 +83,7 @@ brew "yq"
 
 # Fonts
 # -----------------------------------------------------------------------------
-cask "font-aporetic" # iosevka from protesilaos
-cask "font-ibm-plex-mono"
-cask "font-iosevka"
+cask "font-hack"
 cask "font-jetbrains-mono"
 cask "font-source-code-pro"
 
@@ -99,7 +98,7 @@ cask "dbeaver-community"
 cask "discord"
 cask "docker"
 cask "flameshot"
-cask "ghostty"
+cask "ghostty@tip"
 cask "gimp"
 cask "hammerspoon"
 cask "keepassxc"
@@ -113,7 +112,7 @@ cask "tunnelblick"
 cask "utm"
 cask "vlc"
 cask "vscodium"
-cask "zed"
+cask "wezterm@nightly"
 
 # Neovim
 # -----------------------------------------------------------------------------

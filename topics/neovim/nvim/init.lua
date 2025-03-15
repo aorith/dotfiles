@@ -1,6 +1,20 @@
 vim.loader.enable()
-_G.Config = {
+
+--- Global configuration and functions
+-------------------------------------------------------------------------------
+_G.My = {
   notes_dir = "~/Syncthing/SYNC_STUFF/notes/notes",
+
+  --- Function to modify an existing highlight group in Neovim
+  ---@param name string The name of the highlight group to modify
+  ---@param opts table A table containing highlight options (e.g., colors, styles)
+  hi = function(name, opts)
+    local is_ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name })
+    if is_ok then
+      vim.iter(opts):each(function(k, v) hl[k] = v end)
+      pcall(vim.api.nvim_set_hl, 0, name, hl)
+    end
+  end,
 }
 
 --- Bootstrap 'mini.deps'
@@ -29,7 +43,10 @@ local add, later = MiniDeps.add, MiniDeps.later
 local now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or later
 
 add({ name = "mini.nvim" })
-vim.cmd("colorscheme mininord")
+-- vim.cmd("colorscheme selenized")
+-- vim.cmd("colorscheme selenized-bw")
+-- vim.cmd("colorscheme mininord")
+vim.cmd("colorscheme randomhue")
 
 require("aorith.plugins.mini.basics")
 require("aorith.plugins.mini.notify")
@@ -46,6 +63,7 @@ require("aorith.plugins.mini.hipatterns")
 later(function()
   require("mini.misc").setup({ make_global = { "put", "put_text" } })
   MiniMisc.setup_auto_root()
+  -- MiniMisc.setup_termbg_sync()
 end)
 later(function() require("mini.ai").setup() end) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
 later(function() require("mini.bufremove").setup() end)

@@ -34,9 +34,9 @@ if is_dark then
     plugins = plugins,
   })
 
-  vim.api.nvim_set_hl(0, "MiniPickMatchMarked", { bg = p.base0E, fg = p.base00 })
-  vim.api.nvim_set_hl(0, "MiniPickMatchRanges", { fg = p.base0E, bold = true })
-  vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = p.base00, fg = p.base03 })
+  My.hi("MiniPickMatchMarked", { bg = p.base0E, fg = p.base00 })
+  My.hi("MiniPickMatchRanges", { fg = p.base0E, bold = true })
+  My.hi("MiniStatuslineFilename", { bg = p.base00, fg = p.base03 })
 else
   local hues = require("mini.hues")
   p = hues.make_palette({
@@ -48,7 +48,7 @@ else
   })
   hues.apply_palette(p)
 
-  vim.api.nvim_set_hl(0, "MiniPickMatchRanges", { fg = p.red, bg = p.bg_edge, bold = true })
+  My.hi("MiniPickMatchRanges", { fg = p.red, bg = p.bg_edge, bold = true })
 end
 
 vim.g.colors_name = "mininord"

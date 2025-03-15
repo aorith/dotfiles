@@ -1,34 +1,32 @@
 # vim: ft=conf
 
-term = xterm-256color
 auto-update = off
-macos-option-as-alt = left
 copy-on-select = clipboard
-maximize = true
-macos-non-native-fullscreen = visible-menu
 fullscreen = true
+maximize = true
 scrollback-limit = 1024
 shell-integration = none
 
+macos-option-as-alt = left
+macos-non-native-fullscreen = visible-menu
+
 font-size = 16
-adjust-cell-height = 12%
-adjust-cursor-height = 12%
+adjust-cell-height = 14
+adjust-cursor-height = 14
 
-# font-family = "Aporetic Sans Mono"
-# font-family = "JetBrains Mono NL"
-# font-family = "Hack Nerd Font Mono"
+font-family = "Hack"
+# font-family = "JetBrains Mono"
 # font-family = "IBM Plex Mono"
-font-family = "Iosevka Term"
+# font-family = "IosevkaTerm"
 # font-family = "Source Code Pro"
-
-font-family = "Hack Nerd Font Mono"
+# font-family = "Hack Nerd Font Mono"
 
 # To generally disable most ligatures, use `-calt, -liga, -dlig`.
 font-feature = -calt, -liga, -dlig
 
-# theme = "nord"
-# background = "#262c38"
-# foreground = "#d8dee9"
+theme = dark:Ghostty Default StyleDark,light:selenized-light
+# theme = dark:selenized-black,light:selenized-white
+
 cursor-invert-fg-bg = true
 
 # Keybinds - NOTE: inline comments not allowed!

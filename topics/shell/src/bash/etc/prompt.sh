@@ -45,7 +45,7 @@ __ps1_jobs_f() {
 }
 
 __prompt_command() {
-    local _wd _err OnSSH OnVENV OnNixShell OnContainer
+    local _wd _err OnSSH OnVENV OnNixShell OnContainer Kube Aws
     (($1 == 0)) || _err="${my_red}${1}${my_rst} "
 
     # background jobs
@@ -62,13 +62,28 @@ __prompt_command() {
     [[ -z "$IN_NIX_SHELL" ]] || OnNixShell="${my_red2}(${name:-unset})${my_rst} "
     [[ -z "$VIRTUAL_ENV_PROMPT" ]] || OnVENV="${my_rst}${my_pur2}venv:${VIRTUAL_ENV_PROMPT}${my_rst} "
     [[ -z "$CONTAINER_ID" ]] || OnContainer="${my_pur2}[$CONTAINER_ID]${my_rst} "
+    if [[ -n "$KUBECONFIG" ]]; then
+        Kube="${my_ylw}k:${KUBECONFIG##*/}${my_rst} "
+    else
+        Kube=""
+    fi
+    if [[ -n "$AWS_PROFILE" ]]; then
+        Aws="${my_pur2}a:${AWS_PROFILE}${my_rst} "
+    else
+        Aws=""
+    fi
 
     # \d -> date
     # \D{%H:%M:%S} -> date in H:M:S format
     # \t -> time in 24-hour format HH:MM:SS
 
     printf '\e]133;A\e\\' # prompt start
-    PS1="${my_blu2}▒${my_rst} ${OnContainer}\[\033]0;\u@\h \w\007\]${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${_err}\n${my_blu2}${my_bld}▒ ❯${my_rst} "
+    PS1="${my_blu2}▒${my_rst} ${OnContainer}${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_blu2}▒ ${my_bld}❯${my_rst} "
+    if [[ -z "$SSH_CLIENT" ]]; then
+        PS1+='\[\033]0;\w\007\]'
+    else
+        PS1+='\[\033]0;\u@\h \w\007\]'
+    fi
     printf '\e]133;B\e\\' # prompt end
 }
 

@@ -70,5 +70,11 @@ A.nvim_create_autocmd("ColorScheme", {
 
     -- Make MiniJump more noticeable
     vim.api.nvim_set_hl(0, "MiniJump", { link = "Search" })
+
+    My.hi("Comment", { italic = true })
+    My.hi("@comment.error", { italic = true })
+    My.hi("@comment.warning", { italic = true })
+    My.hi("@comment.todo", { italic = true })
+    My.hi("@comment.note", { italic = true })
   end,
 })

@@ -3,9 +3,9 @@
 
 [[ $- == *i* ]] || return
 
-if [[ -z "$THEME_SET" ]]; then
-    sh "$HOME/.config/tinted-shell-theme.sh" && export THEME_SET=1
-fi
+# if [[ -z "$THEME_SET" ]]; then
+#     sh "$HOME/.config/tinted-shell-theme.sh" && export THEME_SET=1
+# fi
 
 . ~/githome/dotfiles/topics/shell/etc/common/env.sh
 . ~/githome/dotfiles/topics/shell/etc/common/aliases.sh
@@ -18,8 +18,8 @@ set -o notify # notify completed background jobs immediately
 
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/.bash_history"
 export HISTCONTROL="erasedups:ignoredups"
-export HISTSIZE=30000
-export HISTTIMEFORMAT='%d/%h %H:%M:%S $ '
+export HISTSIZE=8000
+#export HISTTIMEFORMAT='%d/%h %H:%M:%S $ '
 export HISTIGNORE="exit:ls:bg:fg:history:clear:date:cd"
 
 # Prompt
@@ -35,6 +35,11 @@ fi
 if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --bash)"
 fi
+
+# Television
+# if command -v tv >/dev/null 2>&1; then
+#     eval "$(tv init bash)"
+# fi
 
 # Optionally use starship
 # if command -v starship >/dev/null 2>&1; then

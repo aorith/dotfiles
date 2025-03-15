@@ -6,12 +6,6 @@ export DOTFILES="$GITHOME/dotfiles"
 export PRIVATE_GITHOME="$HOME/Syncthing/SYNC_STUFF/githome"
 export PRIVATE_DOTFILES="$PRIVATE_GITHOME/private_dotfiles"
 
-if command -v nvim >/dev/null 2>&1; then
-    export EDITOR="nvim"
-else
-    export EDITOR="vim"
-fi
-
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -20,11 +14,7 @@ export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python-cache"
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
 
 # AA for java apps
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
-_JAVA_OPTIONS="-Dswing.aatext=true"
-
-# Some java apps won't display correctly without this
-export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 export LESSHISTFILE="$XDG_DATA_HOME/less_history"
 export IPYTHONDIR="$XDG_DATA_HOME/ipython"
@@ -130,3 +120,9 @@ darwin*)
 esac
 
 _prepend_to_path_commit
+
+if command -v nvim >/dev/null 2>&1; then
+    export EDITOR="nvim"
+else
+    export EDITOR="vim"
+fi

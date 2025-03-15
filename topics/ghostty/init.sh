@@ -1,3 +1,3 @@
 # vim: ft=bash
 
-create_link "${PWD}/src" "$HOME/.config/ghostty"
+create_link "${PWD}/ghostty" "$HOME/.config/ghostty"

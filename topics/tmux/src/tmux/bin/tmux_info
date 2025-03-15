@@ -9,7 +9,7 @@ cd "$curr_dir" || exit 1
 
 if [[ "$1" =~ ^[A-Fa-f0-9]{8,} ]]; then
     # Git commit sha
-    tmux display-popup -d "$curr_dir" -w 100% -h 100% -E "git --paginate diff ${1}^ ${1} | delta --paging=always --syntax-theme=ansi"
+    tmux display-popup -d "$curr_dir" -w 100% -h 100% -E "GIT_PAGER='less -+F' git --paginate diff ${1}^ ${1}"
 elif [[ "$1" =~ ^https?:// ]]; then
     open "$1"
 else

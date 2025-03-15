@@ -15,11 +15,11 @@ require("mini.pick").setup({
 vim.ui.select = MiniPick.ui_select
 
 MiniPick.registry.notes = function(local_opts)
-  local opts = { source = { cwd = Config.notes_dir } }
+  local opts = { source = { cwd = My.notes_dir } }
   return MiniPick.builtin.files(local_opts, opts)
 end
 
 MiniPick.registry.notes_grep = function(local_opts)
-  local opts = { source = { cwd = Config.notes_dir } }
+  local opts = { source = { cwd = My.notes_dir } }
   return MiniPick.builtin.grep_live(local_opts, opts)
 end
