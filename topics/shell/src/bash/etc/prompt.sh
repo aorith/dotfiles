@@ -78,7 +78,7 @@ __prompt_command() {
     # \t -> time in 24-hour format HH:MM:SS
 
     printf '\e]133;A\e\\' # prompt start
-    PS1="${my_blu2}▒${my_rst} ${OnContainer}${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_blu2}▒ ${my_bld}❯${my_rst} "
+    PS1="${my_bgblu2} ${my_rst} ${OnContainer}${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_bgblu2} ${my_rst} ${my_blu2}${my_bld}❯${my_rst} "
     if [[ -z "$SSH_CLIENT" ]]; then
         PS1+='\[\033]0;\w\007\]'
     else

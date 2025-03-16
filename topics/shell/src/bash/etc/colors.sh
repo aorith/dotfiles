@@ -30,5 +30,8 @@
 : "${my_rvs:=\[$(tput rev)\]}"  # Reverse
 : "${my_rst:=\[$(tput sgr0)\]}" # Text Reset
 
+# Background
+: "${my_bgblu2:=\[$(tput setab 12)\]}" # Blue2
+
 # Unset if exporting globally
 #set +a
