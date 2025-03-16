@@ -5,6 +5,7 @@ require("neo-tree").setup({
   enable_git_status = false,
 
   filesystem = {
+    hijack_netrw_behavior = "disabled",
     bind_to_cwd = false,
     follow_current_file = { enabled = true },
   },

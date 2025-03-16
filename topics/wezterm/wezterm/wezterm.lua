@@ -28,7 +28,7 @@ wezterm.on("open-uri", function(window, pane, uri)
     local url = wezterm.url.parse(uri)
 
     -- figure out what kind of file we're dealing with
-    local success, stdout, _ = wezterm.run_child_process({ "file", url.file_path })
+    local success, stdout, _ = wezterm.run_child_process({ "file", "--brief", "--mime-type", url.file_path })
     if success then
       if stdout:find("directory") then
         pane:send_text(

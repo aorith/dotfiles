@@ -16,22 +16,13 @@ require("mini.files").setup({
     trim_right = ">",
   },
 
-  -- General options
   options = {
-    -- Whether to delete permanently or move into module-specific trash
     permanent_delete = false,
-    -- Whether to use for editing directories
     use_as_default_explorer = true,
   },
 
-  -- Customization of explorer windows
   windows = {
-    -- Maximum number of windows to show side by side
-    max_number = 2,
-    -- Whether to show preview of file/directory under cursor
     preview = true,
-    -- Width of preview window
-    width_preview = 70,
   },
 })
 
