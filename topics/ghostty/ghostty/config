@@ -1,5 +1,8 @@
 # vim: ft=conf
 
+config-file = ?theme
+config-file = tmux-binds
+
 auto-update = off
 copy-on-select = clipboard
 fullscreen = true
@@ -9,10 +12,12 @@ shell-integration = none
 
 macos-option-as-alt = left
 macos-non-native-fullscreen = visible-menu
+cursor-invert-fg-bg = true
 
 font-size = 16
 adjust-cell-height = 14
 adjust-cursor-height = 14
+font-feature = -calt, -liga, -dlig
 
 font-family = "Hack"
 # font-family = "JetBrains Mono"
@@ -20,80 +25,3 @@ font-family = "Hack"
 # font-family = "IosevkaTerm"
 # font-family = "Source Code Pro"
 # font-family = "Hack Nerd Font Mono"
-
-# To generally disable most ligatures, use `-calt, -liga, -dlig`.
-font-feature = -calt, -liga, -dlig
-
-theme = dark:Ghostty Default StyleDark,light:selenized-light
-# theme = dark:selenized-black,light:selenized-white
-
-cursor-invert-fg-bg = true
-
-# Keybinds - NOTE: inline comments not allowed!
-keybind = clear
-
-keybind = f12=toggle_fullscreen
-keybind = super+q=quit
-keybind = super+shift+n=new_window
-keybind = super+shift+g=reload_config
-
-keybind = alt+left=esc:b
-keybind = alt+right=esc:f
-
-keybind = super+c=copy_to_clipboard
-keybind = super+v=paste_from_clipboard
-keybind = super+shift+v=paste_from_selection
-
-keybind = super+zero=reset_font_size
-keybind = super+equal=increase_font_size:1
-keybind = super+plus=increase_font_size:1
-keybind = super+minus=decrease_font_size:1
-
-# To view hex code keys:
-# xxd -psg
-# press the keys then press enter
-
-keybind = alt+space=text:\x20
-keybind = super+space=text:\x20
-
-keybind = super+w=text:\x02x
-keybind = super+t=text:\x02c
-keybind = super+shift+t=text:\x02C
-
-keybind = super+h=text:\x02h
-keybind = super+j=text:\x02j
-keybind = super+k=text:\x02k
-keybind = super+l=text:\x02l
-
-keybind = super+shift+h=text:\x02H
-keybind = super+shift+j=text:\x02J
-keybind = super+shift+k=text:\x02K
-keybind = super+shift+l=text:\x02L
-
-keybind = super+left=text:\x02\x08
-keybind = super+down=text:\x02\x0a
-keybind = super+up=text:\x02\x0b
-keybind = super+right=text:\x02\x0c
-
-keybind = super+shift+enter=text:\x02\x20
-keybind = super+d=text:\x02\x25
-keybind = super+shift+d=text:\x02\x22
-keybind = super+s=text:\x02s
-
-keybind = super+1=text:\x021
-keybind = super+2=text:\x022
-keybind = super+3=text:\x023
-keybind = super+4=text:\x024
-keybind = super+5=text:\x025
-keybind = super+6=text:\x026
-keybind = super+7=text:\x027
-keybind = super+8=text:\x028
-keybind = super+9=text:\x029
-
-keybind = super+g=text:\x02[
-keybind = super+r=text:\x02W
-keybind = super+shift+r=text:\x02S
-keybind = super+comma=text:\x02(
-keybind = super+z=text:\x02z
-keybind = super+f=text:\x02/
-keybind = super+p=text:\x02p
