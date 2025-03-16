@@ -37,4 +37,4 @@ tell application "System Events"
 end tell
 EOF
 
-tmux display-message "  $next_index: $next_value"
+tmux display-message "  $next_index/${#THEMES[@]}: $next_value"
