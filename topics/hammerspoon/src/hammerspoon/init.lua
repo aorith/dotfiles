@@ -1,2 +1,3 @@
-require('bindings')
-require('menubar')
+require("bindings")
+require("menubar")
+require("windows")
