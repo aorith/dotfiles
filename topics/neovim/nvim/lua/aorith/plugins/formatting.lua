@@ -25,7 +25,7 @@ local opts = {
     nix = { "nixpkgs_fmt" },
     python = { "ruff_format", "ruff_organize_imports" }, -- ruff_format & ruff_organize_imports  ||  black & isort
     toml = { "taplo" },
-    yaml = { "yamlfmt", "trim_newlines" }, -- yamlfmt/yamlfix/prettierd
+    yaml = { "prettierd", "trim_newlines" }, -- yamlfmt/yamlfix/prettierd (yamlfmt breaks yaml blocks (key: |) sometimes)
 
     sh = { "shfmt" },
     bash = { "shfmt" },
