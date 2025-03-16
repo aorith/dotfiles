@@ -69,13 +69,13 @@ local cycle_priority = function()
   vim.fn.setline(start_row + 1, line)
 end
 
-local lmap = function(key, f, desc) vim.keymap.set("n", key, f, { buffer = 0, desc = desc }) end
+local lmap = function(key, f, desc) vim.keymap.set("n", "<LocalLeader>" .. key, f, { buffer = 0, desc = desc }) end
 
 if vim.fn.expand("%:t") == "done.txt" then
-  lmap(",s", "<Cmd>w | %sort! | w | lua vim.notify('sorted')<CR>", "Sort reverse")
+  lmap("s", "<Cmd>w | %sort! | w | lua vim.notify('sorted')<CR>", "Sort reverse")
 else
-  lmap(",s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", "Sort")
+  lmap("s", "<Cmd>w | %sort | w | lua vim.notify('sorted')<CR>", "Sort")
 end
-lmap(",,", insert_new_todo, "Create todo")
-lmap(",d", toggle_todo_state, "Toggle todo state")
-lmap(",a", cycle_priority, "Cycle priority")
+lmap("<LocalLeader>", insert_new_todo, "Add todo")
+lmap("t", toggle_todo_state, "Toggle todo state")
+lmap("p", cycle_priority, "Cycle priority")
