@@ -20,7 +20,7 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/.bash_history"
 export HISTCONTROL="erasedups:ignoredups"
 export HISTSIZE=8000
 #export HISTTIMEFORMAT='%d/%h %H:%M:%S $ '
-export HISTIGNORE="exit:ls:bg:fg:history:clear:date:cd"
+export HISTIGNORE="exit:ls:bg:fg:history:clear:cd"
 
 # Prompt
 export PROMPT_DIRTRIM=8

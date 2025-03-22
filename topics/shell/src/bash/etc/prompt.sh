@@ -54,9 +54,9 @@ __prompt_command() {
     __ps1_git_info_f
 
     if [[ -w "${PWD}" ]]; then
-        _wd="${my_cyn}\w"
+        _wd="${my_cyn2}\w${my_rst} "
     else
-        _wd="${my_red2}\w"
+        _wd="${my_red2}\w${my_rst} "
     fi
     [[ -z "$SSH_CLIENT" ]] || OnSSH="${my_ylw2}${my_bld}\h${my_rst} "
     [[ -z "$IN_NIX_SHELL" ]] || OnNixShell="${my_red2}(${name:-unset})${my_rst} "
@@ -78,12 +78,15 @@ __prompt_command() {
     # \t -> time in 24-hour format HH:MM:SS
 
     printf '\e]133;A\e\\' # prompt start
-    PS1="${my_bgblu2} ${my_rst} ${OnContainer}${OnSSH}${_wd} ${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_bgblu2} ${my_rst} ${my_blu2}${my_bld}❯${my_rst} "
+
     if [[ -z "$SSH_CLIENT" ]]; then
-        PS1+='\[\033]0;\w\007\]'
+        PS1='\[\033]0;\w\007\]'
     else
-        PS1+='\[\033]0;\u@\h \w\007\]'
+        PS1='\[\033]0;\u@\h \w\007\]'
     fi
+
+    PS1+="${my_rvs}${_wd}${OnContainer}${OnSSH}${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_blu2}${my_bld}❯${my_rst} "
+
     printf '\e]133;B\e\\' # prompt end
 }
 
