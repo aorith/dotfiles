@@ -19,6 +19,7 @@ local opts = {
 
     terraform = { "tofu_fmt", "trim_newlines", "trim_whitespace" },
     hcl = { "tofu_fmt", "trim_newlines", "trim_whitespace" },
+    ["terraform-vars"] = { "tofu_fmt", "trim_newlines", "trim_whitespace" },
 
     go = { "goimports", "gofmt" }, -- go install golang.org/x/tools/cmd/goimports@latest
     lua = { "stylua" },

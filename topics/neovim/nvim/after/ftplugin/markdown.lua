@@ -1,14 +1,18 @@
+-- apply only if buffer is a file so it does not mess with documentation
+if vim.fn.expand("%") == "" then return end
+
 vim.bo.textwidth = 0
 
 vim.wo[0][0].number = false
 vim.wo[0][0].signcolumn = "auto"
 vim.wo[0][0].spell = true
-vim.wo[0][0].conceallevel = 0
 vim.wo[0][0].foldexpr = "nvim_treesitter#foldexpr()"
 vim.wo[0][0].foldmethod = "expr"
 vim.wo[0][0].foldlevel = 99
-vim.wo[0][0].wrap = true
 vim.wo[0][0].breakindent = true
+
+vim.wo[0][0].conceallevel = 0
+vim.wo[0][0].wrap = true
 
 ---@diagnostic disable-next-line: inject-field
 vim.b.minihipatterns_config = {

@@ -3,7 +3,7 @@ vim.loader.enable()
 --- Global configuration and functions
 -------------------------------------------------------------------------------
 _G.My = {
-  notes_dir = "~/Syncthing/SYNC_STUFF/notes/notes",
+  notes_dir = "~/Syncthing/SYNC_STUFF/notes/zk/notes",
 
   --- Function to modify an existing highlight group in Neovim
   ---@param name string The name of the highlight group to modify
@@ -146,3 +146,10 @@ later(function()
   })
   require("aorith.plugins.mason")
 end)
+
+-- local configs = {}
+-- for _, v in ipairs(vim.api.nvim_get_runtime_file("lsp/*", true)) do
+--   configs[vim.fn.fnamemodify(v, ":t:r")] = true
+-- end
+-- vim.lsp.enable(vim.tbl_keys(configs))
+--

@@ -10,10 +10,7 @@ require("mini.completion").setup({
   },
 })
 
-vim.opt.completeopt:append("popup")
-if vim.fn.has("nvim-0.11") == 1 then
-  vim.opt.completeopt:append("fuzzy") -- Use fuzzy matching for built-in completion
-end
+vim.o.completeopt = "menuone,noselect,noinsert,popup,fuzzy"
 
 -- More consistent behavior of `<CR>`
 local keys = {

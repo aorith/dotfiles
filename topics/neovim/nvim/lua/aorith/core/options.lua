@@ -70,6 +70,7 @@ vim.o.fillchars = table.concat(
   ','
 )
 vim.o.listchars = table.concat({ 'extends:…', 'trail:·', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
+vim.o.winborder = "rounded"
 
 -- Editing --------------------------------------------------------------------
 vim.o.autoindent    = true     -- Use auto indent

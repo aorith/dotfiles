@@ -17,10 +17,6 @@ vim.diagnostic.config({
   },
 })
 
--- common handlers
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-
 local custom_on_attach = function(client, bufnr)
   -- disable some more capabilities
   if client.name == "pylsp" then
@@ -44,52 +40,27 @@ local custom_on_attach = function(client, bufnr)
 end
 
 -- capabilities
-local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
-  textDocument = {
-    completion = {
-      completionItem = {
-        -- Fetch additional info for completion items
-        resolveSupport = {
-          properties = {
-            "documentation",
-            "detail",
-          },
-        },
-      },
-    },
-  },
-})
+local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {})
 
 -- Load LSP
 local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
--- TODO: nvim 0.11
--- Remove capabilities and on_attach from the specific lsps
--- vim.lsp.config("*", {
---   capabilities = capabilities,
---   on_attach = on_attach,
--- })
-
-lspconfig.nil_ls.setup({
+-- Use same capabilities and custom_on_attach on every lsp
+vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = custom_on_attach,
+})
+
+lspconfig.nil_ls.setup({
   -- settings = { ["nil"] = { formatting = { command = { "nixpkgs-fmt" } } } },
 })
 
-lspconfig.bashls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.bashls.setup({})
 
-lspconfig.gopls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.gopls.setup({})
 
 lspconfig.yamlls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
   on_init = function() require("aorith.core.yaml_schema").get_client() end,
 
   settings = {
@@ -126,19 +97,11 @@ lspconfig.yamlls.setup({
   },
 })
 
-lspconfig.terraformls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.terraformls.setup({})
 
-lspconfig.marksman.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.marksman.setup({})
 
 lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-
   on_attach = function(client, bufnr)
     custom_on_attach(client, bufnr)
     -- Reduce unnecessarily long list of completion triggers for better
@@ -171,8 +134,6 @@ lspconfig.lua_ls.setup({
 })
 
 lspconfig.basedpyright.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
   settings = {
     {
       python = {
@@ -192,40 +153,20 @@ lspconfig.basedpyright.setup({
 --   on_attach = on_attach,
 -- })
 
-lspconfig.ts_ls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.ts_ls.setup({})
 
-lspconfig.html.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.html.setup({})
 
-lspconfig.cssls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.cssls.setup({})
 
-lspconfig.templ.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.templ.setup({})
 
-lspconfig.zk.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.zk.setup({})
 
 -- go install github.com/grafana/jsonnet-language-server@latest
-lspconfig.jsonnet_ls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.jsonnet_ls.setup({})
 
 lspconfig.helm_ls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
   settings = {
     ["helm-ls"] = {
       yamlls = {
@@ -236,19 +177,11 @@ lspconfig.helm_ls.setup({
 })
 
 lspconfig.kcl.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
   cmd = { "kcl-language-server" },
   filetypes = { "kcl" },
   root_dir = util.root_pattern("kcl.mod"),
 })
 
-lspconfig.cue.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.cue.setup({})
 
-lspconfig.autotools_ls.setup({
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+lspconfig.autotools_ls.setup({})
