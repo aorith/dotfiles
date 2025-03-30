@@ -3,10 +3,6 @@ decorations = "Buttonless"
 startup_mode = "Maximized"
 option_as_alt = "OnlyLeft"
 
-[window.padding]
-x = 4
-y = 4
-
 [font]
 size = 16
 offset = { y = 8 }
@@ -15,7 +11,6 @@ glyph_offset = { y = 4 }
 normal = { family = "Hack Nerd Font Mono" }
 
 [keyboard]
-
 bindings = [
   { key = "V", mods = "Command", action = "Paste" },
   { key = "C", mods = "Command", action = "Copy" },

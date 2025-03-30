@@ -41,10 +41,10 @@
     s = status
     diff-word = diff --word-diff=color
     diff-name-only = diff --name-only
-    commit-rank = shortlog --summary --numbered --no-merges
-    graph = log --graph --all --abbrev-commit --date=human --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %C(cyan dim)<%an> %Cgreen(%cr)%Creset'
-    whoami = !git config user.name && git config user.email
-    vimdiff = difftool -t nvimdiff
+    mycommit-rank = shortlog --summary --numbered --no-merges
+    mygraph = log --graph --all --abbrev-commit --date=human --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %C(cyan dim)<%an> %Cgreen(%cr)%Creset'
+    mywhoami = !git config user.name && git config user.email
+    myvimdiff = difftool -t nvimdiff
 
 [merge]
   ff = only

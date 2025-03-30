@@ -2,3 +2,6 @@
 
 # https://docs.syncthing.net/users/ignoring.html
 (?d).terraform
+# Node
+(?d)node_modules
+(?d).nx

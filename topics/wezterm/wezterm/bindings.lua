@@ -80,30 +80,29 @@ function M.apply(config)
     { key = "p", mods = "SUPER", action = tmux_key("p") },
   }
 
-  config.mouse_bindings = {
-    {
-      event = { Up = { streak = 1, button = "Left" } },
-      mods = "NONE",
-      action = act.CompleteSelection("PrimarySelection"),
-    },
-    -- Trigger open selection (default is without a modifier)
-    {
-      event = { Up = { streak = 1, button = "Left" } },
-      mods = "SUPER",
-      action = act.OpenLinkAtMouseCursor,
-    },
-    -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
-    {
-      event = { Down = { streak = 1, button = "Left" } },
-      mods = "SUPER",
-      action = act.Nop,
-    },
-    {
-      event = { Up = { streak = 2, button = "Left" } },
-      action = act.SelectTextAtMouseCursor("SemanticZone"),
-      mods = "ALT",
-    },
-  }
+  -- config.mouse_bindings = {
+  --   {
+  --     event = { Up = { streak = 1, button = "Left" } },
+  --     mods = "NONE",
+  --     action = act.CompleteSelection("PrimarySelection"),
+  --   },
+  --   {
+  --     event = { Up = { streak = 1, button = "Left" } },
+  --     mods = "CTRL",
+  --     action = act.OpenLinkAtMouseCursor,
+  --   },
+  --   -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+  --   {
+  --     event = { Down = { streak = 1, button = "Left" } },
+  --     mods = "CTRL",
+  --     action = act.Nop,
+  --   },
+  --   {
+  --     event = { Up = { streak = 2, button = "Left" } },
+  --     action = act.SelectTextAtMouseCursor("SemanticZone"),
+  --     mods = "ALT",
+  --   },
+  -- }
 end
 
 return M

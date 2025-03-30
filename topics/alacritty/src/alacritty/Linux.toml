@@ -1,10 +1,6 @@
 [window]
 decorations = "none"
 
-[window.padding]
-x = 4
-y = 4
-
 [terminal.shell]
 args = ["bash", "-l", "-i"]
 program = "/usr/bin/env"
