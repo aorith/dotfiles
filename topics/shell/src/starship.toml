@@ -1,48 +1,35 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = true
+add_newline = false
+format = '${custom.container}${all}'
 
-format = '$all$git_branch$git_commit$git_state$git_status${custom.container}$jobs$status$character'
-
-[time]
-disabled = false
-time_format = '%H:%M:%S'
-format = '[$time]($style) '
-style = 'white dimmed'
+[character]
+success_symbol = '[❯](bold blue)'
 
 [jobs]
-format = '[$number jobs]($style) '
 number_threshold = 1
 
 [status]
 disabled = false
-format = '[$status]($style) '
 
 [directory]
-truncation_symbol = '…/'
-truncation_length = 4
-truncate_to_repo = false
+truncation_length = 0
 format = "[$path]($style)[ $read_only ]($read_only_style)"
 
 [git_status]
 disabled = false
-
-[git_metrics]
-disabled = true
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
 
 [git_commit]
 tag_disabled = false
 
 [python]
 disabled = false
+format = '[(venv:$virtualenv)]($style) '
 detect_extensions = []
-
-[package]
-disabled = true
-
-[docker_context]
-disabled = true
 
 [kubernetes]
 disabled = false
@@ -62,3 +49,17 @@ command = 'echo -n "$CONTAINER_ID"'
 style = "bold red"
 format = '[\[$output\]]($style) '
 disabled = false
+
+# Disabled
+[git_metrics]
+disabled = true
+[package]
+disabled = true
+[docker_context]
+disabled = true
+[golang]
+disabled = true
+[nodejs]
+disabled = true
+[lua]
+disabled = true

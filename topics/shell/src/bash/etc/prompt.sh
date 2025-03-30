@@ -63,7 +63,11 @@ __prompt_command() {
     [[ -z "$VIRTUAL_ENV_PROMPT" ]] || OnVENV="${my_rst}${my_pur2}venv:${VIRTUAL_ENV_PROMPT}${my_rst} "
     [[ -z "$CONTAINER_ID" ]] || OnContainer="${my_pur2}[$CONTAINER_ID]${my_rst} "
     if [[ -n "$KUBECONFIG" ]]; then
-        Kube="${my_ylw}k:${KUBECONFIG##*/}${my_rst} "
+        if [[ -n "$KC_CURRENT_CONTEXT" ]]; then
+            Kube="${my_ylw}k:${KC_CURRENT_CONTEXT}${my_rst} "
+        else
+            Kube="${my_ylw}k:${KUBECONFIG##*/}${my_rst} "
+        fi
     else
         Kube=""
     fi
@@ -77,6 +81,7 @@ __prompt_command() {
     # \D{%H:%M:%S} -> date in H:M:S format
     # \t -> time in 24-hour format HH:MM:SS
 
+    # shellcheck disable=SC1003
     printf '\e]133;A\e\\' # prompt start
 
     if [[ -z "$SSH_CLIENT" ]]; then
@@ -87,6 +92,7 @@ __prompt_command() {
 
     PS1+="${_wd}${OnContainer}${OnSSH}${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_blu2}❯${my_rst} "
 
+    # shellcheck disable=SC1003
     printf '\e]133;B\e\\' # prompt end
 }
 
