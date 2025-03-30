@@ -85,7 +85,7 @@ __prompt_command() {
         PS1='\[\033]0;\u@\h \w\007\]'
     fi
 
-    PS1+="${my_rvs}${_wd}${OnContainer}${OnSSH}${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_blu2}${my_bld}❯${my_rst} "
+    PS1+="${_wd}${OnContainer}${OnSSH}${__ps1_git_info}${my_rst}${__ps1_jobs}${OnNixShell}${OnVENV}${Kube}${Aws}${_err}\n${my_blu2}❯${my_rst} "
 
     printf '\e]133;B\e\\' # prompt end
 }

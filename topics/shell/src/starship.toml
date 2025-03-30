@@ -44,6 +44,17 @@ disabled = true
 [docker_context]
 disabled = true
 
+[kubernetes]
+disabled = false
+
+[[kubernetes.contexts]]
+context_pattern = ".*/dext-eks-pro-v2$"
+context_alias = "dext-eks-pro-v2"
+
+[[kubernetes.contexts]]
+context_pattern = ".*/dext-eks-pro$"
+context_alias = "dext-eks-pro"
+
 [custom.container]
 description = "Active container"
 when = ''' [[ -n "$CONTAINER_ID" ]] '''
