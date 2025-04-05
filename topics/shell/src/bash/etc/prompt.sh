@@ -92,4 +92,4 @@ __prompt_command() {
 PS0='\[\e]133;C\a\]' # End of input, and start of output.
 
 PROMPT_COMMAND='__prompt_command $?'
-PROMPT_DIRTRIM=4
+PROMPT_DIRTRIM=3

@@ -23,8 +23,7 @@ export HISTSIZE=8000
 export HISTIGNORE="exit:ls:bg:fg:history:clear:cd"
 
 # Prompt
-export PROMPT_DIRTRIM=8
-export PS4='+ ${BASH_SOURCE:-}:${LINENO:-}: ${FUNCNAME[0]:-}() [${?:-}] → '
+export PS4='+ ${BASH_SOURCE:-}:${LINENO:-}: ${FUNCNAME[0]:-}() [${?:-}] → '
 
 # Containers
 if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then

@@ -29,15 +29,15 @@ local custom_on_attach = function(client, bufnr)
   -- currently it messes the highlighting, when I open a tf file it changes after a few seconds
   if client.name == "terraformls" then client.server_capabilities.semanticTokensProvider = nil end
 
-  -- Set up 'mini.completion' LSP part of completion
+  -- -- Set up 'mini.completion' LSP part of completion
   vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
 
   -- notify attachment
   ---@diagnostic disable-next-line: param-type-mismatch
-  -- vim.notify(client.name .. " started", vim.log.levels.INFO, {
-  --   -- title = "Attaching LSP",
-  --   timeout = 3000,
-  -- })
+  vim.notify(client.name .. " started", vim.log.levels.INFO, {
+    -- title = "Attaching LSP",
+    timeout = 3000,
+  })
 end
 
 -- capabilities
@@ -48,21 +48,30 @@ local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
 -- Use same capabilities and custom_on_attach on every lsp
-vim.lsp.config("*", {
-  capabilities = capabilities,
-  on_attach = custom_on_attach,
-})
+-- TODO: for some reason this does not work
+-- vim.lsp.config("*", {
+--   capabilities = capabilities,
+--   on_attach = custom_on_attach,
+-- })
 
 lspconfig.nil_ls.setup({
   -- settings = { ["nil"] = { formatting = { command = { "nixpkgs-fmt" } } } },
 })
 
-lspconfig.bashls.setup({})
+lspconfig.bashls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
-lspconfig.gopls.setup({})
+lspconfig.gopls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
 lspconfig.yamlls.setup({
   on_init = function() require("aorith.core.yaml_schema").get_client() end,
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
 
   settings = {
     redhat = { telemetry = { enabled = false } },
@@ -98,9 +107,15 @@ lspconfig.yamlls.setup({
   },
 })
 
-lspconfig.terraformls.setup({})
+lspconfig.terraformls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
-lspconfig.marksman.setup({})
+lspconfig.marksman.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
 lspconfig.lua_ls.setup({
   on_attach = function(client, bufnr)
@@ -109,6 +124,7 @@ lspconfig.lua_ls.setup({
     -- 'mini.completion' experience
     client.server_capabilities.completionProvider.triggerCharacters = { ".", ":" }
   end,
+  capabilities = capabilities,
 
   settings = {
     Lua = {
@@ -135,6 +151,8 @@ lspconfig.lua_ls.setup({
 })
 
 lspconfig.basedpyright.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
   settings = {
     {
       python = {
@@ -154,20 +172,40 @@ lspconfig.basedpyright.setup({
 --   on_attach = on_attach,
 -- })
 
-lspconfig.ts_ls.setup({})
+lspconfig.ts_ls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
-lspconfig.html.setup({})
+lspconfig.html.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
-lspconfig.cssls.setup({})
+lspconfig.cssls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
-lspconfig.templ.setup({})
+lspconfig.templ.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
-lspconfig.zk.setup({})
+lspconfig.zk.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
 -- go install github.com/grafana/jsonnet-language-server@latest
-lspconfig.jsonnet_ls.setup({})
+lspconfig.jsonnet_ls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
 lspconfig.helm_ls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
   settings = {
     ["helm-ls"] = {
       yamlls = {
@@ -178,11 +216,19 @@ lspconfig.helm_ls.setup({
 })
 
 lspconfig.kcl.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
   cmd = { "kcl-language-server" },
   filetypes = { "kcl" },
   root_dir = util.root_pattern("kcl.mod"),
 })
 
-lspconfig.cue.setup({})
+lspconfig.cue.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
 
-lspconfig.autotools_ls.setup({})
+lspconfig.autotools_ls.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
