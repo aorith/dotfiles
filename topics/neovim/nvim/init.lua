@@ -52,7 +52,7 @@ require("aorith.plugins.mini.basics")
 require("aorith.plugins.mini.notify")
 require("mini.icons").setup()
 require("mini.icons").mock_nvim_web_devicons()
-require("mini.tabline").setup()
+-- require("mini.tabline").setup()
 require("aorith.plugins.mini.statusline")
 require("mini.extra").setup()
 require("mini.diff").setup({ view = { style = "sign" } })
@@ -125,17 +125,17 @@ later(function()
   require("aorith.plugins.outline")
 end)
 
--- Neotree
+-- File tree
 later(function()
   add({
-    source = "nvim-neo-tree/neo-tree.nvim",
-    name = "neo-tree",
+    source = "nvim-tree/nvim-tree.lua",
+    name = "nvim-tree",
     depends = {
       { source = "nvim-lua/plenary.nvim", name = "plenary" },
       { source = "MunifTanjim/nui.nvim", name = "nui" },
     },
   })
-  require("aorith.plugins.neotree")
+  require("aorith.plugins.nvim-tree")
 end)
 
 -- Mason

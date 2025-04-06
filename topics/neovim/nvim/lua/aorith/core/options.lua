@@ -15,10 +15,8 @@ vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_2html_plugin = 1
 vim.g.loaded_logiPat = 1
 vim.g.loaded_rrhelper = 1
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
--- vim.g.loaded_netrwSettings = 1
--- vim.g.loaded_netrwFileHandlers = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -40,6 +38,7 @@ vim.o.writebackup  = false    -- Don't store backup
 vim.o.mouse        = 'a'      -- Enable mouse
 vim.o.undofile     = true     -- Enable persistent undo
 
+
 -- UI -------------------------------------------------------------------------
 vim.o.breakindent   = true         -- Indent wrapped lines to match line start
 vim.o.breakindentopt = 'list:-1'   -- Add padding for lists when 'wrap' is on
@@ -55,7 +54,6 @@ vim.o.winblend      = 0            -- Floating windows transparency
 vim.o.pumheight     = 12           -- Popup menu size
 vim.o.shortmess     = 'aoOTtWFCcS' -- Disable certain messages from |ins-completion-menu|
 vim.o.showmode      = false        -- Show mode in command line
-vim.o.showtabline   = 2            -- Always show tabline
 vim.o.signcolumn    = 'yes'        -- How signcolumn behaves
 vim.o.splitbelow    = true         -- Horizontal splits will be below
 vim.o.splitright    = true         -- Vertical splits will be to the right

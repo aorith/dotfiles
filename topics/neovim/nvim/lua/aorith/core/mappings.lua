@@ -113,7 +113,16 @@ map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Code actions" })
 map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 map("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "Signature" })
 
-nmap_leader("<leader>", "<Cmd>Pick buffers include_current=false<CR>", "Buffers")
+nmap_leader("<leader>", function()
+  MiniPick.builtin.buffers({ include_current = false }, {
+    mappings = {
+      wipeout = {
+        char = "<C-d>",
+        func = function() vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {}) end,
+      },
+    },
+  })
+end, "Buffers")
 nmap_leader("ff", "<Cmd>Pick files<CR>", "Files")
 map("n", "<localleader><localleader>", "<Cmd>Pick files<CR>", { desc = "Files" })
 nmap_leader("fg", "<Cmd>Pick grep_live<CR>", "Grep live")
@@ -176,8 +185,7 @@ xmap_leader("lf", function() require("conform").format({ async = false, lsp_form
 nmap_leader("a", "<cmd>Outline<CR>", "Toggle outline")
 
 -- Neotree
-nmap_leader("e", "<Cmd>Neotree position=current toggle<CR>", "Neo-Tree (Current)")
-nmap_leader("E", "<Cmd>Neotree position=left toggle<CR>", "Neo-Tree (Left)")
+nmap_leader("e", "<Cmd>NvimTreeToggle<CR>", "File Tree")
 
 -- Mini.files
 map("n", "-", function()
