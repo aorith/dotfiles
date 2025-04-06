@@ -67,7 +67,7 @@ __prompt_command() {
         Workdir="${my_red2}\w${my_rst} "
     fi
 
-    [[ -z "$(jobs -p)" ]] || Jobs="${my_gry}[jobs]${my_rst} "
+    [[ -z "$(jobs -p)" ]] || Jobs="${my_gry}[\j jobs]${my_rst} "
     [[ -z "$IN_NIX_SHELL" ]] || OnNixShell="${my_red2}(${name:-unset})${my_rst} "
     [[ -z "$VIRTUAL_ENV_PROMPT" ]] || OnVENV="${my_rst}${my_pur2}venv:${VIRTUAL_ENV_PROMPT}${my_rst} "
     [[ -z "$CONTAINER_ID" ]] || OnContainer="${my_pur2}[$CONTAINER_ID]${my_rst} "
