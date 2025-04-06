@@ -49,8 +49,12 @@ te() {
 
 # To manage k8s contexts, source the ,kc function here
 # shellcheck disable=SC1091
-source "${PRIVATE_DOTFILES}/topics/k8s/k8s-kc"
+if [[ -f "${PRIVATE_DOTFILES}/topics/k8s/k8s-kc" ]]; then
+    . "${PRIVATE_DOTFILES}/topics/k8s/k8s-kc"
+fi
 
 # To manage aws profiles, source the ,aws function here
 # shellcheck disable=SC1091
-source "${PRIVATE_DOTFILES}/topics/aws/,aws"
+if [[ -f "${PRIVATE_DOTFILES}/topics/aws/,aws" ]]; then
+    . "${PRIVATE_DOTFILES}/topics/aws/,aws"
+fi
