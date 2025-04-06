@@ -1,4 +1,3 @@
-# Colors Modus-Vivendi
 [colors.normal]
 black = '#1e1e1e'
 red = '#ff5f59'
@@ -17,9 +16,6 @@ blue = '#00bcff'
 magenta = '#b6a0ff'
 cyan = '#6ae4b9'
 white = '#989898'
-[colors.cursor]
-cursor = '#ffffff'
-text = '#000000'
 [colors.primary]
 background = '#000000'
 foreground = '#ffffff'
