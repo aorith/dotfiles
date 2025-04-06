@@ -47,13 +47,21 @@
     myvimdiff = difftool -t nvimdiff
 
 [merge]
-  ff = only
+    ff = only
 
 [fetch]
-  prune = true
+    prune = true
 
 [rebase]
-  autosquash = true
+    autosquash = true
+
+[pager]
+    diff = riff
+    show = riff
+    log = riff
+
+[interactive]
+    diffFilter = riff --color=on
 
 [include]
     path = local.config
