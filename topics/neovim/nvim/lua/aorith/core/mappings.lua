@@ -123,6 +123,7 @@ nmap_leader("<leader>", function()
     },
   })
 end, "Buffers")
+nmap_leader("bm", "<Cmd>Pick marks scope='global'<CR>", "Global Marks")
 nmap_leader("ff", "<Cmd>Pick files<CR>", "Files")
 map("n", "<localleader><localleader>", "<Cmd>Pick files<CR>", { desc = "Files" })
 nmap_leader("fg", "<Cmd>Pick grep_live<CR>", "Grep live")
@@ -216,3 +217,27 @@ nmap_leader("go", function() require("mini.diff").toggle_overlay(0) end, "Toggle
 -- Search
 nmap_leader("nn", "<Cmd>Pick notes<CR>", "Notes")
 nmap_leader("ng", "<Cmd>Pick notes_grep<CR>", "Notes Grep")
+
+-- Marks
+-- <localleader> 1..5  creates a new mark (replaces the current one if it exists)
+-- <leader> 1..5  jumps to the mark
+for i = 1, 5 do
+  local mark_char = string.char(64 + i) -- A=65, B=66, etc.
+  nmap_leader(i, function()
+    local mark_pos = vim.api.nvim_get_mark(mark_char, {})
+    if mark_pos[1] == 0 then
+      vim.notify("No mark for '" .. mark_char .. "'")
+    else
+      vim.cmd("normal! `" .. mark_char) -- Jump to the mark
+    end
+  end, "Go to mark " .. mark_char)
+end
+
+for i = 1, 5 do
+  local mark_char = string.char(64 + i) -- A=65, B=66, etc.
+  map("n", "<localleader>" .. i, function()
+    vim.cmd("delmarks " .. mark_char)
+    vim.cmd("mark " .. mark_char)
+    vim.notify("Mark set for '" .. i .. "' (" .. mark_char .. ")")
+  end, { desc = "Set mark " .. mark_char })
+end
