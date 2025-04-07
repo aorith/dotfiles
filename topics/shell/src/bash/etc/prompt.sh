@@ -69,6 +69,33 @@ __prompt_command() {
 
     __ps1_git_info_f
 
+    _pwd="${PWD/"$HOME"/\~}"
+    if ((${#_pwd} > 40)); then
+        local parts part len
+        IFS='/' read -ra parts <<<"${_pwd/"$HOME"/\~}"
+        len=${#parts[@]}
+        _pwd=''
+        for ((i = 0; i < len; i++)); do
+            part="${parts[i]}"
+            [[ -n "$part" ]] || continue
+            if ((i < len - 3)); then
+                if ((i == 0)); then
+                    _pwd="${part:0:1}"
+                    [[ "$_pwd" == '~' ]] || _pwd="${_pwd}…"
+                else
+                    _pwd="$_pwd/${part:0:1}…"
+                fi
+            else
+                if ((i == 0)); then
+                    _pwd="${part:0:20}"
+                else
+                    _pwd="$_pwd/${part:0:20}"
+                    ((${#part} < 20)) || _pwd="${_pwd}…"
+                fi
+            fi
+        done
+    fi
+
     unset _jobs _nix_shell _venv _kube _aws
 
     [[ -z "$(jobs -p)" ]] || _jobs="[jobs] "
@@ -87,7 +114,7 @@ if [[ -n "$SSH_CLIENT" ]]; then
 else
     PS1+='\[\033]0;\w\007\]'
 fi
-PS1+='\[$my_cyn2\]\w\[$my_rst\] \[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
+PS1+='\[$my_cyn2\]$_pwd\[$my_rst\] \[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
 PS1+='\[$my_red2\]$_nix_shell\[$my_rst\]\[$my_pur2\]$_venv\[$my_rst\]'
 PS1+='\[$my_ylw\]$_kube\[$my_rst\]\[$my_pur2\]$_aws\[$my_rst\]'
 PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]\$\[$my_rst\] '
