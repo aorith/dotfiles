@@ -1,0 +1,142 @@
+#!/bin/sh
+# shellcheck shell=sh
+# shellcheck enable=check-extra-masked-returns,deprecate-which,quote-safe-variables,check-unassigned-uppercase
+
+# This file should be sourced.
+
+# The idea is to have a folder at ~/.kube/configs/ with all the kubeconfigs
+# then use this tool to select the appropriate kubeconfig using fzf.
+
+# Ideally each kubeconfig should only have 1 cluster and user configured and
+# its name should represent the "context-name".
+# If multiple contexts are detected the script will show two FZF prompts
+# one to select the kubeconfig file and another for the context.
+
+# -----------------------------------------------------------------------------
+# Location of the kubeconfig files
+export KC_KUBECONFIGS_DIR="${HOME}/.kube/configs"
+# Location of the shell file that will be always sourced
+export KC_CURRENT_STATE="${HOME}/.local/state/.current-kubeconfig.sh"
+
+# I like having custom scripts/functions prepended by ',' for easy discovery: https://aorith.github.io/posts/useful-shell-scripts/
+alias ',kc'=kc
+
+kc() {
+    Help() {
+        cat <<'EOF'
+kc - manage k8s kubeconfig files instead of contexts.
+
+  Usage: kc [args]
+
+  Arguments
+      - <none>       select kubeconfig
+      - n / ns       select namespaces
+
+  To disable the current kubeconfig (unset $KUBECONFIG), abort the selection with ESC.
+  To set the 'default' namespace, abort the namespace selection with ESC.
+EOF
+    }
+
+    Source() {
+        # Source the state file now
+        # shellcheck disable=SC1090
+        . "$KC_CURRENT_STATE"
+
+        [ "$1" = "show-info" ] || return 0
+        if ! ns="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"; then
+            Log "ERROR: error executing 'kubectl config'."
+            return 1
+        fi
+        echo ""
+        echo " Context:    $(kubectl config current-context || true)"
+        echo " Namespace:  ${ns:-default}"
+        echo ""
+    }
+
+    command -v kubectl >/dev/null 2>&1 || {
+        Log "ERROR: kubectl not available"
+        return 1
+    }
+
+    mkdir -p "$(dirname -- "$KC_CURRENT_STATE")"
+
+    if [ -z "$1" ]; then
+        # Pick a kubeconfig file
+        cfg="$(
+            find -L "$KC_KUBECONFIGS_DIR" -type f |
+                fzf --delimiter='/' --with-nth -1 --prompt='Kubeconfig> ' \
+                    --reverse --border --margin 10% \
+                    --header-first --header='Use "kc n" to switch namespaces.' \
+                    --preview 'yq --colors '\''{"server": .clusters[0].cluster.server}, .contexts[0]'\'' {}'
+        )"
+
+        if [ -z "$cfg" ]; then
+            # If nothing was selected, reset $KUBECONFIG
+            # shellcheck disable=SC2016
+            Log 'variable "$KUBECONFIG" has been unset'
+            echo "unset KUBECONFIG" >"$KC_CURRENT_STATE"
+            Source
+        elif [ -f "$cfg" ]; then
+            echo "export KUBECONFIG='$cfg'" >"$KC_CURRENT_STATE"
+            # Check if this KUBECONFIG has multiple contexts
+            export KUBECONFIG="$cfg"
+            # shellcheck disable=SC2046
+            set -- $(kubectl config get-contexts -o name || true)
+            if [ "$#" -gt 1 ]; then
+                ctx="$(printf '%s\n' "$@" | fzf --prompt='Context> ' --reverse --border --margin 10%)"
+                if [ -n "$ctx" ]; then
+                    kubectl config use-context "$ctx"
+                fi
+
+                # Personalize the context name
+                current_ctx="$(kubectl config current-context)"
+                case "$current_ctx" in
+                arn:aws:*)
+                    # arn:aws:eks:eu-west-1:123456789012:cluster/eks-cluster-1 --> eks-cluster-1
+                    KC_CURRENT_CONTEXT="${current_ctx##/*}"
+                    ;;
+                *)
+                    KC_CURRENT_CONTEXT="$current_ctx"
+                    ;;
+                esac
+                echo "export KC_CURRENT_CONTEXT='$KC_CURRENT_CONTEXT'" >>"$KC_CURRENT_STATE"
+            fi
+
+            Source "show-info"
+        else
+            Log "ERROR: not a file: '$cfg'"
+            return 1
+        fi
+    elif [ "$1" = "n" ] || [ "$1" = "ns" ]; then
+        # Pick a namespace
+        if [ -z "$KUBECONFIG" ]; then
+            echo "ERROR: select a kubeconfig first (\$KUBECONFIG not set)."
+            return 1
+        fi
+
+        ns="$(
+            kubectl get ns --no-headers 2>/dev/null | awk '{print $1}' |
+                fzf --prompt='Namespace> ' \
+                    --reverse --border --margin 10%
+        )"
+
+        if [ -z "$ns" ]; then
+            # If nothing was selected, reset the namespace
+            kubectl config set-context --current --namespace=default
+        else
+            kubectl config set-context --current --namespace="$ns"
+        fi
+        Source "show-info"
+    elif [ "$1" = "h" ] || [ "$1" = "help" ]; then
+        Help
+    else
+        Log "ERROR: unknown argument '$*'."
+        Log ""
+        Help
+        return 1
+    fi
+}
+
+# Source the state file always
+# shellcheck disable=SC1090
+[ ! -f "$KC_CURRENT_STATE" ] || . "$KC_CURRENT_STATE"
