@@ -12,6 +12,9 @@
 # If multiple contexts are detected the script will show two FZF prompts
 # one to select the kubeconfig file and another for the context.
 
+# This script also exposes an env var 'KC_CURRENT_CONTEXT' to be used in
+# your prompt
+
 # -----------------------------------------------------------------------------
 # Location of the kubeconfig files
 export KC_KUBECONFIGS_DIR="${HOME}/.kube/configs"
