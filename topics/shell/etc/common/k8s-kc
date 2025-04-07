@@ -21,8 +21,8 @@ export KC_KUBECONFIGS_DIR="${HOME}/.kube/configs"
 # Location of the shell file that will be always sourced
 export KC_CURRENT_STATE="${HOME}/.local/state/.current-kubeconfig.sh"
 
-# I like having custom scripts/functions prepended by ',' for easy discovery: https://aorith.github.io/posts/useful-shell-scripts/
-alias ',kc'=kc
+# To switch namespaces
+alias 'kcn'='kc n'
 
 kc() {
     Help() {
