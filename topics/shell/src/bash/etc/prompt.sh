@@ -62,50 +62,64 @@ __ps1_git_info_f() {
 
 __prompt_command() {
     if (($1 == 0)); then
-        unset _ret
+        _ret=''
     else
         _ret="($1) "
     fi
 
     __ps1_git_info_f
 
-    _pwd="${PWD/"$HOME"/\~}"
-    if ((${#_pwd} > 40)); then
-        local parts part len
-        IFS='/' read -ra parts <<<"${_pwd/"$HOME"/\~}"
-        len=${#parts[@]}
-        _pwd=''
-        for ((i = 0; i < len; i++)); do
-            part="${parts[i]}"
-            [[ -n "$part" ]] || continue
-            if ((i < len - 3)); then
-                if ((i == 0)); then
-                    _pwd="${part:0:1}"
-                    [[ "$_pwd" == '~' ]] || _pwd="${_pwd}…"
-                else
-                    _pwd="$_pwd/${part:0:1}…"
-                fi
-            else
-                if ((i == 0)); then
-                    _pwd="${part:0:20}"
-                else
-                    _pwd="$_pwd/${part:0:20}"
-                    ((${#part} < 20)) || _pwd="${_pwd}…"
-                fi
-            fi
-        done
+    # Newline if path is longer than ...
+    if ((${#PWD} > 65)); then
+        _ps1_newline='\n'
+    else
+        _ps1_newline=''
     fi
 
-    unset _jobs _nix_shell _venv _kube _aws
+    # Red color if path is not writable
+    if [[ -w "$PWD" ]]; then
+        _path_color="$my_cyn2"
+    else
+        _path_color="$my_red2"
+    fi
 
-    [[ -z "$(jobs -p)" ]] || _jobs="[jobs] "
-    [[ -z "$IN_NIX_SHELL" ]] || _nix_shell="(${name:-unset}) "
-    [[ -z "$VIRTUAL_ENV_PROMPT" ]] || _venv="venv:${VIRTUAL_ENV_PROMPT} "
-    [[ -z "$KUBECONFIG" ]] || _kube="k:${KC_CURRENT_CONTEXT:-${KUBECONFIG##*/}} "
-    [[ -z "$AWS_PROFILE" ]] || _aws="a:${AWS_PROFILE} "
+    # Print bg jobs when they exist
+    if [[ -z "$(jobs -p)" ]]; then
+        _jobs=''
+    else
+        _jobs="[\j jobs] "
+    fi
+
+    # If nix shell is active ...
+    if [[ -z "$IN_NIX_SHELL" ]]; then
+        _nix_shell=''
+    else
+        _nix_shell="(${name:-unset}) "
+    fi
+
+    # If python venv is active ...
+    if [[ -z "$VIRTUAL_ENV_PROMPT" ]]; then
+        _venv=''
+    else
+        _venv="venv:${VIRTUAL_ENV_PROMPT} "
+    fi
+
+    # If KUBECONFIG is set ...
+    if [[ -z "$KUBECONFIG" ]]; then
+        _kube=''
+    else
+        _kube="k:${KC_CURRENT_CONTEXT:-${KUBECONFIG##*/}} "
+    fi
+
+    # If AWS_PROFILE is set ...
+    if [[ -z "$AWS_PROFILE" ]]; then
+        _aws=''
+    else
+        _aws="a:${AWS_PROFILE} "
+    fi
 }
 
-PS1='\[$my_red\]$_ret\[$my_rst\]\[$my_gry\]${_jobs}\[$my_rst\]'
+PS1='\[$my_red\]$_ret\[$my_rst\]\[$my_gry\]${_jobs@P}\[$my_rst\]'
 if [[ -n "$CONTAINER_ID" ]]; then
     PS1+="\[$my_pur2\][$CONTAINER_ID]\[$my_rst\] "
 fi
@@ -114,10 +128,10 @@ if [[ -n "$SSH_CLIENT" ]]; then
 else
     PS1+='\[\033]0;\w\007\]'
 fi
-PS1+='\[$my_cyn2\]$_pwd\[$my_rst\] \[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
+PS1+='\[$_path_color\]\w\[$my_rst\] \[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
 PS1+='\[$my_red2\]$_nix_shell\[$my_rst\]\[$my_pur2\]$_venv\[$my_rst\]'
 PS1+='\[$my_ylw\]$_kube\[$my_rst\]\[$my_pur2\]$_aws\[$my_rst\]'
-PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]\$\[$my_rst\] '
+PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]${_ps1_newline@P}\$\[$my_rst\] '
 
 PROMPT_COMMAND='__prompt_command $?'
-PROMPT_DIRTRIM=3
+PROMPT_DIRTRIM=7
