@@ -1,4 +1,4 @@
-vim.o.winbar = "%#MiniStatuslineDevinfo# %f%( %m%r%) %#WinBar#%= %#MiniStatuslineFileinfo# 0x%B "
+vim.o.winbar = "%#MiniStatuslineFileinfo# %f%( %m%r%) %#WinBar#%= %#MiniStatuslineFileinfo# 0x%B "
 
 ---@diagnostic disable-next-line: redundant-parameter
 require("mini.statusline").setup({
