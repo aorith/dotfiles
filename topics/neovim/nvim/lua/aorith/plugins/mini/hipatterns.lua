@@ -1,5 +1,4 @@
 local hipatterns = require("mini.hipatterns")
-local space_group = hipatterns.compute_hex_color_group("#747070", "bg")
 
 ---@diagnostic disable-next-line: redundant-parameter
 hipatterns.setup({
@@ -19,7 +18,5 @@ hipatterns.setup({
     -- Highlight hex color strings (`#rrggbb`) using that color
     -- #992233, #229933, #223399
     hex_color = hipatterns.gen_highlighter.hex_color(),
-
-    trailspace = { pattern = "%f[%s]%s*$", group = space_group },
   },
 })
