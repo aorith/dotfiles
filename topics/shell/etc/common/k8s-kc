@@ -47,7 +47,7 @@ EOF
 
         [ "$1" = "show-info" ] || return 0
         if ! ns="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"; then
-            Log "ERROR: error executing 'kubectl config'."
+            echo "ERROR: error executing 'kubectl config'."
             return 1
         fi
         echo ""
@@ -57,7 +57,7 @@ EOF
     }
 
     command -v kubectl >/dev/null 2>&1 || {
-        Log "ERROR: kubectl not available"
+        echo "ERROR: kubectl not available"
         return 1
     }
 
@@ -76,7 +76,7 @@ EOF
         if [ -z "$cfg" ]; then
             # If nothing was selected, reset $KUBECONFIG
             # shellcheck disable=SC2016
-            Log 'variable "$KUBECONFIG" has been unset'
+            echo 'variable "$KUBECONFIG" has been unset'
             echo "unset KUBECONFIG" >"$KC_CURRENT_STATE"
             Source
         elif [ -f "$cfg" ]; then
@@ -107,7 +107,7 @@ EOF
 
             Source "show-info"
         else
-            Log "ERROR: not a file: '$cfg'"
+            echo "ERROR: not a file: '$cfg'"
             return 1
         fi
     elif [ "$1" = "n" ] || [ "$1" = "ns" ]; then
@@ -133,8 +133,8 @@ EOF
     elif [ "$1" = "h" ] || [ "$1" = "help" ]; then
         Help
     else
-        Log "ERROR: unknown argument '$*'."
-        Log ""
+        echo "ERROR: unknown argument '$*'."
+        echo ""
         Help
         return 1
     fi
