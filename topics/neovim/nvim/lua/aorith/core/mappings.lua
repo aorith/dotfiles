@@ -172,11 +172,13 @@ xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at selection") 
 xmap_leader("gb", function() vim.cmd("Git log -L " .. vim.fn.line("'<") .. "," .. vim.fn.line("'>") .. ":" .. vim.fn.expand("%:p")) end, "Blame selection")
 
 -- LSP
-map("n", "gd", "<Cmd>Pick lsp scope='definition'<CR>", { desc = "Definitions" })
-map("n", "gD", "<Cmd>Pick lsp scope='declaration'<CR>", { desc = "Declaration" })
-map("n", "gr", "<Cmd>Pick lsp scope='references'<CR>", { desc = "References" })
-map("n", "gI", "<Cmd>Pick lsp scope='implementation'<CR>", { desc = "Implementation" })
-map("n", "gy", "<Cmd>Pick lsp scope='type_definition'<CR>", { desc = "Type Definitions" })
+map("n", "grn", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "grd", "<Cmd>Pick lsp scope='definition'<CR>", { desc = "Definitions" })
+map("n", "grD", "<Cmd>Pick lsp scope='declaration'<CR>", { desc = "Declaration" })
+map({ "n", "x" }, "gra", vim.lsp.buf.code_action, { desc = "Code Actions" })
+map("n", "grr", "<Cmd>Pick lsp scope='references'<CR>", { desc = "References" })
+map("n", "gri", "<Cmd>Pick lsp scope='implementation'<CR>", { desc = "Implementation" })
+map("n", "grt", "<Cmd>Pick lsp scope='type_definition'<CR>", { desc = "Type Definitions" })
 
 -- Formatting
 nmap_leader("lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, "Format buffer")

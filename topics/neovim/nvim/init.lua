@@ -62,7 +62,7 @@ require("aorith.plugins.mini.hipatterns")
 
 later(function()
   require("mini.misc").setup({ make_global = { "put", "put_text" } })
-  MiniMisc.setup_auto_root()
+  -- MiniMisc.setup_auto_root()
   -- MiniMisc.setup_termbg_sync()
 end)
 later(function() require("mini.ai").setup() end) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
