@@ -105,6 +105,7 @@ cask "hammerspoon"
 cask "headlamp"
 cask "keepassxc"
 cask "microsoft-remote-desktop"
+cask "mongodb-compass"
 cask "obsidian"
 cask "syncthing"
 cask "telegram"
@@ -114,6 +115,7 @@ cask "utm"
 cask "vlc"
 cask "vscodium"
 cask "wezterm@nightly"
+cask "wireshark"
 
 # Neovim
 # -----------------------------------------------------------------------------
