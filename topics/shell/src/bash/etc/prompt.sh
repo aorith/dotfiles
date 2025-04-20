@@ -128,7 +128,7 @@ if [[ -n "$SSH_CLIENT" ]]; then
 else
     PS1+='\[\033]0;\w\007\]'
 fi
-PS1+='\[$_path_color\]\w\[$my_rst\] \[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
+PS1+='\[$_path_color\]\w\[$my_rst\] \[$my_bld\]\[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
 PS1+='\[$my_red2\]$_nix_shell\[$my_rst\]\[$my_pur2\]$_venv\[$my_rst\]'
 PS1+='\[$my_ylw\]$_kube\[$my_rst\]\[$my_pur2\]$_aws\[$my_rst\]'
 PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]${_ps1_newline@P}\$\[$my_rst\] '
