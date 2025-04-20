@@ -56,12 +56,12 @@
     autosquash = true
 
 [pager]
-    diff = riff
-    show = riff
-    log = riff
+    diff = pager
+    show = pager
+    log = pager
 
 [interactive]
-    diffFilter = riff --color=on
+    diffFilter = pager --color=on
 
 [include]
     path = local.config

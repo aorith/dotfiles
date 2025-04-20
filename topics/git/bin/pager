@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-if command -v delta >/dev/null 2>&1 && [ -z "$NO_DELTA" ]; then
-    exec delta
+if command -v riff >/dev/null 2>&1; then
+    exec riff
 else
     exec less -F
 fi
