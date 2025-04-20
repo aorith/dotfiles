@@ -7,22 +7,23 @@ A.nvim_create_autocmd("TextYankPost", {
   callback = function() vim.highlight.on_yank() end,
 })
 
+-- NOTE: interferes with nvim-dap
 -- Tweak terminal on open and go into insert mode
-A.nvim_create_autocmd("TermOpen", {
-  group = my_au,
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-    vim.opt.signcolumn = "no"
-    A.nvim_command("startinsert")
-  end,
-})
+-- A.nvim_create_autocmd("TermOpen", {
+--   group = my_au,
+--   callback = function()
+--     vim.opt.number = false
+--     vim.opt.relativenumber = false
+--     vim.opt.signcolumn = "no"
+--     A.nvim_command("startinsert")
+--   end,
+-- })
 
 -- Automatically close terminal Buffers when their Process is done
-vim.api.nvim_create_autocmd("TermClose", {
-  group = my_au,
-  callback = function() vim.cmd("bdelete") end,
-})
+-- vim.api.nvim_create_autocmd("TermClose", {
+--   group = my_au,
+--   callback = function() vim.cmd("bdelete") end,
+-- })
 
 -- go to the last line before closing the file
 A.nvim_create_autocmd("BufReadPost", {

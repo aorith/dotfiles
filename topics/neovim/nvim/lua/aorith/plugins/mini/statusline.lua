@@ -1,4 +1,4 @@
-vim.o.winbar = "%#MiniStatuslineFileinfo# %f%( %m%r%) %#WinBar#%= %#MiniStatuslineFileinfo# 0x%B "
+vim.o.winbar = "%#MiniStatuslineFileinfo# %f%( %m%r%) %= "
 
 ---@diagnostic disable-next-line: redundant-parameter
 require("mini.statusline").setup({
@@ -14,7 +14,7 @@ require("mini.statusline").setup({
       -- local lsp = MiniStatusline.section_lsp({ trunc_width = 75 }) -- Shows number of attached lsp servers
       -- local filename = MiniStatusline.section_filename({ trunc_width = 100 })
       local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-      local location = MiniStatusline.section_location({ trunc_width = 75 })
+      -- local location = MiniStatusline.section_location({ trunc_width = 75 })
       local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
 
       return MiniStatusline.combine_groups({
@@ -26,8 +26,8 @@ require("mini.statusline").setup({
         "%=", -- End left alignment
         { hl = "MiniStatuslineModeReplace", strings = { search } },
         { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-        { hl = mode_hl, strings = { location } },
-        -- { hl = mode_hl, strings = { "%l:%c%V %P 0x%B" } }, -- remove '0x%B', use :ascii
+        -- { hl = mode_hl, strings = { location, "0x%B" } },
+        { hl = mode_hl, strings = { "%l:%c%V %P 0x%B" } },
       })
     end,
 

@@ -70,6 +70,8 @@ vim.o.fillchars = table.concat(
 vim.o.listchars = table.concat({ 'extends:…', 'trail:·', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
 vim.o.winborder = "rounded"
 
+vim.opt.diffopt = { 'internal', 'filler', 'closeoff', 'context:12', 'algorithm:histogram', 'linematch:200', 'indent-heuristic' }
+
 -- Editing --------------------------------------------------------------------
 vim.o.autoindent    = true     -- Use auto indent
 vim.o.expandtab     = true     -- Convert tabs to spaces

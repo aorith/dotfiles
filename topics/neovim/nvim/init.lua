@@ -148,6 +148,15 @@ later(function()
   require("aorith.plugins.mason")
 end)
 
+-- Nvim Dap
+later(function()
+  add({ source = "mfussenegger/nvim-dap" })
+  add({ source = "igorlfs/nvim-dap-view" })
+  add({ source = "theHamsta/nvim-dap-virtual-text" })
+  add({ source = "mfussenegger/nvim-dap-python" })
+  require("aorith.plugins.dap")
+end)
+
 -- local configs = {}
 -- for _, v in ipairs(vim.api.nvim_get_runtime_file("lsp/*", true)) do
 --   configs[vim.fn.fnamemodify(v, ":t:r")] = true
