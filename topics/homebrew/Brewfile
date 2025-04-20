@@ -76,6 +76,7 @@ brew "the_silver_searcher"
 brew "tmux"
 brew "tree"
 brew "util-linux"
+brew "uv" # https://github.com/astral-sh/uv
 brew "vim"
 brew "watch"
 brew "websocat"
