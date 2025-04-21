@@ -4,7 +4,7 @@ startup_mode = "Maximized"
 option_as_alt = "OnlyLeft"
 
 [font]
-size = 16
+size = 14
 offset = { y = 8 }
 glyph_offset = { y = 4 }
 
