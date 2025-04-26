@@ -24,4 +24,48 @@ bindings = [
   # Disable forward and backward search
   { key = "F", mods = "Shift|Control", action = "ReceiveChar" },
   { key = "B", mods = "Shift|Control", action = "ReceiveChar" },
+
+  { key = "Space", mods = "Alt", chars = "\u0020" },
+
+  { key = "W", mods = "Alt", chars = "\u0002x" },
+  { key = "T", mods = "Alt", chars = "\u0002c" },
+  { key = "T", mods = "Alt|Shift", chars = "\u0002C" },
+
+  { key = "H", mods = "Alt", chars = "\u0002h" },
+  { key = "J", mods = "Alt", chars = "\u0002j" },
+  { key = "K", mods = "Alt", chars = "\u0002k" },
+  { key = "L", mods = "Alt", chars = "\u0002l" },
+
+  { key = "H", mods = "Alt|Shift", chars = "\u0002H" },
+  { key = "J", mods = "Alt|Shift", chars = "\u0002J" },
+  { key = "K", mods = "Alt|Shift", chars = "\u0002K" },
+  { key = "L", mods = "Alt|Shift", chars = "\u0002L" },
+
+  { key = "Left", mods = "Alt", chars = "\u0002\u0008" },
+  { key = "Down", mods = "Alt", chars = "\u0002\u000a" },
+  { key = "Up", mods = "Alt", chars = "\u0002\u000b" },
+  { key = "Right", mods = "Alt", chars = "\u0002\u000c" },
+
+  { key = "Enter", mods = "Alt|Shift", chars = "\u0002\u0020" },
+  { key = "D", mods = "Alt", chars = "\u0002\u0025" },
+  { key = "D", mods = "Alt|Shift", chars = "\u0002\u0022" },
+  { key = "S", mods = "Alt", chars = "\u0002s" },
+
+  { key = "1", mods = "Alt", chars = "\u00021" },
+  { key = "2", mods = "Alt", chars = "\u00022" },
+  { key = "3", mods = "Alt", chars = "\u00023" },
+  { key = "4", mods = "Alt", chars = "\u00024" },
+  { key = "5", mods = "Alt", chars = "\u00025" },
+  { key = "6", mods = "Alt", chars = "\u00026" },
+  { key = "7", mods = "Alt", chars = "\u00027" },
+  { key = "8", mods = "Alt", chars = "\u00028" },
+  { key = "9", mods = "Alt", chars = "\u00029" },
+
+  { key = "G", mods = "Alt", chars = "\u0002[" },
+  { key = "R", mods = "Alt", chars = "\u0002W" },
+  { key = "R", mods = "Alt|Shift", chars = "\u0002S" },
+  { key = "Comma", mods = "Alt", chars = "\u0002(" },
+  { key = "Z", mods = "Alt", chars = "\u0002z" },
+  { key = "F", mods = "Alt", chars = "\u0002/" },
+  { key = "P", mods = "Alt", chars = "\u0002p" },
 ]
