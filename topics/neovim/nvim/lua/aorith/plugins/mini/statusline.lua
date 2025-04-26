@@ -26,8 +26,7 @@ require("mini.statusline").setup({
         "%=", -- End left alignment
         { hl = "MiniStatuslineModeReplace", strings = { search } },
         { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-        -- { hl = mode_hl, strings = { location, "0x%B" } },
-        { hl = mode_hl, strings = { "%l:%c%V %P 0x%B" } },
+        { hl = mode_hl, strings = { "%02l,%02c %P 0x%02B" } },
       })
     end,
 
