@@ -20,10 +20,12 @@ case "$1" in
 fbox | fbox-update)
     name="fbox"
     image="ghcr.io/aorith/fbox:latest"
+    src="${HOME}/githome/Personal/containers/fbox"
     ;;
 archbox | archbox-update)
     name="archbox"
     image="ghcr.io/aorith/archbox:latest"
+    src="${HOME}/githome/Personal/containers/archbox"
     ;;
 *)
     echo "Unknown toolbox image: '$1'"
@@ -39,7 +41,12 @@ fbox | archbox)
     toolbox enter "$name"
     ;;
 fbox-update | archbox-update)
-    podman pull "$image"
+    # podman pull "$image"
+    (
+        cd "$src" || exit 1
+        podman build -t "$image" .
+    )
+
     toolbox rm --force "$name"
     "$0" "$name"
     ;;
