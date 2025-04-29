@@ -99,6 +99,7 @@ cask "cyberduck" # ftp client
 cask "dbeaver-community"
 cask "discord"
 cask "docker"
+cask "emacs"
 cask "flameshot"
 cask "ghostty@tip"
 cask "gimp"
