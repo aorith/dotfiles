@@ -57,7 +57,7 @@ __ps1_git_info_f() {
             __ps1_git_info="${branch} "
         fi
     else
-        __ps1_git_info="${branch}:(timeout)"
+        __ps1_git_info="${branch}:(timeout) "
     fi
 }
 
@@ -137,7 +137,7 @@ __prompt_command() {
     fi
 }
 
-PS1='\[$my_red\]$_ret\[$my_rst\]\[$my_gry\]${_jobs@P}\[$my_rst\]'
+PS1='\n\[$my_red\]$_ret\[$my_rst\]\[$my_gry\]${_jobs@P}\[$my_rst\]'
 if [[ -n "$CONTAINER_ID" ]]; then
     PS1+="\[$my_pur2\][$CONTAINER_ID]\[$my_rst\] "
 fi
