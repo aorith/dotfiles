@@ -4,7 +4,7 @@ local my_au = A.nvim_create_augroup("AORITH", { clear = true })
 -- Highlight on yank
 A.nvim_create_autocmd("TextYankPost", {
   group = my_au,
-  callback = function() vim.highlight.on_yank() end,
+  callback = function() vim.hl.on_yank() end,
 })
 
 -- NOTE: interferes with nvim-dap
