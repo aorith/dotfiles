@@ -87,19 +87,20 @@ __prompt_command() {
 
     # Shorter path
     if [[ "$PWD" == "$HOME" ]]; then
-        __ps1_path="~"
+        __ps1_path="\[${_path_color}\]~"
     else
-        __ps1_path=""
-        while read -r -d/ i; do
+        __ps1_path="\[${_path_color}\]"
+        local parts i
+        IFS='/' read -ra parts <<<"${PWD/~/\~}"
+        for i in "${parts[@]}"; do
             case $i in
             "${__ps1_git_root:-path-name-that-never-will-exists}") __ps1_path+="\[${my_bld}${my_grn}\]${i}\[${my_rst}\]\[${_path_color}\]/" ;;
             .*) __ps1_path+="${i:0:2}/" ;;
             *) __ps1_path+="${i:0:1}/" ;;
             esac
-        done <<<"${PWD/~/\~}"
-        __ps1_path+="${PWD##*/}"
+        done
     fi
-    __ps1_path="\[${_path_color}\]${__ps1_path}\[${my_rst}\]"
+    __ps1_path="${__ps1_path}\[${my_rst}\]"
 
     # Print bg jobs when they exist
     if [[ -z "$(jobs -p)" ]]; then
