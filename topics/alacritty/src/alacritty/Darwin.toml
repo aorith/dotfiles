@@ -9,6 +9,8 @@ offset = { y = 8 }
 glyph_offset = { y = 4 }
 
 normal = { family = "Hack Nerd Font Mono" }
+#normal = { family = "IosevkaTerm Nerd Font Mono", style = "Regular" }
+#italic = { family = "IosevkaTerm Nerd Font Mono", style = "Italic" }
 
 [keyboard]
 bindings = [

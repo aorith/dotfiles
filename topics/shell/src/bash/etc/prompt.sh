@@ -70,22 +70,15 @@ __prompt_command() {
 
     __ps1_git_info_f
 
-    # Newline if path is longer than ...
-    if ((${#PWD} > 65)); then
-        _ps1_newline='\n'
-    else
-        _ps1_newline=''
-    fi
-
     # Red color if path is not writable
     local _path_color
     if [[ -w "$PWD" ]]; then
-        _path_color="$my_cyn2"
+        _path_color="$my_blu"
     else
         _path_color="$my_red2"
     fi
 
-    # Shorter path
+    # Tweak path
     if [[ "$PWD" == "$HOME" ]]; then
         __ps1_path="\[${_path_color}\]~"
     else
@@ -94,9 +87,8 @@ __prompt_command() {
         IFS='/' read -ra parts <<<"${PWD/~/\~}"
         for i in "${parts[@]}"; do
             case $i in
-            "${__ps1_git_root:-path-name-that-never-will-exists}") __ps1_path+="\[${my_bld}${my_grn}\]${i}\[${my_rst}\]\[${_path_color}\]/" ;;
-            .*) __ps1_path+="${i:0:2}/" ;;
-            *) __ps1_path+="${i:0:1}/" ;;
+            "${__ps1_git_root:-path-name-that-will-never-exists}") __ps1_path+="\[${my_bld}${my_grn}\]${i}\[${my_rst}\]\[${_path_color}\]/" ;;
+            *) __ps1_path+="${i}/" ;;
             esac
         done
     fi
@@ -150,7 +142,6 @@ fi
 PS1+='${__ps1_path@P} \[$my_bld\]\[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
 PS1+='\[$my_red2\]$_nix_shell\[$my_rst\]\[$my_pur2\]$_venv\[$my_rst\]'
 PS1+='\[$my_ylw\]$_kube\[$my_rst\]\[$my_pur2\]$_aws\[$my_rst\]'
-PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]${_ps1_newline@P}\$\[$my_rst\] '
+PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]\n\$\[$my_rst\] '
 
 PROMPT_COMMAND='__prompt_command $?'
-PROMPT_DIRTRIM=7

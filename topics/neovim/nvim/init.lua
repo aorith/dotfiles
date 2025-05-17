@@ -84,6 +84,7 @@ later(
   -- Press CR to start jumping
   function() require("mini.jump2d").setup({ labels = "abcdefghijklmnopqrstu1234vwxyz", allowed_lines = { blank = false, cursor_at = false, fold = false } }) end
 )
+
 --- Plugins
 -------------------------------------------------------------------------------
 add({ source = "tpope/vim-sleuth" })
