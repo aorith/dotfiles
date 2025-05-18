@@ -65,10 +65,15 @@ __prompt_command() {
     if (($1 == 0)); then
         _ret=''
     else
-        _ret="($1) "
+        _ret="\[$my_red\]($1)\[$my_rst\] "
     fi
 
     __ps1_git_info_f
+    if [[ -z "$__ps1_git_info" ]]; then
+        __ps1_git_final=''
+    else
+        __ps1_git_final="\[$my_bld\]\[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]"
+    fi
 
     # Red color if path is not writable
     local _path_color
@@ -98,39 +103,39 @@ __prompt_command() {
     if [[ -z "$(jobs -p)" ]]; then
         _jobs=''
     else
-        _jobs="[\j jobs] "
+        _jobs="\[$my_gry\][\j jobs]\[$my_rst\] "
     fi
 
     # If nix shell is active ...
     if [[ -z "$IN_NIX_SHELL" ]]; then
         _nix_shell=''
     else
-        _nix_shell="(${name:-unset}) "
+        _nix_shell="\[$my_red2\](${name:-unset})\[$my_rst\] "
     fi
 
     # If python venv is active ...
     if [[ -z "$VIRTUAL_ENV_PROMPT" ]]; then
         _venv=''
     else
-        _venv="venv:${VIRTUAL_ENV_PROMPT} "
+        _venv="\[$my_pur2\]venv:${VIRTUAL_ENV_PROMPT}\[$my_rst\] "
     fi
 
     # If KUBECONFIG is set ...
     if [[ -z "$KUBECONFIG" ]]; then
         _kube=''
     else
-        _kube="k:${KC_CURRENT_CONTEXT:-${KUBECONFIG##*/}} "
+        _kube="\[$my_ylw\][K:${KC_CURRENT_CONTEXT:-${KUBECONFIG##*/}}]\[$my_rst\] "
     fi
 
     # If AWS_PROFILE is set ...
     if [[ -z "$AWS_PROFILE" ]]; then
         _aws=''
     else
-        _aws="a:${AWS_PROFILE} "
+        _aws="\[$my_pur2\][A:${AWS_PROFILE}]\[$my_rst\] "
     fi
 }
 
-PS1='\n\[$my_red\]$_ret\[$my_rst\]\[$my_gry\]${_jobs@P}\[$my_rst\]'
+PS1='\n${_ret@P}${_jobs@P}'
 if [[ -n "$CONTAINER_ID" ]]; then
     PS1+="\[$my_pur2\][$CONTAINER_ID]\[$my_rst\] "
 fi
@@ -139,9 +144,9 @@ if [[ -n "$SSH_CLIENT" ]]; then
 else
     PS1+='\[\033]0;\w\007\]'
 fi
-PS1+='${__ps1_path@P} \[$my_bld\]\[$my_grn\]$__ps1_git_info\[$my_rst\]\[$my_gry\]${__ps1_git_dirty}\[$my_rst\]'
-PS1+='\[$my_red2\]$_nix_shell\[$my_rst\]\[$my_pur2\]$_venv\[$my_rst\]'
-PS1+='\[$my_ylw\]$_kube\[$my_rst\]\[$my_pur2\]$_aws\[$my_rst\]'
+PS1+='${__ps1_path@P} ${__ps1_git_final@P}'
+PS1+='${_nix_shell@P}${_venv@P}'
+PS1+='${_kube@P}${_aws@P}'
 PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]\n\$\[$my_rst\] '
 
 PROMPT_COMMAND='__prompt_command $?'
