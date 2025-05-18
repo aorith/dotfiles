@@ -147,6 +147,6 @@ fi
 PS1+='${__ps1_path@P} ${__ps1_git_final@P}'
 PS1+='${_nix_shell@P}${_venv@P}'
 PS1+='${_kube@P}${_aws@P}'
-PS1+='\[\e]133;L\a\e]133;A\a${my_blu2}\]\n\$\[$my_rst\] '
+PS1+='\[${my_blu2}\]\n\$\[$my_rst\] '
 
 PROMPT_COMMAND='__prompt_command $?'
