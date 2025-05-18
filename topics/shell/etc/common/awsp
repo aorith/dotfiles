@@ -1,0 +1,57 @@
+#!/bin/sh
+# shellcheck shell=sh
+# shellcheck enable=check-extra-masked-returns,deprecate-which,quote-safe-variables,check-unassigned-uppercase
+
+# Switch AWS profiles, compatible with SSO
+
+# This file should be sourced.
+
+# -----------------------------------------------------------------------------
+export AWSP_CURRENT_STATE="${HOME}/.local/state/.current-awsp.sh"
+
+awsp() {
+    Source() {
+        # Source the state file now
+        # shellcheck disable=SC1090
+        . "$AWSP_CURRENT_STATE"
+
+        # If we're using a SSO profile ...
+        if [ -n "$AWS_PROFILE" ] && aws configure get sso_session >/dev/null 2>&1; then
+            aws sso login --profile "$AWS_PROFILE"
+        fi
+
+        [ "$1" = "show-info" ] || return 0
+        if ! aws sts get-caller-identity; then
+            echo "ERROR: error executing 'aws sts get-caller-identity'."
+            return 1
+        fi
+    }
+
+    command -v aws >/dev/null 2>&1 || {
+        echo "ERROR: 'aws' cli not available"
+        return 1
+    }
+
+    cfg="$(
+        awk '$1 ~ /^\[profile/ {print $2}' ~/.aws/config | tr -d ']' |
+            fzf --prompt='Profile> ' \
+                --reverse --border --margin 10%
+    )"
+
+    mkdir -p "$(dirname -- "$AWSP_CURRENT_STATE")"
+
+    if [ -z "$cfg" ]; then
+        # If nothing was selected, reset $AWS_PROFILE
+        # shellcheck disable=SC2016
+        echo 'variable "$AWS_PROFILE" has been unset'
+        echo "unset AWS_PROFILE" >"$AWSP_CURRENT_STATE"
+        Source
+    else
+        echo "export AWS_PROFILE='$cfg'" >"$AWSP_CURRENT_STATE"
+        Source "show-info"
+    fi
+}
+
+# Source the state file always
+# shellcheck disable=SC1090
+[ ! -f "$AWSP_CURRENT_STATE" ] || . "$AWSP_CURRENT_STATE"

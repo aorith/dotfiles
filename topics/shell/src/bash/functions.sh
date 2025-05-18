@@ -52,9 +52,12 @@ te() {
 if [[ -f "$HOME/githome/dotfiles/topics/shell/etc/common/k8s-kc" ]]; then
     . "$HOME/githome/dotfiles/topics/shell/etc/common/k8s-kc"
 fi
+alias ,kc='kc'
+alias ,kcn='kc n'
 
-# To manage aws profiles, source the ,aws function here
+# To manage aws profiles, source the awsp function here
 # shellcheck disable=SC1091
-if [[ -f "${PRIVATE_DOTFILES}/topics/aws/,aws" ]]; then
-    . "${PRIVATE_DOTFILES}/topics/aws/,aws"
+if [[ -f "$HOME/githome/dotfiles/topics/shell/etc/common/awsp" ]]; then
+    . "$HOME/githome/dotfiles/topics/shell/etc/common/awsp"
 fi
+alias ,aws='awsp'
