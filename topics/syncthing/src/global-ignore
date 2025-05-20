@@ -5,3 +5,6 @@
 # Node
 (?d)node_modules
 (?d).nx
+
+# Cargo
+(?d)target/debug
