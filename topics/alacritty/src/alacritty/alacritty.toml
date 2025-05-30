@@ -6,8 +6,8 @@ dynamic_padding = true
 dynamic_title = false
 
 [window.padding]
-x = 3
-y = 3
+x = 4
+y = 4
 
 [bell]
 animation = "EaseOutExpo"

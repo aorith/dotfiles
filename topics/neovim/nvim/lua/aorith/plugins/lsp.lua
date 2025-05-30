@@ -233,3 +233,8 @@ lspconfig.autotools_ls.setup({
   capabilities = capabilities,
   on_attach = custom_on_attach,
 })
+
+lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})

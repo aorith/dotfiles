@@ -6,7 +6,9 @@ local disabled_files = {
 }
 
 local disabled_filetypes = {
-  "tmux", "bash", "sh"
+  "tmux",
+  "bash",
+  "sh",
 }
 
 local function disable_treesitter_features(bufnr)
@@ -112,7 +114,10 @@ local opts = {
 }
 
 require("nvim-treesitter.configs").setup(opts)
-require("treesitter-context").setup({ enable = false })
+require("treesitter-context").setup({
+  enable = true,
+  max_lines = "15%",
+})
 
 -- Folds
 vim.o.foldmethod = "expr"

@@ -37,6 +37,7 @@ brew "go"
 brew "go-jsonnet" # jsonnetfmt
 brew "go-task"
 brew "grep"
+brew "hashicorp/tap/packer"
 brew "hashicorp/tap/vault"
 brew "helm"
 brew "helm-docs"
@@ -65,6 +66,8 @@ brew "python@3.11"
 brew "rclone"
 brew "riff"
 brew "ripgrep"
+brew "rust"
+brew "rust-analyzer"
 brew "skopeo"
 brew "sops"
 brew "sox" # sound sample translator (gp.nvim)
@@ -92,7 +95,7 @@ cask "font-jetbrains-mono"
 cask "font-source-code-pro"
 
 cask "font-hack-nerd-font"
-cask "font-iosevka-term-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
 
 # Casks

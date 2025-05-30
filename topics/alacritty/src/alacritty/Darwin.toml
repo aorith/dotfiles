@@ -5,12 +5,14 @@ option_as_alt = "OnlyLeft"
 
 [font]
 size = 14
-offset = { y = 8 }
-glyph_offset = { y = 4 }
 
 normal = { family = "Hack Nerd Font Mono" }
-#normal = { family = "IosevkaTerm Nerd Font Mono", style = "Regular" }
-#italic = { family = "IosevkaTerm Nerd Font Mono", style = "Italic" }
+offset = { y = 6 }
+glyph_offset = { y = 3 }
+
+# normal = { family = "JetBrainsMono Nerd Font Mono" }
+# offset = { y = 6 }
+# glyph_offset = { y = 3 }
 
 [keyboard]
 bindings = [
