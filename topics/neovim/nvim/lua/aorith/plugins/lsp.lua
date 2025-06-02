@@ -1,5 +1,5 @@
 -- Log level
-vim.lsp.set_log_level(vim.log.levels.WARN)
+vim.lsp.set_log_level(vim.log.levels.ERROR)
 
 -- Diagnostics
 vim.diagnostic.config({
