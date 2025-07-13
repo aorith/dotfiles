@@ -7,7 +7,7 @@ tap "kcl-lang/tap"
 tap "go-task/tap"
 tap "hashicorp/tap"
 
-# Formulaes
+# Brews
 # -----------------------------------------------------------------------------
 # brew "fluxcd/tap/flux" # use concrete version for the cluster
 brew "age"
@@ -103,6 +103,7 @@ cask "font-symbols-only-nerd-font"
 # Casks
 # -----------------------------------------------------------------------------
 cask "alacritty"
+cask "calibre"
 cask "cyberduck" # ftp client
 cask "dbeaver-community"
 cask "discord"
@@ -117,6 +118,7 @@ cask "keepassxc"
 cask "microsoft-remote-desktop"
 cask "mongodb-compass"
 cask "obsidian"
+cask "qbittorrent"
 cask "spotify"
 cask "syncthing-app"
 cask "telegram"
@@ -161,5 +163,11 @@ brew "templ"
 brew "terraform-ls"
 brew "typescript-language-server"
 brew "yaml-language-server"
+
+
+# MacOS App Store
+# -----------------------------------------------------------------------------
+mas "Windows App (remote)", id: 1295203466
+mas "Wireguard", id: 1451685025
 
 # vim: ft=conf
