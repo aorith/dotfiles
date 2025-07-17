@@ -30,6 +30,9 @@ export LS_COLORS="*.7z=01;31:*.aac=00;36:*.ace=01;31:*.alz=01;31:*.arc=01;31:*.a
 export CLIPBOARD_COPY="pbcopy"
 export CLIPBOARD_PASTE="pbpaste"
 
+# Disable python's venv/bin/activate from modifying the PS1
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 # Source
 . ~/githome/dotfiles/utils/functions.sh
 
