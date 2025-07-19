@@ -23,7 +23,7 @@ local opts = {
 
     go = { "goimports", "gofmt" }, -- go install golang.org/x/tools/cmd/goimports@latest
     lua = { "stylua" },
-    nix = { "nixpkgs_fmt" },
+    nix = { "nixfmt" },
     python = { "ruff_format", "ruff_organize_imports" }, -- ruff_format & ruff_organize_imports  ||  black & isort
     toml = { "taplo" },
     yaml = { "prettierd", "trim_newlines" }, -- yamlfmt/yamlfix/prettierd (yamlfmt breaks yaml blocks (key: |) sometimes)

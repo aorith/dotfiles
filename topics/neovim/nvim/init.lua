@@ -4,6 +4,8 @@ vim.loader.enable()
 -------------------------------------------------------------------------------
 _G.My = {
   notes_dir = "~/Syncthing/SYNC_STUFF/notes/zk/notes",
+  ---@diagnostic disable-next-line: undefined-field
+  on_nixos = vim.uv.fs_stat("/etc/nixos") and true or false,
 
   --- Function to modify an existing highlight group in Neovim
   ---@param name string The name of the highlight group to modify
@@ -92,13 +94,17 @@ add({ source = "tpope/vim-sleuth" })
 
 -- Treesitter
 now_if_args(function()
-  add({
-    source = "nvim-treesitter/nvim-treesitter",
-    checkout = "master",
-    hooks = { post_checkout = function() vim.cmd("TSUpdate") end },
-  })
-  add({ source = "nvim-treesitter/nvim-treesitter-context" })
-  add({ source = "nvim-treesitter/nvim-treesitter-textobjects" })
+  if My.on_nixos then
+    vim.opt.runtimepath:prepend(os.getenv("HOME") .. "/.config/neovim-plugins")
+  else
+    add({
+      source = "nvim-treesitter/nvim-treesitter",
+      checkout = "master",
+      hooks = { post_checkout = function() vim.cmd("TSUpdate") end },
+    })
+    add({ source = "nvim-treesitter/nvim-treesitter-context" })
+    add({ source = "nvim-treesitter/nvim-treesitter-textobjects" })
+  end
 
   require("aorith.plugins.treesitter")
 end)
@@ -141,13 +147,15 @@ later(function()
 end)
 
 -- Mason
-later(function()
-  add({
-    source = "williamboman/mason.nvim",
-    hooks = { post_checkout = function() vim.cmd("MasonUpdate") end },
-  })
-  require("aorith.plugins.mason")
-end)
+if not My.on_nixos then
+  later(function()
+    add({
+      source = "williamboman/mason.nvim",
+      hooks = { post_checkout = function() vim.cmd("MasonUpdate") end },
+    })
+    require("aorith.plugins.mason")
+  end)
+end
 
 -- Nvim Dap
 later(function()

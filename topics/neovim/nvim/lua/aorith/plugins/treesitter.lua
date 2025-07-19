@@ -47,8 +47,8 @@ local ensure_installed = {
 }
 
 local opts = {
-  auto_install = true,
-  ensure_installed = ensure_installed,
+  auto_install = not My.on_nixos,
+  ensure_installed = My.on_nixos and {} or ensure_installed,
 
   highlight = {
     enable = true,
