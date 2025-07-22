@@ -1,7 +1,7 @@
 local miniclue = require("mini.clue")
 ---@diagnostic disable-next-line: redundant-parameter
 miniclue.setup({
-  window = { delay = 200 },
+  window = { delay = 200, config = { width = "auto" } },
 
   triggers = {
     -- Leader triggers
