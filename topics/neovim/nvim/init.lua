@@ -146,17 +146,6 @@ later(function()
   require("aorith.plugins.nvim-tree")
 end)
 
--- Mason
-if not My.on_nixos then
-  later(function()
-    add({
-      source = "williamboman/mason.nvim",
-      hooks = { post_checkout = function() vim.cmd("MasonUpdate") end },
-    })
-    require("aorith.plugins.mason")
-  end)
-end
-
 -- Nvim Dap
 later(function()
   add({ source = "mfussenegger/nvim-dap" })
