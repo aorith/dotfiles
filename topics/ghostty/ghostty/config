@@ -5,7 +5,7 @@ config-file = tmux-binds
 
 auto-update = off
 copy-on-select = clipboard
-fullscreen = true
+fullscreen = false
 maximize = true
 scrollback-limit = 1024
 shell-integration = none
@@ -15,17 +15,12 @@ macos-non-native-fullscreen = visible-menu
 cursor-invert-fg-bg = true
 
 font-size = 16
-# font-thicken = true
-font-thicken-strength = 0
-font-synthetic-style = false
 adjust-cell-height = 10
 adjust-cursor-height = 10
 # https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features
 font-feature = -calt, -liga, -dlig, zero, cv18, cv07
 
-font-family = "Hack"
+# font-family = "Hack"
 # font-family = "JetBrains Mono"
-# font-family = "IBM Plex Mono"
 # font-family = "IosevkaTerm"
-# font-family = "Source Code Pro"
-# font-family = "Hack Nerd Font Mono"
+font-family = "AdwaitaMono Nerd Font Mono"
