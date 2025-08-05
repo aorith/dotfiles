@@ -1,11 +1,12 @@
 # Taps
 # -----------------------------------------------------------------------------
-tap "homebrew/bundle"
-tap "homebrew/services"
+# tap "d12frosted/emacs-plus"
 tap "fluxcd/tap"
-tap "kcl-lang/tap"
 tap "go-task/tap"
 tap "hashicorp/tap"
+tap "homebrew/bundle"
+tap "homebrew/services"
+tap "kcl-lang/tap"
 
 # Brews
 # -----------------------------------------------------------------------------
@@ -23,6 +24,7 @@ brew "cue"
 brew "datamash"
 brew "diffutils"
 brew "dive"
+# brew "emacs-plus"
 brew "entr" # Run arbitrary commands when files change (I don't remember which program needs it)
 brew "fd"
 brew "findutils"
@@ -45,6 +47,7 @@ brew "helm"
 brew "helm-docs"
 brew "helm-ls"
 brew "ipcalc"
+brew "jless"
 brew "jq"
 brew "jsonnet-bundler" # for tanka
 brew "k9s"
@@ -110,11 +113,11 @@ cask "cyberduck" # ftp client
 cask "dbeaver-community"
 cask "discord"
 cask "docker-desktop"
+cask "emacs-app"
 cask "flameshot"
 cask "ghostty@tip"
 cask "gimp"
 cask "hammerspoon"
-cask "headlamp"
 cask "kate"
 cask "keepassxc"
 cask "microsoft-remote-desktop"
