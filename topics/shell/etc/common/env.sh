@@ -37,17 +37,18 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 . ~/githome/dotfiles/utils/functions.sh
 
 # # Nix (non NixOS)
-# if [[ ! -e /etc/nixos ]]; then
-#     # Terraform >= 1.6.0 has bsl license
-#     export NIXPKGS_ALLOW_UNFREE=1
-#
-#     if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
-#         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-#     fi
-#     if [[ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
-#         . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-#     fi
-# fi
+if [[ ! -e /etc/nixos ]]; then
+    # Terraform >= 1.6.0 has bsl license
+    export NIXPKGS_ALLOW_UNFREE=1
+
+    if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
+    # Home manager
+    # if [[ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
+    #     . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+    # fi
+fi
 
 # Paths
 for p in \
