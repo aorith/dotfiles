@@ -3,7 +3,8 @@ import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
 
 [window]
 dynamic_padding = true
-dynamic_title = false
+dynamic_title = true
+decorations_theme_variant = "Dark"
 
 [window.padding]
 x = 4
@@ -34,7 +35,5 @@ save_to_clipboard = true
 command = "open"
 hyperlinks = true
 post_processing = true
-persist = false
 mouse.enabled = true
-binding = { key = "O", mods = "Control|Shift" }
-regex = "(https://|http://|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+regex = "(https:|http:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"

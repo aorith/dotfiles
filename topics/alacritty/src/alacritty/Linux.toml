@@ -1,5 +1,6 @@
 [window]
-decorations = "none"
+dynamic_padding = true
+dynamic_title = true
 
 [terminal.shell]
 args = ["bash", "-l", "-i"]

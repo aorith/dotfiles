@@ -1,12 +1,13 @@
 [window]
-decorations = "Buttonless"
+#decorations = "Buttonless"
 startup_mode = "Maximized"
 option_as_alt = "OnlyLeft"
 
 [font]
-size = 14
+size = 16
 
-normal = { family = "Hack Nerd Font Mono" }
+# normal = { family = "Hack Nerd Font Mono" }
+normal = { family = "AdwaitaMono Nerd Font Mono" }
 offset = { y = 6 }
 glyph_offset = { y = 3 }
 
