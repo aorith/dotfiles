@@ -178,6 +178,11 @@ lspconfig.ts_ls.setup({
   on_attach = custom_on_attach,
 })
 
+lspconfig.eslint.setup({
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+})
+
 lspconfig.html.setup({
   capabilities = capabilities,
   on_attach = custom_on_attach,

@@ -181,8 +181,8 @@ map("n", "gri", "<Cmd>Pick lsp scope='implementation'<CR>", { desc = "Implementa
 map("n", "grt", "<Cmd>Pick lsp scope='type_definition'<CR>", { desc = "Type Definitions" })
 
 -- Formatting
-nmap_leader("lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, "Format buffer")
-xmap_leader("lf", function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end, "Format buffer")
+nmap_leader("lf", function() require("conform").format({ async = false, timeout_ms = 5000 }) end, "Format buffer")
+xmap_leader("lf", function() require("conform").format({ async = false, timeout_ms = 5000 }) end, "Format buffer")
 
 -- Outline
 nmap_leader("a", "<cmd>Outline<CR>", "Toggle outline")

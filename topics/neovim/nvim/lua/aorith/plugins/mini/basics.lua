@@ -7,9 +7,6 @@ require("mini.basics").setup({
 
     -- Extra UI features ('winblend', 'cmdheight=0', ...)
     extra_ui = false,
-
-    -- Presets for window borders ('single', 'double', ...)
-    win_borders = "bold",
   },
 
   -- Mappings. Set to `false` to disable.
