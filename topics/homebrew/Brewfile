@@ -73,7 +73,6 @@ brew "rclone"
 brew "riff"
 brew "ripgrep"
 brew "rust"
-brew "rust-analyzer"
 brew "skopeo"
 brew "sops"
 brew "sox" # sound sample translator (gp.nvim)
@@ -157,6 +156,7 @@ brew "typos-cli"
 brew "yamllint"
 
 # LSP
+brew "rust-analyzer"
 brew "basedpyright"
 brew "bash-language-server"
 brew "vscode-langservers-extracted"
