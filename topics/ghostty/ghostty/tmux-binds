@@ -15,10 +15,10 @@ keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
 keybind = super+shift+v=paste_from_selection
 
-keybind = super+zero=reset_font_size
-keybind = super+equal=increase_font_size:1
-keybind = super+plus=increase_font_size:1
-keybind = super+minus=decrease_font_size:1
+keybind = all:super+zero=reset_font_size
+keybind = all:super+equal=increase_font_size:1
+keybind = all:super+plus=increase_font_size:1
+keybind = all:super+minus=decrease_font_size:1
 
 # To view hex code keys:
 # xxd -psg
