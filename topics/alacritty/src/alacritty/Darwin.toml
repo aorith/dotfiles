@@ -8,12 +8,9 @@ size = 16
 
 # normal = { family = "Hack Nerd Font Mono" }
 normal = { family = "AdwaitaMono Nerd Font Mono" }
+# normal = { family = "JetBrainsMono Nerd Font Mono" }
 offset = { y = 6 }
 glyph_offset = { y = 3 }
-
-# normal = { family = "JetBrainsMono Nerd Font Mono" }
-# offset = { y = 6 }
-# glyph_offset = { y = 3 }
 
 [keyboard]
 bindings = [

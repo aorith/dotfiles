@@ -61,7 +61,6 @@ brew "lazygit"
 brew "luarocks"
 brew "minikube"
 brew "mpv"
-brew "neovim"
 brew "nmap"
 brew "node"
 brew "openssl@3"
@@ -135,9 +134,12 @@ cask "wireshark-app"
 
 # Neovim
 # -----------------------------------------------------------------------------
+# brew "neovim"
+
 # Formatters
 brew "black"
 brew "isort"
+brew "prettier"
 brew "prettierd"
 brew "ruff"
 brew "shfmt"
