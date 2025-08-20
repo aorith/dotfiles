@@ -1,0 +1,44 @@
+#!/bin/sh
+
+CURRENT_PATH="$PWD"
+
+SESSION_PATH=""
+SESSION_NAME=""
+
+if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
+    SELECTION=$(fd \
+        -L \
+        -E node_modules \
+        -E target \
+        -E '_*' \
+        -E 'venv' \
+        --max-depth 12 \
+        --type d \
+        --type l \
+        . 2>/dev/null | fzf --prompt="Session path: ")
+    if [ -n "$SELECTION" ]; then
+        SESSION_PATH="$SELECTION"
+        SESSION_NAME=$(basename -- "$SELECTION")
+    else
+        tmux display-message "No directory selected, exiting."
+        exit 1
+    fi
+else
+    tmux display-message "Warning: fd or fzf not found. Using base directory as session path."
+    SESSION_PATH="$CURRENT_PATH"
+
+    printf "Enter session name: "
+    read -r SESSION_NAME
+    if [ -z "$SESSION_NAME" ]; then
+        tmux display-message "No session name provided, exiting."
+        exit 1
+    fi
+fi
+
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    tmux display-message "Session with name '$SESSION_NAME' already exist."
+else
+    tmux new-session -s "$SESSION_NAME" -c "$SESSION_PATH" -d
+fi
+
+exec tmux switch-client -t "$SESSION_NAME"
