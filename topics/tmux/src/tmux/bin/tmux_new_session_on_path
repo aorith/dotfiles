@@ -1,4 +1,6 @@
 #!/bin/sh
+# shellcheck shell=sh
+# shellcheck enable=check-extra-masked-returns,deprecate-which,quote-safe-variables,check-unassigned-uppercase
 
 CURRENT_PATH="$PWD"
 
@@ -6,7 +8,11 @@ SESSION_PATH=""
 SESSION_NAME=""
 
 if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
+    n_paths=$(echo "$PWD" | tr '/' '\n' | grep -c .)
+    nth=$((n_paths + 2))
+
     SELECTION=$(fd \
+        -a \
         -L \
         -E node_modules \
         -E target \
@@ -15,7 +21,7 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
         --max-depth 12 \
         --type d \
         --type l \
-        . 2>/dev/null | fzf --prompt="Session path: ")
+        . 2>/dev/null | fzf --padding 1 -d'/' --with-nth="$nth".. --scheme=path --prompt="Session path: ")
     if [ -n "$SELECTION" ]; then
         SESSION_PATH="$SELECTION"
         SESSION_NAME=$(basename -- "$SELECTION")
