@@ -25,6 +25,7 @@ brew "coreutils"
 brew "cosign"
 brew "cue"
 brew "datamash"
+brew "delve" # go debugger
 brew "diffutils"
 brew "dive"
 brew "entr" # Run arbitrary commands when files change (I don't remember which program needs it)
@@ -124,6 +125,7 @@ cask "gimp"
 cask "hammerspoon"
 cask "kate"
 cask "keepassxc"
+cask "kitty"
 cask "microsoft-remote-desktop"
 cask "mitmproxy" # interactive HTTPS proxy to inspect traffic
 cask "mongodb-compass"
