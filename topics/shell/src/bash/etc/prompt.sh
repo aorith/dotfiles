@@ -92,7 +92,7 @@ __prompt_command() {
         IFS='/' read -ra parts <<<"${PWD/~/\~}"
         for i in "${parts[@]}"; do
             case $i in
-            "${__ps1_git_root:-path-name-that-will-never-exists}") __ps1_path+="\[${my_bld}${my_grn}\]${i}\[${my_rst}\]\[${_path_color}\]/" ;;
+            "${__ps1_git_root:-path-name-that-will-never-exists}") __ps1_path+="\[${my_bld}${my_und}\]${i}\[${my_rst}\]\[${_path_color}\]/" ;;
             *) __ps1_path+="${i}/" ;;
             esac
         done
