@@ -11,15 +11,11 @@ dotfiles() {
 repos() {
     local p
     p="$(
-        fd \.git$ "${HOME}/githome/SyncRepos/${1:-DEXTools}" --max-depth 6 --type d --unrestricted --color never |
-            fzf --reverse --border --margin 15% --delimiter / --with-nth -4,-3
+        fd \.git$ "${HOME}/githome" --max-depth 8 --type d --unrestricted --color never |
+            fzf --reverse --border --margin 15% --delimiter / --with-nth 5..-3
     )"
     [[ -d "$p" ]] || return 1
     cd "${p}/.." || return 1
-}
-
-repos-old() {
-    repos "TES"
 }
 
 ,cd() {
