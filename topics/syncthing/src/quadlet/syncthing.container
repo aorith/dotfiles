@@ -18,7 +18,7 @@ ContainerName=syncthing
 HostName=%l
 
 Image=docker.io/syncthing/syncthing
-Exec=serve --gui-address=${ST_GUI_ADDRESS} --no-browser --no-restart --no-upgrade --no-default-folder --logflags=0
+Exec=serve --gui-address=${ST_GUI_ADDRESS} --no-browser --no-restart --no-upgrade --logflags=0
 
 AutoUpdate=registry
 #Pull=always
