@@ -14,4 +14,6 @@ brew upgrade
 brew cleanup
 brew bundle cleanup --force
 
+brew services start syncthing >/dev/null 2>&1
+
 exit 0
