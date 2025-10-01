@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [[ "$TERM" =~ (tmux|screen) ]]; then
+    printf "\033]52;c;%s\007" "$(base64 | tr -d '\n')"
+else
+    printf "\033Ptmux;\033\033]52;c;%s\x07\033\\" "$(base64 | tr -d '\n')"
+fi
