@@ -142,7 +142,10 @@ fi
 if [[ -n "$SSH_CLIENT" ]]; then
     PS1+="\[\033]0;\u@\h \w\007\]\[$my_ylw2\]\h\[$my_rst\] "
 else
-    PS1+='\[\033]0;\w\007\]'
+    #PS1+='\[\033]0;\w\007\]'
+    # Since kitty can't tell if the tab title has been manually set..., use a static title here: "bash"
+    # and display the current executable if the title is "bash" on kitty's "tab_title_template"
+    PS1+='\[\033]0;bash\007\]'
 fi
 PS1+='${__ps1_path@P} ${__ps1_git_final@P}'
 PS1+='${_nix_shell@P}${_venv@P}'

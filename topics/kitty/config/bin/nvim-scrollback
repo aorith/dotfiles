@@ -1,0 +1,19 @@
+#!/bin/sh
+PATH="$HOME/.nix-profile/bin:/opt/homebrew/bin/:$PATH"
+T="$(mktemp /tmp/kitty_scrollback_buffer.XXXXXX)"
+case "$1" in
+search)
+    nvim -u ~/.config/nvim/minimal.lua \
+        -c "silent! write! $T" \
+        -c 'set winbar=\ SCROLLBACK\ BUFFER%=\ %LL\ ' \
+        -c 'call feedkeys("G")' \
+        -c 'call feedkeys("?")' -
+    ;;
+*)
+    nvim -u ~/.config/nvim/minimal.lua \
+        -c "silent! write! $T" \
+        -c 'set winbar=\ SCROLLBACK\ BUFFER%=\ %LL\ ' \
+        -c 'call feedkeys("G")' -
+    ;;
+esac
+exec rm -f "$T"

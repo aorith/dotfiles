@@ -2,8 +2,8 @@
 # shellcheck shell=sh
 # shellcheck enable=check-extra-masked-returns,deprecate-which,quote-safe-variables,check-unassigned-uppercase
 
+PATH="/opt/homebrew/bin:$HOME/.nix-profile/bin:$PATH"
 SESSION_PATH=""
-SESSION_NAME=""
 
 if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
     dir="$HOME"
@@ -54,12 +54,10 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
                     ;;
                 "select")
                     SESSION_PATH="$selection"
-                    SESSION_NAME=$(basename -- "$selection")
                     break
                     ;;
                 "home")
                     SESSION_PATH="$HOME"
-                    SESSION_NAME="$$"
                     break
                     ;;
                 esac
@@ -70,14 +68,10 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
         fi
     done
 else
-    tmux display-message "Warning: fd or fzf not found."
+    kitten @ kitten notify "Warning: fd or fzf not found."
     exit 1
 fi
 
-if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-    tmux display-message "Session with name '$SESSION_NAME' already exist."
-else
-    tmux new-session -s "$SESSION_NAME" -c "$SESSION_PATH" -d
-fi
-
-exec tmux switch-client -t "$SESSION_NAME"
+echo "Creating session at $SESSION_PATH"
+export _KITTY_PATH="$SESSION_PATH"
+cd "$SESSION_PATH" && "$SHELL"

@@ -1,0 +1,8 @@
+#!/bin/sh
+# Just to make it work together with ./new-session
+
+if [ -n "$_KITTY_PATH" ]; then
+    exec kitten @ launch --type=tab --cwd="$_KITTY_PATH" --env _KITTY_PATH="$_KITTY_PATH"
+else
+    exec kitten @ launch --type=tab
+fi

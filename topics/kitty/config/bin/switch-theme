@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+dark_theme="Modus Vivendi Tinted"
+light_theme="Modus Operandi Tinted"
+
+theme_path="$HOME/.local/state/.kitty-theme.conf"
+
+if [ ! -e "$theme_path" ]; then
+    {
+        kitten themes --dump-theme=yes "$dark_theme"
+        printf '\n\n#DARK#\n'
+    } >"$theme_path"
+else
+    if grep -q '#DARK#' "$theme_path"; then
+        kitten themes --dump-theme=yes "$light_theme" >"$theme_path"
+    else
+        {
+            kitten themes --dump-theme=yes "$dark_theme"
+            printf '\n\n#DARK#\n'
+        } >"$theme_path"
+    fi
+fi
+
+kitty @ load-config
