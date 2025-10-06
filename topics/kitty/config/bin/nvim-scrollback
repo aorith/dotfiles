@@ -5,14 +5,12 @@ case "$1" in
 search)
     nvim -u ~/.config/nvim/minimal.lua \
         -c "silent! write! $T" \
-        -c 'set winbar=\ SCROLLBACK\ BUFFER%=\ %LL\ ' \
         -c 'call feedkeys("G")' \
         -c 'call feedkeys("?")' -
     ;;
 *)
     nvim -u ~/.config/nvim/minimal.lua \
         -c "silent! write! $T" \
-        -c 'set winbar=\ SCROLLBACK\ BUFFER%=\ %LL\ ' \
         -c 'call feedkeys("G")' -
     ;;
 esac
