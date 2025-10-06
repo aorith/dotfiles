@@ -6,7 +6,7 @@ PATH="/opt/homebrew/bin:$HOME/.nix-profile/bin:$PATH"
 SESSION_PATH=""
 
 if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
-    dir="$HOME"
+    dir="$HOME/githome"
     temp_file=$(mktemp)
 
     while true; do
