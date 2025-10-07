@@ -2,11 +2,13 @@
 # shellcheck shell=sh
 # shellcheck enable=check-extra-masked-returns,deprecate-which,quote-safe-variables,check-unassigned-uppercase
 
-SESSION_PATH=""
-SESSION_NAME=""
+PATH="/opt/homebrew/bin:$HOME/.nix-profile/bin:$PATH"
+
+session_path=""
+session_name=""
 
 if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
-    dir="$HOME"
+    dir="$HOME/githome"
     temp_file=$(mktemp)
 
     while true; do
@@ -53,13 +55,13 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
                     continue
                     ;;
                 "select")
-                    SESSION_PATH="$selection"
-                    SESSION_NAME=$(basename -- "$selection")
+                    session_path="$selection"
+                    session_name=$(basename -- "$selection")
                     break
                     ;;
                 "home")
-                    SESSION_PATH="$HOME"
-                    SESSION_NAME="$$"
+                    session_path="$HOME"
+                    session_name="$$"
                     break
                     ;;
                 esac
@@ -74,10 +76,10 @@ else
     exit 1
 fi
 
-if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-    tmux display-message "Session with name '$SESSION_NAME' already exist."
+if tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux display-message "Session with name '$session_name' already exist."
 else
-    tmux new-session -s "$SESSION_NAME" -c "$SESSION_PATH" -d
+    tmux new-session -s "$session_name" -c "$session_path" -d
 fi
 
-exec tmux switch-client -t "$SESSION_NAME"
+exec tmux switch-client -t "$session_name"

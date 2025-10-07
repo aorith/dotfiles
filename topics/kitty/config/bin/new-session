@@ -3,7 +3,10 @@
 # shellcheck enable=check-extra-masked-returns,deprecate-which,quote-safe-variables,check-unassigned-uppercase
 
 PATH="/opt/homebrew/bin:$HOME/.nix-profile/bin:$PATH"
-SESSION_PATH=""
+
+session_path=""
+session_name=""
+session_file=""
 
 if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
     dir="$HOME/githome"
@@ -53,11 +56,13 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
                     continue
                     ;;
                 "select")
-                    SESSION_PATH="$selection"
+                    session_path="$selection"
+                    session_name=$(basename -- "$selection")
                     break
                     ;;
                 "home")
-                    SESSION_PATH="$HOME"
+                    session_path="$HOME"
+                    session_name="$$"
                     break
                     ;;
                 esac
@@ -72,6 +77,15 @@ else
     exit 1
 fi
 
-echo "Creating session at $SESSION_PATH"
-export _KITTY_PATH="$SESSION_PATH"
-cd "$SESSION_PATH" && "$SHELL"
+session_name="$(echo "$session_name" | tr ' _' '--')"
+session_file="/tmp/${session_name}.kitty-session"
+
+echo "Creating session $session_name at $session_path"
+
+cat <<EOF >"$session_file"
+layout splits
+cd $session_path
+launch --env _KITTY_PATH="$session_path"
+EOF
+
+exec kitten @ action goto_session "$session_file"
