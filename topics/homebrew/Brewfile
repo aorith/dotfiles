@@ -184,6 +184,7 @@ brew "yaml-language-server"
 
 # MacOS App Store
 # -----------------------------------------------------------------------------
+brew "mas"
 mas "Windows App (remote)", id: 1295203466
 mas "Wireguard", id: 1451685025
 

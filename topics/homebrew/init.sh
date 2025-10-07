@@ -8,11 +8,9 @@ esac
 
 cd "$(dirname -- "$0")" || exit 1
 
-brew update
-brew bundle
-brew upgrade
-brew cleanup
 brew bundle cleanup --force
+#brew bundle check || brew bundle install
+brew bundle install --upgrade
 
 brew services start syncthing >/dev/null 2>&1
 
