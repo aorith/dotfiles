@@ -17,10 +17,11 @@ duration = 10
 
 [colors]
 draw_bold_text_with_bright_colors = true
+
 [colors.cursor]
 # Without this, cursor is hard to see on neovim when searching or using 'f'
-text = "#1a1a1a"
-cursor = "#30ff90"
+text = "#000000"
+cursor = "#35f080"
 
 [cursor.style]
 blinking = "Never"

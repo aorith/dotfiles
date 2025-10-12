@@ -10,19 +10,19 @@ maximize = true
 scrollback-limit = 1024
 shell-integration = none
 
+macos-icon = retro
 macos-option-as-alt = left
 macos-non-native-fullscreen = visible-menu
-cursor-invert-fg-bg = true
+cursor-invert-fg-bg = false
 
 font-size = 16
 font-thicken = true
 font-thicken-strength = 0
-adjust-cell-height = 10
-adjust-cursor-height = 10
+adjust-cell-height = 5
+adjust-cursor-height = 5
 # https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features
 font-feature = -calt, -liga, -dlig, zero, cv18, cv07
 
 # font-family = "Hack"
 # font-family = "JetBrains Mono"
-# font-family = "IosevkaTerm"
-font-family = "AdwaitaMono Nerd Font Mono"
+font-family = "IosevkaTerm"

@@ -1,20 +1,15 @@
 #!/bin/sh
+set -e
 
-THEME_FILE="$HOME/.config/ghostty/theme"
-theme="$(
-    echo "# Default
-theme = dark:Ghostty Default StyleDark,light:selenized-light
-theme = dark:selenized-black,light:selenized-white
-theme = selenized-dark
-theme = selenized-black
-theme = selenized-light
-theme = selenized-white" |
-        fzf --layout=reverse --tmux
-)"
+dark_theme="# Default Dark"
+light_theme="theme = GruvboxLight"
 
-[ -n "$theme" ] || exit 0
-
-echo "$theme" >"$THEME_FILE"
+output="$HOME/.config/ghostty/theme"
+if grep -qi 'dark' "$output"; then
+    echo "$light_theme" >"$output"
+else
+    echo "$dark_theme" >"$output"
+fi
 
 if command -v osascript >/dev/null 2>&1; then
     cat <<EOF | osascript >/dev/null 2>&1
@@ -24,4 +19,8 @@ tell application "System Events"
     end tell
 end tell
 EOF
+fi
+
+if [ -n "$TMUX" ]; then
+    tmux detach-client
 fi
