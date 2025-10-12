@@ -1,12 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-# $1 == session_name
-# $2 == current directory of pane
+pane_path="${1:-$HOME}"
 
-if [[ "$1" == "popup" ]]; then
-    tmux detach-client -s "popup"
-else
-    tmux new-session -d -s "popup" -c "$2" 2>/dev/null || true
-    tmux set-option -t "popup" detach-on-destroy on 2>/dev/null || true
-    tmux display-popup -w 100% -h 100% -E "tmux new-session -D -A -s 'popup' -c '$2'"
+# A different popup per session
+session="_popup_$(tmux display -p '#S')"
+
+if ! tmux has -t "$session" 2>/dev/null; then
+    parent_session="$(tmux display -p '#{session_id}')"
+    session_id="$(tmux new-session -dP -s "$session" -c "$pane_path" -e TMUX_PARENT_SESSION="$parent_session" -F '#{session_id}')"
+
+    tmux set-option -s -t "$session_id" key-table popup
+    tmux set-option -s -t "$session_id" prefix None
+    tmux set-option -s -t "$session_id" detach-on-destroy on 2>/dev/null || true
+
+    # Disabling the status bar is buggy when using search
+    #tmux set-option -s -t "$session_id" status off
+
+    session="$session_id"
 fi
+
+exec tmux attach -t "$session" >/dev/null

@@ -62,13 +62,18 @@ keybind = super+7=text:\x027
 keybind = super+8=text:\x028
 keybind = super+9=text:\x029
 
-keybind = super+g=text:\x02[
+# M-o
+keybind = super+g=text:\x1bo
+# M-p
+keybind = super+p=text:\x1bp
+# M-)
+keybind = super+f=text:\x1b)
+# M-(
+keybind = super+comma=text:\x1b(
+
 keybind = super+r=text:\x02W
 keybind = super+shift+r=text:\x02S
-keybind = super+comma=text:\x02(
 keybind = super+z=text:\x02z
-keybind = super+f=text:\x02/
-keybind = super+p=text:\x02p
 
 # Theme
 keybind = ctrl+shift+t=text:\x02t
