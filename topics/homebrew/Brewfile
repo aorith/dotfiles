@@ -144,11 +144,15 @@ cask "wireshark-app"
 
 # Neovim
 # -----------------------------------------------------------------------------
-# brew "neovim"
+brew "neovim"
+
+brew "tree-sitter"
+brew "tree-sitter-cli"
 
 # Formatters
 brew "black"
 brew "isort"
+brew "nixfmt"
 brew "prettier"
 brew "prettierd"
 brew "ruff"
@@ -168,17 +172,18 @@ brew "typos-cli"
 brew "yamllint"
 
 # LSP
-brew "rust-analyzer"
 brew "basedpyright"
 brew "bash-language-server"
-brew "vscode-langservers-extracted"
 brew "gopls"
 brew "lua-language-server"
 brew "marksman"
 brew "ruff-lsp"
+brew "rust-analyzer"
 brew "templ"
 brew "terraform-ls"
+brew "tofu-ls"
 brew "typescript-language-server"
+brew "vscode-langservers-extracted"
 brew "yaml-language-server"
 
 
