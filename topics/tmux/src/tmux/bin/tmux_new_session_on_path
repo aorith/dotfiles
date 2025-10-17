@@ -36,8 +36,8 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
                     --bind="enter:execute(echo 'select' > '$temp_file')+accept" \
                     --bind="ctrl-i:execute(echo 'navigate' > '$temp_file')+accept" \
                     --bind="ctrl-o:execute(echo 'back' > '$temp_file')+accept" \
-                    --bind="ctrl-h:execute(echo 'home' > '$temp_file')+accept" \
-                    --header="Enter: select | Ctrl+I: navigate | Ctrl+O: go back | Ctrl+H: pick home" \
+                    --bind="ctrl-t:execute(echo 'home' > '$temp_file')+accept" \
+                    --header="Enter: select | Ctrl+I: navigate | Ctrl+O: go back | Ctrl+T: pick home" \
                     --prompt="$dir: "
         )
 

@@ -6,6 +6,7 @@ pane_path="${1:-$HOME}"
 session="_popup_$(tmux display -p '#S')"
 
 if ! tmux has -t "$session" 2>/dev/null; then
+    # Save parent session in case I want to detach the popup window and assign it to the parent
     parent_session="$(tmux display -p '#{session_id}')"
     session_id="$(tmux new-session -dP -s "$session" -c "$pane_path" -e TMUX_PARENT_SESSION="$parent_session" -F '#{session_id}')"
 
