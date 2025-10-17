@@ -7,10 +7,7 @@ wezterm.GLOBAL.is_linux = wezterm.target_triple:find('linux') ~= nil
 require('bindings').apply(config)
 require('appearance').apply(config)
 
-if not wezterm.GLOBAL.is_linux then config.front_end = 'WebGpu' end
-
-config.max_fps = 160
-config.scrollback_lines = 500
+config.scrollback_lines = 5000
 config.check_for_updates = false
 config.window_padding = {
   left = 4,
