@@ -25,6 +25,9 @@ keybind = all:super+minus=decrease_font_size:1
 # xxd -psg
 # press the keys then press enter
 
+# send prefix on super+a
+keybind = super+a=text:\x02
+
 keybind = alt+space=text:\x20
 keybind = super+space=text:\x20
 
@@ -48,8 +51,8 @@ keybind = super+up=text:\x02\x0b
 keybind = super+right=text:\x02\x0c
 
 keybind = super+shift+enter=text:\x02\x20
-keybind = super+d=text:\x02\x25
-keybind = super+shift+d=text:\x02\x22
+keybind = super+d=text:\x02|
+keybind = super+shift+d=text:\x02-
 keybind = super+s=text:\x02s
 
 keybind = super+1=text:\x021

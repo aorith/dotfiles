@@ -1,14 +1,14 @@
 #!/bin/sh
 set -e
 
-dark_theme="# Default Dark"
-light_theme="theme = GruvboxLight"
+dark_theme="modus-vivendi-tinted"
+light_theme="modus-operandi-tinted"
 
 output="$HOME/.config/ghostty/theme"
 if grep -qi 'dark' "$output"; then
-    echo "$light_theme" >"$output"
+    printf '# light\ntheme = %s\n' "$light_theme" >"$output"
 else
-    echo "$dark_theme" >"$output"
+    printf '# dark\ntheme = %s\n' "$dark_theme" >"$output"
 fi
 
 if command -v osascript >/dev/null 2>&1; then
@@ -19,8 +19,4 @@ tell application "System Events"
     end tell
 end tell
 EOF
-fi
-
-if [ -n "$TMUX" ]; then
-    tmux detach-client
 fi

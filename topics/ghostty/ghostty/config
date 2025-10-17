@@ -10,10 +10,13 @@ maximize = true
 scrollback-limit = 1024
 shell-integration = none
 
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+
 macos-icon = retro
 macos-option-as-alt = left
 macos-non-native-fullscreen = visible-menu
-cursor-invert-fg-bg = false
 
 font-size = 16
 font-thicken = true
@@ -22,6 +25,7 @@ adjust-cell-height = 5
 adjust-cursor-height = 5
 # https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features
 font-feature = -calt, -liga, -dlig, zero, cv18, cv07
+cursor-invert-fg-bg = true
 
 # font-family = "Hack"
 # font-family = "JetBrains Mono"
