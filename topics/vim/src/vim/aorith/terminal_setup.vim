@@ -14,7 +14,7 @@ if &term =~# 'screen\|tmux\|kitty'
   let &t_ut='' " disable background color erase
 endif
 
-if exists('$IN_TMUX')
+if exists('$TMUX')
   " required for termguicolors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
