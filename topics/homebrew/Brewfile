@@ -51,6 +51,7 @@ brew "helix"
 brew "helm"
 brew "helm-docs"
 brew "helm-ls"
+brew "hurl"
 brew "ipcalc"
 brew "jless"
 brew "jq"
@@ -99,6 +100,7 @@ brew "watch"
 brew "websocat"
 brew "wget"
 brew "yq"
+brew "zellij"
 
 # Fonts
 # -----------------------------------------------------------------------------
