@@ -5,7 +5,7 @@ alias ll='ls --hyperlink=auto -Ahl --group-directories-first --color=auto'
 alias diff='diff --color=auto'
 alias htop='TERM=xterm-256color htop'
 alias grep='grep --color=auto'
-alias ssh='env TERM=xterm-256color ssh'
+alias ssh='TERM=xterm-256color ssh'
 alias delta="delta --hyperlinks --hyperlinks-file-link-format='file://{path}#{line}'"
 alias rg='rg --hyperlink-format=kitty'
 
@@ -31,5 +31,3 @@ alias fbox='~/githome/dotfiles/topics/toolbox/toolbox-wrapper fbox'
 alias fbox-update='~/githome/dotfiles/topics/toolbox/toolbox-wrapper fbox-update'
 alias archbox='HOME="$HOME/toolbox/archbox" ~/githome/dotfiles/topics/toolbox/toolbox-wrapper archbox'
 alias archbox-update='HOME="$HOME/toolbox/archbox" ~/githome/dotfiles/topics/toolbox/toolbox-wrapper archbox-update'
-
-alias pick-shell-theme="~/githome/dotfiles/topics/shell/bin/pick-shell-theme.sh"

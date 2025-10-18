@@ -1,32 +1,26 @@
-# vim: ft=conf
+# vim: ft=ghostty
 
 config-file = ?theme
-config-file = tmux-binds
+
+config-file = keybinds/common
+config-file = keybinds/tmux
 
 auto-update = off
 copy-on-select = clipboard
-fullscreen = false
-maximize = true
-scrollback-limit = 1024
 shell-integration = none
 
+fullscreen = false
 window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
 
 macos-icon = retro
 macos-option-as-alt = left
-macos-non-native-fullscreen = visible-menu
 
-font-size = 16
+font-size = 15
 font-thicken = true
 font-thicken-strength = 0
-adjust-cell-height = 5
-adjust-cursor-height = 5
-# https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features
-font-feature = -calt, -liga, -dlig, zero, cv18, cv07
 cursor-invert-fg-bg = true
 
-# font-family = "Hack"
-# font-family = "JetBrains Mono"
-font-family = "IosevkaTerm"
+config-file = fonts/hack
+#config-file = fonts/jetbrains

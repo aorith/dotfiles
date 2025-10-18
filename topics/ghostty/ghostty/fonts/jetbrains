@@ -1,0 +1,8 @@
+# vim: ft=ghostty
+
+font-family = "JetBrains Mono"
+adjust-cell-height = 5
+adjust-cursor-height = 5
+
+# https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features
+font-feature = -calt, -liga, -dlig, zero, cv18, cv07
