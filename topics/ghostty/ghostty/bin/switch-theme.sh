@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-dark_theme="modus-vivendi"
-light_theme="modus-operandi"
+dark_theme="ef-dream"
+light_theme="modus-operandi-tinted"
 
 output="$HOME/.config/ghostty/theme"
 if grep -qi 'dark' "$output"; then

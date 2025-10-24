@@ -1,5 +1,7 @@
 # vim: ft=ghostty
 
+term = xterm-256color
+
 config-file = ?theme
 
 config-file = keybinds/common
@@ -17,10 +19,10 @@ window-padding-balance = true
 macos-icon = retro
 macos-option-as-alt = left
 
-font-size = 15
+font-size = 13
 font-thicken = true
-font-thicken-strength = 0
+font-thicken-strength = 255
 cursor-invert-fg-bg = true
 
-config-file = fonts/hack
-#config-file = fonts/jetbrains
+#config-file = fonts/hack
+config-file = fonts/jetbrains
