@@ -28,16 +28,16 @@ _append_to_path() {
 
 _backup() {
     # _backup <FILE_PATH>
-    [[ -z "$1" ]] && exit 1
+    [[ -n "$1" ]] || exit 1
 
     BACKUP_DIR="$HOME/.bootstrap_backups"
-    [[ ! -d "$BACKUP_DIR" ]] && mkdir -p "$BACKUP_DIR"
+    [[ -d "$BACKUP_DIR" ]] || mkdir -p "$BACKUP_DIR"
 
     # /home/user/.config/.file -> _.config_.file
     BACKUP_NAME="${1/$HOME/}"
     BACKUP_NAME="${BACKUP_NAME////_}"
 
-    if [[ ! -L $1 ]] && [[ -e $1 ]]; then
+    if [[ ! -L "$1" ]] && [[ -e "$1" ]]; then
         mv "${1}" "${BACKUP_DIR}/${BACKUP_NAME}" &&
             link_arrow "Backup for $(basename "$1") done." &&
             return 0
@@ -57,10 +57,11 @@ _link() {
     darwin*) _canon_link_name="$(readlink -- "${_link_name}")" ;;
     linux*) _canon_link_name="$(readlink -f "${_link_name}")" ;;
     *)
-        echo "Get out of here."
+        echo "Unknown OS '$OSTYPE'"
         exit 1
         ;;
     esac
+    local name
     name="${_link_name/$HOME/\~}"
 
     # need sudo?
@@ -99,8 +100,8 @@ _link() {
 
 create_link() {
     # create_link <SOURCE_FILE> <DEST_FILE>
-    [[ $# -ne 2 ]] && exit 1
-    [[ ! -r "$1" ]] && {
+    [[ $# -eq 2 ]] || exit 1
+    [[ -r "$1" ]] || {
         link_error "$1 does not exists."
         exit 1
     }

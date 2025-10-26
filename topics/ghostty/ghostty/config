@@ -21,7 +21,7 @@ macos-option-as-alt = left
 
 font-size = 13
 font-thicken = true
-font-thicken-strength = 255
+font-thicken-strength = 0
 cursor-invert-fg-bg = true
 
 #config-file = fonts/hack

@@ -4,6 +4,10 @@ config:set_strict_mode(true)
 
 wezterm.GLOBAL.is_linux = wezterm.target_triple:find('linux') ~= nil
 
+config.set_environment_variables = {
+  WEZTERM_SHELL_SKIP_ALL = '1',
+}
+
 require('bindings').apply(config)
 require('appearance').apply(config)
 

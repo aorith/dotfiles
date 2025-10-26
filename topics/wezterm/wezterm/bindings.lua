@@ -29,6 +29,13 @@ function M.apply(config)
         flags = 'FUZZY|WORKSPACES',
       }),
     },
+
+    -- Close pane
+    { key = 'w', mods = 'SUPER', action = act.CloseCurrentPane({ confirm = false }) },
+
+    -- Split panes
+    { key = 'd', mods = 'SUPER', action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }) },
+    { key = 'D', mods = 'SUPER|SHIFT', action = act.SplitVertical({ domain = 'CurrentPaneDomain' }) },
   }
 
   config.mouse_bindings = {
