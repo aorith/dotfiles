@@ -11,7 +11,7 @@ dotfiles() {
 repos() {
     local p
     p="$(
-        fd \.git$ "${HOME}/githome" --max-depth 8 --type d --unrestricted --color never |
+        fd \.git$ "${HOME}/githome" --max-depth 8 --type d --follow --unrestricted --color never |
             fzf --reverse --border --margin 15% --delimiter / --with-nth 5..-3
     )"
     [[ -d "$p" ]] || return 1
