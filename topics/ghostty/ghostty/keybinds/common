@@ -3,6 +3,10 @@
 # Keybinds - NOTE: inline comments not allowed!
 keybind = clear
 
+keybind = global:super+º=toggle_quick_terminal
+
+keybind = super+p=toggle_command_palette
+
 keybind = ctrl+shift+f5=reload_config
 keybind = ctrl+shift+f12=toggle_fullscreen
 

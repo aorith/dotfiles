@@ -125,7 +125,7 @@ cask "docker-desktop"
 cask "emacs-app"
 cask "flameshot"
 cask "gaphor" # SysML/UML modeling
-cask "ghostty@tip"
+cask "ghostty"
 cask "gimp"
 cask "hammerspoon"
 cask "joplin"

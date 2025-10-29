@@ -16,4 +16,4 @@ defaults write -g InitialKeyRepeat -int 13
 defaults write -g KeyRepeat -int 2
 
 # https://tonsky.me/blog/monitors/
-defaults write -g AppleFontSmoothing -int 0
+#defaults write -g AppleFontSmoothing -int 0

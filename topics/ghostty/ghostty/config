@@ -1,6 +1,6 @@
 # vim: ft=ghostty
 
-term = xterm-256color
+#term = xterm-256color
 
 config-file = ?theme
 
@@ -19,10 +19,13 @@ window-padding-balance = true
 macos-icon = retro
 macos-option-as-alt = left
 
-font-size = 13
+font-size = 14
 font-thicken = true
 font-thicken-strength = 0
 cursor-invert-fg-bg = true
 
-#config-file = fonts/hack
-config-file = fonts/jetbrains
+# config-file = fonts/hack
+# config-file = fonts/jetbrains
+config-file = fonts/default
+
+custom-shader = shaders/smear.glsl
