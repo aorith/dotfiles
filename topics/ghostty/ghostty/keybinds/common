@@ -24,3 +24,4 @@ keybind = all:super+zero=reset_font_size
 keybind = all:super+equal=increase_font_size:1
 keybind = all:super+plus=increase_font_size:1
 keybind = all:super+minus=decrease_font_size:1
+keybind = all:super+-=decrease_font_size:1
