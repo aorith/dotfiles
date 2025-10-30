@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd "$2" || exit 1
+
+p="${1/\~/$HOME}"
+if [[ -e "$p" ]]; then
+    exec tmux send-keys "nvim '$p'" Enter
+else
+    exec tmux display-message "Cannot open '$1'"
+fi

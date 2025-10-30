@@ -1,5 +1,4 @@
 #!/bin/sh
-echo "Hola" > /tmp/hola.txt
 PATH="$HOME/.nix-profile/bin:/opt/homebrew/bin/:$PATH"
 T="$(mktemp /tmp/tmux_scrollback_buffer.XXXXXX)"
 nvim -u ~/.config/nvim/minimal.lua \
