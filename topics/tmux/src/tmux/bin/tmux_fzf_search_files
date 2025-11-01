@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
 
+# $1 = pane_current_path
+# $2 = pane_current_command
+
+cd "$1" || exit 1 # pane_current_path
+
 files=()
 while read -r line; do
     p="${line/\~/$HOME}"
     if [[ -f "$p" ]] && file "$p" | grep -q 'text'; then
         files+=("$p")
     fi
-done < <(tmux show-buffer | xargs | tr ' ' '\n' | grep -v 'tmux_fzf_search_files' | sort | uniq)
+done < <(cat -- - | xargs | tr ' ' '\n' | grep -v 'tmux_fzf_search_files' | sort | uniq)
 
-if ! choice="$(echo "${files[@]}" | xargs | tr ' ' '\n' | sort | uniq | sort -r | fzf)"; then
+if ! choice="$(echo "${files[@]}" | xargs | tr ' ' '\n' | sort | uniq | sort -r | fzf --tmux)"; then
     exit 0
 fi
 
 p="${choice/\~/$HOME}"
 if [[ -e "$p" ]]; then
-    nvim "$p"
+    if [[ "$2" =~ ^(sh|bash|zsh|fish)$ ]]; then
+        tmux send-keys C-a C-k "nvim '$p'" Enter
+    else
+        tmux display-message "current prompt busy with '$2'"
+    fi
 fi
