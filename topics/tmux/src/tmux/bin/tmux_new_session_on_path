@@ -2,6 +2,8 @@
 # shellcheck shell=sh
 # shellcheck enable=check-extra-masked-returns,deprecate-which,quote-safe-variables,check-unassigned-uppercase
 
+cd "$1" || exit 1
+
 PATH="/opt/homebrew/bin:$HOME/.nix-profile/bin:$PATH"
 
 session_path=""
@@ -29,6 +31,7 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
                 --type l \
                 . 2>/dev/null |
                 fzf \
+                    --tmux \
                     --padding 1 \
                     -d'/' \
                     --with-nth="$nth".. \
@@ -68,12 +71,12 @@ if command -v fd >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
             fi
         else
             tmux display-message "No directory selected, exiting."
-            exit 1
+            exit 0
         fi
     done
 else
     tmux display-message "Warning: fd or fzf not found."
-    exit 1
+    exit 0
 fi
 
 if tmux has-session -t "$session_name" 2>/dev/null; then

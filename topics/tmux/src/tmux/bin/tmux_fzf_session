@@ -3,7 +3,7 @@
 SCRIPTPATH="$(
     cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
     pwd -P
-)"
+)/$(basename -- "$0")"
 
 switch() {
     local sessions
@@ -12,7 +12,7 @@ switch() {
     local sess_arr
     local retval
 
-    local fzf_command=(fzf --exit-0 --print-query --reverse)
+    local fzf_command=(fzf --tmux --exit-0 --print-query --reverse)
 
     sessions="$(tmux list-sessions -F "#{session_name}" | grep -v '_popup_' | "${fzf_command[@]}")"
     retval=$?
