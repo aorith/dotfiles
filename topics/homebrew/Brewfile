@@ -106,6 +106,7 @@ brew "zellij"
 # -----------------------------------------------------------------------------
 cask "font-hack"
 cask "font-jetbrains-mono"
+cask "font-meslo-lg"
 cask "font-source-code-pro"
 
 cask "font-adwaita-mono-nerd-font"
