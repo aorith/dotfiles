@@ -19,6 +19,8 @@ keybind = alt+right=esc:f
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
 keybind = super+shift+v=paste_from_selection
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
 
 keybind = all:super+zero=reset_font_size
 keybind = all:super+equal=increase_font_size:1
