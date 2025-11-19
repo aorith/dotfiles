@@ -32,8 +32,3 @@ _dotfiles_completions() {
     )" "${COMP_WORDS[1]}")
 }
 complete -F _dotfiles_completions dotfiles
-
-_tes_completions() {
-    mapfile -t COMPREPLY < <(sed -n '/options = {/,/}/p' "$PRIVATE_DOTFILES/topics/tcdn/bin/tes" | grep -Eo '".*"' | tr -d '"' | grep -E "^${2}")
-}
-complete -F _tes_completions -o default tes

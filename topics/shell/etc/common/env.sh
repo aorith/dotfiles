@@ -54,7 +54,6 @@ fi
 
 # Paths
 for p in \
-    "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/tcdn/bin" \
     "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/scripts-private/bin" \
     "$HOME/.local/bin" \
     "$HOME/.local/go/bin"; do
@@ -76,6 +75,13 @@ linux*)
     done
     shopt -u nullglob
     set +a
+
+    # Bash completion
+    if ! shopt -oq posix; then
+        if [[ -f /etc/bash_completion ]]; then
+            . /etc/bash_completion
+        fi
+    fi
     ;;
 darwin*)
     export LANG="en_US.UTF-8"

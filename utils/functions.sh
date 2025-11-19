@@ -3,6 +3,7 @@
 set -a
 _prepend_to_path() {
     [[ -n "$1" ]] || return 0
+    [[ -e "$1" ]] || return 0
     case ":${MY_PATH:-unset}:" in
     *":${1}:"*) ;;             # already there
     ":unset:") MY_PATH="$1" ;; # was empty
@@ -18,6 +19,7 @@ _prepend_to_path_commit() {
 
 _append_to_path() {
     [[ -n "$1" ]] || return 0
+    [[ -e "$1" ]] || return 0
     case ":${PATH:-unset}:" in
     *":${1}:"*) ;;             # already there
     ":unset:") MY_PATH="$1" ;; # was empty
