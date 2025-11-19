@@ -30,3 +30,5 @@ config-file = fonts/meslo
 # config-file = fonts/default
 
 custom-shader = shaders/smear.glsl
+
+config-file = ?local-config
