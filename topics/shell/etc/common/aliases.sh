@@ -25,3 +25,8 @@ if command -v kubecolor >/dev/null 2>&1; then
 else
     alias k="kubectl"
 fi
+
+if command -v distrobox >/dev/null 2>&1; then
+    alias archbox='distrobox enter archbox'
+    alias archbox-update='distrobox assemble --file ~/githome/dotfiles/topics/distrobox/distrobox.ini create --replace'
+fi
