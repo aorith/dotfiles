@@ -18,9 +18,6 @@ export HISTSIZE=16000
 #export HISTTIMEFORMAT='%d/%h %H:%M:%S $ '
 export HISTIGNORE="exit:ls:bg:fg:history:clear:cd"
 
-# Prompt
-export PS4='+ ${BASH_SOURCE:-}:${LINENO:-}: ${FUNCNAME[0]:-}() [${?:-}] → '
-
 # Containers
 if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then
     export CONTAINER_ID=$(awk -F '=' '/^name=/ {print $2}' /run/.containerenv | tr -d '"')
