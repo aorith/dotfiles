@@ -25,9 +25,3 @@ if command -v kubecolor >/dev/null 2>&1; then
 else
     alias k="kubectl"
 fi
-alias rpm-ostree-changelogs='rpm-ostree db diff --changelogs'
-
-alias fbox='~/githome/dotfiles/topics/toolbox/toolbox-wrapper fbox'
-alias fbox-update='~/githome/dotfiles/topics/toolbox/toolbox-wrapper fbox-update'
-alias archbox='HOME="$HOME/toolbox/archbox" ~/githome/dotfiles/topics/toolbox/toolbox-wrapper archbox'
-alias archbox-update='HOME="$HOME/toolbox/archbox" ~/githome/dotfiles/topics/toolbox/toolbox-wrapper archbox-update'
