@@ -2,9 +2,7 @@
 set -a
 
 link_arrow()        { echo -e " $(tput setaf 3)         ➜$(tput sgr0)  $*"; }
-link_arrow_sudo()   { echo -e " $(tput setaf 3)         ➜$(tput sgr0)  $*$(tput setaf 4;tput bold) (system)$(tput sgr0)"; }
 link_success()      { echo -e " $(tput setaf 2)         ✔$(tput sgr0)  $*"; }
-link_success_sudo() { echo -e " $(tput setaf 2)         ✔$(tput sgr0)  $*$(tput setaf 4;tput bold) (system)$(tput sgr0)"; }
 link_error()        { echo -e " $(tput setaf 1)         ✖$(tput sgr0)  $*"; }
 
 log_header()      { printf '\r\n \033[01;36m- %s\033[0m\n' "$*"; }

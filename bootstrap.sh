@@ -6,6 +6,8 @@ shopt -s nullglob
 export DOTFILES="$HOME/githome/dotfiles"
 export PRIVATE_DOTFILES="$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles"
 
+mkdir -p ~/.config
+
 cd "$(dirname -- "$0")" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh

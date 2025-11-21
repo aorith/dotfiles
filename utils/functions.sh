@@ -30,6 +30,8 @@ _append_to_path() {
 
 # create_link <SOURCE_FILE> <DEST_FILE>
 create_link() {
+    set -e
+
     [[ $# -eq 2 ]] || exit 1
     [[ -r "$1" ]] || {
         link_error "source file '$1' does not exists or is not readable."
@@ -41,26 +43,14 @@ create_link() {
     local cmd=()
     local rmcmd=()
 
-    if [[ ! -w "$(dirname -- "$dest_file")" ]]; then
-        cmd+=("sudo")
-        rmcmd+=("sudo")
-    fi
     cmd+=("ln" "-s" "$source_file" "$dest_file")
     rmcmd+=("rm" "-f" "$dest_file")
 
     if [[ -L "$dest_file" ]] && [[ "$source_file" == "$(readlink -- "$dest_file")" ]]; then
-        if [[ "${cmd[0]}" == "sudo" ]]; then
-            link_success_sudo "$name"
-        else
-            link_success "$name"
-        fi
+        link_success "$name"
     elif [[ -L "$dest_file" ]] || [[ ! -e "$dest_file" ]]; then
         "${rmcmd[@]}" && "${cmd[@]}"
-        if [[ "${cmd[0]}" == "sudo" ]]; then
-            link_arrow_sudo "$name"
-        else
-            link_arrow "$name"
-        fi
+        link_arrow "$name"
     else
         link_error "file already exist: '$dest_file', delete it first"
         exit 1
