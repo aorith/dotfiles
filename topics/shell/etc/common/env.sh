@@ -16,6 +16,7 @@ export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
 # AA for java apps
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
+export LESS='-RX --mouse --quit-if-one-screen -S'
 export LESSHISTFILE="$XDG_DATA_HOME/less_history"
 export IPYTHONDIR="$XDG_DATA_HOME/ipython"
 export GOBIN="$HOME/.local/go/bin"
