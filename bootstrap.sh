@@ -11,7 +11,6 @@ mkdir -p ~/.config
 cd "$(dirname -- "$0")" || exit 1
 . ./utils/functions.sh
 . ./utils/messages.sh
-export _SKIP=247 # valid exit codes: 0-255
 
 # check for basic commands
 deps="awk curl find sed git"
@@ -23,10 +22,6 @@ for dep in $deps; do
 done
 
 check_result() {
-    [[ $1 -ne $_SKIP ]] || {
-        log_skip "$2"
-        return 0
-    }
     log_error "Execution of \"$3\" failed."
     popd >/dev/null || exit 1
     exit 1

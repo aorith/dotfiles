@@ -1,7 +1,10 @@
 # vim: ft=bash
 set -e
 
-[[ -e ~/Syncthing ]] || exit "$_SKIP"
+[[ -e ~/Syncthing ]] || {
+    log_skip "syncthing"
+    exit 0
+}
 
 log_info "Copying ignore files ..."
 

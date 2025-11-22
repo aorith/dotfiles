@@ -2,12 +2,16 @@
 
 case $OSTYPE in
 linux*) true ;;
-*) exit "$_SKIP" ;;
+*)
+    log_skip "flatpak"
+    exit 0
+    ;;
 esac
 
 command -v flatpak >/dev/null 2>&1 || {
     log_warn "flatpak is not installed"
-    exit "$_SKIP"
+    log_skip "flatpak"
+    exit 0
 }
 
 cd "$(dirname -- "$0")" || exit 1

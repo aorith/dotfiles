@@ -3,7 +3,10 @@
 # mac only
 case $OSTYPE in
 darwin*) true ;;
-*) exit $_SKIP ;;
+*)
+    log_skip "hammerspoon"
+    exit 0
+    ;;
 esac
 
 ### bootstrap

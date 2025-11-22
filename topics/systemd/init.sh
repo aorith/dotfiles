@@ -3,10 +3,14 @@ case $OSTYPE in
 linux*)
     if [[ -e /etc/nixos ]]; then
         log_info "Systemd User services do not work on NixOS"
-        exit "$_SKIP"
+        log_skip "systemd"
+        exit 0
     fi
     ;;
-*) exit "$_SKIP" ;;
+*)
+    log_skip "systemd"
+    exit 0
+    ;;
 esac
 
 case $HOSTNAME in

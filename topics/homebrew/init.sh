@@ -3,7 +3,10 @@
 # macos only
 case $OSTYPE in
 darwin*) true ;;
-*) exit $_SKIP ;;
+*)
+    log_skip "homebrew"
+    exit 0
+    ;;
 esac
 
 cd "$(dirname -- "$0")" || exit 1

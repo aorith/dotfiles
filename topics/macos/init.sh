@@ -3,7 +3,10 @@
 # macos only
 case $OSTYPE in
 darwin*) true ;;
-*) exit $_SKIP ;;
+*)
+    log_skip "macos"
+    exit 0
+    ;;
 esac
 
 # Fix Option+Space inserting non-breaking space (0xA0) " "
