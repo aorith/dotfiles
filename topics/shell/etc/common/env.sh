@@ -125,3 +125,7 @@ else
 fi
 
 export MANROFFOPT="-P -c"
+
+if [[ -f ~/.local.shell ]]; then
+    . ~/.local.shell
+fi
