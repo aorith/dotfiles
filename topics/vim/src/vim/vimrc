@@ -69,5 +69,5 @@ source ~/.vim/aorith/autocmds.vim
 " {{{ Theme -------------------------------------------------------------------
 set termguicolors
 set background=dark
-colorscheme retrobox " gruvbox lookalike
+colorscheme habamax
 " }}} -------------------------------------------------------------------------

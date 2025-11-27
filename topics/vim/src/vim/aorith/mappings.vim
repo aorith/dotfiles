@@ -54,6 +54,7 @@ function NetrwToggler()
     endif
 endfunction
 noremap <silent> <leader>e <Esc><Esc>:call NetrwToggler()<CR>
+noremap <silent> - <Esc><Esc>:call NetrwToggler()<CR>
 " --- }}} ---
 
 " --- {{{ F-Keys toggles ---

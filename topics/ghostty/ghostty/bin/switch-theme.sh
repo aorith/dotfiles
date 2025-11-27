@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-dark_theme="ef-dream"
+dark_theme="Everforest Dark Hard"
 light_theme="modus-operandi-tinted"
 
 output="$HOME/.config/ghostty/theme"

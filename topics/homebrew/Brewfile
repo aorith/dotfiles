@@ -129,6 +129,7 @@ cask "joplin"
 cask "kate"
 cask "keepassxc"
 cask "kitty"
+cask "mattermost"
 cask "microsoft-remote-desktop"
 cask "mitmproxy" # interactive HTTPS proxy to inspect traffic
 cask "mongodb-compass"
