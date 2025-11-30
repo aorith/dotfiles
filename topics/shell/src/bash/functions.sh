@@ -2,9 +2,12 @@
 
 dotfiles() {
     if [[ -n "$1" ]]; then
-        cd ~/githome/dotfiles/topics/"$1" || return 1
+        cd "$DOTFILES/topics/$1" 2>/dev/null || cd "$PRIVATE_DOTFILES/topics/$1" 2>/dev/null || {
+            echo "Topic $1 not found"
+            return 1
+        }
     else
-        cd ~/githome/dotfiles || return 1
+        cd "$DOTFILES" || return 1
     fi
 }
 
