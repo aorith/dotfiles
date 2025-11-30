@@ -88,7 +88,7 @@ brew "television"
 brew "telnet"
 brew "tenv"
 brew "the_silver_searcher"
-brew "tmux", args: ["HEAD"]
+brew "tmux" # , args: ["HEAD"]
 brew "tree"
 brew "util-linux"
 brew "uv" # https://github.com/astral-sh/uv
