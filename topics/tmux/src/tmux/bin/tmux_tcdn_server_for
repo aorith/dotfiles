@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+PATH="${PATH}:/opt/homebrew/bin:${HOME}/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/scripts-private/bin"
+
+# calling this does an initial update if required
+tes-ip-or-node "dummy-value" >/dev/null
+
+re="$(cat ~/.local/state/.tcdn-server-map | xargs | tr ' ' '\n' | paste -sd'|')"
+
+process() {
+    rg -o "(${re})" | sort | uniq | while read -r line; do
+        tes-ip-or-node "$line"
+    done | sort | uniq
+}
+
+out="$(process)"
+if [[ -n "$out" ]]; then
+    echo "$out" | nvim -R --clean -u ~/.config/nvim/minimal.lua --cmd 'nnoremap q :q!<CR>' -
+else
+    tmux display-message "No server/IP found."
+fi

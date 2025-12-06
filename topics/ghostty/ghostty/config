@@ -24,10 +24,10 @@ font-thicken = true
 font-thicken-strength = 0
 cursor-invert-fg-bg = true
 
-config-file = fonts/hack
+# config-file = fonts/hack
 # config-file = fonts/jetbrains
 # config-file = fonts/meslo
-# config-file = fonts/default
+config-file = fonts/default
 
 custom-shader = shaders/smear.glsl
 
