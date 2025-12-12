@@ -69,5 +69,5 @@ source ~/.vim/aorith/autocmds.vim
 " {{{ Theme -------------------------------------------------------------------
 set termguicolors
 set background=dark
-colorscheme habamax
+colorscheme desert
 " }}} -------------------------------------------------------------------------
