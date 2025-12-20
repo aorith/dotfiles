@@ -1,7 +1,7 @@
 # vim: ft=ghostty
 
 font-family = "Hack"
-adjust-cell-height = 5
-adjust-cursor-height = 5
+# adjust-cell-height = 5
+# adjust-cursor-height = 5
 
 font-feature = -calt, -liga, -dlig
