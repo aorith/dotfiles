@@ -15,7 +15,7 @@ esac
 
 case $HOSTNAME in
 trantor)
-    folders=("flatpak" "cleanup" "gandi" "keepass")
+    folders=("flatpak" "cleanup" "gandi")
     ;;
 *)
     folders=("flatpak" "cleanup")
@@ -23,7 +23,7 @@ trantor)
 esac
 
 here="$(dirname -- "$(readlink -f "$0")")"
-folders=("flatpak" "gandi" "cleanup" "keepass")
+folders=("flatpak" "gandi" "cleanup")
 config_dir="$HOME/.config/systemd/user"
 timers_target_dir="$config_dir/timers.target.wants"
 mkdir -p "$timers_target_dir"
