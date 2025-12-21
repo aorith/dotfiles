@@ -15,4 +15,4 @@ else
 fi
 
 # keep only 60 backups
-ls -dt ~/Syncthing/KeePass/0DB/Backups/*.kdbx | tail -n +60 | xargs --no-run-if-empty rm
+find ~/Syncthing/KeePass/0DB/Backups/ -name '*.kdbx' -type f -printf '%T@ %p\n' | sort -n | tail -n +60 | awk '{print $NF}' | xargs --no-run-if-empty rm
