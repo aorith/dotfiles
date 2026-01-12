@@ -17,7 +17,7 @@ if [[ -n "$out" ]]; then
     [[ -n "$choice" ]] || exit
     choice2="$(tr ' ' '\n' <<<"$choice" | sort | fzf --reverse) "
     [[ -n "$choice2" ]] || exit
-    echo "$choice2" | pbcopy
+    echo -n "$choice2" | pbcopy
 else
     tmux display-message "No server/IP found."
 fi

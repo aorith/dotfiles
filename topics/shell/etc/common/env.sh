@@ -98,6 +98,9 @@ darwin*)
         eval "$(/opt/homebrew/bin/brew shellenv)"
         . /opt/homebrew/etc/profile.d/bash_completion.sh
     fi
+    if [[ -e /opt/homebrew/share/bash-completion/bash_completion ]]; then
+        . /opt/homebrew/share/bash-completion/bash_completion
+    fi
 
     for p in \
         "$HOME/.docker/bin" \

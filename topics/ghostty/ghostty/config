@@ -1,6 +1,7 @@
 # vim: ft=ghostty
 
-#term = xterm-256color
+# Without this tmux does not select panes on mouse click
+term = xterm-256color
 
 config-file = ?theme
 
@@ -10,6 +11,7 @@ config-file = keybinds/tmux
 auto-update = off
 copy-on-select = clipboard
 shell-integration = none
+shell-integration-features = false
 
 fullscreen = false
 window-padding-x = 4
@@ -21,14 +23,17 @@ macos-option-as-alt = left
 
 font-size = 14
 font-thicken = true
-font-thicken-strength = 0
+font-thicken-strength = 1
 cursor-invert-fg-bg = true
 
-config-file = fonts/hack
-# config-file = fonts/jetbrains
-# config-file = fonts/meslo
-# config-file = fonts/default
+adjust-cell-height = 2
+adjust-cursor-height = 2
+font-feature = -calt, -liga, -dlig
 
-custom-shader = shaders/smear.glsl
+# font-family = "Hack"
+# font-family = "Meslo LG S"
+font-family = "Iosevka Fixed"
+
+# custom-shader = shaders/smear.glsl
 
 config-file = ?local-config

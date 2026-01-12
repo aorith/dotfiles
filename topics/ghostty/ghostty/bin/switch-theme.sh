@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-dark_theme="ef-dream"
+dark_theme="Gruvbox Material Dark"
 light_theme="modus-operandi-tinted"
 
 output="$HOME/.config/ghostty/theme"

@@ -2,16 +2,12 @@
 
 # Taps
 # -----------------------------------------------------------------------------
-# tap "d12frosted/emacs-plus"
 tap "fluxcd/tap"
 tap "go-task/tap"
 tap "hashicorp/tap"
-tap "kcl-lang/tap"
 
 # Brews
 # -----------------------------------------------------------------------------
-# brew "fluxcd/tap/flux" # use concrete version for the cluster
-# brew "emacs-plus"
 brew "age"
 brew "ansible"
 brew "awscli"
@@ -27,16 +23,17 @@ brew "datamash"
 brew "delve" # go debugger
 brew "diffutils"
 brew "dive"
-brew "entr" # Run arbitrary commands when files change (I don't remember which program needs it)
+brew "entr" # Run arbitrary commands when files change
 brew "fd"
 brew "findutils"
 brew "fzf"
-brew "gcc" # tree-sitter (neorg)
+brew "gcc"
 brew "gh"
 brew "git"
 brew "git-delta"
 brew "gnu-sed"
 brew "gnu-tar"
+brew "gnu-units"
 brew "gnuplot"
 brew "go"
 brew "go-jsonnet" # jsonnetfmt
@@ -54,8 +51,6 @@ brew "jless"
 brew "jq"
 brew "jsonnet-bundler" # for tanka
 brew "k9s"
-brew "kcl-lang/tap/kcl"
-brew "kcl-lang/tap/kcl-lsp"
 brew "kind"
 brew "kubecolor"
 brew "kubeconform"
@@ -64,19 +59,20 @@ brew "lazygit"
 brew "luarocks"
 brew "minikube"
 brew "mpv"
+brew "netcat"
 brew "nmap"
 brew "node"
 brew "openssl@3"
 brew "pandoc"
 brew "pass"
 brew "pipenv"
-brew "python@3.12"
+brew "python@3.14"
 brew "rclone"
 brew "riff"
 brew "ripgrep"
 brew "rust"
 brew "skopeo"
-brew "solana"
+brew "socat"
 brew "sops"
 brew "sox" # sound sample translator (gp.nvim)
 brew "starship"
@@ -95,16 +91,14 @@ brew "watch"
 brew "websocat"
 brew "wget"
 brew "yq"
-brew "zellij"
 
 # Fonts
 # -----------------------------------------------------------------------------
 cask "font-hack"
+cask "font-iosevka"
 cask "font-jetbrains-mono"
 cask "font-meslo-lg"
-cask "font-source-code-pro"
 
-cask "font-adwaita-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
@@ -117,7 +111,6 @@ cask "cyberduck" # ftp client
 cask "dbeaver-community"
 cask "discord"
 cask "docker-desktop"
-cask "emacs-app"
 cask "flameshot"
 cask "gaphor" # SysML/UML modeling
 cask "ghostty"
@@ -125,21 +118,15 @@ cask "gimp"
 cask "hammerspoon"
 cask "kate"
 cask "keepassxc"
-cask "kitty"
 cask "mattermost"
 cask "microsoft-remote-desktop"
 cask "mitmproxy" # interactive HTTPS proxy to inspect traffic
 cask "mongodb-compass"
 cask "obsidian"
-cask "qbittorrent"
 cask "spotify"
 cask "telegram"
 cask "tigervnc-viewer"
-cask "tunnelblick"
-cask "utm"
 cask "vlc"
-cask "vscodium"
-cask "wezterm@nightly"
 cask "wireshark-app"
 
 # Neovim
