@@ -3,7 +3,7 @@
 
 -- Main keybindings
 local apps = {
-  F1 = "Ghostty",
+  F1 = "Alacritty",
   F2 = "Google Chrome",
   F3 = "Mattermost",
   F4 = "Obsidian",
