@@ -15,9 +15,9 @@ out="$(
 if [[ -n "$out" ]]; then
     choice="$(fzf --reverse <<<"$out")"
     [[ -n "$choice" ]] || exit
-    choice2="$(tr ' ' '\n' <<<"$choice" | sort | fzf --reverse) "
+    choice2="$(tr ' ' '\n' <<<"$choice" | grep . | sort | fzf --reverse) "
     [[ -n "$choice2" ]] || exit
-    echo -n "$choice2" | pbcopy
+    echo -n "$choice2" | xargs printf | pbcopy
 else
     tmux display-message "No server/IP found."
 fi
