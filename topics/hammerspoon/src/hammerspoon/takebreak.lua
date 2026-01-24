@@ -17,9 +17,9 @@ local minutes = 60
 
 hs.timer.doEvery(60 * minutes, function()
   -- Play sounds
-  for _, s in pairs({ 'Funk', 'Pop', 'Ping', 'Blow' }) do
+  for _, s in pairs({ 'Funk', 'Pop', 'Ping' }) do
     hs.sound.getByName(s):play()
-    hs.timer.usleep(1000 * 350)
+    hs.timer.usleep(1000 * 450)
   end
 
   currentAlert = hs.alert.show('Time to take a break!', style, hs.screen.mainScreen(), 100)
