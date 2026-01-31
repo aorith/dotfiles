@@ -3,8 +3,8 @@ import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
 
 [font]
 size = 15
-offset = { y = 6 }
-glyph_offset = { y = 3 }
+# offset = { y = 6 }
+# glyph_offset = { y = 3 }
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
