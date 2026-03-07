@@ -8,8 +8,9 @@ size = 15
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
-#normal = { family = "JetBrainsMono Nerd Font" }
-normal = { family = "Hack Nerd Font" }
+#normal = { family = "JetBrainsMonoNL Nerd Font" }
+#normal = { family = "Hack Nerd Font" }
+normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
 
 [window]
 dynamic_padding = true
