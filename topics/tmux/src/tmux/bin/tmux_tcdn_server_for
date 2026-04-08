@@ -9,15 +9,19 @@ re="$(xargs <~/.local/state/.tcdn-server-map | tr ' ' '\n' | paste -sd'|')"
 out="$(
     rg -o "(${re})" | sort | uniq | while read -r line; do
         tes-ip-or-node "$line"
-    done | sort | uniq | column -t -o' '
+    done | sort | uniq | column -t -l 2
 )"
 
 if [[ -n "$out" ]]; then
-    choice="$(fzf --reverse <<<"$out")"
+    choice="$(printf '%s\nCOPY-ALL' "$out" | fzf --reverse)"
     [[ -n "$choice" ]] || exit
+    if [[ "$choice" == "COPY-ALL" ]]; then
+        printf '%s' "$out" | pbcopy
+        exit
+    fi
     choice2="$(tr ' ' '\n' <<<"$choice" | grep . | sort | fzf --reverse) "
     [[ -n "$choice2" ]] || exit
-    echo -n "$choice2" | xargs printf | pbcopy
+    echo -n "$choice2" | xargs printf '%s' | pbcopy
 else
     tmux display-message "No server/IP found."
 fi
