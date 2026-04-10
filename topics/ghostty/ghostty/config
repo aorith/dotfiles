@@ -1,11 +1,8 @@
 # vim: ft=ghostty
 
-# Without this tmux does not select panes on mouse click
-term = xterm-256color
-
 config-file = ?theme
 
-config-file = keybinds/common
+#config-file = keybinds/regular
 config-file = keybinds/tmux
 
 auto-update = off
@@ -24,7 +21,7 @@ macos-option-as-alt = left
 font-size = 14
 font-thicken = true
 font-thicken-strength = 1
-cursor-invert-fg-bg = true
+#cursor-invert-fg-bg = false
 
 adjust-cell-height = 2
 adjust-cursor-height = 2
@@ -32,7 +29,8 @@ font-feature = -calt, -liga, -dlig
 
 # font-family = "Hack"
 # font-family = "Meslo LG S"
-font-family = "Iosevka Fixed"
+# font-family = "Iosevka Fixed"
+font-family = "Source Code Pro"
 
 # custom-shader = shaders/smear.glsl
 

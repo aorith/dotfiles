@@ -2,6 +2,33 @@
 
 scrollback-limit = 512
 
+# Keybinds - NOTE: inline comments not allowed!
+keybind = clear
+
+keybind = super+.=toggle_command_palette
+
+keybind = ctrl+shift+f5=reload_config
+keybind = ctrl+shift+f12=toggle_fullscreen
+
+keybind = super+q=quit
+keybind = super+shift+n=new_window
+
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = super+shift+v=paste_from_selection
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = shift+insert=paste_from_selection
+
+keybind = all:super+zero=reset_font_size
+keybind = all:super+equal=increase_font_size:1
+keybind = all:super+plus=increase_font_size:1
+keybind = all:super+minus=decrease_font_size:1
+keybind = all:super+-=decrease_font_size:1
+
 # To view hex code keys:
 # xxd -psg
 # press the keys then press enter

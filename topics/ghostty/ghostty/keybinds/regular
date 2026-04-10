@@ -1,0 +1,24 @@
+# vim: ft=ghostty
+
+#keybind = global:super+p=toggle_quick_terminal
+
+keybind = super+.=toggle_command_palette
+
+keybind = super+q=quit
+keybind = super+shift+n=new_window
+
+keybind = all:super+zero=reset_font_size
+keybind = all:super+equal=increase_font_size:1
+keybind = all:super+plus=increase_font_size:1
+keybind = all:super+minus=decrease_font_size:1
+keybind = all:super+-=decrease_font_size:1
+
+keybind = super+j=goto_split:down
+keybind = super+h=goto_split:left
+keybind = super+l=goto_split:right
+keybind = super+k=goto_split:up
+keybind = super+shift+j=resize_split:down,10
+keybind = super+shift+h=resize_split:left,10
+keybind = super+shift+l=resize_split:right,10
+keybind = super+shift+k=resize_split:up,10
+keybind = super+shift+==equalize_splits
