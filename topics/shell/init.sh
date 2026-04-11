@@ -14,9 +14,6 @@ if [[ -n "$GOBIN" ]]; then
     mkdir -p "$GOBIN"
 fi
 
-# STARSHIP
-create_link "${PWD}/src/starship.toml" "$HOME/.config/starship.toml"
-
 case $OSTYPE in
 linux*)
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then

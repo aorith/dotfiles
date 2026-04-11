@@ -28,20 +28,4 @@ if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --bash)"
 fi
 
-# Television
-# if command -v tv >/dev/null 2>&1; then
-#     eval "$(tv init bash)"
-# fi
-
-# Optionally use starship
-# if command -v starship >/dev/null 2>&1; then
-#     set_win_title() {
-#         echo -ne "\033]0;$USER@$HOSTNAME $PWD\007"
-#     }
-#     # shellcheck disable=SC2034
-#     starship_precmd_user_func="set_win_title"
-#     eval "$(starship init bash)"
-# else
-#     . "${DOTFILES}"/topics/shell/src/bash/etc/prompt.sh
-# fi
 . "${DOTFILES}"/topics/shell/src/bash/etc/prompt.sh
