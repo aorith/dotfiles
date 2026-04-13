@@ -13,15 +13,6 @@ linux*)
     ;;
 esac
 
-case $HOSTNAME in
-trantor)
-    folders=("flatpak" "cleanup" "gandi")
-    ;;
-*)
-    folders=("flatpak" "cleanup")
-    ;;
-esac
-
 here="$(dirname -- "$(readlink -f "$0")")"
 folders=("flatpak" "gandi" "cleanup")
 config_dir="$HOME/.config/systemd/user"

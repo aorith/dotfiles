@@ -34,7 +34,7 @@ create_link() {
 
     [[ $# -eq 2 ]] || exit 1
     [[ -r "$1" ]] || {
-        link_error "source file '$1' does not exists or is not readable."
+        link_error "source file '$1' does not exist or is not readable."
         exit 1
     }
     local source_file="$1"
@@ -52,7 +52,7 @@ create_link() {
         "${rmcmd[@]}" && "${cmd[@]}"
         link_arrow "$name"
     else
-        link_error "file already exist: '$dest_file', delete it first"
+        link_error "file already exists: '$dest_file', delete it first"
         exit 1
     fi
 }
