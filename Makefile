@@ -1,39 +1,14 @@
 SHELL := bash
 
-# --- Home manager
+# find "$DOTFILES/topics" "$PRIVATE_DOTFILES/topics" -mindepth 1 -maxdepth 1 -type d -exec basename -- {} \; | xargs
+TOPICS = syncthing vim misc alacritty macos go shell systemd flatpak homebrew distrobox tmux hammerspoon git ghostty tcdn taskfiles cartero vscodium rclone k8s claude githome emacs ssh aws scripts-private
 
-# HMCONFIG := ${USER}@$(shell uname -m -s | tr ' ' '-')
-#
-# .PHONY: switch
-# switch:
-# 	@mkdir -p ~/.local/state/nix/profiles
-# 	@if command -v home-manager >/dev/null 2>&1; then\
-# 		home-manager switch --flake .#$(HMCONFIG);\
-# 	else\
-# 		nix run nixpkgs#home-manager switch -- --flake .#$(HMCONFIG);\
-# 	fi
-#
-# .PHONY: news
-# news:
-# 	@mkdir -p ~/.local/state/nix/profiles
-# 	@if command -v home-manager >/dev/null 2>&1; then\
-# 		home-manager news --flake .#$(HMCONFIG);\
-# 	else\
-# 		nix run nixpkgs#home-manager news -- --flake .#$(HMCONFIG);\
-# 	fi
 
-# --- Bootstrap
+.PHONY: $(TOPICS:%=bootstrap-%)
+$(TOPICS:%=bootstrap-%):
+	@./bootstrap.sh $(@:bootstrap-%=%)
+
 
 .PHONY: bootstrap
 bootstrap:
 	./bootstrap.sh
-
-.PHONY: shell
-shell:
-	./bootstrap.sh shell
-	./bootstrap.sh shell-private
-
-.PHONY: scripts
-scripts:
-	./bootstrap.sh scripts
-	./bootstrap.sh scripts-private
