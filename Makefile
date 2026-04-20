@@ -1,7 +1,7 @@
 SHELL := bash
 
-# find "$DOTFILES/topics" "$PRIVATE_DOTFILES/topics" -mindepth 1 -maxdepth 1 -type d -exec basename -- {} \; | xargs
-TOPICS = syncthing vim misc alacritty macos go shell systemd flatpak homebrew distrobox tmux hammerspoon git ghostty tcdn taskfiles cartero vscodium rclone k8s claude githome emacs ssh aws scripts-private
+# find "$DOTFILES/topics" "$PRIVATE_DOTFILES/topics" -mindepth 2 -maxdepth 2 -type f -name "init.sh" -exec dirname -- {} \; | xargs -I {} basename -- {} | sort | xargs
+TOPICS = alacritty aws emacs flatpak ghostty git githome go hammerspoon homebrew k8s macos misc rclone scripts-private shell ssh syncthing systemd taskfiles tcdn tmux vim vscodium
 
 
 .PHONY: $(TOPICS:%=bootstrap-%)
