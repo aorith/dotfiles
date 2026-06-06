@@ -23,14 +23,11 @@ font-thicken = true
 font-thicken-strength = 1
 #cursor-invert-fg-bg = false
 
-adjust-cell-height = 2
-adjust-cursor-height = 2
+#adjust-cell-height = 2
+#adjust-cursor-height = 2
 font-feature = -calt, -liga, -dlig
 
-# font-family = "Hack"
-# font-family = "Meslo LG S"
-# font-family = "Iosevka Fixed"
-font-family = "Source Code Pro"
+font-family = "DejaVu Sans Mono"
 
 # custom-shader = shaders/smear.glsl
 
