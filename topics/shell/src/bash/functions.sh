@@ -31,21 +31,6 @@ repos() {
     cd "${p}" || return 1
 }
 
-tt() {
-    local todo="$HOME/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt"
-    if [[ -n "$1" ]]; then
-        grep "$1" "$todo" | sort | bat --plain --language todo.txt --theme ansi
-    else
-        sort "$todo" | bat --plain --language todo.txt --theme ansi "$todo"
-    fi
-}
-
-te() {
-    local todo="$HOME/Syncthing/SYNC_STUFF/notes/zk/todo/todo.txt"
-    local _done="$HOME/Syncthing/SYNC_STUFF/notes/zk/todo/done.txt"
-    "$EDITOR" -o "$todo" "$_done"
-}
-
 # To manage k8s contexts, source the ,kc function here
 # shellcheck disable=SC1091
 if [[ -f "$HOME/githome/dotfiles/topics/shell/etc/common/k8s-kc" ]]; then

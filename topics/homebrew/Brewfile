@@ -4,7 +4,6 @@
 # -----------------------------------------------------------------------------
 tap "fluxcd/tap"
 tap "go-task/tap"
-tap "d12frosted/emacs-plus"
 
 # Brews
 # -----------------------------------------------------------------------------
@@ -16,6 +15,7 @@ brew "bash-completion@2"
 brew "bat"
 brew "caddy"
 brew "checkov"
+brew "clang-format"
 brew "coreutils"
 brew "cosign"
 brew "cue"
@@ -93,20 +93,12 @@ brew "colima" # vm runtimes for docker, etc
 brew "docker"
 brew "docker-buildx"
 brew "docker-compose"
-brew "docker-completion"
 
 
 # Fonts
 # -----------------------------------------------------------------------------
-cask "font-hack"
-cask "font-iosevka"
-cask "font-jetbrains-mono"
-cask "font-meslo-lg"
-cask "font-source-code-pro"
+cask "font-dejavu"
 
-cask "font-hack-nerd-font"
-cask "font-iosevka-term-nerd-font"
-cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
 
 # Casks
@@ -117,9 +109,7 @@ cask "calibre"
 cask "cyberduck" # ftp client
 cask "dbeaver-community"
 cask "discord"
-cask "emacs-plus-app"
 cask "flameshot"
-cask "gaphor" # SysML/UML modeling
 cask "geogebra@5"
 cask "ghostty"
 cask "gimp"
@@ -128,7 +118,6 @@ cask "kate"
 cask "keepassxc"
 cask "mattermost"
 cask "mitmproxy" # interactive HTTPS proxy to inspect traffic
-cask "obsidian"
 cask "spotify"
 cask "tigervnc"
 cask "tunnelblick"
