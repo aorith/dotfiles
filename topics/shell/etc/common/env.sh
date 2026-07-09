@@ -94,6 +94,8 @@ darwin*)
     export LC_MONETARY="es_ES.UTF-8"
     export LC_TIME="es_ES.UTF-8"
 
+    export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
     # Homebrew
     if [[ -e /opt/homebrew/bin/brew ]]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"

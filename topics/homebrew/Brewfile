@@ -65,7 +65,6 @@ brew "openssl@3"
 brew "pandoc"
 brew "pass"
 brew "python3"
-brew "qemu"
 brew "rclone"
 brew "riff"
 brew "ripgrep"
@@ -83,18 +82,19 @@ brew "tmux" # , args: ["HEAD"]
 brew "tree"
 brew "util-linux"
 brew "uv" # https://github.com/astral-sh/uv
-brew "varnish"
 brew "vim"
 brew "watch"
 brew "websocat"
 brew "wget"
 brew "yq"
 
+# brew "lima" # vm runtimes for docker, etc
+brew "lima-additional-guestagents"
 brew "colima" # vm runtimes for docker, etc
+brew "qemu"
 brew "docker"
 brew "docker-buildx"
 brew "docker-compose"
-
 
 # Fonts
 # -----------------------------------------------------------------------------
@@ -105,25 +105,25 @@ cask "font-symbols-only-nerd-font"
 # Casks
 # -----------------------------------------------------------------------------
 #cask "telegram"
+#cask "geogebra@5"
+#cask "cyberduck" # ftp client
+#cask "gimp"
+#cask "kate"
+#cask "wireshark-app"
 cask "alacritty"
 cask "calibre"
-cask "cyberduck" # ftp client
 cask "dbeaver-community"
 cask "discord"
 cask "flameshot"
-cask "geogebra@5"
 cask "ghostty"
-cask "gimp"
 cask "hammerspoon"
-cask "kate"
 cask "keepassxc"
 cask "mattermost"
 cask "mitmproxy" # interactive HTTPS proxy to inspect traffic
-cask "spotify"
 cask "tigervnc"
 cask "tunnelblick"
+cask "utm"
 cask "vlc"
-cask "wireshark-app"
 
 # Neovim
 # -----------------------------------------------------------------------------
