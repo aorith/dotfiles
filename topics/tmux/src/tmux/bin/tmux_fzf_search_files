@@ -3,7 +3,15 @@
 # $1 = pane_current_path
 # $2 = pane_current_command
 
-cd "$1" || exit 1 # pane_current_path
+cd "$1" || exit 1
+
+if read -t 0 _; then
+    # read stdin
+    readarray lines
+else
+    # no stdin
+    exit 2
+fi
 
 files=()
 while read -r line; do
@@ -11,14 +19,19 @@ while read -r line; do
     if [[ -f "$p" ]] && file "$p" | grep -q 'text'; then
         files+=("$p")
     fi
-done < <(cat -- - | xargs | tr ' ' '\n' | grep -v 'tmux_fzf_search_files' | sort | uniq)
+done < <(printf '%s\n' "${lines[@]}" | xargs | tr ' ' '\n' | sort | uniq)
+
+[[ -n "${files[*]}" ]] || {
+    tmux display-message "no files found"
+    exit 0
+}
 
 if ! choice="$(echo "${files[@]}" | xargs | tr ' ' '\n' | sort | uniq | sort -r | fzf --tmux)"; then
     exit 0
 fi
 
 p="${choice/\~/$HOME}"
-if [[ -e "$p" ]]; then
+if [[ -f "$p" ]]; then
     if [[ "$2" =~ ^(sh|bash|zsh|fish)$ ]]; then
         tmux send-keys C-a C-k "nvim '$p'" Enter
     else
