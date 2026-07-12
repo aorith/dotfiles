@@ -19,7 +19,7 @@ while read -r line; do
     if [[ -f "$p" ]] && file "$p" | grep -q 'text'; then
         files+=("$p")
     fi
-done < <(printf '%s\n' "${lines[@]}" | xargs | tr ' ' '\n' | sort | uniq)
+done < <(printf '%s\n' "${lines[@]}" | xargs -0 | tr ' ' '\n' | sort | uniq)
 
 [[ -n "${files[*]}" ]] || {
     tmux display-message "no files found"
