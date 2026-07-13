@@ -11,6 +11,7 @@ shell-integration = none
 shell-integration-features = false
 
 fullscreen = false
+window-theme = dark
 window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
@@ -18,16 +19,20 @@ window-padding-balance = true
 macos-icon = retro
 macos-option-as-alt = left
 
+background-opacity = 0.95
+background-opacity-cells = true
+background-blur = true
+
 font-size = 14
 font-thicken = true
-font-thicken-strength = 1
-#cursor-invert-fg-bg = false
+font-thicken-strength = 0
+#cursor-invert-fg-bg = true
 
 #adjust-cell-height = 2
 #adjust-cursor-height = 2
 font-feature = -calt, -liga, -dlig
 
-font-family = "DejaVu Sans Mono"
+font-family = "Hack"
 
 # custom-shader = shaders/smear.glsl
 

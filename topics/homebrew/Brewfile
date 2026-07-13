@@ -2,8 +2,7 @@
 
 # Taps
 # -----------------------------------------------------------------------------
-tap "fluxcd/tap"
-tap "go-task/tap"
+#tap "go-task/tap"
 
 # Brews
 # -----------------------------------------------------------------------------
@@ -37,7 +36,6 @@ brew "gnu-units"
 brew "gnuplot"
 brew "go"
 brew "go-jsonnet" # jsonnetfmt
-brew "go-task"
 brew "grep"
 brew "helm"
 brew "helm-docs"
@@ -49,6 +47,7 @@ brew "inetutils" # telnet, ftp
 brew "jless"
 brew "jq"
 brew "jsonnet-bundler" # for tanka
+brew "just"
 brew "k9s"
 brew "kind"
 brew "kubecolor"
@@ -98,6 +97,7 @@ brew "docker-compose"
 
 # Fonts
 # -----------------------------------------------------------------------------
+cask "font-hack"
 cask "font-dejavu"
 
 cask "font-symbols-only-nerd-font"
