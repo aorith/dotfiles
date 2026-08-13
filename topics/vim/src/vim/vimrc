@@ -63,7 +63,6 @@ call plug#end()
 source ~/.vim/aorith/basic.vim
 source ~/.vim/aorith/mappings.vim
 source ~/.vim/aorith/terminal_setup.vim
-source ~/.vim/aorith/autocmds.vim
 " }}} -------------------------------------------------------------------------
 
 " {{{ Theme -------------------------------------------------------------------
