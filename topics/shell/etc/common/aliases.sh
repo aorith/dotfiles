@@ -5,7 +5,6 @@ alias ll='ls --hyperlink=auto -Ahl --group-directories-first --color=auto'
 alias diff='diff --color=auto'
 alias htop='TERM=xterm-256color htop'
 alias grep='grep --color=auto'
-alias ssh='TERM=xterm-256color ssh'
 alias delta="delta --hyperlinks --hyperlinks-file-link-format='file://{path}#{line}'"
 alias rg='rg --hyperlink-format=kitty'
 

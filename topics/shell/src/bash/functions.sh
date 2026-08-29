@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+ssh() {
+    printf "\033]0;ssh %s\007" "$*" >&2
+    TERM=xterm-256color command ssh "${@}"
+    printf "\033]0;ssh %s\007" "$SHELL" >&2
+}
+
 dotfiles() {
     if [[ -n "$1" ]]; then
         cd "$DOTFILES/topics/$1" 2>/dev/null || cd "$PRIVATE_DOTFILES/topics/$1" 2>/dev/null || {

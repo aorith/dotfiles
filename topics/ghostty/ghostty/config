@@ -19,9 +19,9 @@ window-padding-balance = true
 macos-icon = retro
 macos-option-as-alt = left
 
-background-opacity = 0.95
-background-opacity-cells = true
-background-blur = true
+# background-opacity = 0.95
+# background-opacity-cells = true
+# background-blur = true
 
 font-size = 14
 font-thicken = true
@@ -33,6 +33,7 @@ font-thicken-strength = 0
 font-feature = -calt, -liga, -dlig
 
 font-family = "Hack"
+#font-family = "IosevkaTerm NFM"
 
 # custom-shader = shaders/smear.glsl
 

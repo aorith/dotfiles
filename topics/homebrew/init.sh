@@ -9,13 +9,20 @@ darwin*) true ;;
     ;;
 esac
 
+_run() {
+    log_info "$@"
+    "$@"
+}
+
 cd "$(dirname -- "$0")" || exit 1
 
-brew update
-brew bundle cleanup --force
-brew bundle install --upgrade
-brew upgrade --cask --greedy
+_run brew update
+_run brew bundle cleanup --force
+_run brew bundle install --upgrade
+_run brew upgrade --yes
+_run brew upgrade --cask --greedy
+_run brew cleanup --prune=all
 
-brew services start syncthing >/dev/null 2>&1
+_run brew services start syncthing >/dev/null 2>&1
 
 exit 0

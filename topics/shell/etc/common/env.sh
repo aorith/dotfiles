@@ -40,6 +40,11 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Source
 . ~/githome/dotfiles/utils/functions.sh
 
+# Rust
+if [[ -f "$HOME/.cargo/env" ]]; then
+    . "$HOME/.cargo/env"
+fi
+
 # # Nix (non NixOS)
 if [[ ! -e /etc/nixos ]]; then
     # Terraform >= 1.6.0 has bsl license

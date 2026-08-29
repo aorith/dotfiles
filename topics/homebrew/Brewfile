@@ -3,6 +3,7 @@
 # Taps
 # -----------------------------------------------------------------------------
 #tap "go-task/tap"
+tap "d12frosted/emacs-plus"
 
 # Brews
 # -----------------------------------------------------------------------------
@@ -26,6 +27,7 @@ brew "entr" # Run arbitrary commands when files change
 brew "fd"
 brew "findutils"
 brew "fzf"
+brew "gawk"
 brew "gcc"
 brew "gh"
 brew "git"
@@ -67,7 +69,6 @@ brew "python3"
 brew "rclone"
 brew "riff"
 brew "ripgrep"
-brew "rust"
 brew "shellharden"
 brew "skopeo"
 brew "socat"
@@ -86,6 +87,7 @@ brew "watch"
 brew "websocat"
 brew "wget"
 brew "yq"
+brew "zig"
 
 # brew "lima" # vm runtimes for docker, etc
 brew "lima-additional-guestagents"
@@ -98,7 +100,7 @@ brew "docker-compose"
 # Fonts
 # -----------------------------------------------------------------------------
 cask "font-hack"
-cask "font-dejavu"
+cask "font-iosevka-term-nerd-font"
 
 cask "font-symbols-only-nerd-font"
 
@@ -114,16 +116,21 @@ cask "alacritty"
 cask "calibre"
 cask "dbeaver-community"
 cask "discord"
-cask "flameshot"
 cask "ghostty"
 cask "hammerspoon"
 cask "keepassxc"
+cask "libreoffice"
+cask "macshot"
 cask "mattermost"
 cask "mitmproxy" # interactive HTTPS proxy to inspect traffic
+cask "neovide-app"
+cask "telegram-desktop"
 cask "tigervnc"
 cask "tunnelblick"
 cask "utm"
 cask "vlc"
+
+cask "d12frosted/emacs-plus/emacs-plus-app", trusted: true
 
 # Neovim
 # -----------------------------------------------------------------------------

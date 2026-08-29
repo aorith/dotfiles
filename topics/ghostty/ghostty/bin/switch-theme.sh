@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-dark_theme="Modus Vivendi Tinted"
-light_theme="Modus Operandi Tinted"
+dark_theme="Nord Wave"
+light_theme="Gruvbox Light Hard"
 
 output="$HOME/.config/ghostty/theme"
 if grep -qi 'dark' "$output"; then

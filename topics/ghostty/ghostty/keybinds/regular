@@ -1,6 +1,6 @@
 # vim: ft=ghostty
 
-#keybind = global:super+p=toggle_quick_terminal
+keybind = global:cmd+shift+º=toggle_quick_terminal
 
 keybind = super+.=toggle_command_palette
 
