@@ -94,9 +94,9 @@ EOF
                 # Personalize the context name
                 current_ctx="$(kubectl config current-context)"
                 case "$current_ctx" in
-                arn:aws:*)
+                arn:aws:*/*)
                     # arn:aws:eks:eu-west-1:123456789012:cluster/eks-cluster-1 --> eks-cluster-1
-                    KC_CURRENT_CONTEXT="${current_ctx##/*}"
+                    KC_CURRENT_CONTEXT="${current_ctx##*/}"
                     ;;
                 *)
                     KC_CURRENT_CONTEXT="$current_ctx"

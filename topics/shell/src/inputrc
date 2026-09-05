@@ -13,3 +13,9 @@ set show-all-if-unmodified On
 set menu-complete-display-prefix On
 set completion-query-items 1000
 
+# use Up/Down to iterate history, if any text is already in the prompt
+# it will search based on that prefix, eg. 'git ' will search history
+# for commands that start with git
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+

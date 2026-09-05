@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# https://bbs.archlinux.org/viewtopic.php?id=283588
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
+    wl-copy --type text/plain && wl-copy -p < <(wl-paste --no-newline)
+else
+    xclip -i -selection clipboard && xclip -i -selection primary < <(xclip -out -selection clipboard)
+fi

@@ -16,14 +16,13 @@ fi
 
 case $OSTYPE in
 linux*)
+    ln -sf "$DOTFILES/topics/shell/bin/pbcopy" "$HOME/.local/bin/pbcopy"
+    ln -sf "$DOTFILES/topics/shell/bin/pbpaste" "$HOME/.local/bin/pbpaste"
+
     if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
-        ln -sf "$DOTFILES/topics/shell/bin/wl-copy" "$HOME/.local/bin/pbcopy"
-        ln -sf "$DOTFILES/topics/shell/bin/wl-paste" "$HOME/.local/bin/pbpaste"
         mkdir -p "$HOME/.config/environment.d"
         cp "$DOTFILES/topics/shell/etc/common/environment.d/wayland.conf" "$HOME"/.config/environment.d/
     else
-        ln -sf "$DOTFILES/topics/shell/bin/xcopy" "$HOME/.local/bin/pbcopy"
-        ln -sf "$DOTFILES/topics/shell/bin/xpaste" "$HOME/.local/bin/pbpaste"
         rm -f "$HOME"/.config/environment.d/wayland.conf
     fi
     ;;

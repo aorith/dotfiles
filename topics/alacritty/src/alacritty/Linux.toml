@@ -2,9 +2,5 @@
 bindings = [
   { key = "N", mods = "Alt|Shift", action = "SpawnNewInstance" },
 
-  # Disable forward and backward search
-  { key = "F", mods = "Shift|Control", action = "ReceiveChar" },
-  { key = "B", mods = "Shift|Control", action = "ReceiveChar" },
-
-  { key = "Space", mods = "Alt", chars = "\u0020" },
+  { key = "Space", mods = "Alt", chars = " " },
 ]
