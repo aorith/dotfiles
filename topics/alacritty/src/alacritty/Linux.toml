@@ -1,7 +1,3 @@
-[terminal.shell]
-args = ["bash", "-l", "-i"]
-program = "/usr/bin/env"
-
 [keyboard]
 bindings = [
   { key = "N", mods = "Alt|Shift", action = "SpawnNewInstance" },

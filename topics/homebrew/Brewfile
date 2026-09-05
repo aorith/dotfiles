@@ -100,16 +100,15 @@ brew "docker-compose"
 # Fonts
 # -----------------------------------------------------------------------------
 cask "font-hack"
+cask "font-hack-nerd-font"
 cask "font-iosevka-term-nerd-font"
 
 cask "font-symbols-only-nerd-font"
 
 # Casks
 # -----------------------------------------------------------------------------
-#cask "telegram"
 #cask "geogebra@5"
 #cask "cyberduck" # ftp client
-#cask "gimp"
 #cask "kate"
 #cask "wireshark-app"
 cask "alacritty"
@@ -117,6 +116,7 @@ cask "calibre"
 cask "dbeaver-community"
 cask "discord"
 cask "ghostty"
+cask "gimp"
 cask "hammerspoon"
 cask "keepassxc"
 cask "libreoffice"

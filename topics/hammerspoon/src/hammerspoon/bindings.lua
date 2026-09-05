@@ -3,19 +3,18 @@
 
 -- Main keybindings
 local apps = {
-  F1 = "Ghostty",
-  F2 = "Google Chrome",
-  F3 = "Mattermost",
-  F4 = "Obsidian",
-  F5 = "KeePassXC",
+  F1 = 'Alacritty',
+  F2 = 'Google Chrome',
+  F3 = 'Mattermost',
+  F4 = 'KeePassXC',
 }
 
 for key, app in pairs(apps) do
-  hs.hotkey.bind({ "cmd" }, key, function() hs.application.launchOrFocus(app) end)
+  hs.hotkey.bind({ 'cmd' }, key, function() hs.application.launchOrFocus(app) end)
 end
 
 -- Disable alt+space
-hs.hotkey.bind({ "alt" }, "space", function() end)
+hs.hotkey.bind({ 'alt' }, 'space', function() end)
 
 -- swap Right Command and Right Opt
 local cmd = [[hidutil property --set '{"UserKeyMapping":
@@ -25,7 +24,7 @@ local cmd = [[hidutil property --set '{"UserKeyMapping":
       "HIDKeyboardModifierMappingDst":0x7000000e7}]
 }']]
 local _, _, _, rc = hs.execute(cmd)
-hs.alert.show((rc == 0 and "SUCCESS: " or "ERROR: ") .. "Swapping R-CMD with R-Alt")
+hs.alert.show((rc == 0 and 'SUCCESS: ' or 'ERROR: ') .. 'Swapping R-CMD with R-Alt')
 
 -- https://github.com/nikitabobko/AeroSpace?tab=readme-ov-file#tip-of-the-day
 hs.execute([[defaults write -g NSWindowShouldDragOnGesture -bool true]])

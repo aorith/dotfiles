@@ -2,15 +2,12 @@
 import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
 
 [font]
-size = 15
-# offset = { y = 6 }
-# glyph_offset = { y = 3 }
+size = 16
+#offset = { y = 2 }
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
-#normal = { family = "JetBrainsMonoNL Nerd Font" }
-#normal = { family = "Hack Nerd Font" }
-normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
+normal = { family = "Hack Nerd Font" }
 
 [window]
 dynamic_padding = true
@@ -34,9 +31,9 @@ draw_bold_text_with_bright_colors = true
 text = "#000000"
 cursor = "#35f080"
 
-[cursor.style]
-blinking = "Never"
-shape = "Block"
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+thickness = 0.20
 
 [mouse]
 hide_when_typing = false
@@ -47,9 +44,36 @@ history = 1000
 [selection]
 save_to_clipboard = true
 
-[[hints.enabled]]
-command = "open"
-hyperlinks = true
-post_processing = true
-mouse.enabled = true
-regex = "(https:|http:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+[hints]
+enabled = []
+
+# [[hints.enabled]]
+# command = "open"
+# hyperlinks = true
+# mouse.enabled = true
+# post_processing = true
+# regex = "(https:|http:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+# Disable 'ToggleViMode'
+[[keyboard.bindings]]
+key = "Space"
+mods = "Shift|Control"
+action = "ReceiveChar"
+
+# Disable 'Search'
+[[keyboard.bindings]]
+key = "F"
+mods = "Control|Shift"
+action = "ReceiveChar"
+[[keyboard.bindings]]
+key = "B"
+mods = "Control|Shift"
+action = "ReceiveChar"
+[[keyboard.bindings]]
+key = "F"
+mods = "Command"
+action = "ReceiveChar"
+[[keyboard.bindings]]
+key = "B"
+mods = "Command"
+action = "ReceiveChar"
