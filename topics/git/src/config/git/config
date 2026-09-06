@@ -1,12 +1,6 @@
 [init]
     defaultBranch = master
 
-[core]
-    fsmonitor = true
-
-[feature]
-    manyFiles = true
-
 [branch]
     color = auto
     # Sort most recent branches first
