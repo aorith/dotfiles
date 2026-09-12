@@ -2,8 +2,10 @@
 
 # $1 = pane_current_path
 # $2 = pane_current_command
+# $3 = window_id
 
 cd "$1" || exit 1
+window_id="$3"
 
 if read -t 0 _; then
     # read stdin
@@ -13,11 +15,26 @@ else
     exit 2
 fi
 
+# Splits "path[:line[:col]]".
+strip_locus() {
+    REPLY_PATH="$1"
+    REPLY_LINE=""
+    REPLY_COL=""
+    if [[ "$1" =~ ^(.+):([0-9]+):([0-9]+)$ ]]; then
+        REPLY_PATH="${BASH_REMATCH[1]}"
+        REPLY_LINE="${BASH_REMATCH[2]}"
+        REPLY_COL="${BASH_REMATCH[3]}"
+    elif [[ "$1" =~ ^(.+):([0-9]+)$ ]]; then
+        REPLY_PATH="${BASH_REMATCH[1]}"
+        REPLY_LINE="${BASH_REMATCH[2]}"
+    fi
+}
+
 files=()
 while read -r line; do
-    p="${line/\~/$HOME}"
-    if [[ -f "$p" ]] && file "$p" | grep -q 'text'; then
-        files+=("$p")
+    strip_locus "$line"
+    if [[ -f "$REPLY_PATH" ]] && file "$REPLY_PATH" | grep -q 'text'; then
+        files+=("$line")
     fi
 done < <(printf '%s\n' "${lines[@]}" | xargs -0 | tr ' ' '\n' | sort | uniq)
 
@@ -30,11 +47,30 @@ if ! choice="$(echo "${files[@]}" | xargs | tr ' ' '\n' | sort | uniq | sort -r 
     exit 0
 fi
 
-p="${choice/\~/$HOME}"
-if [[ -f "$p" ]]; then
-    if [[ "$2" =~ ^(sh|bash|zsh|fish)$ ]]; then
-        tmux send-keys C-a C-k "nvim '$p'" Enter
-    else
-        tmux display-message "current prompt busy with '$2'"
+strip_locus "$choice"
+p="${REPLY_PATH/\~/$HOME}"
+[[ -f "$p" ]] || exit 0
+
+nvim_pane="$(tmux list-panes -t "$window_id" -F '#{pane_id} #{pane_current_command}' | awk '$2 == "nvim" { print $1; exit }')"
+
+if [[ -n "$nvim_pane" ]]; then
+    # Route through fnameescape() so spaces/%/# in the path can't confuse :edit.
+    vim_p="${p//\'/\'\'}"
+    tmux send-keys -t "$nvim_pane" Escape
+    tmux send-keys -t "$nvim_pane" ":execute 'edit ' . fnameescape('$vim_p')" Enter
+    if [[ -n "$REPLY_LINE" ]]; then
+        tmux send-keys -t "$nvim_pane" ":call cursor($REPLY_LINE, ${REPLY_COL:-1})" Enter
     fi
+    tmux select-pane -t "$nvim_pane"
+    exit 0
+fi
+
+if [[ "$2" =~ ^(sh|bash|zsh|fish)$ ]]; then
+    if [[ -n "$REPLY_LINE" ]]; then
+        tmux send-keys C-a C-k "nvim -c 'call cursor($REPLY_LINE, ${REPLY_COL:-1})' '$p'" Enter
+    else
+        tmux send-keys C-a C-k "nvim '$p'" Enter
+    fi
+else
+    tmux display-message "current prompt busy with '$2'"
 fi
