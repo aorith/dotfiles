@@ -88,6 +88,7 @@ brew "websocat"
 brew "wget"
 brew "yq"
 brew "zig"
+brew "zls" # zig language server
 
 # brew "lima" # vm runtimes for docker, etc
 brew "lima-additional-guestagents"
@@ -100,6 +101,8 @@ brew "docker-compose"
 # Fonts
 # -----------------------------------------------------------------------------
 cask "font-hack"
+cask "font-maple-mono-nf"
+
 cask "font-hack-nerd-font"
 cask "font-iosevka-term-nerd-font"
 
