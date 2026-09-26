@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+sock="${XDG_RUNTIME_DIR:-/tmp}/.nvim-notes.sock"
+dir="$HOME/Syncthing/SYNC_STUFF/notes/md/"
+
+cd "$dir" || exit 1
+
+alive() {
+    nvim --server "$sock" --remote-expr 1 </dev/null >/dev/null 2>&1
+}
+
+if ! alive; then
+    rm -f "$sock"
+    # setsid: survive SIGHUP when popup closes
+    setsid nvim --headless --listen "$sock" </dev/null >/dev/null 2>&1 &
+    i=0
+    until alive; do
+        i=$((i + 1))
+        [[ "$i" -gt 100 ]] && {
+            echo "nvim server failed to start" >&2
+            sleep 2
+            exit 1
+        }
+        sleep 0.02
+    done
+fi
+
+exec nvim --server "$sock" --remote-ui

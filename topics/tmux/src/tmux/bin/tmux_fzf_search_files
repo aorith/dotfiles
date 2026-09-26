@@ -36,14 +36,20 @@ while read -r line; do
     if [[ -f "$REPLY_PATH" ]] && file "$REPLY_PATH" | grep -q 'text'; then
         files+=("$line")
     fi
-done < <(printf '%s\n' "${lines[@]}" | xargs -0 | tr ' ' '\n' | sort | uniq)
+done < <(printf '%s\n' "${lines[@]}" | tr ' ' '\n' | awk '!seen[$0]++')
+
+# Why: awk '!seen[$0]++'
+# this sorts keeping the original order.
+# - '++' is a post-increment
+# - !seen[apple]++ == 0 == !0 == true  (awk prints the line)
+# - !seen[apple]++ == 1 == !1 == false (awk does not print the line)
 
 [[ -n "${files[*]}" ]] || {
     tmux display-message "no files found"
     exit 0
 }
 
-if ! choice="$(echo "${files[@]}" | xargs | tr ' ' '\n' | sort | uniq | sort -r | fzf --tmux)"; then
+if ! choice="$(echo "${files[@]}" | xargs | tr ' ' '\n' | awk '!seen[$0]++' | fzf --tmux --layout=reverse)"; then
     exit 0
 fi
 

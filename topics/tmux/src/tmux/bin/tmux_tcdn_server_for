@@ -4,12 +4,12 @@ PATH="${PATH}:/opt/homebrew/bin:${HOME}/Syncthing/SYNC_STUFF/githome/private_dot
 # calling this does an initial update if required
 tes-ip-or-node "dummy-value" >/dev/null
 
-re="$(xargs <~/.local/state/.tcdn-server-map | tr ' ' '\n' | paste -sd'|')"
+re="$(xargs <"$HOME/.local/state/.tcdn-server-map" | tr ' ' '\n' | paste -sd'|' | sed 's/\./\\\./g')"
 
 out="$(
-    rg -o "(${re})" | sort | uniq | while read -r line; do
+    rg -o "(${re})" | awk '!seen[$0]++' | while read -r line; do
         tes-ip-or-node "$line"
-    done | sort | uniq | column -t -l 2
+    done | awk '!seen[$0]++' | column -t -l 2
 )"
 
 if [[ -n "$out" ]]; then
