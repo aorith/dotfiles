@@ -21,3 +21,7 @@ yellow = "0xd79921"
 [colors.primary]
 background = "0x282828"
 foreground = "0xebdbb2"
+[colors.cursor]
+# Without this, cursor is hard to see on neovim when searching or using 'f' or search
+text = "#000000"
+cursor = "#35f080"

@@ -22,3 +22,7 @@ foreground = '#000000'
 [colors.selection]
 background = '#c2bcb5'
 text = '#000000'
+[colors.cursor]
+# Without this, cursor is hard to see on neovim when searching or using 'f' or search
+text = "#ffffff"
+cursor = "#085908"
