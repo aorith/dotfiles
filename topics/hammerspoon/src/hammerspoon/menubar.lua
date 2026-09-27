@@ -41,20 +41,6 @@ menu = {
       reloadMenu()
     end,
   },
-  {
-    title = "-", -- separator
-  },
-  {
-    title = "Rescue Windows",
-    -- fn = rescue
-  },
-  {
-    title = "-", -- separator
-  },
-  {
-    title = "Auto Layout",
-    -- fn = autoLayout
-  },
 }
 
 reloadMenu()
