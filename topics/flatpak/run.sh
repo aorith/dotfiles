@@ -16,7 +16,6 @@ if [[ -d .venv ]]; then
 else
     python3 -m venv .venv
     _activate_venv
-    python3 -m ensurepip
     python3 -m pip install --upgrade pip
     pip3 install ansible psutil
 fi

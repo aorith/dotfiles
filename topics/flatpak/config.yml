@@ -28,8 +28,6 @@ flathub_common_packages:
 flathub_non_nixos_packages:
 - com.google.Chrome
 - com.mattjakeman.ExtensionManager
-- com.valvesoftware.Steam
-- com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 - org.gimp.GIMP
 - org.keepassxc.KeePassXC
 - org.videolan.VLC
