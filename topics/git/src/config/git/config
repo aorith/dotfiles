@@ -2,7 +2,6 @@
     defaultBranch = master
 
 [branch]
-    color = auto
     # Sort most recent branches first
     sort = -committerdate
     # https://stackoverflow.com/questions/5480069/autosetuprebase-vs-autosetupmerge
@@ -28,7 +27,6 @@
     sort = version:refname
 
 [diff]
-    color = auto
     algorithm = patience
 
 [difftool]
