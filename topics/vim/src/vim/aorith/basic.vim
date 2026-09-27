@@ -2,7 +2,7 @@
 let mapleader = " "
 " this avoids a sending a space when timeoutlen expires in normal mode
 nnoremap <Space> <Nop>
-let localmapleader = ","
+let maplocalleader = ","
 
 " Ensure nomodelineexpr
 set nomodelineexpr
@@ -71,5 +71,8 @@ set undolevels=1000 undoreload=10000
 set backupdir=~/.local/share/vim/backup//
 set directory=~/.local/share/vim/swap//
 
-" Highligh extra whitespace
-match ErrorMsg '\s\+$'
+" Highligh extra whitespace (:match is window-local)
+augroup trailing_whitespace
+  autocmd!
+  autocmd VimEnter,WinNew * match ErrorMsg '\s\+$'
+augroup END

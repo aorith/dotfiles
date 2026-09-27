@@ -1,7 +1,5 @@
-if !exists('*MyThemeToggle') " if this function does not exist...
-  map <F1> <Nop>
-  map! <F1> <Nop>
-end
+map <F1> <Nop>
+map! <F1> <Nop>
 
 " I don't want to enter Ex mode
 nnoremap Q <Nop>
