@@ -11,12 +11,11 @@ alive() {
 
 if ! alive; then
     rm -f "$sock"
-    # setsid: survive SIGHUP when popup closes
+    # setsid: survive SIGHUP when the floating pane closes
     setsid nvim --headless --listen "$sock" </dev/null >/dev/null 2>&1 &
     i=0
     until alive; do
-        i=$((i + 1))
-        [[ "$i" -gt 100 ]] && {
+        ((++i > 100)) && {
             echo "nvim server failed to start" >&2
             sleep 2
             exit 1

@@ -1,19 +1,10 @@
 #!/usr/bin/env bash
 
-# $1 = pane_current_path
-# $2 = pane_current_command
-# $3 = window_id
+# - This script runs a in floating pane
+# - Inherits the cwd from the source pane
+# - Takes stdin from the source pane
 
-cd "$1" || exit 1
-window_id="$3"
-
-if read -t 0 _; then
-    # read stdin
-    readarray lines
-else
-    # no stdin
-    exit 2
-fi
+read -r src_pane window_id src_cmd < <(tmux display -p -t '{last}' '#{pane_id} #{window_id} #{pane_current_command}')
 
 # Splits "path[:line[:col]]".
 strip_locus() {
@@ -33,10 +24,12 @@ strip_locus() {
 files=()
 while read -r line; do
     strip_locus "$line"
-    if [[ -f "$REPLY_PATH" ]] && file "$REPLY_PATH" | grep -q 'text'; then
+    p="${REPLY_PATH/#\~/$HOME}"
+    # -I: to exclude binary files
+    if [[ -f "$p" ]] && grep -Iq . "$p"; then
         files+=("$line")
     fi
-done < <(printf '%s\n' "${lines[@]}" | tr ' ' '\n' | awk '!seen[$0]++')
+done < <(tr -s ' \t' '\n' | awk 'NF && !seen[$0]++')
 
 # Why: awk '!seen[$0]++'
 # this sorts keeping the original order.
@@ -44,18 +37,19 @@ done < <(printf '%s\n' "${lines[@]}" | tr ' ' '\n' | awk '!seen[$0]++')
 # - !seen[apple]++ == 0 == !0 == true  (awk prints the line)
 # - !seen[apple]++ == 1 == !1 == false (awk does not print the line)
 
-[[ -n "${files[*]}" ]] || {
+((${#files[@]})) || {
     tmux display-message "no files found"
     exit 0
 }
 
-if ! choice="$(echo "${files[@]}" | xargs | tr ' ' '\n' | awk '!seen[$0]++' | fzf --tmux --layout=reverse)"; then
+if ! choice="$(printf '%s\n' "${files[@]}" | fzf --layout=reverse)"; then
     exit 0
 fi
 
 strip_locus "$choice"
-p="${REPLY_PATH/\~/$HOME}"
+p="${REPLY_PATH/#\~/$HOME}"
 [[ -f "$p" ]] || exit 0
+printf -v q '%q' "$p"
 
 nvim_pane="$(tmux list-panes -t "$window_id" -F '#{pane_id} #{pane_current_command}' | awk '$2 == "nvim" { print $1; exit }')"
 
@@ -71,12 +65,12 @@ if [[ -n "$nvim_pane" ]]; then
     exit 0
 fi
 
-if [[ "$2" =~ ^(sh|bash|zsh|fish)$ ]]; then
+if [[ "$src_cmd" =~ ^(sh|bash|zsh|fish)$ ]]; then
     if [[ -n "$REPLY_LINE" ]]; then
-        tmux send-keys C-a C-k "nvim -c 'call cursor($REPLY_LINE, ${REPLY_COL:-1})' '$p'" Enter
+        tmux send-keys -t "$src_pane" C-a C-k "nvim -c 'call cursor($REPLY_LINE, ${REPLY_COL:-1})' $q" Enter
     else
-        tmux send-keys C-a C-k "nvim '$p'" Enter
+        tmux send-keys -t "$src_pane" C-a C-k "nvim $q" Enter
     fi
 else
-    tmux display-message "current prompt busy with '$2'"
+    tmux display-message "current prompt busy with '$src_cmd'"
 fi

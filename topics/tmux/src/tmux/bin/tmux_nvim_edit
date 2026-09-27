@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
+# $1 = path
+# $2 = pane_current_path
+# $3 = pane_current_command
+
 cd "$2" || exit 1
 
-p="${1/\~/$HOME}"
-if [[ -e "$p" ]]; then
-    exec tmux send-keys "nvim '$p'" Enter
+p="${1/#\~/$HOME}"
+if [[ ! "$3" =~ ^(sh|bash|zsh|fish)$ ]]; then
+    exec tmux display-message "current prompt busy with '$3'"
+elif [[ -e "$p" ]]; then
+    printf -v q '%q' "$p"
+    exec tmux send-keys "nvim $q" Enter
 else
     exec tmux display-message "Cannot open '$1'"
 fi
