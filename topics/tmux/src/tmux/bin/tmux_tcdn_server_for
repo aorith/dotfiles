@@ -13,15 +13,28 @@ out="$(
 )"
 
 if [[ -n "$out" ]]; then
-    choice="$(printf '%s\nCOPY-ALL' "$out" | fzf --reverse)"
+    choice="$(printf '%s\nCOPY-ALL\nCOPY-NAMES\nCOPY-IPS' "$out" | fzf --reverse)"
+
     [[ -n "$choice" ]] || exit
-    if [[ "$choice" == "COPY-ALL" ]]; then
+
+    case "$choice" in
+    "COPY-ALL")
         printf '%s' "$out" | pbcopy
-        exit
-    fi
-    choice2="$(tr ' ' '\n' <<<"$choice" | grep . | sort | fzf --reverse) "
-    [[ -n "$choice2" ]] || exit
-    echo -n "$choice2" | xargs printf '%s' | pbcopy
+        ;;
+    "COPY-NAMES")
+        names=$(awk '{print $1}' <<<"$out")
+        printf '%s' "$names" | pbcopy
+        ;;
+    "COPY-IPS")
+        ips=$(awk '{for (i=2; i<=NF; i++) print $i}' <<<"$out")
+        printf '%s' "$ips" | pbcopy
+        ;;
+    *)
+        choice2="$(xargs <<<"$choice" | tr ' ' '\n' | sort | fzf --reverse) "
+        [[ -n "$choice2" ]] || exit
+        printf '%s' "$(awk '{print $1}' <<<"$choice2")" | pbcopy
+        ;;
+    esac
 else
     tmux display-message "No server/IP found."
 fi
