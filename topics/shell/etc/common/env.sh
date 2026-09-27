@@ -32,13 +32,12 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export PAGER="less"
 
 export CLIPBOARD_COPY="pbcopy"
-export CLIPBOARD_PASTE="pbpaste"
 
 # Disable python's venv/bin/activate from modifying the PS1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Source
-. ~/githome/dotfiles/utils/functions.sh
+. "$DOTFILES/utils/functions.sh"
 
 # Rust
 if [[ -f "$HOME/.cargo/env" ]]; then
@@ -61,9 +60,9 @@ fi
 
 # Paths
 for p in \
-    "$HOME/Syncthing/SYNC_STUFF/githome/private_dotfiles/topics/scripts-private/bin" \
+    "$PRIVATE_DOTFILES/topics/scripts-private/bin" \
     "$HOME/.local/bin" \
-    "$HOME/.local/go/bin"; do
+    "$GOBIN"; do
     _prepend_to_path "$p"
 done
 
@@ -103,9 +102,6 @@ darwin*)
     if [[ -e /opt/homebrew/bin/brew ]]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
         . /opt/homebrew/etc/profile.d/bash_completion.sh
-    fi
-    if [[ -e /opt/homebrew/share/bash-completion/bash_completion ]]; then
-        . /opt/homebrew/share/bash-completion/bash_completion
     fi
 
     for p in \

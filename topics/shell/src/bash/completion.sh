@@ -21,8 +21,7 @@ fi
 # Adds completion to the "dotfiles" function
 _dotfiles_completions() {
     mapfile -t COMPREPLY < <(compgen -W "$(
-        find "$DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;
-        find "$PRIVATE_DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;
+        find "$DOTFILES/topics/" "$PRIVATE_DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \; 2>/dev/null
     )" "${COMP_WORDS[1]}")
 }
 complete -F _dotfiles_completions dotfiles

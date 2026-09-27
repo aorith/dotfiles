@@ -3,7 +3,6 @@
 ssh() {
     printf "\033]0;ssh %s\007" "$*" >&2
     TERM=xterm-256color command ssh "${@}"
-    printf "\033]0;ssh %s\007" "$SHELL" >&2
 }
 
 dotfiles() {
@@ -20,7 +19,7 @@ dotfiles() {
 repos() {
     local p
     p="$(
-        fd \.git$ "${HOME}/githome" --max-depth 8 --type d --follow --unrestricted --color never |
+        fd '^\.git$' "${GITHOME}" --max-depth 8 --type d --follow --unrestricted --color never |
             fzf --reverse --border --margin 15% --delimiter / --with-nth 5..-3
     )"
     [[ -d "$p" ]] || return 1
@@ -39,15 +38,15 @@ repos() {
 
 # To manage k8s contexts, source the ,kc function here
 # shellcheck disable=SC1091
-if [[ -f "$HOME/githome/dotfiles/topics/shell/etc/common/k8s-kc" ]]; then
-    . "$HOME/githome/dotfiles/topics/shell/etc/common/k8s-kc"
+if [[ -f "$DOTFILES/topics/shell/etc/common/k8s-kc" ]]; then
+    . "$DOTFILES/topics/shell/etc/common/k8s-kc"
 fi
 alias ,kc='kc'
 alias ,kcn='kc n'
 
 # To manage aws profiles, source the awsp function here
 # shellcheck disable=SC1091
-if [[ -f "$HOME/githome/dotfiles/topics/shell/etc/common/awsp" ]]; then
-    . "$HOME/githome/dotfiles/topics/shell/etc/common/awsp"
+if [[ -f "$DOTFILES/topics/shell/etc/common/awsp" ]]; then
+    . "$DOTFILES/topics/shell/etc/common/awsp"
 fi
 alias ,aws='awsp'

@@ -77,10 +77,10 @@ EOF
             # If nothing was selected, reset $KUBECONFIG
             # shellcheck disable=SC2016
             echo 'variable "$KUBECONFIG" has been unset'
-            echo "unset KUBECONFIG" >"$KC_CURRENT_STATE"
+            printf 'unset KUBECONFIG KC_CURRENT_CONTEXT\n' >"$KC_CURRENT_STATE"
             Source
         elif [ -f "$cfg" ]; then
-            echo "export KUBECONFIG='$cfg'" >"$KC_CURRENT_STATE"
+            printf "unset KC_CURRENT_CONTEXT\nexport KUBECONFIG='%s'\n" "$cfg" >"$KC_CURRENT_STATE"
             # Check if this KUBECONFIG has multiple contexts
             export KUBECONFIG="$cfg"
             # shellcheck disable=SC2046
