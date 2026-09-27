@@ -19,7 +19,6 @@ cd "$(dirname -- "$0")" || exit 1
 _run brew update
 _run brew bundle cleanup --force
 _run brew bundle install --upgrade
-_run brew upgrade --yes
 _run brew upgrade --cask --greedy
 _run brew cleanup --prune=all
 
