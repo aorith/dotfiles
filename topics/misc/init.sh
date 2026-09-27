@@ -5,11 +5,11 @@ if [[ ! -d /etc/nixos ]] && [[ ! -e "$HOME/.config/nix" ]]; then
     create_link "${PWD}/src/nix" "$HOME/.config/nix"
 fi
 
-# https://wiki.archlinux.org/title/PipeWire#Noticeable_audio_delay_or_audible_pop/crack_when_starting_playback
 case $OSTYPE in
 linux*)
-    rm -rf ~/.config/wireplumber
-    cp -r "${PWD}/src/wireplumber" ~/.config/
+    mkdir -p "$HOME/.config/wireplumber/wireplumber.conf.d"
+    create_link "${PWD}/src/wireplumber/wireplumber.conf.d/51-disable-suspension.conf" \
+        "$HOME/.config/wireplumber/wireplumber.conf.d/51-disable-suspension.conf"
     ;;
 *) ;;
 esac
