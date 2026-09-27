@@ -4,28 +4,25 @@ set -a
 _prepend_to_path() {
     [[ -n "$1" ]] || return 0
     [[ -e "$1" ]] || return 0
-    case ":${MY_PATH:-unset}:" in
-    *":${1}:"*) ;;             # already there
-    ":unset:") MY_PATH="$1" ;; # was empty
-    *) MY_PATH="${1}:${MY_PATH}" ;;
+    case ":${MY_PATH-}:" in
+    *":${1}:"*) ;; # already there
+    *) MY_PATH="${1}${MY_PATH:+:$MY_PATH}" ;;
     esac
-    export MY_PATH
 }
 
+# Prepends MY_PATH and keeps only the first occurrence of each entry
 _prepend_to_path_commit() {
-    export PATH="${MY_PATH}:${PATH}"
+    local p out=":"
+    local -a parts
+    IFS=: read -ra parts <<<"${MY_PATH:+$MY_PATH:}$PATH"
+    for p in "${parts[@]}"; do
+        if [[ -n "$p" && "$out" != *":${p}:"* ]]; then
+            out+="${p}:"
+        fi
+    done
+    out="${out#:}"
+    export PATH="${out%:}"
     unset MY_PATH
-}
-
-_append_to_path() {
-    [[ -n "$1" ]] || return 0
-    [[ -e "$1" ]] || return 0
-    case ":${PATH:-unset}:" in
-    *":${1}:"*) ;;             # already there
-    ":unset:") MY_PATH="$1" ;; # was empty
-    *) PATH="${PATH}:${1}" ;;
-    esac
-    export PATH
 }
 
 # create_link <SOURCE_FILE> <DEST_FILE>
