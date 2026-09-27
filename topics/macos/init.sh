@@ -9,11 +9,6 @@ darwin*) true ;;
     ;;
 esac
 
-# Fix Option+Space inserting non-breaking space (0xA0) " "
-# UPDATE: doesn't work reliably, fixed directly in alacritty
-#mkdir -p ~/Library/KeyBindings
-#cp "${PWD}/src/DefaultKeyBinding.Dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.Dict"
-
 # KeyRepeat
 defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 2
@@ -24,6 +19,6 @@ defaults write -g KeyRepeat -int 2
 if ! [[ -f "$HOME/Library/Fonts/Symbola.ttf" ]]; then
     set -x
     mkdir -p "$HOME/Library/Fonts"
-    curl -s -o "$HOME/Library/Fonts/Symbola.ttf" "https://zhm.github.io/symbola/fonts/Symbola.ttf"
+    curl -fsSL -o "$HOME/Library/Fonts/Symbola.ttf" "https://zhm.github.io/symbola/fonts/Symbola.ttf"
     set +x
 fi
