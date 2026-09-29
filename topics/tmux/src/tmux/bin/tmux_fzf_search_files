@@ -11,11 +11,11 @@ strip_locus() {
     REPLY_PATH="$1"
     REPLY_LINE=""
     REPLY_COL=""
-    if [[ "$1" =~ ^(.+):([0-9]+):([0-9]+)$ ]]; then
+    if [[ "$1" =~ ^([^:]+):([0-9]+):([0-9]+).*$ ]]; then
         REPLY_PATH="${BASH_REMATCH[1]}"
         REPLY_LINE="${BASH_REMATCH[2]}"
         REPLY_COL="${BASH_REMATCH[3]}"
-    elif [[ "$1" =~ ^(.+):([0-9]+)$ ]]; then
+    elif [[ "$1" =~ ^([^:]+):([0-9]+).*$ ]]; then
         REPLY_PATH="${BASH_REMATCH[1]}"
         REPLY_LINE="${BASH_REMATCH[2]}"
     fi
@@ -27,7 +27,10 @@ while read -r line; do
     p="${REPLY_PATH/#\~/$HOME}"
     # -I: to exclude binary files
     if [[ -f "$p" ]] && grep -Iq . "$p"; then
-        files+=("$line")
+        entry="$REPLY_PATH"
+        [[ -n "$REPLY_LINE" ]] && entry+=":$REPLY_LINE"
+        [[ -n "$REPLY_COL" ]] && entry+=":$REPLY_COL"
+        files+=("$entry")
     fi
 done < <(tr -s ' \t' '\n' | awk 'NF && !seen[$0]++')
 
