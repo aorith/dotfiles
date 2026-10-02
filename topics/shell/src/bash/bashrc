@@ -24,9 +24,5 @@ if [[ -z "$CONTAINER_ID" ]] && [[ -e /run/.containerenv ]]; then
     export CONTAINER_ID=$(awk -F '=' '/^name=/ {print $2}' /run/.containerenv | tr -d '"')
 fi
 
-# Fzf
-if command -v fzf >/dev/null 2>&1; then
-    eval "$(fzf --bash)"
-fi
-
+. "${DOTFILES}"/topics/shell/src/bash/etc/fzf.sh
 . "${DOTFILES}"/topics/shell/src/bash/etc/prompt.sh
