@@ -90,21 +90,21 @@ brew "yq"
 brew "zig"
 brew "zls" # zig language server
 
-# brew "lima" # vm runtimes for docker, etc
-brew "lima-additional-guestagents"
 brew "colima" # vm runtimes for docker, etc
-brew "qemu"
 brew "docker"
 brew "docker-buildx"
 brew "docker-compose"
+brew "lima" # vm runtimes for docker, etc
+brew "lima-additional-guestagents"
+brew "qemu"
 
 # Fonts
 # -----------------------------------------------------------------------------
 cask "font-hack"
-cask "font-maple-mono-nf"
 
 cask "font-hack-nerd-font"
 cask "font-iosevka-term-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 
 cask "font-symbols-only-nerd-font"
 

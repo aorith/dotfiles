@@ -2,14 +2,14 @@
 import = ["~/.config/alacritty/env.toml", "~/.config/alacritty/theme.toml"]
 
 [font]
-size = 16
-offset = { y = 2 }
-glyph_offset = { y = 1 }
+size = 16.0
+#offset = { y = 2 }
+#glyph_offset = { y = 1 }
 
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
-normal = { family = "Hack Nerd Font" }
-#normal = { family = "Maple Mono NF", style = "Regular" }
+#normal = { family = "Hack Nerd Font" }
+normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular" }
 #normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
 
 [window]
@@ -34,7 +34,7 @@ style = { shape = "Block", blinking = "Never" }
 thickness = 0.20
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [scrolling]
 history = 1000
