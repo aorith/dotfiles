@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
 # K8s
-if command -v kubectl >/dev/null 2>&1; then
+# __start_kubectl is lazy-loaded by bash-completion on first "kubectl <TAB>"
+_k_completions() {
+    declare -F __start_kubectl >/dev/null || _comp_load kubectl 2>/dev/null || __load_completion kubectl
+    declare -F __start_kubectl >/dev/null || return
     complete -F __start_kubectl k
+    __start_kubectl "$@"
+}
+if command -v kubectl >/dev/null 2>&1; then
+    complete -F _k_completions k
 fi
 
 # ------------------ bash completion basics ------------------ #
@@ -20,8 +27,13 @@ fi
 
 # Adds completion to the "dotfiles" function
 _dotfiles_completions() {
-    mapfile -t COMPREPLY < <(compgen -W "$(
-        find "$DOTFILES/topics/" "$PRIVATE_DOTFILES/topics/" -maxdepth 1 -mindepth 1 -type d -exec basename {} \; 2>/dev/null
-    )" "${COMP_WORDS[1]}")
+    local t
+    local -a d=()
+    for t in "$DOTFILES"/topics/*/ "$PRIVATE_DOTFILES"/topics/*/; do
+        [[ -d "$t" ]] || continue # unmatched glob
+        t="${t%/}"
+        d+=("${t##*/}")
+    done
+    compgen -V COMPREPLY -W "${d[*]}" -- "$2"
 }
 complete -F _dotfiles_completions dotfiles
