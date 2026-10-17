@@ -100,7 +100,12 @@ darwin*)
 
     # Homebrew
     if [[ -e /opt/homebrew/bin/brew ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        # Removed by topics/homebrew/init.sh to regenerate
+        if [[ ! -s "$XDG_CACHE_HOME/brew-shellenv.sh" ]]; then
+            mkdir -p "$XDG_CACHE_HOME"
+            PATH=/usr/bin:/bin /opt/homebrew/bin/brew shellenv bash >"$XDG_CACHE_HOME/brew-shellenv.sh"
+        fi
+        . "$XDG_CACHE_HOME/brew-shellenv.sh"
         . /opt/homebrew/etc/profile.d/bash_completion.sh
     fi
 

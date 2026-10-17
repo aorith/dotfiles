@@ -17,6 +17,10 @@ _run() {
 cd "$(dirname -- "$0")" || exit 1
 
 _run brew update
+
+# env.sh regenerates it
+rm -f "${XDG_CACHE_HOME:-$HOME/.cache}/brew-shellenv.sh"
+
 _run brew bundle cleanup --force
 _run brew bundle install --upgrade
 _run brew upgrade --cask --greedy
