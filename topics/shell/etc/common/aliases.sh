@@ -11,7 +11,7 @@ alias rg='rg --hyperlink-format=kitty'
 alias cd..='cd ..'
 alias ..='cd ..'
 
-alias wget='wget --hsts-file=~/.local/state/.wget-hsts'
+alias wget='wget --hsts-file="$XDG_STATE_HOME/.wget-hsts"'
 alias nmap_scan='sudo nmap -sC -sV'
 alias nmap_scan_ports='sudo nmap -p 1-65535'
 
