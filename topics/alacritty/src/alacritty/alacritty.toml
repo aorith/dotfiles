@@ -9,7 +9,7 @@ size = 16.0
 # Nerd Font Mono == Fully monospaced, smaller icons
 # Nerd Font == Partially monospaced, bigger icons (2wide icons, terminal has to support them)
 #normal = { family = "Hack Nerd Font" }
-normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular" }
+normal = { family = "JetBrainsMonoNL Nerd Font Mono" }
 #normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
 
 [window]
@@ -18,8 +18,8 @@ dynamic_title = true
 decorations_theme_variant = "Dark"
 
 [window.padding]
-x = 2
-y = 2
+x = 3
+y = 3
 
 [bell]
 animation = "EaseOutExpo"

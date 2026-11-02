@@ -1,6 +1,7 @@
 [window]
 startup_mode = "Maximized"
 option_as_alt = "OnlyLeft"
+decorations = "None"
 
 [keyboard]
 bindings = [

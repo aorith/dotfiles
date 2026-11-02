@@ -16,7 +16,6 @@ window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
 
-macos-icon = retro
 macos-option-as-alt = left
 
 # background-opacity = 0.95

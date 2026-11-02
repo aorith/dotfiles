@@ -1,12 +1,10 @@
 SHELL := bash
 
-# find "$DOTFILES/topics" "$PRIVATE_DOTFILES/topics" -mindepth 2 -maxdepth 2 -type f -name "init.sh" -exec dirname -- {} \; | xargs -I {} basename -- {} | sort | xargs
-TOPICS = alacritty aws emacs flatpak ghostty git githome go hammerspoon homebrew k8s macos misc rclone scripts-private shell ssh syncthing systemd justfiles tcdn tmux vim vscodium
+TOPICS := $(shell find "$$DOTFILES/topics" "$$PRIVATE_DOTFILES/topics" -mindepth 2 -maxdepth 2 -type f -name "init.sh" -exec dirname -- {} \; | xargs -I {} basename -- {} | sort | xargs)
 
-
-.PHONY: $(TOPICS:%=bootstrap-%)
-$(TOPICS:%=bootstrap-%):
-	@./bootstrap.sh $(@:bootstrap-%=%)
+.PHONY: $(TOPICS:%=%-bootstrap)
+$(TOPICS:%=%-bootstrap):
+	@./bootstrap.sh $(@:%-bootstrap=%)
 
 
 .PHONY: bootstrap

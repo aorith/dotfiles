@@ -22,3 +22,6 @@ if ! [[ -f "$HOME/Library/Fonts/Symbola.ttf" ]]; then
     curl -fsSL -o "$HOME/Library/Fonts/Symbola.ttf" "https://zhm.github.io/symbola/fonts/Symbola.ttf"
     set +x
 fi
+
+# Less rounded corners
+defaults write -g NSConvolutionOverride1 -float 4
