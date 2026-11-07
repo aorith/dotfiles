@@ -23,6 +23,7 @@ brew "datamash"
 brew "delve" # go debugger
 brew "diffutils"
 brew "dive"
+brew "doggo" # dig
 brew "entr" # Run arbitrary commands when files change
 brew "fd"
 brew "findutils"
